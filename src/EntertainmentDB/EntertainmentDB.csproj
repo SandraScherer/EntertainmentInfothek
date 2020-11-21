@@ -6,7 +6,7 @@
     <FileVersion>0.0.1.0</FileVersion>
     <Version>0.0.1</Version>
     <Authors>Sandra Scherer</Authors>
-    <Copyright>(c) 2020  Sandra Scherer</Copyright>
+    <Copyright>(c) 2020 Sandra Scherer</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
