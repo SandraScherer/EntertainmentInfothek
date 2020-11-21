@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a movie with the given id string.
         /// </summary>
-        /// <param name="id">The id of the status.</param>
+        /// <param name="id">The id of the movie.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Movie(string id)
         {
