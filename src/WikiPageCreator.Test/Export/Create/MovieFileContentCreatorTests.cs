@@ -35,6 +35,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
+            movie.Retrieve();
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -252,6 +253,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
+            movie.Retrieve();
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
