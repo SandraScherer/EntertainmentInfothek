@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EntertainmentDB\EntertainmentDB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
 		<None Update="nlog.config" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
