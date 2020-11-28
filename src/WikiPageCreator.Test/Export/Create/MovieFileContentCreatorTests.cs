@@ -44,6 +44,21 @@ namespace WikiPageCreator.Export.Create.Tests
         }
 
         [TestMethod()]
+        public void GetFileNameTest()
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            string filename = creator.GetFileName();
+
+            // Assert
+            Assert.AreEqual(creator.Formatter.AsPagename($"{movie.OriginalTitle} ({movie.ReleaseDate[0..4]})"), filename);
+        }
+
+        [TestMethod()]
         public void CreateHeaderTest()
         {
             // Arrange

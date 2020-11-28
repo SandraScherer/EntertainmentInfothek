@@ -71,6 +71,17 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
+        /// Creates the file name of the movie page.
+        /// </summary>
+        /// <returns>The formatted file name.</returns>
+        public string GetFileName()
+        {
+            Logger.Trace($"GetFileName() für Movie '{Movie.OriginalTitle}' aufgerufen");
+
+            return Formatter.AsPagename($"{Movie.OriginalTitle} ({Movie.ReleaseDate[0..4]})");
+        }
+
+        /// <summary>
         /// Creates the formatted content of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
