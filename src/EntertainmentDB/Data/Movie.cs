@@ -168,5 +168,59 @@ namespace EntertainmentDB.Data
             // nothing to do
             return 0;
         }
+
+        /// <summary>
+        /// Retrieves a list of movies from the database.
+        /// </summary>
+        /// <param name="reader">The reader to be used to retrieve the data records.</param>
+        /// <param name="status">The status of the movies.</param>
+        /// <param name="order">The order in which the data records are to be sorted.</param>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
+        public static List<Movie> RetrieveList(DBReader reader, string status, string order = "ID")
+        {
+            if (reader == null)
+            {
+                throw new NullReferenceException(nameof(reader));
+            }
+            if (String.IsNullOrEmpty(status))
+            {
+                throw new ArgumentNullException(nameof(status));
+            }
+            if (String.IsNullOrEmpty(order))
+            {
+                throw new ArgumentNullException(nameof(order));
+            }
+
+            // Liste laden
+
+            reader.Query = $"SELECT ID " +
+                           $"FROM Movie " +
+                           $"WHERE StatusID=\"{status}\"" +
+                           $"ORDER BY {order}";
+
+            List<Movie> list = new List<Movie>();
+
+            if (reader.Retrieve() > 0)
+            {
+                list.Capacity = reader.Table.Rows.Count;
+
+                foreach (DataRow row in reader.Table.Rows)
+                {
+                    Movie item = new Movie();
+
+                    item.ID = row["ID"].ToString();
+                    item.RetrieveBasicInformation();
+                    list.Add(item);
+                }
+            }
+            else
+            {
+                //  nothing to do
+            }
+
+            return list;
+        }
     }
 }
