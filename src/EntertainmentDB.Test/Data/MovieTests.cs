@@ -184,10 +184,10 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie")]
-        public void RetrieveListTest_withValidData(string value)
+        public void RetrieveListTest_withValidData()
         {
             // Arrange
+            // TODO: which DB reader is to be used should be defined in configuration
             DBReader reader = new SQLiteReader();
 
             // Act
