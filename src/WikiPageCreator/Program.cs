@@ -105,7 +105,7 @@ namespace WikiPageCreator
             creator.CreateContent(targetLanguageCode);
 
             FileWriter writer = new FileWriter();
-            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\movies_and_tv_films\\", creator.GetFileName(), creator.Content);
+            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetFileName(), creator.Content);
         }
     }
 }
