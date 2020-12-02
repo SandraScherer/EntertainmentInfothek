@@ -79,7 +79,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
-            content.Add($"   @version Status Details X: Movie Last Updated X");
+            content.Add($"   @version Status English Title X: Movie Last Updated X");
             content.Add(creator.Formatter.EndComment());
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -292,7 +292,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
-            content.Add($"   @version Status Details X: Movie Last Updated X");
+            content.Add($"   @version Status English Title X: Movie Last Updated X");
             content.Add(creator.Formatter.EndComment());
 
             // Title

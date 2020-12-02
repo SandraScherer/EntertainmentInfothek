@@ -133,7 +133,7 @@ namespace WikiPageCreator.Export.Create
             Content.Add($"");
             Content.Add($"   @author  WikiPageCreator");
             Content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
-            Content.Add($"   @version {Movie.Status.Details}: {Movie.LastUpdated}");
+            Content.Add($"   @version {Movie.Status.EnglishTitle}: {Movie.LastUpdated}");
             Content.Add(Formatter.EndComment());
 
             Logger.Trace($"CreateHeader() für Movie '{Movie.OriginalTitle}' beendet");
