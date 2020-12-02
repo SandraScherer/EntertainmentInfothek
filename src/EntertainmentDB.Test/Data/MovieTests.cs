@@ -20,6 +20,7 @@ using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EntertainmentDB.DBAccess.Read;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -180,6 +181,22 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        public void RetrieveListTest_withValidData()
+        {
+            // Arrange
+            // TODO: which DB reader is to be used should be defined in configuration
+            DBReader reader = new SQLiteReader();
+
+            // Act
+            List<Movie> list = Data.Movie.RetrieveList(reader, "_xxx");
+
+            // Assert
+            Assert.AreEqual(1, list.Count);
+
+            Assert.AreEqual("_xxx", list[0].ID);
         }
     }
 }

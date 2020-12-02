@@ -1,5 +1,7 @@
 ﻿using EntertainmentDB.Data;
+using EntertainmentDB.DBAccess.Read;
 using System;
+using System.Collections.Generic;
 using WikiPageCreator.Export.Create;
 using WikiPageCreator.Export.Write;
 
@@ -60,11 +62,29 @@ namespace WikiPageCreator
 
             Logger.Trace($"Film ID: {idUser}");
 
-            CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
+            // do work
+            // TODO: which DB reader is to be used should be defined in configuration
+            SQLiteReader reader = new SQLiteReader();
+
+            if (idUser.Equals("*"))
+            {
+                List<Movie> list = Movie.RetrieveList(reader, "ok");
+
+                foreach (Movie item in list)
+                {
+                    CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
+                    Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                }
+            }
+            else
+            {
+                CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
+                Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
+            }
 
             // End
             Console.WriteLine($"");
-            Console.WriteLine($"Seitenerstellung erfolgreich beendet.");
+            Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
             Console.ReadLine();
 
             Logger.Trace($"'WikiPageCreator' beendet");
