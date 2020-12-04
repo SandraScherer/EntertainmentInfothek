@@ -57,6 +57,11 @@ namespace EntertainmentDB.Data
         public string GermanTitle { get; set; }
 
         /// <summary>
+        /// The type of the movie.
+        /// </summary>
+        public Type Type { get; set; }
+
+        /// <summary>
         /// The release date of the movie.
         /// </summary>
         public string ReleaseDate { get; set; }
@@ -130,9 +135,9 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, ReleaseDate, Details, StatusID, LastUpdated " +
-                          $"FROM Movie " +
-                          $"WHERE ID=\"{ID}\"";
+            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, Details, StatusID, LastUpdated " +
+                           $"FROM Movie " +
+                           $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
             {
@@ -142,6 +147,12 @@ namespace EntertainmentDB.Data
                 OriginalTitle = row["OriginalTitle"].ToString();
                 EnglishTitle = row["EnglishTitle"].ToString();
                 GermanTitle = row["GermanTitle"].ToString();
+                if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
+                {
+                    Type = new Type();
+                    Type.ID = row["TypeID"].ToString();
+                    Type.RetrieveBasicInformation();
+                }
                 ReleaseDate = row["ReleaseDate"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))

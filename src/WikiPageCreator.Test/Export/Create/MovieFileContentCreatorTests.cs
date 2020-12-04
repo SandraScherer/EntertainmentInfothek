@@ -229,6 +229,41 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxTypeTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxType(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn = { "Type", Formatter.AsInternalLink(path, "Type English Title X", "Type English Title X") };
+            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type German Title X", "Type German Title X") };
+            string[] dataZz = { "Typ", Formatter.AsInternalLink(path, "Type German Title X", "Type German Title X") };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataZz)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateInfoBoxOriginalReleaseDateTest(string value)
         {
             // Arrange
@@ -279,10 +314,14 @@ namespace WikiPageCreator.Export.Create.Tests
             int[] width = { 30, 70 };
             string[] dataTitleEn = { "Original Title", "Movie Original Title X" };
             string[] dataTitleDe = { "Originaltitel", "Movie Original Title X" };
-            string[] path = { value, "dates" };
-            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
+            string[] pathType = { value, "info" };
+            string[] dataTypeEn = { "Type", Formatter.AsInternalLink(pathType, "Type English Title X", "Type English Title X") };
+            string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type German Title X", "Type German Title X") };
+            string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type German Title X", "Type German Title X") };
+            string[] pathRelease = { value, "dates" };
+            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -315,6 +354,14 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataTitleEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataTitleDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataTitleDe)); break;
+            }
+
+            // InfoBox Type
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataTypeEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataTypeDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataTypeZz)); break;
             }
 
             // InfoBox Release Date

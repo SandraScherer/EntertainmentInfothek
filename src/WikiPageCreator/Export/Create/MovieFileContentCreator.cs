@@ -100,6 +100,7 @@ namespace WikiPageCreator.Export.Create
 
             CreateInfoBoxHeader(targetLanguageCode);
             CreateInfoBoxTitle(targetLanguageCode);
+            CreateInfoBoxType(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
@@ -273,10 +274,45 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted infobox type of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode"></param>
+        public void CreateInfoBoxType(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxType() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (!String.IsNullOrEmpty(Movie.Type.ID))
+            {
+                Logger.Trace($"Type: '{Movie.Type.ID}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Type";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.EnglishTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Typ";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Type.GermanTitle, Movie.Type.GermanTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates the formatted infobox release date of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
-        public  void CreateInfoBoxOriginalReleaseDate(string targetLanguageCode)
+        public void CreateInfoBoxOriginalReleaseDate(string targetLanguageCode)
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {

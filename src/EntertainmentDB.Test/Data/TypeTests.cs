@@ -20,18 +20,17 @@ using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using EntertainmentDB.DBAccess.Read;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class MovieTests
+    public class TypeTests
     {
         [TestMethod()]
-        public void MovieTest()
+        public void TypeTest()
         {
             // Arrange
-            Movie entry = new Movie();
+            Type entry = new Type();
 
             // Act
             // Assert
@@ -39,21 +38,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Type);
-            Assert.IsNull(entry.ReleaseDate);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void MovieTest_withID()
+        public void TypeTest_withID()
         {
             // Arrange
-            Movie entry = new Movie("_xxx");
+            Type entry = new Type("_xxx");
 
             // Act
             // Assert
@@ -61,11 +57,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Type);
-            Assert.IsNull(entry.ReleaseDate);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -75,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID()
         {
             // Arrange
-            Movie entry = new Movie("_xxx");
+            Type entry = new Type("_xxx");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -84,21 +77,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Movie Original Title X", entry.OriginalTitle);
-            Assert.AreEqual("Movie English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Movie German Title X", entry.GermanTitle);
-            Assert.AreEqual("_xxx", entry.Type.ID);
-            Assert.AreEqual("Movie Release Date X", entry.ReleaseDate);
-            Assert.AreEqual("Movie Details X", entry.Details);
+            Assert.AreEqual("Type English Title X", entry.EnglishTitle);
+            Assert.AreEqual("Type German Title X", entry.GermanTitle);
+            Assert.AreEqual("Type Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Type Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID()
         {
             // Arrange
-            Movie entry = new Movie("_aaa");
+            Type entry = new Type("_aaa");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -107,11 +97,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Type);
-            Assert.IsNull(entry.ReleaseDate);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -121,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID()
         {
             // Arrange
-            Movie entry = new Movie("_xxx");
+            Type entry = new Type("_xxx");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -134,75 +121,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID()
         {
             // Arrange
-            Movie entry = new Movie("_aaa");
+            Type entry = new Type("_aaa");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
             Assert.AreEqual(0, count);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withValidID()
-        {
-            // Arrange
-            Movie entry = new Movie("_xxx");
-
-            // Act
-            int count = entry.Retrieve();
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Movie Original Title X", entry.OriginalTitle);
-            Assert.AreEqual("Movie English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Movie German Title X", entry.GermanTitle);
-            Assert.AreEqual("_xxx", entry.Type.ID);
-            Assert.AreEqual("Movie Release Date X", entry.ReleaseDate);
-            Assert.AreEqual("Movie Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID()
-        {
-            // Arrange
-            Movie entry = new Movie("_aaa");
-
-            // Act
-            int count = entry.Retrieve();
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalTitle);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Type);
-            Assert.IsNull(entry.ReleaseDate);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        public void RetrieveListTest_withValidData()
-        {
-            // Arrange
-            // TODO: which DB reader is to be used should be defined in configuration
-            DBReader reader = new SQLiteReader();
-
-            // Act
-            List<Movie> list = Data.Movie.RetrieveList(reader, "_xxx");
-
-            // Assert
-            Assert.AreEqual(1, list.Count);
-
-            Assert.AreEqual("_xxx", list[0].ID);
         }
     }
 }
