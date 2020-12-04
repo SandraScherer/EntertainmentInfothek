@@ -24,13 +24,13 @@ using System.Text;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class TypeTests
+    public class ConnectionTests
     {
         [TestMethod()]
-        public void TypeTest()
+        public void ConnectionTest()
         {
             // Arrange
-            Type entry = new Type();
+            Connection entry = new Connection();
 
             // Act
             // Assert
@@ -38,18 +38,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Title);
+            Assert.IsNull(entry.BaseConnection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void TypeTest_withID()
+        public void ConnectionTest_withID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Connection entry = new Connection("_xxx");
 
             // Act
             // Assert
@@ -57,8 +57,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Title);
+            Assert.IsNull(entry.BaseConnection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -68,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Connection entry = new Connection("_xxx");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -77,18 +77,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Type English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Type German Title X", entry.GermanTitle);
-            Assert.AreEqual("Type Details X", entry.Details);
+            Assert.AreEqual("Connection Title X", entry.Title);
+            Assert.IsNull(entry.BaseConnection);
+            Assert.AreEqual("Connection Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Type Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID()
         {
             // Arrange
-            Type entry = new Type("_aaa");
+            Connection entry = new Connection("_aaa");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -97,8 +97,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Title);
+            Assert.IsNull(entry.BaseConnection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Connection entry = new Connection("_xxx");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID()
         {
             // Arrange
-            Type entry = new Type("_aaa");
+            Connection entry = new Connection("_aaa");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();

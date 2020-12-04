@@ -299,6 +299,41 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateConnectionChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateConnectionChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            content.Add($"");
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Connections to other articles")); break;
+                case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
+                default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
+            }
+            content.Add($"");
+            content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+            content.Add($"");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateContentTest(string value)
         {
             // Arrange
@@ -375,6 +410,18 @@ namespace WikiPageCreator.Export.Create.Tests
             // InfoBox Ende
             content.Add(Formatter.EndBox());
             content.Add("");
+
+            // Connection Chapter
+            content.Add($"");
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Connections to other articles")); break;
+                case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
+                default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
+            }
+            content.Add($"");
+            content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+            content.Add($"");
 
             // Footer
             // nothing to do

@@ -104,6 +104,8 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
+            CreateConnectionChapter(targetLanguageCode);
+
             CreateFooter(targetLanguageCode);
 
             Logger.Trace($"CreateContent() für Artikel '{Movie.OriginalTitle}' beendet");
@@ -343,6 +345,46 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxOriginalReleaseDate() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted connection chapter date of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateConnectionChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateConnectionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Connection != null)
+            {
+                Logger.Trace($"Connection: '{Movie.Connection.Title}'");
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add("");
+                    Content.Add(Formatter.AsHeading2("Connections to other articles"));
+                    Content.Add("");
+                }
+                else // incl. case "de"
+                {
+                    Content.Add("");
+                    Content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln"));
+                    Content.Add("");
+                }
+                if (Movie.Connection.BaseConnection == null)
+                    Content.Add(Formatter.AsInsertPage(targetLanguageCode + ":navigation:" + Movie.Connection.ID));
+                else
+                    Content.Add(Formatter.AsInsertPage(targetLanguageCode + ":navigation:" + Movie.Connection.BaseConnection.ID));
+
+                Content.Add("");
+            }
+
+            Logger.Trace($"CreateConnectionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
     }
 }
