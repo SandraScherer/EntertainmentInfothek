@@ -26,20 +26,9 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a type.
     /// </summary>
-    public class Type : IDBReadable
+    public class Type : Entry
     {
         // --- Properties ---
-
-        /// <summary>
-        /// The database reader to be used to read the entry information from the database.
-        /// </summary>
-        // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
-
-        /// <summary>
-        /// The id of the type.
-        /// </summary>
-        public string ID { get; set; }
 
         /// <summary>
         /// The english title of the type.
@@ -50,21 +39,6 @@ namespace EntertainmentDB.Data
         /// The german title of the type.
         /// </summary>
         public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The details of the type.
-        /// </summary>
-        public string Details { get; set; }
-
-        /// <summary>
-        /// The status of the type.
-        /// </summary>
-        public Status Status { get; set; }
-
-        /// <summary>
-        ///  The date of last update of the type.
-        /// </summary>
-        public string LastUpdated { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -87,9 +61,14 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Type(string id)
         {
+            if (id == null)
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
+
             Logger.Trace($"Type() angelegt");
 
-            ID = id ?? throw new ArgumentNullException(nameof(id));
+            ID = id;
         }
 
         // --- Methods ---
@@ -98,7 +77,7 @@ namespace EntertainmentDB.Data
         /// Retrieves the information of the type from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
+        public override int Retrieve()
         {
             Logger.Trace($"Retrieve() aufgerufen");
 
@@ -113,7 +92,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public virtual int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation()
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -152,7 +131,7 @@ namespace EntertainmentDB.Data
         /// Retrieves the additional information of the type from the database (none available).
         /// </summary>
         /// <returns>0</returns>
-        public virtual int RetrieveAdditionalInformation()
+        public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;
