@@ -26,7 +26,7 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a connection
     /// </summary>
-    public class Connection
+    public class Connection : IDBReadable
     {
         // --- Properties ---
 
@@ -94,6 +94,20 @@ namespace EntertainmentDB.Data
         }
 
         // --- Methods ---
+
+        /// <summary>
+        /// Retrieves the information of the connection from the database.
+        /// </summary>
+        /// <returns>The number of data records retrieved.</returns>
+        public virtual int Retrieve()
+        {
+            Logger.Trace($"Retrieve() aufgerufen");
+
+            int count = RetrieveBasicInformation();
+            RetrieveAdditionalInformation();
+
+            return count;
+        }
 
         /// <summary>
         /// Retrieves the basic information of the connection from the database.

@@ -26,7 +26,7 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a type.
     /// </summary>
-    public class Type
+    public class Type : IDBReadable
     {
         // --- Properties ---
 
@@ -90,6 +90,22 @@ namespace EntertainmentDB.Data
             Logger.Trace($"Type() angelegt");
 
             ID = id ?? throw new ArgumentNullException(nameof(id));
+        }
+
+        // --- Methods ---
+
+        /// <summary>
+        /// Retrieves the information of the type from the database.
+        /// </summary>
+        /// <returns>The number of data records retrieved.</returns>
+        public virtual int Retrieve()
+        {
+            Logger.Trace($"Retrieve() aufgerufen");
+
+            int count = RetrieveBasicInformation();
+            RetrieveAdditionalInformation();
+
+            return count;
         }
 
         /// <summary>
