@@ -24,13 +24,13 @@ using System.Text;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class TypeTests
+    public class GenreTests
     {
         [TestMethod()]
-        public void TypeTest()
+        public void GenreTest()
         {
             // Arrange
-            Type entry = new Type();
+            Genre entry = new Genre();
 
             // Act
             // Assert
@@ -46,10 +46,10 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void TypeTest_withID()
+        public void GenreTest_withID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Genre entry = new Genre("_xxx");
 
             // Act
             // Assert
@@ -68,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Genre entry = new Genre("_xxx");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -77,18 +77,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Type English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Type German Title X", entry.GermanTitle);
-            Assert.AreEqual("Type Details X", entry.Details);
+            Assert.AreEqual("Genre English Title X", entry.EnglishTitle);
+            Assert.AreEqual("Genre German Title X", entry.GermanTitle);
+            Assert.AreEqual("Genre Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Type Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Genre Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID()
         {
             // Arrange
-            Type entry = new Type("_aaa");
+            Genre entry = new Genre("_aaa");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Genre entry = new Genre("_xxx");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID()
         {
             // Arrange
-            Type entry = new Type("_aaa");
+            Genre entry = new Genre("_aaa");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -134,7 +134,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID()
         {
             // Arrange
-            Type entry = new Type("_xxx");
+            Genre entry = new Genre("_xxx");
 
             // Act
             int count = entry.Retrieve();
@@ -143,18 +143,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Type English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Type German Title X", entry.GermanTitle);
-            Assert.AreEqual("Type Details X", entry.Details);
+            Assert.AreEqual("Genre English Title X", entry.EnglishTitle);
+            Assert.AreEqual("Genre German Title X", entry.GermanTitle);
+            Assert.AreEqual("Genre Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Type Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Genre Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveTest_withInvalidID()
         {
             // Arrange
-            Type entry = new Type("_aaa");
+            Genre entry = new Genre("_aaa");
 
             // Act
             int count = entry.Retrieve();

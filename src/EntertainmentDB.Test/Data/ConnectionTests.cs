@@ -129,5 +129,45 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(0, count);
         }
+
+        [TestMethod()]
+        public void RetrieveTest_withValidID()
+        {
+            // Arrange
+            Connection entry = new Connection("_xxx");
+
+            // Act
+            int count = entry.Retrieve();
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Connection Title X", entry.Title);
+            Assert.IsNull(entry.BaseConnection);
+            Assert.AreEqual("Connection Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID()
+        {
+            // Arrange
+            Connection entry = new Connection("_aaa");
+
+            // Act
+            int count = entry.Retrieve();
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.Title);
+            Assert.IsNull(entry.BaseConnection);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
     }
 }

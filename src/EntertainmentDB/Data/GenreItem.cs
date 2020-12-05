@@ -24,46 +24,16 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a movie.
+    /// Provides a genre item.
     /// </summary>
-    public class Movie : Entry
+    public class GenreItem : EntryItem
     {
         // --- Properties ---
 
         /// <summary>
-        /// The original title of the movie.
+        /// The genre of the genre item.
         /// </summary>
-        public string OriginalTitle { get; set; }
-
-        /// <summary>
-        /// The english title of the movie.
-        /// </summary>
-        public string EnglishTitle { get; set; }
-
-        /// <summary>
-        /// The german title of the movie.
-        /// </summary>
-        public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The type of the movie.
-        /// </summary>
-        public Type Type { get; set; }
-
-        /// <summary>
-        /// The release date of the movie.
-        /// </summary>
-        public string ReleaseDate { get; set; }
-
-        /// <summary>
-        /// The connection of the movie.
-        /// </summary>
-        public Connection Connection { get; set; }
-
-        /// <summary>
-        /// the list of genres of the movie.
-        /// </summary>
-        public List<GenreItem> Genres { get; set; }
+        public Genre Genre { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -73,45 +43,59 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a movie with an empty id string.
+        /// Initializes a genre item with an empty id string.
         /// </summary>
-        public Movie() : this("")
+        public GenreItem() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a movie with the given id string.
+        /// Initializes a genre item with the given id string.
         /// </summary>
-        /// <param name="id">The id of the movie.</param>
-        /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Movie(string id)
+        /// <param name="id">The id of the genre item.</param>
+        /// <param name="targetTableName">The target table name of the genre item.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
+        public GenreItem(string id, string targetTableName = "Genre")
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
+            if (String.IsNullOrEmpty(targetTableName))
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
 
-            Logger.Trace($"Movie() angelegt");
+            Logger.Trace($"GenreItem() angelegt");
 
             ID = id;
+            TargetTableName = targetTableName;
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the movie from the database.
+        /// Retrieves the basic information of the genre item from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
+        /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation()
         {
             if (String.IsNullOrEmpty(ID))
             {
                 throw new NullReferenceException(nameof(ID));
             }
+            if (String.IsNullOrEmpty(BaseTableName))
+            {
+                throw new NullReferenceException(nameof(BaseTableName));
+            }
+            if (String.IsNullOrEmpty(TargetTableName))
+            {
+                throw new NullReferenceException(nameof(TargetTableName));
+            }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, ConnectionID, Details, StatusID, LastUpdated " +
-                           $"FROM Movie " +
+            Reader.Query = $"SELECT ID, GenreID, Details, StatusID, LastUpdated " +
+                           $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -119,21 +103,11 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                OriginalTitle = row["OriginalTitle"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
-                if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
+                if (!String.IsNullOrEmpty(row["GenreID"].ToString()))
                 {
-                    Type = new Type();
-                    Type.ID = row["TypeID"].ToString();
-                    Type.RetrieveBasicInformation();
-                }
-                ReleaseDate = row["ReleaseDate"].ToString();
-                if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
-                {
-                    Connection = new Connection();
-                    Connection.ID = row["ConnectionID"].ToString();
-                    Connection.RetrieveBasicInformation();
+                    Genre = new Genre();
+                    Genre.ID = row["GenreID"].ToString();
+                    Genre.RetrieveBasicInformation();
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
@@ -143,68 +117,65 @@ namespace EntertainmentDB.Data
                     Status.RetrieveBasicInformation();
                 }
                 LastUpdated = row["LastUpdated"].ToString();
+
+                return 1;
             }
             else
             {
                 return 0;
             }
-
-            return 1;
         }
 
         /// <summary>
-        /// Retrieves the additional information of the movie from the database (none available).
+        /// Retrieves the additional information of the genre item from the database (none available).
         /// </summary>
-        /// <returns>The number of data records retrieved.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
+        /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()
         {
-            if (Reader == null)
-            {
-                throw new NullReferenceException(nameof(Reader));
-            }
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
-            Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
-
-            return Genres.Count;
+            // nothing to do
+            return 0;
         }
 
         /// <summary>
-        /// Retrieves a list of movies from the database.
+        /// Retrieves a list of genre items from the database.
         /// </summary>
         /// <param name="reader">The reader to be used to retrieve the data records.</param>
-        /// <param name="status">The status of the movies.</param>
+        /// <param name="baseTableName">The base table name of the genre item.</param>
+        /// <param name="baseTableID">The base table id of the genre item.</param>
+        /// <param name="targetTableName">The target table name of the genre item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
-        public static List<Movie> RetrieveList(DBReader reader, string status, string order = "ID")
+        /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
+        public static List<GenreItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "Genre", string order = "ID")
         {
             if (reader == null)
             {
                 throw new NullReferenceException(nameof(reader));
             }
-            if (String.IsNullOrEmpty(status))
+            if (String.IsNullOrEmpty(baseTableName))
             {
-                throw new ArgumentNullException(nameof(status));
+                throw new ArgumentNullException(nameof(baseTableName));
+            }
+            if (String.IsNullOrEmpty(baseTableID))
+            {
+                throw new ArgumentNullException(nameof(baseTableID));
+            }
+            if (String.IsNullOrEmpty(targetTableName))
+            {
+                throw new ArgumentNullException(nameof(targetTableName));
             }
             if (String.IsNullOrEmpty(order))
             {
                 throw new ArgumentNullException(nameof(order));
             }
 
-            // Liste laden
-
             reader.Query = $"SELECT ID " +
-                           $"FROM Movie " +
-                           $"WHERE StatusID=\"{status}\"" +
+                           $"FROM {baseTableName}_{targetTableName} " +
+                           $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
                            $"ORDER BY {order}";
 
-            List<Movie> list = new List<Movie>();
+            List<GenreItem> list = new List<GenreItem>();
 
             if (reader.Retrieve() > 0)
             {
@@ -212,7 +183,8 @@ namespace EntertainmentDB.Data
 
                 foreach (DataRow row in reader.Table.Rows)
                 {
-                    Movie item = new Movie();
+                    GenreItem item = new GenreItem();
+                    item.BaseTableName = baseTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();
@@ -221,7 +193,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
-                //  nothing to do
+                // nothing to do
             }
 
             return list;

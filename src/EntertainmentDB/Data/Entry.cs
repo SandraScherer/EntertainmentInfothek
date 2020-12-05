@@ -74,9 +74,14 @@ namespace EntertainmentDB.Data
         /// <param name="id"></param>
         public Entry(string id)
         {
+            if (id == null)
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
+
             Logger.Trace($"Entry() angelegt");
 
-            ID = id ?? throw new ArgumentNullException(nameof(id));
+            ID = id;
         }
 
         // --- Methods ---

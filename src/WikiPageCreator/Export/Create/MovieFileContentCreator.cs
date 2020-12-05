@@ -102,6 +102,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxHeader(targetLanguageCode);
             CreateInfoBoxTitle(targetLanguageCode);
             CreateInfoBoxType(targetLanguageCode);
+            CreateInfoBoxGenre(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
@@ -305,9 +306,60 @@ namespace WikiPageCreator.Export.Create
                 else // incl. case "de"
                 {
                     data[0] = "Typ";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Type.GermanTitle, Movie.Type.GermanTitle);
+                    data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.GermanTitle);
                     Content.Add(Formatter.AsTableRow(data));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox genre of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxGenre(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Genres.Count > 0)
+            {
+                Logger.Trace($"Anzahl Genres: '{Movie.Genres.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Genre";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Genres.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Genre";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Genres.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+
+                Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
             }
         }
 

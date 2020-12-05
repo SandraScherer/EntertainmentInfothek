@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,21 +23,21 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a connection.
+    /// Provides a genre.
     /// </summary>
-    public class Connection : Entry
+    public class Genre : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The title of the connection.
+        /// The english title of the genre.
         /// </summary>
-        public string Title { get; set; }
+        public string EnglishTitle { get; set; }
 
         /// <summary>
-        /// The base connection of the connection.
+        /// The german title of the genre.
         /// </summary>
-        public Connection BaseConnection { get; set; }
+        public string GermanTitle { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -48,25 +47,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a connection with an empty id string.
+        /// Initializes a genre with an empty id string.
         /// </summary>
-        public Connection() : this("")
+        public Genre() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a connection with the given id string.
+        /// Initializes a genre with the given id string.
         /// </summary>
-        /// <param name="id">The id of the connection.</param>
+        /// <param name="id">The id of the genre.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Connection(string id)
+        public Genre(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Connection() angelegt");
+            Logger.Trace($"Genre() angelegt");
 
             ID = id;
         }
@@ -74,7 +73,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the connection from the database.
+        /// Retrieves the basic information of the genre from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
@@ -85,8 +84,8 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, Title, ConnectionID, Details, StatusID, LastUpdated " +
-                           $"FROM Connection " +
+            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
+                           $"FROM Genre " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -94,13 +93,8 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                Title = row["Title"].ToString();
-                if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
-                {
-                    BaseConnection = new Connection();
-                    BaseConnection.ID = row["ConnectionID"].ToString();
-                    BaseConnection.RetrieveBasicInformation();
-                }
+                EnglishTitle = row["EnglishTitle"].ToString();
+                GermanTitle = row["GermanTitle"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -119,13 +113,14 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the connection from the database (none available).
+        /// Retrieves the additional information of the genre from the database (none available).
         /// </summary>
         /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;
-        }
+
+        } // RetrieveAdditionalInformation()
     }
 }

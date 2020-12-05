@@ -133,7 +133,7 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
                 case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
-                default:   content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
+                default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
             }
             content.Add("");
 
@@ -244,14 +244,67 @@ namespace WikiPageCreator.Export.Create.Tests
             List<string> content = new List<string>();
             string[] path = { value, "info" };
             string[] dataEn = { "Type", Formatter.AsInternalLink(path, "Type English Title X", "Type English Title X") };
-            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type German Title X", "Type German Title X") };
-            string[] dataZz = { "Typ", Formatter.AsInternalLink(path, "Type German Title X", "Type German Title X") };
+            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type English Title X", "Type German Title X") };
+            string[] dataZz = { "Typ", Formatter.AsInternalLink(path, "Type English Title X", "Type German Title X") };
 
             switch (value)
             {
                 case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataZz)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxGenreTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxGenre(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Genre", Formatter.AsInternalLink(path, "Genre English Title X", "Genre English Title X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Y", "Genre English Title Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Z", "Genre English Title Z") };
+            string[] dataDe1 = { "Genre", Formatter.AsInternalLink(path, "Genre English Title X", "Genre German Title X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Y", "Genre German Title Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Z", "Genre German Title Z") };
+            string[] dataZz1 = { "Genre", Formatter.AsInternalLink(path, "Genre English Title X", "Genre German Title X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Y", "Genre German Title Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Genre English Title Z", "Genre German Title Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
             }
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -352,8 +405,18 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataTitleDe = { "Originaltitel", "Movie Original Title X" };
             string[] pathType = { value, "info" };
             string[] dataTypeEn = { "Type", Formatter.AsInternalLink(pathType, "Type English Title X", "Type English Title X") };
-            string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type German Title X", "Type German Title X") };
-            string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type German Title X", "Type German Title X") };
+            string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
+            string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
+            string[] pathGenre = { value, "info" };
+            string[] dataGenreEn1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre English Title X") };
+            string[] dataGenreEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre English Title Y") };
+            string[] dataGenreEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre English Title Z") };
+            string[] dataGenreDe1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre German Title X") };
+            string[] dataGenreDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y") };
+            string[] dataGenreDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z") };
+            string[] dataGenreZz1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre German Title X") };
+            string[] dataGenreZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y") };
+            string[] dataGenreZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z") };
             string[] pathRelease = { value, "dates" };
             string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
@@ -398,6 +461,26 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataTypeEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataTypeDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataTypeZz)); break;
+            }
+
+            // InfoBox Genre
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataGenreEn1));
+                    content.Add(Formatter.AsTableRow(dataGenreEn2));
+                    content.Add(Formatter.AsTableRow(dataGenreEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataGenreDe1));
+                    content.Add(Formatter.AsTableRow(dataGenreDe2));
+                    content.Add(Formatter.AsTableRow(dataGenreDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataGenreZz1));
+                    content.Add(Formatter.AsTableRow(dataGenreZz2));
+                    content.Add(Formatter.AsTableRow(dataGenreZz3));
+                    break;
             }
 
             // InfoBox Release Date

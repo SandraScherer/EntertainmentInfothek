@@ -48,6 +48,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
         }
 
         [TestMethod()]
@@ -71,6 +73,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
         }
 
         [TestMethod()]
@@ -95,6 +99,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
         }
 
         [TestMethod()]
@@ -119,6 +125,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
         }
 
         [TestMethod()]
@@ -131,7 +139,12 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual(0, count);
+            Assert.AreEqual((1 * 3), count);
+
+            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.AreEqual("_xx1", entry.Genres[0].ID);
+            Assert.AreEqual("_xx2", entry.Genres[1].ID);
+            Assert.AreEqual("_xx3", entry.Genres[2].ID);
         }
 
         [TestMethod()]
@@ -169,6 +182,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
+
+            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.AreEqual("_xx1", entry.Genres[0].ID);
+            Assert.AreEqual("_xx2", entry.Genres[1].ID);
+            Assert.AreEqual("_xx3", entry.Genres[2].ID);
         }
 
         [TestMethod()]

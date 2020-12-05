@@ -57,7 +57,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a type with the given id string.
         /// </summary>
-        /// <param name="id">The id of the movie.</param>
+        /// <param name="id">The id of the type.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Type(string id)
         {
@@ -72,20 +72,6 @@ namespace EntertainmentDB.Data
         }
 
         // --- Methods ---
-
-        /// <summary>
-        /// Retrieves the information of the type from the database.
-        /// </summary>
-        /// <returns>The number of data records retrieved.</returns>
-        public override int Retrieve()
-        {
-            Logger.Trace($"Retrieve() aufgerufen");
-
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
-
-            return count;
-        }
 
         /// <summary>
         /// Retrieves the basic information of the type from the database.

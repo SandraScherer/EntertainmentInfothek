@@ -87,9 +87,14 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Status(string id)
         {
+            if (id == null)
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
+
             Logger.Trace($"Status() angelegt");
 
-            ID = id ?? throw new ArgumentNullException(nameof(id));
+            ID = id;
         }
 
         // --- Methods ---
@@ -121,8 +126,8 @@ namespace EntertainmentDB.Data
             }
 
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                          $"FROM Status " +
-                          $"WHERE ID=\"{ID}\"";
+                           $"FROM Status " +
+                           $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
             {
