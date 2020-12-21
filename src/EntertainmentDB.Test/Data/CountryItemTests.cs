@@ -25,43 +25,43 @@ using EntertainmentDB.DBAccess.Read;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class GenreItemTests
+    public class CountryItemTests
     {
         [TestMethod()]
-        public void GenreItemTest()
+        public void CountryItemTest()
         {
             // Arrange
-            GenreItem item = new GenreItem();
+            CountryItem item = new CountryItem();
 
             // Act
             // Assert
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Genre", item.TargetTableName);
+            Assert.AreEqual("Country", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
-            Assert.IsNull(item.Genre);
+            Assert.IsNull(item.Country);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [TestMethod()]
-        public void GenreItemTest_withID()
+        public void CountryItemTest_withID()
         {
             // Arrange
-            GenreItem item = new GenreItem("_xx1");
+            CountryItem item = new CountryItem("_xx1");
 
             // Act
             // Assert
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Genre", item.TargetTableName);
+            Assert.AreEqual("Country", item.TargetTableName);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.IsNull(item.Genre);
+            Assert.IsNull(item.Country);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_xx1");
+            CountryItem item = new CountryItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -82,10 +82,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual("_xxx", item.Genre.ID);
-            Assert.AreEqual($"{value} Genre Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Country.ID);
+            Assert.AreEqual($"{value} Country Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Genre Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Country Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_aa1");
+            CountryItem item = new CountryItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -103,7 +103,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aa1", item.ID);
-            Assert.IsNull(item.Genre);
+            Assert.IsNull(item.Country);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_xx1");
+            CountryItem item = new CountryItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -129,7 +129,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_aa1");
+            CountryItem item = new CountryItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -144,7 +144,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_xx1");
+            CountryItem item = new CountryItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -154,10 +154,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual("_xxx", item.Genre.ID);
-            Assert.AreEqual($"{value} Genre Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Country.ID);
+            Assert.AreEqual($"{value} Country Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Genre Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Country Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -165,7 +165,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID(string value)
         {
             // Arrange
-            GenreItem item = new GenreItem("_aa1");
+            CountryItem item = new CountryItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -175,7 +175,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aa1", item.ID);
-            Assert.IsNull(item.Genre);
+            Assert.IsNull(item.Country);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -189,28 +189,28 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<GenreItem> list = Data.GenreItem.RetrieveList(reader, value, "_xxx");
+            List<CountryItem> list = Data.CountryItem.RetrieveList(reader, value, "_xxx");
 
             // Assert
             Assert.AreEqual(3, list.Count);
 
             Assert.AreEqual("_xx1", list[0].ID);
-            Assert.AreEqual("_xxx", list[0].Genre.ID);
-            Assert.AreEqual($"{value} Genre Details X1", list[0].Details);
+            Assert.AreEqual("_xxx", list[0].Country.ID);
+            Assert.AreEqual($"{value} Country Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Genre Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} Country Last Updated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
-            Assert.AreEqual("_yyy", list[1].Genre.ID);
-            Assert.AreEqual($"{value} Genre Details X2", list[1].Details);
+            Assert.AreEqual("_yyy", list[1].Country.ID);
+            Assert.AreEqual($"{value} Country Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} Genre Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} Country Last Updated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
-            Assert.AreEqual("_zzz", list[2].Genre.ID);
-            Assert.AreEqual($"{value} Genre Details X3", list[2].Details);
+            Assert.AreEqual("_zzz", list[2].Country.ID);
+            Assert.AreEqual($"{value} Country Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} Genre Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} Country Last Updated X3", list[2].LastUpdated);
         }
     }
 }

@@ -23,49 +23,54 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a genre.
+    /// Provides a country.
     /// </summary>
-    public class Genre : Entry
+    public class Country : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The english title of the genre.
+        /// The original name of the country.
         /// </summary>
-        public string EnglishTitle { get; set; }
+        public string OriginalName { get; set; }
 
         /// <summary>
-        /// The german title of the genre.
+        /// The english name of the country.
         /// </summary>
-        public string GermanTitle { get; set; }
+        public string EnglishName { get; set; }
+
+        /// <summary>
+        /// The german name of the country.
+        /// </summary>
+        public string GermanName { get; set; }
 
         /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-
+        
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a genre with an empty id string.
+        /// Initializes a country with an empty id string.
         /// </summary>
-        public Genre() : this("")
+        public Country() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a genre with the given id string.
+        /// Initializes a country with the given id string.
         /// </summary>
-        /// <param name="id">The id of the genre.</param>
+        /// <param name="id">The id of the country.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Genre(string id)
+        public Country(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Genre() angelegt");
+            Logger.Trace($"Country() angelegt");
 
             ID = id;
         }
@@ -73,7 +78,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the genre from the database.
+        /// Retrieves the basic information of the country from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
@@ -84,8 +89,8 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                           $"FROM Genre " +
+            Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
+                           $"FROM Country " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -93,8 +98,9 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
+                OriginalName = row["OriginalName"].ToString();
+                EnglishName = row["EnglishName"].ToString();
+                GermanName = row["GermanName"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -113,13 +119,14 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the genre from the database (none available).
+        /// Retrieves the additional information of the country from the database (none available).
         /// </summary>
         /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;
+
         }
     }
 }

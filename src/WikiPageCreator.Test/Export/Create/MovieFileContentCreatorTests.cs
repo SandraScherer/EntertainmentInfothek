@@ -314,6 +314,59 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxCountryTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxCountry(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Production Country", Formatter.AsInternalLink(path, "Country Original Name X", "Country English Name X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Y", "Country English Name Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Z", "Country English Name Z") };
+            string[] dataDe1 = { "Produktionsland", Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z") };
+            string[] dataZz1 = { "Produktionsland", Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
@@ -403,10 +456,12 @@ namespace WikiPageCreator.Export.Create.Tests
             int[] width = { 30, 70 };
             string[] dataTitleEn = { "Original Title", "Movie Original Title X" };
             string[] dataTitleDe = { "Originaltitel", "Movie Original Title X" };
+
             string[] pathType = { value, "info" };
             string[] dataTypeEn = { "Type", Formatter.AsInternalLink(pathType, "Type English Title X", "Type English Title X") };
             string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
             string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
+
             string[] pathGenre = { value, "info" };
             string[] dataGenreEn1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre English Title X") };
             string[] dataGenreEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre English Title Y") };
@@ -417,6 +472,18 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataGenreZz1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre German Title X") };
             string[] dataGenreZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y") };
             string[] dataGenreZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z") };
+
+            string[] pathCountry = { value, "info" };
+            string[] dataCountryEn1 = { "Production Country", Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country English Name X") };
+            string[] dataCountryEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country English Name Y") };
+            string[] dataCountryEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country English Name Z") };
+            string[] dataCountryDe1 = { "Produktionsland", Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country German Name X") };
+            string[] dataCountryDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y") };
+            string[] dataCountryDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z") };
+            string[] dataCountryZz1 = { "Produktionsland", Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country German Name X") };
+            string[] dataCountryZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y") };
+            string[] dataCountryZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z") };
+
             string[] pathRelease = { value, "dates" };
             string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
@@ -480,6 +547,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataGenreZz1));
                     content.Add(Formatter.AsTableRow(dataGenreZz2));
                     content.Add(Formatter.AsTableRow(dataGenreZz3));
+                    break;
+            }
+
+            // InfoBox Country
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataCountryEn1));
+                    content.Add(Formatter.AsTableRow(dataCountryEn2));
+                    content.Add(Formatter.AsTableRow(dataCountryEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataCountryDe1));
+                    content.Add(Formatter.AsTableRow(dataCountryDe2));
+                    content.Add(Formatter.AsTableRow(dataCountryDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataCountryZz1));
+                    content.Add(Formatter.AsTableRow(dataCountryZz2));
+                    content.Add(Formatter.AsTableRow(dataCountryZz3));
                     break;
             }
 

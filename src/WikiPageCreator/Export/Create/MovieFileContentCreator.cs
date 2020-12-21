@@ -103,6 +103,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxTitle(targetLanguageCode);
             CreateInfoBoxType(targetLanguageCode);
             CreateInfoBoxGenre(targetLanguageCode);
+            CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
@@ -360,6 +361,57 @@ namespace WikiPageCreator.Export.Create
                 }
 
                 Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox country of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxCountry(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Countries.Count > 0)
+            {
+                Logger.Trace($"Anzahl Countries: '{Movie.Countries.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Production Country";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Countries.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Produktionsland";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Countries.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+
+                Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
             }
         }
 
