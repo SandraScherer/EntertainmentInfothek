@@ -71,6 +71,11 @@ namespace EntertainmentDB.Data
         public List<CountryItem> Countries { get; set; }
 
         /// <summary>
+        /// The list of colors of the movie.
+        /// </summary>
+        public List<ColorItem> Colors { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -175,9 +180,11 @@ namespace EntertainmentDB.Data
 
             Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
+            Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
 
             return Genres.Count +
-                   Countries.Count;
+                   Countries.Count +
+                   Colors.Count;
         }
 
         /// <summary>

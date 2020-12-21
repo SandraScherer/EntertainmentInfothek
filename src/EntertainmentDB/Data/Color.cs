@@ -23,26 +23,21 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a country.
+    /// Provides a color.
     /// </summary>
-    public class Country : Entry
+    public class Color : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The original name of the country.
+        /// The english title of the color.
         /// </summary>
-        public string OriginalName { get; set; }
+        public string EnglishTitle { get; set; }
 
         /// <summary>
-        /// The english name of the country.
+        /// The german title of the color.
         /// </summary>
-        public string EnglishName { get; set; }
-
-        /// <summary>
-        /// The german name of the country.
-        /// </summary>
-        public string GermanName { get; set; }
+        public string GermanTitle { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -52,25 +47,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a country with an empty id string.
+        /// Initializes a color with an empty id string.
         /// </summary>
-        public Country() : this("")
+        public Color() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a country with the given id string.
+        /// Initializes a color with the given id string.
         /// </summary>
-        /// <param name="id">The id of the country.</param>
+        /// <param name="id">The id of the color.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Country(string id)
+        public Color(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Country() angelegt");
+            Logger.Trace($"Color() angelegt");
 
             ID = id;
         }
@@ -78,7 +73,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the country from the database.
+        /// Retrieves the basic information of the color from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
@@ -89,8 +84,8 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
-                           $"FROM Country " +
+            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
+                           $"FROM Color " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -98,9 +93,8 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                OriginalName = row["OriginalName"].ToString();
-                EnglishName = row["EnglishName"].ToString();
-                GermanName = row["GermanName"].ToString();
+                EnglishTitle = row["EnglishTitle"].ToString();
+                GermanTitle = row["GermanTitle"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -119,7 +113,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the country from the database (none available).
+        /// Retrieves the additional information of the color from the database (none available).
         /// </summary>
         /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()

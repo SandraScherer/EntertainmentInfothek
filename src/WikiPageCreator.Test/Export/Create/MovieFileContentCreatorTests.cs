@@ -406,6 +406,59 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxColorTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxColor(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Color", Formatter.AsInternalLink(path, "Color English Title X", "Color English Title X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Y", "Color English Title Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Z", "Color English Title Z") };
+            string[] dataDe1 = { "Farbe", Formatter.AsInternalLink(path, "Color English Title X", "Color German Title X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Y", "Color German Title Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Z", "Color German Title Z") };
+            string[] dataZz1 = { "Farbe", Formatter.AsInternalLink(path, "Color English Title X", "Color German Title X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Y", "Color German Title Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Color English Title Z", "Color German Title Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateConnectionChapterTest(string value)
         {
             // Arrange
@@ -488,6 +541,17 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+
+            string[] pathColor = { value, "info" };
+            string[] dataColorEn1 = { "Color", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color English Title X") };
+            string[] dataColorEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color English Title Y") };
+            string[] dataColorEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color English Title Z") };
+            string[] dataColorDe1 = { "Farbe", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color German Title X") };
+            string[] dataColorDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color German Title Y") };
+            string[] dataColorDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color German Title Z") };
+            string[] dataColorZz1 = { "Farbe", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color German Title X") };
+            string[] dataColorZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color German Title Y") };
+            string[] dataColorZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color German Title Z") };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -576,6 +640,26 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataReleaseEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataReleaseDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataReleaseZz)); break;
+            }
+
+            // InfoBox Color
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataColorEn1));
+                    content.Add(Formatter.AsTableRow(dataColorEn2));
+                    content.Add(Formatter.AsTableRow(dataColorEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataColorDe1));
+                    content.Add(Formatter.AsTableRow(dataColorDe2));
+                    content.Add(Formatter.AsTableRow(dataColorDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataColorZz1));
+                    content.Add(Formatter.AsTableRow(dataColorZz2));
+                    content.Add(Formatter.AsTableRow(dataColorZz3));
+                    break;
             }
 
             // InfoBox Ende
