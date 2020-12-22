@@ -106,6 +106,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxColor(targetLanguageCode);
+            CreateInfoBoxLanguage(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
             CreateConnectionChapter(targetLanguageCode);
@@ -502,6 +503,57 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxColor() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox language of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateInfoBoxLanguage(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Languages.Count > 0)
+            {
+                Logger.Trace($"Anzahl Languages: '{Movie.Languages.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Language";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Languages.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Sprache";
+                    data[1] = Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Languages.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

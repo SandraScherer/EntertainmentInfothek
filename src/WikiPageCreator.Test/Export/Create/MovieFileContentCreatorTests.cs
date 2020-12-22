@@ -455,6 +455,59 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxLanguageTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxLanguage(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Language", Formatter.AsInternalLink(path, "Language Original Name X", "Language English Name X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language English Name Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language English Name Z") };
+            string[] dataDe1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
+            string[] dataZz1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
@@ -552,6 +605,17 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataColorZz1 = { "Farbe", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color German Title X") };
             string[] dataColorZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color German Title Y") };
             string[] dataColorZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color German Title Z") };
+
+            string[] pathLanguage = { value, "info" };
+            string[] dataLanguageEn1 = { "Language", Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language English Name X") };
+            string[] dataLanguageEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language English Name Y") };
+            string[] dataLanguageEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language English Name Z") };
+            string[] dataLanguageDe1 = { "Sprache", Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language German Name X") };
+            string[] dataLanguageDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language German Name Y") };
+            string[] dataLanguageDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z") };
+            string[] dataLanguageZz1 = { "Sprache", Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language German Name X") };
+            string[] dataLanguageZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language German Name Y") };
+            string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z") };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -659,6 +723,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataColorZz1));
                     content.Add(Formatter.AsTableRow(dataColorZz2));
                     content.Add(Formatter.AsTableRow(dataColorZz3));
+                    break;
+            }
+
+            // InfoBox Language
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataLanguageEn1));
+                    content.Add(Formatter.AsTableRow(dataLanguageEn2));
+                    content.Add(Formatter.AsTableRow(dataLanguageEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataLanguageDe1));
+                    content.Add(Formatter.AsTableRow(dataLanguageDe2));
+                    content.Add(Formatter.AsTableRow(dataLanguageDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataLanguageZz1));
+                    content.Add(Formatter.AsTableRow(dataLanguageZz2));
+                    content.Add(Formatter.AsTableRow(dataLanguageZz3));
                     break;
             }
 
