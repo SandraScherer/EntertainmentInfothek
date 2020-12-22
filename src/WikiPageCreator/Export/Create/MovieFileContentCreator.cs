@@ -109,6 +109,8 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxLanguage(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
+            CreateCastAndCrewChapter(targetLanguageCode);
+
             CreateConnectionChapter(targetLanguageCode);
 
             CreateFooter(targetLanguageCode);
@@ -557,7 +559,60 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted connection chapter date of the movie page.
+        /// Creates the formatted cast and crew chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateCastAndCrewChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add("");
+                Content.Add(Formatter.AsHeading2("Cast and Crew"));
+                Content.Add("");
+            }
+            else // incl. case "de"
+            {
+                Content.Add("");
+                Content.Add(Formatter.AsHeading2("Darsteller und Mannschaft"));
+                Content.Add("");
+            }
+
+            // Directors
+            if (Movie.Directors.Count > 0)
+            {
+                Logger.Trace($"Anzahl Directors: '{Movie.Directors.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "biography" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3("Directors"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3("Regie"));
+                }
+
+                for (int i = 0; i < Movie.Directors.Count; i++)
+                {
+                    data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName} {Movie.Directors[i].Person.NameAddOn}", $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName}");
+                    data[1] = $"({Movie.Directors[i].Role})";
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted connection chapter of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public virtual void CreateConnectionChapter(string targetLanguageCode)

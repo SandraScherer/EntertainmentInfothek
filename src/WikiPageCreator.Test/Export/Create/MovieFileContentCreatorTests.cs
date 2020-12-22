@@ -128,14 +128,14 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
 
-            content.Add("");
+            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
                 case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
                 default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
             }
-            content.Add("");
+            content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
@@ -184,7 +184,7 @@ namespace WikiPageCreator.Export.Create.Tests
             List<string> content = new List<string>();
 
             content.Add(Formatter.EndBox());
-            content.Add("");
+            content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
@@ -508,6 +508,53 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateCastAndCrewChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateCastAndCrewChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "biography" };
+            string[] data1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X"), "(Movie Director Role X1)" };
+            string[] data2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y"), "(Movie Director Role X2)" };
+            string[] data3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z"), "(Movie Director Role X3)" };
+
+            content.Add($"");
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
+                case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
+                default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
+            }
+            content.Add($"");
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Directors")); break;
+                case "de": content.Add(Formatter.AsHeading3("Regie")); break;
+                default: content.Add(Formatter.AsHeading3("Regie")); break;
+            }
+            content.Add(Formatter.AsTableRow(data1));
+            content.Add(Formatter.AsTableRow(data2));
+            content.Add(Formatter.AsTableRow(data3));
+            content.Add($"");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
@@ -616,6 +663,11 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataLanguageZz1 = { "Sprache", Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language German Name X") };
             string[] dataLanguageZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language German Name Y") };
             string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z") };
+
+            string[] pathDirector = { value, "biography" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X"), "(Movie Director Role X1)" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y"), "(Movie Director Role X2)" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z"), "(Movie Director Role X3)" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -748,7 +800,29 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Ende
             content.Add(Formatter.EndBox());
-            content.Add("");
+            content.Add($"");
+
+            // Cast and Crew Chapter
+            content.Add($"");
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
+                case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
+                default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
+            }
+            content.Add($"");
+
+            // Director
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Directors")); break;
+                case "de": content.Add(Formatter.AsHeading3("Regie")); break;
+                default: content.Add(Formatter.AsHeading3("Regie")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataDirector1));
+            content.Add(Formatter.AsTableRow(dataDirector2));
+            content.Add(Formatter.AsTableRow(dataDirector3));
+            content.Add($"");
 
             // Connection Chapter
             content.Add($"");

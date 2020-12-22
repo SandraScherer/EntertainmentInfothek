@@ -81,6 +81,11 @@ namespace EntertainmentDB.Data
         public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
+        /// The list of directors of the movie.
+        /// </summary>
+        public List<PersonItem> Directors { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -183,15 +188,21 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
+            // InfoBox data
             Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
             Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
             Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
 
+            // Cast and crew data
+            Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
+
             return Genres.Count +
                    Countries.Count +
                    Colors.Count +
-                   Languages.Count;
+                   Languages.Count +
+
+                   Directors.Count;
         }
 
         /// <summary>

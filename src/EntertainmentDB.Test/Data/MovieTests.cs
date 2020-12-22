@@ -53,6 +53,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -81,6 +83,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -110,6 +114,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -139,6 +145,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -151,7 +159,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((4 * 3), count);
+            Assert.AreEqual((5 * 3), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -172,6 +180,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Languages[0].ID);
             Assert.AreEqual("_xx2", entry.Languages[1].ID);
             Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Directors.Count);
+            Assert.AreEqual("_xx1", entry.Directors[0].ID);
+            Assert.AreEqual("_xx2", entry.Directors[1].ID);
+            Assert.AreEqual("_xx3", entry.Directors[2].ID);
         }
 
         [TestMethod()]
@@ -229,6 +242,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Languages[0].ID);
             Assert.AreEqual("_xx2", entry.Languages[1].ID);
             Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Directors.Count);
+            Assert.AreEqual("_xx1", entry.Directors[0].ID);
+            Assert.AreEqual("_xx2", entry.Directors[1].ID);
+            Assert.AreEqual("_xx3", entry.Directors[2].ID);
         }
 
         [TestMethod()]
