@@ -252,7 +252,7 @@ namespace WikiPageCreator.Export.Format
 
             if (String.IsNullOrEmpty(text))
             {
-                throw new ArgumentNullException(nameof(text));
+                return AsInternalLink(path, pagename);
             }
 
             string formatted = "";

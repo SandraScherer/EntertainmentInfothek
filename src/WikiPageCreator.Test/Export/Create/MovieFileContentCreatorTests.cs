@@ -160,7 +160,7 @@ namespace WikiPageCreator.Export.Create.Tests
             int[] width = { 30, 70 };
 
             content.Add(Formatter.BeginBox(475, Alignment.Right));
-            content.Add(Formatter.DefineTable(450, width));
+            content.Add(Formatter.DefineTable(445, width));
 
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
@@ -692,7 +692,7 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Header
             content.Add(Formatter.BeginBox(475, Alignment.Right));
-            content.Add(Formatter.DefineTable(450, width));
+            content.Add(Formatter.DefineTable(445, width));
 
             // InfoBox Title
             switch (value)

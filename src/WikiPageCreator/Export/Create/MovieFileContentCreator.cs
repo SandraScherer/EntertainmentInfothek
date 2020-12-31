@@ -227,7 +227,7 @@ namespace WikiPageCreator.Export.Create
 
             Content.Add(Formatter.BeginBox(475, Alignment.Right));
             int[] width = { 30, 70 };
-            Content.Add(Formatter.DefineTable(450, width));
+            Content.Add(Formatter.DefineTable(445, width));
 
             Logger.Trace($"CreateInfoBoxHeader() für Movie '{Movie.OriginalTitle}' beendet");
         }
@@ -295,7 +295,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxType() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (!String.IsNullOrEmpty(Movie.Type.ID))
+            if (Movie.Type != null)
             {
                 Logger.Trace($"Type: '{Movie.Type.ID}'");
 
@@ -499,7 +499,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Colors.Count > 0)
             {
-                Logger.Trace($"Anzahl Colors: '{Movie.Countries.Count}'");
+                Logger.Trace($"Anzahl Colors: '{Movie.Colors.Count}'");
 
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
@@ -523,7 +523,7 @@ namespace WikiPageCreator.Export.Create
                     data[1] = Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle);
                     Content.Add(Formatter.AsTableRow(data));
 
-                    for (int i = 1; i < Movie.Countries.Count; i++)
+                    for (int i = 1; i < Movie.Colors.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
                         data[1] = Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle);
