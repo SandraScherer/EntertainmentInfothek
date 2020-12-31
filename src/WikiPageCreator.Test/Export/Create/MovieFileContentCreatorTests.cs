@@ -525,9 +525,9 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "biography" };
-            string[] data1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X"), "(Movie Director Role X1)" };
-            string[] data2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y"), "(Movie Director Role X2)" };
-            string[] data3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z"), "(Movie Director Role X3)" };
+            string[] data1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1)" };
+            string[] data2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2)" };
+            string[] data3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3)" };
 
             content.Add($"");
             switch (value)
@@ -665,9 +665,9 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z") };
 
             string[] pathDirector = { value, "biography" };
-            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X"), "(Movie Director Role X1)" };
-            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y"), "(Movie Director Role X2)" };
-            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z"), "(Movie Director Role X3)" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1)" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2)" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3)" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());

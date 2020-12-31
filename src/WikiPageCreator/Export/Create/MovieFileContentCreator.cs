@@ -305,13 +305,27 @@ namespace WikiPageCreator.Export.Create
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Type";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.EnglishTitle);
+                    if (!String.IsNullOrEmpty(Movie.Type.ID))
+                    {
+                        data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.EnglishTitle);
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Typ";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.GermanTitle);
+                    if (!String.IsNullOrEmpty(Movie.Type.ID))
+                    {
+                        data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.GermanTitle);
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
                 }
             }
@@ -442,13 +456,27 @@ namespace WikiPageCreator.Export.Create
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Original Release Date";
-                    data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
+                    if (!String.IsNullOrEmpty(Movie.ReleaseDate))
+                    {
+                        data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Erstausstrahlung";
-                    data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
+                    if (!String.IsNullOrEmpty(Movie.ReleaseDate))
+                    {
+                        data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
                 }
             }
@@ -603,8 +631,15 @@ namespace WikiPageCreator.Export.Create
 
                 for (int i = 0; i < Movie.Directors.Count; i++)
                 {
-                    data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName} {Movie.Directors[i].Person.NameAddOn}", $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName}");
-                    data[1] = $"({Movie.Directors[i].Role})";
+                    data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName} {Movie.Directors[i].Person.NameAddOn}");
+                    if (!String.IsNullOrEmpty(Movie.Directors[i].Role))
+                    {
+                        data[1] = $"({Movie.Directors[i].Role})";
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
                 }
                 Content.Add("");

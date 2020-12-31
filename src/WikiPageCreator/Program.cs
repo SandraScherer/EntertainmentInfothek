@@ -71,39 +71,48 @@ namespace WikiPageCreator
 
             do
             {
-                Console.WriteLine($"");
-                Console.WriteLine($"Bitte geben Sie die ID des Films ein, für den eine Wiki-Seite erstellt werden soll:");
-
-                idUser = Console.ReadLine();
-            }
-            while (String.IsNullOrEmpty(idUser));
-
-            Logger.Trace($"Film ID: {idUser}");
-
-            // do work
-            // TODO: which DB reader is to be used should be defined in configuration
-            SQLiteReader reader = new SQLiteReader();
-
-            if (idUser.Equals("*"))
-            {
-                List<Movie> list = Movie.RetrieveList(reader, "ok");
-
-                foreach (Movie item in list)
+                do
                 {
-                    CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
-                    Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
-                }
-            }
-            else
-            {
-                CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
-                Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
-            }
+                    Console.WriteLine($"");
+                    Console.WriteLine($"Bitte geben Sie die ID des Films ein, für den eine Wiki-Seite erstellt werden soll (oder 'q' für Beenden):");
 
-            // End
-            Console.WriteLine($"");
-            Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
-            Console.ReadLine();
+                    idUser = Console.ReadLine();
+                }
+                while (String.IsNullOrEmpty(idUser));
+
+                if (idUser.Equals("q") || idUser.Equals("Q"))
+                {
+                    break;
+                }
+
+                Logger.Trace($"Film ID: {idUser}");
+
+                // do work
+                // TODO: which DB reader is to be used should be defined in configuration
+                SQLiteReader reader = new SQLiteReader();
+
+                if (idUser.Equals("*"))
+                {
+                    List<Movie> list = Movie.RetrieveList(reader, "ok");
+
+                    foreach (Movie item in list)
+                    {
+                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
+                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                    }
+                }
+                else
+                {
+                    CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
+                    Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
+                }
+
+                // End
+                Console.WriteLine($"");
+                Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
+                Console.ReadLine();
+            }
+            while (true);
 
             Logger.Trace($"'WikiPageCreator' beendet");
         }

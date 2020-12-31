@@ -270,6 +270,37 @@ namespace WikiPageCreator.Export.Format
         /// <summary>
         /// Formats the given parameters as an internal link.
         /// </summary>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <returns>The parameters formatted as an internal link.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
+        public override string AsInternalLink(string[] path, string pagename)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (String.IsNullOrEmpty(pagename))
+            {
+                throw new ArgumentNullException(nameof(pagename));
+            }
+
+            string formatted = "";
+            foreach (string item in path)
+            {
+                if (!String.IsNullOrEmpty(item))
+                {
+                    formatted = String.Concat(formatted, item, ":");
+                }
+            }
+
+            return AsInternalLink(formatted + pagename);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an internal link.
+        /// </summary>
         /// <param name="pagename">The pagename for the link.</param>
         /// <param name="section">The section of the page for the link.</param>
         /// <param name="text">The text to be displayed for the link.</param>
