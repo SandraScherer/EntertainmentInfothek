@@ -26,20 +26,9 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a movie.
     /// </summary>
-    public class Movie : IDBReadable
+    public class Movie : Entry
     {
         // --- Properties ---
-
-        /// <summary>
-        /// The database reader to be used to read the entry information from the database.
-        /// </summary>
-        // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
-
-        /// <summary>
-        /// The id of the movie.
-        /// </summary>
-        public string ID { get; set; }
 
         /// <summary>
         /// The original title of the movie.
@@ -57,24 +46,44 @@ namespace EntertainmentDB.Data
         public string GermanTitle { get; set; }
 
         /// <summary>
+        /// The type of the movie.
+        /// </summary>
+        public Type Type { get; set; }
+
+        /// <summary>
         /// The release date of the movie.
         /// </summary>
         public string ReleaseDate { get; set; }
 
         /// <summary>
-        /// The details of the movie.
+        /// The connection of the movie.
         /// </summary>
-        public string Details { get; set; }
+        public Connection Connection { get; set; }
 
         /// <summary>
-        /// The status of the movie.
+        /// the list of genres of the movie.
         /// </summary>
-        public Status Status { get; set; }
+        public List<GenreItem> Genres { get; set; }
 
         /// <summary>
-        ///  The date of last update of the movie.
+        /// The list of countries of the movie.
         /// </summary>
-        public string LastUpdated { get; set; }
+        public List<CountryItem> Countries { get; set; }
+
+        /// <summary>
+        /// The list of colors of the movie.
+        /// </summary>
+        public List<ColorItem> Colors { get; set; }
+
+        /// <summary>
+        /// The list of languages of the movie.
+        /// </summary>
+        public List<LanguageItem> Languages { get; set; }
+
+        /// <summary>
+        /// The list of directors of the movie.
+        /// </summary>
+        public List<PersonItem> Directors { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -97,42 +106,33 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Movie(string id)
         {
+            if (id == null)
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
+
             Logger.Trace($"Movie() angelegt");
 
-            ID = id ?? throw new ArgumentNullException(nameof(id));
+            ID = id;
         }
 
         // --- Methods ---
-
-        /// <summary>
-        /// Retrieves the information of the movie from the database.
-        /// </summary>
-        /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
-        {
-            Logger.Trace($"Retrieve() aufgerufen");
-
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
-
-            return count;
-        }
 
         /// <summary>
         /// Retrieves the basic information of the movie from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public virtual int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation()
         {
             if (String.IsNullOrEmpty(ID))
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, ReleaseDate, Details, StatusID, LastUpdated " +
-                          $"FROM Movie " +
-                          $"WHERE ID=\"{ID}\"";
+            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, ConnectionID, Details, StatusID, LastUpdated " +
+                           $"FROM Movie " +
+                           $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
             {
@@ -142,7 +142,19 @@ namespace EntertainmentDB.Data
                 OriginalTitle = row["OriginalTitle"].ToString();
                 EnglishTitle = row["EnglishTitle"].ToString();
                 GermanTitle = row["GermanTitle"].ToString();
+                if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
+                {
+                    Type = new Type();
+                    Type.ID = row["TypeID"].ToString();
+                    Type.RetrieveBasicInformation();
+                }
                 ReleaseDate = row["ReleaseDate"].ToString();
+                if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
+                {
+                    Connection = new Connection();
+                    Connection.ID = row["ConnectionID"].ToString();
+                    Connection.RetrieveBasicInformation();
+                }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -163,11 +175,34 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the additional information of the movie from the database (none available).
         /// </summary>
-        /// <returns>0</returns>
-        public virtual int RetrieveAdditionalInformation()
+        /// <returns>The number of data records retrieved.</returns>
+        /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
+        public override int RetrieveAdditionalInformation()
         {
-            // nothing to do
-            return 0;
+            if (Reader == null)
+            {
+                throw new NullReferenceException(nameof(Reader));
+            }
+            if (String.IsNullOrEmpty(ID))
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
+
+            // InfoBox data
+            Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
+            Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
+            Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
+            Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
+
+            // Cast and crew data
+            Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
+
+            return Genres.Count +
+                   Countries.Count +
+                   Colors.Count +
+                   Languages.Count +
+
+                   Directors.Count;
         }
 
         /// <summary>

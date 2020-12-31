@@ -1,4 +1,22 @@
-﻿using EntertainmentDB.Data;
+﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
+// EntertainmentInfothek.db using EntertainmentDB.dll
+// Copyright (C) 2020 Sandra Scherer
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+using EntertainmentDB.Data;
 using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
@@ -53,39 +71,48 @@ namespace WikiPageCreator
 
             do
             {
-                Console.WriteLine($"");
-                Console.WriteLine($"Bitte geben Sie die ID des Films ein, für den eine Wiki-Seite erstellt werden soll:");
-
-                idUser = Console.ReadLine();
-            }
-            while (String.IsNullOrEmpty(idUser));
-
-            Logger.Trace($"Film ID: {idUser}");
-
-            // do work
-            // TODO: which DB reader is to be used should be defined in configuration
-            SQLiteReader reader = new SQLiteReader();
-
-            if (idUser.Equals("*"))
-            {
-                List<Movie> list = Movie.RetrieveList(reader, "ok");
-
-                foreach (Movie item in list)
+                do
                 {
-                    CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
-                    Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
-                }
-            }
-            else
-            {
-                CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
-                Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
-            }
+                    Console.WriteLine($"");
+                    Console.WriteLine($"Bitte geben Sie die ID des Films ein, für den eine Wiki-Seite erstellt werden soll (oder 'q' für Beenden):");
 
-            // End
-            Console.WriteLine($"");
-            Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
-            Console.ReadLine();
+                    idUser = Console.ReadLine();
+                }
+                while (String.IsNullOrEmpty(idUser));
+
+                if (idUser.Equals("q") || idUser.Equals("Q"))
+                {
+                    break;
+                }
+
+                Logger.Trace($"Film ID: {idUser}");
+
+                // do work
+                // TODO: which DB reader is to be used should be defined in configuration
+                SQLiteReader reader = new SQLiteReader();
+
+                if (idUser.Equals("*"))
+                {
+                    List<Movie> list = Movie.RetrieveList(reader, "ok");
+
+                    foreach (Movie item in list)
+                    {
+                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
+                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                    }
+                }
+                else
+                {
+                    CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
+                    Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
+                }
+
+                // End
+                Console.WriteLine($"");
+                Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
+                Console.ReadLine();
+            }
+            while (true);
 
             Logger.Trace($"'WikiPageCreator' beendet");
         }

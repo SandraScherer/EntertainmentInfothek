@@ -42,10 +42,19 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Type);
             Assert.IsNull(entry.ReleaseDate);
+            Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -63,10 +72,19 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Type);
             Assert.IsNull(entry.ReleaseDate);
+            Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -85,10 +103,19 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Original Title X", entry.OriginalTitle);
             Assert.AreEqual("Movie English Title X", entry.EnglishTitle);
             Assert.AreEqual("Movie German Title X", entry.GermanTitle);
+            Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("Movie Release Date X", entry.ReleaseDate);
+            Assert.AreEqual("_xxx", entry.Connection.ID);
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -107,10 +134,19 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Type);
             Assert.IsNull(entry.ReleaseDate);
+            Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.Languages);
+
+            Assert.IsNull(entry.Directors);
         }
 
         [TestMethod()]
@@ -123,7 +159,32 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual(0, count);
+            Assert.AreEqual((5 * 3), count);
+
+            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.AreEqual("_xx1", entry.Genres[0].ID);
+            Assert.AreEqual("_xx2", entry.Genres[1].ID);
+            Assert.AreEqual("_xx3", entry.Genres[2].ID);
+
+            Assert.AreEqual(3, entry.Countries.Count);
+            Assert.AreEqual("_xx1", entry.Countries[0].ID);
+            Assert.AreEqual("_xx2", entry.Countries[1].ID);
+            Assert.AreEqual("_xx3", entry.Countries[2].ID);
+
+            Assert.AreEqual(3, entry.Colors.Count);
+            Assert.AreEqual("_xx1", entry.Colors[0].ID);
+            Assert.AreEqual("_xx2", entry.Colors[1].ID);
+            Assert.AreEqual("_xx3", entry.Colors[2].ID);
+
+            Assert.AreEqual(3, entry.Languages.Count);
+            Assert.AreEqual("_xx1", entry.Languages[0].ID);
+            Assert.AreEqual("_xx2", entry.Languages[1].ID);
+            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Directors.Count);
+            Assert.AreEqual("_xx1", entry.Directors[0].ID);
+            Assert.AreEqual("_xx2", entry.Directors[1].ID);
+            Assert.AreEqual("_xx3", entry.Directors[2].ID);
         }
 
         [TestMethod()]
@@ -155,10 +216,37 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Original Title X", entry.OriginalTitle);
             Assert.AreEqual("Movie English Title X", entry.EnglishTitle);
             Assert.AreEqual("Movie German Title X", entry.GermanTitle);
+            Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("Movie Release Date X", entry.ReleaseDate);
+            Assert.AreEqual("_xxx", entry.Connection.ID);
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Movie Last Updated X", entry.LastUpdated);
+
+            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.AreEqual("_xx1", entry.Genres[0].ID);
+            Assert.AreEqual("_xx2", entry.Genres[1].ID);
+            Assert.AreEqual("_xx3", entry.Genres[2].ID);
+
+            Assert.AreEqual(3, entry.Countries.Count);
+            Assert.AreEqual("_xx1", entry.Countries[0].ID);
+            Assert.AreEqual("_xx2", entry.Countries[1].ID);
+            Assert.AreEqual("_xx3", entry.Countries[2].ID);
+
+            Assert.AreEqual(3, entry.Colors.Count);
+            Assert.AreEqual("_xx1", entry.Colors[0].ID);
+            Assert.AreEqual("_xx2", entry.Colors[1].ID);
+            Assert.AreEqual("_xx3", entry.Colors[2].ID);
+
+            Assert.AreEqual(3, entry.Languages.Count);
+            Assert.AreEqual("_xx1", entry.Languages[0].ID);
+            Assert.AreEqual("_xx2", entry.Languages[1].ID);
+            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Directors.Count);
+            Assert.AreEqual("_xx1", entry.Directors[0].ID);
+            Assert.AreEqual("_xx2", entry.Directors[1].ID);
+            Assert.AreEqual("_xx3", entry.Directors[2].ID);
         }
 
         [TestMethod()]
@@ -177,7 +265,9 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OriginalTitle);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Type);
             Assert.IsNull(entry.ReleaseDate);
+            Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);

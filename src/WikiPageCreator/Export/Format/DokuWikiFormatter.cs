@@ -1,4 +1,5 @@
-﻿// EntertainmentDB.dll: Provides access to the EntertainmentInfothek.db
+﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
+// EntertainmentInfothek.db using EntertainmentDB.dll
 // Copyright (C) 2020 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
@@ -264,6 +265,37 @@ namespace WikiPageCreator.Export.Format
             }
 
             return AsInternalLink(formatted + pagename, text);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an internal link.
+        /// </summary>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <returns>The parameters formatted as an internal link.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
+        public override string AsInternalLink(string[] path, string pagename)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (String.IsNullOrEmpty(pagename))
+            {
+                throw new ArgumentNullException(nameof(pagename));
+            }
+
+            string formatted = "";
+            foreach (string item in path)
+            {
+                if (!String.IsNullOrEmpty(item))
+                {
+                    formatted = String.Concat(formatted, item, ":");
+                }
+            }
+
+            return AsInternalLink(formatted + pagename);
         }
 
         /// <summary>

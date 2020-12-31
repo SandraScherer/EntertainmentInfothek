@@ -24,47 +24,21 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a status.
+    /// Provides a connection.
     /// </summary>
-    public class Status : IDBReadable
+    public class Connection : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The database reader to be used to read the status information from the database.
+        /// The title of the connection.
         /// </summary>
-        // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public string Title { get; set; }
 
         /// <summary>
-        /// The id of the status.
+        /// The base connection of the connection.
         /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// The english title of the status.
-        /// </summary>
-        public string EnglishTitle { get; set; }
-
-        /// <summary>
-        /// The german title of the status.
-        /// </summary>
-        public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The details of the status.
-        /// </summary>
-        public string Details { get; set; }
-
-        /// <summary>
-        /// The status string of the status.
-        /// </summary>
-        public string StatusString { get; set; }
-
-        /// <summary>
-        ///  The date of last update of the status.
-        /// </summary>
-        public string LastUpdated { get; set; }
+        public Connection BaseConnection { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -74,25 +48,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a status with an empty id string.
+        /// Initializes a connection with an empty id string.
         /// </summary>
-        public Status() : this("")
+        public Connection() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a status with the given id string.
+        /// Initializes a connection with the given id string.
         /// </summary>
-        /// <param name="id">The id of the status.</param>
+        /// <param name="id">The id of the connection.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Status(string id)
+        public Connection(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Status() angelegt");
+            Logger.Trace($"Connection() angelegt");
 
             ID = id;
         }
@@ -100,33 +74,19 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the information of the status from the database.
-        /// </summary>
-        /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
-        {
-            Logger.Trace($"Retrieve() aufgerufen");
-
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
-
-            return count;
-        }
-
-        /// <summary>
-        /// Retrieves the basic information of the status from the database.
+        /// Retrieves the basic information of the connection from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public virtual int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation()
         {
             if (String.IsNullOrEmpty(ID))
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                           $"FROM Status " +
+            Reader.Query = $"SELECT ID, Title, ConnectionID, Details, StatusID, LastUpdated " +
+                           $"FROM Connection " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -134,10 +94,20 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
+                Title = row["Title"].ToString();
+                if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
+                {
+                    BaseConnection = new Connection();
+                    BaseConnection.ID = row["ConnectionID"].ToString();
+                    BaseConnection.RetrieveBasicInformation();
+                }
                 Details = row["Details"].ToString();
-                StatusString = row["StatusID"].ToString();
+                if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
+                {
+                    Status = new Status();
+                    Status.ID = row["StatusID"].ToString();
+                    Status.RetrieveBasicInformation();
+                }
                 LastUpdated = row["LastUpdated"].ToString();
             }
             else
@@ -149,10 +119,10 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the status from the database (none available).
+        /// Retrieves the additional information of the connection from the database (none available).
         /// </summary>
         /// <returns>0</returns>
-        public virtual int RetrieveAdditionalInformation()
+        public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;

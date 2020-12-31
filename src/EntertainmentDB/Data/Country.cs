@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,47 +23,26 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a status.
+    /// Provides a country.
     /// </summary>
-    public class Status : IDBReadable
+    public class Country : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The database reader to be used to read the status information from the database.
+        /// The original name of the country.
         /// </summary>
-        // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public string OriginalName { get; set; }
 
         /// <summary>
-        /// The id of the status.
+        /// The english name of the country.
         /// </summary>
-        public string ID { get; set; }
+        public string EnglishName { get; set; }
 
         /// <summary>
-        /// The english title of the status.
+        /// The german name of the country.
         /// </summary>
-        public string EnglishTitle { get; set; }
-
-        /// <summary>
-        /// The german title of the status.
-        /// </summary>
-        public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The details of the status.
-        /// </summary>
-        public string Details { get; set; }
-
-        /// <summary>
-        /// The status string of the status.
-        /// </summary>
-        public string StatusString { get; set; }
-
-        /// <summary>
-        ///  The date of last update of the status.
-        /// </summary>
-        public string LastUpdated { get; set; }
+        public string GermanName { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -74,25 +52,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a status with an empty id string.
+        /// Initializes a country with an empty id string.
         /// </summary>
-        public Status() : this("")
+        public Country() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a status with the given id string.
+        /// Initializes a country with the given id string.
         /// </summary>
-        /// <param name="id">The id of the status.</param>
+        /// <param name="id">The id of the country.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Status(string id)
+        public Country(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Status() angelegt");
+            Logger.Trace($"Country() angelegt");
 
             ID = id;
         }
@@ -100,33 +78,19 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the information of the status from the database.
-        /// </summary>
-        /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
-        {
-            Logger.Trace($"Retrieve() aufgerufen");
-
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
-
-            return count;
-        }
-
-        /// <summary>
-        /// Retrieves the basic information of the status from the database.
+        /// Retrieves the basic information of the country from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public virtual int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation()
         {
             if (String.IsNullOrEmpty(ID))
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                           $"FROM Status " +
+            Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
+                           $"FROM Country " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -134,10 +98,16 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
+                OriginalName = row["OriginalName"].ToString();
+                EnglishName = row["EnglishName"].ToString();
+                GermanName = row["GermanName"].ToString();
                 Details = row["Details"].ToString();
-                StatusString = row["StatusID"].ToString();
+                if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
+                {
+                    Status = new Status();
+                    Status.ID = row["StatusID"].ToString();
+                    Status.RetrieveBasicInformation();
+                }
                 LastUpdated = row["LastUpdated"].ToString();
             }
             else
@@ -149,13 +119,14 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the status from the database (none available).
+        /// Retrieves the additional information of the country from the database (none available).
         /// </summary>
         /// <returns>0</returns>
-        public virtual int RetrieveAdditionalInformation()
+        public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;
+
         }
     }
 }
