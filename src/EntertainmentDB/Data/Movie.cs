@@ -71,6 +71,11 @@ namespace EntertainmentDB.Data
         public List<CountryItem> Countries { get; set; }
 
         /// <summary>
+        /// The list of aspect ratios of the movie.
+        /// </summary>
+        public List<AspectRatioItem> AspectRatios { get; set; }
+
+        /// <summary>
         /// The list of colors of the movie.
         /// </summary>
         public List<ColorItem> Colors { get; set; }
@@ -191,6 +196,7 @@ namespace EntertainmentDB.Data
             // InfoBox data
             Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
+            AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
             Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
             Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
 
@@ -199,6 +205,7 @@ namespace EntertainmentDB.Data
 
             return Genres.Count +
                    Countries.Count +
+                   AspectRatios.Count +
                    Colors.Count +
                    Languages.Count +
 

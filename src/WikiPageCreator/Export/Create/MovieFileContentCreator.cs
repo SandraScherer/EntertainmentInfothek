@@ -105,6 +105,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxGenre(targetLanguageCode);
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
+            CreateInfoBoxAspectRatio(targetLanguageCode);
             CreateInfoBoxColor(targetLanguageCode);
             CreateInfoBoxLanguage(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
@@ -482,6 +483,57 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxOriginalReleaseDate() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox aspect ratio of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxAspectRatio(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.AspectRatios.Count > 0)
+            {
+                Logger.Trace($"Anzahl AspectRatios: '{Movie.AspectRatios.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Aspect Ratio";
+                    data[1] = Formatter.AsInternalLink(path, Movie.AspectRatios[0].AspectRatio.Ratio, Movie.AspectRatios[0].AspectRatio.Ratio);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.AspectRatios.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.AspectRatios[i].AspectRatio.Ratio, Movie.AspectRatios[i].AspectRatio.Ratio);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Bildformat";
+                    data[1] = Formatter.AsInternalLink(path, Movie.AspectRatios[0].AspectRatio.Ratio, Movie.AspectRatios[0].AspectRatio.Ratio);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.AspectRatios.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.AspectRatios[i].AspectRatio.Ratio, Movie.AspectRatios[i].AspectRatio.Ratio);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

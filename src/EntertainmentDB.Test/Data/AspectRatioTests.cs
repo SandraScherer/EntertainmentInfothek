@@ -24,13 +24,13 @@ using System.Text;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class CountryTests
+    public class AspectRatioTests
     {
         [TestMethod()]
-        public void CountryTest()
+        public void AspectRatioTest()
         {
             // Arrange
-            Country entry = new Country();
+            AspectRatio entry = new AspectRatio();
 
             // Act
             // Assert
@@ -38,19 +38,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void CountryTest_withID()
+        public void AspectRatioTest_withID()
         {
             // Arrange
-            Country entry = new Country("_xxx");
+            AspectRatio entry = new AspectRatio("_xxx");
 
             // Act
             // Assert
@@ -58,9 +57,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -70,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID()
         {
             // Arrange
-            Country entry = new Country("_xxx");
+            AspectRatio entry = new AspectRatio("_xxx");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -79,19 +77,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
-            Assert.AreEqual("Country Details X", entry.Details);
+            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
+            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
+            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID()
         {
             // Arrange
-            Country entry = new Country("_aaa");
+            AspectRatio entry = new AspectRatio("_aaa");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -100,9 +97,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -112,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID()
         {
             // Arrange
-            Country entry = new Country("_xxx");
+            AspectRatio entry = new AspectRatio("_xxx");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -125,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID()
         {
             // Arrange
-            Country entry = new Country("_aaa");
+            AspectRatio entry = new AspectRatio("_aaa");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -138,7 +134,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID()
         {
             // Arrange
-            Country entry = new Country("_xxx");
+            AspectRatio entry = new AspectRatio("_xxx");
 
             // Act
             int count = entry.Retrieve();
@@ -147,19 +143,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
-            Assert.AreEqual("Country Details X", entry.Details);
+            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
+            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
+            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void Retrieve_withInvalidID()
+        public void RetrieveTest_withInvalidID()
         {
             // Arrange
-            Country entry = new Country("_aaa");
+            AspectRatio entry = new AspectRatio("_aaa");
 
             // Act
             int count = entry.Retrieve();
@@ -168,9 +163,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);

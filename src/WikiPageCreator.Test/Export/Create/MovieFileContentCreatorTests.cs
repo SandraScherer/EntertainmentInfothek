@@ -406,6 +406,60 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxAspectRatioTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxAspectRatio(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Aspect Ratio", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataDe1 = { "Bildformat", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataZz1 = { "Bildformat", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateInfoBoxColorTest(string value)
         {
             // Arrange
@@ -642,6 +696,17 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
 
+            string[] pathAspectRatio = { value, "info" };
+            string[] dataAspectRatioEn1 = { "Aspect Ratio", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataAspectRatioEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataAspectRatioEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataAspectRatioDe1 = { "Bildformat", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataAspectRatioDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataAspectRatioDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataAspectRatioZz1 = { "Bildformat", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
+            string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
+            string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
+
             string[] pathColor = { value, "info" };
             string[] dataColorEn1 = { "Color", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color English Title X") };
             string[] dataColorEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color English Title Y") };
@@ -756,6 +821,26 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataReleaseEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataReleaseDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataReleaseZz)); break;
+            }
+
+            // InfoBox AspectRatio
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz3));
+                    break;
             }
 
             // InfoBox Color
