@@ -82,6 +82,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             content.Add($"   @version Status English Title X: Movie Last Updated X");
             content.Add(creator.Formatter.EndComment());
+            content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
@@ -128,7 +129,6 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
 
-            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
@@ -184,6 +184,7 @@ namespace WikiPageCreator.Export.Create.Tests
             List<string> content = new List<string>();
 
             content.Add(Formatter.EndBox());
+            content.Add($"");
             content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -383,7 +384,7 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] path = { value, "dates" };
+            string[] path = { value, "date" };
             string[] dataEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
             string[] dataDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
             string[] dataZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
@@ -418,16 +419,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] path = { value, "info" };
-            string[] dataEn1 = { "Aspect Ratio", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
-            string[] dataDe1 = { "Bildformat", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
-            string[] dataZz1 = { "Bildformat", Formatter.AsInternalLink(path, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
 
             switch (value)
             {
@@ -579,27 +579,26 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "biography" };
-            string[] data1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1)" };
-            string[] data2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2)" };
-            string[] data3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3)" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
 
-            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
                 case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
-            content.Add($"");
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Directors")); break;
+                case "en": content.Add(Formatter.AsHeading3("Director")); break;
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
-            content.Add(Formatter.AsTableRow(data1));
-            content.Add(Formatter.AsTableRow(data2));
-            content.Add(Formatter.AsTableRow(data3));
+            content.Add(Formatter.AsTableRow(dataDirector1));
+            content.Add(Formatter.AsTableRow(dataDirector2));
+            content.Add(Formatter.AsTableRow(dataDirector3));
+            content.Add($"");
             content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -626,15 +625,14 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
 
-            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Connections to other articles")); break;
                 case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
                 default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
             }
-            content.Add($"");
             content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+            content.Add($"");
             content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -669,6 +667,11 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
             string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
 
+            string[] pathRelease = { value, "date" };
+            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+
             string[] pathGenre = { value, "info" };
             string[] dataGenreEn1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre English Title X") };
             string[] dataGenreEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre English Title Y") };
@@ -691,21 +694,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCountryZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y") };
             string[] dataCountryZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z") };
 
-            string[] pathRelease = { value, "dates" };
-            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
-
-            string[] pathAspectRatio = { value, "info" };
-            string[] dataAspectRatioEn1 = { "Aspect Ratio", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataAspectRatioEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataAspectRatioEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
-            string[] dataAspectRatioDe1 = { "Bildformat", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataAspectRatioDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataAspectRatioDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
-            string[] dataAspectRatioZz1 = { "Bildformat", Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio X", "Aspect Ratio X") };
-            string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Y", "Aspect Ratio Y") };
-            string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathAspectRatio, "Aspect Ratio Z", "Aspect Ratio Z") };
+            string[] dataAspectRatioEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataAspectRatioEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataAspectRatioEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataAspectRatioDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataAspectRatioDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataAspectRatioDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataAspectRatioZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
 
             string[] pathColor = { value, "info" };
             string[] dataColorEn1 = { "Color", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color English Title X") };
@@ -730,9 +727,9 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z") };
 
             string[] pathDirector = { value, "biography" };
-            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1)" };
-            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2)" };
-            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3)" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -744,9 +741,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             content.Add($"   @version Status English Title X: Movie Last Updated X");
             content.Add(creator.Formatter.EndComment());
+            content.Add("");
 
             // Title
-            content.Add("");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
@@ -773,6 +770,14 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataTypeEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataTypeDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataTypeZz)); break;
+            }
+
+            // InfoBox Release Date
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataReleaseEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataReleaseDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataReleaseZz)); break;
             }
 
             // InfoBox Genre
@@ -815,31 +820,23 @@ namespace WikiPageCreator.Export.Create.Tests
                     break;
             }
 
-            // InfoBox Release Date
-            switch (value)
-            {
-                case "en": content.Add(Formatter.AsTableRow(dataReleaseEn)); break;
-                case "de": content.Add(Formatter.AsTableRow(dataReleaseDe)); break;
-                default: content.Add(Formatter.AsTableRow(dataReleaseZz)); break;
-            }
-
-            // InfoBox AspectRatio
+            // InfoBox Language
             switch (value)
             {
                 case "en":
-                    content.Add(Formatter.AsTableRow(dataAspectRatioEn1));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioEn2));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioEn3));
+                    content.Add(Formatter.AsTableRow(dataLanguageEn1));
+                    content.Add(Formatter.AsTableRow(dataLanguageEn2));
+                    content.Add(Formatter.AsTableRow(dataLanguageEn3));
                     break;
                 case "de":
-                    content.Add(Formatter.AsTableRow(dataAspectRatioDe1));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioDe2));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioDe3));
+                    content.Add(Formatter.AsTableRow(dataLanguageDe1));
+                    content.Add(Formatter.AsTableRow(dataLanguageDe2));
+                    content.Add(Formatter.AsTableRow(dataLanguageDe3));
                     break;
                 default:
-                    content.Add(Formatter.AsTableRow(dataAspectRatioZz1));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioZz2));
-                    content.Add(Formatter.AsTableRow(dataAspectRatioZz3));
+                    content.Add(Formatter.AsTableRow(dataLanguageZz1));
+                    content.Add(Formatter.AsTableRow(dataLanguageZz2));
+                    content.Add(Formatter.AsTableRow(dataLanguageZz3));
                     break;
             }
 
@@ -863,44 +860,43 @@ namespace WikiPageCreator.Export.Create.Tests
                     break;
             }
 
-            // InfoBox Language
+            // InfoBox AspectRatio
             switch (value)
             {
                 case "en":
-                    content.Add(Formatter.AsTableRow(dataLanguageEn1));
-                    content.Add(Formatter.AsTableRow(dataLanguageEn2));
-                    content.Add(Formatter.AsTableRow(dataLanguageEn3));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioEn3));
                     break;
                 case "de":
-                    content.Add(Formatter.AsTableRow(dataLanguageDe1));
-                    content.Add(Formatter.AsTableRow(dataLanguageDe2));
-                    content.Add(Formatter.AsTableRow(dataLanguageDe3));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioDe3));
                     break;
                 default:
-                    content.Add(Formatter.AsTableRow(dataLanguageZz1));
-                    content.Add(Formatter.AsTableRow(dataLanguageZz2));
-                    content.Add(Formatter.AsTableRow(dataLanguageZz3));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz1));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz2));
+                    content.Add(Formatter.AsTableRow(dataAspectRatioZz3));
                     break;
             }
 
             // InfoBox Ende
             content.Add(Formatter.EndBox());
             content.Add($"");
+            content.Add($"");
 
             // Cast and Crew Chapter
-            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
                 case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
-            content.Add($"");
 
             // Director
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Directors")); break;
+                case "en": content.Add(Formatter.AsHeading3("Director")); break;
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
@@ -908,17 +904,17 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataDirector2));
             content.Add(Formatter.AsTableRow(dataDirector3));
             content.Add($"");
+            content.Add($"");
 
             // Connection Chapter
-            content.Add($"");
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Connections to other articles")); break;
                 case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
                 default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
             }
-            content.Add($"");
             content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+            content.Add($"");
             content.Add($"");
 
             // Footer
