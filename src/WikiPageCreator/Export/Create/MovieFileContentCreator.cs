@@ -103,6 +103,8 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxTitle(targetLanguageCode);
             CreateInfoBoxType(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
+            CreateInfoBoxBudget(targetLanguageCode);
+            CreateInfoBoxWorldwideGross(targetLanguageCode);
             CreateInfoBoxGenre(targetLanguageCode);
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxLanguage(targetLanguageCode);
@@ -352,6 +354,76 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxOriginalReleaseDate() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox budget of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxBudget(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (!String.IsNullOrEmpty(Movie.Budget))
+            {
+                Logger.Trace($"Budget: '{Movie.Budget}'");
+
+                string[] data = new string[2];
+
+                data[0] = "Budget";
+                data[1] = $"{Movie.Budget}";
+                Content.Add(Formatter.AsTableRow(data));
+            }
+
+            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox  of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxWorldwideGross(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxWorldwideGross() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (!String.IsNullOrEmpty(Movie.WorldwideGross))
+            {
+                Logger.Trace($"Einspielergebnis: '{Movie.Budget}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "date" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Worldwide Gross";
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Einspielergebnis (weltweit)";
+                }
+
+                if (!String.IsNullOrEmpty(Movie.WorldwideGrossDate))
+                {
+                    data[1] = $"{Movie.WorldwideGross} ({Formatter.AsInternalLink(path, Movie.WorldwideGrossDate, Movie.WorldwideGrossDate)})";
+                }
+                else
+                {
+                    data[1] = $"{Movie.WorldwideGross}";
+                }
+                Content.Add(Formatter.AsTableRow(data));
+            }
+
+            Logger.Trace($"CreateInfoBoxWorldwideGross() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

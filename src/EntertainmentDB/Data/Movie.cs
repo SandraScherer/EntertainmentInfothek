@@ -56,6 +56,21 @@ namespace EntertainmentDB.Data
         public string ReleaseDate { get; set; }
 
         /// <summary>
+        /// The budget of the movie.
+        /// </summary>
+        public string Budget { get; set; }
+
+        /// <summary>
+        /// The worldwide gross of the movie.
+        /// </summary>
+        public string WorldwideGross { get; set; }
+
+        /// <summary>
+        /// The corresponding date to the worldwide gross of the movie.
+        /// </summary>
+        public string WorldwideGrossDate { get; set; }
+
+        /// <summary>
         /// The connection of the movie.
         /// </summary>
         public Connection Connection { get; set; }
@@ -135,7 +150,7 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, ConnectionID, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, Budget, WorldwideGross, WorldwideGrossDate, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Movie " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -154,6 +169,9 @@ namespace EntertainmentDB.Data
                     Type.RetrieveBasicInformation();
                 }
                 ReleaseDate = row["ReleaseDate"].ToString();
+                Budget = row["Budget"].ToString();
+                WorldwideGross = row["WorldwideGross"].ToString();
+                WorldwideGrossDate = row["WorldwideGrossDate"].ToString();
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
                     Connection = new Connection();

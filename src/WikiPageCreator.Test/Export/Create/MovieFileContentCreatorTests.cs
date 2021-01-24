@@ -266,6 +266,112 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxOriginalReleaseDateTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxOriginalReleaseDate(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "date" };
+            string[] dataEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataZz)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxBudgetTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxBudget(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "date" };
+            string[] dataEn = { "Budget", $"Movie Budget X" };
+            string[] dataDe = { "Budget", $"Movie Budget X" };
+            string[] dataZz = { "Budget", $"Movie Budget X" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataZz)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxWorldwideGrossTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxWorldwideGross(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "date" };
+            string[] dataEn = { "Worldwide Gross", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataDe = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataZz = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataZz)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateInfoBoxGenreTest(string value)
         {
             // Arrange
@@ -368,11 +474,11 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateInfoBoxOriginalReleaseDateTest(string value)
+        public void CreateInfoBoxLanguageTest(string value)
         {
             // Arrange
             Movie movie = new Movie("_xxx");
@@ -380,54 +486,20 @@ namespace WikiPageCreator.Export.Create.Tests
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
-            creator.CreateInfoBoxOriginalReleaseDate(value);
+            creator.CreateInfoBoxLanguage(value);
 
             // Assert
             List<string> content = new List<string>();
-            string[] path = { value, "date" };
-            string[] dataEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-
-            switch (value)
-            {
-                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
-                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
-                default: content.Add(Formatter.AsTableRow(dataZz)); break;
-            }
-
-            Assert.AreEqual(content.Count, creator.Content.Count);
-            for (int i = 0; i < content.Count; i++)
-            {
-                Assert.AreEqual(content[i], creator.Content[i]);
-            }
-        }
-
-        [TestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateInfoBoxAspectRatioTest(string value)
-        {
-            // Arrange
-            Movie movie = new Movie("_xxx");
-            movie.Retrieve();
-            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
-
-            // Act
-            creator.CreateInfoBoxAspectRatio(value);
-
-            // Assert
-            List<string> content = new List<string>();
-            string[] dataEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Language", Formatter.AsInternalLink(path, "Language Original Name X", "Language English Name X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language English Name Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language English Name Z") };
+            string[] dataDe1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
+            string[] dataZz1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
 
             switch (value)
             {
@@ -454,7 +526,6 @@ namespace WikiPageCreator.Export.Create.Tests
                 Assert.AreEqual(content[i], creator.Content[i]);
             }
         }
-
 
         [TestMethod()]
         [DataRow("en")]
@@ -509,11 +580,11 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateInfoBoxLanguageTest(string value)
+        public void CreateInfoBoxAspectRatioTest(string value)
         {
             // Arrange
             Movie movie = new Movie("_xxx");
@@ -521,20 +592,19 @@ namespace WikiPageCreator.Export.Create.Tests
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
-            creator.CreateInfoBoxLanguage(value);
+            creator.CreateInfoBoxAspectRatio(value);
 
             // Assert
             List<string> content = new List<string>();
-            string[] path = { value, "info" };
-            string[] dataEn1 = { "Language", Formatter.AsInternalLink(path, "Language Original Name X", "Language English Name X") };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language English Name Y") };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language English Name Z") };
-            string[] dataDe1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
-            string[] dataZz1 = { "Sprache", Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X") };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y") };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z") };
+            string[] dataEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
 
             switch (value)
             {
@@ -672,6 +742,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
             string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
 
+            string[] dataBudgetEn = { "Budget", $"Movie Budget X" };
+            string[] dataBudgetDe = { "Budget", $"Movie Budget X" };
+            string[] dataBudgetZz = { "Budget", $"Movie Budget X" };
+
+            string[] pathGross = { value, "date" };
+            string[] dataGrossEn = { "Worldwide Gross", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataGrossDe = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataGrossZz = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+
             string[] pathGenre = { value, "info" };
             string[] dataGenreEn1 = { "Genre", Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre English Title X") };
             string[] dataGenreEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre English Title Y") };
@@ -778,6 +857,22 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataReleaseEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataReleaseDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataReleaseZz)); break;
+            }
+
+            // InfoBox Budget
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataBudgetEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataBudgetDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataBudgetZz)); break;
+            }
+
+            // InfoBox Worldwide Gross
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataGrossEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataGrossDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataGrossZz)); break;
             }
 
             // InfoBox Genre
