@@ -86,6 +86,15 @@ namespace EntertainmentDB.Data
         public List<CountryItem> Countries { get; set; }
 
         /// <summary>
+        /// The list of languages of the movie.
+        /// </summary>
+        public List<LanguageItem> Languages { get; set; }
+
+        /// <summary>
+        /// The list of runtimes of the movie.
+        /// </summary>
+        public List<RuntimeItem> Runtimes { get; set; }
+        /// <summary>
         /// The list of aspect ratios of the movie.
         /// </summary>
         public List<AspectRatioItem> AspectRatios { get; set; }
@@ -94,11 +103,6 @@ namespace EntertainmentDB.Data
         /// The list of colors of the movie.
         /// </summary>
         public List<ColorItem> Colors { get; set; }
-
-        /// <summary>
-        /// The list of languages of the movie.
-        /// </summary>
-        public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
         /// The list of directors of the movie.
@@ -214,18 +218,20 @@ namespace EntertainmentDB.Data
             // InfoBox data
             Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
-            AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
-            Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
             Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
+            Runtimes = RuntimeItem.RetrieveList(Reader, $"Movie", ID, "Runtime") ?? Runtimes;
+            Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
+            AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
 
             return Genres.Count +
                    Countries.Count +
-                   AspectRatios.Count +
-                   Colors.Count +
                    Languages.Count +
+                   Runtimes.Count +
+                   Colors.Count +
+                   AspectRatios.Count +
 
                    Directors.Count;
         }

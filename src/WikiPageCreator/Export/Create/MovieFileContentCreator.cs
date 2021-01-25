@@ -105,6 +105,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxBudget(targetLanguageCode);
             CreateInfoBoxWorldwideGross(targetLanguageCode);
+            CreateInfoBoxRuntime(targetLanguageCode);
             CreateInfoBoxGenre(targetLanguageCode);
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxLanguage(targetLanguageCode);
@@ -424,6 +425,57 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxWorldwideGross() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox runtime of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxRuntime(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Runtimes.Count > 0)
+            {
+                Logger.Trace($"Anzahl Runtimes: '{Movie.Runtimes.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Runtime";
+                    data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)})";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Genres.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)})";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Laufzeit";
+                    data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)})";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Genres.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)})";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

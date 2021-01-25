@@ -54,9 +54,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             Assert.IsNull(entry.Countries);
-            Assert.IsNull(entry.AspectRatios);
-            Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+            Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
 
             Assert.IsNull(entry.Directors);
         }
@@ -88,9 +89,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             Assert.IsNull(entry.Countries);
-            Assert.IsNull(entry.AspectRatios);
-            Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+            Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
 
             Assert.IsNull(entry.Directors);
         }
@@ -123,9 +125,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             Assert.IsNull(entry.Countries);
-            Assert.IsNull(entry.AspectRatios);
-            Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+            Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
 
             Assert.IsNull(entry.Directors);
         }
@@ -158,9 +161,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             Assert.IsNull(entry.Countries);
-            Assert.IsNull(entry.AspectRatios);
-            Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.Languages);
+            Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
 
             Assert.IsNull(entry.Directors);
         }
@@ -175,7 +179,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((6 * 3), count);
+            Assert.AreEqual((7 * 3), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -187,20 +191,25 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Countries[1].ID);
             Assert.AreEqual("_xx3", entry.Countries[2].ID);
 
-            Assert.AreEqual(3, entry.AspectRatios.Count);
-            Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
-            Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
-            Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
+            Assert.AreEqual(3, entry.Languages.Count);
+            Assert.AreEqual("_xx1", entry.Languages[0].ID);
+            Assert.AreEqual("_xx2", entry.Languages[1].ID);
+            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Runtimes.Count);
+            Assert.AreEqual("_xx1", entry.Runtimes[0].ID);
+            Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
+            Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
 
             Assert.AreEqual(3, entry.Colors.Count);
             Assert.AreEqual("_xx1", entry.Colors[0].ID);
             Assert.AreEqual("_xx2", entry.Colors[1].ID);
             Assert.AreEqual("_xx3", entry.Colors[2].ID);
 
-            Assert.AreEqual(3, entry.Languages.Count);
-            Assert.AreEqual("_xx1", entry.Languages[0].ID);
-            Assert.AreEqual("_xx2", entry.Languages[1].ID);
-            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+            Assert.AreEqual(3, entry.AspectRatios.Count);
+            Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
+            Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
+            Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
 
             Assert.AreEqual(3, entry.Directors.Count);
             Assert.AreEqual("_xx1", entry.Directors[0].ID);
@@ -257,20 +266,25 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Countries[1].ID);
             Assert.AreEqual("_xx3", entry.Countries[2].ID);
 
-            Assert.AreEqual(3, entry.AspectRatios.Count);
-            Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
-            Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
-            Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
+            Assert.AreEqual(3, entry.Languages.Count);
+            Assert.AreEqual("_xx1", entry.Languages[0].ID);
+            Assert.AreEqual("_xx2", entry.Languages[1].ID);
+            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+
+            Assert.AreEqual(3, entry.Runtimes.Count);
+            Assert.AreEqual("_xx1", entry.Runtimes[0].ID);
+            Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
+            Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
 
             Assert.AreEqual(3, entry.Colors.Count);
             Assert.AreEqual("_xx1", entry.Colors[0].ID);
             Assert.AreEqual("_xx2", entry.Colors[1].ID);
             Assert.AreEqual("_xx3", entry.Colors[2].ID);
 
-            Assert.AreEqual(3, entry.Languages.Count);
-            Assert.AreEqual("_xx1", entry.Languages[0].ID);
-            Assert.AreEqual("_xx2", entry.Languages[1].ID);
-            Assert.AreEqual("_xx3", entry.Languages[2].ID);
+            Assert.AreEqual(3, entry.AspectRatios.Count);
+            Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
+            Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
+            Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
 
             Assert.AreEqual(3, entry.Directors.Count);
             Assert.AreEqual("_xx1", entry.Directors[0].ID);
