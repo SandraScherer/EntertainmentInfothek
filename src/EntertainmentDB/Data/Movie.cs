@@ -94,15 +94,21 @@ namespace EntertainmentDB.Data
         /// The list of runtimes of the movie.
         /// </summary>
         public List<RuntimeItem> Runtimes { get; set; }
+
         /// <summary>
-        /// The list of aspect ratios of the movie.
+        /// The list of sound mixes of the movie.
         /// </summary>
-        public List<AspectRatioItem> AspectRatios { get; set; }
+        public List<SoundMixItem> SoundMixes { get; set; }
 
         /// <summary>
         /// The list of colors of the movie.
         /// </summary>
         public List<ColorItem> Colors { get; set; }
+
+        /// <summary>
+        /// The list of aspect ratios of the movie.
+        /// </summary>
+        public List<AspectRatioItem> AspectRatios { get; set; }
 
         /// <summary>
         /// The list of directors of the movie.
@@ -220,6 +226,7 @@ namespace EntertainmentDB.Data
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
             Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
             Runtimes = RuntimeItem.RetrieveList(Reader, $"Movie", ID, "Runtime") ?? Runtimes;
+            SoundMixes = SoundMixItem.RetrieveList(Reader, $"Movie", ID, "SoundMix") ?? SoundMixes;
             Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
             AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
 
@@ -230,6 +237,7 @@ namespace EntertainmentDB.Data
                    Countries.Count +
                    Languages.Count +
                    Runtimes.Count +
+                   SoundMixes.Count +
                    Colors.Count +
                    AspectRatios.Count +
 

@@ -109,6 +109,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxGenre(targetLanguageCode);
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxLanguage(targetLanguageCode);
+            CreateInfoBoxSoundMix(targetLanguageCode);
             CreateInfoBoxColor(targetLanguageCode);
             CreateInfoBoxAspectRatio(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
@@ -629,6 +630,57 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox sound mixes of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxSoundMix(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxSoundMixes() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.SoundMixes.Count > 0)
+            {
+                Logger.Trace($"Anzahl Colors: '{Movie.SoundMixes.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Sound Mix";
+                    data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.SoundMixes.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Tonmischung";
+                    data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle);
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.SoundMixes.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle);
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxBoxSound() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

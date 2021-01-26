@@ -583,6 +583,59 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxSoundMixTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxSoundMix(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] dataEn1 = { "Sound Mix", Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix English Title X") };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix English Title Y") };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix English Title Z") };
+            string[] dataDe1 = { "Tonmischung", Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix German Title X") };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix German Title Y") };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix German Title Z") };
+            string[] dataZz1 = { "Tonmischung", Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix German Title X") };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix German Title Y") };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix German Title Z") };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateInfoBoxColorTest(string value)
         {
             // Arrange
@@ -846,6 +899,17 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
             string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
 
+            string[] pathSoundMix = { value, "info" };
+            string[] dataSoundMixEn1 = { "Sound Mix", Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix English Title X") };
+            string[] dataSoundMixEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix English Title Y") };
+            string[] dataSoundMixEn3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix English Title Z") };
+            string[] dataSoundMixDe1 = { "Tonmischung", Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix German Title X") };
+            string[] dataSoundMixDe2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix German Title Y") };
+            string[] dataSoundMixDe3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix German Title Z") };
+            string[] dataSoundMixZz1 = { "Tonmischung", Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix German Title X") };
+            string[] dataSoundMixZz2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix German Title Y") };
+            string[] dataSoundMixZz3 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix German Title Z") };
+
             string[] pathColor = { value, "info" };
             string[] dataColorEn1 = { "Color", Formatter.AsInternalLink(pathColor, "Color English Title X", "Color English Title X") };
             string[] dataColorEn2 = { Formatter.CellSpanVertically(), Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color English Title Y") };
@@ -1015,6 +1079,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataLanguageZz1));
                     content.Add(Formatter.AsTableRow(dataLanguageZz2));
                     content.Add(Formatter.AsTableRow(dataLanguageZz3));
+                    break;
+            }
+
+            // InfoBox Sound Mix
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataSoundMixEn1));
+                    content.Add(Formatter.AsTableRow(dataSoundMixEn2));
+                    content.Add(Formatter.AsTableRow(dataSoundMixEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataSoundMixDe1));
+                    content.Add(Formatter.AsTableRow(dataSoundMixDe2));
+                    content.Add(Formatter.AsTableRow(dataSoundMixDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataSoundMixZz1));
+                    content.Add(Formatter.AsTableRow(dataSoundMixZz2));
+                    content.Add(Formatter.AsTableRow(dataSoundMixZz3));
                     break;
             }
 
