@@ -111,9 +111,14 @@ namespace EntertainmentDB.Data
         public List<AspectRatioItem> AspectRatios { get; set; }
 
         /// <summary>
-        /// The list of aspect ratios of the movie.
+        /// The list of cameras of the movie.
         /// </summary>
         public List<CameraItem> Cameras { get; set; }
+
+        /// <summary>
+        /// The list of laboratories of the movie.
+        /// </summary>
+        public List<LaboratoryItem> Laboratories { get; set; }
 
         /// <summary>
         /// The list of directors of the movie.
@@ -235,6 +240,7 @@ namespace EntertainmentDB.Data
             Colors = ColorItem.RetrieveList(Reader, $"Movie", ID, "Color") ?? Colors;
             AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
             Cameras = CameraItem.RetrieveList(Reader, $"Movie", ID, "Camera") ?? Cameras;
+            Laboratories = LaboratoryItem.RetrieveList(Reader, $"Movie", ID, "Laboratory") ?? Laboratories;
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
@@ -247,6 +253,7 @@ namespace EntertainmentDB.Data
                    Colors.Count +
                    AspectRatios.Count +
                    Cameras.Count +
+                   Laboratories.Count +
 
                    Directors.Count;
         }

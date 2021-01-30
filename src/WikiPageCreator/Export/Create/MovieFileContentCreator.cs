@@ -113,6 +113,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxColor(targetLanguageCode);
             CreateInfoBoxAspectRatio(targetLanguageCode);
             CreateInfoBoxCamera(targetLanguageCode);
+            CreateInfoBoxLaboratory(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
@@ -859,6 +860,58 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxCamera() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox camera of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxLaboratory(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Laboratories.Count > 0)
+            {
+                Logger.Trace($"Anzahl Laboratories: '{Movie.Laboratories.Count}'");
+
+                string[] data = new string[2];
+
+                // TODO: Add information from Movie.Laboratories[i].Details (if available)!
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Laboratory";
+                    data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Laboratories.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Labor";
+                    data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.Laboratories.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

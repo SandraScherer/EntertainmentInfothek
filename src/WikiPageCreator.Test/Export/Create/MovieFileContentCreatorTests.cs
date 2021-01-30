@@ -788,6 +788,58 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxLaboratoryTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxLaboratory(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] dataEn1 = { "Laboratory", "Laboratory Name X" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+            string[] dataDe1 = { "Labor", "Laboratory Name X" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+            string[] dataZz1 = { "Labor", "Laboratory Name X" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -992,6 +1044,16 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCameraZz1 = { "Kamera", "Camera Name X, Camera Lense X" };
             string[] dataCameraZz2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y" };
             string[] dataCameraZz3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z" };
+
+            string[] dataLaboratoryEn1 = { "Laboratory", "Laboratory Name X" };
+            string[] dataLaboratoryEn2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataLaboratoryEn3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+            string[] dataLaboratoryDe1 = { "Labor", "Laboratory Name X" };
+            string[] dataLaboratoryDe2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataLaboratoryDe3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+            string[] dataLaboratoryZz1 = { "Labor", "Laboratory Name X" };
+            string[] dataLaboratoryZz2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
+            string[] dataLaboratoryZz3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
 
             string[] pathDirector = { value, "biography" };
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
@@ -1220,6 +1282,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataCameraZz1));
                     content.Add(Formatter.AsTableRow(dataCameraZz2));
                     content.Add(Formatter.AsTableRow(dataCameraZz3));
+                    break;
+            }
+
+            // Infobox Laboratory
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataLaboratoryEn1));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryEn2));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataLaboratoryDe1));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryDe2));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataLaboratoryZz1));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryZz2));
+                    content.Add(Formatter.AsTableRow(dataLaboratoryZz3));
                     break;
             }
 
