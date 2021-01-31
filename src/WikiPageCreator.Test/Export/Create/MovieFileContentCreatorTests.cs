@@ -840,6 +840,58 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxFilmLengthTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxFilmLength(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] dataEn1 = { "Film Length", "Movie Film Length X" };
+            //string[] dataEn2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataEn3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+            string[] dataDe1 = { "Filmlänge", "Movie Film Length X" };
+            //string[] dataDe2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataDe3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+            string[] dataZz1 = { "Filmlänge", "Movie Film Length X" };
+            //string[] dataZz2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataZz3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    //content.Add(Formatter.AsTableRow(dataEn2));
+                    //content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    //content.Add(Formatter.AsTableRow(dataDe2));
+                    //content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    //content.Add(Formatter.AsTableRow(dataZz2));
+                    //content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -1054,6 +1106,16 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataLaboratoryZz1 = { "Labor", "Laboratory Name X" };
             string[] dataLaboratoryZz2 = { Formatter.CellSpanVertically(), "Laboratory Name Y" };
             string[] dataLaboratoryZz3 = { Formatter.CellSpanVertically(), "Laboratory Name Z" };
+
+            string[] dataFilmLengthEn1 = { "Film Length", "Movie Film Length X" };
+            //string[] dataFilmLengthEn2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataFilmLengthEn3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+            string[] dataFilmLengthDe1 = { "Filmlänge", "Movie Film Length X" };
+            //string[] dataFilmLengthDe2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataFilmLengthDe3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+            string[] dataFilmLengthZz1 = { "Filmlänge", "Movie Film Length X" };
+            //string[] dataFilmLengthZz2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
+            //string[] dataFilmLengthZz3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
 
             string[] pathDirector = { value, "biography" };
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
@@ -1302,6 +1364,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataLaboratoryZz1));
                     content.Add(Formatter.AsTableRow(dataLaboratoryZz2));
                     content.Add(Formatter.AsTableRow(dataLaboratoryZz3));
+                    break;
+            }
+
+            // Infobox Film Length
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataFilmLengthEn1));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthEn2));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataFilmLengthDe1));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthDe2));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataFilmLengthZz1));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthZz2));
+                    //content.Add(Formatter.AsTableRow(dataFilmLengthZz3));
                     break;
             }
 

@@ -114,6 +114,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxAspectRatio(targetLanguageCode);
             CreateInfoBoxCamera(targetLanguageCode);
             CreateInfoBoxLaboratory(targetLanguageCode);
+            CreateInfoBoxFilmLength(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
@@ -863,7 +864,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox camera of the movie page.
+        /// Creates the formatted infobox laboratory of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxLaboratory(string targetLanguageCode)
@@ -912,6 +913,58 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox film length of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxFilmLength(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.FilmLengths.Count > 0)
+            {
+                Logger.Trace($"Anzahl FilmLengths: '{Movie.FilmLengths.Count}'");
+
+                string[] data = new string[2];
+
+                // TODO: Add information from Movie.FilmLengths[i].Details (if available)!
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Film Length";
+                    data[1] = $"{Movie.FilmLengths[0].Length}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.FilmLengths.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.FilmLengths[i].Length}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Filmlänge";
+                    data[1] = $"{Movie.FilmLengths[0].Length}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.FilmLengths.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.FilmLengths[i].Length}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

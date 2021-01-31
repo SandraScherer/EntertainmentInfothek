@@ -61,6 +61,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
             Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
 
             Assert.IsNull(entry.Directors);
         }
@@ -99,6 +100,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
             Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
 
             Assert.IsNull(entry.Directors);
         }
@@ -138,6 +140,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
             Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
 
             Assert.IsNull(entry.Directors);
         }
@@ -177,6 +180,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
             Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
 
             Assert.IsNull(entry.Directors);
         }
@@ -191,7 +195,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((10 * 3), count);
+            Assert.AreEqual((10 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -237,6 +241,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
             Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
             Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
+
+            // TODO: Adjust test expectations after changing database content
+            Assert.AreEqual(1, entry.FilmLengths.Count);
+            Assert.AreEqual("_xxx", entry.FilmLengths[0].ID);
+            //Assert.AreEqual("_xx2", entry.FilmLengths[1].ID);
+            //Assert.AreEqual("_xx3", entry.FilmLengths[2].ID);
 
             Assert.AreEqual(3, entry.Directors.Count);
             Assert.AreEqual("_xx1", entry.Directors[0].ID);
@@ -327,6 +337,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
             Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
             Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
+
+            // TODO: Adjust test expectations after changing database content
+            Assert.AreEqual(1, entry.FilmLengths.Count);
+            Assert.AreEqual("_xxx", entry.FilmLengths[0].ID);
+            //Assert.AreEqual("_xx2", entry.FilmLengths[1].ID);
+            //Assert.AreEqual("_xx3", entry.FilmLengths[2].ID);
 
             Assert.AreEqual(3, entry.Directors.Count);
             Assert.AreEqual("_xx1", entry.Directors[0].ID);

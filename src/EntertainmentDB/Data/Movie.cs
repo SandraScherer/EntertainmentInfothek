@@ -121,6 +121,11 @@ namespace EntertainmentDB.Data
         public List<LaboratoryItem> Laboratories { get; set; }
 
         /// <summary>
+        /// The list of film lengths of the movie.
+        /// </summary>
+        public List<FilmLengthItem> FilmLengths { get; set; }
+
+        /// <summary>
         /// The list of directors of the movie.
         /// </summary>
         public List<PersonItem> Directors { get; set; }
@@ -241,6 +246,7 @@ namespace EntertainmentDB.Data
             AspectRatios = AspectRatioItem.RetrieveList(Reader, $"Movie", ID, "AspectRatio") ?? AspectRatios;
             Cameras = CameraItem.RetrieveList(Reader, $"Movie", ID, "Camera") ?? Cameras;
             Laboratories = LaboratoryItem.RetrieveList(Reader, $"Movie", ID, "Laboratory") ?? Laboratories;
+            FilmLengths = FilmLengthItem.RetrieveList(Reader, $"Movie", ID, "FilmLength") ?? FilmLengths;
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
@@ -254,6 +260,7 @@ namespace EntertainmentDB.Data
                    AspectRatios.Count +
                    Cameras.Count +
                    Laboratories.Count +
+                   FilmLengths.Count +
 
                    Directors.Count;
         }
