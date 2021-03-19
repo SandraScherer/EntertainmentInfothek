@@ -892,6 +892,58 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxNegativeFormatTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxNegativeFormat(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] dataEn1 = { "Negative Format", "Film Format Name X" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataDe1 = { "Negativformat", "Film Format Name X" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataZz1 = { "Negativformat", "Film Format Name X" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -1116,6 +1168,16 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataFilmLengthZz1 = { "Filmlänge", "Movie Film Length X" };
             //string[] dataFilmLengthZz2 = { Formatter.CellSpanVertically(), "Movie Film Length Y" };
             //string[] dataFilmLengthZz3 = { Formatter.CellSpanVertically(), "Movie Film Length Z" };
+
+            string[] dataNegativeFormatEn1 = { "Negative Format", "Film Format Name X" };
+            string[] dataNegativeFormatEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataNegativeFormatEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataNegativeFormatDe1 = { "Negativformat", "Film Format Name X" };
+            string[] dataNegativeFormatDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataNegativeFormatDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataNegativeFormatZz1 = { "Negativformat", "Film Format Name X" };
+            string[] dataNegativeFormatZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataNegativeFormatZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
 
             string[] pathDirector = { value, "biography" };
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
@@ -1384,6 +1446,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataFilmLengthZz1));
                     //content.Add(Formatter.AsTableRow(dataFilmLengthZz2));
                     //content.Add(Formatter.AsTableRow(dataFilmLengthZz3));
+                    break;
+            }
+
+            // Infobox Negative Format
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatEn1));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatEn2));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatDe1));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatDe2));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatZz1));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatZz2));
+                    content.Add(Formatter.AsTableRow(dataNegativeFormatZz3));
                     break;
             }
 
