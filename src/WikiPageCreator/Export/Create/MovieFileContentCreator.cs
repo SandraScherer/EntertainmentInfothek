@@ -116,6 +116,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxLaboratory(targetLanguageCode);
             CreateInfoBoxFilmLength(targetLanguageCode);
             CreateInfoBoxNegativeFormat(targetLanguageCode);
+            CreateInfoBoxCinematographicProcess(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
@@ -1018,6 +1019,58 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxNegativeFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox cinematographic process of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxCinematographicProcess(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.CinematographicProcesses.Count > 0)
+            {
+                Logger.Trace($"Anzahl CinematographicProcesses: '{Movie.CinematographicProcesses.Count}'");
+
+                string[] data = new string[2];
+
+                // TODO: Add information from Movie.CinematographicProcesses[i].Details (if available)!
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Cinematographic Process";
+                    data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Filmprozess";
+                    data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

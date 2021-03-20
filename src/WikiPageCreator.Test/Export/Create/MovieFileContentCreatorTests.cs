@@ -944,6 +944,59 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxCinematographicProcessTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxCinematographicProcess(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] dataEn1 = { "Cinematographic Process", "Cinematographic Process Name X" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+            string[] dataDe1 = { "Filmprozess", "Cinematographic Process Name X" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+            string[] dataZz1 = { "Filmprozess", "Cinematographic Process Name X" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -1178,6 +1231,16 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataNegativeFormatZz1 = { "Negativformat", "Film Format Name X" };
             string[] dataNegativeFormatZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
             string[] dataNegativeFormatZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+
+            string[] dataCinematographicProcessEn1 = { "Cinematographic Process", "Cinematographic Process Name X" };
+            string[] dataCinematographicProcessEn2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataCinematographicProcessEn3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+            string[] dataCinematographicProcessDe1 = { "Filmprozess", "Cinematographic Process Name X" };
+            string[] dataCinematographicProcessDe2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataCinematographicProcessDe3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+            string[] dataCinematographicProcessZz1 = { "Filmprozess", "Cinematographic Process Name X" };
+            string[] dataCinematographicProcessZz2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
+            string[] dataCinematographicProcessZz3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
 
             string[] pathDirector = { value, "biography" };
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
@@ -1466,6 +1529,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataNegativeFormatZz1));
                     content.Add(Formatter.AsTableRow(dataNegativeFormatZz2));
                     content.Add(Formatter.AsTableRow(dataNegativeFormatZz3));
+                    break;
+            }
+
+            // Infobox Cinematographic Process
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessEn1));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessEn2));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessDe1));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessDe2));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessZz1));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessZz2));
+                    content.Add(Formatter.AsTableRow(dataCinematographicProcessZz3));
                     break;
             }
 
