@@ -131,9 +131,14 @@ namespace EntertainmentDB.Data
         public List<NegativeFormatItem> NegativeFormats { get; set; }
 
         /// <summary>
-        /// The list of cinematographic process of the movie.
+        /// The list of cinematographic processes of the movie.
         /// </summary>
         public List<CinematographicProcessItem> CinematographicProcesses { get; set; }
+
+        /// <summary>
+        /// The list of printed film formats of the movie.
+        /// </summary>
+        public List<PrintedFilmFormatItem> PrintedFilmFormats { get; set; }
 
         /// <summary>
         /// The list of directors of the movie.
@@ -259,6 +264,7 @@ namespace EntertainmentDB.Data
             FilmLengths = FilmLengthItem.RetrieveList(Reader, $"Movie", ID, "FilmLength") ?? FilmLengths;
             NegativeFormats = NegativeFormatItem.RetrieveList(Reader, $"Movie", ID, "NegativeFormat") ?? NegativeFormats;
             CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, $"Movie", ID, "CinematographicProcess") ?? CinematographicProcesses;
+            PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, $"Movie", ID, "PrintedFilmFormat") ?? PrintedFilmFormats;
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
@@ -275,6 +281,7 @@ namespace EntertainmentDB.Data
                    FilmLengths.Count +
                    NegativeFormats.Count +
                    CinematographicProcesses.Count +
+                   PrintedFilmFormats.Count +
 
                    Directors.Count;
         }

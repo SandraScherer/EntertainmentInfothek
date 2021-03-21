@@ -997,6 +997,58 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxPrintedFilmFormatTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxPrintedFilmFormat(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] dataEn1 = { "Printed Film Format", "Film Format Name X" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataDe1 = { "Filmformat", "Film Format Name X" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataZz1 = { "Filmformat", "Film Format Name X" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -1241,6 +1293,16 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCinematographicProcessZz1 = { "Filmprozess", "Cinematographic Process Name X" };
             string[] dataCinematographicProcessZz2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y" };
             string[] dataCinematographicProcessZz3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z" };
+
+            string[] dataPrintedFilmFormatEn1 = { "Printed Film Format", "Film Format Name X" };
+            string[] dataPrintedFilmFormatEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataPrintedFilmFormatEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataPrintedFilmFormatDe1 = { "Filmformat", "Film Format Name X" };
+            string[] dataPrintedFilmFormatDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataPrintedFilmFormatDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
+            string[] dataPrintedFilmFormatZz1 = { "Filmformat", "Film Format Name X" };
+            string[] dataPrintedFilmFormatZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y" };
+            string[] dataPrintedFilmFormatZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z" };
 
             string[] pathDirector = { value, "biography" };
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
@@ -1549,6 +1611,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataCinematographicProcessZz1));
                     content.Add(Formatter.AsTableRow(dataCinematographicProcessZz2));
                     content.Add(Formatter.AsTableRow(dataCinematographicProcessZz3));
+                    break;
+            }
+
+            // Infobox Printed Film Format
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatEn1));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatEn2));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatDe1));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatDe2));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatZz1));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatZz2));
+                    content.Add(Formatter.AsTableRow(dataPrintedFilmFormatZz3));
                     break;
             }
 

@@ -117,6 +117,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxFilmLength(targetLanguageCode);
             CreateInfoBoxNegativeFormat(targetLanguageCode);
             CreateInfoBoxCinematographicProcess(targetLanguageCode);
+            CreateInfoBoxPrintedFilmFormat(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
@@ -1071,6 +1072,58 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox printed film format of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxPrintedFilmFormat(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.PrintedFilmFormats.Count > 0)
+            {
+                Logger.Trace($"Anzahl PrintedFilmFormats: '{Movie.PrintedFilmFormats.Count}'");
+
+                string[] data = new string[2];
+
+                // TODO: Add information from Movie.PrintedFilmFormats[i].Details (if available)!
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Printed Film Format";
+                    data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Filmformat";
+                    data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>
