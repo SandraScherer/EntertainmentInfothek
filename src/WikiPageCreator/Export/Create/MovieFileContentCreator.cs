@@ -262,7 +262,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox title of the movie page.
+        /// Creates the formatted infobox title field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxTitle(string targetLanguageCode)
@@ -293,7 +293,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox type of the movie page.
+        /// Creates the formatted infobox type field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode"></param>
         public void CreateInfoBoxType(string targetLanguageCode)
@@ -328,7 +328,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox release date of the movie page.
+        /// Creates the formatted infobox release date field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxOriginalReleaseDate(string targetLanguageCode)
@@ -365,7 +365,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox genre of the movie page.
+        /// Creates the formatted infobox genre field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxGenre(string targetLanguageCode)
@@ -384,32 +384,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // TODO: Add information from Movie.Genres[i].Details (if available)
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Genre";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Genres[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle)} {Movie.Genres[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Genres.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Genres[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle)} {Movie.Genres[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Genre";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Genres[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle)} {Movie.Genres[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Genres.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Genres[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle)} {Movie.Genres[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
 
@@ -418,7 +448,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox country of the movie page.
+        /// Creates the formatted infobox country field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxCountry(string targetLanguageCode)
@@ -437,32 +467,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // TODO: Add information from Movie.Countries[i].Details (if available)
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Production Country";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)} {Movie.Countries[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Countries.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)} {Movie.Countries[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Produktionsland";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)} {Movie.Countries[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Countries.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)} {Movie.Countries[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
 
@@ -471,7 +531,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox language of the movie page.
+        /// Creates the formatted infobox language field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public virtual void CreateInfoBoxLanguage(string targetLanguageCode)
@@ -490,32 +550,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // TODO: Add information from Movie.Languages[0].Details (if available)
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Language";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Languages[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName)} {Movie.Languages[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Languages.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Languages[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName)} {Movie.Languages[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Sprache";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Languages[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName)} {Movie.Languages[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Languages.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Languages[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName)} {Movie.Languages[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -524,7 +614,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox budget of the movie page.
+        /// Creates the formatted infobox budget field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxBudget(string targetLanguageCode)
@@ -551,7 +641,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox  of the movie page.
+        /// Creates the formatted infobox worldwide gross field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxWorldwideGross(string targetLanguageCode)
@@ -604,7 +694,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox runtime of the movie page.
+        /// Creates the formatted infobox runtime field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxRuntime(string targetLanguageCode)
@@ -623,32 +713,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // TODO: Add information from Movie.Runtimes[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Runtime";
-                    data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)})";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Runtimes[0].Details))
+                    {
+                        data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)}) {Movie.Runtimes[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)})";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Runtimes.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)})";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Runtimes[i].Details))
+                        {
+                            data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)}) {Movie.Runtimes[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)})";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Laufzeit";
-                    data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)})";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Runtimes[0].Details))
+                    {
+                        data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)}) {Movie.Runtimes[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)})";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Runtimes.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)})";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Runtimes[i].Details))
+                        {
+                            data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)}) {Movie.Runtimes[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)})";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -657,7 +777,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox sound mixes of the movie page.
+        /// Creates the formatted infobox sound mixes field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxSoundMix(string targetLanguageCode)
@@ -676,32 +796,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // TODO: Add information from Movie.SoundMixees[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Sound Mix";
-                    data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.SoundMixes[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle)} {Movie.SoundMixes[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.SoundMixes.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.SoundMixes[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle)} {Movie.SoundMixes[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Tonmischung";
-                    data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.SoundMixes[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle)} {Movie.SoundMixes[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.SoundMixes.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.SoundMixes[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle)} {Movie.SoundMixes[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -710,7 +860,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox color of the movie page.
+        /// Creates the formatted infobox color field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxColor(string targetLanguageCode)
@@ -729,32 +879,62 @@ namespace WikiPageCreator.Export.Create
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "info" };
 
-                // Add information from Movie.Colors[i].Details (if available)
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Color";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.EnglishTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Colors[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.EnglishTitle)} {Movie.Colors[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.EnglishTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Colors.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.EnglishTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Colors[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.EnglishTitle)} {Movie.Colors[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.EnglishTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Farbe";
-                    data[1] = Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle);
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Colors[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle)} {Movie.Colors[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Colors.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle);
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Colors[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle)} {Movie.Colors[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -763,7 +943,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox aspect ratio of the movie page.
+        /// Creates the formatted infobox aspect ratio field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxAspectRatio(string targetLanguageCode)
@@ -781,32 +961,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // Add information from Movie.AspectRatios[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Aspect Ratio";
-                    data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.AspectRatios[0].Details))
+                    {
+                        data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.AspectRatios.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.AspectRatios[i].Details))
+                        {
+                            data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Bildformat";
-                    data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.AspectRatios[0].Details))
+                    {
+                        data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.AspectRatios.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.AspectRatios[i].Details))
+                        {
+                            data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -815,7 +1025,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox camera of the movie page.
+        /// Creates the formatted infobox camera field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxCamera(string targetLanguageCode)
@@ -833,32 +1043,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.Cameas[i].Details (if available)
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Camera";
-                    data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
+                    {
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Cameras.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
+                        {
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Kamera";
-                    data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
+                    {
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Cameras.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
+                        {
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -867,7 +1107,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox laboratory of the movie page.
+        /// Creates the formatted infobox laboratory field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxLaboratory(string targetLanguageCode)
@@ -885,32 +1125,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.Laboratories[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Laboratory";
-                    data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Laboratories[0].Details))
+                    {
+                        data[1] = $"{Movie.Laboratories[0].Laboratory.Name} {Movie.Laboratories[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Laboratories.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Laboratories[i].Details))
+                        {
+                            data[1] = $"{Movie.Laboratories[i].Laboratory.Name} {Movie.Laboratories[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Labor";
-                    data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.Laboratories[0].Details))
+                    {
+                        data[1] = $"{Movie.Laboratories[0].Laboratory.Name} {Movie.Laboratories[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.Laboratories.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.Laboratories[i].Details))
+                        {
+                            data[1] = $"{Movie.Laboratories[i].Laboratory.Name} {Movie.Laboratories[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -919,7 +1189,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox film length of the movie page.
+        /// Creates the formatted infobox film length field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxFilmLength(string targetLanguageCode)
@@ -937,32 +1207,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.FilmLengths[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Film Length";
-                    data[1] = $"{Movie.FilmLengths[0].Length}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.FilmLengths[0].Details))
+                    {
+                        data[1] = $"{Movie.FilmLengths[0].Length} {Movie.FilmLengths[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.FilmLengths[0].Length}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.FilmLengths.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.FilmLengths[i].Length}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.FilmLengths[i].Details))
+                        {
+                            data[1] = $"{Movie.FilmLengths[i].Length} {Movie.FilmLengths[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.FilmLengths[i].Length}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Filmlänge";
-                    data[1] = $"{Movie.FilmLengths[0].Length}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.FilmLengths[0].Details))
+                    {
+                        data[1] = $"{Movie.FilmLengths[0].Length} {Movie.FilmLengths[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.FilmLengths[0].Length}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.FilmLengths.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.FilmLengths[i].Length}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.FilmLengths[i].Details))
+                        {
+                            data[1] = $"{Movie.FilmLengths[i].Length} {Movie.FilmLengths[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.FilmLengths[i].Length}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -971,7 +1271,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox negative format of the movie page.
+        /// Creates the formatted infobox negative format field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxNegativeFormat(string targetLanguageCode)
@@ -989,32 +1289,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.NegativeFormats[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Negative Format";
-                    data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
+                    {
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
+                        {
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Negativformat";
-                    data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
+                    {
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
+                        {
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -1023,7 +1353,7 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox cinematographic process of the movie page.
+        /// Creates the formatted infobox cinematographic process field of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxCinematographicProcess(string targetLanguageCode)
@@ -1041,32 +1371,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.CinematographicProcesses[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Cinematographic Process";
-                    data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
+                    {
+                        data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name} {Movie.CinematographicProcesses[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[i].Details))
+                        {
+                            data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name} {Movie.CinematographicProcesses[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Filmprozess";
-                    data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
+                    {
+                        data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name} {Movie.CinematographicProcesses[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[i].Details))
+                        {
+                            data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name} {Movie.CinematographicProcesses[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
@@ -1093,32 +1453,62 @@ namespace WikiPageCreator.Export.Create
 
                 string[] data = new string[2];
 
-                // TODO: Add information from Movie.PrintedFilmFormats[i].Details (if available)!
-
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Printed Film Format";
-                    data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
+                    {
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
+                        {
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Filmformat";
-                    data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
-                    Content.Add(Formatter.AsTableRow(data));
+                    if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
+                    {
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
 
                     for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
+                        if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
+                        {
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
                     }
                 }
             }
