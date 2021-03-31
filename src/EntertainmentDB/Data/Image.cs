@@ -23,21 +23,36 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides an edition.
+    /// Provides an image.
     /// </summary>
-    public class Edition : Entry
+    public class Image : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The english title of the edition.
+        /// The file name of the image.
         /// </summary>
-        public string EnglishTitle { get; set; }
+        public string FileName { get; set; }
 
         /// <summary>
-        /// The german title of the edition.
+        /// The description of the image.
         /// </summary>
-        public string GermanTitle { get; set; }
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The type of the image.
+        /// </summary>
+        public Type Type { get; set; }
+
+        /// <summary>
+        /// The country of origin of the image.
+        /// </summary>
+        public Country Country { get; set; }
+
+        /// <summary>
+        /// The list of sources of the image.
+        /// </summary>
+        public List<CompanyItem> Sources { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -47,25 +62,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an edition with an empty id string.
+        /// Initializes an image with an empty id string.
         /// </summary>
-        public Edition() : this("")
+        public Image() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes an edition with the given id string.
+        /// Initializes an image with the given id string.
         /// </summary>
-        /// <param name="id">The id of the edition.</param>
+        /// <param name="id">The id of the image.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Edition(string id)
+        public Image(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Edition() angelegt");
+            Logger.Trace($"Image() angelegt");
 
             ID = id;
         }
@@ -73,7 +88,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the edition from the database.
+        /// Retrieves the basic information of the image from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
@@ -84,8 +99,8 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                           $"FROM Edition " +
+            Reader.Query = $"SELECT ID, FileName, Description, TypeID, CountryID, Details, StatusID, LastUpdated " +
+                           $"FROM Image " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -93,8 +108,20 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
+                FileName = row["FileName"].ToString();
+                Description = row["Description"].ToString();
+                if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
+                {
+                    Type = new Type();
+                    Type.ID = row["TypeID"].ToString();
+                    Type.RetrieveBasicInformation();
+                }
+                if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
+                {
+                    Country = new Country();
+                    Country.ID = row["CountryID"].ToString();
+                    Country.RetrieveBasicInformation();
+                }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -113,14 +140,24 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the edition from the database (none available).
+        /// Retrieves the additional information of the image from the database (none available).
         /// </summary>
-        /// <returns>0</returns>
+        /// <returns>The number of data records retrieved.</returns>
+        /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
         public override int RetrieveAdditionalInformation()
         {
-            // nothing to do
-            return 0;
+            if (Reader == null)
+            {
+                throw new NullReferenceException(nameof(Reader));
+            }
+            if (String.IsNullOrEmpty(ID))
+            {
+                throw new NullReferenceException(nameof(ID));
+            }
 
-        } // RetrieveAdditionalInformation()
+            Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source") ?? Sources;
+
+            return Sources.Count;
+        }
     }
 }

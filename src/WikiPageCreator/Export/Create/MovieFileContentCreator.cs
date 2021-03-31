@@ -104,6 +104,7 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxType(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxGenre(targetLanguageCode);
+            CreateInfoBoxCertification(targetLanguageCode);
             CreateInfoBoxCountry(targetLanguageCode);
             CreateInfoBoxLanguage(targetLanguageCode);
             CreateInfoBoxBudget(targetLanguageCode);
@@ -325,6 +326,8 @@ namespace WikiPageCreator.Export.Create
                     Content.Add(Formatter.AsTableRow(data));
                 }
             }
+
+            Logger.Trace($"CreateInfoBoxType() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>
@@ -442,9 +445,92 @@ namespace WikiPageCreator.Export.Create
                         }
                     }
                 }
-
-                Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
             }
+
+            Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox certification field of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxCertification(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Certifications.Count > 0)
+            {
+                Logger.Trace($"Anzahl Certifications: '{Movie.Certifications.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { ".", "certification" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Certification";
+                    if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+
+                    for (int i = 1; i < Movie.Certifications.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                    }
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Altersfreigabe";
+                    if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
+                    {
+                        data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+                    else
+                    {
+                        data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+
+                    for (int i = 1; i < Movie.Certifications.Count; i++)
+                    {
+                        data[0] = Formatter.CellSpanVertically();
+                        if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
+                        {
+                            data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                        else
+                        {
+                            data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                    }
+                }
+            }
+
+            Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>
@@ -525,9 +611,9 @@ namespace WikiPageCreator.Export.Create
                         }
                     }
                 }
-
-                Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
             }
+
+            Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>
@@ -637,7 +723,7 @@ namespace WikiPageCreator.Export.Create
                 Content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>
@@ -1595,6 +1681,8 @@ namespace WikiPageCreator.Export.Create
                 Content.Add("");
                 Content.Add("");
             }
+
+            Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
         /// <summary>

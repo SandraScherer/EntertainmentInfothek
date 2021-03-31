@@ -76,9 +76,14 @@ namespace EntertainmentDB.Data
         public Connection Connection { get; set; }
 
         /// <summary>
-        /// the list of genres of the movie.
+        /// The list of genres of the movie.
         /// </summary>
         public List<GenreItem> Genres { get; set; }
+
+        /// <summary>
+        /// The list of certifications of the movie.
+        /// </summary>
+        public List<CertificationItem> Certifications { get; set; }
 
         /// <summary>
         /// The list of countries of the movie.
@@ -253,6 +258,7 @@ namespace EntertainmentDB.Data
 
             // InfoBox data
             Genres = GenreItem.RetrieveList(Reader, $"Movie", ID, "Genre") ?? Genres;
+            Certifications = CertificationItem.RetrieveList(Reader, $"Movie", ID, "Certification") ?? Certifications;
             Countries = CountryItem.RetrieveList(Reader, $"Movie", ID, "Country") ?? Countries;
             Languages = LanguageItem.RetrieveList(Reader, $"Movie", ID, "Language") ?? Languages;
             Runtimes = RuntimeItem.RetrieveList(Reader, $"Movie", ID, "Runtime") ?? Runtimes;
@@ -270,6 +276,7 @@ namespace EntertainmentDB.Data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
 
             return Genres.Count +
+                   Certifications.Count +
                    Countries.Count +
                    Languages.Count +
                    Runtimes.Count +

@@ -23,21 +23,21 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides an edition.
+    /// Provides a company.
     /// </summary>
-    public class Edition : Entry
+    public class Company : Entry
     {
         // --- Properties ---
 
         /// <summary>
-        /// The english title of the edition.
+        /// The name of the company.
         /// </summary>
-        public string EnglishTitle { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// The german title of the edition.
+        /// The name addon of the company.
         /// </summary>
-        public string GermanTitle { get; set; }
+        public string NameAddOn { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -47,25 +47,25 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an edition with an empty id string.
+        /// Initializes a company with an empty id string.
         /// </summary>
-        public Edition() : this("")
+        public Company() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes an edition with the given id string.
+        ///  Initializes a company with the given id string.
         /// </summary>
-        /// <param name="id">The id of the edition.</param>
+        /// <param name="id">The id of the company.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Edition(string id)
+        public Company(string id)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"Edition() angelegt");
+            Logger.Trace($"Company() angelegt");
 
             ID = id;
         }
@@ -73,7 +73,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the edition from the database.
+        /// Retrieves the basic information of the company from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
@@ -84,8 +84,8 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
-                           $"FROM Edition " +
+            Reader.Query = $"SELECT ID, Name, NameAddOn, Details, StatusID, LastUpdated " +
+                           $"FROM Company " +
                            $"WHERE ID=\"{ID}\"";
 
             if (1 == Reader.Retrieve())
@@ -93,8 +93,8 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                EnglishTitle = row["EnglishTitle"].ToString();
-                GermanTitle = row["GermanTitle"].ToString();
+                Name = row["Name"].ToString();
+                NameAddOn = row["NameAddOn"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
@@ -113,14 +113,13 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the edition from the database (none available).
+        /// Retrieves the additional information of the company from the database (none available).
         /// </summary>
         /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()
         {
             // nothing to do
             return 0;
-
-        } // RetrieveAdditionalInformation()
+        }
     }
 }

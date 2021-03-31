@@ -350,6 +350,59 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
+        [TestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxCertificationTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxCertification(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { ".", "certification" };
+            string[] dataEn1 = { "Certification", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataDe1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataZz1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn1));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe1));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataZz1));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
+                    break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
         [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
@@ -1170,6 +1223,17 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataGenreZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y")} Movie Genre Details X2" };
             string[] dataGenreZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z")} Movie Genre Details X3" };
 
+            string[] pathCertification = { ".", "certification" };
+            string[] dataCertificationEn1 = { "Certification", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataCertificationDe1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataCertificationZz1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
+
             string[] pathCountry = { value, "info" };
             string[] dataCountryEn1 = { "Production Country", $"{Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country English Name X")} Movie Country Details X1" };
             string[] dataCountryEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country English Name Y")} Movie Country Details X2" };
@@ -1375,6 +1439,26 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataGenreZz1));
                     content.Add(Formatter.AsTableRow(dataGenreZz2));
                     content.Add(Formatter.AsTableRow(dataGenreZz3));
+                    break;
+            }
+
+            // InfoBox Certification
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataCertificationEn1));
+                    content.Add(Formatter.AsTableRow(dataCertificationEn2));
+                    content.Add(Formatter.AsTableRow(dataCertificationEn3));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataCertificationDe1));
+                    content.Add(Formatter.AsTableRow(dataCertificationDe2));
+                    content.Add(Formatter.AsTableRow(dataCertificationDe3));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataCertificationZz1));
+                    content.Add(Formatter.AsTableRow(dataCertificationZz2));
+                    content.Add(Formatter.AsTableRow(dataCertificationZz3));
                     break;
             }
 

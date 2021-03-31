@@ -24,16 +24,16 @@ using System.Text;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a cinematographic process item.
+    /// Provides a certification item.
     /// </summary>
-    public class CinematographicProcessItem : EntryItem
+    public class CertificationItem : EntryItem
     {
         // --- Properties ---
 
         /// <summary>
-        /// The cinematographic process of the cinematographic process item.
+        /// The certification of the certification item.
         /// </summary>
-        public CinematographicProcess CinematographicProcess { get; set; }
+        public Certification Certification { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -43,19 +43,19 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a cinematographic process item with an empty id string.
+        /// Initializes a certification item with an empty id string.
         /// </summary>
-        public CinematographicProcessItem() : this("")
+        public CertificationItem() : this("")
         {
         }
 
         /// <summary>
-        /// Initializes a cinematographic process item with the given id string.
+        /// Initializes a certification item with the given id string.
         /// </summary>
-        /// <param name="id">The id of the cinematographic process item.</param>
-        /// <param name="targetTableName">The target table name of the cinematographic process item.</param>
+        /// <param name="id">The id of the certification item.</param>
+        /// <param name="targetTableName">The target table name of the certification item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public CinematographicProcessItem(string id, string targetTableName = "CinematographicProcess")
+        public CertificationItem(string id, string targetTableName = "Certification")
         {
             if (id == null)
             {
@@ -66,7 +66,7 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Logger.Trace($"CinematographicProcessItem() angelegt");
+            Logger.Trace($"CertificationItem() angelegt");
 
             ID = id;
             TargetTableName = targetTableName;
@@ -75,7 +75,7 @@ namespace EntertainmentDB.Data
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the cinematographic process item from the database.
+        /// Retrieves the basic information of the certification item from the database.
         /// </summary>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
@@ -94,7 +94,7 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(TargetTableName));
             }
 
-            Reader.Query = $"SELECT ID, CinematographicProcessID, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, CertificationID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -103,11 +103,11 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                if (!String.IsNullOrEmpty(row["CinematographicProcessID"].ToString()))
+                if (!String.IsNullOrEmpty(row["CertificationID"].ToString()))
                 {
-                    CinematographicProcess = new CinematographicProcess();
-                    CinematographicProcess.ID = row["CinematographicProcessID"].ToString();
-                    CinematographicProcess.RetrieveBasicInformation();
+                    Certification = new Certification();
+                    Certification.ID = row["CertificationID"].ToString();
+                    Certification.RetrieveBasicInformation();
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
@@ -127,7 +127,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the cinematographic process item from the database (none available).
+        /// Retrieves the additional information of the certification item from the database (none available).
         /// </summary>
         /// <returns>0</returns>
         public override int RetrieveAdditionalInformation()
@@ -137,17 +137,17 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves a list of cinematographic process items from the database.
+        /// Retrieves a list of certification items from the database.
         /// </summary>
         /// <param name="reader">The reader to be used to retrieve the data records.</param>
-        /// <param name="baseTableName">The base table name of the cinematographic process item.</param>
-        /// <param name="baseTableID">The base table id of the cinematographic process item.</param>
-        /// <param name="targetTableName">The target table name of the cinematographic process item.</param>
+        /// <param name="baseTableName">The base table name of the certification item.</param>
+        /// <param name="baseTableID">The base table id of the certification item.</param>
+        /// <param name="targetTableName">The target table name of the certification item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
-        public static List<CinematographicProcessItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "CinematographicProcess", string order = "ID")
+        public static List<CertificationItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "Certification", string order = "ID")
         {
             if (reader == null)
             {
@@ -177,7 +177,7 @@ namespace EntertainmentDB.Data
                            $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
                            $"ORDER BY {order}";
 
-            List<CinematographicProcessItem> list = new List<CinematographicProcessItem>();
+            List<CertificationItem> list = new List<CertificationItem>();
 
             if (reader.Retrieve() > 0)
             {
@@ -185,7 +185,7 @@ namespace EntertainmentDB.Data
 
                 foreach (DataRow row in reader.Table.Rows)
                 {
-                    CinematographicProcessItem item = new CinematographicProcessItem();
+                    CertificationItem item = new CertificationItem();
                     item.BaseTableName = baseTableName;
 
                     item.ID = row["ID"].ToString();

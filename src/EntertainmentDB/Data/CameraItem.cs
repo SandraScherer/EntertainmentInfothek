@@ -1,5 +1,5 @@
 ﻿// EntertainmentDB.dll: Provides access to the EntertainmentInfothek.db
-// Copyright (C) 2020 Sandra Scherer
+// Copyright (C) 2021 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

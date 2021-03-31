@@ -24,13 +24,13 @@ using System.Text;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class CameraTests
+    public class CompanyTests
     {
         [TestMethod()]
-        public void CameraTest()
+        public void CompanyTest()
         {
             // Arrange
-            Camera entry = new Camera();
+            Company entry = new Company();
 
             // Act
             // Assert
@@ -39,17 +39,17 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void CameraTest_withID()
+        public void CompanyTest_withID()
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            Company entry = new Company("_xxx");
 
             // Act
             // Assert
@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -68,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID()
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            Company entry = new Company("_xxx");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -77,18 +77,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
-            Assert.AreEqual("Camera Details X", entry.Details);
+            Assert.AreEqual("Company Name X", entry.Name);
+            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID()
         {
             // Arrange
-            Camera entry = new Camera("_aaa");
+            Company entry = new Company("_aaa");
 
             // Act
             int count = entry.RetrieveBasicInformation();
@@ -98,7 +98,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID()
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            Company entry = new Company("_xxx");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID()
         {
             // Arrange
-            Camera entry = new Camera("_aaa");
+            Company entry = new Company("_aaa");
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -134,7 +134,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID()
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            Company entry = new Company("_xxx");
 
             // Act
             int count = entry.Retrieve();
@@ -143,18 +143,18 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
-            Assert.AreEqual("Camera Details X", entry.Details);
+            Assert.AreEqual("Company Name X", entry.Name);
+            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
         }
 
         [TestMethod()]
         public void RetrieveTest_withInvalidID()
         {
             // Arrange
-            Camera entry = new Camera("_aaa");
+            Company entry = new Company("_aaa");
 
             // Act
             int count = entry.Retrieve();
@@ -164,7 +164,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);

@@ -25,43 +25,43 @@ using EntertainmentDB.DBAccess.Read;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class LaboratoryItemTests
+    public class CertificationItemTests
     {
         [TestMethod()]
-        public void LaboratoryItemTest()
+        public void CertificationItemTest()
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem();
+            CertificationItem item = new CertificationItem();
 
             // Act
             // Assert
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Laboratory", item.TargetTableName);
+            Assert.AreEqual("Certification", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
-            Assert.IsNull(item.Laboratory);
+            Assert.IsNull(item.Certification);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [TestMethod()]
-        public void LaboratoryItemTest_withID()
+        public void CertificationItemTest_withID()
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_xx1");
+            CertificationItem item = new CertificationItem("_xx1");
 
             // Act
             // Assert
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Laboratory", item.TargetTableName);
+            Assert.AreEqual("Certification", item.TargetTableName);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.IsNull(item.Laboratory);
+            Assert.IsNull(item.Certification);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_xx1");
+            CertificationItem item = new CertificationItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -82,10 +82,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual("_xxx", item.Laboratory.ID);
-            Assert.AreEqual($"{value} Laboratory Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Certification.ID);
+            Assert.AreEqual($"{value} Certification Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Laboratory Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Certification Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_aa1");
+            CertificationItem item = new CertificationItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -103,7 +103,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aa1", item.ID);
-            Assert.IsNull(item.Laboratory);
+            Assert.IsNull(item.Certification);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_xx1");
+            CertificationItem item = new CertificationItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -129,7 +129,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_aa1");
+            CertificationItem item = new CertificationItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -144,7 +144,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_xx1");
+            CertificationItem item = new CertificationItem("_xx1");
             item.BaseTableName = value;
 
             // Act
@@ -154,10 +154,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual("_xxx", item.Laboratory.ID);
-            Assert.AreEqual($"{value} Laboratory Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Certification.ID);
+            Assert.AreEqual($"{value} Certification Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Laboratory Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Certification Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -165,7 +165,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID(string value)
         {
             // Arrange
-            LaboratoryItem item = new LaboratoryItem("_aa1");
+            CertificationItem item = new CertificationItem("_aa1");
             item.BaseTableName = value;
 
             // Act
@@ -175,12 +175,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aa1", item.ID);
-            Assert.IsNull(item.Laboratory);
+            Assert.IsNull(item.Certification);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
-
 
         [DataTestMethod()]
         [DataRow("Movie")]
@@ -190,28 +189,28 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, value, "_xxx");
+            List<CertificationItem> list = Data.CertificationItem.RetrieveList(reader, value, "_xxx");
 
             // Assert
             Assert.AreEqual(3, list.Count);
 
             Assert.AreEqual("_xx1", list[0].ID);
-            Assert.AreEqual("_xxx", list[0].Laboratory.ID);
-            Assert.AreEqual($"{value} Laboratory Details X1", list[0].Details);
+            Assert.AreEqual("_xxx", list[0].Certification.ID);
+            Assert.AreEqual($"{value} Certification Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Laboratory Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} Certification Last Updated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
-            Assert.AreEqual("_yyy", list[1].Laboratory.ID);
-            Assert.AreEqual($"{value} Laboratory Details X2", list[1].Details);
+            Assert.AreEqual("_yyy", list[1].Certification.ID);
+            Assert.AreEqual($"{value} Certification Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} Laboratory Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} Certification Last Updated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
-            Assert.AreEqual("_zzz", list[2].Laboratory.ID);
-            Assert.AreEqual($"{value} Laboratory Details X3", list[2].Details);
+            Assert.AreEqual("_zzz", list[2].Certification.ID);
+            Assert.AreEqual($"{value} Certification Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} Laboratory Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} Certification Last Updated X3", list[2].LastUpdated);
         }
     }
 }
