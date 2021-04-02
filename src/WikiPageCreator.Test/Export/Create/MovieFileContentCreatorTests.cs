@@ -1139,6 +1139,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
             string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
 
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematographer Role X1) Movie Cinematographer Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1208,6 +1212,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataMusician1));
             content.Add(Formatter.AsTableRow(dataMusician2));
             content.Add(Formatter.AsTableRow(dataMusician3));
+            content.Add($"");
+            content.Add($"");
+
+            // Cinematographer
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Cinematography by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kamera")); break;
+                default: content.Add(Formatter.AsHeading3("Kamera")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCinematographer1));
+            content.Add(Formatter.AsTableRow(dataCinematographer2));
+            content.Add(Formatter.AsTableRow(dataCinematographer3));
             content.Add($"");
             content.Add($"");
 
@@ -1458,6 +1475,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Musician Role X1) Movie Musician Details X1" };
             string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
             string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
+
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematographer Role X1) Movie Cinematographer Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1879,6 +1900,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataMusician1));
             content.Add(Formatter.AsTableRow(dataMusician2));
             content.Add(Formatter.AsTableRow(dataMusician3));
+            content.Add($"");
+            content.Add($"");
+
+            // Cinematographer
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Cinematography by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kamera")); break;
+                default: content.Add(Formatter.AsHeading3("Kamera")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCinematographer1));
+            content.Add(Formatter.AsTableRow(dataCinematographer2));
+            content.Add(Formatter.AsTableRow(dataCinematographer3));
             content.Add($"");
             content.Add($"");
 
