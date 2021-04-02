@@ -1624,53 +1624,93 @@ namespace WikiPageCreator.Export.Create
                 Content.Add(Formatter.AsHeading2("Darsteller und Mannschaft"));
             }
 
+            string[] heading = new string[2];
+
             // Directors
-            if (Movie.Directors.Count > 0)
+            heading[0] = "Director";
+            heading[1] = "Regie";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Directors);
+
+            // Writers
+            heading[0] = "Writing Credits";
+            heading[1] = "Drehbuch";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Writers);
+
+            // Cast
+            heading[0] = "Cast";
+            heading[1] = "Darsteller";
+            CreateCastPersonItemSection(targetLanguageCode, heading, Movie.Cast);
+
+            Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates a formatted person section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="heading">The heading for the section; [0] english; [1] german.</param>
+        /// <param name="persons">The list of persons for the section.</param>
+        private void CreatePersonItemSection(string targetLanguageCode, string[] heading, List<PersonItem> persons)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
             {
-                Logger.Trace($"Anzahl Directors: '{Movie.Directors.Count}'");
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (heading.Length != 2)
+            {
+                throw new ArgumentException(nameof(heading));
+            }
+            if (persons == null)
+            {
+                throw new ArgumentNullException(nameof(persons));
+            }
+
+            if (persons.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}: '{persons.Count}'");
 
                 string[] data = new string[2];
                 string[] path = { targetLanguageCode, "biography" };
 
                 if (targetLanguageCode.Equals("en"))
                 {
-                    Content.Add(Formatter.AsHeading3("Director"));
+                    Content.Add(Formatter.AsHeading3(heading[0]));
                 }
                 else // incl. case "de"
                 {
-                    Content.Add(Formatter.AsHeading3("Regie"));
+                    Content.Add(Formatter.AsHeading3(heading[1]));
                 }
 
-                for (int i = 0; i < Movie.Directors.Count; i++)
+                for (int i = 0; i < persons.Count; i++)
                 {
-                    if (!String.IsNullOrEmpty(Movie.Directors[i].Person.FirstName) && !String.IsNullOrEmpty(Movie.Directors[i].Person.LastName) && !String.IsNullOrEmpty(Movie.Directors[i].Person.NameAddOn))
+                    if (!String.IsNullOrEmpty(persons[i].Person.FirstName) && !String.IsNullOrEmpty(persons[i].Person.LastName) && !String.IsNullOrEmpty(persons[i].Person.NameAddOn))
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName} {Movie.Directors[i].Person.NameAddOn}");
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.FirstName} {persons[i].Person.LastName} {persons[i].Person.NameAddOn}");
                     }
-                    else if (!String.IsNullOrEmpty(Movie.Directors[i].Person.FirstName) && !String.IsNullOrEmpty(Movie.Directors[i].Person.LastName))
+                    else if (!String.IsNullOrEmpty(persons[i].Person.FirstName) && !String.IsNullOrEmpty(persons[i].Person.LastName))
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.FirstName} {Movie.Directors[i].Person.LastName}");
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.FirstName} {persons[i].Person.LastName}");
                     }
-                    else if (!String.IsNullOrEmpty(Movie.Directors[i].Person.LastName) && !String.IsNullOrEmpty(Movie.Directors[i].Person.NameAddOn))
+                    else if (!String.IsNullOrEmpty(persons[i].Person.LastName) && !String.IsNullOrEmpty(persons[i].Person.NameAddOn))
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.LastName} {Movie.Directors[i].Person.NameAddOn}");
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.LastName} {persons[i].Person.NameAddOn}");
                     }
                     else
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{Movie.Directors[i].Person.LastName}");
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.LastName}");
                     }
 
-                    if (!String.IsNullOrEmpty(Movie.Directors[i].Role) && !String.IsNullOrEmpty(Movie.Directors[i].Details))
+                    if (!String.IsNullOrEmpty(persons[i].Role) && !String.IsNullOrEmpty(persons[i].Details))
                     {
-                        data[1] = $"({Movie.Directors[i].Role}) {Movie.Directors[i].Details}";
+                        data[1] = $"({persons[i].Role}) {persons[i].Details}";
                     }
-                    else if (!String.IsNullOrEmpty(Movie.Directors[i].Role))
+                    else if (!String.IsNullOrEmpty(persons[i].Role))
                     {
-                        data[1] = $"({Movie.Directors[i].Role}";
+                        data[1] = $"({persons[i].Role}";
                     }
-                    else if (!String.IsNullOrEmpty(Movie.Directors[i].Details))
+                    else if (!String.IsNullOrEmpty(persons[i].Details))
                     {
-                        data[1] = $"({Movie.Directors[i].Details}";
+                        data[1] = $"({persons[i].Details}";
                     }
                     else
                     {
@@ -1681,8 +1721,87 @@ namespace WikiPageCreator.Export.Create
                 Content.Add("");
                 Content.Add("");
             }
+        }
 
-            Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        /// <summary>
+        /// Creates a formatted cast person section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="heading">The heading for the section; [0] english; [1] german.</param>
+        /// <param name="persons">The list of persons for the section.</param>
+        private void CreateCastPersonItemSection(string targetLanguageCode, string[] heading, List<CastPersonItem> persons)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (heading.Length != 2)
+            {
+                throw new ArgumentException(nameof(heading));
+            }
+            if (persons == null)
+            {
+                throw new ArgumentNullException(nameof(persons));
+            }
+
+            if (persons.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}: '{persons.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "biography" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < persons.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(persons[i].Person.FirstName) && !String.IsNullOrEmpty(persons[i].Person.LastName) && !String.IsNullOrEmpty(persons[i].Person.NameAddOn))
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.FirstName} {persons[i].Person.LastName} {persons[i].Person.NameAddOn}");
+                    }
+                    else if (!String.IsNullOrEmpty(persons[i].Person.FirstName) && !String.IsNullOrEmpty(persons[i].Person.LastName))
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.FirstName} {persons[i].Person.LastName}");
+                    }
+                    else if (!String.IsNullOrEmpty(persons[i].Person.LastName) && !String.IsNullOrEmpty(persons[i].Person.NameAddOn))
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.LastName} {persons[i].Person.NameAddOn}");
+                    }
+                    else
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.LastName}");
+                    }
+
+                    // TODO: add dubbing information
+
+                    if (!String.IsNullOrEmpty(persons[i].Role) && !String.IsNullOrEmpty(persons[i].Details))
+                    {
+                        data[1] = $"({persons[i].Role}) {persons[i].Details}";
+                    }
+                    else if (!String.IsNullOrEmpty(persons[i].Role))
+                    {
+                        data[1] = $"({persons[i].Role}";
+                    }
+                    else if (!String.IsNullOrEmpty(persons[i].Details))
+                    {
+                        data[1] = $"({persons[i].Details}";
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+                Content.Add("");
+                Content.Add("");
+            }
         }
 
         /// <summary>

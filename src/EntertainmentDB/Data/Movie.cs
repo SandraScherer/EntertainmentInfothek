@@ -151,6 +151,16 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Directors { get; set; }
 
         /// <summary>
+        /// The list of writers of the movie.
+        /// </summary>
+        public List<PersonItem> Writers { get; set; }
+
+        /// <summary>
+        /// The list of the cast of the movie.
+        /// </summary>
+        public List<CastPersonItem> Cast { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -274,6 +284,8 @@ namespace EntertainmentDB.Data
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, $"Movie", ID, "Director") ?? Directors;
+            Writers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Writer") ?? Writers;
+            Cast = CastPersonItem.RetrieveList(Reader, $"Movie", ID, "Cast") ?? Cast;
 
             return Genres.Count +
                    Certifications.Count +
@@ -290,7 +302,9 @@ namespace EntertainmentDB.Data
                    CinematographicProcesses.Count +
                    PrintedFilmFormats.Count +
 
-                   Directors.Count;
+                   Directors.Count +
+                   Writers.Count +
+                   Cast.Count;
         }
 
         /// <summary>

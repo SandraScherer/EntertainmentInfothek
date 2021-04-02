@@ -1123,12 +1123,21 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
             string[] dataDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
 
+            string[] dataWriter1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
+            string[] dataWriter2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
+            string[] dataWriter3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
+
+            string[] dataCast1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cast Character X1) Movie Cast Details X1" };
+            string[] dataCast2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2" };
+            string[] dataCast3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
                 case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading3("Director")); break;
@@ -1138,6 +1147,31 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataDirector1));
             content.Add(Formatter.AsTableRow(dataDirector2));
             content.Add(Formatter.AsTableRow(dataDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Writing Credits")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehbuch")); break;
+                default: content.Add(Formatter.AsHeading3("Drehbuch")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataWriter1));
+            content.Add(Formatter.AsTableRow(dataWriter2));
+            content.Add(Formatter.AsTableRow(dataWriter3));
+            content.Add($"");
+            content.Add($"");
+
+            // Cast
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Cast")); break;
+                case "de": content.Add(Formatter.AsHeading3("Darsteller")); break;
+                default: content.Add(Formatter.AsHeading3("Darsteller")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCast1));
+            content.Add(Formatter.AsTableRow(dataCast2));
+            content.Add(Formatter.AsTableRow(dataCast3));
             content.Add($"");
             content.Add($"");
 
@@ -1372,6 +1406,14 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
             string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
             string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
+
+            string[] dataWriter1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
+            string[] dataWriter2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
+            string[] dataWriter3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
+
+            string[] dataCast1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cast Character X1) Movie Cast Details X1" };
+            string[] dataCast2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2" };
+            string[] dataCast3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1741,6 +1783,32 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataDirector1));
             content.Add(Formatter.AsTableRow(dataDirector2));
             content.Add(Formatter.AsTableRow(dataDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            // Writer
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Writing Credits")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehbuch")); break;
+                default: content.Add(Formatter.AsHeading3("Drehbuch")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataWriter1));
+            content.Add(Formatter.AsTableRow(dataWriter2));
+            content.Add(Formatter.AsTableRow(dataWriter3));
+            content.Add($"");
+            content.Add($"");
+
+            // Cast
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Cast")); break;
+                case "de": content.Add(Formatter.AsHeading3("Darsteller")); break;
+                default: content.Add(Formatter.AsHeading3("Darsteller")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCast1));
+            content.Add(Formatter.AsTableRow(dataCast2));
+            content.Add(Formatter.AsTableRow(dataCast3));
             content.Add($"");
             content.Add($"");
 
