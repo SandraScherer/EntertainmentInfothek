@@ -1135,6 +1135,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProducer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
             string[] dataProducer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
+            string[] dataMusician1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Musician Role X1) Movie Musician Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1191,6 +1195,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProducer1));
             content.Add(Formatter.AsTableRow(dataProducer2));
             content.Add(Formatter.AsTableRow(dataProducer3));
+            content.Add($"");
+            content.Add($"");
+
+            // Musician
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Music by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Musik")); break;
+                default: content.Add(Formatter.AsHeading3("Musik")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataMusician1));
+            content.Add(Formatter.AsTableRow(dataMusician2));
+            content.Add(Formatter.AsTableRow(dataMusician3));
             content.Add($"");
             content.Add($"");
 
@@ -1437,6 +1454,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProducer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
             string[] dataProducer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
             string[] dataProducer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
+
+            string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Musician Role X1) Movie Musician Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1845,6 +1866,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProducer1));
             content.Add(Formatter.AsTableRow(dataProducer2));
             content.Add(Formatter.AsTableRow(dataProducer3));
+            content.Add($"");
+            content.Add($"");
+
+            // Musician
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Music by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Musik")); break;
+                default: content.Add(Formatter.AsHeading3("Musik")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataMusician1));
+            content.Add(Formatter.AsTableRow(dataMusician2));
+            content.Add(Formatter.AsTableRow(dataMusician3));
             content.Add($"");
             content.Add($"");
 

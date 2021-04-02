@@ -166,6 +166,11 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Producers { get; set; }
 
         /// <summary>
+        /// The list of musicians of the movie.
+        /// </summary>
+        public List<PersonItem> Musicians { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -292,6 +297,7 @@ namespace EntertainmentDB.Data
             Writers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Writer") ?? Writers;
             Cast = CastPersonItem.RetrieveList(Reader, $"Movie", ID, "Cast") ?? Cast;
             Producers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Producer") ?? Producers;
+            Musicians = PersonItem.RetrieveList(Reader, $"Movie", ID, "Musician") ?? Musicians;
 
             return Genres.Count +
                    Certifications.Count +
@@ -311,7 +317,8 @@ namespace EntertainmentDB.Data
                    Directors.Count +
                    Writers.Count +
                    Cast.Count +
-                   Producers.Count;
+                   Producers.Count +
+                   Musicians.Count;
         }
 
         /// <summary>

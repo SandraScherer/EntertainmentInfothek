@@ -1647,6 +1647,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Produzenten";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Producers);
 
+            // Musicians
+            heading[0] = "Music by";
+            heading[1] = "Musik";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Musicians);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
