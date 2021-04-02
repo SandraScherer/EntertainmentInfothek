@@ -1657,6 +1657,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Kamera";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Cinematographers);
 
+            // FilmEditor
+            heading[0] = "Film Editing by";
+            heading[1] = "Schnitt";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.FilmEditors);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

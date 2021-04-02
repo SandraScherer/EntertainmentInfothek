@@ -75,6 +75,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveBasicInformationTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -101,6 +102,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -127,6 +129,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveAdditionalInformationTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -146,6 +149,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveAdditionalInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -165,6 +169,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -191,6 +196,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -217,6 +223,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
+        [DataRow("Movie", "FilmEditor")]
         public void RetrieveListTest_withValidData(string value, string value2)
         {
             // Arrange

@@ -1143,6 +1143,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
             string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
 
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie FilmEditor Role X1) Movie FilmEditor Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie FilmEditor Role X2) Movie FilmEditor Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie FilmEditor Role X3) Movie FilmEditor Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1225,6 +1229,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataCinematographer1));
             content.Add(Formatter.AsTableRow(dataCinematographer2));
             content.Add(Formatter.AsTableRow(dataCinematographer3));
+            content.Add($"");
+            content.Add($"");
+
+            // Film Editor
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Film Editing by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Schnitt")); break;
+                default: content.Add(Formatter.AsHeading3("Schnitt")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataFilmEditor1));
+            content.Add(Formatter.AsTableRow(dataFilmEditor2));
+            content.Add(Formatter.AsTableRow(dataFilmEditor3));
             content.Add($"");
             content.Add($"");
 
@@ -1479,6 +1496,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematographer Role X1) Movie Cinematographer Details X1" };
             string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
             string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
+
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie FilmEditor Role X1) Movie FilmEditor Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie FilmEditor Role X2) Movie FilmEditor Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie FilmEditor Role X3) Movie FilmEditor Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1913,6 +1934,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataCinematographer1));
             content.Add(Formatter.AsTableRow(dataCinematographer2));
             content.Add(Formatter.AsTableRow(dataCinematographer3));
+            content.Add($"");
+            content.Add($"");
+
+            // Film Editor
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Film Editing by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Schnitt")); break;
+                default: content.Add(Formatter.AsHeading3("Schnitt")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataFilmEditor1));
+            content.Add(Formatter.AsTableRow(dataFilmEditor2));
+            content.Add(Formatter.AsTableRow(dataFilmEditor3));
             content.Add($"");
             content.Add($"");
 
