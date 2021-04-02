@@ -70,6 +70,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Directors);
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
+            Assert.IsNull(entry.Producers);
         }
 
         [TestMethod()]
@@ -115,6 +116,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Directors);
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
+            Assert.IsNull(entry.Producers);
         }
 
         [TestMethod()]
@@ -161,6 +163,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Directors);
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
+            Assert.IsNull(entry.Producers);
         }
 
         [TestMethod()]
@@ -207,6 +210,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Directors);
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
+            Assert.IsNull(entry.Producers);
         }
 
         [TestMethod()]
@@ -219,7 +223,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((16 * 3 + 1), count);
+            Assert.AreEqual((17 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -306,6 +310,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Cast[0].ID);
             Assert.AreEqual("_xx2", entry.Cast[1].ID);
             Assert.AreEqual("_xx3", entry.Cast[2].ID);
+
+            Assert.AreEqual(3, entry.Producers.Count);
+            Assert.AreEqual("_xx1", entry.Producers[0].ID);
+            Assert.AreEqual("_xx2", entry.Producers[1].ID);
+            Assert.AreEqual("_xx3", entry.Producers[2].ID);
         }
 
         [TestMethod()]
@@ -432,6 +441,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Cast[0].ID);
             Assert.AreEqual("_xx2", entry.Cast[1].ID);
             Assert.AreEqual("_xx3", entry.Cast[2].ID);
+
+            Assert.AreEqual(3, entry.Producers.Count);
+            Assert.AreEqual("_xx1", entry.Producers[0].ID);
+            Assert.AreEqual("_xx2", entry.Producers[1].ID);
+            Assert.AreEqual("_xx3", entry.Producers[2].ID);
         }
 
         [TestMethod()]

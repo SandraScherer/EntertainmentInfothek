@@ -1131,6 +1131,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCast2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2" };
             string[] dataCast3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3" };
 
+            string[] dataProducer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
+            string[] dataProducer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
+            string[] dataProducer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1138,9 +1142,10 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
 
+            // Director
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Director")); break;
+                case "en": content.Add(Formatter.AsHeading3("Directed by")); break;
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
@@ -1150,6 +1155,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Writer
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading3("Writing Credits")); break;
@@ -1172,6 +1178,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataCast1));
             content.Add(Formatter.AsTableRow(dataCast2));
             content.Add(Formatter.AsTableRow(dataCast3));
+            content.Add($"");
+            content.Add($"");
+
+            // Producer
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Produced by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produzenten")); break;
+                default: content.Add(Formatter.AsHeading3("Produzenten")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataProducer1));
+            content.Add(Formatter.AsTableRow(dataProducer2));
+            content.Add(Formatter.AsTableRow(dataProducer3));
             content.Add($"");
             content.Add($"");
 
@@ -1414,6 +1433,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataCast1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cast Character X1) Movie Cast Details X1" };
             string[] dataCast2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2" };
             string[] dataCast3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3" };
+
+            string[] dataProducer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
+            string[] dataProducer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
+            string[] dataProducer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1776,7 +1799,7 @@ namespace WikiPageCreator.Export.Create.Tests
             // Director
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Director")); break;
+                case "en": content.Add(Formatter.AsHeading3("Directed by")); break;
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
@@ -1809,6 +1832,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataCast1));
             content.Add(Formatter.AsTableRow(dataCast2));
             content.Add(Formatter.AsTableRow(dataCast3));
+            content.Add($"");
+            content.Add($"");
+
+            // Producer
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Produced by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produzenten")); break;
+                default: content.Add(Formatter.AsHeading3("Produzenten")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataProducer1));
+            content.Add(Formatter.AsTableRow(dataProducer2));
+            content.Add(Formatter.AsTableRow(dataProducer3));
             content.Add($"");
             content.Add($"");
 

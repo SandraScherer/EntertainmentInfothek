@@ -1627,7 +1627,7 @@ namespace WikiPageCreator.Export.Create
             string[] heading = new string[2];
 
             // Directors
-            heading[0] = "Director";
+            heading[0] = "Directed by";
             heading[1] = "Regie";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Directors);
 
@@ -1637,9 +1637,15 @@ namespace WikiPageCreator.Export.Create
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Writers);
 
             // Cast
+            // TODO add cast status
             heading[0] = "Cast";
             heading[1] = "Darsteller";
             CreateCastPersonItemSection(targetLanguageCode, heading, Movie.Cast);
+
+            // Producers
+            heading[0] = "Produced by";
+            heading[1] = "Produzenten";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Producers);
 
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
