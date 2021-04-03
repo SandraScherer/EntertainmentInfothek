@@ -75,12 +75,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveBasicInformationTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2);
+            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -103,12 +104,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2);
+            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -131,12 +133,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveAdditionalInformationTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2);
+            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -152,12 +155,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveAdditionalInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2);
+            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -173,12 +177,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2);
+            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -201,12 +206,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2);
+            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
             item.BaseTableName = value;
 
             // Act
@@ -229,15 +235,16 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Producer")]
         [DataRow("Movie", "Musician")]
         [DataRow("Movie", "Cinematographer")]
-        [DataRow("Movie", "FilmEditor")]
+        [DataRow("Movie", "Film Editor")]
         [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Designer")]
         public void RetrieveListTest_withValidData(string value, string value2)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, value, "_xxx", value2);
+            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, value, "_xxx", value2.Replace(" ", ""));
 
             // Assert
             Assert.AreEqual(3, list.Count);
