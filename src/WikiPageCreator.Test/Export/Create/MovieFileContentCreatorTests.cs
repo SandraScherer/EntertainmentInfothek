@@ -1147,6 +1147,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie FilmEditor Role X2) Movie FilmEditor Details X2" };
             string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie FilmEditor Role X3) Movie FilmEditor Details X3" };
 
+            string[] dataCasting1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
+            string[] dataCasting2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
+            string[] dataCasting3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1242,6 +1246,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataFilmEditor1));
             content.Add(Formatter.AsTableRow(dataFilmEditor2));
             content.Add(Formatter.AsTableRow(dataFilmEditor3));
+            content.Add($"");
+            content.Add($"");
+
+            // Casting
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Casting by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Casting")); break;
+                default: content.Add(Formatter.AsHeading3("Casting")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCasting1));
+            content.Add(Formatter.AsTableRow(dataCasting2));
+            content.Add(Formatter.AsTableRow(dataCasting3));
             content.Add($"");
             content.Add($"");
 
@@ -1500,6 +1517,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie FilmEditor Role X1) Movie FilmEditor Details X1" };
             string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie FilmEditor Role X2) Movie FilmEditor Details X2" };
             string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie FilmEditor Role X3) Movie FilmEditor Details X3" };
+
+            string[] dataCasting1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
+            string[] dataCasting2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
+            string[] dataCasting3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -1947,6 +1968,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataFilmEditor1));
             content.Add(Formatter.AsTableRow(dataFilmEditor2));
             content.Add(Formatter.AsTableRow(dataFilmEditor3));
+            content.Add($"");
+            content.Add($"");
+
+            // Casting
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Casting by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Casting")); break;
+                default: content.Add(Formatter.AsHeading3("Casting")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCasting1));
+            content.Add(Formatter.AsTableRow(dataCasting2));
+            content.Add(Formatter.AsTableRow(dataCasting3));
             content.Add($"");
             content.Add($"");
 
