@@ -166,19 +166,19 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Producers { get; set; }
 
         /// <summary>
-        /// The list of musicians of the movie.
+        /// The list of music responsibles of the movie.
         /// </summary>
-        public List<PersonItem> Musicians { get; set; }
+        public List<PersonItem> Music { get; set; }
 
         /// <summary>
-        /// The list of cinematographers of the movie.
+        /// The list of cinematography responsibles of the movie.
         /// </summary>
-        public List<PersonItem> Cinematographers { get; set; }
+        public List<PersonItem> Cinematography { get; set; }
 
         /// <summary>
         /// The list of film editors of the movie.
         /// </summary>
-        public List<PersonItem> FilmEditors { get; set; }
+        public List<PersonItem> FilmEditing { get; set; }
 
         /// <summary>
         /// The list of casting responsibles of the movie.
@@ -188,12 +188,12 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The list of production designers of the movie.
         /// </summary>
-        public List<PersonItem> ProductionDesigners { get; set; }
+        public List<PersonItem> ProductionDesign { get; set; }
 
         /// <summary>
         /// The list of art directors of the movie.
         /// </summary>
-        public List<PersonItem> ArtDirectors { get; set; }
+        public List<PersonItem> ArtDirection { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -322,12 +322,12 @@ namespace EntertainmentDB.Data
             Writers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Writer") ?? Writers;
             Cast = CastPersonItem.RetrieveList(Reader, $"Movie", ID, "Cast") ?? Cast;
             Producers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Producer") ?? Producers;
-            Musicians = PersonItem.RetrieveList(Reader, $"Movie", ID, "Musician") ?? Musicians;
-            Cinematographers = PersonItem.RetrieveList(Reader, $"Movie", ID, "Cinematographer") ?? Cinematographers;
-            FilmEditors = PersonItem.RetrieveList(Reader, $"Movie", ID, "FilmEditor") ?? FilmEditors;
+            Music = PersonItem.RetrieveList(Reader, $"Movie", ID, "Music") ?? Music;
+            Cinematography = PersonItem.RetrieveList(Reader, $"Movie", ID, "Cinematography") ?? Cinematography;
+            FilmEditing = PersonItem.RetrieveList(Reader, $"Movie", ID, "FilmEditing") ?? FilmEditing;
             Casting = PersonItem.RetrieveList(Reader, $"Movie", ID, "Casting") ?? Casting;
-            ProductionDesigners = PersonItem.RetrieveList(Reader, $"Movie", ID, "ProductionDesigner") ?? ProductionDesigners;
-            ArtDirectors = PersonItem.RetrieveList(Reader, $"Movie", ID, "ArtDirector") ?? ArtDirectors;
+            ProductionDesign = PersonItem.RetrieveList(Reader, $"Movie", ID, "ProductionDesign") ?? ProductionDesign;
+            ArtDirection = PersonItem.RetrieveList(Reader, $"Movie", ID, "ArtDirection") ?? ArtDirection;
 
             return Genres.Count +
                    Certifications.Count +
@@ -348,12 +348,12 @@ namespace EntertainmentDB.Data
                    Writers.Count +
                    Cast.Count +
                    Producers.Count +
-                   Musicians.Count +
-                   Cinematographers.Count +
-                   FilmEditors.Count +
+                   Music.Count +
+                   Cinematography.Count +
+                   FilmEditing.Count +
                    Casting.Count +
-                   ProductionDesigners.Count +
-                   ArtDirectors.Count;
+                   ProductionDesign.Count +
+                   ArtDirection.Count;
         }
 
         /// <summary>

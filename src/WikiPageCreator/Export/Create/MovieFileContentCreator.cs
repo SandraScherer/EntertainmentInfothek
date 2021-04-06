@@ -1647,20 +1647,20 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Produzenten";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Producers);
 
-            // Musicians
+            // Music
             heading[0] = "Music by";
             heading[1] = "Musik";
-            CreatePersonItemSection(targetLanguageCode, heading, Movie.Musicians);
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Music);
 
-            // Cinematographer
+            // Cinematography
             heading[0] = "Cinematography by";
             heading[1] = "Kamera";
-            CreatePersonItemSection(targetLanguageCode, heading, Movie.Cinematographers);
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Cinematography);
 
-            // FilmEditor
+            // FilmEditing
             heading[0] = "Film Editing by";
             heading[1] = "Schnitt";
-            CreatePersonItemSection(targetLanguageCode, heading, Movie.FilmEditors);
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.FilmEditing);
 
             // Casting
             heading[0] = "Casting by";
@@ -1670,12 +1670,12 @@ namespace WikiPageCreator.Export.Create
             // Production Design
             heading[0] = "Production Design by";
             heading[1] = "Bühnenbild";
-            CreatePersonItemSection(targetLanguageCode, heading, Movie.ProductionDesigners);
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.ProductionDesign);
 
-            // Art Director
+            // Art Direction
             heading[0] = "Art Direction by";
             heading[1] = "Ausstattung";
-            CreatePersonItemSection(targetLanguageCode, heading, Movie.ArtDirectors);
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.ArtDirection);
 
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }

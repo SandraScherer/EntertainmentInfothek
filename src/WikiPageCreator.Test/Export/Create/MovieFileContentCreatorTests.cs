@@ -1135,29 +1135,29 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProducer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
             string[] dataProducer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
-            string[] dataMusician1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Musician Role X1) Movie Musician Details X1" };
-            string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
-            string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
+            string[] dataMusician1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
 
-            string[] dataCinematographer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematographer Role X1) Movie Cinematographer Details X1" };
-            string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
-            string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
 
-            string[] dataFilmEditor1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editor Role X1) Movie Film Editor Details X1" };
-            string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editor Role X2) Movie Film Editor Details X2" };
-            string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editor Role X3) Movie Film Editor Details X3" };
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editing Role X1) Movie Film Editing Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editing Role X2) Movie Film Editing Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editing Role X3) Movie Film Editing Details X3" };
 
             string[] dataCasting1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
             string[] dataCasting2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
             string[] dataCasting3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
 
-            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Designer Role X1) Movie Production Designer Details X1" };
-            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Designer Role X2) Movie Production Designer Details X2" };
-            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Designer Role X3) Movie Production Designer Details X3" };
+            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Design Role X1) Movie Production Design Details X1" };
+            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Design Role X2) Movie Production Design Details X2" };
+            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Design Role X3) Movie Production Design Details X3" };
 
-            string[] dataArtDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Director Role X1) Movie Art Director Details X1" };
-            string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Director Role X2) Movie Art Director Details X2" };
-            string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Director Role X3) Movie Art Director Details X3" };
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Direction Role X1) Movie Art Direction Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
 
             switch (value)
             {
@@ -1540,29 +1540,29 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProducer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
             string[] dataProducer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
-            string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Musician Role X1) Movie Musician Details X1" };
-            string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Musician Role X2) Movie Musician Details X2" };
-            string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Musician Role X3) Movie Musician Details X3" };
+            string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
 
-            string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematographer Role X1) Movie Cinematographer Details X1" };
-            string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematographer Role X2) Movie Cinematographer Details X2" };
-            string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematographer Role X3) Movie Cinematographer Details X3" };
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
 
-            string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editor Role X1) Movie Film Editor Details X1" };
-            string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editor Role X2) Movie Film Editor Details X2" };
-            string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editor Role X3) Movie Film Editor Details X3" };
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editing Role X1) Movie Film Editing Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editing Role X2) Movie Film Editing Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editing Role X3) Movie Film Editing Details X3" };
 
             string[] dataCasting1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
             string[] dataCasting2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
             string[] dataCasting3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
 
-            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Designer Role X1) Movie Production Designer Details X1" };
-            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Designer Role X2) Movie Production Designer Details X2" };
-            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Designer Role X3) Movie Production Designer Details X3" };
+            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Design Role X1) Movie Production Design Details X1" };
+            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Design Role X2) Movie Production Design Details X2" };
+            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Design Role X3) Movie Production Design Details X3" };
 
-            string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Director Role X1) Movie Art Director Details X1" };
-            string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Director Role X2) Movie Art Director Details X2" };
-            string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Director Role X3) Movie Art Director Details X3" };
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Direction Role X1) Movie Art Direction Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());

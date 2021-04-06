@@ -71,12 +71,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
             Assert.IsNull(entry.Producers);
-            Assert.IsNull(entry.Musicians);
-            Assert.IsNull(entry.Cinematographers);
-            Assert.IsNull(entry.FilmEditors);
+            Assert.IsNull(entry.Music);
+            Assert.IsNull(entry.Cinematography);
+            Assert.IsNull(entry.FilmEditing);
             Assert.IsNull(entry.Casting);
-            Assert.IsNull(entry.ProductionDesigners);
-            Assert.IsNull(entry.ArtDirectors);
+            Assert.IsNull(entry.ProductionDesign);
+            Assert.IsNull(entry.ArtDirection);
         }
 
         [TestMethod()]
@@ -123,12 +123,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
             Assert.IsNull(entry.Producers);
-            Assert.IsNull(entry.Musicians);
-            Assert.IsNull(entry.Cinematographers);
-            Assert.IsNull(entry.FilmEditors);
+            Assert.IsNull(entry.Music);
+            Assert.IsNull(entry.Cinematography);
+            Assert.IsNull(entry.FilmEditing);
             Assert.IsNull(entry.Casting);
-            Assert.IsNull(entry.ProductionDesigners);
-            Assert.IsNull(entry.ArtDirectors);
+            Assert.IsNull(entry.ProductionDesign);
+            Assert.IsNull(entry.ArtDirection);
         }
 
         [TestMethod()]
@@ -176,12 +176,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
             Assert.IsNull(entry.Producers);
-            Assert.IsNull(entry.Musicians);
-            Assert.IsNull(entry.Cinematographers);
-            Assert.IsNull(entry.FilmEditors);
+            Assert.IsNull(entry.Music);
+            Assert.IsNull(entry.Cinematography);
+            Assert.IsNull(entry.FilmEditing);
             Assert.IsNull(entry.Casting);
-            Assert.IsNull(entry.ProductionDesigners);
-            Assert.IsNull(entry.ArtDirectors);
+            Assert.IsNull(entry.ProductionDesign);
+            Assert.IsNull(entry.ArtDirection);
         }
 
         [TestMethod()]
@@ -229,12 +229,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Writers);
             Assert.IsNull(entry.Cast);
             Assert.IsNull(entry.Producers);
-            Assert.IsNull(entry.Musicians);
-            Assert.IsNull(entry.Cinematographers);
-            Assert.IsNull(entry.FilmEditors);
+            Assert.IsNull(entry.Music);
+            Assert.IsNull(entry.Cinematography);
+            Assert.IsNull(entry.FilmEditing);
             Assert.IsNull(entry.Casting);
-            Assert.IsNull(entry.ProductionDesigners);
-            Assert.IsNull(entry.ArtDirectors);
+            Assert.IsNull(entry.ProductionDesign);
+            Assert.IsNull(entry.ArtDirection);
         }
 
         [TestMethod()]
@@ -340,35 +340,35 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Producers[1].ID);
             Assert.AreEqual("_xx3", entry.Producers[2].ID);
 
-            Assert.AreEqual(3, entry.Musicians.Count);
-            Assert.AreEqual("_xx1", entry.Musicians[0].ID);
-            Assert.AreEqual("_xx2", entry.Musicians[1].ID);
-            Assert.AreEqual("_xx3", entry.Musicians[2].ID);
+            Assert.AreEqual(3, entry.Music.Count);
+            Assert.AreEqual("_xx1", entry.Music[0].ID);
+            Assert.AreEqual("_xx2", entry.Music[1].ID);
+            Assert.AreEqual("_xx3", entry.Music[2].ID);
 
-            Assert.AreEqual(3, entry.Cinematographers.Count);
-            Assert.AreEqual("_xx1", entry.Cinematographers[0].ID);
-            Assert.AreEqual("_xx2", entry.Cinematographers[1].ID);
-            Assert.AreEqual("_xx3", entry.Cinematographers[2].ID);
+            Assert.AreEqual(3, entry.Cinematography.Count);
+            Assert.AreEqual("_xx1", entry.Cinematography[0].ID);
+            Assert.AreEqual("_xx2", entry.Cinematography[1].ID);
+            Assert.AreEqual("_xx3", entry.Cinematography[2].ID);
 
-            Assert.AreEqual(3, entry.FilmEditors.Count);
-            Assert.AreEqual("_xx1", entry.FilmEditors[0].ID);
-            Assert.AreEqual("_xx2", entry.FilmEditors[1].ID);
-            Assert.AreEqual("_xx3", entry.FilmEditors[2].ID);
+            Assert.AreEqual(3, entry.FilmEditing.Count);
+            Assert.AreEqual("_xx1", entry.FilmEditing[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmEditing[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmEditing[2].ID);
 
             Assert.AreEqual(3, entry.Casting.Count);
             Assert.AreEqual("_xx1", entry.Casting[0].ID);
             Assert.AreEqual("_xx2", entry.Casting[1].ID);
             Assert.AreEqual("_xx3", entry.Casting[2].ID);
 
-            Assert.AreEqual(3, entry.ProductionDesigners.Count);
-            Assert.AreEqual("_xx1", entry.ProductionDesigners[0].ID);
-            Assert.AreEqual("_xx2", entry.ProductionDesigners[1].ID);
-            Assert.AreEqual("_xx3", entry.ProductionDesigners[2].ID);
+            Assert.AreEqual(3, entry.ProductionDesign.Count);
+            Assert.AreEqual("_xx1", entry.ProductionDesign[0].ID);
+            Assert.AreEqual("_xx2", entry.ProductionDesign[1].ID);
+            Assert.AreEqual("_xx3", entry.ProductionDesign[2].ID);
 
-            Assert.AreEqual(3, entry.ArtDirectors.Count);
-            Assert.AreEqual("_xx1", entry.ArtDirectors[0].ID);
-            Assert.AreEqual("_xx2", entry.ArtDirectors[1].ID);
-            Assert.AreEqual("_xx3", entry.ArtDirectors[2].ID);
+            Assert.AreEqual(3, entry.ArtDirection.Count);
+            Assert.AreEqual("_xx1", entry.ArtDirection[0].ID);
+            Assert.AreEqual("_xx2", entry.ArtDirection[1].ID);
+            Assert.AreEqual("_xx3", entry.ArtDirection[2].ID);
         }
 
         [TestMethod()]
@@ -501,35 +501,35 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Producers[1].ID);
             Assert.AreEqual("_xx3", entry.Producers[2].ID);
 
-            Assert.AreEqual(3, entry.Musicians.Count);
-            Assert.AreEqual("_xx1", entry.Musicians[0].ID);
-            Assert.AreEqual("_xx2", entry.Musicians[1].ID);
-            Assert.AreEqual("_xx3", entry.Musicians[2].ID);
+            Assert.AreEqual(3, entry.Music.Count);
+            Assert.AreEqual("_xx1", entry.Music[0].ID);
+            Assert.AreEqual("_xx2", entry.Music[1].ID);
+            Assert.AreEqual("_xx3", entry.Music[2].ID);
 
-            Assert.AreEqual(3, entry.Cinematographers.Count);
-            Assert.AreEqual("_xx1", entry.Cinematographers[0].ID);
-            Assert.AreEqual("_xx2", entry.Cinematographers[1].ID);
-            Assert.AreEqual("_xx3", entry.Cinematographers[2].ID);
+            Assert.AreEqual(3, entry.Cinematography.Count);
+            Assert.AreEqual("_xx1", entry.Cinematography[0].ID);
+            Assert.AreEqual("_xx2", entry.Cinematography[1].ID);
+            Assert.AreEqual("_xx3", entry.Cinematography[2].ID);
 
-            Assert.AreEqual(3, entry.FilmEditors.Count);
-            Assert.AreEqual("_xx1", entry.FilmEditors[0].ID);
-            Assert.AreEqual("_xx2", entry.FilmEditors[1].ID);
-            Assert.AreEqual("_xx3", entry.FilmEditors[2].ID);
+            Assert.AreEqual(3, entry.FilmEditing.Count);
+            Assert.AreEqual("_xx1", entry.FilmEditing[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmEditing[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmEditing[2].ID);
 
             Assert.AreEqual(3, entry.Casting.Count);
             Assert.AreEqual("_xx1", entry.Casting[0].ID);
             Assert.AreEqual("_xx2", entry.Casting[1].ID);
             Assert.AreEqual("_xx3", entry.Casting[2].ID);
 
-            Assert.AreEqual(3, entry.ProductionDesigners.Count);
-            Assert.AreEqual("_xx1", entry.ProductionDesigners[0].ID);
-            Assert.AreEqual("_xx2", entry.ProductionDesigners[1].ID);
-            Assert.AreEqual("_xx3", entry.ProductionDesigners[2].ID);
+            Assert.AreEqual(3, entry.ProductionDesign.Count);
+            Assert.AreEqual("_xx1", entry.ProductionDesign[0].ID);
+            Assert.AreEqual("_xx2", entry.ProductionDesign[1].ID);
+            Assert.AreEqual("_xx3", entry.ProductionDesign[2].ID);
 
-            Assert.AreEqual(3, entry.ArtDirectors.Count);
-            Assert.AreEqual("_xx1", entry.ArtDirectors[0].ID);
-            Assert.AreEqual("_xx2", entry.ArtDirectors[1].ID);
-            Assert.AreEqual("_xx3", entry.ArtDirectors[2].ID);
+            Assert.AreEqual(3, entry.ArtDirection.Count);
+            Assert.AreEqual("_xx1", entry.ArtDirection[0].ID);
+            Assert.AreEqual("_xx2", entry.ArtDirection[1].ID);
+            Assert.AreEqual("_xx3", entry.ArtDirection[2].ID);
         }
 
         [TestMethod()]
