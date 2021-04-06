@@ -1155,6 +1155,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProductionDesigner2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Designer Role X2) Movie Production Designer Details X2" };
             string[] dataProductionDesigner3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Designer Role X3) Movie Production Designer Details X3" };
 
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Director Role X1) Movie Art Director Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Director Role X2) Movie Art Director Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Director Role X3) Movie Art Director Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1276,6 +1280,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
             content.Add(Formatter.AsTableRow(dataProductionDesigner3));
+            content.Add($"");
+            content.Add($"");
+
+            // Art Director
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Art Direction by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Ausstattung")); break;
+                default: content.Add(Formatter.AsHeading3("Ausstattung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataArtDirector1));
+            content.Add(Formatter.AsTableRow(dataArtDirector2));
+            content.Add(Formatter.AsTableRow(dataArtDirector3));
             content.Add($"");
             content.Add($"");
 
@@ -1542,6 +1559,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataProductionDesigner1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Designer Role X1) Movie Production Designer Details X1" };
             string[] dataProductionDesigner2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Designer Role X2) Movie Production Designer Details X2" };
             string[] dataProductionDesigner3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Designer Role X3) Movie Production Designer Details X3" };
+
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Director Role X1) Movie Art Director Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Director Role X2) Movie Art Director Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Director Role X3) Movie Art Director Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -2015,6 +2036,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
             content.Add(Formatter.AsTableRow(dataProductionDesigner3));
+            content.Add($"");
+            content.Add($"");
+
+            // Art Director
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Art Direction by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Ausstattung")); break;
+                default: content.Add(Formatter.AsHeading3("Ausstattung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataArtDirector1));
+            content.Add(Formatter.AsTableRow(dataArtDirector2));
+            content.Add(Formatter.AsTableRow(dataArtDirector3));
             content.Add($"");
             content.Add($"");
 

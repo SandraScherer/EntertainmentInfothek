@@ -1667,10 +1667,15 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Casting";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Casting);
 
-            // Casting
+            // Production Design
             heading[0] = "Production Design by";
             heading[1] = "Bühnenbild";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.ProductionDesigners);
+
+            // Art Director
+            heading[0] = "Art Direction by";
+            heading[1] = "Ausstattung";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.ArtDirectors);
 
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
