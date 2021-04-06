@@ -176,7 +176,7 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Cinematography { get; set; }
 
         /// <summary>
-        /// The list of film editors of the movie.
+        /// The list of film editing responsibles of the movie.
         /// </summary>
         public List<PersonItem> FilmEditing { get; set; }
 
@@ -186,14 +186,19 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Casting { get; set; }
 
         /// <summary>
-        /// The list of production designers of the movie.
+        /// The list of production design responsibles of the movie.
         /// </summary>
         public List<PersonItem> ProductionDesign { get; set; }
 
         /// <summary>
-        /// The list of art directors of the movie.
+        /// The list of art direction responsibles of the movie.
         /// </summary>
         public List<PersonItem> ArtDirection { get; set; }
+
+        /// <summary>
+        /// The list of set decoration responsibles of the movie.
+        /// </summary>
+        public List<PersonItem> SetDecoration { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -328,6 +333,7 @@ namespace EntertainmentDB.Data
             Casting = PersonItem.RetrieveList(Reader, $"Movie", ID, "Casting") ?? Casting;
             ProductionDesign = PersonItem.RetrieveList(Reader, $"Movie", ID, "ProductionDesign") ?? ProductionDesign;
             ArtDirection = PersonItem.RetrieveList(Reader, $"Movie", ID, "ArtDirection") ?? ArtDirection;
+            SetDecoration = PersonItem.RetrieveList(Reader, $"Movie", ID, "SetDecoration") ?? SetDecoration;
 
             return Genres.Count +
                    Certifications.Count +
@@ -353,7 +359,8 @@ namespace EntertainmentDB.Data
                    FilmEditing.Count +
                    Casting.Count +
                    ProductionDesign.Count +
-                   ArtDirection.Count;
+                   ArtDirection.Count +
+                   SetDecoration.Count;
         }
 
         /// <summary>

@@ -1159,6 +1159,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
             string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
 
+            string[] dataSetDecoration1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Set Decoration Role X1) Movie Set Decoration Details X1" };
+            string[] dataSetDecoration2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
+            string[] dataSetDecoration3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1274,8 +1278,8 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading3("Production Design by")); break;
-                case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
-                default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+                case "de": content.Add(Formatter.AsHeading3("Szenenbild")); break;
+                default: content.Add(Formatter.AsHeading3("Szenenbild")); break;
             }
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
@@ -1293,6 +1297,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataArtDirector1));
             content.Add(Formatter.AsTableRow(dataArtDirector2));
             content.Add(Formatter.AsTableRow(dataArtDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            // Set Decoration
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Set Decoration by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+                default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataSetDecoration1));
+            content.Add(Formatter.AsTableRow(dataSetDecoration2));
+            content.Add(Formatter.AsTableRow(dataSetDecoration3));
             content.Add($"");
             content.Add($"");
 
@@ -1563,6 +1580,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Direction Role X1) Movie Art Direction Details X1" };
             string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
             string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
+
+            string[] dataSetDecoration1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Set Decoration Role X1) Movie Set Decoration Details X1" };
+            string[] dataSetDecoration2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
+            string[] dataSetDecoration3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -2030,8 +2051,8 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading3("Production Design by")); break;
-                case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
-                default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+                case "de": content.Add(Formatter.AsHeading3("Szenenbild")); break;
+                default: content.Add(Formatter.AsHeading3("Szenenbild")); break;
             }
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
@@ -2049,6 +2070,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataArtDirector1));
             content.Add(Formatter.AsTableRow(dataArtDirector2));
             content.Add(Formatter.AsTableRow(dataArtDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            // Set Decoration
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Set Decoration by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+                default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataSetDecoration1));
+            content.Add(Formatter.AsTableRow(dataSetDecoration2));
+            content.Add(Formatter.AsTableRow(dataSetDecoration3));
             content.Add($"");
             content.Add($"");
 
