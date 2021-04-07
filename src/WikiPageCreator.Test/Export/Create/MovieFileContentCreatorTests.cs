@@ -1163,6 +1163,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataSetDecoration2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
             string[] dataSetDecoration3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
 
+            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Design Role X1) Movie Costume Design Details X1" };
+            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Design Role X2) Movie Costume Design Details X2" };
+            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Design Role X3) Movie Costume Design Details X3" };
+
             switch (value)
             {
                 case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
@@ -1310,6 +1314,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSetDecoration1));
             content.Add(Formatter.AsTableRow(dataSetDecoration2));
             content.Add(Formatter.AsTableRow(dataSetDecoration3));
+            content.Add($"");
+            content.Add($"");
+
+            // Costume Design
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Costume Design by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
+                default: content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCostumeDesign1));
+            content.Add(Formatter.AsTableRow(dataCostumeDesign2));
+            content.Add(Formatter.AsTableRow(dataCostumeDesign3));
             content.Add($"");
             content.Add($"");
 
@@ -1584,6 +1601,10 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataSetDecoration1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Set Decoration Role X1) Movie Set Decoration Details X1" };
             string[] dataSetDecoration2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
             string[] dataSetDecoration3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
+
+            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Design Role X1) Movie Costume Design Details X1" };
+            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Design Role X2) Movie Costume Design Details X2" };
+            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Design Role X3) Movie Costume Design Details X3" };
 
             // Header
             content.Add(creator.Formatter.DisableCache());
@@ -2083,6 +2104,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSetDecoration1));
             content.Add(Formatter.AsTableRow(dataSetDecoration2));
             content.Add(Formatter.AsTableRow(dataSetDecoration3));
+            content.Add($"");
+            content.Add($"");
+
+            // Costume Design
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Costume Design by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
+                default: content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCostumeDesign1));
+            content.Add(Formatter.AsTableRow(dataCostumeDesign2));
+            content.Add(Formatter.AsTableRow(dataCostumeDesign3));
             content.Add($"");
             content.Add($"");
 

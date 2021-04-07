@@ -1682,6 +1682,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Bühnenbild";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.SetDecoration);
 
+            // Costume Design
+            heading[0] = "Costume Design by";
+            heading[1] = "Kostümausstattung";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.CostumeDesign);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
