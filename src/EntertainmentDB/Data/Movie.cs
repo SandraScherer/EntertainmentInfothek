@@ -206,6 +206,11 @@ namespace EntertainmentDB.Data
         public List<PersonItem> CostumeDesign { get; set; }
 
         /// <summary>
+        /// The list of makeup department members of the movie.
+        /// </summary>
+        public List<PersonItem> MakeupDepartment { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -340,6 +345,7 @@ namespace EntertainmentDB.Data
             ArtDirection = PersonItem.RetrieveList(Reader, $"Movie", ID, "ArtDirection") ?? ArtDirection;
             SetDecoration = PersonItem.RetrieveList(Reader, $"Movie", ID, "SetDecoration") ?? SetDecoration;
             CostumeDesign = PersonItem.RetrieveList(Reader, $"Movie", ID, "CostumeDesign") ?? CostumeDesign;
+            MakeupDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "MakeupDepartment") ?? MakeupDepartment;
 
             return Genres.Count +
                    Certifications.Count +
@@ -367,7 +373,8 @@ namespace EntertainmentDB.Data
                    ProductionDesign.Count +
                    ArtDirection.Count +
                    SetDecoration.Count +
-                   CostumeDesign.Count;
+                   CostumeDesign.Count +
+                   MakeupDepartment.Count;
         }
 
         /// <summary>
