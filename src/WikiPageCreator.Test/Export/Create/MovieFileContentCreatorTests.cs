@@ -1365,7 +1365,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
-            // AssistantDirector
+            // Assistant Director
             string[] dataAssistantDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Assistant Director Role X1) Movie Assistant Director Details X1" };
             string[] dataAssistantDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Assistant Director Role X2) Movie Assistant Director Details X2" };
             string[] dataAssistantDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Assistant Director Role X3) Movie Assistant Director Details X3" };
@@ -1379,6 +1379,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataAssistantDirector1));
             content.Add(Formatter.AsTableRow(dataAssistantDirector2));
             content.Add(Formatter.AsTableRow(dataAssistantDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            // Art Department
+            string[] dataArtDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Department Role X1) Movie Art Department Details X1" };
+            string[] dataArtDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Department Role X2) Movie Art Department Details X2" };
+            string[] dataArtDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Department Role X3) Movie Art Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Art Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Art Abteilung")); break;
+                default: content.Add(Formatter.AsHeading3("Art Abteilung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataArtDepartment1));
+            content.Add(Formatter.AsTableRow(dataArtDepartment2));
+            content.Add(Formatter.AsTableRow(dataArtDepartment3));
             content.Add($"");
             content.Add($"");
 
@@ -2221,6 +2238,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataAssistantDirector1));
             content.Add(Formatter.AsTableRow(dataAssistantDirector2));
             content.Add(Formatter.AsTableRow(dataAssistantDirector3));
+            content.Add($"");
+            content.Add($"");
+
+            // Art Department
+            string[] dataArtDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Department Role X1) Movie Art Department Details X1" };
+            string[] dataArtDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Department Role X2) Movie Art Department Details X2" };
+            string[] dataArtDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Department Role X3) Movie Art Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Art Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Art Abteilung")); break;
+                default: content.Add(Formatter.AsHeading3("Art Abteilung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataArtDepartment1));
+            content.Add(Formatter.AsTableRow(dataArtDepartment2));
+            content.Add(Formatter.AsTableRow(dataArtDepartment3));
             content.Add($"");
             content.Add($"");
 
