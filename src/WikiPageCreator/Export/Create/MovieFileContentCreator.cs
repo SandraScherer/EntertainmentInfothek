@@ -1697,6 +1697,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Produktionsleitung";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.ProductionManagement);
 
+            // Assistant Directors
+            heading[0] = "Second Unit Director or Assistant Director";
+            heading[1] = "Second Unit Regie und Regieassistenz";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.AssistantDirectors);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
