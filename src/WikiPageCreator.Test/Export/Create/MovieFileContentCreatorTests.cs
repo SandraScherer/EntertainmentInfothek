@@ -1433,6 +1433,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Visual Effects
+            string[] dataVisualEffects1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Visual Effects Role X1) Movie Visual Effects Details X1" };
+            string[] dataVisualEffects2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Visual Effects Role X2) Movie Visual Effects Details X2" };
+            string[] dataVisualEffects3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Visual Effects Role X3) Movie Visual Effects Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Visual Effects by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
+                default: content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataVisualEffects1));
+            content.Add(Formatter.AsTableRow(dataVisualEffects2));
+            content.Add(Formatter.AsTableRow(dataVisualEffects3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2323,6 +2340,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSpecialEffects1));
             content.Add(Formatter.AsTableRow(dataSpecialEffects2));
             content.Add(Formatter.AsTableRow(dataSpecialEffects3));
+            content.Add($"");
+            content.Add($"");
+
+            // Visual Effects
+            string[] dataVisualEffects1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Visual Effects Role X1) Movie Visual Effects Details X1" };
+            string[] dataVisualEffects2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Visual Effects Role X2) Movie Visual Effects Details X2" };
+            string[] dataVisualEffects3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Visual Effects Role X3) Movie Visual Effects Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Visual Effects by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
+                default: content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataVisualEffects1));
+            content.Add(Formatter.AsTableRow(dataVisualEffects2));
+            content.Add(Formatter.AsTableRow(dataVisualEffects3));
             content.Add($"");
             content.Add($"");
 

@@ -1717,6 +1717,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Spezialeffekte";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.SpecialEffects);
 
+            // Visual Effects
+            heading[0] = "Visual Effects by";
+            heading[1] = "Visuelle Effekte";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.VisualEffects);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
