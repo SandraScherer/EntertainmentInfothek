@@ -1727,6 +1727,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Stunts";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Stunts);
 
+            // Electrical Department
+            heading[0] = "Camera and Electrical Department";
+            heading[1] = "Kamera und Beleuchtung";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.ElectricalDepartment);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

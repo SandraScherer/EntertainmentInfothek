@@ -1467,6 +1467,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Electrical Department
+            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Electrical Department Role X1) Movie Electrical Department Details X1" };
+            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Electrical Department Role X2) Movie Electrical Department Details X2" };
+            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Electrical Department Role X3) Movie Electrical Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Camera and Electrical Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
+                default: content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment1));
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment2));
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2391,6 +2408,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataStunts1));
             content.Add(Formatter.AsTableRow(dataStunts2));
             content.Add(Formatter.AsTableRow(dataStunts3));
+            content.Add($"");
+            content.Add($"");
+
+            // Electrical Department
+            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Electrical Department Role X1) Movie Electrical Department Details X1" };
+            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Electrical Department Role X2) Movie Electrical Department Details X2" };
+            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Electrical Department Role X3) Movie Electrical Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Camera and Electrical Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
+                default: content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment1));
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment2));
+            content.Add(Formatter.AsTableRow(dataElectricalDepartment3));
             content.Add($"");
             content.Add($"");
 
