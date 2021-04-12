@@ -1707,6 +1707,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Art Abteilung";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.ArtDepartment);
 
+            // Sound Department
+            heading[0] = "Sound Department";
+            heading[1] = "Sound Abteilung";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.SoundDepartment);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

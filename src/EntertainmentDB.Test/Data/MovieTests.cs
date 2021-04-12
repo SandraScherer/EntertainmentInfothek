@@ -83,6 +83,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.ProductionManagement);
             Assert.IsNull(entry.AssistantDirectors);
             Assert.IsNull(entry.ArtDepartment);
+            Assert.IsNull(entry.SoundDepartment);
         }
 
         [TestMethod()]
@@ -141,6 +142,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.ProductionManagement);
             Assert.IsNull(entry.AssistantDirectors);
             Assert.IsNull(entry.ArtDepartment);
+            Assert.IsNull(entry.SoundDepartment);
         }
 
         [TestMethod()]
@@ -200,6 +202,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.ProductionManagement);
             Assert.IsNull(entry.AssistantDirectors);
             Assert.IsNull(entry.ArtDepartment);
+            Assert.IsNull(entry.SoundDepartment);
         }
 
         [TestMethod()]
@@ -259,6 +262,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.ProductionManagement);
             Assert.IsNull(entry.AssistantDirectors);
             Assert.IsNull(entry.ArtDepartment);
+            Assert.IsNull(entry.SoundDepartment);
         }
 
         [TestMethod()]
@@ -271,7 +275,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((29 * 3 + 1), count);
+            Assert.AreEqual((30 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -423,6 +427,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ArtDepartment[0].ID);
             Assert.AreEqual("_xx2", entry.ArtDepartment[1].ID);
             Assert.AreEqual("_xx3", entry.ArtDepartment[2].ID);
+
+            Assert.AreEqual(3, entry.SoundDepartment.Count);
+            Assert.AreEqual("_xx1", entry.SoundDepartment[0].ID);
+            Assert.AreEqual("_xx2", entry.SoundDepartment[1].ID);
+            Assert.AreEqual("_xx3", entry.SoundDepartment[2].ID);
         }
 
         [TestMethod()]
@@ -614,6 +623,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ArtDepartment[0].ID);
             Assert.AreEqual("_xx2", entry.ArtDepartment[1].ID);
             Assert.AreEqual("_xx3", entry.ArtDepartment[2].ID);
+
+            Assert.AreEqual(3, entry.SoundDepartment.Count);
+            Assert.AreEqual("_xx1", entry.SoundDepartment[0].ID);
+            Assert.AreEqual("_xx2", entry.SoundDepartment[1].ID);
+            Assert.AreEqual("_xx3", entry.SoundDepartment[2].ID);
         }
 
         [TestMethod()]
