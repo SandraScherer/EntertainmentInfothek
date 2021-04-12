@@ -92,6 +92,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveBasicInformationTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -135,6 +136,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -178,6 +180,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveAdditionalInformationTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -214,6 +217,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveAdditionalInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -250,6 +254,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveTest_withValidID(string value, string value2)
         {
             // Arrange
@@ -293,6 +298,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveTest_withInvalidID(string value, string value2)
         {
             // Arrange
@@ -336,6 +342,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Electrical Department")]
         [DataRow("Movie", "Animation Department")]
         [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
         public void RetrieveListTest_withValidData(string value, string value2)
         {
             // Arrange

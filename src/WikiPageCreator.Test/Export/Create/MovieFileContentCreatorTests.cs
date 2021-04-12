@@ -1518,6 +1518,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Costume Department
+            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Department Role X1) Movie Costume Department Details X1" };
+            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Department Role X2) Movie Costume Department Details X2" };
+            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Department Role X3) Movie Costume Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Costume and Wardrobe Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
+                default: content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment1));
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment2));
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2493,6 +2510,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataCastingDepartment1));
             content.Add(Formatter.AsTableRow(dataCastingDepartment2));
             content.Add(Formatter.AsTableRow(dataCastingDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Costume Department
+            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Department Role X1) Movie Costume Department Details X1" };
+            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Department Role X2) Movie Costume Department Details X2" };
+            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Department Role X3) Movie Costume Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Costume and Wardrobe Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
+                default: content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment1));
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment2));
+            content.Add(Formatter.AsTableRow(dataCostumeDepartment3));
             content.Add($"");
             content.Add($"");
 

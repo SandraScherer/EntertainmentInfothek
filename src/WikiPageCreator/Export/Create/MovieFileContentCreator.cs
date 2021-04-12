@@ -1742,6 +1742,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Casting";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.CastingDepartment);
 
+            // Costume Department
+            heading[0] = "Costume and Wardrobe Department";
+            heading[1] = "Kostümbildnerei";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.CostumeDepartment);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
