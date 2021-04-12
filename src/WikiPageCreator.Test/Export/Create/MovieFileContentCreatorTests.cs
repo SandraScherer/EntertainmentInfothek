@@ -1416,6 +1416,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Special Effects
+            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Special Effects Role X1) Movie Special Effects Details X1" };
+            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Special Effects Role X2) Movie Special Effects Details X2" };
+            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Special Effects Role X3) Movie Special Effects Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Special Effects by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
+                default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataSpecialEffects1));
+            content.Add(Formatter.AsTableRow(dataSpecialEffects2));
+            content.Add(Formatter.AsTableRow(dataSpecialEffects3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2289,6 +2306,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSoundDepartment1));
             content.Add(Formatter.AsTableRow(dataSoundDepartment2));
             content.Add(Formatter.AsTableRow(dataSoundDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Special Effects
+            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Special Effects Role X1) Movie Special Effects Details X1" };
+            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Special Effects Role X2) Movie Special Effects Details X2" };
+            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Special Effects Role X3) Movie Special Effects Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Special Effects by")); break;
+                case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
+                default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataSpecialEffects1));
+            content.Add(Formatter.AsTableRow(dataSpecialEffects2));
+            content.Add(Formatter.AsTableRow(dataSpecialEffects3));
             content.Add($"");
             content.Add($"");
 

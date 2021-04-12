@@ -1637,7 +1637,7 @@ namespace WikiPageCreator.Export.Create
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Writers);
 
             // Cast
-            // TODO add cast status
+            // TODO: add cast status
             heading[0] = "Cast";
             heading[1] = "Darsteller";
             CreateCastPersonItemSection(targetLanguageCode, heading, Movie.Cast);
@@ -1711,6 +1711,11 @@ namespace WikiPageCreator.Export.Create
             heading[0] = "Sound Department";
             heading[1] = "Sound Abteilung";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.SoundDepartment);
+
+            // Special Effects
+            heading[0] = "Special Effects by";
+            heading[1] = "Spezialeffekte";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.SpecialEffects);
 
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
