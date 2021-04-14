@@ -1603,6 +1603,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Transportation Department
+            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Transportation Department Role X1) Movie Transportation Department Details X1" };
+            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Transportation Department Role X2) Movie Transportation Department Details X2" };
+            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Transportation Department Role X3) Movie Transportation Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Transportation Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Transport")); break;
+                default: content.Add(Formatter.AsHeading3("Transport")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment1));
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment2));
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2663,6 +2680,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataContinuityDepartment1));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment2));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Transportation Department
+            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Transportation Department Role X1) Movie Transportation Department Details X1" };
+            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Transportation Department Role X2) Movie Transportation Department Details X2" };
+            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Transportation Department Role X3) Movie Transportation Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Transportation Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Transport")); break;
+                default: content.Add(Formatter.AsHeading3("Transport")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment1));
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment2));
+            content.Add(Formatter.AsTableRow(dataTransportationDepartment3));
             content.Add($"");
             content.Add($"");
 
