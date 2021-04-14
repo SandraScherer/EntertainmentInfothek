@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS "Movie_ArtDepartment" (
 	FOREIGN KEY("PersonID") REFERENCES "Person"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_ArtDirector" (
+CREATE TABLE IF NOT EXISTS "Movie_ArtDirection" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -495,6 +495,7 @@ CREATE TABLE IF NOT EXISTS "Movie_Casting" (
 	"PersonID"	TEXT,
 	"Role"	TEXT,
 	"Details"	TEXT,
+	"Notes"	TEXT,
 	"StatusID"	TEXT,
 	"LastUpdated"	TEXT,
 	PRIMARY KEY("ID"),
@@ -529,7 +530,7 @@ CREATE TABLE IF NOT EXISTS "Movie_Certification" (
 	FOREIGN KEY("CertificationID") REFERENCES "Certification"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_Cinematographer" (
+CREATE TABLE IF NOT EXISTS "Movie_Cinematography" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -597,7 +598,7 @@ CREATE TABLE IF NOT EXISTS "Movie_CostumeDepartment" (
 	FOREIGN KEY("PersonID") REFERENCES "Person"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_CostumeDesigner" (
+CREATE TABLE IF NOT EXISTS "Movie_CostumeDesign" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -710,7 +711,7 @@ CREATE TABLE IF NOT EXISTS "Movie_ElectricalDepartment" (
 	FOREIGN KEY("PersonID") REFERENCES "Person"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_FilmEditor" (
+CREATE TABLE IF NOT EXISTS "Movie_FilmEditing" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -856,7 +857,7 @@ CREATE TABLE IF NOT EXISTS "Movie_MusicDepartment" (
 	FOREIGN KEY("PersonID") REFERENCES "Person"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_Musician" (
+CREATE TABLE IF NOT EXISTS "Movie_Music" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -976,7 +977,7 @@ CREATE TABLE IF NOT EXISTS "Movie_ProductionDate" (
 	FOREIGN KEY("MovieID") REFERENCES "Movie"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_ProductionDesigner" (
+CREATE TABLE IF NOT EXISTS "Movie_ProductionDesign" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
@@ -1031,7 +1032,7 @@ CREATE TABLE IF NOT EXISTS "Movie_Runtime" (
 	FOREIGN KEY("EditionID") REFERENCES "Edition"("ID"),
 	FOREIGN KEY("StatusID") REFERENCES "Status"("ID")
 );
-CREATE TABLE IF NOT EXISTS "Movie_SetDecorator" (
+CREATE TABLE IF NOT EXISTS "Movie_SetDecoration" (
 	"ID"	TEXT NOT NULL,
 	"MovieID"	TEXT,
 	"PersonID"	TEXT,
