@@ -1569,6 +1569,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Music Department
+            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Department Role X1) Movie Music Department Details X1" };
+            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Department Role X2) Movie Music Department Details X2" };
+            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Department Role X3) Movie Music Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Music Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Musik")); break;
+                default: content.Add(Formatter.AsHeading3("Musik")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataMusicDepartment1));
+            content.Add(Formatter.AsTableRow(dataMusicDepartment2));
+            content.Add(Formatter.AsTableRow(dataMusicDepartment3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2595,6 +2612,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataLocationManagement1));
             content.Add(Formatter.AsTableRow(dataLocationManagement2));
             content.Add(Formatter.AsTableRow(dataLocationManagement3));
+            content.Add($"");
+            content.Add($"");
+
+            // Music Department
+            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Department Role X1) Movie Music Department Details X1" };
+            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Department Role X2) Movie Music Department Details X2" };
+            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Department Role X3) Movie Music Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Music Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Musik")); break;
+                default: content.Add(Formatter.AsHeading3("Musik")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataMusicDepartment1));
+            content.Add(Formatter.AsTableRow(dataMusicDepartment2));
+            content.Add(Formatter.AsTableRow(dataMusicDepartment3));
             content.Add($"");
             content.Add($"");
 

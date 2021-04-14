@@ -1757,6 +1757,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Drehort Management";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.LocationManagement);
 
+            // Music Department
+            heading[0] = "Music Department";
+            heading[1] = "Musik";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.MusicDepartment);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
