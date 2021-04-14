@@ -266,6 +266,11 @@ namespace EntertainmentDB.Data
         public List<PersonItem> CostumeDepartment { get; set; }
 
         /// <summary>
+        /// The list of editorial department members of the movie.
+        /// </summary>
+        public List<PersonItem> EditorialDepartment { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -412,6 +417,7 @@ namespace EntertainmentDB.Data
             AnimationDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "AnimationDepartment") ?? AnimationDepartment;
             CastingDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "CastingDepartment") ?? CastingDepartment;
             CostumeDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "CostumeDepartment") ?? CostumeDepartment;
+            EditorialDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "EditorialDepartment") ?? EditorialDepartment;
 
             return Genres.Count +
                    Certifications.Count +
@@ -451,7 +457,8 @@ namespace EntertainmentDB.Data
                    ElectricalDepartment.Count +
                    AnimationDepartment.Count +
                    CastingDepartment.Count +
-                   CostumeDepartment.Count;
+                   CostumeDepartment.Count +
+                   EditorialDepartment.Count;
         }
 
         /// <summary>
