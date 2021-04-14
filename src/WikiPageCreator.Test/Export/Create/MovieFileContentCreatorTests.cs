@@ -1637,6 +1637,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Thanks
+            string[] dataThanks1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
+            string[] dataThanks2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
+            string[] dataThanks3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Thanks")); break;
+                case "de": content.Add(Formatter.AsHeading3("Dank")); break;
+                default: content.Add(Formatter.AsHeading3("Dank")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataThanks1));
+            content.Add(Formatter.AsTableRow(dataThanks2));
+            content.Add(Formatter.AsTableRow(dataThanks3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2731,6 +2748,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataOtherCrew1));
             content.Add(Formatter.AsTableRow(dataOtherCrew2));
             content.Add(Formatter.AsTableRow(dataOtherCrew3));
+            content.Add($"");
+            content.Add($"");
+
+            // Thanks
+            string[] dataThanks1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
+            string[] dataThanks2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
+            string[] dataThanks3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Thanks")); break;
+                case "de": content.Add(Formatter.AsHeading3("Dank")); break;
+                default: content.Add(Formatter.AsHeading3("Dank")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataThanks1));
+            content.Add(Formatter.AsTableRow(dataThanks2));
+            content.Add(Formatter.AsTableRow(dataThanks3));
             content.Add($"");
             content.Add($"");
 

@@ -1777,6 +1777,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Weitere Crewmitglieder";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.OtherCrew);
 
+            // Thanks
+            heading[0] = "Thanks";
+            heading[1] = "Dank";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.Thanks);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

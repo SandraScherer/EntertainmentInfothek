@@ -327,7 +327,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((43 * 3 + 1), count);
+            Assert.AreEqual((44 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
