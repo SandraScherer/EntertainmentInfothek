@@ -1762,6 +1762,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Musik";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.MusicDepartment);
 
+            // Continuity Department
+            heading[0] = "Script and Continuity Department";
+            heading[1] = "Dramaturgie und Continuity";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.ContinuityDepartment);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

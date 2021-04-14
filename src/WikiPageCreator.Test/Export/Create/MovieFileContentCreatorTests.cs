@@ -1586,6 +1586,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Continuity Department
+            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Continuity Department Role X1) Movie Continuity Department Details X1" };
+            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Continuity Department Role X2) Movie Continuity Department Details X2" };
+            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Continuity Department Role X3) Movie Continuity Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Script and Continuity Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
+                default: content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment1));
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment2));
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2629,6 +2646,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataMusicDepartment1));
             content.Add(Formatter.AsTableRow(dataMusicDepartment2));
             content.Add(Formatter.AsTableRow(dataMusicDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Continuity Department
+            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Continuity Department Role X1) Movie Continuity Department Details X1" };
+            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Continuity Department Role X2) Movie Continuity Department Details X2" };
+            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Continuity Department Role X3) Movie Continuity Department Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Script and Continuity Department")); break;
+                case "de": content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
+                default: content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment1));
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment2));
+            content.Add(Formatter.AsTableRow(dataContinuityDepartment3));
             content.Add($"");
             content.Add($"");
 
