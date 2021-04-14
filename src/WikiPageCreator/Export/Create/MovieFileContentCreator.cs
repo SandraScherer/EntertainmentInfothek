@@ -1782,6 +1782,8 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Dank";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Thanks);
 
+            // TODO: add crew status
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
