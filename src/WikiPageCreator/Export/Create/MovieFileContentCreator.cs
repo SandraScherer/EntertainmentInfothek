@@ -1752,6 +1752,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Redaktion";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.EditorialDepartment);
 
+            // Location Management
+            heading[0] = "Location Management";
+            heading[1] = "Drehort Management";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.LocationManagement);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

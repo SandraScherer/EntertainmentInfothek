@@ -1552,6 +1552,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Location Management
+            string[] dataLocationManagement1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Location Management Role X1) Movie Location Management Details X1" };
+            string[] dataLocationManagement2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Location Management Role X2) Movie Location Management Details X2" };
+            string[] dataLocationManagement3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Location Management Role X3) Movie Location Management Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Location Management")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehort Management")); break;
+                default: content.Add(Formatter.AsHeading3("Drehort Management")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataLocationManagement1));
+            content.Add(Formatter.AsTableRow(dataLocationManagement2));
+            content.Add(Formatter.AsTableRow(dataLocationManagement3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2561,6 +2578,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataEditorialDepartment1));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment2));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Location Management
+            string[] dataLocationManagement1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Location Management Role X1) Movie Location Management Details X1" };
+            string[] dataLocationManagement2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Location Management Role X2) Movie Location Management Details X2" };
+            string[] dataLocationManagement3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Location Management Role X3) Movie Location Management Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Location Management")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehort Management")); break;
+                default: content.Add(Formatter.AsHeading3("Drehort Management")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataLocationManagement1));
+            content.Add(Formatter.AsTableRow(dataLocationManagement2));
+            content.Add(Formatter.AsTableRow(dataLocationManagement3));
             content.Add($"");
             content.Add($"");
 
