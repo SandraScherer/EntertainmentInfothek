@@ -291,6 +291,11 @@ namespace EntertainmentDB.Data
         public List<PersonItem> TransportationDepartment { get; set; }
 
         /// <summary>
+        /// The list of other crew members of the movie.
+        /// </summary>
+        public List<PersonItem> OtherCrew { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -442,6 +447,7 @@ namespace EntertainmentDB.Data
             MusicDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "MusicDepartment") ?? MusicDepartment;
             ContinuityDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "ContinuityDepartment") ?? ContinuityDepartment;
             TransportationDepartment = PersonItem.RetrieveList(Reader, $"Movie", ID, "TransportationDepartment") ?? TransportationDepartment;
+            OtherCrew = PersonItem.RetrieveList(Reader, $"Movie", ID, "OtherCrew") ?? OtherCrew;
 
             return Genres.Count +
                    Certifications.Count +
@@ -486,7 +492,8 @@ namespace EntertainmentDB.Data
                    LocationManagement.Count +
                    MusicDepartment.Count +
                    ContinuityDepartment.Count +
-                   TransportationDepartment.Count;
+                   TransportationDepartment.Count +
+                   OtherCrew.Count;
         }
 
         /// <summary>

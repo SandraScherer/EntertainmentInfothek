@@ -1772,6 +1772,11 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Transport";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.TransportationDepartment);
 
+            // Other Crew
+            heading[0] = "Additional Crew";
+            heading[1] = "Weitere Crewmitglieder";
+            CreatePersonItemSection(targetLanguageCode, heading, Movie.OtherCrew);
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 

@@ -1620,6 +1620,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Other Crew
+            string[] dataOtherCrew1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Other Crew Role X1) Movie Other Crew Details X1" };
+            string[] dataOtherCrew2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Other Crew Role X2) Movie Other Crew Details X2" };
+            string[] dataOtherCrew3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Other Crew Role X3) Movie Other Crew Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Additional Crew")); break;
+                case "de": content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
+                default: content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataOtherCrew1));
+            content.Add(Formatter.AsTableRow(dataOtherCrew2));
+            content.Add(Formatter.AsTableRow(dataOtherCrew3));
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -2697,6 +2714,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataTransportationDepartment1));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment2));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment3));
+            content.Add($"");
+            content.Add($"");
+
+            // Other Crew
+            string[] dataOtherCrew1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Other Crew Role X1) Movie Other Crew Details X1" };
+            string[] dataOtherCrew2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Other Crew Role X2) Movie Other Crew Details X2" };
+            string[] dataOtherCrew3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Other Crew Role X3) Movie Other Crew Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Additional Crew")); break;
+                case "de": content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
+                default: content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataOtherCrew1));
+            content.Add(Formatter.AsTableRow(dataOtherCrew2));
+            content.Add(Formatter.AsTableRow(dataOtherCrew3));
             content.Add($"");
             content.Add($"");
 
