@@ -67,7 +67,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Movie")]
         public void RetrieveBasicInformationTest_withValidID(string value)
         {

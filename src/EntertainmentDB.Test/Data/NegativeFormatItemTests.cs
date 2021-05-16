@@ -67,7 +67,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Movie")]
         public void RetrieveBasicInformationTest_withValidID(string value)
         {
@@ -109,7 +109,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Movie")]
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
@@ -181,7 +181,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withValidData(string value)
         {

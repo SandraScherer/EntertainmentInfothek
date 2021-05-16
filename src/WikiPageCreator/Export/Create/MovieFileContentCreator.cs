@@ -123,6 +123,8 @@ namespace WikiPageCreator.Export.Create
 
             CreateCastAndCrewChapter(targetLanguageCode);
 
+            CreateCompanyChapter(targetLanguageCode);
+
             CreateConnectionChapter(targetLanguageCode);
 
             CreateFooter(targetLanguageCode);
@@ -1935,6 +1937,99 @@ namespace WikiPageCreator.Export.Create
                     else if (!String.IsNullOrEmpty(persons[i].Details))
                     {
                         data[1] = $"({persons[i].Details}";
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+                Content.Add("");
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted company chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateCompanyChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateCompanyChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Company Credits"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Beteiligte Firmen"));
+            }
+
+            string[] heading = new string[2];
+
+            // Production Companies
+            heading[0] = "Production Companies";
+            heading[1] = "Produktionsfirmen";
+            CreateCompanyItemSection(targetLanguageCode, heading, Movie.ProductionCompanies);
+        }
+
+        /// <summary>
+        /// Creates a formatted company section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="heading">The heading for the section; [0] english; [1] german.</param>
+        /// <param name="companies">The list of companies for the section.</param>
+        private void CreateCompanyItemSection(string targetLanguageCode, string[] heading, List<CompanyItem> companies)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (heading.Length != 2)
+            {
+                throw new ArgumentException(nameof(heading));
+            }
+            if (companies == null)
+            {
+                throw new ArgumentNullException(nameof(companies));
+            }
+
+            if (companies.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}:  '{companies.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "company" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < companies.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(companies[i].Company.Name) && !String.IsNullOrEmpty(companies[i].Company.NameAddOn))
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name} {companies[i].Company.NameAddOn}");
+                    }
+                    else
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name}");
+                    }
+
+                    if (!String.IsNullOrEmpty(companies[i].Details))
+                    {
+                        data[1] = $"{companies[i].Details}";
                     }
                     else
                     {

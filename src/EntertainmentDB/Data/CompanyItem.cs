@@ -45,7 +45,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a company item with an empty id string.
         /// </summary>
-        public CompanyItem() : this("")
+        public CompanyItem() : this("", "")
         {
         }
 
@@ -55,13 +55,13 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the company item.</param>
         /// <param name="targetTableName">The target table name of the company item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public CompanyItem(string id, string targetTableName = "Company")
+        public CompanyItem(string id, string targetTableName)
         {
             if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }
-            if (String.IsNullOrEmpty(targetTableName))
+            if (id == null)
             {
                 throw new NullReferenceException(nameof(ID));
             }

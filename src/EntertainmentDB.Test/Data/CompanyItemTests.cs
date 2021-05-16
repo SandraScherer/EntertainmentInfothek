@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Company", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Company);
@@ -51,14 +51,14 @@ namespace EntertainmentDB.Data.Tests
         public void CompanyItemTest_withID()
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1");
+            CompanyItem item = new CompanyItem("_xx1", "");
 
             // Act
             // Assert
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Company", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.IsNull(item.Company);
@@ -67,8 +67,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Company")]
         [DataRow("Source")]
         public void CompanyItemTest_withIDAndTargetTableName(string value)
@@ -92,13 +91,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1");
+            CompanyItem item = new CompanyItem("_xx1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveBasicInformation();
@@ -115,13 +115,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1");
+            CompanyItem item = new CompanyItem("_aa1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveBasicInformation();
@@ -138,13 +139,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1");
+            CompanyItem item = new CompanyItem("_xx1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveAdditionalInformation();
@@ -155,13 +157,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1");
+            CompanyItem item = new CompanyItem("_aa1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveAdditionalInformation();
@@ -172,13 +175,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1");
+            CompanyItem item = new CompanyItem("_xx1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.Retrieve();
@@ -195,13 +199,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1");
+            CompanyItem item = new CompanyItem("_aa1", "");
             item.BaseTableName = value1;
-            item.TargetTableName = value2;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.Retrieve();
@@ -218,6 +223,7 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
+        [DataRow("Movie", "Production Company")]
         // TODO: Add more tests
         public void RetrieveListTest_withValidData(string value1, string value2)
         {
@@ -225,7 +231,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, value1, "_xxx", value2);
+            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, value1, "_xxx", value2.Replace(" ", ""));
 
             // Assert
             Assert.AreEqual(3, list.Count);

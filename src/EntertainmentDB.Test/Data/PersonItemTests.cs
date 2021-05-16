@@ -70,6 +70,28 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
+        [DataRow("Person")]
+        public void PersonItemTest_withIDAndTargetTableName(string value)
+        {
+            // Arrange
+            PersonItem item = new PersonItem("_xx1", value);
+
+            // Act
+            // Assert
+            Assert.IsNotNull(item);
+            Assert.IsNotNull(item.Reader);
+            Assert.AreEqual("", item.BaseTableName);
+            Assert.AreEqual(value, item.TargetTableName);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.IsNull(item.Person);
+            Assert.IsNull(item.Role);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -102,8 +124,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_xx1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveBasicInformation();
@@ -152,8 +175,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_aa1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveBasicInformation();
@@ -202,8 +226,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_xx1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveAdditionalInformation();
@@ -245,8 +270,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_aa1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.RetrieveAdditionalInformation();
@@ -288,8 +314,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_xx1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_xx1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.Retrieve();
@@ -338,8 +365,9 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID(string value, string value2)
         {
             // Arrange
-            PersonItem item = new PersonItem("_aa1", value2.Replace(" ", ""));
+            PersonItem item = new PersonItem("_aa1", "");
             item.BaseTableName = value;
+            item.TargetTableName = value2.Replace(" ", "");
 
             // Act
             int count = item.Retrieve();

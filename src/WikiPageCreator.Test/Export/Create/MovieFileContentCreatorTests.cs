@@ -112,7 +112,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -194,7 +194,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -227,7 +227,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -262,7 +262,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -297,7 +297,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -350,7 +350,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -403,7 +403,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -456,7 +456,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -509,7 +509,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -544,7 +544,7 @@ namespace WikiPageCreator.Export.Create.Tests
 
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -579,7 +579,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -631,7 +631,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -684,7 +684,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -737,7 +737,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -789,7 +789,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -841,7 +841,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -893,7 +893,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -945,7 +945,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -998,7 +998,7 @@ namespace WikiPageCreator.Export.Create.Tests
         }
 
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1050,7 +1050,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1102,7 +1102,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod]
+        [DataTestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1661,7 +1661,56 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateCompanyChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateCompanyChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "company" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Company Credits")); break;
+                case "de": content.Add(Formatter.AsHeading2("Beteiligte Firmen")); break;
+                default: content.Add(Formatter.AsHeading2("Beteiligte Firmen")); break;
+            }
+
+            // Production Company
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Production Company Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Production Company Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "Movie Production Company Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Production Companies")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
+                default: content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataProductionCompany1));
+            content.Add(Formatter.AsTableRow(dataProductionCompany2));
+            content.Add(Formatter.AsTableRow(dataProductionCompany3));
+            content.Add($"");
+            content.Add($"");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1695,7 +1744,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2765,6 +2814,33 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataThanks1));
             content.Add(Formatter.AsTableRow(dataThanks2));
             content.Add(Formatter.AsTableRow(dataThanks3));
+            content.Add($"");
+            content.Add($"");
+
+            // Company Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Company Credits")); break;
+                case "de": content.Add(Formatter.AsHeading2("Beteiligte Firmen")); break;
+                default: content.Add(Formatter.AsHeading2("Beteiligte Firmen")); break;
+            }
+
+            // Production Company
+            string[] pathProductionCompany = { value, "company" };
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Production Company Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Production Company Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "Movie Production Company Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Production Companies")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
+                default: content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
+            }
+
+            content.Add(Formatter.AsTableRow(dataProductionCompany1));
+            content.Add(Formatter.AsTableRow(dataProductionCompany2));
+            content.Add(Formatter.AsTableRow(dataProductionCompany3));
             content.Add($"");
             content.Add($"");
 

@@ -39,7 +39,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             Assert.IsNotNull(reader.Table);
         }
 
-        [TestMethod()]
+        [DataTestMethod()]
         [DataRow("Movie")]
         public void RetrieveTest_validID(string value)
         {
