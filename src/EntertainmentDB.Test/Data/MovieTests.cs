@@ -99,6 +99,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OtherCrew);
 
             Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
         }
 
         [TestMethod()]
@@ -173,6 +174,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OtherCrew);
 
             Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
         }
 
         [TestMethod()]
@@ -248,6 +250,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OtherCrew);
 
             Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
         }
 
         [TestMethod()]
@@ -323,6 +326,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.OtherCrew);
 
             Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
         }
 
         [TestMethod()]
@@ -335,7 +339,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((45 * 3 + 1), count);
+            Assert.AreEqual((46 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -562,6 +566,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ProductionCompanies[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionCompanies[2].ID);
+
+            Assert.AreEqual(3, entry.SpecialEffectsCompanies.Count);
+            Assert.AreEqual("_xx1", entry.SpecialEffectsCompanies[0].ID);
+            Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
+            Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
         }
 
         [TestMethod()]
@@ -828,6 +837,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ProductionCompanies[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionCompanies[2].ID);
+
+            Assert.AreEqual(3, entry.SpecialEffectsCompanies.Count);
+            Assert.AreEqual("_xx1", entry.SpecialEffectsCompanies[0].ID);
+            Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
+            Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
         }
 
         [TestMethod()]

@@ -1977,6 +1977,11 @@ namespace WikiPageCreator.Export.Create
             heading[0] = "Production Companies";
             heading[1] = "Produktionsfirmen";
             CreateCompanyItemSection(targetLanguageCode, heading, Movie.ProductionCompanies);
+
+            // Special Effects Companies
+            heading[0] = "Special Effects";
+            heading[1] = "Spezialeffekte";
+            CreateCompanyItemSection(targetLanguageCode, heading, Movie.SpecialEffectsCompanies);
         }
 
         /// <summary>

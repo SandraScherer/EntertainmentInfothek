@@ -92,6 +92,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
         {
@@ -116,6 +117,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
         {
@@ -140,6 +142,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
@@ -158,6 +161,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
@@ -176,6 +180,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveTest_withValidID(string value1, string value2)
         {
@@ -200,6 +205,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveTest_withInvalidID(string value1, string value2)
         {
@@ -224,6 +230,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "Production Company")]
+        [DataRow("Movie", "Special Effects Company")]
         // TODO: Add more tests
         public void RetrieveListTest_withValidData(string value1, string value2)
         {

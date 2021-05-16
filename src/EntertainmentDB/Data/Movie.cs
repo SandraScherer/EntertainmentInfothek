@@ -306,6 +306,11 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> ProductionCompanies { get; set; }
 
         /// <summary>
+        /// The list of special effects companies of the movie.
+        /// </summary>
+        public List<CompanyItem> SpecialEffectsCompanies { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -462,6 +467,7 @@ namespace EntertainmentDB.Data
 
             // Company data
             ProductionCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "ProductionCompany") ?? ProductionCompanies;
+            SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "SpecialEffectsCompany") ?? SpecialEffectsCompanies;
 
             return Genres.Count +
                    Certifications.Count +
@@ -510,7 +516,8 @@ namespace EntertainmentDB.Data
                    OtherCrew.Count +
                    Thanks.Count +
                    
-                   ProductionCompanies.Count;
+                   ProductionCompanies.Count +
+                   SpecialEffectsCompanies.Count;
         }
 
         /// <summary>
