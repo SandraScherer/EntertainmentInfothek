@@ -47,6 +47,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Budget);
             Assert.IsNull(entry.WorldwideGross);
             Assert.IsNull(entry.WorldwideGrossDate);
+            Assert.IsNull(entry.CastStatus);
+            Assert.IsNull(entry.CrewStatus);
             Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
@@ -124,6 +126,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Budget);
             Assert.IsNull(entry.WorldwideGross);
             Assert.IsNull(entry.WorldwideGrossDate);
+            Assert.IsNull(entry.CastStatus);
+            Assert.IsNull(entry.CrewStatus);
             Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
@@ -202,6 +206,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Budget X", entry.Budget);
             Assert.AreEqual("Movie Worldwide Gross X", entry.WorldwideGross);
             Assert.AreEqual("Movie Worldwide Gross Date X", entry.WorldwideGrossDate);
+            Assert.AreEqual("_xxx", entry.CastStatus.ID);
+            Assert.AreEqual("_xxx", entry.CrewStatus.ID);
             Assert.AreEqual("_xxx", entry.Connection.ID);
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
@@ -280,6 +286,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Budget);
             Assert.IsNull(entry.WorldwideGross);
             Assert.IsNull(entry.WorldwideGrossDate);
+            Assert.IsNull(entry.CastStatus);
+            Assert.IsNull(entry.CrewStatus);
             Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
@@ -625,6 +633,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Movie Budget X", entry.Budget);
             Assert.AreEqual("Movie Worldwide Gross X", entry.WorldwideGross);
             Assert.AreEqual("Movie Worldwide Gross Date X", entry.WorldwideGrossDate);
+            Assert.AreEqual("_xxx", entry.CastStatus.ID);
+            Assert.AreEqual("_xxx", entry.CrewStatus.ID);
             Assert.AreEqual("_xxx", entry.Connection.ID);
             Assert.AreEqual("Movie Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
@@ -893,6 +903,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Budget);
             Assert.IsNull(entry.WorldwideGross);
             Assert.IsNull(entry.WorldwideGrossDate);
+            Assert.IsNull(entry.CastStatus);
+            Assert.IsNull(entry.CrewStatus);
             Assert.IsNull(entry.Connection);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);

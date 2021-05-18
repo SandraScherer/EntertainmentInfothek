@@ -76,11 +76,13 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(creator.Formatter.DisableCache());
             content.Add(creator.Formatter.DisableTOC());
             content.Add(creator.Formatter.BeginComment());
+
             content.Add($"   Movie Original Title X");
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             content.Add($"   @version Status English Title X: Movie Last Updated X");
+
             content.Add(creator.Formatter.EndComment());
             content.Add($"");
 
@@ -135,6 +137,7 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
                 default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
             }
+
             content.Add($"");
 
             Assert.AreEqual(content.Count, creator.Content.Count);
@@ -184,6 +187,7 @@ namespace WikiPageCreator.Export.Create.Tests
             List<string> content = new List<string>();
 
             content.Add(Formatter.EndBox());
+
             content.Add($"");
             content.Add($"");
 
@@ -1138,9 +1142,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataDirector1));
             content.Add(Formatter.AsTableRow(dataDirector2));
             content.Add(Formatter.AsTableRow(dataDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1155,9 +1161,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Drehbuch")); break;
                 default: content.Add(Formatter.AsHeading3("Drehbuch")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataWriter1));
             content.Add(Formatter.AsTableRow(dataWriter2));
             content.Add(Formatter.AsTableRow(dataWriter3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1168,13 +1176,27 @@ namespace WikiPageCreator.Export.Create.Tests
 
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Cast")); break;
-                case "de": content.Add(Formatter.AsHeading3("Darsteller")); break;
-                default: content.Add(Formatter.AsHeading3("Darsteller")); break;
+                case "en":
+                    content.Add(Formatter.AsHeading3("Cast"));
+                    content.Add("Status English Title X");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add(Formatter.AsHeading3("Darsteller"));
+                    content.Add("Status German Title X");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add(Formatter.AsHeading3("Darsteller"));
+                    content.Add("Status German Title X");
+                    content.Add("");
+                    break;
             }
+
             content.Add(Formatter.AsTableRow(dataCast1));
             content.Add(Formatter.AsTableRow(dataCast2));
             content.Add(Formatter.AsTableRow(dataCast3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1189,9 +1211,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Produzenten")); break;
                 default: content.Add(Formatter.AsHeading3("Produzenten")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProducer1));
             content.Add(Formatter.AsTableRow(dataProducer2));
             content.Add(Formatter.AsTableRow(dataProducer3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1206,9 +1230,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Musik")); break;
                 default: content.Add(Formatter.AsHeading3("Musik")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMusician1));
             content.Add(Formatter.AsTableRow(dataMusician2));
             content.Add(Formatter.AsTableRow(dataMusician3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1223,9 +1249,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kamera")); break;
                 default: content.Add(Formatter.AsHeading3("Kamera")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCinematographer1));
             content.Add(Formatter.AsTableRow(dataCinematographer2));
             content.Add(Formatter.AsTableRow(dataCinematographer3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1240,9 +1268,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Schnitt")); break;
                 default: content.Add(Formatter.AsHeading3("Schnitt")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataFilmEditor1));
             content.Add(Formatter.AsTableRow(dataFilmEditor2));
             content.Add(Formatter.AsTableRow(dataFilmEditor3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1257,9 +1287,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Casting")); break;
                 default: content.Add(Formatter.AsHeading3("Casting")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCasting1));
             content.Add(Formatter.AsTableRow(dataCasting2));
             content.Add(Formatter.AsTableRow(dataCasting3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1274,9 +1306,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Szenenbild")); break;
                 default: content.Add(Formatter.AsHeading3("Szenenbild")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
             content.Add(Formatter.AsTableRow(dataProductionDesigner3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1291,9 +1325,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Ausstattung")); break;
                 default: content.Add(Formatter.AsHeading3("Ausstattung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataArtDirector1));
             content.Add(Formatter.AsTableRow(dataArtDirector2));
             content.Add(Formatter.AsTableRow(dataArtDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1308,9 +1344,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
                 default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSetDecoration1));
             content.Add(Formatter.AsTableRow(dataSetDecoration2));
             content.Add(Formatter.AsTableRow(dataSetDecoration3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1325,9 +1363,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
                 default: content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCostumeDesign1));
             content.Add(Formatter.AsTableRow(dataCostumeDesign2));
             content.Add(Formatter.AsTableRow(dataCostumeDesign3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1342,9 +1382,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Maske")); break;
                 default: content.Add(Formatter.AsHeading3("Maske")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMakeupDepartment1));
             content.Add(Formatter.AsTableRow(dataMakeupDepartment2));
             content.Add(Formatter.AsTableRow(dataMakeupDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1359,9 +1401,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Produktionsleitung")); break;
                 default: content.Add(Formatter.AsHeading3("Produktionsleitung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProductionManagement1));
             content.Add(Formatter.AsTableRow(dataProductionManagement2));
             content.Add(Formatter.AsTableRow(dataProductionManagement3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1376,9 +1420,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Second Unit Regie und Regieassistenz")); break;
                 default: content.Add(Formatter.AsHeading3("Second Unit Regie und Regieassistenz")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataAssistantDirector1));
             content.Add(Formatter.AsTableRow(dataAssistantDirector2));
             content.Add(Formatter.AsTableRow(dataAssistantDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1393,9 +1439,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Art Abteilung")); break;
                 default: content.Add(Formatter.AsHeading3("Art Abteilung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataArtDepartment1));
             content.Add(Formatter.AsTableRow(dataArtDepartment2));
             content.Add(Formatter.AsTableRow(dataArtDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1410,9 +1458,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Sound Abteilung")); break;
                 default: content.Add(Formatter.AsHeading3("Sound Abteilung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSoundDepartment1));
             content.Add(Formatter.AsTableRow(dataSoundDepartment2));
             content.Add(Formatter.AsTableRow(dataSoundDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1427,9 +1477,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
                 default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSpecialEffects1));
             content.Add(Formatter.AsTableRow(dataSpecialEffects2));
             content.Add(Formatter.AsTableRow(dataSpecialEffects3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1444,9 +1496,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
                 default: content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataVisualEffects1));
             content.Add(Formatter.AsTableRow(dataVisualEffects2));
             content.Add(Formatter.AsTableRow(dataVisualEffects3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1461,9 +1515,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Stunts")); break;
                 default: content.Add(Formatter.AsHeading3("Stunts")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataStunts1));
             content.Add(Formatter.AsTableRow(dataStunts2));
             content.Add(Formatter.AsTableRow(dataStunts3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1478,9 +1534,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
                 default: content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataElectricalDepartment1));
             content.Add(Formatter.AsTableRow(dataElectricalDepartment2));
             content.Add(Formatter.AsTableRow(dataElectricalDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1495,9 +1553,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Animationen")); break;
                 default: content.Add(Formatter.AsHeading3("Animationen")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataAnimationDepartment1));
             content.Add(Formatter.AsTableRow(dataAnimationDepartment2));
             content.Add(Formatter.AsTableRow(dataAnimationDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1512,9 +1572,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Casting")); break;
                 default: content.Add(Formatter.AsHeading3("Casting")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCastingDepartment1));
             content.Add(Formatter.AsTableRow(dataCastingDepartment2));
             content.Add(Formatter.AsTableRow(dataCastingDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1529,9 +1591,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
                 default: content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCostumeDepartment1));
             content.Add(Formatter.AsTableRow(dataCostumeDepartment2));
             content.Add(Formatter.AsTableRow(dataCostumeDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1546,9 +1610,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Redaktion")); break;
                 default: content.Add(Formatter.AsHeading3("Redaktion")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataEditorialDepartment1));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment2));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1563,9 +1629,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Drehort Management")); break;
                 default: content.Add(Formatter.AsHeading3("Drehort Management")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataLocationManagement1));
             content.Add(Formatter.AsTableRow(dataLocationManagement2));
             content.Add(Formatter.AsTableRow(dataLocationManagement3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1580,9 +1648,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Musik")); break;
                 default: content.Add(Formatter.AsHeading3("Musik")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMusicDepartment1));
             content.Add(Formatter.AsTableRow(dataMusicDepartment2));
             content.Add(Formatter.AsTableRow(dataMusicDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1597,9 +1667,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
                 default: content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataContinuityDepartment1));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment2));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1614,9 +1686,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Transport")); break;
                 default: content.Add(Formatter.AsHeading3("Transport")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataTransportationDepartment1));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment2));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1631,9 +1705,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
                 default: content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataOtherCrew1));
             content.Add(Formatter.AsTableRow(dataOtherCrew2));
             content.Add(Formatter.AsTableRow(dataOtherCrew3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1648,9 +1724,27 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Dank")); break;
                 default: content.Add(Formatter.AsHeading3("Dank")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataThanks1));
             content.Add(Formatter.AsTableRow(dataThanks2));
             content.Add(Formatter.AsTableRow(dataThanks3));
+
+            switch (value)
+            {
+                case "en":
+                    content.Add($"");
+                    content.Add("Status English Title X");
+                    break;
+                case "de":
+                    content.Add($"");
+                    content.Add("Status German Title X");
+                    break;
+                default:
+                    content.Add($"");
+                    content.Add("Status German Title X");
+                    break;
+            }
+
             content.Add($"");
             content.Add($"");
 
@@ -1697,9 +1791,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
                 default: content.Add(Formatter.AsHeading3("Produktionsfirmen")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProductionCompany1));
             content.Add(Formatter.AsTableRow(dataProductionCompany2));
             content.Add(Formatter.AsTableRow(dataProductionCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1729,6 +1825,7 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataDistributor3De));
                     break;
             }
+
             content.Add($"");
             content.Add($"");
 
@@ -1743,9 +1840,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
                 default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany1));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany2));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1760,9 +1859,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
                 default: content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataOtherCompany1));
             content.Add(Formatter.AsTableRow(dataOtherCompany2));
             content.Add(Formatter.AsTableRow(dataOtherCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -1796,7 +1897,9 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
                 default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
             }
+
             content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+
             content.Add($"");
             content.Add($"");
 
@@ -1829,11 +1932,13 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(creator.Formatter.DisableCache());
             content.Add(creator.Formatter.DisableTOC());
             content.Add(creator.Formatter.BeginComment());
+
             content.Add($"   Movie Original Title X");
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             content.Add($"   @version Status English Title X: Movie Last Updated X");
+
             content.Add(creator.Formatter.EndComment());
             content.Add("");
 
@@ -1844,6 +1949,7 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
                 default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
             }
+
             content.Add("");
 
             // InfoBox Header
@@ -2341,13 +2447,14 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Ende
             content.Add(Formatter.EndBox());
+
             content.Add($"");
             content.Add($"");
 
             // Cast and Crew Chapter
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
+                case "en":content.Add(Formatter.AsHeading2("Cast and Crew")); break;
                 case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
@@ -2364,9 +2471,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Regie")); break;
                 default: content.Add(Formatter.AsHeading3("Regie")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataDirector1));
             content.Add(Formatter.AsTableRow(dataDirector2));
             content.Add(Formatter.AsTableRow(dataDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2381,9 +2490,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Drehbuch")); break;
                 default: content.Add(Formatter.AsHeading3("Drehbuch")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataWriter1));
             content.Add(Formatter.AsTableRow(dataWriter2));
             content.Add(Formatter.AsTableRow(dataWriter3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2394,13 +2505,27 @@ namespace WikiPageCreator.Export.Create.Tests
 
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading3("Cast")); break;
-                case "de": content.Add(Formatter.AsHeading3("Darsteller")); break;
-                default: content.Add(Formatter.AsHeading3("Darsteller")); break;
+                case "en":
+                    content.Add(Formatter.AsHeading3("Cast"));
+                    content.Add("Status English Title X");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add(Formatter.AsHeading3("Darsteller"));
+                    content.Add("Status German Title X");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add(Formatter.AsHeading3("Darsteller"));
+                    content.Add("Status German Title X");
+                    content.Add("");
+                    break;
             }
+
             content.Add(Formatter.AsTableRow(dataCast1));
             content.Add(Formatter.AsTableRow(dataCast2));
             content.Add(Formatter.AsTableRow(dataCast3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2415,9 +2540,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Produzenten")); break;
                 default: content.Add(Formatter.AsHeading3("Produzenten")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProducer1));
             content.Add(Formatter.AsTableRow(dataProducer2));
             content.Add(Formatter.AsTableRow(dataProducer3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2432,9 +2559,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Musik")); break;
                 default: content.Add(Formatter.AsHeading3("Musik")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMusician1));
             content.Add(Formatter.AsTableRow(dataMusician2));
             content.Add(Formatter.AsTableRow(dataMusician3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2449,9 +2578,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kamera")); break;
                 default: content.Add(Formatter.AsHeading3("Kamera")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCinematographer1));
             content.Add(Formatter.AsTableRow(dataCinematographer2));
             content.Add(Formatter.AsTableRow(dataCinematographer3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2466,9 +2597,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Schnitt")); break;
                 default: content.Add(Formatter.AsHeading3("Schnitt")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataFilmEditor1));
             content.Add(Formatter.AsTableRow(dataFilmEditor2));
             content.Add(Formatter.AsTableRow(dataFilmEditor3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2483,9 +2616,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Casting")); break;
                 default: content.Add(Formatter.AsHeading3("Casting")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCasting1));
             content.Add(Formatter.AsTableRow(dataCasting2));
             content.Add(Formatter.AsTableRow(dataCasting3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2500,9 +2635,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Szenenbild")); break;
                 default: content.Add(Formatter.AsHeading3("Szenenbild")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProductionDesigner1));
             content.Add(Formatter.AsTableRow(dataProductionDesigner2));
             content.Add(Formatter.AsTableRow(dataProductionDesigner3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2517,9 +2654,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Ausstattung")); break;
                 default: content.Add(Formatter.AsHeading3("Ausstattung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataArtDirector1));
             content.Add(Formatter.AsTableRow(dataArtDirector2));
             content.Add(Formatter.AsTableRow(dataArtDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2534,9 +2673,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Bühnenbild")); break;
                 default: content.Add(Formatter.AsHeading3("Bühnenbild")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSetDecoration1));
             content.Add(Formatter.AsTableRow(dataSetDecoration2));
             content.Add(Formatter.AsTableRow(dataSetDecoration3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2551,9 +2692,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
                 default: content.Add(Formatter.AsHeading3("Kostümausstattung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCostumeDesign1));
             content.Add(Formatter.AsTableRow(dataCostumeDesign2));
             content.Add(Formatter.AsTableRow(dataCostumeDesign3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2568,9 +2711,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Maske")); break;
                 default: content.Add(Formatter.AsHeading3("Maske")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMakeupDepartment1));
             content.Add(Formatter.AsTableRow(dataMakeupDepartment2));
             content.Add(Formatter.AsTableRow(dataMakeupDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2585,9 +2730,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Produktionsleitung")); break;
                 default: content.Add(Formatter.AsHeading3("Produktionsleitung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataProductionManagement1));
             content.Add(Formatter.AsTableRow(dataProductionManagement2));
             content.Add(Formatter.AsTableRow(dataProductionManagement3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2602,9 +2749,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Second Unit Regie und Regieassistenz")); break;
                 default: content.Add(Formatter.AsHeading3("Second Unit Regie und Regieassistenz")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataAssistantDirector1));
             content.Add(Formatter.AsTableRow(dataAssistantDirector2));
             content.Add(Formatter.AsTableRow(dataAssistantDirector3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2619,9 +2768,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Art Abteilung")); break;
                 default: content.Add(Formatter.AsHeading3("Art Abteilung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataArtDepartment1));
             content.Add(Formatter.AsTableRow(dataArtDepartment2));
             content.Add(Formatter.AsTableRow(dataArtDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2636,9 +2787,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Sound Abteilung")); break;
                 default: content.Add(Formatter.AsHeading3("Sound Abteilung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSoundDepartment1));
             content.Add(Formatter.AsTableRow(dataSoundDepartment2));
             content.Add(Formatter.AsTableRow(dataSoundDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2653,9 +2806,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
                 default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSpecialEffects1));
             content.Add(Formatter.AsTableRow(dataSpecialEffects2));
             content.Add(Formatter.AsTableRow(dataSpecialEffects3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2670,9 +2825,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
                 default: content.Add(Formatter.AsHeading3("Visuelle Effekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataVisualEffects1));
             content.Add(Formatter.AsTableRow(dataVisualEffects2));
             content.Add(Formatter.AsTableRow(dataVisualEffects3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2687,9 +2844,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Stunts")); break;
                 default: content.Add(Formatter.AsHeading3("Stunts")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataStunts1));
             content.Add(Formatter.AsTableRow(dataStunts2));
             content.Add(Formatter.AsTableRow(dataStunts3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2704,9 +2863,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
                 default: content.Add(Formatter.AsHeading3("Kamera und Beleuchtung")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataElectricalDepartment1));
             content.Add(Formatter.AsTableRow(dataElectricalDepartment2));
             content.Add(Formatter.AsTableRow(dataElectricalDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2721,9 +2882,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Animationen")); break;
                 default: content.Add(Formatter.AsHeading3("Animationen")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataAnimationDepartment1));
             content.Add(Formatter.AsTableRow(dataAnimationDepartment2));
             content.Add(Formatter.AsTableRow(dataAnimationDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2738,9 +2901,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Casting")); break;
                 default: content.Add(Formatter.AsHeading3("Casting")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCastingDepartment1));
             content.Add(Formatter.AsTableRow(dataCastingDepartment2));
             content.Add(Formatter.AsTableRow(dataCastingDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2755,9 +2920,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
                 default: content.Add(Formatter.AsHeading3("Kostümbildnerei")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataCostumeDepartment1));
             content.Add(Formatter.AsTableRow(dataCostumeDepartment2));
             content.Add(Formatter.AsTableRow(dataCostumeDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2772,9 +2939,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Redaktion")); break;
                 default: content.Add(Formatter.AsHeading3("Redaktion")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataEditorialDepartment1));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment2));
             content.Add(Formatter.AsTableRow(dataEditorialDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2789,9 +2958,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Drehort Management")); break;
                 default: content.Add(Formatter.AsHeading3("Drehort Management")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataLocationManagement1));
             content.Add(Formatter.AsTableRow(dataLocationManagement2));
             content.Add(Formatter.AsTableRow(dataLocationManagement3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2806,9 +2977,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Musik")); break;
                 default: content.Add(Formatter.AsHeading3("Musik")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataMusicDepartment1));
             content.Add(Formatter.AsTableRow(dataMusicDepartment2));
             content.Add(Formatter.AsTableRow(dataMusicDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2823,9 +2996,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
                 default: content.Add(Formatter.AsHeading3("Dramaturgie und Continuity")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataContinuityDepartment1));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment2));
             content.Add(Formatter.AsTableRow(dataContinuityDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2840,9 +3015,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Transport")); break;
                 default: content.Add(Formatter.AsHeading3("Transport")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataTransportationDepartment1));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment2));
             content.Add(Formatter.AsTableRow(dataTransportationDepartment3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2857,9 +3034,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
                 default: content.Add(Formatter.AsHeading3("Weitere Crewmitglieder")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataOtherCrew1));
             content.Add(Formatter.AsTableRow(dataOtherCrew2));
             content.Add(Formatter.AsTableRow(dataOtherCrew3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2874,9 +3053,27 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Dank")); break;
                 default: content.Add(Formatter.AsHeading3("Dank")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataThanks1));
             content.Add(Formatter.AsTableRow(dataThanks2));
             content.Add(Formatter.AsTableRow(dataThanks3));
+
+            switch (value)
+            {
+                case "en":
+                    content.Add($"");
+                    content.Add("Status English Title X");
+                    break;
+                case "de":
+                    content.Add($"");
+                    content.Add("Status German Title X");
+                    break;
+                default:
+                    content.Add($"");
+                    content.Add("Status German Title X");
+                    break;
+            }
+
             content.Add($"");
             content.Add($"");
 
@@ -2904,6 +3101,7 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProductionCompany1));
             content.Add(Formatter.AsTableRow(dataProductionCompany2));
             content.Add(Formatter.AsTableRow(dataProductionCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2933,6 +3131,7 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add(Formatter.AsTableRow(dataDistributor3De));
                     break;
             }
+
             content.Add($"");
             content.Add($"");
 
@@ -2947,9 +3146,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
                 default: content.Add(Formatter.AsHeading3("Spezialeffekte")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany1));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany2));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2964,9 +3165,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
                 default: content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
             }
+
             content.Add(Formatter.AsTableRow(dataOtherCompany1));
             content.Add(Formatter.AsTableRow(dataOtherCompany2));
             content.Add(Formatter.AsTableRow(dataOtherCompany3));
+
             content.Add($"");
             content.Add($"");
 
@@ -2977,7 +3180,9 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "de": content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
                 default: content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln")); break;
             }
+
             content.Add(Formatter.AsInsertPage(value + ":navigation:_xxx"));
+
             content.Add($"");
             content.Add($"");
 

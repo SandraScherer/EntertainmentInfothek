@@ -71,6 +71,16 @@ namespace EntertainmentDB.Data
         public string WorldwideGrossDate { get; set; }
 
         /// <summary>
+        /// The cast status of the entry.
+        /// </summary>
+        public Status CastStatus { get; set; }
+
+        /// <summary>
+        /// The crew status of the entry.
+        /// </summary>
+        public Status CrewStatus { get; set; }
+
+        /// <summary>
         /// The connection of the movie.
         /// </summary>
         public Connection Connection { get; set; }
@@ -365,7 +375,7 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, Budget, WorldwideGross, WorldwideGrossDate, ConnectionID, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Movie " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -387,6 +397,18 @@ namespace EntertainmentDB.Data
                 Budget = row["Budget"].ToString();
                 WorldwideGross = row["WorldwideGross"].ToString();
                 WorldwideGrossDate = row["WorldwideGrossDate"].ToString();
+                if (!String.IsNullOrEmpty(row["CastStatusID"].ToString()))
+                {
+                    CastStatus = new Status();
+                    CastStatus.ID = row["CastStatusID"].ToString();
+                    CastStatus.RetrieveBasicInformation();
+                }
+                if (!String.IsNullOrEmpty(row["CrewStatusID"].ToString()))
+                {
+                    CrewStatus = new Status();
+                    CrewStatus.ID = row["CrewStatusID"].ToString();
+                    CrewStatus.RetrieveBasicInformation();
+                }
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
                     Connection = new Connection();

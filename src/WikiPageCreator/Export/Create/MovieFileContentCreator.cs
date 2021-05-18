@@ -1639,7 +1639,6 @@ namespace WikiPageCreator.Export.Create
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Writers);
 
             // Cast
-            // TODO: add cast status
             heading[0] = "Cast";
             heading[1] = "Darsteller";
             CreateCastPersonItemSection(targetLanguageCode, heading, Movie.Cast);
@@ -1784,8 +1783,6 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Dank";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Thanks);
 
-            // TODO: add crew status
-
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
@@ -1863,6 +1860,20 @@ namespace WikiPageCreator.Export.Create
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
+
+                if (heading[0].Equals("Thanks") && !String.IsNullOrEmpty(Movie.CrewStatus.ID))
+                {
+                    Content.Add("");
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        Content.Add(Movie.CrewStatus.EnglishTitle);
+                    }
+                    else // incl. case "de"
+                    {
+                        Content.Add(Movie.CrewStatus.GermanTitle);
+                    }
+                }
+
                 Content.Add("");
                 Content.Add("");
             }
@@ -1903,6 +1914,19 @@ namespace WikiPageCreator.Export.Create
                 else // incl. case "de"
                 {
                     Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                if (!String.IsNullOrEmpty(Movie.CastStatus.ID))
+                {
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        Content.Add(Movie.CastStatus.EnglishTitle);
+                    }
+                    else // incl. case "de"
+                    {
+                        Content.Add(Movie.CastStatus.GermanTitle);
+                    }
+                    Content.Add("");
                 }
 
                 for (int i = 0; i < persons.Count; i++)
