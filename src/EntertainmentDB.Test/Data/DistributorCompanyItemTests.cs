@@ -25,13 +25,13 @@ using EntertainmentDB.DBAccess.Read;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class CompanyItemTests
+    public class DistributorCompanyItemTests
     {
         [TestMethod()]
-        public void CompanyItemTest()
+        public void DistributorCompanyItemTest()
         {
             // Arrange
-            CompanyItem item = new CompanyItem();
+            DistributorCompanyItem item = new DistributorCompanyItem();
 
             // Act
             // Assert
@@ -42,16 +42,18 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Company);
+            Assert.IsNull(item.Country);
+            Assert.IsNull(item.ReleaseDate);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [TestMethod()]
-        public void CompanyItemTest_withID()
+        public void DistributorCompanyItemTest_withID()
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_xx1", "");
 
             // Act
             // Assert
@@ -62,6 +64,8 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.IsNull(item.Company);
+            Assert.IsNull(item.Country);
+            Assert.IsNull(item.ReleaseDate);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
@@ -69,11 +73,10 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Company")]
-        [DataRow("Source")]
         public void CompanyItemTest_withIDAndTargetTableName(string value)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1", value);
+            DistributorCompanyItem item = new DistributorCompanyItem("_xx1", value);
 
             // Act
             // Assert
@@ -84,21 +87,19 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.IsNull(item.Company);
+            Assert.IsNull(item.Country);
+            Assert.IsNull(item.ReleaseDate);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_xx1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -110,21 +111,19 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Company.ID);
+            Assert.AreEqual("_xxx", item.Country.ID);
+            Assert.AreEqual($"{value1} {value2} Release Date X1", item.ReleaseDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
             Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_aa1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -136,21 +135,19 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Company);
+            Assert.IsNull(item.Country);
+            Assert.IsNull(item.ReleaseDate);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_xx1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -162,15 +159,11 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_aa1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -182,15 +175,11 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveTest_withValidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_xx1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_xx1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -202,21 +191,19 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Company.ID);
+            Assert.AreEqual("_xxx", item.Country.ID);
+            Assert.AreEqual($"{value1} {value2} Release Date X1", item.ReleaseDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
             Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveTest_withInvalidID(string value1, string value2)
         {
             // Arrange
-            CompanyItem item = new CompanyItem("_aa1", "");
+            DistributorCompanyItem item = new DistributorCompanyItem("_aa1", "");
             item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
@@ -228,42 +215,46 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Company);
+            Assert.IsNull(item.Country);
+            Assert.IsNull(item.ReleaseDate);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
-        // TODO: Add more tests
+        [DataRow("Movie", "Distributor")]
         public void RetrieveListTest_withValidData(string value1, string value2)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, value1, "_xxx", value2.Replace(" ", ""));
+            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(reader, value1, "_xxx", value2.Replace(" ", ""));
 
             // Assert
             Assert.AreEqual(3, list.Count);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Company.ID);
+            Assert.AreEqual("_xxx", list[0].Country.ID);
+            Assert.AreEqual($"{value1} {value2} Release Date X1", list[0].ReleaseDate);
             Assert.AreEqual($"{value1} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
             Assert.AreEqual($"{value1} {value2} Last Updated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Company.ID);
+            Assert.AreEqual("_yyy", list[1].Country.ID);
+            Assert.AreEqual($"{value1} {value2} Release Date X2", list[1].ReleaseDate);
             Assert.AreEqual($"{value1} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
             Assert.AreEqual($"{value1} {value2} Last Updated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Company.ID);
+            Assert.AreEqual("_zzz", list[2].Country.ID);
+            Assert.AreEqual($"{value1} {value2} Release Date X3", list[2].ReleaseDate);
             Assert.AreEqual($"{value1} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{value1} {value2} Last Updated X3", list[2].LastUpdated);

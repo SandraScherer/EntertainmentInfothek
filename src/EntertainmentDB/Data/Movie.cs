@@ -306,9 +306,19 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> ProductionCompanies { get; set; }
 
         /// <summary>
+        /// The list of distributors of the movie.
+        /// </summary>
+        public List<DistributorCompanyItem> Distributors { get; set; }
+
+        /// <summary>
         /// The list of special effects companies of the movie.
         /// </summary>
         public List<CompanyItem> SpecialEffectsCompanies { get; set; }
+
+        /// <summary>
+        /// The list of other companies of the movie.
+        /// </summary>
+        public List<CompanyItem> OtherCompanies { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -467,7 +477,9 @@ namespace EntertainmentDB.Data
 
             // Company data
             ProductionCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "ProductionCompany") ?? ProductionCompanies;
+            Distributors = DistributorCompanyItem.RetrieveList(Reader, $"Movie", ID, "Distributor") ?? Distributors;
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "SpecialEffectsCompany") ?? SpecialEffectsCompanies;
+            OtherCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "OtherCompany") ?? OtherCompanies;
 
             return Genres.Count +
                    Certifications.Count +
@@ -515,9 +527,11 @@ namespace EntertainmentDB.Data
                    TransportationDepartment.Count +
                    OtherCrew.Count +
                    Thanks.Count +
-                   
+
                    ProductionCompanies.Count +
-                   SpecialEffectsCompanies.Count;
+                   Distributors.Count +
+                   SpecialEffectsCompanies.Count +
+                   OtherCompanies.Count;
         }
 
         /// <summary>

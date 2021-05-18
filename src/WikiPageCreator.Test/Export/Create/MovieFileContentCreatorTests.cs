@@ -1703,6 +1703,35 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Distributor
+            string[] pathCountry = { value, "info" };
+
+            string[] dataDistributor1En = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country English Name X")}) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country German Name X")}) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country English Name Y")}) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y")}) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country English Name Z")}) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z")}) Movie Distributor Details X3" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsHeading3("Distributors"));
+                    content.Add(Formatter.AsTableRow(dataDistributor1En));
+                    content.Add(Formatter.AsTableRow(dataDistributor2En));
+                    content.Add(Formatter.AsTableRow(dataDistributor3En));
+                    break;
+                case "de":
+                default:
+                    content.Add(Formatter.AsHeading3("Vertrieb"));
+                    content.Add(Formatter.AsTableRow(dataDistributor1De));
+                    content.Add(Formatter.AsTableRow(dataDistributor2De));
+                    content.Add(Formatter.AsTableRow(dataDistributor3De));
+                    break;
+            }
+            content.Add($"");
+            content.Add($"");
+
             // Special Effects Company
             string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Special Effects Company Details X1" };
             string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Special Effects Company Details X2" };
@@ -1717,6 +1746,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany1));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany2));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany3));
+            content.Add($"");
+            content.Add($"");
+
+            // Other Company
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Other Company Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Other Company Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "Movie Other Company Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Other Companies")); break;
+                case "de": content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
+                default: content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataOtherCompany1));
+            content.Add(Formatter.AsTableRow(dataOtherCompany2));
+            content.Add(Formatter.AsTableRow(dataOtherCompany3));
             content.Add($"");
             content.Add($"");
 
@@ -2861,6 +2907,35 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Distributor
+            string[] pathDistributorCountry = { value, "info" };
+
+            string[] dataDistributor1En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country English Name X")}) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country German Name X")}) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country English Name Y")}) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country German Name Y")}) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country English Name Z")}) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country German Name Z")}) Movie Distributor Details X3" };
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsHeading3("Distributors"));
+                    content.Add(Formatter.AsTableRow(dataDistributor1En));
+                    content.Add(Formatter.AsTableRow(dataDistributor2En));
+                    content.Add(Formatter.AsTableRow(dataDistributor3En));
+                    break;
+                case "de":
+                default:
+                    content.Add(Formatter.AsHeading3("Vertrieb"));
+                    content.Add(Formatter.AsTableRow(dataDistributor1De));
+                    content.Add(Formatter.AsTableRow(dataDistributor2De));
+                    content.Add(Formatter.AsTableRow(dataDistributor3De));
+                    break;
+            }
+            content.Add($"");
+            content.Add($"");
+
             // Special Effects Company
             string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Special Effects Company Details X1" };
             string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Special Effects Company Details X2" };
@@ -2875,6 +2950,23 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany1));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany2));
             content.Add(Formatter.AsTableRow(dataSpecialEffectsCompany3));
+            content.Add($"");
+            content.Add($"");
+
+            // Other Company
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Other Company Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Other Company Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "Movie Other Company Details X3" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Other Companies")); break;
+                case "de": content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
+                default: content.Add(Formatter.AsHeading3("Weitere Firmen")); break;
+            }
+            content.Add(Formatter.AsTableRow(dataOtherCompany1));
+            content.Add(Formatter.AsTableRow(dataOtherCompany2));
+            content.Add(Formatter.AsTableRow(dataOtherCompany3));
             content.Add($"");
             content.Add($"");
 

@@ -1851,11 +1851,11 @@ namespace WikiPageCreator.Export.Create
                     }
                     else if (!String.IsNullOrEmpty(persons[i].Role))
                     {
-                        data[1] = $"({persons[i].Role}";
+                        data[1] = $"({persons[i].Role})";
                     }
                     else if (!String.IsNullOrEmpty(persons[i].Details))
                     {
-                        data[1] = $"({persons[i].Details}";
+                        data[1] = $"{persons[i].Details}";
                     }
                     else
                     {
@@ -1932,11 +1932,11 @@ namespace WikiPageCreator.Export.Create
                     }
                     else if (!String.IsNullOrEmpty(persons[i].Role))
                     {
-                        data[1] = $"({persons[i].Role}";
+                        data[1] = $"({persons[i].Role})";
                     }
                     else if (!String.IsNullOrEmpty(persons[i].Details))
                     {
-                        data[1] = $"({persons[i].Details}";
+                        data[1] = $"{persons[i].Details}";
                     }
                     else
                     {
@@ -1978,10 +1978,20 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Produktionsfirmen";
             CreateCompanyItemSection(targetLanguageCode, heading, Movie.ProductionCompanies);
 
+            // Distributors
+            heading[0] = "Distributors";
+            heading[1] = "Vertrieb";
+            CreateDistributorCompanyItemSection(targetLanguageCode, heading, Movie.Distributors);
+
             // Special Effects Companies
             heading[0] = "Special Effects";
             heading[1] = "Spezialeffekte";
             CreateCompanyItemSection(targetLanguageCode, heading, Movie.SpecialEffectsCompanies);
+
+            // Other Companies
+            heading[0] = "Other Companies";
+            heading[1] = "Weitere Firmen";
+            CreateCompanyItemSection(targetLanguageCode, heading, Movie.OtherCompanies);
         }
 
         /// <summary>
@@ -2039,6 +2049,90 @@ namespace WikiPageCreator.Export.Create
                     else
                     {
                         data[1] = "";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+                Content.Add("");
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
+        /// Creates a formatted distributor company section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="heading">The heading for the section; [0] english; [1] german.</param>
+        /// <param name="companies">The list of distributor companies for the section.</param>
+        private void CreateDistributorCompanyItemSection(string targetLanguageCode, string[] heading, List<DistributorCompanyItem> companies)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (heading.Length != 2)
+            {
+                throw new ArgumentException(nameof(heading));
+            }
+            if (companies == null)
+            {
+                throw new ArgumentNullException(nameof(companies));
+            }
+
+            if (companies.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}: '{companies.Count}'");
+
+                string[] data = new string[2];
+                string[] path = { targetLanguageCode, "company" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < companies.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(companies[i].Company.Name) && !String.IsNullOrEmpty(companies[i].Company.NameAddOn))
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name} {companies[i].Company.NameAddOn}");
+                    }
+                    else
+                    {
+                        data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name}");
+                    }
+
+                    // prepare country information
+                    string dataCountry;
+                    string[] pathCountry = { targetLanguageCode, "info" };
+
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalName, companies[i].Country.EnglishName)}";
+                    }
+                    else // incl. case "de"
+                    {
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalName, companies[i].Country.GermanName)}";
+                    }
+
+                    if (!String.IsNullOrEmpty(companies[i].ReleaseDate) && !String.IsNullOrEmpty(companies[i].Details))
+                    {
+                        data[1] = $"({companies[i].ReleaseDate}) ({dataCountry}) {companies[i].Details}";
+                    }
+                    else if (!String.IsNullOrEmpty(companies[i].ReleaseDate))
+                    {
+                        data[1] = $"({companies[i].ReleaseDate}) ({dataCountry})";
+                    }
+                    else if (!String.IsNullOrEmpty(companies[i].Details))
+                    {
+                        data[1] = $"({dataCountry}) {companies[i].Details}";
+                    }
+                    else
+                    {
+                        data[1] = $"({dataCountry})";
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
