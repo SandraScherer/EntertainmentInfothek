@@ -331,6 +331,11 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> OtherCompanies { get; set; }
 
         /// <summary>
+        /// The list of filming locations of the movie.
+        /// </summary>
+        public List<LocationItem> FilmingLocations { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -503,6 +508,8 @@ namespace EntertainmentDB.Data
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "SpecialEffectsCompany") ?? SpecialEffectsCompanies;
             OtherCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "OtherCompany") ?? OtherCompanies;
 
+            FilmingLocations = LocationItem.RetrieveList(Reader, $"Movie", ID, "FilmingLocation") ?? FilmingLocations;
+
             return Genres.Count +
                    Certifications.Count +
                    Countries.Count +
@@ -553,7 +560,8 @@ namespace EntertainmentDB.Data
                    ProductionCompanies.Count +
                    Distributors.Count +
                    SpecialEffectsCompanies.Count +
-                   OtherCompanies.Count;
+                   OtherCompanies.Count +
+                   FilmingLocations.Count;
         }
 
         /// <summary>

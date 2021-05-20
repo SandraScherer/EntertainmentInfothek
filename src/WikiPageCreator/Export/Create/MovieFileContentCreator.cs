@@ -125,6 +125,8 @@ namespace WikiPageCreator.Export.Create
 
             CreateCompanyChapter(targetLanguageCode);
 
+            CreateFilmingAndProductionChapter(targetLanguageCode);
+
             CreateConnectionChapter(targetLanguageCode);
 
             CreateFooter(targetLanguageCode);
@@ -202,22 +204,20 @@ namespace WikiPageCreator.Export.Create
                 Logger.Trace($"Title: '{Movie.EnglishTitle}' (englisch)");
 
                 Content.Add(Formatter.AsHeading1(Movie.EnglishTitle));
-                Content.Add("");
             }
             else if (targetLanguageCode.Equals("de") && !String.IsNullOrEmpty(Movie.GermanTitle))
             {
                 Logger.Trace($"Title: '{Movie.GermanTitle}' (deutsch)");
 
                 Content.Add(Formatter.AsHeading1(Movie.GermanTitle));
-                Content.Add("");
             }
             else
             {
                 Logger.Trace($"Title: '{Movie.OriginalTitle}' (original)");
 
                 Content.Add(Formatter.AsHeading1(Movie.OriginalTitle));
-                Content.Add("");
             }
+            Content.Add("");
 
             Logger.Trace($"CreateTitle() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -283,14 +283,13 @@ namespace WikiPageCreator.Export.Create
             {
                 data[0] = "Original Title";
                 data[1] = Movie.OriginalTitle;
-                Content.Add(Formatter.AsTableRow(data));
             }
             else // incl. case "de"
             {
                 data[0] = "Originaltitel";
                 data[1] = Movie.OriginalTitle;
-                Content.Add(Formatter.AsTableRow(data));
             }
+            Content.Add(Formatter.AsTableRow(data));
 
             Logger.Trace($"CreateInfoBoxTitle() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -319,14 +318,13 @@ namespace WikiPageCreator.Export.Create
                 {
                     data[0] = "Type";
                     data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.EnglishTitle);
-                    Content.Add(Formatter.AsTableRow(data));
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Typ";
                     data[1] = Formatter.AsInternalLink(path, Movie.Type.EnglishTitle, Movie.Type.GermanTitle);
-                    Content.Add(Formatter.AsTableRow(data));
                 }
+                Content.Add(Formatter.AsTableRow(data));
             }
 
             Logger.Trace($"CreateInfoBoxType() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
@@ -356,14 +354,13 @@ namespace WikiPageCreator.Export.Create
                 {
                     data[0] = "Original Release Date";
                     data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
-                    Content.Add(Formatter.AsTableRow(data));
                 }
                 else // incl. case "de"
                 {
                     data[0] = "Erstausstrahlung";
                     data[1] = Formatter.AsInternalLink(path, Movie.ReleaseDate, Movie.ReleaseDate);
-                    Content.Add(Formatter.AsTableRow(data));
                 }
+                Content.Add(Formatter.AsTableRow(data));
             }
 
             Logger.Trace($"CreateInfoBoxOriginalReleaseDate() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
@@ -395,13 +392,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Genres[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle)} {Movie.Genres[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.EnglishTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Genres.Count; i++)
                     {
@@ -409,13 +405,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Genres[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle)} {Movie.Genres[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.EnglishTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -424,13 +419,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Genres[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle)} {Movie.Genres[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[0].Genre.EnglishTitle, Movie.Genres[0].Genre.GermanTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Genres.Count; i++)
                     {
@@ -438,13 +432,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Genres[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle)} {Movie.Genres[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Genres[i].Genre.EnglishTitle, Movie.Genres[i].Genre.GermanTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -478,13 +471,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Certifications.Count; i++)
                     {
@@ -492,13 +484,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -507,13 +498,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Certifications.Count; i++)
                     {
@@ -521,13 +511,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -561,13 +550,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)} {Movie.Countries[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Countries.Count; i++)
                     {
@@ -575,13 +563,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)} {Movie.Countries[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -590,13 +577,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)} {Movie.Countries[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Countries.Count; i++)
                     {
@@ -604,13 +590,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)} {Movie.Countries[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -644,13 +629,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Languages[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName)} {Movie.Languages[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.EnglishName)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Languages.Count; i++)
                     {
@@ -658,13 +642,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Languages[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName)} {Movie.Languages[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.EnglishName)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -673,13 +656,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Languages[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName)} {Movie.Languages[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[0].Language.OriginalName, Movie.Languages[0].Language.GermanName)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Languages.Count; i++)
                     {
@@ -687,13 +669,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Languages[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName)} {Movie.Languages[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Languages[i].Language.OriginalName, Movie.Languages[i].Language.GermanName)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -754,13 +735,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.WorldwideGrossDate))
                     {
                         data[1] = $"{Movie.WorldwideGross} ({Formatter.AsInternalLink(path, Movie.WorldwideGrossDate, Movie.WorldwideGrossDate)})";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.WorldwideGross}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
                 }
                 else // incl. case "de"
                 {
@@ -768,13 +748,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.WorldwideGrossDate))
                     {
                         data[1] = $"{Movie.WorldwideGross} ({Formatter.AsInternalLink(path, Movie.WorldwideGrossDate, Movie.WorldwideGrossDate)})";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.WorldwideGross}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
                 }
             }
 
@@ -807,13 +786,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Runtimes[0].Details))
                     {
                         data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)}) {Movie.Runtimes[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.EnglishTitle)})";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Runtimes.Count; i++)
                     {
@@ -821,13 +799,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Runtimes[i].Details))
                         {
                             data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)}) {Movie.Runtimes[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.EnglishTitle)})";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -836,13 +813,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Runtimes[0].Details))
                     {
                         data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)}) {Movie.Runtimes[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Runtimes[0].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[0].Edition.EnglishTitle, Movie.Runtimes[0].Edition.GermanTitle)})";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Runtimes.Count; i++)
                     {
@@ -850,13 +826,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Runtimes[i].Details))
                         {
                             data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)}) {Movie.Runtimes[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Runtimes[i].Runtime} min. ({Formatter.AsInternalLink(path, Movie.Runtimes[i].Edition.EnglishTitle, Movie.Runtimes[i].Edition.GermanTitle)})";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -890,13 +865,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.SoundMixes[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle)} {Movie.SoundMixes[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.EnglishTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.SoundMixes.Count; i++)
                     {
@@ -904,13 +878,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.SoundMixes[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle)} {Movie.SoundMixes[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.EnglishTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -919,13 +892,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.SoundMixes[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle)} {Movie.SoundMixes[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[0].SoundMix.EnglishTitle, Movie.SoundMixes[0].SoundMix.GermanTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.SoundMixes.Count; i++)
                     {
@@ -933,13 +905,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.SoundMixes[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle)} {Movie.SoundMixes[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.SoundMixes[i].SoundMix.EnglishTitle, Movie.SoundMixes[i].SoundMix.GermanTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -973,13 +944,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Colors[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.EnglishTitle)} {Movie.Colors[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.EnglishTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Colors.Count; i++)
                     {
@@ -987,13 +957,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Colors[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.EnglishTitle)} {Movie.Colors[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.EnglishTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1002,13 +971,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Colors[0].Details))
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle)} {Movie.Colors[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[0].Color.EnglishTitle, Movie.Colors[0].Color.GermanTitle)}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Colors.Count; i++)
                     {
@@ -1016,13 +984,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Colors[i].Details))
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle)} {Movie.Colors[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Formatter.AsInternalLink(path, Movie.Colors[i].Color.EnglishTitle, Movie.Colors[i].Color.GermanTitle)}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1055,13 +1022,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.AspectRatios[0].Details))
                     {
                         data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.AspectRatios.Count; i++)
                     {
@@ -1069,13 +1035,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.AspectRatios[i].Details))
                         {
                             data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1084,13 +1049,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.AspectRatios[0].Details))
                     {
                         data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio} {Movie.AspectRatios[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.AspectRatios[0].AspectRatio.Ratio}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.AspectRatios.Count; i++)
                     {
@@ -1098,13 +1062,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.AspectRatios[i].Details))
                         {
                             data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio} {Movie.AspectRatios[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.AspectRatios[i].AspectRatio.Ratio}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1137,13 +1100,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
                     {
                         data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Cameras.Count; i++)
                     {
@@ -1151,13 +1113,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
                         {
                             data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1166,13 +1127,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
                     {
                         data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Cameras.Count; i++)
                     {
@@ -1180,13 +1140,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
                         {
                             data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1219,13 +1178,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Laboratories[0].Details))
                     {
                         data[1] = $"{Movie.Laboratories[0].Laboratory.Name} {Movie.Laboratories[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Laboratories.Count; i++)
                     {
@@ -1233,13 +1191,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Laboratories[i].Details))
                         {
                             data[1] = $"{Movie.Laboratories[i].Laboratory.Name} {Movie.Laboratories[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1248,13 +1205,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.Laboratories[0].Details))
                     {
                         data[1] = $"{Movie.Laboratories[0].Laboratory.Name} {Movie.Laboratories[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.Laboratories[0].Laboratory.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Laboratories.Count; i++)
                     {
@@ -1262,13 +1218,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.Laboratories[i].Details))
                         {
                             data[1] = $"{Movie.Laboratories[i].Laboratory.Name} {Movie.Laboratories[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.Laboratories[i].Laboratory.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1301,13 +1256,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.FilmLengths[0].Details))
                     {
                         data[1] = $"{Movie.FilmLengths[0].Length} {Movie.FilmLengths[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.FilmLengths[0].Length}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.FilmLengths.Count; i++)
                     {
@@ -1315,13 +1269,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.FilmLengths[i].Details))
                         {
                             data[1] = $"{Movie.FilmLengths[i].Length} {Movie.FilmLengths[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.FilmLengths[i].Length}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1330,13 +1283,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.FilmLengths[0].Details))
                     {
                         data[1] = $"{Movie.FilmLengths[0].Length} {Movie.FilmLengths[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.FilmLengths[0].Length}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.FilmLengths.Count; i++)
                     {
@@ -1344,13 +1296,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.FilmLengths[i].Details))
                         {
                             data[1] = $"{Movie.FilmLengths[i].Length} {Movie.FilmLengths[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.FilmLengths[i].Length}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1383,13 +1334,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
                     {
                         data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
@@ -1397,13 +1347,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
                             data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1412,13 +1361,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
                     {
                         data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
@@ -1426,13 +1374,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
                             data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1465,13 +1412,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
                     {
                         data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name} {Movie.CinematographicProcesses[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
                     {
@@ -1479,13 +1425,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[i].Details))
                         {
                             data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name} {Movie.CinematographicProcesses[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1494,13 +1439,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
                     {
                         data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name} {Movie.CinematographicProcesses[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.CinematographicProcesses[0].CinematographicProcess.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.CinematographicProcesses.Count; i++)
                     {
@@ -1508,13 +1452,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[i].Details))
                         {
                             data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name} {Movie.CinematographicProcesses[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.CinematographicProcesses[i].CinematographicProcess.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1547,13 +1490,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
                     {
                         data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
                     {
@@ -1561,13 +1503,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
                         {
                             data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
                 else // incl. case "de"
@@ -1576,13 +1517,12 @@ namespace WikiPageCreator.Export.Create
                     if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
                     {
                         data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
                     else
                     {
                         data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
-                        Content.Add(Formatter.AsTableRow(data));
                     }
+                    Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.PrintedFilmFormats.Count; i++)
                     {
@@ -1590,13 +1530,12 @@ namespace WikiPageCreator.Export.Create
                         if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
                         {
                             data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
                         else
                         {
                             data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
-                            Content.Add(Formatter.AsTableRow(data));
                         }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
                 }
             }
@@ -1968,6 +1907,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
+
                 Content.Add("");
                 Content.Add("");
             }
@@ -2076,6 +2016,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
+
                 Content.Add("");
                 Content.Add("");
             }
@@ -2160,6 +2101,82 @@ namespace WikiPageCreator.Export.Create
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
+
+                Content.Add("");
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted filming and production chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateFilmingAndProductionChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateFilmingAndProductionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Filming and Production"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Produktion"));
+            }
+
+            string[] heading = new string[2];
+
+            // Production Companies
+            heading[0] = "Filming Locations";
+            heading[1] = "Drehorte";
+
+            if (Movie.FilmingLocations.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingLocations.Count}'");
+
+                string[] data = new string[1];
+                string[] path = { targetLanguageCode, "info" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < Movie.FilmingLocations.Count; i++)
+                {
+                    // prepare country information
+                    string dataCountry;
+                    string[] pathCountry = { targetLanguageCode, "info" };
+
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.EnglishName)}";
+                    }
+                    else // incl. case "de"
+                    {
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.GermanName)}";
+                    }
+
+                    if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}{Formatter.ForceNewLine()}({Movie.FilmingLocations[i].Details})";
+                    }
+                    else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+
                 Content.Add("");
                 Content.Add("");
             }
@@ -2190,10 +2207,15 @@ namespace WikiPageCreator.Export.Create
                 {
                     Content.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln"));
                 }
+
                 if (Movie.Connection.BaseConnection == null)
+                {
                     Content.Add(Formatter.AsInsertPage(targetLanguageCode + ":navigation:" + Movie.Connection.ID));
+                }
                 else
+                {
                     Content.Add(Formatter.AsInsertPage(targetLanguageCode + ":navigation:" + Movie.Connection.BaseConnection.ID));
+                }
 
                 Content.Add("");
                 Content.Add("");
