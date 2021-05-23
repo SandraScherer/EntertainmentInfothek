@@ -336,6 +336,16 @@ namespace EntertainmentDB.Data
         public List<LocationItem> FilmingLocations { get; set; }
 
         /// <summary>
+        /// The list of filming dates of the movie.
+        /// </summary>
+        public List<TimespanItem> FilmingDates { get; set; }
+
+        /// <summary>
+        /// The list of production dates of the movie.
+        /// </summary>
+        public List<TimespanItem> ProductionDates { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -509,6 +519,8 @@ namespace EntertainmentDB.Data
             OtherCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "OtherCompany") ?? OtherCompanies;
 
             FilmingLocations = LocationItem.RetrieveList(Reader, $"Movie", ID, "FilmingLocation") ?? FilmingLocations;
+            FilmingDates = TimespanItem.RetrieveList(Reader, $"Movie", ID, "FilmingDate") ?? FilmingDates;
+            ProductionDates = TimespanItem.RetrieveList(Reader, $"Movie", ID, "ProductionDate") ?? ProductionDates;
 
             return Genres.Count +
                    Certifications.Count +
@@ -561,7 +573,10 @@ namespace EntertainmentDB.Data
                    Distributors.Count +
                    SpecialEffectsCompanies.Count +
                    OtherCompanies.Count +
-                   FilmingLocations.Count;
+
+                   FilmingLocations.Count +
+                   FilmingDates.Count +
+                   ProductionDates.Count;
         }
 
         /// <summary>

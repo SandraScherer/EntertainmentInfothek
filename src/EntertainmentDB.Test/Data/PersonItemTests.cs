@@ -121,11 +121,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveBasicInformationTest_withValidID(string value, string value2)
+        public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_xx1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -136,10 +136,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Person.ID);
-            Assert.AreEqual($"{value} {value2} Role X1", item.Role);
-            Assert.AreEqual($"{value} {value2} Details X1", item.Details);
+            Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -172,11 +172,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
+        public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_aa1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -223,11 +223,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveAdditionalInformationTest_withValidID(string value, string value2)
+        public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_xx1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -267,11 +267,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveAdditionalInformationTest_withInvalidID(string value, string value2)
+        public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_aa1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -311,11 +311,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveTest_withValidID(string value, string value2)
+        public void RetrieveTest_withValidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_xx1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -326,10 +326,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Person.ID);
-            Assert.AreEqual($"{value} {value2} Role X1", item.Role);
-            Assert.AreEqual($"{value} {value2} Details X1", item.Details);
+            Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -362,11 +362,11 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveTest_withInvalidID(string value, string value2)
+        public void RetrieveTest_withInvalidID(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_aa1", "");
-            item.BaseTableName = value;
+            item.BaseTableName = value1;
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
@@ -413,37 +413,37 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveListTest_withValidData(string value, string value2)
+        public void RetrieveListTest_withValidData(string value1, string value2)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, value, "_xxx", value2.Replace(" ", ""));
+            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, value1, "_xxx", value2.Replace(" ", ""));
 
             // Assert
             Assert.AreEqual(3, list.Count);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Person.ID);
-            Assert.AreEqual($"{value} {value2} Role X1", list[0].Role);
-            Assert.AreEqual($"{value} {value2} Details X1", list[0].Details);
+            Assert.AreEqual($"{value1} {value2} Role X1", list[0].Role);
+            Assert.AreEqual($"{value1} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Person.ID);
-            Assert.AreEqual($"{value} {value2} Role X2", list[1].Role);
-            Assert.AreEqual($"{value} {value2} Details X2", list[1].Details);
+            Assert.AreEqual($"{value1} {value2} Role X2", list[1].Role);
+            Assert.AreEqual($"{value1} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} Last Updated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Person.ID);
-            Assert.AreEqual($"{value} {value2} Role X3", list[2].Role);
-            Assert.AreEqual($"{value} {value2} Details X3", list[2].Details);
+            Assert.AreEqual($"{value1} {value2} Role X3", list[2].Role);
+            Assert.AreEqual($"{value1} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} Last Updated X3", list[2].LastUpdated);
         }
     }
 }

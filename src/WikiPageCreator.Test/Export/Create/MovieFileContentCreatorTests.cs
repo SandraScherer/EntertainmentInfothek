@@ -1859,6 +1859,45 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Filming Dates
+            string[] pathFilmingDates = { value, "date" };
+            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X1") }" };
+            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X2") }" };
+            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X3") }" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Filming Dates")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehdatum")); break;
+                default: content.Add(Formatter.AsHeading3("Drehdatum")); break;
+            }
+
+            content.Add(Formatter.AsTableRow(dataFilmingDates1));
+            content.Add(Formatter.AsTableRow(dataFilmingDates2));
+            content.Add(Formatter.AsTableRow(dataFilmingDates3));
+
+            content.Add($"");
+            content.Add($"");
+
+            // Production Dates
+            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X1") }" };
+            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X2") }" };
+            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X3") }" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Production Dates")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produktionsdatum")); break;
+                default: content.Add(Formatter.AsHeading3("Produktionsdatum")); break;
+            }
+
+            content.Add(Formatter.AsTableRow(dataProductionDates1));
+            content.Add(Formatter.AsTableRow(dataProductionDates2));
+            content.Add(Formatter.AsTableRow(dataProductionDates3));
+
+            content.Add($"");
+            content.Add($"");
+
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
             {
@@ -3210,8 +3249,44 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Filming Dates
+            string[] pathFilmingDates = { value, "date" };
+            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X1") }" };
+            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X2") }" };
+            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X3") }" };
 
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Filming Dates")); break;
+                case "de": content.Add(Formatter.AsHeading3("Drehdatum")); break;
+                default: content.Add(Formatter.AsHeading3("Drehdatum")); break;
+            }
 
+            content.Add(Formatter.AsTableRow(dataFilmingDates1));
+            content.Add(Formatter.AsTableRow(dataFilmingDates2));
+            content.Add(Formatter.AsTableRow(dataFilmingDates3));
+
+            content.Add($"");
+            content.Add($"");
+
+            // Production Dates
+            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X1") }" };
+            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X2") }" };
+            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X3") }" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading3("Production Dates")); break;
+                case "de": content.Add(Formatter.AsHeading3("Produktionsdatum")); break;
+                default: content.Add(Formatter.AsHeading3("Produktionsdatum")); break;
+            }
+
+            content.Add(Formatter.AsTableRow(dataProductionDates1));
+            content.Add(Formatter.AsTableRow(dataProductionDates2));
+            content.Add(Formatter.AsTableRow(dataProductionDates3));
+
+            content.Add($"");
+            content.Add($"");
 
             // Connection Chapter
             switch (value)

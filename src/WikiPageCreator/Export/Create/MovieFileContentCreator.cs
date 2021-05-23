@@ -2131,7 +2131,7 @@ namespace WikiPageCreator.Export.Create
 
             string[] heading = new string[2];
 
-            // Production Companies
+            // Filming Locations
             heading[0] = "Filming Locations";
             heading[1] = "Drehorte";
 
@@ -2173,6 +2173,88 @@ namespace WikiPageCreator.Export.Create
                     else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
                     {
                         data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+
+                Content.Add("");
+                Content.Add("");
+            }
+
+            // Filming Dates
+            heading[0] = "Filming Dates";
+            heading[1] = "Drehdatum";
+
+            if (Movie.FilmingDates.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingDates.Count}'");
+
+                string[] data = new string[1];
+                string[] path = { targetLanguageCode, "date" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < Movie.FilmingDates.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate) && !String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
+                    }
+                    else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - ??";
+                    }
+                    else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
+                    {
+                        data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+                }
+
+                Content.Add("");
+                Content.Add("");
+            }
+
+            // Production Dates
+            heading[0] = "Production Dates";
+            heading[1] = "Produktionsdatum";
+
+            if (Movie.ProductionDates.Count > 0)
+            {
+                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.ProductionDates.Count}'");
+
+                string[] data = new string[1];
+                string[] path = { targetLanguageCode, "date" };
+
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading3(heading[0]));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading3(heading[1]));
+                }
+
+                for (int i = 0; i < Movie.ProductionDates.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate) && !String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
+                    }
+                    else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate))
+                    {
+                        data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - ??";
+                    }
+                    else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
+                    {
+                        data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
