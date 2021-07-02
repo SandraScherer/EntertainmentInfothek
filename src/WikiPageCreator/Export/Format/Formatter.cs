@@ -209,8 +209,29 @@ namespace WikiPageCreator.Export.Format
         /// <param name="filename">The filename of the image.</param>
         /// <param name="width">The width for the image.</param>
         /// <param name="height">The height for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string[] path, string filename, int width, int height, string text);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="height">The height for the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         public abstract string AsImage(string[] path, string filename, int width, int height);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string[] path, string filename, int width, string text);
 
         /// <summary>
         /// Formats the given parameters as an image.
@@ -226,8 +247,27 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         /// <param name="path">The path of the image.</param>
         /// <param name="filename">The filename of the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string[] path, string filename, string text);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         public abstract string AsImage(string[] path, string filename);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="height">The height for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string filename, int width, int height, string text);
 
         /// <summary>
         /// Formats the given parameters as an image.
@@ -243,8 +283,25 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         /// <param name="filename">The filename of the image.</param>
         /// <param name="width">The width for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string filename, int width, string text);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         public abstract string AsImage(string filename, int width);
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        public abstract string AsImage(string filename, string text);
 
         /// <summary>
         /// Formats the given parameters as an image.

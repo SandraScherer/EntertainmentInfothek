@@ -321,6 +321,20 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Act
             string[] path = { "path1", "path2" };
+            string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, "text");
+
+            // Assert
+            Assert.AreEqual("{{path1:path2:filename.jpg?50x100|text}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage3Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", 50);
 
             // Assert
@@ -328,7 +342,21 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsImage3Test()
+        public void AsImage4Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string[] path = { "path1", "path2" };
+            string returnstring = formatter.AsImage(path, "filename.jpg", 50, "text");
+
+            // Assert
+            Assert.AreEqual("{{path1:path2:filename.jpg?50|text}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage5Test()
         {
             // Arrange
             DokuWikiFormatter formatter = new DokuWikiFormatter();
@@ -342,7 +370,21 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsImage4Test()
+        public void AsImage6Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string[] path = { "path1", "path2" };
+            string returnstring = formatter.AsImage(path, "filename.jpg", "text");
+
+            // Assert
+            Assert.AreEqual("{{path1:path2:filename.jpg|text}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage7Test()
         {
             // Arrange
             DokuWikiFormatter formatter = new DokuWikiFormatter();
@@ -355,7 +397,20 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsImage5Test()
+        public void AsImage8Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string returnstring = formatter.AsImage("filename.jpg", 50, 100, "text");
+
+            // Assert
+            Assert.AreEqual("{{filename.jpg?50x100|text}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage9Test()
         {
             // Arrange
             DokuWikiFormatter formatter = new DokuWikiFormatter();
@@ -368,7 +423,20 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsImage6Test()
+        public void AsImage10Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string returnstring = formatter.AsImage("filename.jpg", 50, "text");
+
+            // Assert
+            Assert.AreEqual("{{filename.jpg?50|text}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage11Test()
         {
             // Arrange
             DokuWikiFormatter formatter = new DokuWikiFormatter();
@@ -378,6 +446,19 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Assert
             Assert.AreEqual("{{filename.jpg}}", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsImage12Test()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string returnstring = formatter.AsImage("filename.jpg", "text");
+
+            // Assert
+            Assert.AreEqual("{{filename.jpg|text}}", returnstring);
         }
 
         [TestMethod()]
