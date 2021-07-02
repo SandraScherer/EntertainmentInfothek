@@ -108,6 +108,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
+
+            Assert.IsNull(entry.Posters);
+            Assert.IsNull(entry.Covers);
+            Assert.IsNull(entry.Images);
         }
 
         [TestMethod()]
@@ -191,6 +195,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
+
+            Assert.IsNull(entry.Posters);
+            Assert.IsNull(entry.Covers);
+            Assert.IsNull(entry.Images);
         }
 
         [TestMethod()]
@@ -275,6 +283,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
+
+            Assert.IsNull(entry.Posters);
+            Assert.IsNull(entry.Covers);
+            Assert.IsNull(entry.Images);
         }
 
         [TestMethod()]
@@ -359,6 +371,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
+
+            Assert.IsNull(entry.Posters);
+            Assert.IsNull(entry.Covers);
+            Assert.IsNull(entry.Images);
         }
 
         [TestMethod()]
@@ -371,7 +387,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((51 * 3 + 1), count);
+            Assert.AreEqual((54 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -628,6 +644,21 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionDates[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionDates[2].ID);
+
+            Assert.AreEqual(3, entry.Posters.Count);
+            Assert.AreEqual("_xx1", entry.Posters[0].ID);
+            Assert.AreEqual("_xx2", entry.Posters[1].ID);
+            Assert.AreEqual("_xx3", entry.Posters[2].ID);
+
+            Assert.AreEqual(3, entry.Covers.Count);
+            Assert.AreEqual("_xx1", entry.Covers[0].ID);
+            Assert.AreEqual("_xx2", entry.Covers[1].ID);
+            Assert.AreEqual("_xx3", entry.Covers[2].ID);
+
+            Assert.AreEqual(3, entry.Images.Count);
+            Assert.AreEqual("_xx1", entry.Images[0].ID);
+            Assert.AreEqual("_xx2", entry.Images[1].ID);
+            Assert.AreEqual("_xx3", entry.Images[2].ID);
         }
 
         [TestMethod()]
@@ -926,6 +957,21 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionDates[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionDates[2].ID);
+
+            Assert.AreEqual(3, entry.Posters.Count);
+            Assert.AreEqual("_xx1", entry.Posters[0].ID);
+            Assert.AreEqual("_xx2", entry.Posters[1].ID);
+            Assert.AreEqual("_xx3", entry.Posters[2].ID);
+
+            Assert.AreEqual(3, entry.Covers.Count);
+            Assert.AreEqual("_xx1", entry.Covers[0].ID);
+            Assert.AreEqual("_xx2", entry.Covers[1].ID);
+            Assert.AreEqual("_xx3", entry.Covers[2].ID);
+
+            Assert.AreEqual(3, entry.Images.Count);
+            Assert.AreEqual("_xx1", entry.Images[0].ID);
+            Assert.AreEqual("_xx2", entry.Images[1].ID);
+            Assert.AreEqual("_xx3", entry.Images[2].ID);
         }
 
         [TestMethod()]

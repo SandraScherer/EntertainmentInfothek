@@ -43,23 +43,23 @@ namespace WikiPageCreator
             Console.WriteLine($"Willkommen beim WikiPage Creator!");
 
             // Output-Folder
-            string outputFolder = ".\\Output";
-            string outputFolderUser;
+            string outputFolderDefault = ".\\Output";
+            string outputFolder;
 
             Console.WriteLine($"");
             Console.WriteLine($"Bitte geben Sie den Ordner für die Dateiausgabe an (oder Enter für voreingestellten Pfad):");
-            Console.WriteLine($"(voreingestellter Pfad ist '{outputFolder}'");
+            Console.WriteLine($"(voreingestellter Pfad ist '{outputFolderDefault}'");
 
-            outputFolderUser = Console.ReadLine();
+            outputFolder = Console.ReadLine();
 
-            if (String.IsNullOrEmpty(outputFolderUser))
+            if (String.IsNullOrEmpty(outputFolder))
             {
-                outputFolderUser = outputFolder;
+                outputFolder = outputFolderDefault;
             }
             Console.WriteLine($"");
-            Console.WriteLine($"Ihr ausgewählter Ausgabe-Ordner ist '{outputFolderUser}'");
+            Console.WriteLine($"Ihr ausgewählter Ausgabe-Ordner ist '{outputFolder}'");
 
-            Logger.Trace($"Ausgabeordner: {outputFolderUser}");
+            Logger.Trace($"Ausgabeordner: {outputFolder}");
 
             // Target language
             string targetLanguageCodeUser = "de";
@@ -97,13 +97,13 @@ namespace WikiPageCreator
 
                     foreach (Movie item in list)
                     {
-                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolderUser);
+                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolder);
                         Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
                     }
                 }
                 else
                 {
-                    CreateMoviePage(idUser, targetLanguageCodeUser, outputFolderUser);
+                    CreateMoviePage(idUser, targetLanguageCodeUser, outputFolder);
                     Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
                 }
 

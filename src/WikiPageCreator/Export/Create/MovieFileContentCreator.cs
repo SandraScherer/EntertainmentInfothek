@@ -121,6 +121,11 @@ namespace WikiPageCreator.Export.Create
             CreateInfoBoxPrintedFilmFormat(targetLanguageCode);
             CreateInfoBoxEnd(targetLanguageCode);
 
+            CreatePosterChapter(targetLanguageCode);
+            CreateCoverChapter(targetLanguageCode);
+
+            CreateImageChapter(targetLanguageCode);
+
             CreateCastAndCrewChapter(targetLanguageCode);
 
             CreateCompanyChapter(targetLanguageCode);
@@ -1541,6 +1546,154 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted poster chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreatePosterChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreatePosterChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Poster"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Poster"));
+            }
+
+            CreateImageItemSection(targetLanguageCode, Movie.Posters);
+
+            Logger.Trace($"CreatePosterChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted cover chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateCoverChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateCoverChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Cover"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Cover"));
+            }
+
+            CreateImageItemSection(targetLanguageCode, Movie.Covers);
+
+            Logger.Trace($"CreateCoverChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted image chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateImageChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateImageChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Images"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Bilder"));
+            }
+
+            CreateImageItemSection(targetLanguageCode, Movie.Images);
+
+            Logger.Trace($"CreateImageChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates a formatted image section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="images">The list of images for the section.</param>
+        private void CreateImageItemSection(string targetLanguageCode, List<ImageItem> images)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (images == null)
+            {
+                throw new ArgumentNullException(nameof(images));
+            }
+
+            if (images.Count > 0)
+            {
+                Logger.Trace($"Anzahl Images:  '{images.Count}'");
+
+                string[] data = new string[1];
+                string[] path = { "cinema_and_television_movie" };
+                string text = "";
+
+                for (int i = 0; i < images.Count; i++)
+                {
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        if (!String.IsNullOrEmpty(images[i].Image.Type.EnglishTitle))
+                        {
+                            text = $"{images[i].Image.Type.EnglishTitle}";
+                        }
+                    }
+                    else // incl. case "de"
+                    {
+                        if (!String.IsNullOrEmpty(images[i].Image.Type.GermanTitle))
+                        {
+                            text = $"{images[i].Image.Type.GermanTitle}";
+                        }
+                    }
+
+                    // TODO: Add source information for images
+                    //if (Movie.Images[i].Image.Sources.Count > 0)
+                    //{
+                    //    Logger.Trace($"Anzahl Sources:  '{images[i].Image.Sources.Count}'");
+
+                    //    for (int j = 0; j < images[i].Image.Sources.Count; j++)
+                    //    {
+                    //        if (j == 0)
+                    //        {
+                    //            text = $"{text} - {images[i].Image.Sources[0].Company.Name}";
+                    //        }
+                    //        else
+                    //        {
+                    //            text = $"{text}, {images[i].Image.Sources[j].Company.Name}";
+                    //        }
+                    //    }
+                    //}
+
+                    Content.Add(Formatter.AsImage(path, images[i].Image.FileName, 200, text));
+                    Content.Add("");
+                }
+
+                Content.Add("");
+            }
         }
 
         /// <summary>

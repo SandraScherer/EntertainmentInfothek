@@ -346,6 +346,21 @@ namespace EntertainmentDB.Data
         public List<TimespanItem> ProductionDates { get; set; }
 
         /// <summary>
+        /// The list of posters of the movie.
+        /// </summary>
+        public List<ImageItem> Posters { get; set; }
+
+        /// <summary>
+        /// The list of covers of the movie.
+        /// </summary>
+        public List<ImageItem> Covers { get; set; }
+
+        /// <summary>
+        /// The list of images of the movie.
+        /// </summary>
+        public List<ImageItem> Images { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -518,9 +533,15 @@ namespace EntertainmentDB.Data
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "SpecialEffectsCompany") ?? SpecialEffectsCompanies;
             OtherCompanies = CompanyItem.RetrieveList(Reader, $"Movie", ID, "OtherCompany") ?? OtherCompanies;
 
+            // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, $"Movie", ID, "FilmingLocation") ?? FilmingLocations;
             FilmingDates = TimespanItem.RetrieveList(Reader, $"Movie", ID, "FilmingDate") ?? FilmingDates;
             ProductionDates = TimespanItem.RetrieveList(Reader, $"Movie", ID, "ProductionDate") ?? ProductionDates;
+
+            // Image data
+            Posters = ImageItem.RetrieveList(Reader, $"Movie", ID, "Poster") ?? Posters;
+            Covers = ImageItem.RetrieveList(Reader, $"Movie", ID, "Cover") ?? Covers;
+            Images = ImageItem.RetrieveList(Reader, $"Movie", ID, "Image") ?? Images;
 
             return Genres.Count +
                    Certifications.Count +
@@ -576,7 +597,11 @@ namespace EntertainmentDB.Data
 
                    FilmingLocations.Count +
                    FilmingDates.Count +
-                   ProductionDates.Count;
+                   ProductionDates.Count +
+
+                   Posters.Count +
+                   Covers.Count +
+                   Images.Count;
         }
 
         /// <summary>

@@ -1104,6 +1104,186 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreatePosterChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreatePosterChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Poster")); break;
+                case "de": content.Add(Formatter.AsHeading2("Poster")); break;
+                default: content.Add(Formatter.AsHeading2("Poster")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateCoverChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateCoverChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Cover")); break;
+                case "de": content.Add(Formatter.AsHeading2("Cover")); break;
+                default: content.Add(Formatter.AsHeading2("Cover")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateImageChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateImageChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Images")); break;
+                case "de": content.Add(Formatter.AsHeading2("Bilder")); break;
+                default: content.Add(Formatter.AsHeading2("Bilder")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateCastAndCrewChapterTest(string value)
         {
             // Arrange
@@ -2482,10 +2662,121 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
             content.Add($"");
 
+            // Poster Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Poster")); break;
+                case "de": content.Add(Formatter.AsHeading2("Poster")); break;
+                default: content.Add(Formatter.AsHeading2("Poster")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            // Cover Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Cover")); break;
+                case "de": content.Add(Formatter.AsHeading2("Cover")); break;
+                default: content.Add(Formatter.AsHeading2("Cover")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            // Image Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Images")); break;
+                case "de": content.Add(Formatter.AsHeading2("Bilder")); break;
+                default: content.Add(Formatter.AsHeading2("Bilder")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
             // Cast and Crew Chapter
             switch (value)
             {
-                case "en":content.Add(Formatter.AsHeading2("Cast and Crew")); break;
+                case "en": content.Add(Formatter.AsHeading2("Cast and Crew")); break;
                 case "de": content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
                 default: content.Add(Formatter.AsHeading2("Darsteller und Mannschaft")); break;
             }
