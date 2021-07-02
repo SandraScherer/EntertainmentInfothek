@@ -101,6 +101,7 @@ namespace WikiPageCreator.Export.Create
 
             CreateInfoBoxHeader(targetLanguageCode);
             CreateInfoBoxTitle(targetLanguageCode);
+            CreateInfoBoxLogo(targetLanguageCode);
             CreateInfoBoxType(targetLanguageCode);
             CreateInfoBoxOriginalReleaseDate(targetLanguageCode);
             CreateInfoBoxGenre(targetLanguageCode);
@@ -300,9 +301,45 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted infobox logo field of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public void CreateInfoBoxLogo(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateInfoBoxLogo() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (Movie.Logo != null)
+            {
+                string[] data = new string[2];
+                string[] path = { "cinema_and_television_movie" };
+
+                if (targetLanguageCode.Equals("en") && !String.IsNullOrEmpty(Movie.Logo.Type.EnglishTitle))
+                {
+                    data[0] = Formatter.AsImage(path, Movie.Logo.FileName, 450, Movie.Logo.Type.EnglishTitle);
+                }
+                else if (!String.IsNullOrEmpty(Movie.Logo.Type.GermanTitle))
+                {
+                    data[0] = Formatter.AsImage(path, Movie.Logo.FileName, 450, Movie.Logo.Type.GermanTitle);
+                }
+                else
+                {
+                    data[0] = Formatter.AsImage(path, Movie.Logo.FileName, 450);
+                }
+                Content.Add(Formatter.AsTableRow(data));
+            }
+
+            Logger.Trace($"CreateInfoBoxLogo() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
         /// Creates the formatted infobox type field of the movie page.
         /// </summary>
-        /// <param name="targetLanguageCode"></param>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
         public void CreateInfoBoxType(string targetLanguageCode)
         {
             if (String.IsNullOrEmpty(targetLanguageCode))

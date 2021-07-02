@@ -231,6 +231,42 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateInfoBoxLogoTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateInfoBoxLogo(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { "cinema_and_television_movie" };
+            string dataEn0 = Formatter.AsImage(path, "Image File Name X", 450, "Type English Title X");
+            string dataDe0 = Formatter.AsImage(path, "Image File Name X", 450, "Type German Title X");
+            string[] dataEn = { dataEn0, null };
+            string[] dataDe = { dataDe0, null };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataDe)); break;
+            }
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateInfoBoxTypeTest(string value)
         {
             // Arrange
@@ -2176,6 +2212,20 @@ namespace WikiPageCreator.Export.Create.Tests
                 case "en": content.Add(Formatter.AsTableRow(dataTitleEn)); break;
                 case "de": content.Add(Formatter.AsTableRow(dataTitleDe)); break;
                 default: content.Add(Formatter.AsTableRow(dataTitleDe)); break;
+            }
+
+            // InfoBox Logo
+            string[] pathLogo = { "cinema_and_television_movie" };
+            string dataLogoEn0 = Formatter.AsImage(pathLogo, "Image File Name X", 450, "Type English Title X");
+            string dataLogoDe0 = Formatter.AsImage(pathLogo, "Image File Name X", 450, "Type German Title X");
+            string[] dataLogoEn = { dataLogoEn0, null };
+            string[] dataLogoDe = { dataLogoDe0, null };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsTableRow(dataLogoEn)); break;
+                case "de": content.Add(Formatter.AsTableRow(dataLogoDe)); break;
+                default: content.Add(Formatter.AsTableRow(dataLogoDe)); break;
             }
 
             // InfoBox Type

@@ -56,6 +56,11 @@ namespace EntertainmentDB.Data
         public string ReleaseDate { get; set; }
 
         /// <summary>
+        /// The logo of the movie.
+        /// </summary>
+        public Image Logo { get; set; }
+
+        /// <summary>
         /// The budget of the movie.
         /// </summary>
         public string Budget { get; set; }
@@ -405,7 +410,7 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, LogoID, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Movie " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -424,6 +429,12 @@ namespace EntertainmentDB.Data
                     Type.RetrieveBasicInformation();
                 }
                 ReleaseDate = row["ReleaseDate"].ToString();
+                if (!String.IsNullOrEmpty(row["LogoID"].ToString()))
+                {
+                    Logo = new Image();
+                    Logo.ID = row["LogoID"].ToString();
+                    Logo.RetrieveBasicInformation();
+                }
                 Budget = row["Budget"].ToString();
                 WorldwideGross = row["WorldwideGross"].ToString();
                 WorldwideGrossDate = row["WorldwideGrossDate"].ToString();

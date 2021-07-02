@@ -637,7 +637,7 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsTableRowTest()
+        public void AsTableRow3ItemsTest()
         {
             // Arrange
             DokuWikiFormatter formatter = new DokuWikiFormatter();
@@ -648,6 +648,20 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Assert
             Assert.AreEqual("| data1 | data2 | data3 |", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsTableRow2ItemsTest()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string[] data = { "data1", "data2", null };
+            string returnstring = formatter.AsTableRow(data);
+
+            // Assert
+            Assert.AreEqual("| data1 | data2 ||", returnstring);
         }
 
         [TestMethod()]
