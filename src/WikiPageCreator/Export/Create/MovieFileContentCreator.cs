@@ -125,6 +125,9 @@ namespace WikiPageCreator.Export.Create
             CreatePosterChapter(targetLanguageCode);
             CreateCoverChapter(targetLanguageCode);
 
+            CreateDescriptionChapter(targetLanguageCode);
+            CreateReviewChapter(targetLanguageCode);
+
             CreateImageChapter(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
@@ -1640,6 +1643,109 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted description chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateDescriptionChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateDescriptionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Descriptions"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Beschreibungen"));
+            }
+
+            CreateTextItemSection(targetLanguageCode, Movie.Descriptions);
+
+            Logger.Trace($"CreateDescriptionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates the formatted review chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateReviewChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateReviewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Reviews"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Rezensionen"));
+            }
+
+            CreateTextItemSection(targetLanguageCode, Movie.Descriptions);
+
+            Logger.Trace($"CreateReviewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
+        /// Creates a formatted text section of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        /// <param name="images">The list of texts for the section.</param>
+        private void CreateTextItemSection(string targetLanguageCode, List<TextItem> texts)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+            if (texts == null)
+            {
+                throw new ArgumentNullException(nameof(texts));
+            }
+
+            if (texts.Count > 0)
+            {
+                Logger.Trace($"Anzahl Texte: '{texts.Count}'");
+
+                string[] data = new string[2];
+                string[] pathBiography = { targetLanguageCode, "biography" };
+                string[] pathCompany = { targetLanguageCode, "company" };
+
+                for (int i = 0; i < texts.Count; i++)
+                {
+                    if (targetLanguageCode.Equals("en") && texts[i].Text.Language.ID.Equals("en"))
+                    {
+                        data[0] = texts[i].Text.Content;
+                    }
+                    else if (targetLanguageCode.Equals("de") && texts[i].Text.Language.ID.Equals("de"))
+                    {
+                        data[0] = texts[i].Text.Content;
+                    }
+                    else // for testing purposes
+                    {
+                        data[0] = texts[i].Text.Content;
+                    }
+
+                    // TODO: Add author and source information for descriptions/reviews
+
+                    Content.Add(data[0]);
+                    Content.Add("");
+                }
+
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
         /// Creates the formatted image chapter of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
@@ -1684,9 +1790,8 @@ namespace WikiPageCreator.Export.Create
 
             if (images.Count > 0)
             {
-                Logger.Trace($"Anzahl Images:  '{images.Count}'");
+                Logger.Trace($"Anzahl Images: '{images.Count}'");
 
-                string[] data = new string[1];
                 string[] path = { "cinema_and_television_movie" };
                 string text = "";
 

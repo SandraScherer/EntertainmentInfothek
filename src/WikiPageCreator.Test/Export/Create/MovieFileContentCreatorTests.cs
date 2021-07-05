@@ -1260,6 +1260,128 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateDescriptionChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateDescriptionChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Descriptions")); break;
+                case "de": content.Add(Formatter.AsHeading2("Beschreibungen")); break;
+                default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateReviewChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateReviewChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Reviews")); break;
+                case "de": content.Add(Formatter.AsHeading2("Rezensionen")); break;
+                default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateImageChapterTest(string value)
         {
             // Arrange
@@ -2781,6 +2903,80 @@ namespace WikiPageCreator.Export.Create.Tests
                     content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
                     content.Add("");
                     content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            // Description Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Descriptions")); break;
+                case "de": content.Add(Formatter.AsHeading2("Beschreibungen")); break;
+                default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+            }
+            content.Add("");
+
+            // Review Chapter
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Reviews")); break;
+                case "de": content.Add(Formatter.AsHeading2("Rezensionen")); break;
+                default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                case "de":
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
+                    content.Add("");
+                    break;
+                default:
+                    content.Add("Text Content X");
+                    content.Add("");
+                    content.Add("Text Content Y");
+                    content.Add("");
+                    content.Add("Text Content Z");
                     content.Add("");
                     break;
             }

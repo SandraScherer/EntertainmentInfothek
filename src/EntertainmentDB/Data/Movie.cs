@@ -366,6 +366,16 @@ namespace EntertainmentDB.Data
         public List<ImageItem> Images { get; set; }
 
         /// <summary>
+        /// The list of descriptions of the movie.
+        /// </summary>
+        public List<TextItem> Descriptions { get; set; }
+
+        /// <summary>
+        /// The list of reviews of the movie.
+        /// </summary>
+        public List<TextItem> Reviews { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -554,6 +564,10 @@ namespace EntertainmentDB.Data
             Covers = ImageItem.RetrieveList(Reader, $"Movie", ID, "Cover") ?? Covers;
             Images = ImageItem.RetrieveList(Reader, $"Movie", ID, "Image") ?? Images;
 
+            // Text data
+            Descriptions = TextItem.RetrieveList(Reader, $"Movie", ID, "Description") ?? Descriptions;
+            Reviews = TextItem.RetrieveList(Reader, $"Movie", ID, "Review") ?? Reviews;
+
             return Genres.Count +
                    Certifications.Count +
                    Countries.Count +
@@ -612,7 +626,10 @@ namespace EntertainmentDB.Data
 
                    Posters.Count +
                    Covers.Count +
-                   Images.Count;
+                   Images.Count +
+                   
+                   Descriptions.Count +
+                   Reviews.Count;
         }
 
         /// <summary>
