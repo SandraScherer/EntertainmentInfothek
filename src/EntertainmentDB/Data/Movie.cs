@@ -376,6 +376,11 @@ namespace EntertainmentDB.Data
         public List<TextItem> Reviews { get; set; }
 
         /// <summary>
+        /// The list of weblinks of the movie.
+        /// </summary>
+        public List<WeblinkItem>Weblinks { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -568,6 +573,9 @@ namespace EntertainmentDB.Data
             Descriptions = TextItem.RetrieveList(Reader, $"Movie", ID, "Description") ?? Descriptions;
             Reviews = TextItem.RetrieveList(Reader, $"Movie", ID, "Review") ?? Reviews;
 
+            // other data
+            Weblinks = WeblinkItem.RetrieveList(Reader, $"Movie", ID, "Weblink") ?? Weblinks;
+
             return Genres.Count +
                    Certifications.Count +
                    Countries.Count +
@@ -629,7 +637,9 @@ namespace EntertainmentDB.Data
                    Images.Count +
                    
                    Descriptions.Count +
-                   Reviews.Count;
+                   Reviews.Count +
+                   
+                   Weblinks.Count;
         }
 
         /// <summary>

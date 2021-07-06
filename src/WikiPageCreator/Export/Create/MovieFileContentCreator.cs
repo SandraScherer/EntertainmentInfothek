@@ -131,11 +131,11 @@ namespace WikiPageCreator.Export.Create
             CreateImageChapter(targetLanguageCode);
 
             CreateCastAndCrewChapter(targetLanguageCode);
-
             CreateCompanyChapter(targetLanguageCode);
 
             CreateFilmingAndProductionChapter(targetLanguageCode);
 
+            CreateWeblinkChapter(targetLanguageCode);
             CreateConnectionChapter(targetLanguageCode);
 
             CreateFooter(targetLanguageCode);
@@ -2552,6 +2552,52 @@ namespace WikiPageCreator.Export.Create
                         data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
+                }
+
+                Content.Add("");
+                Content.Add("");
+            }
+        }
+
+        /// <summary>
+        /// Creates the formatted weblink chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateWeblinkChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateWeblinkChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Other Sites"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Andere Webseiten"));
+            }
+
+            if (Movie.Weblinks.Count > 0)
+            {
+                Logger.Trace($"Anzahl Webseiten:  '{Movie.Weblinks.Count}'");
+
+                for (int i = 0; i < Movie.Weblinks.Count; i++)
+                {
+                    string data;
+
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        data = $"{Formatter.AsExternalLink(Movie.Weblinks[i].Weblink.Url, Movie.Weblinks[i].Weblink.EnglishTitle)} ({Movie.Weblinks[i].Weblink.Language.EnglishName})";
+                    }
+                    else // incl. case "de"
+                    {
+                        data = $"{Formatter.AsExternalLink(Movie.Weblinks[i].Weblink.Url, Movie.Weblinks[i].Weblink.GermanTitle)} ({Movie.Weblinks[i].Weblink.Language.GermanName})";
+                    }
+                    Content.Add($"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {data}");
                 }
 
                 Content.Add("");

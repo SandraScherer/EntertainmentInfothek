@@ -2247,6 +2247,65 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateWeblinkChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateWeblinkChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+
+            string dataEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink English Title X") } (Language English Name X)";
+            string dataEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink English Title Y") } (Language English Name Y)";
+            string dataEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink English Title Z") } (Language English Name Z)";
+            string dataDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink German Title X") } (Language German Name X)";
+            string dataDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink German Title Y") } (Language German Name Y)";
+            string dataDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink German Title Z") } (Language German Name Z)";
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Other Sites")); break;
+                case "de": content.Add(Formatter.AsHeading2("Andere Webseiten")); break;
+                default: content.Add(Formatter.AsHeading2("Andere Webseiten")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(dataEn1);
+                    content.Add(dataEn2);
+                    content.Add(dataEn3);
+                    break;
+                case "de":
+                    content.Add(dataDe1);
+                    content.Add(dataDe2);
+                    content.Add(dataDe3);
+                    break;
+                default:
+                    content.Add(dataDe1);
+                    content.Add(dataDe2);
+                    content.Add(dataDe3);
+                    break;
+            }
+            content.Add($"");
+            content.Add($"");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateConnectionChapterTest(string value)
         {
             // Arrange
@@ -3822,6 +3881,42 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataProductionDates2));
             content.Add(Formatter.AsTableRow(dataProductionDates3));
 
+            content.Add($"");
+            content.Add($"");
+
+            // Weblink Chapter
+            string dataWeblinksEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink English Title X") } (Language English Name X)";
+            string dataWeblinksEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink English Title Y") } (Language English Name Y)";
+            string dataWeblinksEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink English Title Z") } (Language English Name Z)";
+            string dataWeblinksDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink German Title X") } (Language German Name X)";
+            string dataWeblinksDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink German Title Y") } (Language German Name Y)";
+            string dataWeblinksDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink German Title Z") } (Language German Name Z)";
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Other Sites")); break;
+                case "de": content.Add(Formatter.AsHeading2("Andere Webseiten")); break;
+                default: content.Add(Formatter.AsHeading2("Andere Webseiten")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(dataWeblinksEn1);
+                    content.Add(dataWeblinksEn2);
+                    content.Add(dataWeblinksEn3);
+                    break;
+                case "de":
+                    content.Add(dataWeblinksDe1);
+                    content.Add(dataWeblinksDe2);
+                    content.Add(dataWeblinksDe3);
+                    break;
+                default:
+                    content.Add(dataWeblinksDe1);
+                    content.Add(dataWeblinksDe2);
+                    content.Add(dataWeblinksDe3);
+                    break;
+            }
             content.Add($"");
             content.Add($"");
 
