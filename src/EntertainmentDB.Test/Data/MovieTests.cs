@@ -117,6 +117,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Descriptions);
             Assert.IsNull(entry.Reviews);
 
+            Assert.IsNull(entry.Awards);
             Assert.IsNull(entry.Weblinks);
         }
 
@@ -210,6 +211,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Descriptions);
             Assert.IsNull(entry.Reviews);
 
+            Assert.IsNull(entry.Awards);
             Assert.IsNull(entry.Weblinks);
         }
 
@@ -304,6 +306,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Descriptions);
             Assert.IsNull(entry.Reviews);
 
+            Assert.IsNull(entry.Awards);
             Assert.IsNull(entry.Weblinks);
         }
 
@@ -398,6 +401,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Descriptions);
             Assert.IsNull(entry.Reviews);
 
+            Assert.IsNull(entry.Awards);
             Assert.IsNull(entry.Weblinks);
         }
 
@@ -411,7 +415,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.RetrieveAdditionalInformation();
 
             // Assert
-            Assert.AreEqual((57 * 3 + 1), count);
+            Assert.AreEqual((58 * 3 + 1), count);
 
             Assert.AreEqual(3, entry.Genres.Count);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
@@ -693,6 +697,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Reviews[0].ID);
             Assert.AreEqual("_xx2", entry.Reviews[1].ID);
             Assert.AreEqual("_xx3", entry.Reviews[2].ID);
+
+            Assert.AreEqual(3, entry.Awards.Count);
+            Assert.AreEqual("_xx1", entry.Awards[0].ID);
+            Assert.AreEqual("_xx2", entry.Awards[1].ID);
+            Assert.AreEqual("_xx3", entry.Awards[2].ID);
 
             Assert.AreEqual(3, entry.Weblinks.Count);
             Assert.AreEqual("_xx1", entry.Weblinks[0].ID);
@@ -1022,6 +1031,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", entry.Reviews[0].ID);
             Assert.AreEqual("_xx2", entry.Reviews[1].ID);
             Assert.AreEqual("_xx3", entry.Reviews[2].ID);
+
+            Assert.AreEqual(3, entry.Awards.Count);
+            Assert.AreEqual("_xx1", entry.Awards[0].ID);
+            Assert.AreEqual("_xx2", entry.Awards[1].ID);
+            Assert.AreEqual("_xx3", entry.Awards[2].ID);
 
             Assert.AreEqual(3, entry.Weblinks.Count);
             Assert.AreEqual("_xx1", entry.Weblinks[0].ID);

@@ -2247,6 +2247,102 @@ namespace WikiPageCreator.Export.Create.Tests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
+        public void CreateAwardChapterTest(string value)
+        {
+            // Arrange
+            Movie movie = new Movie("_xxx");
+            movie.Retrieve();
+            MovieFileContentCreator creator = new MovieFileContentCreator(movie);
+
+            // Act
+            creator.CreateAwardChapter(value);
+
+            // Assert
+            List<string> content = new List<string>();
+            string[] path = { value, "info" };
+            string[] pathPerson = { value, "biography" };
+            string[] dataEn10 = { Formatter.AsInternalLink(path, "Award Name X", "Award Name X"), "Movie Award Category X1", "Winner", "Movie Award Details X1" };
+            string[] dataEn20 = { Formatter.AsInternalLink(path, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominee", "Movie Award Details X2" };
+            string[] dataEn30 = { Formatter.AsInternalLink(path, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominee", "Movie Award Details X3" };
+            string[] dataDe10 = { Formatter.AsInternalLink(path, "Award Name X", "Award Name X"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
+            string[] dataDe20 = { Formatter.AsInternalLink(path, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
+            string[] dataDe30 = { Formatter.AsInternalLink(path, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
+            //string[] data11 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X11", "" };
+            //string[] data12 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X12", "" };
+            //string[] data13 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X13", "" };
+            //string[] data21 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X21", "" };
+            //string[] data22 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X22", "" };
+            //string[] data23 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X23", "" };
+            //string[] data31 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X31", "" };
+            //string[] data32 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X32", "" };
+            //string[] data33 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X33", "" };
+
+            switch (value)
+            {
+                case "en": content.Add(Formatter.AsHeading2("Awards")); break;
+                case "de": content.Add(Formatter.AsHeading2("Auszeichnungen")); break;
+                default: content.Add(Formatter.AsHeading2("Auszeichnungen")); break;
+            }
+
+            switch (value)
+            {
+                case "en":
+                    content.Add(Formatter.AsTableRow(dataEn10));
+                    //content.Add(Formatter.AsTableRow(data11));
+                    //content.Add(Formatter.AsTableRow(data12));
+                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(dataEn20));
+                    //content.Add(Formatter.AsTableRow(data21));
+                    //content.Add(Formatter.AsTableRow(data22));
+                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(dataEn30));
+                    //content.Add(Formatter.AsTableRow(data31));
+                    //content.Add(Formatter.AsTableRow(data32));
+                    //content.Add(Formatter.AsTableRow(data33));
+                    break;
+                case "de":
+                    content.Add(Formatter.AsTableRow(dataDe10));
+                    //content.Add(Formatter.AsTableRow(data11));
+                    //content.Add(Formatter.AsTableRow(data12));
+                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(dataDe20));
+                    //content.Add(Formatter.AsTableRow(data21));
+                    //content.Add(Formatter.AsTableRow(data22));
+                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(dataDe30));
+                    //content.Add(Formatter.AsTableRow(data31));
+                    //content.Add(Formatter.AsTableRow(data32));
+                    //content.Add(Formatter.AsTableRow(data33));
+                    break;
+                default:
+                    content.Add(Formatter.AsTableRow(dataDe10));
+                    //content.Add(Formatter.AsTableRow(data11));
+                    //content.Add(Formatter.AsTableRow(data12));
+                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(dataDe20));
+                    //content.Add(Formatter.AsTableRow(data21));
+                    //content.Add(Formatter.AsTableRow(data22));
+                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(dataDe30));
+                    //content.Add(Formatter.AsTableRow(data31));
+                    //content.Add(Formatter.AsTableRow(data32));
+                    //content.Add(Formatter.AsTableRow(data33));
+                    break;
+            }
+            content.Add($"");
+            content.Add($"");
+
+            Assert.AreEqual(content.Count, creator.Content.Count);
+            for (int i = 0; i < content.Count; i++)
+            {
+                Assert.AreEqual(content[i], creator.Content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
         public void CreateWeblinkChapterTest(string value)
         {
             // Arrange

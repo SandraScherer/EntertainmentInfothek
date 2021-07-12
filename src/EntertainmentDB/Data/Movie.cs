@@ -376,6 +376,11 @@ namespace EntertainmentDB.Data
         public List<TextItem> Reviews { get; set; }
 
         /// <summary>
+        /// The list of awards of the movie.
+        /// </summary>
+        public List<AwardItem> Awards { get; set; }
+
+        /// <summary>
         /// The list of weblinks of the movie.
         /// </summary>
         public List<WeblinkItem>Weblinks { get; set; }
@@ -489,7 +494,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the movie from the database (none available).
+        /// Retrieves the additional information of the movie from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
         /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
@@ -574,6 +579,7 @@ namespace EntertainmentDB.Data
             Reviews = TextItem.RetrieveList(Reader, $"Movie", ID, "Review") ?? Reviews;
 
             // other data
+            Awards = AwardItem.RetrieveList(Reader, $"Movie", ID, "Award") ?? Awards;
             Weblinks = WeblinkItem.RetrieveList(Reader, $"Movie", ID, "Weblink") ?? Weblinks;
 
             return Genres.Count +
@@ -639,6 +645,7 @@ namespace EntertainmentDB.Data
                    Descriptions.Count +
                    Reviews.Count +
                    
+                   Awards.Count +
                    Weblinks.Count;
         }
 

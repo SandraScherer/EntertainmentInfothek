@@ -2560,6 +2560,121 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted award chapter of the movie page.
+        /// </summary>
+        /// <param name="targetLanguageCode">The language code of the target language.</param>
+        public virtual void CreateAwardChapter(string targetLanguageCode)
+        {
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
+            Logger.Trace($"CreateAwardChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                Content.Add(Formatter.AsHeading2("Awards"));
+            }
+            else // incl. case "de"
+            {
+                Content.Add(Formatter.AsHeading2("Auszeichnungen"));
+            }
+
+            if (Movie.Awards.Count > 0)
+            {
+                Logger.Trace($"Anzahl Awards:  '{Movie.Awards.Count}'");
+
+                string[] data = new string[4];
+                string[] path = { targetLanguageCode, "info" };
+
+                for (int i = 0; i < Movie.Awards.Count; i++)
+                {
+                    data[0] = $"{Formatter.AsInternalLink(path, Movie.Awards[i].Award.Name, Movie.Awards[i].Award.Name)}";
+                    data[1] = $"{Movie.Awards[i].Category}";
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        if (Movie.Awards[i].Winner.Equals("1"))
+                        {
+                            data[2] = "Winner";
+                        }
+                        else
+                        {
+                            data[2] = "Nominee";
+                        }
+                    }
+                    else // incl. case "de"
+                    {
+                        if(Movie.Awards[i].Winner.Equals("1"))
+                        {
+                            data[2] = "Gewinner";
+                        }
+                        else
+                        {
+                            data[2] = "Nominierter";
+                        }
+
+                    }
+                    if (!String.IsNullOrEmpty(Movie.Awards[i].Details))
+                    {
+                        data[3] = $"{Movie.Awards[i].Details}";
+                    }
+                    Content.Add(Formatter.AsTableRow(data));
+
+                    // TODO: add person information
+                    /*
+                    if (Movie.Awards[i].Persons.Count > 0)
+                    {
+                        for (int j = 0; j < Movie.Awards[i].Persons.Count; j++)
+                        {
+                            string[] pathPerson = { targetLanguageCode, "biography" };
+
+                            if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.FirstName) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.LastName) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.NameAddOn))
+                            {
+                                data[3] = Formatter.AsInternalLink(path, $"{Movie.Awards[i].Persons[j].Person.FirstName} {Movie.Awards[i].Persons[j].Person.LastName} {Movie.Awards[i].Persons[j].Person.NameAddOn}");
+                            }
+                            else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.FirstName) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.LastName))
+                            {
+                                data[3] = Formatter.AsInternalLink(path, $"{Movie.Awards[i].Persons[j].Person.FirstName} {Movie.Awards[i].Persons[j].Person.LastName}");
+                            }
+                            else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.LastName) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.NameAddOn))
+                            {
+                                data[3] = Formatter.AsInternalLink(path, $"{Movie.Awards[i].Persons[j].Person.LastName} {Movie.Awards[i].Persons[j].Person.NameAddOn}");
+                            }
+                            else
+                            {
+                                data[3] = Formatter.AsInternalLink(path, $"{Movie.Awards[i].Persons[j].Person.LastName}");
+                            }
+
+                            if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
+                            {
+                                data[3] = data[3] + $"({Movie.Awards[i].Persons[j].Role}) {Movie.Awards[i].Persons[j].Details}";
+                            }
+                            else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role))
+                            {
+                                data[3] = data[3] + $"({Movie.Awards[i].Persons[j].Role})";
+                            }
+                            else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
+                            {
+                                data[3] = data[3] + $"{Movie.Awards[i].Persons[j].Details}";
+                            }
+                            else
+                            {
+                                // nothing to do
+                            }
+                            Content.Add(Formatter.AsTableRow(data));
+                        }
+                    }*/
+                }
+
+                Content.Add("");
+                Content.Add("");
+            }
+
+            Logger.Trace($"CreateAwardChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
+        }
+
+        /// <summary>
         /// Creates the formatted weblink chapter of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
