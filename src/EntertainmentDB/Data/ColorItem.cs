@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     ColorItem item = new ColorItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

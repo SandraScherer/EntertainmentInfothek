@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     CertificationItem item = new CertificationItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

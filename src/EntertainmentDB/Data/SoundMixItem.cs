@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     SoundMixItem item = new SoundMixItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

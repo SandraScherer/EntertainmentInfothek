@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     LaboratoryItem item = new LaboratoryItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

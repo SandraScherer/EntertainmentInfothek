@@ -185,6 +185,7 @@ namespace EntertainmentDB.Data
                 {
                     GenreItem item = new GenreItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

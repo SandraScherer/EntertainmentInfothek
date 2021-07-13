@@ -193,6 +193,7 @@ namespace EntertainmentDB.Data
                 {
                     RuntimeItem item = new RuntimeItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

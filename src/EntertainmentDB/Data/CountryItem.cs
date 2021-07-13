@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     CountryItem item = new CountryItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

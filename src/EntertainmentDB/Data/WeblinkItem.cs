@@ -184,6 +184,7 @@ namespace EntertainmentDB.Data
                 {
                     WeblinkItem item = new WeblinkItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

@@ -221,6 +221,7 @@ namespace EntertainmentDB.Data
                 {
                     AwardItem item = new AwardItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

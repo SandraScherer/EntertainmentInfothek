@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     NegativeFormatItem item = new NegativeFormatItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

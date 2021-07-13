@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     CameraItem item = new CameraItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

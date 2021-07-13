@@ -182,6 +182,7 @@ namespace EntertainmentDB.Data
                 {
                     FilmLengthItem item = new FilmLengthItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

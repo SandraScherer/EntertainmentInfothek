@@ -184,6 +184,7 @@ namespace EntertainmentDB.Data
                 {
                     LocationItem item = new LocationItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();

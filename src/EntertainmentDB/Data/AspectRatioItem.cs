@@ -187,6 +187,7 @@ namespace EntertainmentDB.Data
                 {
                     AspectRatioItem item = new AspectRatioItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
                     item.RetrieveBasicInformation();
