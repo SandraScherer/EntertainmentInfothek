@@ -514,26 +514,34 @@ namespace WikiPageCreator.Export.Create
                 if (targetLanguageCode.Equals("en"))
                 {
                     data[0] = "Certification";
-                    if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
+                    if (Movie.Certifications[0].Certification.Image != null && !String.IsNullOrEmpty(Movie.Certifications[0].Details))
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
                     }
-                    else
+                    else if (Movie.Certifications[0].Certification.Image != null)
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Certifications[0].Certification.Name}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Certifications.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
+                        if (Movie.Certifications[i].Certification.Image != null && !String.IsNullOrEmpty(Movie.Certifications[i].Details))
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
                         }
-                        else
+                        else if (Movie.Certifications[i].Certification.Image != null)
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Certifications[i].Certification.Name}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -541,26 +549,34 @@ namespace WikiPageCreator.Export.Create
                 else // incl. case "de"
                 {
                     data[0] = "Altersfreigabe";
-                    if (!String.IsNullOrEmpty(Movie.Certifications[0].Details))
+                    if (Movie.Certifications[0].Certification.Image != null && !String.IsNullOrEmpty(Movie.Certifications[0].Details))
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)} {Movie.Certifications[0].Details}";
                     }
-                    else
+                    else if (Movie.Certifications[0].Certification.Image != null)
                     {
                         data[1] = $"{Formatter.AsImage(path, Movie.Certifications[0].Certification.Image.FileName, 75)}";
+                    }
+                    else
+                    {
+                        data[1] = $"{Movie.Certifications[0].Certification.Name}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
                     for (int i = 1; i < Movie.Certifications.Count; i++)
                     {
                         data[0] = Formatter.CellSpanVertically();
-                        if (!String.IsNullOrEmpty(Movie.Certifications[i].Details))
+                        if (Movie.Certifications[i].Certification.Image != null && !String.IsNullOrEmpty(Movie.Certifications[i].Details))
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)} {Movie.Certifications[i].Details}";
                         }
-                        else
+                        else if (Movie.Certifications[i].Certification.Image != null)
                         {
                             data[1] = $"{Formatter.AsImage(path, Movie.Certifications[i].Certification.Image.FileName, 75)}";
+                        }
+                        else
+                        {
+                            data[1] = $"{Movie.Certifications[i].Certification.Name}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
