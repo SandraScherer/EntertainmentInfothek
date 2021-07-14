@@ -135,6 +135,7 @@ namespace WikiPageCreator.Export.Create
 
             CreateFilmingAndProductionChapter(targetLanguageCode);
 
+            CreateAwardChapter(targetLanguageCode);
             CreateWeblinkChapter(targetLanguageCode);
             CreateConnectionChapter(targetLanguageCode);
 
@@ -1601,17 +1602,19 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreatePosterChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.Posters.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Poster"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Poster"));
-            }
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Poster"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Poster"));
+                }
 
-            CreateImageItemSection(targetLanguageCode, Movie.Posters);
-
+                CreateImageItemSection(targetLanguageCode, Movie.Posters);
+            }
             Logger.Trace($"CreatePosterChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
@@ -1628,16 +1631,19 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateCoverChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.Covers.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Cover"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Cover"));
-            }
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Cover"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Cover"));
+                }
 
-            CreateImageItemSection(targetLanguageCode, Movie.Covers);
+                CreateImageItemSection(targetLanguageCode, Movie.Covers);
+            }
 
             Logger.Trace($"CreateCoverChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -1655,16 +1661,19 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateDescriptionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.Descriptions.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Descriptions"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Beschreibungen"));
-            }
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Descriptions"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Beschreibungen"));
+                }
 
-            CreateTextItemSection(targetLanguageCode, Movie.Descriptions);
+                CreateTextItemSection(targetLanguageCode, Movie.Descriptions);
+            }
 
             Logger.Trace($"CreateDescriptionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -1682,16 +1691,19 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateReviewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.Reviews.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Reviews"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Rezensionen"));
-            }
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Reviews"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Rezensionen"));
+                }
 
-            CreateTextItemSection(targetLanguageCode, Movie.Descriptions);
+                CreateTextItemSection(targetLanguageCode, Movie.Reviews);
+            }
 
             Logger.Trace($"CreateReviewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -1758,16 +1770,19 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateImageChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.Images.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Images"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Bilder"));
-            }
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Images"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Bilder"));
+                }
 
-            CreateImageItemSection(targetLanguageCode, Movie.Images);
+                CreateImageItemSection(targetLanguageCode, Movie.Images);
+            }
 
             Logger.Trace($"CreateImageChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
@@ -2415,147 +2430,150 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateFilmingAndProductionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
+            if (Movie.FilmingLocations.Count > 0 || Movie.FilmingDates.Count > 0 || Movie.ProductionDates.Count > 0)
             {
-                Content.Add(Formatter.AsHeading2("Filming and Production"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Produktion"));
-            }
-
-            string[] heading = new string[2];
-
-            // Filming Locations
-            heading[0] = "Filming Locations";
-            heading[1] = "Drehorte";
-
-            if (Movie.FilmingLocations.Count > 0)
-            {
-                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingLocations.Count}'");
-
-                string[] data = new string[1];
-                string[] path = { targetLanguageCode, "info" };
-
                 if (targetLanguageCode.Equals("en"))
                 {
-                    Content.Add(Formatter.AsHeading3(heading[0]));
+                    Content.Add(Formatter.AsHeading2("Filming and Production"));
                 }
                 else // incl. case "de"
                 {
-                    Content.Add(Formatter.AsHeading3(heading[1]));
+                    Content.Add(Formatter.AsHeading2("Produktion"));
                 }
 
-                for (int i = 0; i < Movie.FilmingLocations.Count; i++)
+                string[] heading = new string[2];
+
+                // Filming Locations
+                heading[0] = "Filming Locations";
+                heading[1] = "Drehorte";
+
+                if (Movie.FilmingLocations.Count > 0)
                 {
-                    // prepare country information
-                    string dataCountry;
-                    string[] pathCountry = { targetLanguageCode, "info" };
+                    Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingLocations.Count}'");
+
+                    string[] data = new string[1];
+                    string[] path = { targetLanguageCode, "info" };
 
                     if (targetLanguageCode.Equals("en"))
                     {
-                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.EnglishName)}";
+                        Content.Add(Formatter.AsHeading3(heading[0]));
                     }
                     else // incl. case "de"
                     {
-                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.GermanName)}";
+                        Content.Add(Formatter.AsHeading3(heading[1]));
                     }
 
-                    if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
+                    for (int i = 0; i < Movie.FilmingLocations.Count; i++)
                     {
-                        data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}{Formatter.ForceNewLine()}({Movie.FilmingLocations[i].Details})";
+                        // prepare country information
+                        string dataCountry;
+                        string[] pathCountry = { targetLanguageCode, "info" };
+
+                        if (targetLanguageCode.Equals("en"))
+                        {
+                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.EnglishName)}";
+                        }
+                        else // incl. case "de"
+                        {
+                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.GermanName)}";
+                        }
+
+                        if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}{Formatter.ForceNewLine()}({Movie.FilmingLocations[i].Details})";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}";
+                        }
+                        Content.Add(Formatter.AsTableRow(data));
                     }
-                    else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
-                    {
-                        data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}";
-                    }
-                    Content.Add(Formatter.AsTableRow(data));
+
+                    Content.Add("");
+                    Content.Add("");
                 }
 
-                Content.Add("");
-                Content.Add("");
-            }
+                // Filming Dates
+                heading[0] = "Filming Dates";
+                heading[1] = "Drehdatum";
 
-            // Filming Dates
-            heading[0] = "Filming Dates";
-            heading[1] = "Drehdatum";
-
-            if (Movie.FilmingDates.Count > 0)
-            {
-                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingDates.Count}'");
-
-                string[] data = new string[1];
-                string[] path = { targetLanguageCode, "date" };
-
-                if (targetLanguageCode.Equals("en"))
+                if (Movie.FilmingDates.Count > 0)
                 {
-                    Content.Add(Formatter.AsHeading3(heading[0]));
+                    Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingDates.Count}'");
+
+                    string[] data = new string[1];
+                    string[] path = { targetLanguageCode, "date" };
+
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        Content.Add(Formatter.AsHeading3(heading[0]));
+                    }
+                    else // incl. case "de"
+                    {
+                        Content.Add(Formatter.AsHeading3(heading[1]));
+                    }
+
+                    for (int i = 0; i < Movie.FilmingDates.Count; i++)
+                    {
+                        if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate) && !String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - ??";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
+                        {
+                            data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
+                        }
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+
+                    Content.Add("");
+                    Content.Add("");
                 }
-                else // incl. case "de"
+
+                // Production Dates
+                heading[0] = "Production Dates";
+                heading[1] = "Produktionsdatum";
+
+                if (Movie.ProductionDates.Count > 0)
                 {
-                    Content.Add(Formatter.AsHeading3(heading[1]));
+                    Logger.Trace($"Anzahl {heading[0]}:  '{Movie.ProductionDates.Count}'");
+
+                    string[] data = new string[1];
+                    string[] path = { targetLanguageCode, "date" };
+
+                    if (targetLanguageCode.Equals("en"))
+                    {
+                        Content.Add(Formatter.AsHeading3(heading[0]));
+                    }
+                    else // incl. case "de"
+                    {
+                        Content.Add(Formatter.AsHeading3(heading[1]));
+                    }
+
+                    for (int i = 0; i < Movie.ProductionDates.Count; i++)
+                    {
+                        if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate) && !String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - ??";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
+                        {
+                            data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
+                        }
+                        Content.Add(Formatter.AsTableRow(data));
+                    }
+
+                    Content.Add("");
+                    Content.Add("");
                 }
-
-                for (int i = 0; i < Movie.FilmingDates.Count; i++)
-                {
-                    if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate) && !String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
-                    {
-                        data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
-                    }
-                    else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].StartDate))
-                    {
-                        data[0] = $"{Formatter.AsInternalLink(path, Movie.FilmingDates[i].StartDate)} - ??";
-                    }
-                    else if (!String.IsNullOrEmpty(Movie.FilmingDates[i].EndDate))
-                    {
-                        data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.FilmingDates[i].EndDate)}";
-                    }
-                    Content.Add(Formatter.AsTableRow(data));
-                }
-
-                Content.Add("");
-                Content.Add("");
-            }
-
-            // Production Dates
-            heading[0] = "Production Dates";
-            heading[1] = "Produktionsdatum";
-
-            if (Movie.ProductionDates.Count > 0)
-            {
-                Logger.Trace($"Anzahl {heading[0]}:  '{Movie.ProductionDates.Count}'");
-
-                string[] data = new string[1];
-                string[] path = { targetLanguageCode, "date" };
-
-                if (targetLanguageCode.Equals("en"))
-                {
-                    Content.Add(Formatter.AsHeading3(heading[0]));
-                }
-                else // incl. case "de"
-                {
-                    Content.Add(Formatter.AsHeading3(heading[1]));
-                }
-
-                for (int i = 0; i < Movie.ProductionDates.Count; i++)
-                {
-                    if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate) && !String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
-                    {
-                        data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
-                    }
-                    else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].StartDate))
-                    {
-                        data[0] = $"{Formatter.AsInternalLink(path, Movie.ProductionDates[i].StartDate)} - ??";
-                    }
-                    else if (!String.IsNullOrEmpty(Movie.ProductionDates[i].EndDate))
-                    {
-                        data[0] = $"?? - {Formatter.AsInternalLink(path, Movie.ProductionDates[i].EndDate)}";
-                    }
-                    Content.Add(Formatter.AsTableRow(data));
-                }
-
-                Content.Add("");
-                Content.Add("");
             }
         }
 
@@ -2572,17 +2590,17 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateAwardChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
-            {
-                Content.Add(Formatter.AsHeading2("Awards"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Auszeichnungen"));
-            }
-
             if (Movie.Awards.Count > 0)
             {
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Awards"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Auszeichnungen"));
+                }
+
                 Logger.Trace($"Anzahl Awards:  '{Movie.Awards.Count}'");
 
                 string[] data = new string[4];
@@ -2605,7 +2623,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     else // incl. case "de"
                     {
-                        if(Movie.Awards[i].Winner.Equals("1"))
+                        if (Movie.Awards[i].Winner.Equals("1"))
                         {
                             data[2] = "Gewinner";
                         }
@@ -2687,17 +2705,17 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateWeblinkChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (targetLanguageCode.Equals("en"))
-            {
-                Content.Add(Formatter.AsHeading2("Other Sites"));
-            }
-            else // incl. case "de"
-            {
-                Content.Add(Formatter.AsHeading2("Andere Webseiten"));
-            }
-
             if (Movie.Weblinks.Count > 0)
             {
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add(Formatter.AsHeading2("Other Sites"));
+                }
+                else // incl. case "de"
+                {
+                    Content.Add(Formatter.AsHeading2("Andere Webseiten"));
+                }
+
                 Logger.Trace($"Anzahl Webseiten:  '{Movie.Weblinks.Count}'");
 
                 for (int i = 0; i < Movie.Weblinks.Count; i++)
