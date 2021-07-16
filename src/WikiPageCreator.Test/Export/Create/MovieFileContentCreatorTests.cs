@@ -1506,17 +1506,17 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add(Formatter.AsHeading3("Cast"));
-                    content.Add("Status English Title X");
+                    content.Add("Cast is Status English Title X.");
                     content.Add("");
                     break;
                 case "de":
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Status German Title X");
+                    content.Add("Darsteller sind Status German Title X.");
                     content.Add("");
                     break;
                 default:
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Status German Title X");
+                    content.Add("Darsteller sind Status German Title X.");
                     content.Add("");
                     break;
             }
@@ -2000,19 +2000,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataThanks2));
             content.Add(Formatter.AsTableRow(dataThanks3));
 
+            content.Add($"");
+            content.Add($"");
+
             switch (value)
             {
                 case "en":
-                    content.Add($"");
-                    content.Add("Status English Title X");
+                    content.Add("Crew is Status English Title X.");
                     break;
                 case "de":
-                    content.Add($"");
-                    content.Add("Status German Title X");
+                    content.Add("Crew ist Status German Title X.");
                     break;
                 default:
-                    content.Add($"");
-                    content.Add("Status German Title X");
+                    content.Add("Crew ist Status German Title X.");
                     break;
             }
             content.Add($"");
@@ -3230,17 +3230,17 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add(Formatter.AsHeading3("Cast"));
-                    content.Add("Status English Title X");
+                    content.Add("Cast is Status English Title X.");
                     content.Add("");
                     break;
                 case "de":
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Status German Title X");
+                    content.Add("Darsteller sind Status German Title X.");
                     content.Add("");
                     break;
                 default:
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Status German Title X");
+                    content.Add("Darsteller sind Status German Title X.");
                     content.Add("");
                     break;
             }
@@ -3781,19 +3781,19 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.AsTableRow(dataThanks2));
             content.Add(Formatter.AsTableRow(dataThanks3));
 
+            content.Add($"");
+            content.Add($"");
+
             switch (value)
             {
                 case "en":
-                    content.Add($"");
-                    content.Add("Status English Title X");
+                    content.Add("Crew is Status English Title X.");
                     break;
                 case "de":
-                    content.Add($"");
-                    content.Add("Status German Title X");
+                    content.Add("Crew ist Status German Title X.");
                     break;
                 default:
-                    content.Add($"");
-                    content.Add("Status German Title X");
+                    content.Add("Crew ist Status German Title X.");
                     break;
             }
 

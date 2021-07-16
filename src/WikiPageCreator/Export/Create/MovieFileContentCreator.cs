@@ -2048,6 +2048,21 @@ namespace WikiPageCreator.Export.Create
             heading[1] = "Dank";
             CreatePersonItemSection(targetLanguageCode, heading, Movie.Thanks);
 
+            // Crew status
+            if (Movie.CrewStatus != null)
+            {
+                if (targetLanguageCode.Equals("en"))
+                {
+                    Content.Add($"Crew is {Movie.CrewStatus.EnglishTitle}.");
+                }
+                else // incl. case "de"
+                {
+                    Content.Add($"Crew ist {Movie.CrewStatus.GermanTitle}.");
+                }
+                Content.Add("");
+                Content.Add("");
+            }
+
             Logger.Trace($"CreateCastAndCrewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' beendet");
         }
 
@@ -2126,19 +2141,6 @@ namespace WikiPageCreator.Export.Create
                     Content.Add(Formatter.AsTableRow(data));
                 }
 
-                if (heading[0].Equals("Thanks") && !String.IsNullOrEmpty(Movie.CrewStatus.ID))
-                {
-                    Content.Add("");
-                    if (targetLanguageCode.Equals("en"))
-                    {
-                        Content.Add(Movie.CrewStatus.EnglishTitle);
-                    }
-                    else // incl. case "de"
-                    {
-                        Content.Add(Movie.CrewStatus.GermanTitle);
-                    }
-                }
-
                 Content.Add("");
                 Content.Add("");
             }
@@ -2181,15 +2183,15 @@ namespace WikiPageCreator.Export.Create
                     Content.Add(Formatter.AsHeading3(heading[1]));
                 }
 
-                if (!String.IsNullOrEmpty(Movie.CastStatus.ID))
+                if (Movie.CastStatus != null)
                 {
                     if (targetLanguageCode.Equals("en"))
                     {
-                        Content.Add(Movie.CastStatus.EnglishTitle);
+                        Content.Add($"Cast is {Movie.CastStatus.EnglishTitle}.");
                     }
                     else // incl. case "de"
                     {
-                        Content.Add(Movie.CastStatus.GermanTitle);
+                        Content.Add($"Darsteller sind {Movie.CastStatus.GermanTitle}.");
                     }
                     Content.Add("");
                 }
