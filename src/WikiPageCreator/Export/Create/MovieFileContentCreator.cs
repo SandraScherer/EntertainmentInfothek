@@ -2485,22 +2485,30 @@ namespace WikiPageCreator.Export.Create
                         string dataCountry;
                         string[] pathCountry = { targetLanguageCode, "info" };
 
-                        if (targetLanguageCode.Equals("en"))
+                        if (targetLanguageCode.Equals("en") && Movie.FilmingLocations[i].Location.Country != null)
                         {
                             dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.EnglishName)}";
                         }
-                        else // incl. case "de"
+                        else if (Movie.FilmingLocations[i].Location.Country != null) // incl. case "de" 
                         {
                             dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.GermanName)}";
                         }
+                        else
+                        {
+                            dataCountry = "";
+                        }
 
-                        if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
+                        if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(dataCountry) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
                         {
                             data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}{Formatter.ForceNewLine()}({Movie.FilmingLocations[i].Details})";
                         }
-                        else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
+                        else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(dataCountry))
                         {
                             data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}";
+                        }
+                        else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name))
+                        {
+                            data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
