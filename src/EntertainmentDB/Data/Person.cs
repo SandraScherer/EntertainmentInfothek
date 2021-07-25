@@ -40,6 +40,11 @@ namespace EntertainmentDB.Data
         public string LastName { get; set; }
 
         /// <summary>
+        /// The name of the person.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
         /// The name addon of the person.
         /// </summary>
         public string NameAddOn { get; set; }
@@ -95,9 +100,10 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the person from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -108,7 +114,7 @@ namespace EntertainmentDB.Data
                            $"FROM Person " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve() == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -124,9 +130,18 @@ namespace EntertainmentDB.Data
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
+
+                if (!String.IsNullOrEmpty(FirstName))
+                {
+                    Name = $"{FirstName} {LastName}";
+                }
+                else
+                {
+                    Name = LastName;
+                }
             }
             else
             {

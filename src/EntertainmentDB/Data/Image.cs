@@ -90,9 +90,10 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the image from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -103,7 +104,7 @@ namespace EntertainmentDB.Data
                            $"FROM Image " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve() == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -114,20 +115,20 @@ namespace EntertainmentDB.Data
                 {
                     Type = new Type();
                     Type.ID = row["TypeID"].ToString();
-                    Type.RetrieveBasicInformation();
+                    Type.Retrieve(retrieveBasicInfoOnly);
                 }
                 if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
                 {
                     Country = new Country();
                     Country.ID = row["CountryID"].ToString();
-                    Country.RetrieveBasicInformation();
+                    Country.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
             }
@@ -155,9 +156,15 @@ namespace EntertainmentDB.Data
                 throw new NullReferenceException(nameof(ID));
             }
 
-            Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source") ?? Sources;
+            int count = 0;
 
-            return Sources.Count;
+            Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source");
+            if (Sources != null)
+            {
+                count += Sources.Count;
+            }
+
+            return count;
         }
     }
 }

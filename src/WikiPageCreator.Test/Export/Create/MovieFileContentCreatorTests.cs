@@ -36,7 +36,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -49,7 +49,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -64,7 +64,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -96,7 +96,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -120,7 +120,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -149,7 +149,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -174,7 +174,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -202,7 +202,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -235,7 +235,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -271,7 +271,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -306,7 +306,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -341,7 +341,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -394,7 +394,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -447,7 +447,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -500,7 +500,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -553,7 +553,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -587,7 +587,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -622,7 +622,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -674,7 +674,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -727,7 +727,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -780,7 +780,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -832,7 +832,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -884,7 +884,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -936,7 +936,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -988,7 +988,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1040,7 +1040,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1092,7 +1092,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1144,7 +1144,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1160,30 +1160,32 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Poster")); break;
             }
 
+            // TODO: change to use formatter
+
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -1204,7 +1206,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1220,30 +1222,32 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Cover")); break;
             }
 
+            // TODO: change to use formatter
+
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -1264,7 +1268,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1272,6 +1276,8 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
+            string[] pathPerson = { value, "biography" };
+            string[] pathCompany = { value, "company" };
 
             switch (value)
             {
@@ -1280,35 +1286,50 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
             }
 
+            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+
             switch (value)
             {
                 case "en":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 case "de":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 default:
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
             }
             content.Add("");
-
 
             Assert.AreEqual(content.Count, creator.Content.Count);
             for (int i = 0; i < content.Count; i++)
@@ -1325,7 +1346,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1333,6 +1354,8 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
+            string[] pathPerson = { value, "biography" };
+            string[] pathCompany = { value, "company" };
 
             switch (value)
             {
@@ -1341,30 +1364,46 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
             }
 
+            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+
             switch (value)
             {
                 case "en":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 case "de":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 default:
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
             }
@@ -1386,7 +1425,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1402,30 +1441,32 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Bilder")); break;
             }
 
+            // TODO: change to use formatter
+
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -1446,7 +1487,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2033,7 +2074,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2145,7 +2186,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2251,7 +2292,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2267,15 +2308,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataDe10 = { Formatter.AsInternalLink(path, "Award Name X", "Award Name X"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataDe20 = { Formatter.AsInternalLink(path, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataDe30 = { Formatter.AsInternalLink(path, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            //string[] data11 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X11", "" };
-            //string[] data12 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X12", "" };
-            //string[] data13 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X13", "" };
-            //string[] data21 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X21", "" };
-            //string[] data22 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X22", "" };
-            //string[] data23 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X23", "" };
-            //string[] data31 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X31", "" };
-            //string[] data32 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X32", "" };
-            //string[] data33 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X33", "" };
+            string[] data11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
+            string[] data12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
+            string[] data13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
+            string[] data21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
+            string[] data22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
+            string[] data23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
+            string[] data31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
+            string[] data32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
+            string[] data33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
 
             switch (value)
             {
@@ -2288,45 +2329,45 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add(Formatter.AsTableRow(dataEn10));
-                    //content.Add(Formatter.AsTableRow(data11));
-                    //content.Add(Formatter.AsTableRow(data12));
-                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(data11));
+                    content.Add(Formatter.AsTableRow(data12));
+                    content.Add(Formatter.AsTableRow(data13));
                     content.Add(Formatter.AsTableRow(dataEn20));
-                    //content.Add(Formatter.AsTableRow(data21));
-                    //content.Add(Formatter.AsTableRow(data22));
-                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(data21));
+                    content.Add(Formatter.AsTableRow(data22));
+                    content.Add(Formatter.AsTableRow(data23));
                     content.Add(Formatter.AsTableRow(dataEn30));
-                    //content.Add(Formatter.AsTableRow(data31));
-                    //content.Add(Formatter.AsTableRow(data32));
-                    //content.Add(Formatter.AsTableRow(data33));
+                    content.Add(Formatter.AsTableRow(data31));
+                    content.Add(Formatter.AsTableRow(data32));
+                    content.Add(Formatter.AsTableRow(data33));
                     break;
                 case "de":
                     content.Add(Formatter.AsTableRow(dataDe10));
-                    //content.Add(Formatter.AsTableRow(data11));
-                    //content.Add(Formatter.AsTableRow(data12));
-                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(data11));
+                    content.Add(Formatter.AsTableRow(data12));
+                    content.Add(Formatter.AsTableRow(data13));
                     content.Add(Formatter.AsTableRow(dataDe20));
-                    //content.Add(Formatter.AsTableRow(data21));
-                    //content.Add(Formatter.AsTableRow(data22));
-                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(data21));
+                    content.Add(Formatter.AsTableRow(data22));
+                    content.Add(Formatter.AsTableRow(data23));
                     content.Add(Formatter.AsTableRow(dataDe30));
-                    //content.Add(Formatter.AsTableRow(data31));
-                    //content.Add(Formatter.AsTableRow(data32));
-                    //content.Add(Formatter.AsTableRow(data33));
+                    content.Add(Formatter.AsTableRow(data31));
+                    content.Add(Formatter.AsTableRow(data32));
+                    content.Add(Formatter.AsTableRow(data33));
                     break;
                 default:
                     content.Add(Formatter.AsTableRow(dataDe10));
-                    //content.Add(Formatter.AsTableRow(data11));
-                    //content.Add(Formatter.AsTableRow(data12));
-                    //content.Add(Formatter.AsTableRow(data13));
+                    content.Add(Formatter.AsTableRow(data11));
+                    content.Add(Formatter.AsTableRow(data12));
+                    content.Add(Formatter.AsTableRow(data13));
                     content.Add(Formatter.AsTableRow(dataDe20));
-                    //content.Add(Formatter.AsTableRow(data21));
-                    //content.Add(Formatter.AsTableRow(data22));
-                    //content.Add(Formatter.AsTableRow(data23));
+                    content.Add(Formatter.AsTableRow(data21));
+                    content.Add(Formatter.AsTableRow(data22));
+                    content.Add(Formatter.AsTableRow(data23));
                     content.Add(Formatter.AsTableRow(dataDe30));
-                    //content.Add(Formatter.AsTableRow(data31));
-                    //content.Add(Formatter.AsTableRow(data32));
-                    //content.Add(Formatter.AsTableRow(data33));
+                    content.Add(Formatter.AsTableRow(data31));
+                    content.Add(Formatter.AsTableRow(data32));
+                    content.Add(Formatter.AsTableRow(data33));
                     break;
             }
             content.Add($"");
@@ -2347,7 +2388,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2406,7 +2447,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2442,7 +2483,7 @@ namespace WikiPageCreator.Export.Create.Tests
         {
             // Arrange
             Movie movie = new Movie("_xxx");
-            movie.Retrieve();
+            movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -3000,27 +3041,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -3037,27 +3078,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -3071,30 +3112,49 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
             }
 
+            string[] pathPerson = { value, "biography" };
+            string[] pathCompany = { value, "company" };
+            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+
+
             switch (value)
             {
                 case "en":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 case "de":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 default:
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
             }
@@ -3112,26 +3172,35 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 case "de":
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
                 default:
                     content.Add("Text Content X");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Y");
+                    content.Add(data);
                     content.Add("");
                     content.Add("Text Content Z");
+                    content.Add(data);
                     content.Add("");
                     break;
             }
@@ -3148,27 +3217,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type English Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
                 default:
-                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name X?200|Type German Title X - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
-                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z}}");
+                    content.Add("{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z - Company Name X, Company Name Y, Company Name Z}}");
                     content.Add("");
                     break;
             }
@@ -3989,15 +4058,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataAwardDe10 = { Formatter.AsInternalLink(pathAward, "Award Name X", "Award Name X"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataAwardDe20 = { Formatter.AsInternalLink(pathAward, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataAwardDe30 = { Formatter.AsInternalLink(pathAward, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            //string[] dataAward11 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X11", "" };
-            //string[] dataAward12 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X12", "" };
-            //string[] dataAward13 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X13", "" };
-            //string[] dataAward21 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X21", "" };
-            //string[] dataAward22 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X22", "" };
-            //string[] dataAward23 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X23", "" };
-            //string[] dataAward31 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} Movie Award Person Role X31", "" };
-            //string[] dataAward32 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} Movie Award Person Role X32", "" };
-            //string[] dataAward33 = { Formatter.CellSpanVertically(), "", "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} Movie Award Person Role X33", "" };
+            string[] dataAward11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
+            string[] dataAward12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
+            string[] dataAward13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
+            string[] dataAward21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
+            string[] dataAward22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
+            string[] dataAward23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
+            string[] dataAward31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
+            string[] dataAward32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
+            string[] dataAward33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
 
             switch (value)
             {
@@ -4010,45 +4079,45 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add(Formatter.AsTableRow(dataAwardEn10));
-                    //content.Add(Formatter.AsTableRow(dataAward11));
-                    //content.Add(Formatter.AsTableRow(dataAward12));
-                    //content.Add(Formatter.AsTableRow(dataAward13));
+                    content.Add(Formatter.AsTableRow(dataAward11));
+                    content.Add(Formatter.AsTableRow(dataAward12));
+                    content.Add(Formatter.AsTableRow(dataAward13));
                     content.Add(Formatter.AsTableRow(dataAwardEn20));
-                    //content.Add(Formatter.AsTableRow(dataAward21));
-                    //content.Add(Formatter.AsTableRow(dataAward22));
-                    //content.Add(Formatter.AsTableRow(dataAward23));
+                    content.Add(Formatter.AsTableRow(dataAward21));
+                    content.Add(Formatter.AsTableRow(dataAward22));
+                    content.Add(Formatter.AsTableRow(dataAward23));
                     content.Add(Formatter.AsTableRow(dataAwardEn30));
-                    //content.Add(Formatter.AsTableRow(dataAward31));
-                    //content.Add(Formatter.AsTableRow(dataAward32));
-                    //content.Add(Formatter.AsTableRow(dataAward33));
+                    content.Add(Formatter.AsTableRow(dataAward31));
+                    content.Add(Formatter.AsTableRow(dataAward32));
+                    content.Add(Formatter.AsTableRow(dataAward33));
                     break;
                 case "de":
                     content.Add(Formatter.AsTableRow(dataAwardDe10));
-                    //content.Add(Formatter.AsTableRow(dataAward11));
-                    //content.Add(Formatter.AsTableRow(dataAward12));
-                    //content.Add(Formatter.AsTableRow(dataAward13));
+                    content.Add(Formatter.AsTableRow(dataAward11));
+                    content.Add(Formatter.AsTableRow(dataAward12));
+                    content.Add(Formatter.AsTableRow(dataAward13));
                     content.Add(Formatter.AsTableRow(dataAwardDe20));
-                    //content.Add(Formatter.AsTableRow(dataAward21));
-                    //content.Add(Formatter.AsTableRow(dataAward22));
-                    //content.Add(Formatter.AsTableRow(dataAward23));
+                    content.Add(Formatter.AsTableRow(dataAward21));
+                    content.Add(Formatter.AsTableRow(dataAward22));
+                    content.Add(Formatter.AsTableRow(dataAward23));
                     content.Add(Formatter.AsTableRow(dataAwardDe30));
-                    //content.Add(Formatter.AsTableRow(dataAward31));
-                    //content.Add(Formatter.AsTableRow(dataAward32));
-                    //content.Add(Formatter.AsTableRow(dataAward33));
+                    content.Add(Formatter.AsTableRow(dataAward31));
+                    content.Add(Formatter.AsTableRow(dataAward32));
+                    content.Add(Formatter.AsTableRow(dataAward33));
                     break;
                 default:
                     content.Add(Formatter.AsTableRow(dataAwardDe10));
-                    //content.Add(Formatter.AsTableRow(dataAward11));
-                    //content.Add(Formatter.AsTableRow(dataAward12));
-                    //content.Add(Formatter.AsTableRow(dataAward13));
+                    content.Add(Formatter.AsTableRow(dataAward11));
+                    content.Add(Formatter.AsTableRow(dataAward12));
+                    content.Add(Formatter.AsTableRow(dataAward13));
                     content.Add(Formatter.AsTableRow(dataAwardDe20));
-                    //content.Add(Formatter.AsTableRow(dataAward21));
-                    //content.Add(Formatter.AsTableRow(dataAward22));
-                    //content.Add(Formatter.AsTableRow(dataAward23));
+                    content.Add(Formatter.AsTableRow(dataAward21));
+                    content.Add(Formatter.AsTableRow(dataAward22));
+                    content.Add(Formatter.AsTableRow(dataAward23));
                     content.Add(Formatter.AsTableRow(dataAwardDe30));
-                    //content.Add(Formatter.AsTableRow(dataAward31));
-                    //content.Add(Formatter.AsTableRow(dataAward32));
-                    //content.Add(Formatter.AsTableRow(dataAward33));
+                    content.Add(Formatter.AsTableRow(dataAward31));
+                    content.Add(Formatter.AsTableRow(dataAward32));
+                    content.Add(Formatter.AsTableRow(dataAward33));
                     break;
             }
             content.Add($"");

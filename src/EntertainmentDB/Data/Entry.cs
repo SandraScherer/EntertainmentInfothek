@@ -89,13 +89,17 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the information of the entry from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
+        public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
             Logger.Trace($"Retrieve() aufgerufen");
 
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
+            int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
+            if (retrieveBasicInfoOnly == false)
+            {
+                RetrieveAdditionalInformation();
+            }
 
             return count;
         }
@@ -103,8 +107,9 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the entry from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public abstract int RetrieveBasicInformation();
+        public abstract int RetrieveBasicInformation(bool retrieveBasicInfoOnly);
 
         /// <summary>
         /// Retrieves the additional information of the entry from the database.

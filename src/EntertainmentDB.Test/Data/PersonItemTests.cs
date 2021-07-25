@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_xx1", "");
@@ -129,7 +129,7 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -172,7 +172,58 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            PersonItem item = new PersonItem("_xx1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Person.ID);
+            Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Director")]
+        [DataRow("Movie", "Writer")]
+        [DataRow("Movie", "Producer")]
+        [DataRow("Movie", "Music")]
+        [DataRow("Movie", "Cinematography")]
+        [DataRow("Movie", "Film Editing")]
+        [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Design")]
+        [DataRow("Movie", "Art Direction")]
+        [DataRow("Movie", "Set Decoration")]
+        [DataRow("Movie", "Costume Design")]
+        [DataRow("Movie", "Makeup Department")]
+        [DataRow("Movie", "Production Management")]
+        [DataRow("Movie", "Assistant Director")]
+        [DataRow("Movie", "Art Department")]
+        [DataRow("Movie", "Sound Department")]
+        [DataRow("Movie", "Special Effects")]
+        [DataRow("Movie", "Visual Effects")]
+        [DataRow("Movie", "Stunts")]
+        [DataRow("Movie", "Electrical Department")]
+        [DataRow("Movie", "Animation Department")]
+        [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
+        [DataRow("Movie", "Editorial Department")]
+        [DataRow("Movie", "Location Management")]
+        [DataRow("Movie", "Music Department")]
+        [DataRow("Movie", "Continuity Department")]
+        [DataRow("Movie", "Transportation Department")]
+        [DataRow("Movie", "Other Crew")]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_aa1", "");
@@ -180,7 +231,58 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Person);
+            Assert.IsNull(item.Role);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Director")]
+        [DataRow("Movie", "Writer")]
+        [DataRow("Movie", "Producer")]
+        [DataRow("Movie", "Music")]
+        [DataRow("Movie", "Cinematography")]
+        [DataRow("Movie", "Film Editing")]
+        [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Design")]
+        [DataRow("Movie", "Art Direction")]
+        [DataRow("Movie", "Set Decoration")]
+        [DataRow("Movie", "Costume Design")]
+        [DataRow("Movie", "Makeup Department")]
+        [DataRow("Movie", "Production Management")]
+        [DataRow("Movie", "Assistant Director")]
+        [DataRow("Movie", "Art Department")]
+        [DataRow("Movie", "Sound Department")]
+        [DataRow("Movie", "Special Effects")]
+        [DataRow("Movie", "Visual Effects")]
+        [DataRow("Movie", "Stunts")]
+        [DataRow("Movie", "Electrical Department")]
+        [DataRow("Movie", "Animation Department")]
+        [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
+        [DataRow("Movie", "Editorial Department")]
+        [DataRow("Movie", "Location Management")]
+        [DataRow("Movie", "Music Department")]
+        [DataRow("Movie", "Continuity Department")]
+        [DataRow("Movie", "Transportation Department")]
+        [DataRow("Movie", "Other Crew")]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            PersonItem item = new PersonItem("_aa1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -311,7 +413,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveTest_withValidID(string value1, string value2)
+        public void RetrieveTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_xx1", "");
@@ -319,7 +421,7 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -362,7 +464,58 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "Continuity Department")]
         [DataRow("Movie", "Transportation Department")]
         [DataRow("Movie", "Other Crew")]
-        public void RetrieveTest_withInvalidID(string value1, string value2)
+        public void RetrieveTest_withValidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            PersonItem item = new PersonItem("_xx1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Person.ID);
+            Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Director")]
+        [DataRow("Movie", "Writer")]
+        [DataRow("Movie", "Producer")]
+        [DataRow("Movie", "Music")]
+        [DataRow("Movie", "Cinematography")]
+        [DataRow("Movie", "Film Editing")]
+        [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Design")]
+        [DataRow("Movie", "Art Direction")]
+        [DataRow("Movie", "Set Decoration")]
+        [DataRow("Movie", "Costume Design")]
+        [DataRow("Movie", "Makeup Department")]
+        [DataRow("Movie", "Production Management")]
+        [DataRow("Movie", "Assistant Director")]
+        [DataRow("Movie", "Art Department")]
+        [DataRow("Movie", "Sound Department")]
+        [DataRow("Movie", "Special Effects")]
+        [DataRow("Movie", "Visual Effects")]
+        [DataRow("Movie", "Stunts")]
+        [DataRow("Movie", "Electrical Department")]
+        [DataRow("Movie", "Animation Department")]
+        [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
+        [DataRow("Movie", "Editorial Department")]
+        [DataRow("Movie", "Location Management")]
+        [DataRow("Movie", "Music Department")]
+        [DataRow("Movie", "Continuity Department")]
+        [DataRow("Movie", "Transportation Department")]
+        [DataRow("Movie", "Other Crew")]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             PersonItem item = new PersonItem("_aa1", "");
@@ -370,7 +523,58 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Person);
+            Assert.IsNull(item.Role);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Director")]
+        [DataRow("Movie", "Writer")]
+        [DataRow("Movie", "Producer")]
+        [DataRow("Movie", "Music")]
+        [DataRow("Movie", "Cinematography")]
+        [DataRow("Movie", "Film Editing")]
+        [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "Production Design")]
+        [DataRow("Movie", "Art Direction")]
+        [DataRow("Movie", "Set Decoration")]
+        [DataRow("Movie", "Costume Design")]
+        [DataRow("Movie", "Makeup Department")]
+        [DataRow("Movie", "Production Management")]
+        [DataRow("Movie", "Assistant Director")]
+        [DataRow("Movie", "Art Department")]
+        [DataRow("Movie", "Sound Department")]
+        [DataRow("Movie", "Special Effects")]
+        [DataRow("Movie", "Visual Effects")]
+        [DataRow("Movie", "Stunts")]
+        [DataRow("Movie", "Electrical Department")]
+        [DataRow("Movie", "Animation Department")]
+        [DataRow("Movie", "Casting Department")]
+        [DataRow("Movie", "Costume Department")]
+        [DataRow("Movie", "Editorial Department")]
+        [DataRow("Movie", "Location Management")]
+        [DataRow("Movie", "Music Department")]
+        [DataRow("Movie", "Continuity Department")]
+        [DataRow("Movie", "Transportation Department")]
+        [DataRow("Movie", "Other Crew")]
+        public void RetrieveTest_withInvalidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            PersonItem item = new PersonItem("_aa1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);

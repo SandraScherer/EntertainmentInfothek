@@ -52,7 +52,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
         /// <exception cref="NullReferenceException">Thrown when the query/command text is null.</exception>
-        public override int Retrieve()
+        public override int Retrieve(bool retrieveBasicInfoOnly)
         {
             string connectionString;
             try

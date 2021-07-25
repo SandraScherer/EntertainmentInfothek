@@ -71,13 +71,13 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID()
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Text entry = new Text("_xxx");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -94,13 +94,59 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID()
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Text entry = new Text("_xxx");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Text Content X", entry.Content);
+            Assert.AreEqual("_xxx", entry.Language.ID);
+            Assert.AreEqual("Text Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+
+            Assert.IsNull(entry.Authors);
+            Assert.IsNull(entry.Sources);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Text entry = new Text("_aaa");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.Content);
+            Assert.IsNull(entry.Language);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Authors);
+            Assert.IsNull(entry.Sources);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Text entry = new Text("_aaa");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -153,13 +199,36 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveTest_withValidID()
+        public void RetrieveTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Text entry = new Text("_xxx");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Text Content X", entry.Content);
+            Assert.AreEqual("_xxx", entry.Language.ID);
+            Assert.AreEqual("Text Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+
+            Assert.IsNull(entry.Authors);
+            Assert.IsNull(entry.Sources);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Text entry = new Text("_xxx");
+
+            // Act
+            int count = entry.Retrieve(false);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -182,15 +251,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx3", entry.Sources[2].ID);
         }
 
-
         [TestMethod()]
-        public void RetrieveTest_withInvalidID()
+        public void RetrieveTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Text entry = new Text("_aaa");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -201,6 +269,32 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Authors);
+            Assert.IsNull(entry.Sources);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Text entry = new Text("_aaa");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.Content);
+            Assert.IsNull(entry.Language);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Authors);
+            Assert.IsNull(entry.Sources);
         }
     }
 }

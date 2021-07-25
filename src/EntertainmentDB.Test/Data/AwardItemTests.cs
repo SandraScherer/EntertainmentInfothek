@@ -78,14 +78,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveBasicInformationTest_withValidID(string value)
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
             AwardItem item = new AwardItem("_xx1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -104,14 +104,66 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value)
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            AwardItem item = new AwardItem("_xx1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Award.ID);
+            Assert.AreEqual($"{value} Award Category X1", item.Category);
+            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"1", item.Winner);
+            Assert.AreEqual($"{value} Award Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+
+            Assert.IsNull(item.Persons);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
             AwardItem item = new AwardItem("_aa1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Award);
+            Assert.IsNull(item.Category);
+            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Winner);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+
+            Assert.IsNull(item.Persons);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            AwardItem item = new AwardItem("_aa1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -165,14 +217,40 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveTest_withValidID(string value)
+        public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
             AwardItem item = new AwardItem("_xx1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Award.ID);
+            Assert.AreEqual($"{value} Award Category X1", item.Category);
+            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"1", item.Winner);
+            Assert.AreEqual($"{value} Award Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+
+            Assert.IsNull(item.Persons);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveTest_withValidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            AwardItem item = new AwardItem("_xx1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -194,14 +272,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveTest_withInvalidID(string value)
+        public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
             AwardItem item = new AwardItem("_aa1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -214,6 +292,34 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
+
+            Assert.IsNull(item.Persons);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            AwardItem item = new AwardItem("_aa1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Award);
+            Assert.IsNull(item.Category);
+            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Winner);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+
+            Assert.IsNull(item.Persons);
         }
 
         [DataTestMethod()]
@@ -238,6 +344,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[0].Status.ID);
             Assert.AreEqual($"{value} Award Last Updated X1", list[0].LastUpdated);
 
+            Assert.AreEqual(3, list[0].Persons.Count);
+            Assert.AreEqual("_x11", list[0].Persons[0].ID);
+            Assert.AreEqual("_x12", list[0].Persons[1].ID);
+            Assert.AreEqual("_x13", list[0].Persons[2].ID);
+
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Award.ID);
             Assert.AreEqual($"{value} Award Category X2", list[1].Category);
@@ -247,6 +358,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[1].Status.ID);
             Assert.AreEqual($"{value} Award Last Updated X2", list[1].LastUpdated);
 
+            Assert.AreEqual(3, list[1].Persons.Count);
+            Assert.AreEqual("_x21", list[1].Persons[0].ID);
+            Assert.AreEqual("_x22", list[1].Persons[1].ID);
+            Assert.AreEqual("_x23", list[1].Persons[2].ID);
+
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Award.ID);
             Assert.AreEqual($"{value} Award Category X3", list[2].Category);
@@ -255,6 +371,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} Award Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{value} Award Last Updated X3", list[2].LastUpdated);
+
+            Assert.AreEqual(3, list[2].Persons.Count);
+            Assert.AreEqual("_x31", list[2].Persons[0].ID);
+            Assert.AreEqual("_x32", list[2].Persons[1].ID);
+            Assert.AreEqual("_x33", list[2].Persons[2].ID);
         }
     }
 }

@@ -75,9 +75,10 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the location from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -88,7 +89,7 @@ namespace EntertainmentDB.Data
                            $"FROM Location " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve() == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -98,14 +99,14 @@ namespace EntertainmentDB.Data
                 {
                     Country = new Country();
                     Country.ID = row["CountryID"].ToString();
-                    Country.RetrieveBasicInformation();
+                    Country.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
             }

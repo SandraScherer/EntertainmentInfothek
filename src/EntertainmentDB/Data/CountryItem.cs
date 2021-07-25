@@ -77,9 +77,10 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the country item from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -98,7 +99,7 @@ namespace EntertainmentDB.Data
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve() == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -107,14 +108,14 @@ namespace EntertainmentDB.Data
                 {
                     Country = new Country();
                     Country.ID = row["CountryID"].ToString();
-                    Country.RetrieveBasicInformation();
+                    Country.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
 
@@ -190,16 +191,17 @@ namespace EntertainmentDB.Data
                     item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
-                    item.RetrieveBasicInformation();
+                    item.Retrieve(false);
                     list.Add(item);
                 }
+
+                return list;
             }
             else
             {
-                // nothing to do
+                return null;
             }
 
-            return list;
         }
     }
 }

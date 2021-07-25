@@ -63,13 +63,13 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID()
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Laboratory entry = new Laboratory("_xxx");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -81,15 +81,52 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
         }
 
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Laboratory entry = new Laboratory("_xxx");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Laboratory Name X", entry.Name);
+            Assert.AreEqual("Laboratory Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+        }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID()
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Laboratory entry = new Laboratory("_aaa");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditonalInfo()
+        {
+            // Arrange
+            Laboratory entry = new Laboratory("_aaa");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -127,15 +164,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
         }
 
-
         [TestMethod()]
-        public void RetrieveTest_withValidID()
+        public void RetrieveTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Laboratory entry = new Laboratory("_xxx");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -147,15 +183,52 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
         }
 
+        [TestMethod()]
+        public void RetrieveTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Laboratory entry = new Laboratory("_xxx");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Laboratory Name X", entry.Name);
+            Assert.AreEqual("Laboratory Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+        }
 
         [TestMethod()]
-        public void RetrieveTest_withInvalidID()
+        public void RetrieveTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Laboratory entry = new Laboratory("_aaa");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_AdditonalInfo()
+        {
+            // Arrange
+            Laboratory entry = new Laboratory("_aaa");
+
+            // Act
+            int count = entry.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);

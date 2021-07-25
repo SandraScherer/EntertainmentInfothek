@@ -81,7 +81,13 @@ namespace EntertainmentDB.Data
 
         // --- Methods ---
 
-        public override int RetrieveBasicInformation()
+        /// <summary>
+        /// Retrieves the basic information of the weblink from the database.
+        /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
+        /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
+        /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             if (String.IsNullOrEmpty(ID))
             {
@@ -92,7 +98,7 @@ namespace EntertainmentDB.Data
                $"FROM Weblink " +
                $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve() == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -104,14 +110,14 @@ namespace EntertainmentDB.Data
                 {
                     Language = new Language();
                     Language.ID = row["LanguageID"].ToString();
-                    Language.RetrieveBasicInformation();
+                    Language.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
             }
@@ -124,7 +130,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves the additional information of the image from the database (none available).
+        /// Retrieves the additional information of the weblink from the database (none available).
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
         public override int RetrieveAdditionalInformation()

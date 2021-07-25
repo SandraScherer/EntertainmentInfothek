@@ -67,13 +67,13 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID()
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Language entry = new Language("_xxx");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -88,13 +88,55 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID()
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Language entry = new Language("_xxx");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Language Original Name X", entry.OriginalName);
+            Assert.AreEqual("Language English Name X", entry.EnglishName);
+            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Language entry = new Language("_aaa");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.OriginalName);
+            Assert.IsNull(entry.EnglishName);
+            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Language entry = new Language("_aaa");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -135,13 +177,13 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveTest_withValidID()
+        public void RetrieveTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Language entry = new Language("_xxx");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -156,13 +198,55 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveTest_withInvalidID()
+        public void RetrieveTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Language entry = new Language("_xxx");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Language Original Name X", entry.OriginalName);
+            Assert.AreEqual("Language English Name X", entry.EnglishName);
+            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Language entry = new Language("_aaa");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.OriginalName);
+            Assert.IsNull(entry.EnglishName);
+            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Language entry = new Language("_aaa");
+
+            // Act
+            int count = entry.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);

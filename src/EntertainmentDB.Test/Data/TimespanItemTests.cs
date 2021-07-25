@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "Filming Date")]
         [DataRow("Movie", "Production Date")]
-        public void RetrieveBasicInformationTest_withValidID(string value1, string value2)
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             TimespanItem item = new TimespanItem("_xx1", "");
@@ -101,7 +101,7 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -117,7 +117,31 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "Filming Date")]
         [DataRow("Movie", "Production Date")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value1, string value2)
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            TimespanItem item = new TimespanItem("_xx1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Filming Date")]
+        [DataRow("Movie", "Production Date")]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             TimespanItem item = new TimespanItem("_aa1", "");
@@ -125,7 +149,31 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.StartDate);
+            Assert.IsNull(item.EndDate);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Filming Date")]
+        [DataRow("Movie", "Production Date")]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            TimespanItem item = new TimespanItem("_aa1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -175,7 +223,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "Filming Date")]
         [DataRow("Movie", "Production Date")]
-        public void RetrieveTest_withValidID(string value1, string value2)
+        public void RetrieveTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             TimespanItem item = new TimespanItem("_xx1", "");
@@ -183,7 +231,7 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -199,7 +247,31 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "Filming Date")]
         [DataRow("Movie", "Production Date")]
-        public void RetrieveTest_withInvalidID(string value1, string value2)
+        public void RetrieveTest_withValidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            TimespanItem item = new TimespanItem("_xx1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Filming Date")]
+        [DataRow("Movie", "Production Date")]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
             TimespanItem item = new TimespanItem("_aa1", "");
@@ -207,7 +279,31 @@ namespace EntertainmentDB.Data.Tests
             item.TargetTableName = value2.Replace(" ", "");
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.StartDate);
+            Assert.IsNull(item.EndDate);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Filming Date")]
+        [DataRow("Movie", "Production Date")]
+        public void RetrieveTest_withInvalidID_AdditionalInfo(string value1, string value2)
+        {
+            // Arrange
+            TimespanItem item = new TimespanItem("_aa1", "");
+            item.BaseTableName = value1;
+            item.TargetTableName = value2.Replace(" ", "");
+
+            // Act
+            int count = item.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);

@@ -126,7 +126,7 @@ namespace WikiPageCreator
         private static void CreateMoviePage(string id, string targetLanguageCode, string outputFolder)
         {
             Movie movie = new Movie(id);
-            movie.Retrieve();
+            movie.Retrieve(false);
 
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
             creator.CreateContent(targetLanguageCode);

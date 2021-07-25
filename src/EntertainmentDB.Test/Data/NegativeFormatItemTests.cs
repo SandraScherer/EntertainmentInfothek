@@ -69,14 +69,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveBasicInformationTest_withValidID(string value)
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
             NegativeFormatItem item = new NegativeFormatItem("_xx1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -90,14 +90,56 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value)
+        public void RetrieveBasicInformationTest_withValidID_AdditonalInfo(string value)
+        {
+            // Arrange
+            NegativeFormatItem item = new NegativeFormatItem("_xx1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.FilmFormat.ID);
+            Assert.AreEqual($"{value} Negative Format Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} Negative Format Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
             NegativeFormatItem item = new NegativeFormatItem("_aa1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.FilmFormat);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            NegativeFormatItem item = new NegativeFormatItem("_aa1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -141,14 +183,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveTest_withValidID(string value)
+        public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
             NegativeFormatItem item = new NegativeFormatItem("_xx1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -162,14 +204,56 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveTest_withInvalidID(string value)
+        public void RetrieveTest_withValidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            NegativeFormatItem item = new NegativeFormatItem("_xx1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.FilmFormat.ID);
+            Assert.AreEqual($"{value} Negative Format Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} Negative Format Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
             NegativeFormatItem item = new NegativeFormatItem("_aa1");
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.FilmFormat);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
+        {
+            // Arrange
+            NegativeFormatItem item = new NegativeFormatItem("_aa1");
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);

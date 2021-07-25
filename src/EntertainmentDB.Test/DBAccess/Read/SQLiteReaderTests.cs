@@ -41,14 +41,30 @@ namespace EntertainmentDB.DBAccess.Read.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        public void RetrieveTest_validID(string value)
+        public void RetrieveTest_validID_BasicInfoOnly(string value)
         {
             // Arrange
             SQLiteReader reader = new SQLiteReader();
             reader.Query = $"SELECT ID FROM {value} WHERE ID LIKE \"_xxx\"";
 
             // Act
-            reader.Retrieve();
+            reader.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(1, reader.Table.Columns.Count);
+            Assert.AreEqual(1, reader.Table.Rows.Count);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        public void RetrieveTest_validID_AdditionalInfo(string value)
+        {
+            // Arrange
+            SQLiteReader reader = new SQLiteReader();
+            reader.Query = $"SELECT ID FROM {value} WHERE ID LIKE \"_xxx\"";
+
+            // Act
+            reader.Retrieve(false);
 
             // Assert
             Assert.AreEqual(1, reader.Table.Columns.Count);

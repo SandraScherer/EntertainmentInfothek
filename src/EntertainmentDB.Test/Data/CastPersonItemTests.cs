@@ -73,14 +73,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie", "Cast")]
-        public void RetrieveBasicInformationTest_withValidID(string value, string value2)
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value, string value2)
         {
             // Arrange
             CastPersonItem item = new CastPersonItem("_xx1", value2);
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -96,14 +96,60 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie", "Cast")]
-        public void RetrieveBasicInformationTest_withInvalidID(string value, string value2)
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value, string value2)
+        {
+            // Arrange
+            CastPersonItem item = new CastPersonItem("_xx1", value2);
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Actor.ID);
+            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual($"{value} {value2} Character X1", item.Character);
+            Assert.AreEqual($"{value} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Cast")]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value, string value2)
         {
             // Arrange
             CastPersonItem item = new CastPersonItem("_aa1", value2);
             item.BaseTableName = value;
 
             // Act
-            int count = item.RetrieveBasicInformation();
+            int count = item.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Actor);
+            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.Character);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Cast")]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value, string value2)
+        {
+            // Arrange
+            CastPersonItem item = new CastPersonItem("_aa1", value2);
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.RetrieveBasicInformation(false);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -149,14 +195,14 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie", "Cast")]
-        public void RetrieveTest_withValidID(string value, string value2)
+        public void RetrieveTest_withValidID_BasicInfoOnly(string value, string value2)
         {
             // Arrange
             CastPersonItem item = new CastPersonItem("_xx1", value2);
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -172,14 +218,60 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie", "Cast")]
-        public void RetrieveTest_withInvalidID(string value, string value2)
+        public void RetrieveTest_withValidID_AdditionalInfo(string value, string value2)
+        {
+            // Arrange
+            CastPersonItem item = new CastPersonItem("_xx1", value2);
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual("_xxx", item.Actor.ID);
+            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual($"{value} {value2} Character X1", item.Role);
+            Assert.AreEqual($"{value} {value2} Details X1", item.Details);
+            Assert.AreEqual("_xxx", item.Status.ID);
+            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Cast")]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly(string value, string value2)
         {
             // Arrange
             CastPersonItem item = new CastPersonItem("_aa1", value2);
             item.BaseTableName = value;
 
             // Act
-            int count = item.Retrieve();
+            int count = item.Retrieve(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aa1", item.ID);
+            Assert.IsNull(item.Actor);
+            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.Character);
+            Assert.IsNull(item.Details);
+            Assert.IsNull(item.Status);
+            Assert.IsNull(item.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Cast")]
+        public void RetrieveTest_withInvalidID_AdditionalInfo(string value, string value2)
+        {
+            // Arrange
+            CastPersonItem item = new CastPersonItem("_aa1", value2);
+            item.BaseTableName = value;
+
+            // Act
+            int count = item.Retrieve(false);
 
             // Assert
             Assert.AreEqual(0, count);
