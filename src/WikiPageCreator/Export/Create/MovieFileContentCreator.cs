@@ -425,7 +425,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Genres.Count > 0)
+            if (Movie.Genres != null)
             {
                 Logger.Trace($"Anzahl Genres: '{Movie.Genres.Count}'");
 
@@ -504,7 +504,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Certifications.Count > 0)
+            if (Movie.Certifications != null)
             {
                 Logger.Trace($"Anzahl Certifications: '{Movie.Certifications.Count}'");
 
@@ -599,7 +599,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Countries.Count > 0)
+            if (Movie.Countries != null)
             {
                 Logger.Trace($"Anzahl Countries: '{Movie.Countries.Count}'");
 
@@ -678,7 +678,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Languages.Count > 0)
+            if (Movie.Languages != null)
             {
                 Logger.Trace($"Anzahl Languages: '{Movie.Languages.Count}'");
 
@@ -835,7 +835,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Runtimes.Count > 0)
+            if (Movie.Runtimes != null)
             {
                 Logger.Trace($"Anzahl Runtimes: '{Movie.Runtimes.Count}'");
 
@@ -914,7 +914,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxSoundMixes() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.SoundMixes.Count > 0)
+            if (Movie.SoundMixes != null)
             {
                 Logger.Trace($"Anzahl Colors: '{Movie.SoundMixes.Count}'");
 
@@ -993,7 +993,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxColor() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Colors.Count > 0)
+            if (Movie.Colors != null)
             {
                 Logger.Trace($"Anzahl Colors: '{Movie.Colors.Count}'");
 
@@ -1072,7 +1072,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.AspectRatios.Count > 0)
+            if (Movie.AspectRatios != null)
             {
                 Logger.Trace($"Anzahl AspectRatios: '{Movie.AspectRatios.Count}'");
 
@@ -1150,7 +1150,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxCamera() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Cameras.Count > 0)
+            if (Movie.Cameras != null)
             {
                 Logger.Trace($"Anzahl Cameras: '{Movie.Cameras.Count}'");
 
@@ -1228,7 +1228,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Laboratories.Count > 0)
+            if (Movie.Laboratories != null)
             {
                 Logger.Trace($"Anzahl Laboratories: '{Movie.Laboratories.Count}'");
 
@@ -1306,7 +1306,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.FilmLengths.Count > 0)
+            if (Movie.FilmLengths != null)
             {
                 Logger.Trace($"Anzahl FilmLengths: '{Movie.FilmLengths.Count}'");
 
@@ -1384,7 +1384,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxNegativeFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.NegativeFormats.Count > 0)
+            if (Movie.NegativeFormats != null)
             {
                 Logger.Trace($"Anzahl NegativeFormats: '{Movie.NegativeFormats.Count}'");
 
@@ -1462,7 +1462,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.CinematographicProcesses.Count > 0)
+            if (Movie.CinematographicProcesses != null)
             {
                 Logger.Trace($"Anzahl CinematographicProcesses: '{Movie.CinematographicProcesses.Count}'");
 
@@ -1540,7 +1540,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.PrintedFilmFormats.Count > 0)
+            if (Movie.PrintedFilmFormats != null)
             {
                 Logger.Trace($"Anzahl PrintedFilmFormats: '{Movie.PrintedFilmFormats.Count}'");
 
@@ -1618,7 +1618,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreatePosterChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Posters.Count > 0)
+            if (Movie.Posters != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -1647,7 +1647,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateCoverChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Covers.Count > 0)
+            if (Movie.Covers != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -1677,7 +1677,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateDescriptionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Descriptions.Count > 0)
+            if (Movie.Descriptions != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -1707,7 +1707,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateReviewChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Reviews.Count > 0)
+            if (Movie.Reviews != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -1766,7 +1766,7 @@ namespace WikiPageCreator.Export.Create
 
                     data = "";
 
-                    if (texts[i].Text.Authors.Count > 0)
+                    if (texts[i].Text.Authors != null)
                     {
                         Logger.Trace($"Anzahl Authors:  '{texts[i].Text.Authors.Count}'");
 
@@ -1796,7 +1796,7 @@ namespace WikiPageCreator.Export.Create
                             }
                         }
                     }
-                    if (texts[i].Text.Sources.Count > 0)
+                    if (texts[i].Text.Sources != null)
                     {
                         Logger.Trace($"Anzahl Sources:  '{texts[i].Text.Sources.Count}'");
 
@@ -1848,7 +1848,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateImageChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Images.Count > 0)
+            if (Movie.Images != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -2144,12 +2144,8 @@ namespace WikiPageCreator.Export.Create
             {
                 throw new ArgumentException(nameof(heading));
             }
-            if (persons == null)
-            {
-                throw new ArgumentNullException(nameof(persons));
-            }
 
-            if (persons.Count > 0)
+            if (persons != null)
             {
                 Logger.Trace($"Anzahl {heading[0]}: '{persons.Count}'");
 
@@ -2216,12 +2212,8 @@ namespace WikiPageCreator.Export.Create
             {
                 throw new ArgumentException(nameof(heading));
             }
-            if (persons == null)
-            {
-                throw new ArgumentNullException(nameof(persons));
-            }
 
-            if (persons.Count > 0)
+            if (persons != null)
             {
                 Logger.Trace($"Anzahl {heading[0]}: '{persons.Count}'");
 
@@ -2348,12 +2340,8 @@ namespace WikiPageCreator.Export.Create
             {
                 throw new ArgumentException(nameof(heading));
             }
-            if (companies == null)
-            {
-                throw new ArgumentNullException(nameof(companies));
-            }
 
-            if (companies.Count > 0)
+            if (companies != null)
             {
                 Logger.Trace($"Anzahl {heading[0]}:  '{companies.Count}'");
 
@@ -2375,7 +2363,7 @@ namespace WikiPageCreator.Export.Create
                     {
                         data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name} {companies[i].Company.NameAddOn}");
                     }
-                    else
+                    else if (!String.IsNullOrEmpty(companies[i].Company.Name))
                     {
                         data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name}");
                     }
@@ -2412,12 +2400,8 @@ namespace WikiPageCreator.Export.Create
             {
                 throw new ArgumentException(nameof(heading));
             }
-            if (companies == null)
-            {
-                throw new ArgumentNullException(nameof(companies));
-            }
 
-            if (companies.Count > 0)
+            if (companies != null)
             {
                 Logger.Trace($"Anzahl {heading[0]}: '{companies.Count}'");
 
@@ -2494,7 +2478,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateFilmingAndProductionChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.FilmingLocations.Count > 0 || Movie.FilmingDates.Count > 0 || Movie.ProductionDates.Count > 0)
+            if (Movie.FilmingLocations != null || Movie.FilmingDates != null || Movie.ProductionDates != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -2511,7 +2495,7 @@ namespace WikiPageCreator.Export.Create
                 heading[0] = "Filming Locations";
                 heading[1] = "Drehorte";
 
-                if (Movie.FilmingLocations.Count > 0)
+                if (Movie.FilmingLocations != null)
                 {
                     Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingLocations.Count}'");
 
@@ -2569,7 +2553,7 @@ namespace WikiPageCreator.Export.Create
                 heading[0] = "Filming Dates";
                 heading[1] = "Drehdatum";
 
-                if (Movie.FilmingDates.Count > 0)
+                if (Movie.FilmingDates != null)
                 {
                     Logger.Trace($"Anzahl {heading[0]}:  '{Movie.FilmingDates.Count}'");
 
@@ -2610,7 +2594,7 @@ namespace WikiPageCreator.Export.Create
                 heading[0] = "Production Dates";
                 heading[1] = "Produktionsdatum";
 
-                if (Movie.ProductionDates.Count > 0)
+                if (Movie.ProductionDates != null)
                 {
                     Logger.Trace($"Anzahl {heading[0]}:  '{Movie.ProductionDates.Count}'");
 
@@ -2662,7 +2646,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateAwardChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Awards.Count > 0)
+            if (Movie.Awards != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -2713,7 +2697,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
-                    if (Movie.Awards[i].Persons.Count > 0)
+                    if (Movie.Awards[i].Persons != null)
                     {
                         for (int j = 0; j < Movie.Awards[i].Persons.Count; j++)
                         {
@@ -2769,7 +2753,7 @@ namespace WikiPageCreator.Export.Create
 
             Logger.Trace($"CreateWeblinkChapter() für Movie '{Movie.OriginalTitle}' mit TargetLanguage '{targetLanguageCode}' gestartet");
 
-            if (Movie.Weblinks.Count > 0)
+            if (Movie.Weblinks != null)
             {
                 if (targetLanguageCode.Equals("en"))
                 {
