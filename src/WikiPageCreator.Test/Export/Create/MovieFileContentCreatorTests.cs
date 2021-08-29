@@ -402,7 +402,7 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] path = { ".", "certification" };
+            string[] path = { "certification" };
             string[] dataEn1 = { "Certification", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
             string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
             string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
@@ -2604,7 +2604,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // InfoBox Certification
-            string[] pathCertification = { ".", "certification" };
+            string[] pathCertification = { "certification" };
             string[] dataCertificationEn1 = { "Certification", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
             string[] dataCertificationEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
             string[] dataCertificationEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };

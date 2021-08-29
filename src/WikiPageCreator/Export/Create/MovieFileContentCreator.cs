@@ -509,7 +509,7 @@ namespace WikiPageCreator.Export.Create
                 Logger.Trace($"Anzahl Certifications: '{Movie.Certifications.Count}'");
 
                 string[] data = new string[2];
-                string[] path = { ".", "certification" };
+                string[] path = {"certification" };
 
                 if (targetLanguageCode.Equals("en"))
                 {
