@@ -1806,7 +1806,7 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
+                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
                                 }
                                 else
                                 {
@@ -1817,7 +1817,7 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
+                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
                                 }
                                 else
                                 {
@@ -1827,7 +1827,7 @@ namespace WikiPageCreator.Export.Create
                         }
                     }
 
-                    Content.Add(data);
+                    Content.Add($"({data})");
                     Content.Add("");
                 }
 

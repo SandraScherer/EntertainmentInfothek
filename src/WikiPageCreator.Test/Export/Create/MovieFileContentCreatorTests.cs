@@ -1286,12 +1286,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
             }
 
-            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
 
             switch (value)
             {
@@ -1364,12 +1364,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
             }
 
-            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
 
             switch (value)
             {
@@ -3114,12 +3114,12 @@ namespace WikiPageCreator.Export.Create.Tests
 
             string[] pathPerson = { value, "biography" };
             string[] pathCompany = { value, "company" };
-            string data = $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
                 $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
                 $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") }";
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
 
 
             switch (value)
