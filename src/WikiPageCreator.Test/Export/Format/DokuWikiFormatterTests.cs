@@ -488,7 +488,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.ForceNewLine();
 
             // Assert
-            Assert.AreEqual("\\", returnstring);
+            Assert.AreEqual("\\\\", returnstring);
         }
 
         [TestMethod()]

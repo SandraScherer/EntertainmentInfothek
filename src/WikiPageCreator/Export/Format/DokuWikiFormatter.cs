@@ -928,7 +928,7 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to force a new line.</returns>
         public override string ForceNewLine()
         {
-            return $"\\";
+            return $"\\\\";
         }
 
         /// <summary>

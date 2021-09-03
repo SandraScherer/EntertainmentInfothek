@@ -2204,15 +2204,15 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Filming Location
-            string[] dataEn1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country English Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataEn2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country English Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataEn3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country English Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
-            string[] dataDe1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataDe2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataDe3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
-            string[] dataZz1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataZz2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataZz3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
+            string[] dataEn1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country English Name X")} -- Movie Filming Location Details X1" };
+            string[] dataEn2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country English Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataEn3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country English Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataDe1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X")} -- Movie Filming Location Details X1" };
+            string[] dataDe2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataDe3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataZz1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Name X", "Country German Name X")} -- Movie Filming Location Details X1" };
+            string[] dataZz2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Name Y", "Country German Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataZz3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Name Z", "Country German Name Z")} -- Movie Filming Location Details X3" };
 
             switch (value)
             {
@@ -3976,15 +3976,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // FilmingLocation
             string[] pathFilmingLocation = { value, "info" };
-            string[] dataFilmingLocationEn1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country English Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataFilmingLocationEn2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country English Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataFilmingLocationEn3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country English Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
-            string[] dataFilmingLocationDe1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country German Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataFilmingLocationDe2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country German Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataFilmingLocationDe3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country German Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
-            string[] dataFilmingLocationZz1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country German Name X")}{Formatter.ForceNewLine()}(Movie Filming Location Details X1)" };
-            string[] dataFilmingLocationZz2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country German Name Y")}{Formatter.ForceNewLine()}(Movie Filming Location Details X2)" };
-            string[] dataFilmingLocationZz3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country German Name Z")}{Formatter.ForceNewLine()}(Movie Filming Location Details X3)" };
+            string[] dataFilmingLocationEn1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country English Name X")} -- Movie Filming Location Details X1" };
+            string[] dataFilmingLocationEn2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country English Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataFilmingLocationEn3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country English Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataFilmingLocationDe1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country German Name X")} -- Movie Filming Location Details X1" };
+            string[] dataFilmingLocationDe2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country German Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataFilmingLocationDe3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country German Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataFilmingLocationZz1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name X", "Country German Name X")} -- Movie Filming Location Details X1" };
+            string[] dataFilmingLocationZz2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Y", "Country German Name Y")} -- Movie Filming Location Details X2" };
+            string[] dataFilmingLocationZz3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Name Z", "Country German Name Z")} -- Movie Filming Location Details X3" };
 
             switch (value)
             {

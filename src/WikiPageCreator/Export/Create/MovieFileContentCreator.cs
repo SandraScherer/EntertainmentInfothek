@@ -2532,7 +2532,7 @@ namespace WikiPageCreator.Export.Create
 
                         if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(dataCountry) && !String.IsNullOrEmpty(Movie.FilmingLocations[i].Details))
                         {
-                            data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry}{Formatter.ForceNewLine()}({Movie.FilmingLocations[i].Details})";
+                            data[0] = $"{Formatter.AsInternalLink(path, $"{Movie.FilmingLocations[i].Location.Name}")}, {dataCountry} -- {Movie.FilmingLocations[i].Details}";
                         }
                         else if (!String.IsNullOrEmpty(Movie.FilmingLocations[i].Location.Name) && !String.IsNullOrEmpty(dataCountry))
                         {
