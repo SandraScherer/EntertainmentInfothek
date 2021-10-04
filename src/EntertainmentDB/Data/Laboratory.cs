@@ -84,7 +84,7 @@ namespace EntertainmentDB.Data
                            $"FROM Laboratory " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (Reader.Retrieve() == 1)
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 

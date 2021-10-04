@@ -43,7 +43,7 @@ namespace WikiPageCreator
             Console.WriteLine($"Willkommen beim WikiPage Creator!");
 
             // Output-Folder
-            string outputFolderDefault = ".\\Output";
+            string outputFolderDefault = ".\\output";
             string outputFolder;
 
             Console.WriteLine($"");

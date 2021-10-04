@@ -61,7 +61,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>The number of data records retrieved.</returns>
-        public abstract int Retrieve(bool retrieveBasicInfoOnly = true);
+        public abstract int Retrieve(bool retrieveBasicInfoOnly);
 
     }
 }

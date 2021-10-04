@@ -104,7 +104,7 @@ namespace EntertainmentDB.Data
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (Reader.Retrieve() == 1)
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -187,7 +187,7 @@ namespace EntertainmentDB.Data
 
             List<PersonItem> list = new List<PersonItem>();
 
-            if (reader.Retrieve() > 0)
+            if (reader.Retrieve(true) > 0)
             {
                 list.Capacity = reader.Table.Rows.Count;
 

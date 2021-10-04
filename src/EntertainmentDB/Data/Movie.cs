@@ -435,7 +435,7 @@ namespace EntertainmentDB.Data
                            $"FROM Movie " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (Reader.Retrieve() == 1)
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -857,7 +857,7 @@ namespace EntertainmentDB.Data
 
             List<Movie> list = new List<Movie>();
 
-            if (reader.Retrieve() > 0)
+            if (reader.Retrieve(true) > 0)
             {
                 list.Capacity = reader.Table.Rows.Count;
 

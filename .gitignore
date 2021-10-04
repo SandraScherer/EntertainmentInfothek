@@ -389,6 +389,10 @@ FodyWeavers.xsd
 
 # VisualParadigm backup files
 *.bak_*
+doc/drivers
+
+# SonarQube project files
+.sonarqube/
 
 # My Stuff
 *.db
