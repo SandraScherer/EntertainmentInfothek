@@ -39,7 +39,7 @@ namespace WikiPageCreator.Export.Format
         /// <summary>
         /// Initializes a formatter.
         /// </summary>
-        public Formatter()
+        protected Formatter()
         {
             Logger.Trace($"Formatter() angelegt");
         }

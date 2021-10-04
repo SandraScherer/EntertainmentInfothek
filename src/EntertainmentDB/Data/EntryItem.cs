@@ -48,7 +48,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry item with an emtpy id string.
         /// </summary>
-        public EntryItem() : this("")
+        protected EntryItem() : this("")
         {
         }
 
@@ -56,7 +56,7 @@ namespace EntertainmentDB.Data
         /// Initializes an entry item with the given id string.
         /// </summary>
         /// <param name="id"></param>
-        public EntryItem(string id)
+        protected EntryItem(string id)
         {
             if (id == null)
             {

@@ -64,7 +64,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry with an empty id string.
         /// </summary>
-        public Entry() : this("")
+        protected Entry() : this("")
         {
         }
 
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data
         /// Initializes an entry with the given id string.
         /// </summary>
         /// <param name="id"></param>
-        public Entry(string id)
+        protected Entry(string id)
         {
             if (id == null)
             {
