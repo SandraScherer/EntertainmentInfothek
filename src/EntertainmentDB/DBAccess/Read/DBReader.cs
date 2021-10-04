@@ -49,7 +49,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// Initializes a database reader.
         /// </summary>
-        public DBReader()
+        protected DBReader()
         {
             Logger.Trace($"DBReader() angelegt");
         }
