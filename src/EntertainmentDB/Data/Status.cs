@@ -108,7 +108,8 @@ namespace EntertainmentDB.Data
             Logger.Trace($"Retrieve() aufgerufen");
 
             int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
-            if (retrieveBasicInfoOnly == false)
+
+            if (!retrieveBasicInfoOnly)
             {
                 RetrieveAdditionalInformation();
             }
