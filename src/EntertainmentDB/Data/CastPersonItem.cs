@@ -224,14 +224,9 @@ namespace EntertainmentDB.Data
                     item.Retrieve(false);
                     list.Add(item);
                 }
-
-                return list;
-            }
-            else
-            {
-                return null;
             }
 
+            return list;
         }
     }
 }

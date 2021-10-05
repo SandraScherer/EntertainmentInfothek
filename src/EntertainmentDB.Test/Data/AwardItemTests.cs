@@ -319,7 +319,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Status);
             Assert.IsNull(item.LastUpdated);
 
-            Assert.IsNull(item.Persons);
+            Assert.AreEqual(0, item.Persons.Count);
         }
 
         [DataTestMethod()]

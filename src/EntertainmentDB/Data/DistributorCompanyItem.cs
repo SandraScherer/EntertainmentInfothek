@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a distributor company item with an empty id string.
         /// </summary>
-        public DistributorCompanyItem() : this ("", "")
+        public DistributorCompanyItem() : this("", "")
         {
         }
 
@@ -207,14 +207,9 @@ namespace EntertainmentDB.Data
                     item.Retrieve(false);
                     list.Add(item);
                 }
-
-                return list;
-            }
-            else
-            {
-                return null;
             }
 
+            return list;
         }
     }
 }

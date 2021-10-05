@@ -293,8 +293,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
 
-            Assert.IsNull(entry.Authors);
-            Assert.IsNull(entry.Sources);
+            Assert.AreEqual(0, entry.Authors.Count);
+            Assert.AreEqual(0, entry.Sources.Count);
         }
     }
 }
