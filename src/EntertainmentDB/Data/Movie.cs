@@ -408,7 +408,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Movie() angelegt");
@@ -426,11 +426,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, LogoID, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Movie " +
                            $"WHERE ID=\"{ID}\"";
@@ -501,15 +496,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
         public override int RetrieveAdditionalInformation()
         {
-            if (Reader == null)
-            {
-                throw new NullReferenceException(nameof(Reader));
-            }
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             int count = 0;
 
             // InfoBox data
@@ -837,7 +823,7 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
-                throw new NullReferenceException(nameof(reader));
+                throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(status))
             {

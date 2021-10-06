@@ -77,7 +77,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Image() angelegt");
@@ -95,11 +95,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, FileName, Description, TypeID, CountryID, Details, StatusID, LastUpdated " +
                            $"FROM Image " +
                            $"WHERE ID=\"{ID}\"";
@@ -147,15 +142,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
         public override int RetrieveAdditionalInformation()
         {
-            if (Reader == null)
-            {
-                throw new NullReferenceException(nameof(Reader));
-            }
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             int count = 0;
 
             Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source");

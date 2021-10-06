@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Text() angelegt");
@@ -90,11 +90,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, Content, LanguageID, Details, StatusID, LastUpdated " +
                            $"FROM Text " +
                            $"WHERE ID=\"{ID}\"";
@@ -135,15 +130,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
         public override int RetrieveAdditionalInformation()
         {
-            if (Reader == null)
-            {
-                throw new NullReferenceException(nameof(Reader));
-            }
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             int count = 0;
 
             Authors = PersonItem.RetrieveList(Reader, $"Text", ID, "Author");

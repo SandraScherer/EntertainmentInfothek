@@ -62,7 +62,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Genre() angelegt");
@@ -80,11 +80,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
                            $"FROM Genre " +
                            $"WHERE ID=\"{ID}\"";

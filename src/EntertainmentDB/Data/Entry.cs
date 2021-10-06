@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Entry() angelegt");

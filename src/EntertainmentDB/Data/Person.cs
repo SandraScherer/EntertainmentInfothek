@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Person() angelegt");
@@ -105,11 +105,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, FirstName, LastName, NameAddOn, BirthName, DateOfBirth, DateOfDeath, Details, StatusID, LastUpdated " +
                            $"FROM Person " +
                            $"WHERE ID=\"{ID}\"";

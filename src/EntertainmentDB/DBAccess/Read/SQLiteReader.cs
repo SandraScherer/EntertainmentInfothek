@@ -64,17 +64,6 @@ namespace EntertainmentDB.DBAccess.Read
                 Logger.Error(ex, $"Angabe für ConnectionString \"Database\" fehlt in der Standard-Konfiguration der Anwendung");
                 throw new ConfigurationErrorsException("ConnectionString in default configuration does not exist", ex);
             }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"Unbekannter Fehler");
-                throw new Exception("Unexpected error", ex);
-            }
-
-            if (String.IsNullOrEmpty(Query))
-            {
-                Logger.Error($"{nameof(Query)} nicht gesetzt");
-                throw new NullReferenceException(nameof(Query));
-            }
 
             SQLiteConnection connection;
             try
@@ -92,11 +81,6 @@ namespace EntertainmentDB.DBAccess.Read
                 Logger.Error(ex, $"Datenbank-Verbindung ist bereits geöffnet");
                 throw new InvalidOperationException("Database connection is already open", ex);
             }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"Unbekannter Fehler");
-                throw new Exception("Unexpected error", ex);
-            }
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(Query, connection);
             try
@@ -108,11 +92,6 @@ namespace EntertainmentDB.DBAccess.Read
             {
                 Logger.Error(ex, $"Datenbank-Tabelle ist ungültig");
                 throw new InvalidOperationException("Database table is invalid", ex);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"Unbekannter Fehler");
-                throw new Exception("Unexpected error", ex);
             }
             finally
             {

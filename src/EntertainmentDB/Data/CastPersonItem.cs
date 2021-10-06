@@ -81,11 +81,11 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
             if (targetTableName == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(targetTableName));
             }
 
             Logger.Trace($"CastPersonItem() angelegt");
@@ -104,19 +104,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-            if (String.IsNullOrEmpty(BaseTableName))
-            {
-                throw new NullReferenceException(nameof(BaseTableName));
-            }
-            if (String.IsNullOrEmpty(TargetTableName))
-            {
-                throw new NullReferenceException(nameof(TargetTableName));
-            }
-
             Reader.Query = $"SELECT ID, ActorID, DubberID, Character, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
@@ -182,7 +169,7 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
-                throw new NullReferenceException(nameof(reader));
+                throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
