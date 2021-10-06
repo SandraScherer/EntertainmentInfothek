@@ -55,7 +55,7 @@ namespace EntertainmentDB.Data.Tests
         public void AwardItemTest_withID()
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
 
             // Act
             // Assert
@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -107,7 +107,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -133,7 +133,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_aa1");
+            AwardItem item = new AwardItem("_aa1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -159,7 +159,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_aa1");
+            AwardItem item = new AwardItem("_aa1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -185,7 +185,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -205,7 +205,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_aa1");
+            AwardItem item = new AwardItem("_aa1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -220,7 +220,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -246,7 +246,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_xx1");
+            AwardItem item = new AwardItem("_xx1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -275,7 +275,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_aa1");
+            AwardItem item = new AwardItem("_aa1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -301,7 +301,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            AwardItem item = new AwardItem("_aa1");
+            AwardItem item = new AwardItem("_aa1", "Award");
             item.BaseTableName = value;
 
             // Act
@@ -330,7 +330,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, value, "_xxx");
+            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, value, "_xxx", "Award");
 
             // Assert
             Assert.AreEqual(3, list.Count);

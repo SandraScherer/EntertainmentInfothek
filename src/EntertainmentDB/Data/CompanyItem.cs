@@ -135,7 +135,7 @@ namespace EntertainmentDB.Data
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
-        public static List<CompanyItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "Company", string order = "ID")
+        public static List<CompanyItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
             {

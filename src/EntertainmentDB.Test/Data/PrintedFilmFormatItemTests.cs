@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("PrintedFilmFormat", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Details);
@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data.Tests
         public void PrintedFilmFormatItemTest_withID()
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
 
             // Act
             // Assert
@@ -70,7 +70,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -91,7 +91,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -112,7 +112,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -132,7 +132,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -152,7 +152,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -167,7 +167,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -182,7 +182,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -203,7 +203,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_xx1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -224,7 +224,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -244,7 +244,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1");
+            PrintedFilmFormatItem item = new PrintedFilmFormatItem("_aa1", "PrintedFilmFormat");
             item.BaseTableName = value;
 
             // Act
@@ -267,7 +267,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<PrintedFilmFormatItem> list = Data.PrintedFilmFormatItem.RetrieveList(reader, value, "_xxx");
+            List<PrintedFilmFormatItem> list = Data.PrintedFilmFormatItem.RetrieveList(reader, value, "_xxx", "PrintedFilmFormat");
 
             // Assert
             Assert.AreEqual(3, list.Count);

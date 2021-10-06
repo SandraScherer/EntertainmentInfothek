@@ -45,7 +45,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a printed film format item with an empty id string.
         /// </summary>
-        public PrintedFilmFormatItem() : this("")
+        public PrintedFilmFormatItem() : this("", "")
         {
         }
 
@@ -55,13 +55,13 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the printed film format item.</param>
         /// <param name="targetTableName">The target table name of the printed film format item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public PrintedFilmFormatItem(string id, string targetTableName = "PrintedFilmFormat")
+        public PrintedFilmFormatItem(string id, string targetTableName)
         {
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
-            if (String.IsNullOrEmpty(targetTableName))
+            if (targetTableName == null)
             {
                 throw new ArgumentNullException(nameof(targetTableName));
             }
@@ -135,7 +135,7 @@ namespace EntertainmentDB.Data
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
-        public static List<PrintedFilmFormatItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "PrintedFilmFormat", string order = "ID")
+        public static List<PrintedFilmFormatItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
             {

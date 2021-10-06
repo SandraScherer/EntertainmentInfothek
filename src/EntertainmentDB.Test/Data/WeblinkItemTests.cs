@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("Weblink", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Weblink);
@@ -51,7 +51,7 @@ namespace EntertainmentDB.Data.Tests
         public void WeblinkItemTest_withID()
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
 
             // Act
             // Assert
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_aa1");
+            WeblinkItem item = new WeblinkItem("_aa1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -135,7 +135,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_aa1");
+            WeblinkItem item = new WeblinkItem("_aa1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -171,7 +171,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_aa1");
+            WeblinkItem item = new WeblinkItem("_aa1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -186,7 +186,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -207,7 +207,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_xx1");
+            WeblinkItem item = new WeblinkItem("_xx1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -228,7 +228,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_aa1");
+            WeblinkItem item = new WeblinkItem("_aa1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -249,7 +249,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            WeblinkItem item = new WeblinkItem("_aa1");
+            WeblinkItem item = new WeblinkItem("_aa1", "Weblink");
             item.BaseTableName = value;
 
             // Act
@@ -273,7 +273,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, value, "_xxx");
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, value, "_xxx", "Weblink");
 
             // Assert
             Assert.AreEqual(3, list.Count);

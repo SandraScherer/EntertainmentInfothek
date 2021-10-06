@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("SoundMix", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.SoundMix);
@@ -51,7 +51,7 @@ namespace EntertainmentDB.Data.Tests
         public void SoundMixItemTest_withID()
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
 
             // Act
             // Assert
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_aa1");
+            SoundMixItem item = new SoundMixItem("_aa1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -135,7 +135,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_aa1");
+            SoundMixItem item = new SoundMixItem("_aa1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -171,7 +171,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_aa1");
+            SoundMixItem item = new SoundMixItem("_aa1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -186,7 +186,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -207,7 +207,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_xx1");
+            SoundMixItem item = new SoundMixItem("_xx1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -228,7 +228,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_aa1");
+            SoundMixItem item = new SoundMixItem("_aa1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -249,7 +249,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            SoundMixItem item = new SoundMixItem("_aa1");
+            SoundMixItem item = new SoundMixItem("_aa1", "SoundMix");
             item.BaseTableName = value;
 
             // Act
@@ -273,7 +273,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, value, "_xxx");
+            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, value, "_xxx", "SoundMix");
 
             // Assert
             Assert.AreEqual(3, list.Count);

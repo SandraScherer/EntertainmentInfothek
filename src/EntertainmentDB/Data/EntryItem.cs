@@ -31,12 +31,12 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The base table name of the entry.
         /// </summary>
-        public string BaseTableName { get; set; } = "";
+        public string BaseTableName { get; set; }
 
         /// <summary>
         /// The target table name of the entry.
         /// </summary>
-        public string TargetTableName { get; set; } = "";
+        public string TargetTableName { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -48,7 +48,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry item with an emtpy id string.
         /// </summary>
-        protected EntryItem() : this("")
+        protected EntryItem() : this("", "")
         {
         }
 
@@ -56,16 +56,22 @@ namespace EntertainmentDB.Data
         /// Initializes an entry item with the given id string.
         /// </summary>
         /// <param name="id"></param>
-        protected EntryItem(string id)
+        protected EntryItem(string id, string targetTableName)
         {
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
+            if (targetTableName == null)
+            {
+                throw new ArgumentNullException(nameof(targetTableName));
+            }
 
-            Logger.Trace($"Entry() angelegt");
+                Logger.Trace($"Entry() angelegt");
 
             ID = id;
+            BaseTableName = "";
+            TargetTableName = targetTableName;
         }
 
         // --- Methods ---

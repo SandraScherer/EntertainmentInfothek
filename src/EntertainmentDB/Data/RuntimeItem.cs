@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a runtime item with an empty id string.
         /// </summary>
-        public RuntimeItem() : this("")
+        public RuntimeItem() : this("", "")
         {
         }
 
@@ -60,13 +60,13 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the runtime item.</param>
         /// <param name="targetTableName">The target table name of the runtime item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public RuntimeItem(string id, string targetTableName = "Runtime")
+        public RuntimeItem(string id, string targetTableName)
         {
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
-            if (String.IsNullOrEmpty(targetTableName))
+            if (targetTableName == null)
             {
                 throw new ArgumentNullException(nameof(targetTableName));
             }
@@ -141,7 +141,7 @@ namespace EntertainmentDB.Data
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
-        public static List<RuntimeItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "Runtime", string order = "ID")
+        public static List<RuntimeItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
             {

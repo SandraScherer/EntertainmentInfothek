@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(item);
             Assert.IsNotNull(item.Reader);
             Assert.AreEqual("", item.BaseTableName);
-            Assert.AreEqual("AspectRatio", item.TargetTableName);
+            Assert.AreEqual("", item.TargetTableName);
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.AspectRatio);
@@ -51,7 +51,7 @@ namespace EntertainmentDB.Data.Tests
         public void AspectRatioItemTest_withID()
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
 
             // Act
             // Assert
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_aa1");
+            AspectRatioItem item = new AspectRatioItem("_aa1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -135,7 +135,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_aa1");
+            AspectRatioItem item = new AspectRatioItem("_aa1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -171,7 +171,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_aa1");
+            AspectRatioItem item = new AspectRatioItem("_aa1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -186,7 +186,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -207,7 +207,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_xx1");
+            AspectRatioItem item = new AspectRatioItem("_xx1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -228,7 +228,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_aa1");
+            AspectRatioItem item = new AspectRatioItem("_aa1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -249,7 +249,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value)
         {
             // Arrange
-            AspectRatioItem item = new AspectRatioItem("_aa1");
+            AspectRatioItem item = new AspectRatioItem("_aa1", "AspectRatio");
             item.BaseTableName = value;
 
             // Act
@@ -273,7 +273,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, value, "_xxx");
+            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, value, "_xxx", "AspectRatio");
 
             // Assert
             Assert.AreEqual(3, list.Count);
