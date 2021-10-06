@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the color.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Color(string id)
+        public Color(string id) : base(id)
         {
             if (id == null)
             {
@@ -66,8 +66,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Color() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

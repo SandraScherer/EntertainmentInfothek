@@ -83,7 +83,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the person.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Person(string id)
+        public Person(string id) : base(id)
         {
             if (id == null)
             {
@@ -91,8 +91,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Person() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

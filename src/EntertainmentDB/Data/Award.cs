@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the award.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Award(string id)
+        public Award(string id) : base(id)
         {
             if (id == null)
             {
@@ -66,8 +66,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Award() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

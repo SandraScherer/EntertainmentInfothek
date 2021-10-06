@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the location.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Location(string id)
+        public Location(string id) : base(id)
         {
             if (id == null)
             {
@@ -66,8 +66,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Location() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

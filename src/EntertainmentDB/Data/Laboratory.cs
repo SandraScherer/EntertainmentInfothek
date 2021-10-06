@@ -53,7 +53,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the laboratory.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Laboratory(string id)
+        public Laboratory(string id) : base(id)
         {
             if (id == null)
             {
@@ -61,8 +61,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Laboratory() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

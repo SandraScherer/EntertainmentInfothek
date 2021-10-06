@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the camera.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Camera(string id)
+        public Camera(string id) : base(id)
         {
             if (id == null)
             {
@@ -66,8 +66,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Camera() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

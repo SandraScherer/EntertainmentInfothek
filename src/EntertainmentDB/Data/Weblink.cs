@@ -67,7 +67,7 @@ namespace EntertainmentDB.Data
         /// Initializes a weblink with the given id string.
         /// </summary>
         /// <param name="id">The id of the weblink.</param>
-        public Weblink(string id)
+        public Weblink(string id) : base(id)
         {
             if (id == null)
             {
@@ -75,8 +75,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Weblink() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

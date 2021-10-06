@@ -56,7 +56,7 @@ namespace EntertainmentDB.Data
         /// Initializes an entry item with the given id string.
         /// </summary>
         /// <param name="id"></param>
-        protected EntryItem(string id, string targetTableName)
+        protected EntryItem(string id, string targetTableName) : base(id)
         {
             if (id == null)
             {
@@ -67,9 +67,8 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-                Logger.Trace($"Entry() angelegt");
+            Logger.Trace($"Entry() angelegt");
 
-            ID = id;
             BaseTableName = "";
             TargetTableName = targetTableName;
         }

@@ -73,7 +73,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the image.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Image(string id)
+        public Image(string id) : base(id)
         {
             if (id == null)
             {
@@ -81,8 +81,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Image() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

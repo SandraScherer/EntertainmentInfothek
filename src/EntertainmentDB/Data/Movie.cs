@@ -404,7 +404,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the movie.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Movie(string id)
+        public Movie(string id) : base(id)
         {
             if (id == null)
             {
@@ -412,8 +412,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Movie() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

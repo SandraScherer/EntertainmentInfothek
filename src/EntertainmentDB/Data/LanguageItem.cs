@@ -55,7 +55,7 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the language item.</param>
         /// <param name="targetTableName">The target table name of the language item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public LanguageItem(string id, string targetTableName)
+        public LanguageItem(string id, string targetTableName) : base(id, targetTableName)
         {
             if (id == null)
             {
@@ -67,9 +67,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"LanguageItem() angelegt");
-
-            ID = id;
-            TargetTableName = targetTableName;
         }
 
         // --- Methods ---

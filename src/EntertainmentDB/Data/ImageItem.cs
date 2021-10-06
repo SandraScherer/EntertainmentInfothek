@@ -55,7 +55,7 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the image item.</param>
         /// <param name="targetTableName">The target table name of the image item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public ImageItem(string id, string targetTableName)
+        public ImageItem(string id, string targetTableName) : base(id, targetTableName)
         {
             if (id == null)
             {
@@ -67,9 +67,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"ImageItem() angelegt");
-
-            ID = id;
-            TargetTableName = targetTableName;
         }
 
         // --- Methods ---

@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the genre.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Genre(string id)
+        public Genre(string id) : base(id)
         {
             if (id == null)
             {
@@ -66,8 +66,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Genre() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

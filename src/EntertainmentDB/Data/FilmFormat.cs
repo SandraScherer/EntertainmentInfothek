@@ -53,7 +53,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the aspect ratio.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public FilmFormat(string id)
+        public FilmFormat(string id) : base(id)
         {
             if (id == null)
             {
@@ -61,8 +61,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"FilmFormat() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

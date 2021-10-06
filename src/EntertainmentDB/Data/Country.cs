@@ -63,7 +63,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the country.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Country(string id)
+        public Country(string id) : base(id)
         {
             if (id == null)
             {
@@ -71,8 +71,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Country() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

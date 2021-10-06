@@ -59,7 +59,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the type.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Type(string id)
+        public Type(string id) : base(id)
         {
             if (id == null)
             {
@@ -67,8 +67,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"Type() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---

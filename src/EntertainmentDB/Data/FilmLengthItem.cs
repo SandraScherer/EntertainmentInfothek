@@ -55,7 +55,7 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the film length item.</param>
         /// <param name="targetTableName">The target table name of the film length item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public FilmLengthItem(string id, string targetTableName)
+        public FilmLengthItem(string id, string targetTableName) : base(id, targetTableName)
         {
             if (id == null)
             {
@@ -67,9 +67,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"FilmLengthItem() angelegt");
-
-            ID = id;
-            TargetTableName = targetTableName;
         }
 
         // --- Methods ---

@@ -53,7 +53,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the cinematographic process.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public CinematographicProcess(string id)
+        public CinematographicProcess(string id) : base(id)
         {
             if (id == null)
             {
@@ -61,8 +61,6 @@ namespace EntertainmentDB.Data
             }
 
             Logger.Trace($"CinematographicProcess() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---
