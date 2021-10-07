@@ -423,6 +423,19 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
+        public void AsImageBoxTest()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string returnstring = formatter.AsImageBox("{{filename.jpg}}");
+
+            // Assert
+            Assert.AreEqual("[{{filename.jpg}}]", returnstring);
+        }
+
+        [TestMethod()]
         public void AsImage10Test()
         {
             // Arrange

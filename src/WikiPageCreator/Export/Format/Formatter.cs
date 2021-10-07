@@ -311,6 +311,13 @@ namespace WikiPageCreator.Export.Format
         public abstract string AsImage(string filename);
 
         /// <summary>
+        /// Formats the given imagelink as an imagebox.
+        /// </summary>
+        /// <param name="imagelink">The imagelink to be boxed.</param>
+        /// <returns>The boxed imagelink.</returns>
+        public abstract string AsImageBox(string imagelink);
+
+        /// <summary>
         /// Aligns the given imagelink as given.
         /// </summary>
         /// <param name="imagelink">The imagelink to be aligned.</param>

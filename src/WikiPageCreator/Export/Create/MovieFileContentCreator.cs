@@ -509,7 +509,7 @@ namespace WikiPageCreator.Export.Create
                 Logger.Trace($"Anzahl Certifications: '{Movie.Certifications.Count}'");
 
                 string[] data = new string[2];
-                string[] path = {"certification" };
+                string[] path = { "certification" };
 
                 if (targetLanguageCode.Equals("en"))
                 {
@@ -1914,16 +1914,32 @@ namespace WikiPageCreator.Export.Create
                         {
                             if (j == 0)
                             {
-                                text = $"{text} - {images[i].Image.Sources[0].Company.Name}";
+                                if (!String.IsNullOrEmpty(images[i].Image.Sources[j].Company.Name) && !String.IsNullOrEmpty(images[i].Image.Sources[j].Company.NameAddOn))
+                                {
+                                    text = $"{text} {Formatter.ForceNewLine()} ({Formatter.AsInternalLink(pathCompany, $"{images[i].Image.Sources[j].Company.Name} {images[i].Image.Sources[j].Company.NameAddOn}")}";
+                                }
+                                else
+                                {
+                                    text = $"{text} {Formatter.ForceNewLine()} ({Formatter.AsInternalLink(pathCompany, $"{images[i].Image.Sources[j].Company.Name}")}";
+                                }
                             }
                             else
                             {
-                                text = $"{text}, {images[i].Image.Sources[j].Company.Name}";
+                                if (!String.IsNullOrEmpty(images[i].Image.Sources[j].Company.Name) && !String.IsNullOrEmpty(images[i].Image.Sources[j].Company.NameAddOn))
+                                {
+                                    text = $"{text}, {Formatter.AsInternalLink(pathCompany, $"{images[i].Image.Sources[j].Company.Name} {images[i].Image.Sources[j].Company.NameAddOn}")}";
+                                }
+                                else
+                                {
+                                    text = $"{text}, {Formatter.AsInternalLink(pathCompany, $"{images[i].Image.Sources[j].Company.Name}")}";
+                                }
                             }
                         }
+
+                        text = $"{text})";
                     }
 
-                    Content.Add(Formatter.AsImage(path, images[i].Image.FileName, 200, text));
+                    Content.Add(Formatter.AsImageBox(Formatter.AsImage(path, images[i].Image.FileName, 200, text)));
                     Content.Add("");
                 }
 

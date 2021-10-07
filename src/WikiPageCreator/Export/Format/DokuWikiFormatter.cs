@@ -894,6 +894,22 @@ namespace WikiPageCreator.Export.Format
         }
 
         /// <summary>
+        /// Formats the given imagelink as an imagebox.
+        /// </summary>
+        /// <param name="imagelink">The imagelink to be boxed.</param>
+        /// <returns>The boxed imagelink.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImageBox(string imagelink)
+        {
+            if (String.IsNullOrEmpty(imagelink))
+            {
+                throw new ArgumentNullException(nameof(imagelink));
+            }
+
+            return $"[{imagelink}]";
+        }
+
+        /// <summary>
         /// Aligns the given imagelink as given.
         /// </summary>
         /// <param name="imagelink">The imagelink to be aligned.</param>
