@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -64,7 +64,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Actor.ID);
-            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual("_xxx", item.GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X1", item.Character);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -110,7 +110,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Actor.ID);
-            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual("_xxx", item.GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X1", item.Character);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -133,7 +133,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -209,7 +209,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Actor.ID);
-            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual("_xxx", item.GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X1", item.Role);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -232,7 +232,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Actor.ID);
-            Assert.AreEqual("_xxx", item.Dubber.ID);
+            Assert.AreEqual("_xxx", item.GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X1", item.Role);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -255,7 +255,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -278,7 +278,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Actor);
-            Assert.IsNull(item.Dubber);
+            Assert.IsNull(item.GermanDubber);
             Assert.IsNull(item.Character);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -300,7 +300,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Actor.ID);
-            Assert.AreEqual("_xxx", list[0].Dubber.ID);
+            Assert.AreEqual("_xxx", list[0].GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X1", list[0].Character);
             Assert.AreEqual($"{value} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
@@ -308,7 +308,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Actor.ID);
-            Assert.AreEqual("_yyy", list[1].Dubber.ID);
+            Assert.AreEqual("_yyy", list[1].GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X2", list[1].Character);
             Assert.AreEqual($"{value} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
@@ -316,7 +316,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Actor.ID);
-            Assert.AreEqual("_zzz", list[2].Dubber.ID);
+            Assert.AreEqual("_zzz", list[2].GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X3", list[2].Character);
             Assert.AreEqual($"{value} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);

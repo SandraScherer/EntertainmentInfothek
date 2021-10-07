@@ -44,7 +44,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The dubber of the cast person item.
         /// </summary>
-        public Person Dubber { get; set; }
+        public Person GermanDubber { get; set; }
 
         /// <summary>
         /// The character of the cast person item.
@@ -101,7 +101,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, ActorID, DubberID, Character, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, ActorID, GermanDubberID, Character, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -116,11 +116,11 @@ namespace EntertainmentDB.Data
                     Actor.ID = row["ActorID"].ToString();
                     Actor.Retrieve(retrieveBasicInfoOnly);
                 }
-                if (!String.IsNullOrEmpty(row["DubberID"].ToString()))
+                if (!String.IsNullOrEmpty(row["GermanDubberID"].ToString()))
                 {
-                    Dubber = new Person();
-                    Dubber.ID = row["DubberID"].ToString();
-                    Dubber.Retrieve(retrieveBasicInfoOnly);
+                    GermanDubber = new Person();
+                    GermanDubber.ID = row["GermanDubberID"].ToString();
+                    GermanDubber.Retrieve(retrieveBasicInfoOnly);
                 }
                 Character = row["Character"].ToString();
                 Details = row["Details"].ToString();
