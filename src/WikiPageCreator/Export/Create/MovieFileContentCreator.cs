@@ -2233,7 +2233,7 @@ namespace WikiPageCreator.Export.Create
             {
                 Logger.Trace($"Anzahl {heading[0]}: '{persons.Count}'");
 
-                string[] data = new string[2];
+                string[] data = new string[4];
                 string[] path = { targetLanguageCode, "biography" };
 
                 if (targetLanguageCode.Equals("en"))
@@ -2260,33 +2260,46 @@ namespace WikiPageCreator.Export.Create
 
                 for (int i = 0; i < persons.Count; i++)
                 {
+                    if (!String.IsNullOrEmpty(persons[i].Role))
+                    {
+                        data[0] = $"{persons[i].Role}";
+                    }
+                    else
+                    {
+                        data[0] = "";
+                    }
+
                     if (!String.IsNullOrEmpty(persons[i].Person.Name) && !String.IsNullOrEmpty(persons[i].Person.NameAddOn))
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.Name} {persons[i].Person.NameAddOn}");
+                        data[1] = Formatter.AsInternalLink(path, $"{persons[i].Person.Name} {persons[i].Person.NameAddOn}");
                     }
                     else
                     {
-                        data[0] = Formatter.AsInternalLink(path, $"{persons[i].Person.Name}");
+                        data[1] = Formatter.AsInternalLink(path, $"{persons[i].Person.Name}");
                     }
 
-                    // TODO: add dubbing information
-
-                    if (!String.IsNullOrEmpty(persons[i].Role) && !String.IsNullOrEmpty(persons[i].Details))
+                    if (!String.IsNullOrEmpty(persons[i].Details))
                     {
-                        data[1] = $"({persons[i].Role}) {persons[i].Details}";
-                    }
-                    else if (!String.IsNullOrEmpty(persons[i].Role))
-                    {
-                        data[1] = $"({persons[i].Role})";
-                    }
-                    else if (!String.IsNullOrEmpty(persons[i].Details))
-                    {
-                        data[1] = $"{persons[i].Details}";
+                        data[2] = $"{persons[i].Details}";
                     }
                     else
                     {
-                        data[1] = "";
+                        data[2] = "";
                     }
+
+                    if (!String.IsNullOrEmpty(persons[i].GermanDubber.Name) && !String.IsNullOrEmpty(persons[i].GermanDubber.NameAddOn))
+                    {
+                        data[3] = Formatter.AsInternalLink(path, $"{persons[i].GermanDubber.Name} {persons[i].GermanDubber.NameAddOn}");
+                    }
+                    else if (!String.IsNullOrEmpty(persons[i].GermanDubber.Name))
+                    {
+                        data[3] = Formatter.AsInternalLink(path, $"{persons[i].GermanDubber.Name}");
+                    }
+                    else
+                    {
+                        data[3] = "";
+                    }
+
                     Content.Add(Formatter.AsTableRow(data));
                 }
 
