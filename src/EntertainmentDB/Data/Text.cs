@@ -133,15 +133,10 @@ namespace EntertainmentDB.Data
             int count = 0;
 
             Authors = PersonItem.RetrieveList(Reader, $"Text", ID, "Author");
-            if (Authors != null)
-            {
-                count += Authors.Count;
-            }
+            count += Authors.Count;
+
             Sources = CompanyItem.RetrieveList(Reader, $"Text", ID, "Source");
-            if (Sources != null)
-            {
-                count += Sources.Count;
-            }
+            count += Sources.Count;
 
             return count;
         }

@@ -143,10 +143,7 @@ namespace EntertainmentDB.Data
             int count = 0;
 
             Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source");
-            if (Sources != null)
-            {
-                count += Sources.Count;
-            }
+            count += Sources.Count;
 
             return count;
         }
