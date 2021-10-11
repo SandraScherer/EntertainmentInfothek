@@ -84,7 +84,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, CompanyID, CountryID, ReleaseDate, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, CompanyID, CountryID, ReleaseDate, Role, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -106,6 +106,7 @@ namespace EntertainmentDB.Data
                     Country.Retrieve(retrieveBasicInfoOnly);
                 }
                 ReleaseDate = row["ReleaseDate"].ToString();
+                Role = row["Role"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

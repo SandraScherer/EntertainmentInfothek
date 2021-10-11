@@ -36,6 +36,11 @@ namespace EntertainmentDB.Data
         public Company Company { get; set; }
 
         /// <summary>
+        /// The role of the company item.
+        /// </summary>
+        public string Role { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -79,7 +84,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, CompanyID, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, CompanyID, Role, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -94,6 +99,7 @@ namespace EntertainmentDB.Data
                     Company.ID = row["CompanyID"].ToString();
                     Company.Retrieve(retrieveBasicInfoOnly);
                 }
+                Role = row["Role"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

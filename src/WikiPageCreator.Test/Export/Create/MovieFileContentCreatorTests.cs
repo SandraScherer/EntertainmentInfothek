@@ -2095,9 +2095,9 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Production Company
-            string[] dataProductionCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Production Company Details X1" };
-            string[] dataProductionCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Production Company Details X2" };
-            string[] dataProductionCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "Movie Production Company Details X3" };
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Production Company Role X1) Movie Production Company Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Production Company Role X2) Movie Production Company Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Production Company Role X3) Movie Production Company Details X3" };
 
             switch (value)
             {
@@ -2114,12 +2114,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Distributor
             string[] pathCountry = { value, "info" };
 
-            string[] dataDistributor1En = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country English Name X")}) Movie Distributor Details X1" };
-            string[] dataDistributor1De = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country German Name X")}) Movie Distributor Details X1" };
-            string[] dataDistributor2En = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country English Name Y")}) Movie Distributor Details X2" };
-            string[] dataDistributor2De = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y")}) Movie Distributor Details X2" };
-            string[] dataDistributor3En = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country English Name Z")}) Movie Distributor Details X3" };
-            string[] dataDistributor3De = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z")}) Movie Distributor Details X3" };
+            string[] dataDistributor1En = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country English Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name X", "Country German Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country English Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name Y", "Country German Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country English Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Name Z", "Country German Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
 
             switch (value)
             {
@@ -2141,9 +2141,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects Company
-            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Special Effects Company Details X1" };
-            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Special Effects Company Details X2" };
-            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "Movie Special Effects Company Details X3" };
+            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Special Effects Company Role X1) Movie Special Effects Company Details X1" };
+            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Special Effects Company Role X2) Movie Special Effects Company Details X2" };
+            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Special Effects Company Role X3) Movie Special Effects Company Details X3" };
 
             switch (value)
             {
@@ -2158,9 +2158,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Company
-            string[] dataOtherCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "Movie Other Company Details X1" };
-            string[] dataOtherCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "Movie Other Company Details X2" };
-            string[] dataOtherCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "Movie Other Company Details X3" };
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Other Company Role X1) Movie Other Company Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Other Company Role X2) Movie Other Company Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Other Company Role X3) Movie Other Company Details X3" };
 
             switch (value)
             {
@@ -3884,9 +3884,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Production Company
             string[] pathProductionCompany = { value, "company" };
-            string[] dataProductionCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Production Company Details X1" };
-            string[] dataProductionCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Production Company Details X2" };
-            string[] dataProductionCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "Movie Production Company Details X3" };
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Production Company Role X1) Movie Production Company Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Production Company Role X2) Movie Production Company Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Production Company Role X3) Movie Production Company Details X3" };
 
             switch (value)
             {
@@ -3905,12 +3905,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Distributor
             string[] pathDistributorCountry = { value, "info" };
 
-            string[] dataDistributor1En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country English Name X")}) Movie Distributor Details X1" };
-            string[] dataDistributor1De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country German Name X")}) Movie Distributor Details X1" };
-            string[] dataDistributor2En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country English Name Y")}) Movie Distributor Details X2" };
-            string[] dataDistributor2De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country German Name Y")}) Movie Distributor Details X2" };
-            string[] dataDistributor3En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country English Name Z")}) Movie Distributor Details X3" };
-            string[] dataDistributor3De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3) ({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country German Name Z")}) Movie Distributor Details X3" };
+            string[] dataDistributor1En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country English Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name X", "Country German Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country English Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Y", "Country German Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country English Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Name Z", "Country German Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
 
             switch (value)
             {
@@ -3933,9 +3933,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects Company
-            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Special Effects Company Details X1" };
-            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Special Effects Company Details X2" };
-            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "Movie Special Effects Company Details X3" };
+            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Special Effects Company Role X1) Movie Special Effects Company Details X1" };
+            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Special Effects Company Role X2) Movie Special Effects Company Details X2" };
+            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Special Effects Company Role X3) Movie Special Effects Company Details X3" };
 
             switch (value)
             {
@@ -3952,9 +3952,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Company
-            string[] dataOtherCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "Movie Other Company Details X1" };
-            string[] dataOtherCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "Movie Other Company Details X2" };
-            string[] dataOtherCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "Movie Other Company Details X3" };
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Other Company Role X1) Movie Other Company Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Other Company Role X2) Movie Other Company Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Other Company Role X3) Movie Other Company Details X3" };
 
             switch (value)
             {

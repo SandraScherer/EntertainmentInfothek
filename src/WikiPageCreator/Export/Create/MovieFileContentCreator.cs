@@ -2397,7 +2397,15 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name}");
                     }
 
-                    if (!String.IsNullOrEmpty(companies[i].Details))
+                    if (!String.IsNullOrEmpty(companies[i].Role) && !String.IsNullOrEmpty(companies[i].Details))
+                    {
+                        data[1] = $"({companies[i].Role}) {companies[i].Details}";
+                    }
+                    else if (!String.IsNullOrEmpty(companies[i].Role))
+                    {
+                        data[1] = $"({companies[i].Role})";
+                    }
+                    else if (!String.IsNullOrEmpty(companies[i].Details))
                     {
                         data[1] = $"{companies[i].Details}";
                     }
@@ -2434,7 +2442,7 @@ namespace WikiPageCreator.Export.Create
             {
                 Logger.Trace($"Anzahl {heading[0]}: '{companies.Count}'");
 
-                string[] data = new string[2];
+                string[] data = new string[4];
                 string[] path = { targetLanguageCode, "company" };
 
                 if (targetLanguageCode.Equals("en"))
@@ -2457,6 +2465,15 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.AsInternalLink(path, $"{companies[i].Company.Name}");
                     }
 
+                    if (!String.IsNullOrEmpty(companies[i].ReleaseDate))
+                    {
+                        data[1] = $"({companies[i].ReleaseDate})";
+                    }
+                    else
+                    {
+                        data[1] = "";
+                    }
+
                     // prepare country information
                     string dataCountry;
                     string[] pathCountry = { targetLanguageCode, "info" };
@@ -2469,22 +2486,23 @@ namespace WikiPageCreator.Export.Create
                     {
                         dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalName, companies[i].Country.GermanName)}";
                     }
+                    data[2] = $"({dataCountry})";
 
-                    if (!String.IsNullOrEmpty(companies[i].ReleaseDate) && !String.IsNullOrEmpty(companies[i].Details))
+                    if (!String.IsNullOrEmpty(companies[i].Role) && !String.IsNullOrEmpty(companies[i].Details))
                     {
-                        data[1] = $"({companies[i].ReleaseDate}) ({dataCountry}) {companies[i].Details}";
+                        data[3] = $"({companies[i].Role}) {companies[i].Details}";
                     }
-                    else if (!String.IsNullOrEmpty(companies[i].ReleaseDate))
+                    else if (!String.IsNullOrEmpty(companies[i].Role))
                     {
-                        data[1] = $"({companies[i].ReleaseDate}) ({dataCountry})";
+                        data[3] = $"({companies[i].Role})";
                     }
                     else if (!String.IsNullOrEmpty(companies[i].Details))
                     {
-                        data[1] = $"({dataCountry}) {companies[i].Details}";
+                        data[3] = $"{companies[i].Details}";
                     }
                     else
                     {
-                        data[1] = $"({dataCountry})";
+                        data[3] = "";
                     }
                     Content.Add(Formatter.AsTableRow(data));
                 }
