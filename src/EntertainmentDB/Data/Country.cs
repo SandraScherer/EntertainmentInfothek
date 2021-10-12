@@ -30,19 +30,34 @@ namespace EntertainmentDB.Data
         // --- Properties ---
 
         /// <summary>
-        /// The original name of the country.
+        /// The original short name of the country.
         /// </summary>
-        public string OriginalName { get; set; }
+        public string OriginalShortName { get; set; }
 
         /// <summary>
-        /// The english name of the country.
+        /// The original full name of the country.
         /// </summary>
-        public string EnglishName { get; set; }
+        public string OriginalFullName { get; set; }
 
         /// <summary>
-        /// The german name of the country.
+        /// The english short name of the country.
         /// </summary>
-        public string GermanName { get; set; }
+        public string EnglishShortName { get; set; }
+
+        /// <summary>
+        /// The english full name of the country.
+        /// </summary>
+        public string EnglishFullName { get; set; }
+
+        /// <summary>
+        /// The german short name of the country.
+        /// </summary>
+        public string GermanShortName { get; set; }
+
+        /// <summary>
+        /// The german full name of the country.
+        /// </summary>
+        public string GermanFullName { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -83,7 +98,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, OriginalShortName, OriginalFullName, EnglishShortName, EnglishFullName, GermanShortName, GermanFullName, Details, StatusID, LastUpdated " +
                            $"FROM Country " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -92,9 +107,12 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                OriginalName = row["OriginalName"].ToString();
-                EnglishName = row["EnglishName"].ToString();
-                GermanName = row["GermanName"].ToString();
+                OriginalShortName = row["OriginalShortName"].ToString();
+                OriginalFullName = row["OriginalFullName"].ToString();
+                EnglishShortName = row["EnglishShortName"].ToString();
+                EnglishFullName = row["EnglishFullName"].ToString();
+                GermanShortName = row["GermanShortName"].ToString();
+                GermanFullName = row["GermanFullName"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

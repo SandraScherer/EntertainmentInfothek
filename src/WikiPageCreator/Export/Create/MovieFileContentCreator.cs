@@ -611,11 +611,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Production Country";
                     if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
                     {
-                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)} {Movie.Countries[0].Details}";
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalFullName, Movie.Countries[0].Country.EnglishShortName)} {Movie.Countries[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.EnglishName)}";
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalFullName, Movie.Countries[0].Country.EnglishShortName)}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -624,11 +624,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
                         {
-                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)} {Movie.Countries[i].Details}";
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalFullName, Movie.Countries[i].Country.EnglishShortName)} {Movie.Countries[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.EnglishName)}";
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalFullName, Movie.Countries[i].Country.EnglishShortName)}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -638,11 +638,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Produktionsland";
                     if (!String.IsNullOrEmpty(Movie.Countries[0].Details))
                     {
-                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)} {Movie.Countries[0].Details}";
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalFullName, Movie.Countries[0].Country.GermanShortName)} {Movie.Countries[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalName, Movie.Countries[0].Country.GermanName)}";
+                        data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[0].Country.OriginalFullName, Movie.Countries[0].Country.GermanShortName)}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -651,11 +651,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.Countries[i].Details))
                         {
-                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)} {Movie.Countries[i].Details}";
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalFullName, Movie.Countries[i].Country.GermanShortName)} {Movie.Countries[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalName, Movie.Countries[i].Country.GermanName)}";
+                            data[1] = $"{Formatter.AsInternalLink(path, Movie.Countries[i].Country.OriginalFullName, Movie.Countries[i].Country.GermanShortName)}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -2480,11 +2480,11 @@ namespace WikiPageCreator.Export.Create
 
                     if (targetLanguageCode.Equals("en"))
                     {
-                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalName, companies[i].Country.EnglishName)}";
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalFullName, companies[i].Country.EnglishShortName)}";
                     }
                     else // incl. case "de"
                     {
-                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalName, companies[i].Country.GermanName)}";
+                        dataCountry = $"{Formatter.AsInternalLink(pathCountry, companies[i].Country.OriginalFullName, companies[i].Country.GermanShortName)}";
                     }
                     data[2] = $"({dataCountry})";
 
@@ -2566,11 +2566,11 @@ namespace WikiPageCreator.Export.Create
 
                         if (targetLanguageCode.Equals("en") && Movie.FilmingLocations[i].Location.Country != null)
                         {
-                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.EnglishName)}";
+                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalFullName, Movie.FilmingLocations[i].Location.Country.EnglishShortName)}";
                         }
                         else if (Movie.FilmingLocations[i].Location.Country != null) // incl. case "de" 
                         {
-                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalName, Movie.FilmingLocations[i].Location.Country.GermanName)}";
+                            dataCountry = $"{Formatter.AsInternalLink(pathCountry, Movie.FilmingLocations[i].Location.Country.OriginalFullName, Movie.FilmingLocations[i].Location.Country.GermanShortName)}";
                         }
                         else
                         {

@@ -38,9 +38,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -58,9 +61,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -79,9 +85,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
+            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
+            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
+            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
+            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
+            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
@@ -100,9 +109,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
+            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
+            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
+            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
+            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
+            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
@@ -121,9 +133,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -142,9 +157,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -189,9 +207,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
+            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
+            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
+            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
+            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
+            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
@@ -210,9 +231,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
+            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
+            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
+            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
+            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
+            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
@@ -231,9 +255,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -252,9 +279,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
