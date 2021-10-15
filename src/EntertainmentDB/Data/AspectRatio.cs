@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public string Ratio { get; set; }
 
         /// <summary>
-        /// The name of the aspect ratio.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -78,7 +73,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, Ratio, Name, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, Ratio, Details, StatusID, LastUpdated " +
                            $"FROM AspectRatio " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -88,7 +83,6 @@ namespace EntertainmentDB.Data
 
                 ID = row["ID"].ToString();
                 Ratio = row["Ratio"].ToString();
-                Name = row["Name"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

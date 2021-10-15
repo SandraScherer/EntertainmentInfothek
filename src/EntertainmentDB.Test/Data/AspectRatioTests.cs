@@ -39,7 +39,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -58,7 +57,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -78,7 +76,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
             Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
@@ -98,7 +95,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
             Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
@@ -118,7 +114,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -138,7 +133,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -184,7 +178,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
             Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
@@ -204,7 +197,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Name X", entry.Name);
             Assert.AreEqual("Aspect Ratio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
@@ -224,7 +216,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -244,7 +235,6 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
