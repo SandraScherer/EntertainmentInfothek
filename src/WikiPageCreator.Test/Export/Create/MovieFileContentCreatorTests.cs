@@ -840,15 +840,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Camera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
-            string[] dataDe1 = { "Kamera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
-            string[] dataZz1 = { "Kamera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
+            string[] dataEn1 = { "Camera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
+            string[] dataDe1 = { "Kamera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
+            string[] dataZz1 = { "Kamera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
 
             switch (value)
             {
@@ -2848,15 +2848,15 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Infobox Camera
-            string[] dataCameraEn1 = { "Camera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataCameraEn2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataCameraEn3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
-            string[] dataCameraDe1 = { "Kamera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataCameraDe2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataCameraDe3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
-            string[] dataCameraZz1 = { "Kamera", "Camera Name X, Camera Lense X Movie Camera Details X1" };
-            string[] dataCameraZz2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lense Y Movie Camera Details X2" };
-            string[] dataCameraZz3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lense Z Movie Camera Details X3" };
+            string[] dataCameraEn1 = { "Camera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataCameraEn2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataCameraEn3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
+            string[] dataCameraDe1 = { "Kamera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataCameraDe2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataCameraDe3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
+            string[] dataCameraZz1 = { "Kamera", "Camera Name X, Camera Lenses X Movie Camera Details X1" };
+            string[] dataCameraZz2 = { Formatter.CellSpanVertically(), "Camera Name Y, Camera Lenses Y Movie Camera Details X2" };
+            string[] dataCameraZz3 = { Formatter.CellSpanVertically(), "Camera Name Z, Camera Lenses Z Movie Camera Details X3" };
 
             switch (value)
             {

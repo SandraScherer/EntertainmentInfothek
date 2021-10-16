@@ -1161,11 +1161,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Camera";
                     if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
                     {
-                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lenses} {Movie.Cameras[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lenses}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1174,11 +1174,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
                         {
-                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lenses} {Movie.Cameras[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lenses}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -1188,11 +1188,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Kamera";
                     if (!String.IsNullOrEmpty(Movie.Cameras[0].Details))
                     {
-                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense} {Movie.Cameras[0].Details}";
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lenses} {Movie.Cameras[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lense}";
+                        data[1] = $"{Movie.Cameras[0].Camera.Name}, {Movie.Cameras[0].Camera.Lenses}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1201,11 +1201,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.Cameras[i].Details))
                         {
-                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense} {Movie.Cameras[i].Details}";
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lenses} {Movie.Cameras[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lense}";
+                            data[1] = $"{Movie.Cameras[i].Camera.Name}, {Movie.Cameras[i].Camera.Lenses}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }

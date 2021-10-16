@@ -37,7 +37,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The lense of the camera.
         /// </summary>
-        public string Lense { get; set; }
+        public string Lenses { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, Name, Lense, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, Name, Lenses, Details, StatusID, LastUpdated " +
                            $"FROM Camera " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -88,7 +88,7 @@ namespace EntertainmentDB.Data
 
                 ID = row["ID"].ToString();
                 Name = row["Name"].ToString();
-                Lense = row["Lense"].ToString();
+                Lenses = row["Lenses"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

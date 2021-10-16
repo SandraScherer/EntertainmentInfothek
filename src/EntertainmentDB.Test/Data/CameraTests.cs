@@ -39,7 +39,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -58,7 +58,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
             Assert.AreEqual("Camera Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
@@ -98,7 +98,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
             Assert.AreEqual("Camera Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -138,7 +138,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -184,7 +184,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
             Assert.AreEqual("Camera Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
@@ -204,7 +204,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lense X", entry.Lense);
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
             Assert.AreEqual("Camera Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Camera Last Updated X", entry.LastUpdated);
@@ -224,7 +224,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -244,7 +244,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lense);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
