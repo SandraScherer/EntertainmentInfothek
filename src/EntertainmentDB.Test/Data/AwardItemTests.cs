@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -67,7 +67,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Award.ID);
             Assert.AreEqual($"{value} Award Category X1", item.Category);
-            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"{value} Award Date X1", item.Date);
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -119,7 +119,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Award.ID);
             Assert.AreEqual($"{value} Award Category X1", item.Category);
-            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"{value} Award Date X1", item.Date);
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -145,7 +145,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -171,7 +171,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -232,7 +232,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Award.ID);
             Assert.AreEqual($"{value} Award Category X1", item.Category);
-            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"{value} Award Date X1", item.Date);
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -258,7 +258,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.Award.ID);
             Assert.AreEqual($"{value} Award Category X1", item.Category);
-            Assert.AreEqual($"{value} Award Year X1", item.Year);
+            Assert.AreEqual($"{value} Award Date X1", item.Date);
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
@@ -287,7 +287,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -313,7 +313,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aa1", item.ID);
             Assert.IsNull(item.Award);
             Assert.IsNull(item.Category);
-            Assert.IsNull(item.Year);
+            Assert.IsNull(item.Date);
             Assert.IsNull(item.Winner);
             Assert.IsNull(item.Details);
             Assert.IsNull(item.Status);
@@ -338,7 +338,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Award.ID);
             Assert.AreEqual($"{value} Award Category X1", list[0].Category);
-            Assert.AreEqual($"{value} Award Year X1", list[0].Year);
+            Assert.AreEqual($"{value} Award Date X1", list[0].Date);
             Assert.AreEqual($"1", list[0].Winner);
             Assert.AreEqual($"{value} Award Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
@@ -352,7 +352,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Award.ID);
             Assert.AreEqual($"{value} Award Category X2", list[1].Category);
-            Assert.AreEqual($"{value} Award Year X2", list[1].Year);
+            Assert.AreEqual($"{value} Award Date X2", list[1].Date);
             Assert.AreEqual($"0", list[1].Winner);
             Assert.AreEqual($"{value} Award Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
@@ -366,7 +366,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Award.ID);
             Assert.AreEqual($"{value} Award Category X3", list[2].Category);
-            Assert.AreEqual($"{value} Award Year X3", list[2].Year);
+            Assert.AreEqual($"{value} Award Date X3", list[2].Date);
             Assert.AreEqual($"0", list[2].Winner);
             Assert.AreEqual($"{value} Award Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);

@@ -41,9 +41,9 @@ namespace EntertainmentDB.Data
         public string Category { get; set; }
 
         /// <summary>
-        /// The year of the award item.
+        /// The date of the award item.
         /// </summary>
-        public string Year { get; set; }
+        public string Date { get; set; }
 
         /// <summary>
         /// The winner info of the award item.
@@ -99,7 +99,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, AwardID, Category, Year, Winner, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, AwardID, Category, Date, Winner, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -115,7 +115,7 @@ namespace EntertainmentDB.Data
                     Award.Retrieve(retrieveBasicInfoOnly);
                 }
                 Category = row["Category"].ToString();
-                Year = row["Year"].ToString();
+                Date = row["Date"].ToString();
                 Winner = row["Winner"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
