@@ -32,7 +32,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The name of the film format
         /// </summary>
-        public string Name { get; set; }
+        public string Format { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -73,7 +73,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Reader.Query = $"SELECT ID, Name, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, Format, Details, StatusID, LastUpdated " +
                            $"FROM FilmFormat " +
                            $"WHERE ID=\"{ID}\"";
 
@@ -82,7 +82,7 @@ namespace EntertainmentDB.Data
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                Name = row["Name"].ToString();
+                Format = row["Format"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {

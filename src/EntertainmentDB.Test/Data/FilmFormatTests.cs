@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -56,7 +56,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -75,7 +75,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Name);
+            Assert.AreEqual("Film Format Name X", entry.Format);
             Assert.AreEqual("Film Format Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
@@ -94,7 +94,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Name);
+            Assert.AreEqual("Film Format Name X", entry.Format);
             Assert.AreEqual("Film Format Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
@@ -113,7 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -132,7 +132,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -177,7 +177,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Name);
+            Assert.AreEqual("Film Format Name X", entry.Format);
             Assert.AreEqual("Film Format Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
@@ -196,7 +196,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Name);
+            Assert.AreEqual("Film Format Name X", entry.Format);
             Assert.AreEqual("Film Format Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
@@ -215,7 +215,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -234,7 +234,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Format);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);

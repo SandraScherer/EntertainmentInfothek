@@ -1395,11 +1395,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Negative Format";
                     if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
                     {
-                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Format} {Movie.NegativeFormats[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Format}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1408,11 +1408,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
-                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Format} {Movie.NegativeFormats[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Format}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -1422,11 +1422,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Negativformat";
                     if (!String.IsNullOrEmpty(Movie.NegativeFormats[0].Details))
                     {
-                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name} {Movie.NegativeFormats[0].Details}";
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Format} {Movie.NegativeFormats[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Name}";
+                        data[1] = $"{Movie.NegativeFormats[0].FilmFormat.Format}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1435,11 +1435,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
-                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name} {Movie.NegativeFormats[i].Details}";
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Format} {Movie.NegativeFormats[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Name}";
+                            data[1] = $"{Movie.NegativeFormats[i].FilmFormat.Format}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -1551,11 +1551,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Printed Film Format";
                     if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
                     {
-                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Format} {Movie.PrintedFilmFormats[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Format}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1564,11 +1564,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
                         {
-                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Format} {Movie.PrintedFilmFormats[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Format}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
@@ -1578,11 +1578,11 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Filmformat";
                     if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[0].Details))
                     {
-                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name} {Movie.PrintedFilmFormats[0].Details}";
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Format} {Movie.PrintedFilmFormats[0].Details}";
                     }
                     else
                     {
-                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Name}";
+                        data[1] = $"{Movie.PrintedFilmFormats[0].FilmFormat.Format}";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -1591,11 +1591,11 @@ namespace WikiPageCreator.Export.Create
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.PrintedFilmFormats[i].Details))
                         {
-                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name} {Movie.PrintedFilmFormats[i].Details}";
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Format} {Movie.PrintedFilmFormats[i].Details}";
                         }
                         else
                         {
-                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Name}";
+                            data[1] = $"{Movie.PrintedFilmFormats[i].FilmFormat.Format}";
                         }
                         Content.Add(Formatter.AsTableRow(data));
                     }
