@@ -77,11 +77,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Sound Mix English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Sound Mix German Title X", entry.GermanTitle);
-            Assert.AreEqual("Sound Mix Details X", entry.Details);
+            Assert.AreEqual("SoundMix EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("SoundMix GermanTitle X", entry.GermanTitle);
+            Assert.AreEqual("SoundMix Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Sound Mix Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("SoundMix LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -97,11 +97,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Sound Mix English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Sound Mix German Title X", entry.GermanTitle);
-            Assert.AreEqual("Sound Mix Details X", entry.Details);
+            Assert.AreEqual("SoundMix EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("SoundMix GermanTitle X", entry.GermanTitle);
+            Assert.AreEqual("SoundMix Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Sound Mix Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("SoundMix LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -182,11 +182,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Sound Mix English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Sound Mix German Title X", entry.GermanTitle);
-            Assert.AreEqual("Sound Mix Details X", entry.Details);
+            Assert.AreEqual("SoundMix EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("SoundMix GermanTitle X", entry.GermanTitle);
+            Assert.AreEqual("SoundMix Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Sound Mix Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("SoundMix LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -202,11 +202,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Sound Mix English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Sound Mix German Title X", entry.GermanTitle);
-            Assert.AreEqual("Sound Mix Details X", entry.Details);
+            Assert.AreEqual("SoundMix EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("SoundMix GermanTitle X", entry.GermanTitle);
+            Assert.AreEqual("SoundMix Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Sound Mix Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("SoundMix LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

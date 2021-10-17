@@ -75,10 +75,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Format);
-            Assert.AreEqual("Film Format Details X", entry.Details);
+            Assert.AreEqual("FilmFormat Format X", entry.Format);
+            Assert.AreEqual("FilmFormat Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("FilmFormat LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -94,10 +94,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Format);
-            Assert.AreEqual("Film Format Details X", entry.Details);
+            Assert.AreEqual("FilmFormat Format X", entry.Format);
+            Assert.AreEqual("FilmFormat Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("FilmFormat LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -177,10 +177,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Format);
-            Assert.AreEqual("Film Format Details X", entry.Details);
+            Assert.AreEqual("FilmFormat Format X", entry.Format);
+            Assert.AreEqual("FilmFormat Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("FilmFormat LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -196,10 +196,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Film Format Name X", entry.Format);
-            Assert.AreEqual("Film Format Details X", entry.Details);
+            Assert.AreEqual("FilmFormat Format X", entry.Format);
+            Assert.AreEqual("FilmFormat Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Film Format Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("FilmFormat LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

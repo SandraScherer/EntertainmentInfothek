@@ -77,11 +77,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Color English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Color German Title X", entry.GermanTitle);
+            Assert.AreEqual("Color EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Color GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Color Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Color Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Color LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -97,11 +97,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Color English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Color German Title X", entry.GermanTitle);
+            Assert.AreEqual("Color EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Color GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Color Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Color Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Color LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -183,11 +183,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Color English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Color German Title X", entry.GermanTitle);
+            Assert.AreEqual("Color EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Color GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Color Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Color Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Color LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -203,11 +203,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Color English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Color German Title X", entry.GermanTitle);
+            Assert.AreEqual("Color EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Color GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Color Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Color Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Color LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

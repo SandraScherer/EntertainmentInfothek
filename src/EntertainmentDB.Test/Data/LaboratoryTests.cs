@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Name X", entry.Name);
             Assert.AreEqual("Laboratory Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Laboratory LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Name X", entry.Name);
             Assert.AreEqual("Laboratory Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Laboratory LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -180,7 +180,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Name X", entry.Name);
             Assert.AreEqual("Laboratory Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Laboratory LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -199,7 +199,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Laboratory Name X", entry.Name);
             Assert.AreEqual("Laboratory Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Laboratory Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Laboratory LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

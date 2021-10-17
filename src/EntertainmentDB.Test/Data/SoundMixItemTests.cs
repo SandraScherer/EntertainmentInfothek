@@ -83,9 +83,9 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X1", item.Details);
+            Assert.AreEqual($"{value} SoundMix Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -104,9 +104,9 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X1", item.Details);
+            Assert.AreEqual($"{value} SoundMix Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -197,9 +197,9 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X1", item.Details);
+            Assert.AreEqual($"{value} SoundMix Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -218,9 +218,9 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", item.ID);
             Assert.AreEqual("_xxx", item.SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X1", item.Details);
+            Assert.AreEqual($"{value} SoundMix Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -280,21 +280,21 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X1", list[0].Details);
+            Assert.AreEqual($"{value} SoundMix Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X2", list[1].Details);
+            Assert.AreEqual($"{value} SoundMix Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].SoundMix.ID);
-            Assert.AreEqual($"{value} Sound Mix Details X3", list[2].Details);
+            Assert.AreEqual($"{value} SoundMix Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} Sound Mix Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} SoundMix LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

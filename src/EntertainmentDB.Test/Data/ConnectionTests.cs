@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.BaseConnection);
             Assert.AreEqual("Connection Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Connection LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -101,7 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.BaseConnection);
             Assert.AreEqual("Connection Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Connection LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -187,7 +187,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.BaseConnection);
             Assert.AreEqual("Connection Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Connection LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -207,7 +207,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.BaseConnection);
             Assert.AreEqual("Connection Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Connection Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Connection LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

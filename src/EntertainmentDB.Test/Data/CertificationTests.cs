@@ -84,7 +84,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Certification Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Certification Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Certification LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Certification Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Certification Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Certification LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -194,7 +194,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Certification Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Certification Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Certification LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -215,7 +215,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Certification Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Certification Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Certification LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

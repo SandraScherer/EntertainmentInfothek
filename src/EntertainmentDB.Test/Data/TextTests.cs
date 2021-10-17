@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Text Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Text LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Authors);
             Assert.IsNull(entry.Sources);
@@ -110,7 +110,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Text Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Text LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Authors);
             Assert.IsNull(entry.Sources);
@@ -215,7 +215,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Text Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Text LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Authors);
             Assert.IsNull(entry.Sources);
@@ -238,7 +238,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Text Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Text Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Text LastUpdated X", entry.LastUpdated);
 
             Assert.AreEqual(3, entry.Authors.Count);
             Assert.AreEqual("_xx1", entry.Authors[0].ID);

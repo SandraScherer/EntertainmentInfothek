@@ -91,8 +91,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
@@ -107,16 +107,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X1", item.EndDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value1, string value2)
         {
             // Arrange
@@ -131,16 +131,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X1", item.EndDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
@@ -163,8 +163,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value1, string value2)
         {
             // Arrange
@@ -187,8 +187,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
             // Arrange
@@ -204,8 +204,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
             // Arrange
@@ -221,8 +221,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
@@ -237,16 +237,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X1", item.EndDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveTest_withValidID_AdditionalInfo(string value1, string value2)
         {
             // Arrange
@@ -261,16 +261,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xx1", item.ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X1", item.StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X1", item.EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X1", item.StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X1", item.EndDate);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
             // Arrange
@@ -293,8 +293,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value1, string value2)
         {
             // Arrange
@@ -317,8 +317,8 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie", "Filming Date")]
-        [DataRow("Movie", "Production Date")]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
         public void RetrieveListTest_withValidData(string value1, string value2)
         {
             // Arrange
@@ -331,25 +331,25 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(3, list.Count);
 
             Assert.AreEqual("_xx1", list[0].ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X1", list[0].StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X1", list[0].EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X1", list[0].StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X1", list[0].EndDate);
             Assert.AreEqual($"{value1} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X2", list[1].StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X2", list[1].EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X2", list[1].StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X2", list[1].EndDate);
             Assert.AreEqual($"{value1} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
-            Assert.AreEqual($"{value1} {value2} Start Date X3", list[2].StartDate);
-            Assert.AreEqual($"{value1} {value2} End Date X3", list[2].EndDate);
+            Assert.AreEqual($"{value1} {value2} StartDate X3", list[2].StartDate);
+            Assert.AreEqual($"{value1} {value2} EndDate X3", list[2].EndDate);
             Assert.AreEqual($"{value1} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

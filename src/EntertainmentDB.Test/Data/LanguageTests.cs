@@ -79,12 +79,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Language Original Name X", entry.OriginalName);
-            Assert.AreEqual("Language English Name X", entry.EnglishName);
-            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language OriginalName X", entry.OriginalName);
+            Assert.AreEqual("Language EnglishName X", entry.EnglishName);
+            Assert.AreEqual("Language GermanName X", entry.GermanName);
             Assert.AreEqual("Language Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Language LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -100,12 +100,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Language Original Name X", entry.OriginalName);
-            Assert.AreEqual("Language English Name X", entry.EnglishName);
-            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language OriginalName X", entry.OriginalName);
+            Assert.AreEqual("Language EnglishName X", entry.EnglishName);
+            Assert.AreEqual("Language GermanName X", entry.GermanName);
             Assert.AreEqual("Language Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Language LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -189,12 +189,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Language Original Name X", entry.OriginalName);
-            Assert.AreEqual("Language English Name X", entry.EnglishName);
-            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language OriginalName X", entry.OriginalName);
+            Assert.AreEqual("Language EnglishName X", entry.EnglishName);
+            Assert.AreEqual("Language GermanName X", entry.GermanName);
             Assert.AreEqual("Language Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Language LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -210,12 +210,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Language Original Name X", entry.OriginalName);
-            Assert.AreEqual("Language English Name X", entry.EnglishName);
-            Assert.AreEqual("Language German Name X", entry.GermanName);
+            Assert.AreEqual("Language OriginalName X", entry.OriginalName);
+            Assert.AreEqual("Language EnglishName X", entry.EnglishName);
+            Assert.AreEqual("Language GermanName X", entry.GermanName);
             Assert.AreEqual("Language Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Language Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Language LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

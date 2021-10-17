@@ -75,10 +75,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -94,10 +94,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -177,10 +177,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -196,10 +196,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Aspect Ratio X", entry.Ratio);
-            Assert.AreEqual("Aspect Ratio Details X", entry.Details);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Aspect Ratio Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

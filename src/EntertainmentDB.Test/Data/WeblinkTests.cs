@@ -82,12 +82,12 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Weblink URL X", entry.Url);
-            Assert.AreEqual("Weblink English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Weblink German Title X", entry.GermanTitle);
+            Assert.AreEqual("Weblink EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Weblink GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Weblink Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Weblink Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Weblink LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -104,12 +104,12 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Weblink URL X", entry.Url);
-            Assert.AreEqual("Weblink English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Weblink German Title X", entry.GermanTitle);
+            Assert.AreEqual("Weblink EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Weblink GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Weblink Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Weblink Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Weblink LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -196,12 +196,12 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Weblink URL X", entry.Url);
-            Assert.AreEqual("Weblink English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Weblink German Title X", entry.GermanTitle);
+            Assert.AreEqual("Weblink EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Weblink GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Weblink Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Weblink Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Weblink LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -218,12 +218,12 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Weblink URL X", entry.Url);
-            Assert.AreEqual("Weblink English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Weblink German Title X", entry.GermanTitle);
+            Assert.AreEqual("Weblink EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Weblink GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("_xxx", entry.Language.ID);
             Assert.AreEqual("Weblink Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Weblink Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Weblink LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

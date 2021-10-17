@@ -85,15 +85,15 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
-            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
-            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
-            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
-            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
-            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -109,15 +109,15 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
-            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
-            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
-            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
-            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
-            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -207,15 +207,15 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
-            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
-            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
-            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
-            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
-            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -231,15 +231,15 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Short Name X", entry.OriginalShortName);
-            Assert.AreEqual("Country Original Full Name X", entry.OriginalFullName);
-            Assert.AreEqual("Country English Short Name X", entry.EnglishShortName);
-            Assert.AreEqual("Country English Full Name X", entry.EnglishFullName);
-            Assert.AreEqual("Country German Short Name X", entry.GermanShortName);
-            Assert.AreEqual("Country German Full Name X", entry.GermanFullName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

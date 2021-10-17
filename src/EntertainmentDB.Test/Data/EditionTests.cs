@@ -77,11 +77,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Edition English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Edition German Title X", entry.GermanTitle);
+            Assert.AreEqual("Edition EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Edition GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Edition Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Edition Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Edition LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -97,11 +97,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Edition English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Edition German Title X", entry.GermanTitle);
+            Assert.AreEqual("Edition EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Edition GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Edition Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Edition Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Edition LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -183,11 +183,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Edition English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Edition German Title X", entry.GermanTitle);
+            Assert.AreEqual("Edition EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Edition GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Edition Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Edition Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Edition LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -203,11 +203,11 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Edition English Title X", entry.EnglishTitle);
-            Assert.AreEqual("Edition German Title X", entry.GermanTitle);
+            Assert.AreEqual("Edition EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("Edition GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Edition Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Edition Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Edition LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

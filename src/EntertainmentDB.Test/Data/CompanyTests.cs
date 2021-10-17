@@ -78,10 +78,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Company Name X", entry.Name);
-            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company NameAddOn X", entry.NameAddOn);
             Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -98,10 +98,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Company Name X", entry.Name);
-            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company NameAddOn X", entry.NameAddOn);
             Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -184,10 +184,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Company Name X", entry.Name);
-            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company NameAddOn X", entry.NameAddOn);
             Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -204,10 +204,10 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", entry.ID);
             Assert.AreEqual("Company Name X", entry.Name);
-            Assert.AreEqual("Company Name AddOn X", entry.NameAddOn);
+            Assert.AreEqual("Company NameAddOn X", entry.NameAddOn);
             Assert.AreEqual("Company Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Company Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Company LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

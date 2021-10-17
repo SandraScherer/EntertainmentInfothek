@@ -85,7 +85,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", item.Color.ID);
             Assert.AreEqual($"{value} Color Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -106,7 +106,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", item.Color.ID);
             Assert.AreEqual($"{value} Color Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -199,7 +199,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", item.Color.ID);
             Assert.AreEqual($"{value} Color Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -220,7 +220,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", item.Color.ID);
             Assert.AreEqual($"{value} Color Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -282,19 +282,19 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[0].Color.ID);
             Assert.AreEqual($"{value} Color Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Color.ID);
             Assert.AreEqual($"{value} Color Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Color.ID);
             Assert.AreEqual($"{value} Color Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} Color Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} Color LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

@@ -94,9 +94,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
@@ -116,14 +116,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value1, string value2)
         {
@@ -143,14 +143,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
@@ -175,9 +175,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo(string value1, string value2)
         {
@@ -202,9 +202,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withValidID(string value1, string value2)
         {
@@ -222,9 +222,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveAdditionalInformationTest_withInvalidID(string value1, string value2)
         {
@@ -242,9 +242,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value1, string value2)
         {
@@ -264,14 +264,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value1, string value2)
         {
@@ -291,14 +291,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value1} {value2} Role X1", item.Role);
             Assert.AreEqual($"{value1} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveTest_withInvalidID_BasicInfoOnly(string value1, string value2)
         {
@@ -323,9 +323,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveTest_withInvalidID_AdditionalInfo(string value1, string value2)
         {
@@ -350,9 +350,9 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Image", "Source")]
-        [DataRow("Movie", "Production Company")]
-        [DataRow("Movie", "Special Effects Company")]
-        [DataRow("Movie", "Other Company")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
         // TODO: Add more tests
         public void RetrieveListTest_withValidData(string value1, string value2)
         {
@@ -370,21 +370,21 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value1} {value2} Role X1", list[0].Role);
             Assert.AreEqual($"{value1} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Company.ID);
             Assert.AreEqual($"{value1} {value2} Role X2", list[1].Role);
             Assert.AreEqual($"{value1} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Company.ID);
             Assert.AreEqual($"{value1} {value2} Role X3", list[2].Role);
             Assert.AreEqual($"{value1} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value1} {value2} Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value1} {value2} LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

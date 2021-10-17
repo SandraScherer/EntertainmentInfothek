@@ -75,10 +75,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Cinematographic Process Name X", entry.Name);
-            Assert.AreEqual("Cinematographic Process Details X", entry.Details);
+            Assert.AreEqual("CinematographicProcess Name X", entry.Name);
+            Assert.AreEqual("CinematographicProcess Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Cinematographic Process Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("CinematographicProcess LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -94,10 +94,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Cinematographic Process Name X", entry.Name);
-            Assert.AreEqual("Cinematographic Process Details X", entry.Details);
+            Assert.AreEqual("CinematographicProcess Name X", entry.Name);
+            Assert.AreEqual("CinematographicProcess Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Cinematographic Process Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("CinematographicProcess LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -177,10 +177,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Cinematographic Process Name X", entry.Name);
-            Assert.AreEqual("Cinematographic Process Details X", entry.Details);
+            Assert.AreEqual("CinematographicProcess Name X", entry.Name);
+            Assert.AreEqual("CinematographicProcess Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Cinematographic Process Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("CinematographicProcess LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -196,10 +196,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Cinematographic Process Name X", entry.Name);
-            Assert.AreEqual("Cinematographic Process Details X", entry.Details);
+            Assert.AreEqual("CinematographicProcess Name X", entry.Name);
+            Assert.AreEqual("CinematographicProcess Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Cinematographic Process Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("CinematographicProcess LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]

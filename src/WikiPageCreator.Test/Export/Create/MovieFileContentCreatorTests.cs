@@ -76,11 +76,11 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(creator.Formatter.DisableCache());
             content.Add(creator.Formatter.DisableTOC());
             content.Add(creator.Formatter.BeginComment());
-            content.Add($"   Movie Original Title X");
+            content.Add($"   Movie OriginalTitle X");
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
-            content.Add($"   @version Status English Title X: Movie Last Updated X");
+            content.Add($"   @version Status EnglishTitle X: Movie LastUpdated X");
             content.Add(creator.Formatter.EndComment());
             content.Add($"");
 
@@ -131,9 +131,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
-                case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
-                default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
+                case "en": content.Add(Formatter.AsHeading1("Movie EnglishTitle X")); break;
+                case "de": content.Add(Formatter.AsHeading1("Movie GermanTitle X")); break;
+                default: content.Add(Formatter.AsHeading1("Movie OriginalTitle X")); break;
             }
             content.Add($"");
 
@@ -210,8 +210,8 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn = { "Original Title", "Movie Original Title X" };
-            string[] dataDe = { "Originaltitel", "Movie Original Title X" };
+            string[] dataEn = { "Original Title", "Movie OriginalTitle X" };
+            string[] dataDe = { "Originaltitel", "Movie OriginalTitle X" };
 
             switch (value)
             {
@@ -244,8 +244,8 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { "cinema_and_television_movie" };
-            string dataEn0 = Formatter.AsImage(path, "Image File Name X", 450, "Type English Title X");
-            string dataDe0 = Formatter.AsImage(path, "Image File Name X", 450, "Type German Title X");
+            string dataEn0 = Formatter.AsImage(path, "Image FileName X", 450, "Type EnglishTitle X");
+            string dataDe0 = Formatter.AsImage(path, "Image FileName X", 450, "Type GermanTitle X");
             string[] dataEn = { dataEn0, null };
             string[] dataDe = { dataDe0, null };
 
@@ -280,9 +280,9 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn = { "Type", Formatter.AsInternalLink(path, "Type English Title X", "Type English Title X") };
-            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type English Title X", "Type German Title X") };
-            string[] dataZz = { "Typ", Formatter.AsInternalLink(path, "Type English Title X", "Type German Title X") };
+            string[] dataEn = { "Type", Formatter.AsInternalLink(path, "Type EnglishTitle X", "Type EnglishTitle X") };
+            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type EnglishTitle X", "Type GermanTitle X") };
+            string[] dataZz = { "Typ", Formatter.AsInternalLink(path, "Type EnglishTitle X", "Type GermanTitle X") };
 
             switch (value)
             {
@@ -315,9 +315,9 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "date" };
-            string[] dataEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataEn = { "Original Release Date", Formatter.AsInternalLink(path, "Movie ReleaseDate X", "Movie ReleaseDate X") };
+            string[] dataDe = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie ReleaseDate X", "Movie ReleaseDate X") };
+            string[] dataZz = { "Erstausstrahlung", Formatter.AsInternalLink(path, "Movie ReleaseDate X", "Movie ReleaseDate X") };
 
             switch (value)
             {
@@ -350,15 +350,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre English Title X", "Genre English Title X")} Movie Genre Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Y", "Genre English Title Y")} Movie Genre Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Z", "Genre English Title Z")} Movie Genre Details X3" };
-            string[] dataDe1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre English Title X", "Genre German Title X")} Movie Genre Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Y", "Genre German Title Y")} Movie Genre Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Z", "Genre German Title Z")} Movie Genre Details X3" };
-            string[] dataZz1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre English Title X", "Genre German Title X")} Movie Genre Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Y", "Genre German Title Y")} Movie Genre Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre English Title Z", "Genre German Title Z")} Movie Genre Details X3" };
+            string[] dataEn1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre EnglishTitle X", "Genre EnglishTitle X")} Movie Genre Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Movie Genre Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Movie Genre Details X3" };
+            string[] dataDe1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" };
+            string[] dataZz1 = { "Genre", $"{Formatter.AsInternalLink(path, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" };
 
             switch (value)
             {
@@ -403,15 +403,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { "certification" };
-            string[] dataEn1 = { "Certification", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
-            string[] dataDe1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
-            string[] dataZz1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataEn1 = { "Certification", $"{Formatter.AsImage(path, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Z", 75)} Movie Certification Details X3" };
+            string[] dataDe1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Z", 75)} Movie Certification Details X3" };
+            string[] dataZz1 = { "Altersfreigabe", $"{Formatter.AsImage(path, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(path, "Image FileName Z", 75)} Movie Certification Details X3" };
 
             switch (value)
             {
@@ -456,15 +456,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Production Country", $"{Formatter.AsInternalLink(path, "Country Original Full Name X", "Country English Short Name X")} Movie Country Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country English Short Name Y")} Movie Country Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country English Short Name Z")} Movie Country Details X3" };
-            string[] dataDe1 = { "Produktionsland", $"{Formatter.AsInternalLink(path, "Country Original Full Name X", "Country German Short Name X")} Movie Country Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country German Short Name Y")} Movie Country Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country German Short Name Z")} Movie Country Details X3" };
-            string[] dataZz1 = { "Produktionsland", $"{Formatter.AsInternalLink(path, "Country Original Full Name X", "Country German Short Name X")} Movie Country Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country German Short Name Y")} Movie Country Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country German Short Name Z")} Movie Country Details X3" };
+            string[] dataEn1 = { "Production Country", $"{Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country EnglishShortName X")} Movie Country Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country EnglishShortName Y")} Movie Country Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country EnglishShortName Z")} Movie Country Details X3" };
+            string[] dataDe1 = { "Produktionsland", $"{Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country GermanShortName X")} Movie Country Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie Country Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie Country Details X3" };
+            string[] dataZz1 = { "Produktionsland", $"{Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country GermanShortName X")} Movie Country Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie Country Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie Country Details X3" };
 
             switch (value)
             {
@@ -509,15 +509,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Language", $"{Formatter.AsInternalLink(path, "Language Original Name X", "Language English Name X")} Movie Language Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Y", "Language English Name Y")} Movie Language Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Z", "Language English Name Z")} Movie Language Details X3" };
-            string[] dataDe1 = { "Sprache", $"{Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X")} Movie Language Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y")} Movie Language Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z")} Movie Language Details X3" };
-            string[] dataZz1 = { "Sprache", $"{Formatter.AsInternalLink(path, "Language Original Name X", "Language German Name X")} Movie Language Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Y", "Language German Name Y")} Movie Language Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language Original Name Z", "Language German Name Z")} Movie Language Details X3" };
+            string[] dataEn1 = { "Language", $"{Formatter.AsInternalLink(path, "Language OriginalName X", "Language EnglishName X")} Movie Language Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Y", "Language EnglishName Y")} Movie Language Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Z", "Language EnglishName Z")} Movie Language Details X3" };
+            string[] dataDe1 = { "Sprache", $"{Formatter.AsInternalLink(path, "Language OriginalName X", "Language GermanName X")} Movie Language Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Y", "Language GermanName Y")} Movie Language Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Z", "Language GermanName Z")} Movie Language Details X3" };
+            string[] dataZz1 = { "Sprache", $"{Formatter.AsInternalLink(path, "Language OriginalName X", "Language GermanName X")} Movie Language Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Y", "Language GermanName Y")} Movie Language Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Language OriginalName Z", "Language GermanName Z")} Movie Language Details X3" };
 
             switch (value)
             {
@@ -596,9 +596,9 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "date" };
-            string[] dataEn = { "Worldwide Gross", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
-            string[] dataDe = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
-            string[] dataZz = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(path, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataEn = { "Worldwide Gross", $"Movie WorldwideGross X ({Formatter.AsInternalLink(path, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
+            string[] dataDe = { "Einspielergebnis (weltweit)", $"Movie WorldwideGross X ({Formatter.AsInternalLink(path, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
+            string[] dataZz = { "Einspielergebnis (weltweit)", $"Movie WorldwideGross X ({Formatter.AsInternalLink(path, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
 
             switch (value)
             {
@@ -630,15 +630,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Runtime", $"1 min. ({Formatter.AsInternalLink(path, "Edition English Title X", "Edition English Title X")}) Movie Runtime Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Y", "Edition English Title Y")}) Movie Runtime Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Z", "Edition English Title Z")}) Movie Runtime Details X3" };
-            string[] dataDe1 = { "Laufzeit", $"1 min. ({Formatter.AsInternalLink(path, "Edition English Title X", "Edition German Title X")}) Movie Runtime Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Y", "Edition German Title Y")}) Movie Runtime Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Z", "Edition German Title Z")}) Movie Runtime Details X3" };
-            string[] dataZz1 = { "Laufzeit", $"1 min. ({Formatter.AsInternalLink(path, "Edition English Title X", "Edition German Title X")}) Movie Runtime Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Y", "Edition German Title Y")}) Movie Runtime Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(path, "Edition English Title Z", "Edition German Title Z")}) Movie Runtime Details X3" };
+            string[] dataEn1 = { "Runtime", $"11 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle X", "Edition EnglishTitle X")}) Movie Runtime Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Y", "Edition EnglishTitle Y")}) Movie Runtime Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Z", "Edition EnglishTitle Z")}) Movie Runtime Details X3" };
+            string[] dataDe1 = { "Laufzeit", $"11 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle X", "Edition GermanTitle X")}) Movie Runtime Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Movie Runtime Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Movie Runtime Details X3" };
+            string[] dataZz1 = { "Laufzeit", $"11 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle X", "Edition GermanTitle X")}) Movie Runtime Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Movie Runtime Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(path, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Movie Runtime Details X3" };
 
             switch (value)
             {
@@ -683,15 +683,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Sound Mix", $"{Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix English Title X")} Movie Sound Mix Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix English Title Y")} Movie Sound Mix Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix English Title Z")} Movie Sound Mix Details X3" };
-            string[] dataDe1 = { "Tonmischung", $"{Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix German Title X")} Movie Sound Mix Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix German Title Y")} Movie Sound Mix Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix German Title Z")} Movie Sound Mix Details X3" };
-            string[] dataZz1 = { "Tonmischung", $"{Formatter.AsInternalLink(path, "Sound Mix English Title X", "Sound Mix German Title X")} Movie Sound Mix Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Y", "Sound Mix German Title Y")} Movie Sound Mix Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Sound Mix English Title Z", "Sound Mix German Title Z")} Movie Sound Mix Details X3" };
+            string[] dataEn1 = { "Sound Mix", $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle X", "SoundMix EnglishTitle X")} Movie SoundMix Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Y", "SoundMix EnglishTitle Y")} Movie SoundMix Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Z", "SoundMix EnglishTitle Z")} Movie SoundMix Details X3" };
+            string[] dataDe1 = { "Tonmischung", $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Movie SoundMix Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Movie SoundMix Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Movie SoundMix Details X3" };
+            string[] dataZz1 = { "Tonmischung", $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Movie SoundMix Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Movie SoundMix Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Movie SoundMix Details X3" };
 
             switch (value)
             {
@@ -736,15 +736,15 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
             string[] path = { value, "info" };
-            string[] dataEn1 = { "Color", $"{Formatter.AsInternalLink(path, "Color English Title X", "Color English Title X")} Movie Color Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Y", "Color English Title Y")} Movie Color Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Z", "Color English Title Z")} Movie Color Details X3" };
-            string[] dataDe1 = { "Farbe", $"{Formatter.AsInternalLink(path, "Color English Title X", "Color German Title X")} Movie Color Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Y", "Color German Title Y")} Movie Color Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Z", "Color German Title Z")} Movie Color Details X3" };
-            string[] dataZz1 = { "Farbe", $"{Formatter.AsInternalLink(path, "Color English Title X", "Color German Title X")} Movie Color Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Y", "Color German Title Y")} Movie Color Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color English Title Z", "Color German Title Z")} Movie Color Details X3" };
+            string[] dataEn1 = { "Color", $"{Formatter.AsInternalLink(path, "Color EnglishTitle X", "Color EnglishTitle X")} Movie Color Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Y", "Color EnglishTitle Y")} Movie Color Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Z", "Color EnglishTitle Z")} Movie Color Details X3" };
+            string[] dataDe1 = { "Farbe", $"{Formatter.AsInternalLink(path, "Color EnglishTitle X", "Color GermanTitle X")} Movie Color Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Y", "Color GermanTitle Y")} Movie Color Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Z", "Color GermanTitle Z")} Movie Color Details X3" };
+            string[] dataZz1 = { "Farbe", $"{Formatter.AsInternalLink(path, "Color EnglishTitle X", "Color GermanTitle X")} Movie Color Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Y", "Color GermanTitle Y")} Movie Color Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(path, "Color EnglishTitle Z", "Color GermanTitle Z")} Movie Color Details X3" };
 
             switch (value)
             {
@@ -788,15 +788,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataEn1 = { "Aspect Ratio", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
+            string[] dataDe1 = { "Bildformat", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
+            string[] dataZz1 = { "Bildformat", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
 
             switch (value)
             {
@@ -944,32 +944,32 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Film Length", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataEn2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataEn3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
-            string[] dataDe1 = { "Filmlänge", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataDe2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataDe3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
-            string[] dataZz1 = { "Filmlänge", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataZz2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataZz3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
+            string[] dataEn1 = { "Film Length", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
+            string[] dataDe1 = { "Filmlänge", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
+            string[] dataZz1 = { "Filmlänge", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
 
             switch (value)
             {
                 case "en":
                     content.Add(Formatter.AsTableRow(dataEn1));
-                    //content.Add(Formatter.AsTableRow(dataEn2));
-                    //content.Add(Formatter.AsTableRow(dataEn3));
+                    content.Add(Formatter.AsTableRow(dataEn2));
+                    content.Add(Formatter.AsTableRow(dataEn3));
                     break;
                 case "de":
                     content.Add(Formatter.AsTableRow(dataDe1));
-                    //content.Add(Formatter.AsTableRow(dataDe2));
-                    //content.Add(Formatter.AsTableRow(dataDe3));
+                    content.Add(Formatter.AsTableRow(dataDe2));
+                    content.Add(Formatter.AsTableRow(dataDe3));
                     break;
                 default:
                     content.Add(Formatter.AsTableRow(dataZz1));
-                    //content.Add(Formatter.AsTableRow(dataZz2));
-                    //content.Add(Formatter.AsTableRow(dataZz3));
+                    content.Add(Formatter.AsTableRow(dataZz2));
+                    content.Add(Formatter.AsTableRow(dataZz3));
                     break;
             }
 
@@ -996,15 +996,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Negative Format", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
-            string[] dataDe1 = { "Negativformat", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
-            string[] dataZz1 = { "Negativformat", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
+            string[] dataEn1 = { "Negative Format", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
+            string[] dataDe1 = { "Negativformat", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
+            string[] dataZz1 = { "Negativformat", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
 
             switch (value)
             {
@@ -1048,15 +1048,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Cinematographic Process", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
-            string[] dataDe1 = { "Filmprozess", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
-            string[] dataZz1 = { "Filmprozess", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
+            string[] dataEn1 = { "Cinematographic Process", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
+            string[] dataDe1 = { "Filmprozess", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
+            string[] dataZz1 = { "Filmprozess", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
 
             switch (value)
             {
@@ -1100,15 +1100,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Assert
             List<string> content = new List<string>();
-            string[] dataEn1 = { "Printed Film Format", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
-            string[] dataDe1 = { "Filmformat", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
-            string[] dataZz1 = { "Filmformat", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
+            string[] dataEn1 = { "Printed Film Format", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataEn2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataEn3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
+            string[] dataDe1 = { "Filmformat", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataDe2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataDe3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
+            string[] dataZz1 = { "Filmformat", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataZz2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataZz3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
 
             switch (value)
             {
@@ -1166,27 +1166,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -1229,27 +1229,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -1288,12 +1288,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
             }
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
 
             switch (value)
             {
@@ -1366,12 +1366,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
             }
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
 
             switch (value)
             {
@@ -1449,27 +1449,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -1508,9 +1508,9 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Director
-            string[] dataDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
-            string[] dataDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
-            string[] dataDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
 
             switch (value)
             {
@@ -1525,9 +1525,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Writer
-            string[] dataWriter1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
-            string[] dataWriter2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
-            string[] dataWriter3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
+            string[] dataWriter1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
+            string[] dataWriter2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
+            string[] dataWriter3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
 
             switch (value)
             {
@@ -1542,25 +1542,25 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cast
-            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X") };
-            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y") };
-            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z") };
+            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
 
             switch (value)
             {
                 case "en":
                     content.Add(Formatter.AsHeading3("Cast"));
-                    content.Add("Cast is Status English Title X.");
+                    content.Add("Cast is Status EnglishTitle X.");
                     content.Add("");
                     break;
                 case "de":
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Darsteller sind Status German Title X.");
+                    content.Add("Darsteller sind Status GermanTitle X.");
                     content.Add("");
                     break;
                 default:
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Darsteller sind Status German Title X.");
+                    content.Add("Darsteller sind Status GermanTitle X.");
                     content.Add("");
                     break;
             }
@@ -1571,9 +1571,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Producer
-            string[] dataProducer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
-            string[] dataProducer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
-            string[] dataProducer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
+            string[] dataProducer1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
+            string[] dataProducer2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
+            string[] dataProducer3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
             switch (value)
             {
@@ -1588,9 +1588,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Music
-            string[] dataMusician1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
-            string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
-            string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
+            string[] dataMusician1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
 
             switch (value)
             {
@@ -1605,9 +1605,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cinematography
-            string[] dataCinematographer1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
-            string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
-            string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
 
             switch (value)
             {
@@ -1622,9 +1622,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Film Editing
-            string[] dataFilmEditor1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editing Role X1) Movie Film Editing Details X1" };
-            string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editing Role X2) Movie Film Editing Details X2" };
-            string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editing Role X3) Movie Film Editing Details X3" };
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie FilmEditing Role X1) Movie FilmEditing Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie FilmEditing Role X2) Movie FilmEditing Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie FilmEditing Role X3) Movie FilmEditing Details X3" };
 
             switch (value)
             {
@@ -1639,9 +1639,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Casting
-            string[] dataCasting1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
-            string[] dataCasting2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
-            string[] dataCasting3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
+            string[] dataCasting1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
+            string[] dataCasting2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
+            string[] dataCasting3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
 
             switch (value)
             {
@@ -1656,9 +1656,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Design
-            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Design Role X1) Movie Production Design Details X1" };
-            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Design Role X2) Movie Production Design Details X2" };
-            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Design Role X3) Movie Production Design Details X3" };
+            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ProductionDesign Role X1) Movie ProductionDesign Details X1" };
+            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ProductionDesign Role X2) Movie ProductionDesign Details X2" };
+            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ProductionDesign Role X3) Movie ProductionDesign Details X3" };
 
             switch (value)
             {
@@ -1673,9 +1673,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Art Direction
-            string[] dataArtDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Direction Role X1) Movie Art Direction Details X1" };
-            string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
-            string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ArtDirection Role X1) Movie ArtDirection Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ArtDirection Role X2) Movie ArtDirection Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ArtDirection Role X3) Movie ArtDirection Details X3" };
 
             switch (value)
             {
@@ -1690,9 +1690,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Set Decoration
-            string[] dataSetDecoration1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Set Decoration Role X1) Movie Set Decoration Details X1" };
-            string[] dataSetDecoration2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
-            string[] dataSetDecoration3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
+            string[] dataSetDecoration1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SetDecoration Role X1) Movie SetDecoration Details X1" };
+            string[] dataSetDecoration2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SetDecoration Role X2) Movie SetDecoration Details X2" };
+            string[] dataSetDecoration3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SetDecoration Role X3) Movie SetDecoration Details X3" };
 
             switch (value)
             {
@@ -1707,9 +1707,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Costume Design
-            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Design Role X1) Movie Costume Design Details X1" };
-            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Design Role X2) Movie Costume Design Details X2" };
-            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Design Role X3) Movie Costume Design Details X3" };
+            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CostumeDesign Role X1) Movie CostumeDesign Details X1" };
+            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CostumeDesign Role X2) Movie CostumeDesign Details X2" };
+            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CostumeDesign Role X3) Movie CostumeDesign Details X3" };
 
             switch (value)
             {
@@ -1724,9 +1724,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Makeup Department
-            string[] dataMakeupDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Makeup Department Role X1) Movie Makeup Department Details X1" };
-            string[] dataMakeupDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Makeup Department Role X2) Movie Makeup Department Details X2" };
-            string[] dataMakeupDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Makeup Department Role X3) Movie Makeup Department Details X3" };
+            string[] dataMakeupDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie MakeupDepartment Role X1) Movie MakeupDepartment Details X1" };
+            string[] dataMakeupDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie MakeupDepartment Role X2) Movie MakeupDepartment Details X2" };
+            string[] dataMakeupDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie MakeupDepartment Role X3) Movie MakeupDepartment Details X3" };
 
             switch (value)
             {
@@ -1741,9 +1741,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Management
-            string[] dataProductionManagement1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Management Role X1) Movie Production Management Details X1" };
-            string[] dataProductionManagement2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Management Role X2) Movie Production Management Details X2" };
-            string[] dataProductionManagement3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Management Role X3) Movie Production Management Details X3" };
+            string[] dataProductionManagement1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ProductionManagement Role X1) Movie ProductionManagement Details X1" };
+            string[] dataProductionManagement2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ProductionManagement Role X2) Movie ProductionManagement Details X2" };
+            string[] dataProductionManagement3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ProductionManagement Role X3) Movie ProductionManagement Details X3" };
 
             switch (value)
             {
@@ -1758,9 +1758,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Assistant Director
-            string[] dataAssistantDirector1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Assistant Director Role X1) Movie Assistant Director Details X1" };
-            string[] dataAssistantDirector2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Assistant Director Role X2) Movie Assistant Director Details X2" };
-            string[] dataAssistantDirector3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Assistant Director Role X3) Movie Assistant Director Details X3" };
+            string[] dataAssistantDirector1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie AssistantDirector Role X1) Movie AssistantDirector Details X1" };
+            string[] dataAssistantDirector2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie AssistantDirector Role X2) Movie AssistantDirector Details X2" };
+            string[] dataAssistantDirector3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie AssistantDirector Role X3) Movie AssistantDirector Details X3" };
 
             switch (value)
             {
@@ -1775,9 +1775,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Art Department
-            string[] dataArtDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Department Role X1) Movie Art Department Details X1" };
-            string[] dataArtDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Department Role X2) Movie Art Department Details X2" };
-            string[] dataArtDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Department Role X3) Movie Art Department Details X3" };
+            string[] dataArtDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ArtDepartment Role X1) Movie ArtDepartment Details X1" };
+            string[] dataArtDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ArtDepartment Role X2) Movie ArtDepartment Details X2" };
+            string[] dataArtDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ArtDepartment Role X3) Movie ArtDepartment Details X3" };
 
             switch (value)
             {
@@ -1792,9 +1792,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Sound Department
-            string[] dataSoundDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Sound Department Role X1) Movie Sound Department Details X1" };
-            string[] dataSoundDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Sound Department Role X2) Movie Sound Department Details X2" };
-            string[] dataSoundDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Sound Department Role X3) Movie Sound Department Details X3" };
+            string[] dataSoundDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SoundDepartment Role X1) Movie SoundDepartment Details X1" };
+            string[] dataSoundDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SoundDepartment Role X2) Movie SoundDepartment Details X2" };
+            string[] dataSoundDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SoundDepartment Role X3) Movie SoundDepartment Details X3" };
 
             switch (value)
             {
@@ -1809,9 +1809,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects
-            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Special Effects Role X1) Movie Special Effects Details X1" };
-            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Special Effects Role X2) Movie Special Effects Details X2" };
-            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Special Effects Role X3) Movie Special Effects Details X3" };
+            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SpecialEffects Role X1) Movie SpecialEffects Details X1" };
+            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SpecialEffects Role X2) Movie SpecialEffects Details X2" };
+            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SpecialEffects Role X3) Movie SpecialEffects Details X3" };
 
             switch (value)
             {
@@ -1826,9 +1826,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Visual Effects
-            string[] dataVisualEffects1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Visual Effects Role X1) Movie Visual Effects Details X1" };
-            string[] dataVisualEffects2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Visual Effects Role X2) Movie Visual Effects Details X2" };
-            string[] dataVisualEffects3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Visual Effects Role X3) Movie Visual Effects Details X3" };
+            string[] dataVisualEffects1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie VisualEffects Role X1) Movie VisualEffects Details X1" };
+            string[] dataVisualEffects2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie VisualEffects Role X2) Movie VisualEffects Details X2" };
+            string[] dataVisualEffects3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie VisualEffects Role X3) Movie VisualEffects Details X3" };
 
             switch (value)
             {
@@ -1843,9 +1843,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Stunts
-            string[] dataStunts1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Stunts Role X1) Movie Stunts Details X1" };
-            string[] dataStunts2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Stunts Role X2) Movie Stunts Details X2" };
-            string[] dataStunts3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Stunts Role X3) Movie Stunts Details X3" };
+            string[] dataStunts1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Stunts Role X1) Movie Stunts Details X1" };
+            string[] dataStunts2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Stunts Role X2) Movie Stunts Details X2" };
+            string[] dataStunts3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Stunts Role X3) Movie Stunts Details X3" };
 
             switch (value)
             {
@@ -1860,9 +1860,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Electrical Department
-            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Electrical Department Role X1) Movie Electrical Department Details X1" };
-            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Electrical Department Role X2) Movie Electrical Department Details X2" };
-            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Electrical Department Role X3) Movie Electrical Department Details X3" };
+            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ElectricalDepartment Role X1) Movie ElectricalDepartment Details X1" };
+            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ElectricalDepartment Role X2) Movie ElectricalDepartment Details X2" };
+            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ElectricalDepartment Role X3) Movie ElectricalDepartment Details X3" };
 
             switch (value)
             {
@@ -1877,9 +1877,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Animation Department
-            string[] dataAnimationDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Animation Department Role X1) Movie Animation Department Details X1" };
-            string[] dataAnimationDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Animation Department Role X2) Movie Animation Department Details X2" };
-            string[] dataAnimationDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Animation Department Role X3) Movie Animation Department Details X3" };
+            string[] dataAnimationDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie AnimationDepartment Role X1) Movie AnimationDepartment Details X1" };
+            string[] dataAnimationDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie AnimationDepartment Role X2) Movie AnimationDepartment Details X2" };
+            string[] dataAnimationDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie AnimationDepartment Role X3) Movie AnimationDepartment Details X3" };
 
             switch (value)
             {
@@ -1894,9 +1894,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Casting Department
-            string[] dataCastingDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Department Role X1) Movie Casting Department Details X1" };
-            string[] dataCastingDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Department Role X2) Movie Casting Department Details X2" };
-            string[] dataCastingDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Department Role X3) Movie Casting Department Details X3" };
+            string[] dataCastingDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CastingDepartment Role X1) Movie CastingDepartment Details X1" };
+            string[] dataCastingDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CastingDepartment Role X2) Movie CastingDepartment Details X2" };
+            string[] dataCastingDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CastingDepartment Role X3) Movie CastingDepartment Details X3" };
 
             switch (value)
             {
@@ -1911,9 +1911,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Costume Department
-            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Department Role X1) Movie Costume Department Details X1" };
-            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Department Role X2) Movie Costume Department Details X2" };
-            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Department Role X3) Movie Costume Department Details X3" };
+            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CostumeDepartment Role X1) Movie CostumeDepartment Details X1" };
+            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CostumeDepartment Role X2) Movie CostumeDepartment Details X2" };
+            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CostumeDepartment Role X3) Movie CostumeDepartment Details X3" };
 
             switch (value)
             {
@@ -1928,9 +1928,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Editorial Department
-            string[] dataEditorialDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Editorial Department Role X1) Movie Editorial Department Details X1" };
-            string[] dataEditorialDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Editorial Department Role X2) Movie Editorial Department Details X2" };
-            string[] dataEditorialDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Editorial Department Role X3) Movie Editorial Department Details X3" };
+            string[] dataEditorialDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie EditorialDepartment Role X1) Movie EditorialDepartment Details X1" };
+            string[] dataEditorialDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie EditorialDepartment Role X2) Movie EditorialDepartment Details X2" };
+            string[] dataEditorialDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie EditorialDepartment Role X3) Movie EditorialDepartment Details X3" };
 
             switch (value)
             {
@@ -1945,9 +1945,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Location Management
-            string[] dataLocationManagement1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Location Management Role X1) Movie Location Management Details X1" };
-            string[] dataLocationManagement2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Location Management Role X2) Movie Location Management Details X2" };
-            string[] dataLocationManagement3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Location Management Role X3) Movie Location Management Details X3" };
+            string[] dataLocationManagement1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie LocationManagement Role X1) Movie LocationManagement Details X1" };
+            string[] dataLocationManagement2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie LocationManagement Role X2) Movie LocationManagement Details X2" };
+            string[] dataLocationManagement3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie LocationManagement Role X3) Movie LocationManagement Details X3" };
 
             switch (value)
             {
@@ -1962,9 +1962,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Music Department
-            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Department Role X1) Movie Music Department Details X1" };
-            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Department Role X2) Movie Music Department Details X2" };
-            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Department Role X3) Movie Music Department Details X3" };
+            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie MusicDepartment Role X1) Movie MusicDepartment Details X1" };
+            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie MusicDepartment Role X2) Movie MusicDepartment Details X2" };
+            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie MusicDepartment Role X3) Movie MusicDepartment Details X3" };
 
             switch (value)
             {
@@ -1979,9 +1979,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Continuity Department
-            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Continuity Department Role X1) Movie Continuity Department Details X1" };
-            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Continuity Department Role X2) Movie Continuity Department Details X2" };
-            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Continuity Department Role X3) Movie Continuity Department Details X3" };
+            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ContinuityDepartment Role X1) Movie ContinuityDepartment Details X1" };
+            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ContinuityDepartment Role X2) Movie ContinuityDepartment Details X2" };
+            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ContinuityDepartment Role X3) Movie ContinuityDepartment Details X3" };
 
             switch (value)
             {
@@ -1996,9 +1996,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Transportation Department
-            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Transportation Department Role X1) Movie Transportation Department Details X1" };
-            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Transportation Department Role X2) Movie Transportation Department Details X2" };
-            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Transportation Department Role X3) Movie Transportation Department Details X3" };
+            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie TransportationDepartment Role X1) Movie TransportationDepartment Details X1" };
+            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie TransportationDepartment Role X2) Movie TransportationDepartment Details X2" };
+            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie TransportationDepartment Role X3) Movie TransportationDepartment Details X3" };
 
             switch (value)
             {
@@ -2013,9 +2013,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Crew
-            string[] dataOtherCrew1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Other Crew Role X1) Movie Other Crew Details X1" };
-            string[] dataOtherCrew2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Other Crew Role X2) Movie Other Crew Details X2" };
-            string[] dataOtherCrew3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Other Crew Role X3) Movie Other Crew Details X3" };
+            string[] dataOtherCrew1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie OtherCrew Role X1) Movie OtherCrew Details X1" };
+            string[] dataOtherCrew2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie OtherCrew Role X2) Movie OtherCrew Details X2" };
+            string[] dataOtherCrew3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie OtherCrew Role X3) Movie OtherCrew Details X3" };
 
             switch (value)
             {
@@ -2030,9 +2030,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Thanks
-            string[] dataThanks1 = { Formatter.AsInternalLink(path, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
-            string[] dataThanks2 = { Formatter.AsInternalLink(path, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
-            string[] dataThanks3 = { Formatter.AsInternalLink(path, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
+            string[] dataThanks1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
+            string[] dataThanks2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
+            string[] dataThanks3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
 
             switch (value)
             {
@@ -2050,13 +2050,13 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add("Crew is Status English Title X.");
+                    content.Add("Crew is Status EnglishTitle X.");
                     break;
                 case "de":
-                    content.Add("Crew ist Status German Title X.");
+                    content.Add("Crew ist Status GermanTitle X.");
                     break;
                 default:
-                    content.Add("Crew ist Status German Title X.");
+                    content.Add("Crew ist Status GermanTitle X.");
                     break;
             }
             content.Add($"");
@@ -2095,9 +2095,9 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Production Company
-            string[] dataProductionCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Production Company Role X1) Movie Production Company Details X1" };
-            string[] dataProductionCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Production Company Role X2) Movie Production Company Details X2" };
-            string[] dataProductionCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Production Company Role X3) Movie Production Company Details X3" };
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company NameAddOn X"), "(Movie ProductionCompany Role X1) Movie ProductionCompany Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company NameAddOn Y"), "(Movie ProductionCompany Role X2) Movie ProductionCompany Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company NameAddOn Z"), "(Movie ProductionCompany Role X3) Movie ProductionCompany Details X3" };
 
             switch (value)
             {
@@ -2114,12 +2114,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Distributor
             string[] pathCountry = { value, "info" };
 
-            string[] dataDistributor1En = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name X", "Country English Short Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
-            string[] dataDistributor1De = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name X", "Country German Short Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
-            string[] dataDistributor2En = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name Y", "Country English Short Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
-            string[] dataDistributor2De = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name Y", "Country German Short Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
-            string[] dataDistributor3En = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name Z", "Country English Short Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
-            string[] dataDistributor3De = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathCountry, "Country Original Full Name Z", "Country German Short Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor1En = { Formatter.AsInternalLink(path, "Company Name X Company NameAddOn X"), $"(Movie Distributor ReleaseDate X1)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(path, "Company Name X Company NameAddOn X"), $"(Movie Distributor ReleaseDate X1)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(path, "Company Name Y Company NameAddOn Y"), $"(Movie Distributor ReleaseDate X2)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(path, "Company Name Y Company NameAddOn Y"), $"(Movie Distributor ReleaseDate X2)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(path, "Company Name Z Company NameAddOn Z"), $"(Movie Distributor ReleaseDate X3)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(path, "Company Name Z Company NameAddOn Z"), $"(Movie Distributor ReleaseDate X3)", $"({Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
 
             switch (value)
             {
@@ -2141,9 +2141,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects Company
-            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Special Effects Company Role X1) Movie Special Effects Company Details X1" };
-            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Special Effects Company Role X2) Movie Special Effects Company Details X2" };
-            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Special Effects Company Role X3) Movie Special Effects Company Details X3" };
+            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company NameAddOn X"), "(Movie SpecialEffectsCompany Role X1) Movie SpecialEffectsCompany Details X1" };
+            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company NameAddOn Y"), "(Movie SpecialEffectsCompany Role X2) Movie SpecialEffectsCompany Details X2" };
+            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company NameAddOn Z"), "(Movie SpecialEffectsCompany Role X3) Movie SpecialEffectsCompany Details X3" };
 
             switch (value)
             {
@@ -2158,9 +2158,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Company
-            string[] dataOtherCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company Name AddOn X"), "(Movie Other Company Role X1) Movie Other Company Details X1" };
-            string[] dataOtherCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company Name AddOn Y"), "(Movie Other Company Role X2) Movie Other Company Details X2" };
-            string[] dataOtherCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company Name AddOn Z"), "(Movie Other Company Role X3) Movie Other Company Details X3" };
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(path, "Company Name X Company NameAddOn X"), "(Movie OtherCompany Role X1) Movie OtherCompany Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(path, "Company Name Y Company NameAddOn Y"), "(Movie OtherCompany Role X2) Movie OtherCompany Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(path, "Company Name Z Company NameAddOn Z"), "(Movie OtherCompany Role X3) Movie OtherCompany Details X3" };
 
             switch (value)
             {
@@ -2207,15 +2207,15 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Filming Location
-            string[] dataEn1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Full Name X", "Country English Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataEn2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country English Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataEn3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country English Short Name Z")} -- Movie Filming Location Details X3" };
-            string[] dataDe1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Full Name X", "Country German Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataDe2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country German Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataDe3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country German Short Name Z")} -- Movie Filming Location Details X3" };
-            string[] dataZz1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country Original Full Name X", "Country German Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataZz2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country Original Full Name Y", "Country German Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataZz3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country Original Full Name Z", "Country German Short Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataEn1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country EnglishShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataEn2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country EnglishShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataEn3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country EnglishShortName Z")} -- Movie FilmingLocation Details X3" };
+            string[] dataDe1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country GermanShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataDe2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country GermanShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataDe3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country GermanShortName Z")} -- Movie FilmingLocation Details X3" };
+            string[] dataZz1 = { $"{Formatter.AsInternalLink(path, $"Location X")}, {Formatter.AsInternalLink(path, "Country OriginalFullName X", "Country GermanShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataZz2 = { $"{Formatter.AsInternalLink(path, $"Location Y")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Y", "Country GermanShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataZz3 = { $"{Formatter.AsInternalLink(path, $"Location Z")}, {Formatter.AsInternalLink(path, "Country OriginalFullName Z", "Country GermanShortName Z")} -- Movie FilmingLocation Details X3" };
 
             switch (value)
             {
@@ -2243,9 +2243,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Filming Dates
             string[] pathFilmingDates = { value, "date" };
-            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X1") }" };
-            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X2") }" };
-            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X3") }" };
+            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1") }" };
+            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2") }" };
+            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3") }" };
 
             switch (value)
             {
@@ -2262,9 +2262,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Dates
-            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X1") }" };
-            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X2") }" };
-            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X3") }" };
+            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1") }" };
+            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2") }" };
+            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3") }" };
 
             switch (value)
             {
@@ -2311,15 +2311,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataDe10 = { Formatter.AsInternalLink(path, "Award Name X", "Award Name X"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataDe20 = { Formatter.AsInternalLink(path, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataDe30 = { Formatter.AsInternalLink(path, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            string[] data11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
-            string[] data12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
-            string[] data13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
-            string[] data21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
-            string[] data22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
-            string[] data23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
-            string[] data31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
-            string[] data32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
-            string[] data33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
+            string[] data11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
+            string[] data12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
+            string[] data13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
+            string[] data21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
+            string[] data22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
+            string[] data23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
+            string[] data31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
+            string[] data32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
+            string[] data33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
 
             switch (value)
             {
@@ -2400,12 +2400,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
 
-            string dataEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink English Title X") } (Language English Name X)";
-            string dataEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink English Title Y") } (Language English Name Y)";
-            string dataEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink English Title Z") } (Language English Name Z)";
-            string dataDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink German Title X") } (Language German Name X)";
-            string dataDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink German Title Y") } (Language German Name Y)";
-            string dataDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink German Title Z") } (Language German Name Z)";
+            string dataEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X") } (Language EnglishName X)";
+            string dataEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y") } (Language EnglishName Y)";
+            string dataEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z") } (Language EnglishName Z)";
+            string dataDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X") } (Language GermanName X)";
+            string dataDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y") } (Language GermanName Y)";
+            string dataDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z") } (Language GermanName Z)";
 
             switch (value)
             {
@@ -2501,11 +2501,11 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(creator.Formatter.DisableTOC());
             content.Add(creator.Formatter.BeginComment());
 
-            content.Add($"   Movie Original Title X");
+            content.Add($"   Movie OriginalTitle X");
             content.Add($"");
             content.Add($"   @author  WikiPageCreator");
             content.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
-            content.Add($"   @version Status English Title X: Movie Last Updated X");
+            content.Add($"   @version Status EnglishTitle X: Movie LastUpdated X");
 
             content.Add(creator.Formatter.EndComment());
             content.Add("");
@@ -2513,9 +2513,9 @@ namespace WikiPageCreator.Export.Create.Tests
             // Title
             switch (value)
             {
-                case "en": content.Add(Formatter.AsHeading1("Movie English Title X")); break;
-                case "de": content.Add(Formatter.AsHeading1("Movie German Title X")); break;
-                default: content.Add(Formatter.AsHeading1("Movie Original Title X")); break;
+                case "en": content.Add(Formatter.AsHeading1("Movie EnglishTitle X")); break;
+                case "de": content.Add(Formatter.AsHeading1("Movie GermanTitle X")); break;
+                default: content.Add(Formatter.AsHeading1("Movie OriginalTitle X")); break;
             }
 
             content.Add("");
@@ -2525,8 +2525,8 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add(Formatter.DefineTable(445, width));
 
             // InfoBox Title
-            string[] dataTitleEn = { "Original Title", "Movie Original Title X" };
-            string[] dataTitleDe = { "Originaltitel", "Movie Original Title X" };
+            string[] dataTitleEn = { "Original Title", "Movie OriginalTitle X" };
+            string[] dataTitleDe = { "Originaltitel", "Movie OriginalTitle X" };
 
             switch (value)
             {
@@ -2537,8 +2537,8 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Logo
             string[] pathLogo = { "cinema_and_television_movie" };
-            string dataLogoEn0 = Formatter.AsImage(pathLogo, "Image File Name X", 450, "Type English Title X");
-            string dataLogoDe0 = Formatter.AsImage(pathLogo, "Image File Name X", 450, "Type German Title X");
+            string dataLogoEn0 = Formatter.AsImage(pathLogo, "Image FileName X", 450, "Type EnglishTitle X");
+            string dataLogoDe0 = Formatter.AsImage(pathLogo, "Image FileName X", 450, "Type GermanTitle X");
             string[] dataLogoEn = { dataLogoEn0, null };
             string[] dataLogoDe = { dataLogoDe0, null };
 
@@ -2551,9 +2551,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Type
             string[] pathType = { value, "info" };
-            string[] dataTypeEn = { "Type", Formatter.AsInternalLink(pathType, "Type English Title X", "Type English Title X") };
-            string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
-            string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type English Title X", "Type German Title X") };
+            string[] dataTypeEn = { "Type", Formatter.AsInternalLink(pathType, "Type EnglishTitle X", "Type EnglishTitle X") };
+            string[] dataTypeDe = { "Typ", Formatter.AsInternalLink(pathType, "Type EnglishTitle X", "Type GermanTitle X") };
+            string[] dataTypeZz = { "Typ", Formatter.AsInternalLink(pathType, "Type EnglishTitle X", "Type GermanTitle X") };
 
             switch (value)
             {
@@ -2562,11 +2562,11 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsTableRow(dataTypeZz)); break;
             }
 
-            // InfoBox Release Date
+            // InfoBox ReleaseDate
             string[] pathRelease = { value, "date" };
-            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
-            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie Release Date X", "Movie Release Date X") };
+            string[] dataReleaseEn = { "Original Release Date", Formatter.AsInternalLink(pathRelease, "Movie ReleaseDate X", "Movie ReleaseDate X") };
+            string[] dataReleaseDe = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie ReleaseDate X", "Movie ReleaseDate X") };
+            string[] dataReleaseZz = { "Erstausstrahlung", Formatter.AsInternalLink(pathRelease, "Movie ReleaseDate X", "Movie ReleaseDate X") };
 
             switch (value)
             {
@@ -2577,15 +2577,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Genre
             string[] pathGenre = { value, "info" };
-            string[] dataGenreEn1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre English Title X")} Movie Genre Details X1" };
-            string[] dataGenreEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre English Title Y")} Movie Genre Details X2" };
-            string[] dataGenreEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre English Title Z")} Movie Genre Details X3" };
-            string[] dataGenreDe1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre German Title X")} Movie Genre Details X1" };
-            string[] dataGenreDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y")} Movie Genre Details X2" };
-            string[] dataGenreDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z")} Movie Genre Details X3" };
-            string[] dataGenreZz1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre English Title X", "Genre German Title X")} Movie Genre Details X1" };
-            string[] dataGenreZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Y", "Genre German Title Y")} Movie Genre Details X2" };
-            string[] dataGenreZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre English Title Z", "Genre German Title Z")} Movie Genre Details X3" };
+            string[] dataGenreEn1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle X", "Genre EnglishTitle X")} Movie Genre Details X1" };
+            string[] dataGenreEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Movie Genre Details X2" };
+            string[] dataGenreEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Movie Genre Details X3" };
+            string[] dataGenreDe1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" };
+            string[] dataGenreDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" };
+            string[] dataGenreDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" };
+            string[] dataGenreZz1 = { "Genre", $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" };
+            string[] dataGenreZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" };
+            string[] dataGenreZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathGenre, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" };
 
             switch (value)
             {
@@ -2608,15 +2608,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Certification
             string[] pathCertification = { "certification" };
-            string[] dataCertificationEn1 = { "Certification", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataCertificationEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataCertificationEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
-            string[] dataCertificationDe1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataCertificationDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataCertificationDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
-            string[] dataCertificationZz1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image File Name X", 75)} Movie Certification Details X1" };
-            string[] dataCertificationZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Y", 75)} Movie Certification Details X2" };
-            string[] dataCertificationZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image File Name Z", 75)} Movie Certification Details X3" };
+            string[] dataCertificationEn1 = { "Certification", $"{Formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" };
+            string[] dataCertificationDe1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" };
+            string[] dataCertificationZz1 = { "Altersfreigabe", $"{Formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" };
+            string[] dataCertificationZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" };
+            string[] dataCertificationZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" };
 
             switch (value)
             {
@@ -2639,15 +2639,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Country
             string[] pathCountry = { value, "info" };
-            string[] dataCountryEn1 = { "Production Country", $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name X", "Country English Short Name X")} Movie Country Details X1" };
-            string[] dataCountryEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Y", "Country English Short Name Y")} Movie Country Details X2" };
-            string[] dataCountryEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Z", "Country English Short Name Z")} Movie Country Details X3" };
-            string[] dataCountryDe1 = { "Produktionsland", $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name X", "Country German Short Name X")} Movie Country Details X1" };
-            string[] dataCountryDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Y", "Country German Short Name Y")} Movie Country Details X2" };
-            string[] dataCountryDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Z", "Country German Short Name Z")} Movie Country Details X3" };
-            string[] dataCountryZz1 = { "Produktionsland", $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name X", "Country German Short Name X")} Movie Country Details X1" };
-            string[] dataCountryZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Y", "Country German Short Name Y")} Movie Country Details X2" };
-            string[] dataCountryZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country Original Full Name Z", "Country German Short Name Z")} Movie Country Details X3" };
+            string[] dataCountryEn1 = { "Production Country", $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country EnglishShortName X")} Movie Country Details X1" };
+            string[] dataCountryEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Y", "Country EnglishShortName Y")} Movie Country Details X2" };
+            string[] dataCountryEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Z", "Country EnglishShortName Z")} Movie Country Details X3" };
+            string[] dataCountryDe1 = { "Produktionsland", $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country GermanShortName X")} Movie Country Details X1" };
+            string[] dataCountryDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie Country Details X2" };
+            string[] dataCountryDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie Country Details X3" };
+            string[] dataCountryZz1 = { "Produktionsland", $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName X", "Country GermanShortName X")} Movie Country Details X1" };
+            string[] dataCountryZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie Country Details X2" };
+            string[] dataCountryZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathCountry, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie Country Details X3" };
 
             switch (value)
             {
@@ -2670,15 +2670,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Language
             string[] pathLanguage = { value, "info" };
-            string[] dataLanguageEn1 = { "Language", $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language English Name X")} Movie Language Details X1" };
-            string[] dataLanguageEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language English Name Y")} Movie Language Details X2" };
-            string[] dataLanguageEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language English Name Z")} Movie Language Details X3" };
-            string[] dataLanguageDe1 = { "Sprache", $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language German Name X")} Movie Language Details X1" };
-            string[] dataLanguageDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language German Name Y")} Movie Language Details X2" };
-            string[] dataLanguageDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z")} Movie Language Details X3" };
-            string[] dataLanguageZz1 = { "Sprache", $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name X", "Language German Name X")} Movie Language Details X1" };
-            string[] dataLanguageZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Y", "Language German Name Y")} Movie Language Details X2" };
-            string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language Original Name Z", "Language German Name Z")} Movie Language Details X3" };
+            string[] dataLanguageEn1 = { "Language", $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName X", "Language EnglishName X")} Movie Language Details X1" };
+            string[] dataLanguageEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Y", "Language EnglishName Y")} Movie Language Details X2" };
+            string[] dataLanguageEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Z", "Language EnglishName Z")} Movie Language Details X3" };
+            string[] dataLanguageDe1 = { "Sprache", $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName X", "Language GermanName X")} Movie Language Details X1" };
+            string[] dataLanguageDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Y", "Language GermanName Y")} Movie Language Details X2" };
+            string[] dataLanguageDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Z", "Language GermanName Z")} Movie Language Details X3" };
+            string[] dataLanguageZz1 = { "Sprache", $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName X", "Language GermanName X")} Movie Language Details X1" };
+            string[] dataLanguageZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Y", "Language GermanName Y")} Movie Language Details X2" };
+            string[] dataLanguageZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathLanguage, "Language OriginalName Z", "Language GermanName Z")} Movie Language Details X3" };
 
             switch (value)
             {
@@ -2713,9 +2713,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Worldwide Gross
             string[] pathGross = { value, "date" };
-            string[] dataGrossEn = { "Worldwide Gross", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
-            string[] dataGrossDe = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
-            string[] dataGrossZz = { "Einspielergebnis (weltweit)", $"Movie Worldwide Gross X ({Formatter.AsInternalLink(pathGross, "Movie Worldwide Gross Date X", "Movie Worldwide Gross Date X")})" };
+            string[] dataGrossEn = { "Worldwide Gross", $"Movie WorldwideGross X ({Formatter.AsInternalLink(pathGross, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
+            string[] dataGrossDe = { "Einspielergebnis (weltweit)", $"Movie WorldwideGross X ({Formatter.AsInternalLink(pathGross, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
+            string[] dataGrossZz = { "Einspielergebnis (weltweit)", $"Movie WorldwideGross X ({Formatter.AsInternalLink(pathGross, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" };
 
             switch (value)
             {
@@ -2726,15 +2726,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Runtime
             string[] pathRuntime = { value, "info" };
-            string[] dataRuntimeEn1 = { "Runtime", $"1 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title X", "Edition English Title X")}) Movie Runtime Details X1" };
-            string[] dataRuntimeEn2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Y", "Edition English Title Y")}) Movie Runtime Details X2" };
-            string[] dataRuntimeEn3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Z", "Edition English Title Z")}) Movie Runtime Details X3" };
-            string[] dataRuntimeDe1 = { "Laufzeit", $"1 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title X", "Edition German Title X")}) Movie Runtime Details X1" };
-            string[] dataRuntimeDe2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Y", "Edition German Title Y")}) Movie Runtime Details X2" };
-            string[] dataRuntimeDe3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Z", "Edition German Title Z")}) Movie Runtime Details X3" };
-            string[] dataRuntimeZz1 = { "Laufzeit", $"1 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title X", "Edition German Title X")}) Movie Runtime Details X1" };
-            string[] dataRuntimeZz2 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Y", "Edition German Title Y")}) Movie Runtime Details X2" };
-            string[] dataRuntimeZz3 = { Formatter.CellSpanVertically(), $"0 min. ({Formatter.AsInternalLink(pathRuntime, "Edition English Title Z", "Edition German Title Z")}) Movie Runtime Details X3" };
+            string[] dataRuntimeEn1 = { "Runtime", $"11 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle X", "Edition EnglishTitle X")}) Movie Runtime Details X1" };
+            string[] dataRuntimeEn2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Y", "Edition EnglishTitle Y")}) Movie Runtime Details X2" };
+            string[] dataRuntimeEn3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Z", "Edition EnglishTitle Z")}) Movie Runtime Details X3" };
+            string[] dataRuntimeDe1 = { "Laufzeit", $"11 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle X", "Edition GermanTitle X")}) Movie Runtime Details X1" };
+            string[] dataRuntimeDe2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Movie Runtime Details X2" };
+            string[] dataRuntimeDe3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Movie Runtime Details X3" };
+            string[] dataRuntimeZz1 = { "Laufzeit", $"11 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle X", "Edition GermanTitle X")}) Movie Runtime Details X1" };
+            string[] dataRuntimeZz2 = { Formatter.CellSpanVertically(), $"12 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Movie Runtime Details X2" };
+            string[] dataRuntimeZz3 = { Formatter.CellSpanVertically(), $"13 min. ({Formatter.AsInternalLink(pathRuntime, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Movie Runtime Details X3" };
 
             switch (value)
             {
@@ -2755,17 +2755,17 @@ namespace WikiPageCreator.Export.Create.Tests
                     break;
             }
 
-            // InfoBox Sound Mix
+            // InfoBox SoundMix
             string[] pathSoundMix = { value, "info" };
-            string[] dataSoundMixEn1 = { "Sound Mix", $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix English Title X")} Movie Sound Mix Details X1" };
-            string[] dataSoundMixEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix English Title Y")} Movie Sound Mix Details X2" };
-            string[] dataSoundMixEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix English Title Z")} Movie Sound Mix Details X3" };
-            string[] dataSoundMixDe1 = { "Tonmischung", $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix German Title X")} Movie Sound Mix Details X1" };
-            string[] dataSoundMixDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix German Title Y")} Movie Sound Mix Details X2" };
-            string[] dataSoundMixDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix German Title Z")} Movie Sound Mix Details X3" };
-            string[] dataSoundMixZz1 = { "Tonmischung", $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title X", "Sound Mix German Title X")} Movie Sound Mix Details X1" };
-            string[] dataSoundMixZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Y", "Sound Mix German Title Y")} Movie Sound Mix Details X2" };
-            string[] dataSoundMixZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "Sound Mix English Title Z", "Sound Mix German Title Z")} Movie Sound Mix Details X3" };
+            string[] dataSoundMixEn1 = { "Sound Mix", $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle X", "SoundMix EnglishTitle X")} Movie SoundMix Details X1" };
+            string[] dataSoundMixEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Y", "SoundMix EnglishTitle Y")} Movie SoundMix Details X2" };
+            string[] dataSoundMixEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Z", "SoundMix EnglishTitle Z")} Movie SoundMix Details X3" };
+            string[] dataSoundMixDe1 = { "Tonmischung", $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Movie SoundMix Details X1" };
+            string[] dataSoundMixDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Movie SoundMix Details X2" };
+            string[] dataSoundMixDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Movie SoundMix Details X3" };
+            string[] dataSoundMixZz1 = { "Tonmischung", $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Movie SoundMix Details X1" };
+            string[] dataSoundMixZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Movie SoundMix Details X2" };
+            string[] dataSoundMixZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathSoundMix, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Movie SoundMix Details X3" };
 
             switch (value)
             {
@@ -2788,15 +2788,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // InfoBox Color
             string[] pathColor = { value, "info" };
-            string[] dataColorEn1 = { "Color", $"{Formatter.AsInternalLink(pathColor, "Color English Title X", "Color English Title X")} Movie Color Details X1" };
-            string[] dataColorEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color English Title Y")} Movie Color Details X2" };
-            string[] dataColorEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color English Title Z")} Movie Color Details X3" };
-            string[] dataColorDe1 = { "Farbe", $"{Formatter.AsInternalLink(pathColor, "Color English Title X", "Color German Title X")} Movie Color Details X1" };
-            string[] dataColorDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color German Title Y")} Movie Color Details X2" };
-            string[] dataColorDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color German Title Z")} Movie Color Details X3" };
-            string[] dataColorZz1 = { "Farbe", $"{Formatter.AsInternalLink(pathColor, "Color English Title X", "Color German Title X")} Movie Color Details X1" };
-            string[] dataColorZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Y", "Color German Title Y")} Movie Color Details X2" };
-            string[] dataColorZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color English Title Z", "Color German Title Z")} Movie Color Details X3" };
+            string[] dataColorEn1 = { "Color", $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle X", "Color EnglishTitle X")} Movie Color Details X1" };
+            string[] dataColorEn2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Y", "Color EnglishTitle Y")} Movie Color Details X2" };
+            string[] dataColorEn3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Z", "Color EnglishTitle Z")} Movie Color Details X3" };
+            string[] dataColorDe1 = { "Farbe", $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle X", "Color GermanTitle X")} Movie Color Details X1" };
+            string[] dataColorDe2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Y", "Color GermanTitle Y")} Movie Color Details X2" };
+            string[] dataColorDe3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Z", "Color GermanTitle Z")} Movie Color Details X3" };
+            string[] dataColorZz1 = { "Farbe", $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle X", "Color GermanTitle X")} Movie Color Details X1" };
+            string[] dataColorZz2 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Y", "Color GermanTitle Y")} Movie Color Details X2" };
+            string[] dataColorZz3 = { Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathColor, "Color EnglishTitle Z", "Color GermanTitle Z")} Movie Color Details X3" };
 
             switch (value)
             {
@@ -2818,15 +2818,15 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // InfoBox AspectRatio
-            string[] dataAspectRatioEn1 = { "Aspect Ratio", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataAspectRatioEn2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataAspectRatioEn3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataAspectRatioDe1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataAspectRatioDe2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataAspectRatioDe3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
-            string[] dataAspectRatioZz1 = { "Bildformat", "Aspect Ratio X Movie Aspect Ratio Details X1" };
-            string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), "Aspect Ratio Y Movie Aspect Ratio Details X2" };
-            string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), "Aspect Ratio Z Movie Aspect Ratio Details X3" };
+            string[] dataAspectRatioEn1 = { "Aspect Ratio", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataAspectRatioEn2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataAspectRatioEn3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
+            string[] dataAspectRatioDe1 = { "Bildformat", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataAspectRatioDe2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataAspectRatioDe3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
+            string[] dataAspectRatioZz1 = { "Bildformat", "AspectRatio Ratio X Movie AspectRatio Details X1" };
+            string[] dataAspectRatioZz2 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Y Movie AspectRatio Details X2" };
+            string[] dataAspectRatioZz3 = { Formatter.CellSpanVertically(), "AspectRatio Ratio Z Movie AspectRatio Details X3" };
 
             switch (value)
             {
@@ -2908,45 +2908,45 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Infobox Film Length
-            string[] dataFilmLengthEn1 = { "Film Length", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataFilmLengthEn2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataFilmLengthEn3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
-            string[] dataFilmLengthDe1 = { "Filmlänge", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataFilmLengthDe2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataFilmLengthDe3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
-            string[] dataFilmLengthZz1 = { "Filmlänge", "Movie Film Length X Movie Film Length Details X" };
-            //string[] dataFilmLengthZz2 = { Formatter.CellSpanVertically(), "Movie Film Length Y Movie Film Length Details X2" };
-            //string[] dataFilmLengthZz3 = { Formatter.CellSpanVertically(), "Movie Film Length Z Movie Film Length Details X3" };
+            string[] dataFilmLengthEn1 = { "Film Length", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataFilmLengthEn2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataFilmLengthEn3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
+            string[] dataFilmLengthDe1 = { "Filmlänge", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataFilmLengthDe2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataFilmLengthDe3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
+            string[] dataFilmLengthZz1 = { "Filmlänge", "Movie FilmLength Length X1 Movie FilmLength Details X1" };
+            string[] dataFilmLengthZz2 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X2 Movie FilmLength Details X2" };
+            string[] dataFilmLengthZz3 = { Formatter.CellSpanVertically(), "Movie FilmLength Length X3 Movie FilmLength Details X3" };
 
             switch (value)
             {
                 case "en":
                     content.Add(Formatter.AsTableRow(dataFilmLengthEn1));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthEn2));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthEn3));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthEn2));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthEn3));
                     break;
                 case "de":
                     content.Add(Formatter.AsTableRow(dataFilmLengthDe1));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthDe2));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthDe3));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthDe2));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthDe3));
                     break;
                 default:
                     content.Add(Formatter.AsTableRow(dataFilmLengthZz1));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthZz2));
-                    //content.Add(Formatter.AsTableRow(dataFilmLengthZz3));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthZz2));
+                    content.Add(Formatter.AsTableRow(dataFilmLengthZz3));
                     break;
             }
 
             // Infobox Negative Format
-            string[] dataNegativeFormatEn1 = { "Negative Format", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataNegativeFormatEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataNegativeFormatEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
-            string[] dataNegativeFormatDe1 = { "Negativformat", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataNegativeFormatDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataNegativeFormatDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
-            string[] dataNegativeFormatZz1 = { "Negativformat", "Film Format Name X Movie Negative Format Details X1" };
-            string[] dataNegativeFormatZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Negative Format Details X2" };
-            string[] dataNegativeFormatZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Negative Format Details X3" };
+            string[] dataNegativeFormatEn1 = { "Negative Format", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataNegativeFormatEn2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataNegativeFormatEn3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
+            string[] dataNegativeFormatDe1 = { "Negativformat", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataNegativeFormatDe2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataNegativeFormatDe3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
+            string[] dataNegativeFormatZz1 = { "Negativformat", "FilmFormat Format X Movie NegativeFormat Details X1" };
+            string[] dataNegativeFormatZz2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie NegativeFormat Details X2" };
+            string[] dataNegativeFormatZz3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie NegativeFormat Details X3" };
 
             switch (value)
             {
@@ -2968,15 +2968,15 @@ namespace WikiPageCreator.Export.Create.Tests
             }
 
             // Infobox Cinematographic Process
-            string[] dataCinematographicProcessEn1 = { "Cinematographic Process", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataCinematographicProcessEn2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataCinematographicProcessEn3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
-            string[] dataCinematographicProcessDe1 = { "Filmprozess", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataCinematographicProcessDe2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataCinematographicProcessDe3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
-            string[] dataCinematographicProcessZz1 = { "Filmprozess", "Cinematographic Process Name X Movie Cinematographic Process Details X1" };
-            string[] dataCinematographicProcessZz2 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Y Movie Cinematographic Process Details X2" };
-            string[] dataCinematographicProcessZz3 = { Formatter.CellSpanVertically(), "Cinematographic Process Name Z Movie Cinematographic Process Details X3" };
+            string[] dataCinematographicProcessEn1 = { "Cinematographic Process", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataCinematographicProcessEn2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataCinematographicProcessEn3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
+            string[] dataCinematographicProcessDe1 = { "Filmprozess", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataCinematographicProcessDe2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataCinematographicProcessDe3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
+            string[] dataCinematographicProcessZz1 = { "Filmprozess", "CinematographicProcess Name X Movie CinematographicProcess Details X1" };
+            string[] dataCinematographicProcessZz2 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Y Movie CinematographicProcess Details X2" };
+            string[] dataCinematographicProcessZz3 = { Formatter.CellSpanVertically(), "CinematographicProcess Name Z Movie CinematographicProcess Details X3" };
 
             switch (value)
             {
@@ -2997,16 +2997,16 @@ namespace WikiPageCreator.Export.Create.Tests
                     break;
             }
 
-            // Infobox Printed Film Format
-            string[] dataPrintedFilmFormatEn1 = { "Printed Film Format", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataPrintedFilmFormatEn2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataPrintedFilmFormatEn3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
-            string[] dataPrintedFilmFormatDe1 = { "Filmformat", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataPrintedFilmFormatDe2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataPrintedFilmFormatDe3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
-            string[] dataPrintedFilmFormatZz1 = { "Filmformat", "Film Format Name X Movie Printed Film Format Details X1" };
-            string[] dataPrintedFilmFormatZz2 = { Formatter.CellSpanVertically(), "Film Format Name Y Movie Printed Film Format Details X2" };
-            string[] dataPrintedFilmFormatZz3 = { Formatter.CellSpanVertically(), "Film Format Name Z Movie Printed Film Format Details X3" };
+            // Infobox Printed FilmFormat
+            string[] dataPrintedFilmFormatEn1 = { "Printed Film Format", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataPrintedFilmFormatEn2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataPrintedFilmFormatEn3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
+            string[] dataPrintedFilmFormatDe1 = { "Filmformat", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataPrintedFilmFormatDe2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataPrintedFilmFormatDe3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
+            string[] dataPrintedFilmFormatZz1 = { "Filmformat", "FilmFormat Format X Movie PrintedFilmFormat Details X1" };
+            string[] dataPrintedFilmFormatZz2 = { Formatter.CellSpanVertically(), "FilmFormat Format Y Movie PrintedFilmFormat Details X2" };
+            string[] dataPrintedFilmFormatZz3 = { Formatter.CellSpanVertically(), "FilmFormat Format Z Movie PrintedFilmFormat Details X3" };
 
             switch (value)
             {
@@ -3046,27 +3046,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -3083,27 +3083,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -3119,12 +3119,12 @@ namespace WikiPageCreator.Export.Create.Tests
 
             string[] pathPerson = { value, "biography" };
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person First Name X Person Last Name X Person Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z") })";
+            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
+                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
 
 
             switch (value)
@@ -3222,27 +3222,27 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type English Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type English Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type English Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 case "de":
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
                 default:
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name X?200|Type German Title X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Y?200|Type German Title Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
-                    content.Add($"[{{{{cinema_and_television_movie:Image File Name Z?200|Type German Title Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company Name AddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company Name AddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company Name AddOn Z")})}}}}]");
+                    content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
                     content.Add("");
                     break;
             }
@@ -3258,9 +3258,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Director
             string[] pathDirector = { value, "biography" };
-            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
-            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
-            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
+            string[] dataDirector1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Director Role X1) Movie Director Details X1" };
+            string[] dataDirector2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Director Role X2) Movie Director Details X2" };
+            string[] dataDirector3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Director Role X3) Movie Director Details X3" };
 
             switch (value)
             {
@@ -3277,9 +3277,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Writer
-            string[] dataWriter1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
-            string[] dataWriter2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
-            string[] dataWriter3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
+            string[] dataWriter1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Writer Role X1) Movie Writer Details X1" };
+            string[] dataWriter2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Writer Role X2) Movie Writer Details X2" };
+            string[] dataWriter3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Writer Role X3) Movie Writer Details X3" };
 
             switch (value)
             {
@@ -3296,25 +3296,25 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cast
-            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X") };
-            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y") };
-            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z") };
+            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
 
             switch (value)
             {
                 case "en":
                     content.Add(Formatter.AsHeading3("Cast"));
-                    content.Add("Cast is Status English Title X.");
+                    content.Add("Cast is Status EnglishTitle X.");
                     content.Add("");
                     break;
                 case "de":
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Darsteller sind Status German Title X.");
+                    content.Add("Darsteller sind Status GermanTitle X.");
                     content.Add("");
                     break;
                 default:
                     content.Add(Formatter.AsHeading3("Darsteller"));
-                    content.Add("Darsteller sind Status German Title X.");
+                    content.Add("Darsteller sind Status GermanTitle X.");
                     content.Add("");
                     break;
             }
@@ -3327,9 +3327,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Producer
-            string[] dataProducer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
-            string[] dataProducer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
-            string[] dataProducer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
+            string[] dataProducer1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Producer Role X1) Movie Producer Details X1" };
+            string[] dataProducer2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Producer Role X2) Movie Producer Details X2" };
+            string[] dataProducer3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Producer Role X3) Movie Producer Details X3" };
 
             switch (value)
             {
@@ -3346,9 +3346,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Music
-            string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
-            string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
-            string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
+            string[] dataMusician1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Music Role X1) Movie Music Details X1" };
+            string[] dataMusician2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Music Role X2) Movie Music Details X2" };
+            string[] dataMusician3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Music Role X3) Movie Music Details X3" };
 
             switch (value)
             {
@@ -3365,9 +3365,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cinematography
-            string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
-            string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
-            string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
+            string[] dataCinematographer1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Cinematography Role X1) Movie Cinematography Details X1" };
+            string[] dataCinematographer2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Cinematography Role X2) Movie Cinematography Details X2" };
+            string[] dataCinematographer3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Cinematography Role X3) Movie Cinematography Details X3" };
 
             switch (value)
             {
@@ -3384,9 +3384,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Film Editing
-            string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Film Editing Role X1) Movie Film Editing Details X1" };
-            string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Film Editing Role X2) Movie Film Editing Details X2" };
-            string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Film Editing Role X3) Movie Film Editing Details X3" };
+            string[] dataFilmEditor1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie FilmEditing Role X1) Movie FilmEditing Details X1" };
+            string[] dataFilmEditor2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie FilmEditing Role X2) Movie FilmEditing Details X2" };
+            string[] dataFilmEditor3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie FilmEditing Role X3) Movie FilmEditing Details X3" };
 
             switch (value)
             {
@@ -3403,9 +3403,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Casting
-            string[] dataCasting1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
-            string[] dataCasting2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
-            string[] dataCasting3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
+            string[] dataCasting1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Casting Role X1) Movie Casting Details X1" };
+            string[] dataCasting2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Casting Role X2) Movie Casting Details X2" };
+            string[] dataCasting3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Casting Role X3) Movie Casting Details X3" };
 
             switch (value)
             {
@@ -3422,9 +3422,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Design
-            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Design Role X1) Movie Production Design Details X1" };
-            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Design Role X2) Movie Production Design Details X2" };
-            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Design Role X3) Movie Production Design Details X3" };
+            string[] dataProductionDesigner1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ProductionDesign Role X1) Movie ProductionDesign Details X1" };
+            string[] dataProductionDesigner2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ProductionDesign Role X2) Movie ProductionDesign Details X2" };
+            string[] dataProductionDesigner3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ProductionDesign Role X3) Movie ProductionDesign Details X3" };
 
             switch (value)
             {
@@ -3441,9 +3441,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Art Direction
-            string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Direction Role X1) Movie Art Direction Details X1" };
-            string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Direction Role X2) Movie Art Direction Details X2" };
-            string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Direction Role X3) Movie Art Direction Details X3" };
+            string[] dataArtDirector1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ArtDirection Role X1) Movie ArtDirection Details X1" };
+            string[] dataArtDirector2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ArtDirection Role X2) Movie ArtDirection Details X2" };
+            string[] dataArtDirector3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ArtDirection Role X3) Movie ArtDirection Details X3" };
 
             switch (value)
             {
@@ -3460,9 +3460,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Set Decoration
-            string[] dataSetDecoration1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Set Decoration Role X1) Movie Set Decoration Details X1" };
-            string[] dataSetDecoration2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Set Decoration Role X2) Movie Set Decoration Details X2" };
-            string[] dataSetDecoration3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Set Decoration Role X3) Movie Set Decoration Details X3" };
+            string[] dataSetDecoration1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SetDecoration Role X1) Movie SetDecoration Details X1" };
+            string[] dataSetDecoration2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SetDecoration Role X2) Movie SetDecoration Details X2" };
+            string[] dataSetDecoration3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SetDecoration Role X3) Movie SetDecoration Details X3" };
 
             switch (value)
             {
@@ -3479,9 +3479,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Costume Design
-            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Design Role X1) Movie Costume Design Details X1" };
-            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Design Role X2) Movie Costume Design Details X2" };
-            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Design Role X3) Movie Costume Design Details X3" };
+            string[] dataCostumeDesign1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CostumeDesign Role X1) Movie CostumeDesign Details X1" };
+            string[] dataCostumeDesign2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CostumeDesign Role X2) Movie CostumeDesign Details X2" };
+            string[] dataCostumeDesign3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CostumeDesign Role X3) Movie CostumeDesign Details X3" };
 
             switch (value)
             {
@@ -3498,9 +3498,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Makeup Department
-            string[] dataMakeupDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Makeup Department Role X1) Movie Makeup Department Details X1" };
-            string[] dataMakeupDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Makeup Department Role X2) Movie Makeup Department Details X2" };
-            string[] dataMakeupDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Makeup Department Role X3) Movie Makeup Department Details X3" };
+            string[] dataMakeupDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie MakeupDepartment Role X1) Movie MakeupDepartment Details X1" };
+            string[] dataMakeupDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie MakeupDepartment Role X2) Movie MakeupDepartment Details X2" };
+            string[] dataMakeupDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie MakeupDepartment Role X3) Movie MakeupDepartment Details X3" };
 
             switch (value)
             {
@@ -3517,9 +3517,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Management
-            string[] dataProductionManagement1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Production Management Role X1) Movie Production Management Details X1" };
-            string[] dataProductionManagement2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Production Management Role X2) Movie Production Management Details X2" };
-            string[] dataProductionManagement3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Production Management Role X3) Movie Production Management Details X3" };
+            string[] dataProductionManagement1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ProductionManagement Role X1) Movie ProductionManagement Details X1" };
+            string[] dataProductionManagement2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ProductionManagement Role X2) Movie ProductionManagement Details X2" };
+            string[] dataProductionManagement3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ProductionManagement Role X3) Movie ProductionManagement Details X3" };
 
             switch (value)
             {
@@ -3536,9 +3536,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // AssistantDirector
-            string[] dataAssistantDirector1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Assistant Director Role X1) Movie Assistant Director Details X1" };
-            string[] dataAssistantDirector2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Assistant Director Role X2) Movie Assistant Director Details X2" };
-            string[] dataAssistantDirector3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Assistant Director Role X3) Movie Assistant Director Details X3" };
+            string[] dataAssistantDirector1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie AssistantDirector Role X1) Movie AssistantDirector Details X1" };
+            string[] dataAssistantDirector2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie AssistantDirector Role X2) Movie AssistantDirector Details X2" };
+            string[] dataAssistantDirector3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie AssistantDirector Role X3) Movie AssistantDirector Details X3" };
 
             switch (value)
             {
@@ -3555,9 +3555,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Art Department
-            string[] dataArtDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Art Department Role X1) Movie Art Department Details X1" };
-            string[] dataArtDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Art Department Role X2) Movie Art Department Details X2" };
-            string[] dataArtDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Art Department Role X3) Movie Art Department Details X3" };
+            string[] dataArtDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ArtDepartment Role X1) Movie ArtDepartment Details X1" };
+            string[] dataArtDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ArtDepartment Role X2) Movie ArtDepartment Details X2" };
+            string[] dataArtDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ArtDepartment Role X3) Movie ArtDepartment Details X3" };
 
             switch (value)
             {
@@ -3574,9 +3574,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Sound Department
-            string[] dataSoundDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Sound Department Role X1) Movie Sound Department Details X1" };
-            string[] dataSoundDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Sound Department Role X2) Movie Sound Department Details X2" };
-            string[] dataSoundDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Sound Department Role X3) Movie Sound Department Details X3" };
+            string[] dataSoundDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SoundDepartment Role X1) Movie SoundDepartment Details X1" };
+            string[] dataSoundDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SoundDepartment Role X2) Movie SoundDepartment Details X2" };
+            string[] dataSoundDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SoundDepartment Role X3) Movie SoundDepartment Details X3" };
 
             switch (value)
             {
@@ -3593,9 +3593,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects
-            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Special Effects Role X1) Movie Special Effects Details X1" };
-            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Special Effects Role X2) Movie Special Effects Details X2" };
-            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Special Effects Role X3) Movie Special Effects Details X3" };
+            string[] dataSpecialEffects1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie SpecialEffects Role X1) Movie SpecialEffects Details X1" };
+            string[] dataSpecialEffects2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie SpecialEffects Role X2) Movie SpecialEffects Details X2" };
+            string[] dataSpecialEffects3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie SpecialEffects Role X3) Movie SpecialEffects Details X3" };
 
             switch (value)
             {
@@ -3612,9 +3612,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Visual Effects
-            string[] dataVisualEffects1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Visual Effects Role X1) Movie Visual Effects Details X1" };
-            string[] dataVisualEffects2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Visual Effects Role X2) Movie Visual Effects Details X2" };
-            string[] dataVisualEffects3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Visual Effects Role X3) Movie Visual Effects Details X3" };
+            string[] dataVisualEffects1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie VisualEffects Role X1) Movie VisualEffects Details X1" };
+            string[] dataVisualEffects2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie VisualEffects Role X2) Movie VisualEffects Details X2" };
+            string[] dataVisualEffects3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie VisualEffects Role X3) Movie VisualEffects Details X3" };
 
             switch (value)
             {
@@ -3631,9 +3631,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Stunts
-            string[] dataStunts1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Stunts Role X1) Movie Stunts Details X1" };
-            string[] dataStunts2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Stunts Role X2) Movie Stunts Details X2" };
-            string[] dataStunts3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Stunts Role X3) Movie Stunts Details X3" };
+            string[] dataStunts1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Stunts Role X1) Movie Stunts Details X1" };
+            string[] dataStunts2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Stunts Role X2) Movie Stunts Details X2" };
+            string[] dataStunts3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Stunts Role X3) Movie Stunts Details X3" };
 
             switch (value)
             {
@@ -3650,9 +3650,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Electrical Department
-            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Electrical Department Role X1) Movie Electrical Department Details X1" };
-            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Electrical Department Role X2) Movie Electrical Department Details X2" };
-            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Electrical Department Role X3) Movie Electrical Department Details X3" };
+            string[] dataElectricalDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ElectricalDepartment Role X1) Movie ElectricalDepartment Details X1" };
+            string[] dataElectricalDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ElectricalDepartment Role X2) Movie ElectricalDepartment Details X2" };
+            string[] dataElectricalDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ElectricalDepartment Role X3) Movie ElectricalDepartment Details X3" };
 
             switch (value)
             {
@@ -3669,9 +3669,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Animation Department
-            string[] dataAnimationDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Animation Department Role X1) Movie Animation Department Details X1" };
-            string[] dataAnimationDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Animation Department Role X2) Movie Animation Department Details X2" };
-            string[] dataAnimationDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Animation Department Role X3) Movie Animation Department Details X3" };
+            string[] dataAnimationDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie AnimationDepartment Role X1) Movie AnimationDepartment Details X1" };
+            string[] dataAnimationDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie AnimationDepartment Role X2) Movie AnimationDepartment Details X2" };
+            string[] dataAnimationDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie AnimationDepartment Role X3) Movie AnimationDepartment Details X3" };
 
             switch (value)
             {
@@ -3688,9 +3688,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Casting Department
-            string[] dataCastingDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Casting Department Role X1) Movie Casting Department Details X1" };
-            string[] dataCastingDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Casting Department Role X2) Movie Casting Department Details X2" };
-            string[] dataCastingDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Casting Department Role X3) Movie Casting Department Details X3" };
+            string[] dataCastingDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CastingDepartment Role X1) Movie CastingDepartment Details X1" };
+            string[] dataCastingDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CastingDepartment Role X2) Movie CastingDepartment Details X2" };
+            string[] dataCastingDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CastingDepartment Role X3) Movie CastingDepartment Details X3" };
 
             switch (value)
             {
@@ -3707,9 +3707,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Costume Department
-            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Costume Department Role X1) Movie Costume Department Details X1" };
-            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Costume Department Role X2) Movie Costume Department Details X2" };
-            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Costume Department Role X3) Movie Costume Department Details X3" };
+            string[] dataCostumeDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie CostumeDepartment Role X1) Movie CostumeDepartment Details X1" };
+            string[] dataCostumeDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie CostumeDepartment Role X2) Movie CostumeDepartment Details X2" };
+            string[] dataCostumeDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie CostumeDepartment Role X3) Movie CostumeDepartment Details X3" };
 
             switch (value)
             {
@@ -3726,9 +3726,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Editorial Department
-            string[] dataEditorialDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Editorial Department Role X1) Movie Editorial Department Details X1" };
-            string[] dataEditorialDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Editorial Department Role X2) Movie Editorial Department Details X2" };
-            string[] dataEditorialDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Editorial Department Role X3) Movie Editorial Department Details X3" };
+            string[] dataEditorialDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie EditorialDepartment Role X1) Movie EditorialDepartment Details X1" };
+            string[] dataEditorialDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie EditorialDepartment Role X2) Movie EditorialDepartment Details X2" };
+            string[] dataEditorialDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie EditorialDepartment Role X3) Movie EditorialDepartment Details X3" };
 
             switch (value)
             {
@@ -3745,9 +3745,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Location Management
-            string[] dataLocationManagement1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Location Management Role X1) Movie Location Management Details X1" };
-            string[] dataLocationManagement2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Location Management Role X2) Movie Location Management Details X2" };
-            string[] dataLocationManagement3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Location Management Role X3) Movie Location Management Details X3" };
+            string[] dataLocationManagement1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie LocationManagement Role X1) Movie LocationManagement Details X1" };
+            string[] dataLocationManagement2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie LocationManagement Role X2) Movie LocationManagement Details X2" };
+            string[] dataLocationManagement3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie LocationManagement Role X3) Movie LocationManagement Details X3" };
 
             switch (value)
             {
@@ -3764,9 +3764,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Music Department
-            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Music Department Role X1) Movie Music Department Details X1" };
-            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Music Department Role X2) Movie Music Department Details X2" };
-            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Music Department Role X3) Movie Music Department Details X3" };
+            string[] dataMusicDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie MusicDepartment Role X1) Movie MusicDepartment Details X1" };
+            string[] dataMusicDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie MusicDepartment Role X2) Movie MusicDepartment Details X2" };
+            string[] dataMusicDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie MusicDepartment Role X3) Movie MusicDepartment Details X3" };
 
             switch (value)
             {
@@ -3783,9 +3783,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Continuity Department
-            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Continuity Department Role X1) Movie Continuity Department Details X1" };
-            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Continuity Department Role X2) Movie Continuity Department Details X2" };
-            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Continuity Department Role X3) Movie Continuity Department Details X3" };
+            string[] dataContinuityDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie ContinuityDepartment Role X1) Movie ContinuityDepartment Details X1" };
+            string[] dataContinuityDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie ContinuityDepartment Role X2) Movie ContinuityDepartment Details X2" };
+            string[] dataContinuityDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie ContinuityDepartment Role X3) Movie ContinuityDepartment Details X3" };
 
             switch (value)
             {
@@ -3802,9 +3802,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Transportation Department
-            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Transportation Department Role X1) Movie Transportation Department Details X1" };
-            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Transportation Department Role X2) Movie Transportation Department Details X2" };
-            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Transportation Department Role X3) Movie Transportation Department Details X3" };
+            string[] dataTransportationDepartment1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie TransportationDepartment Role X1) Movie TransportationDepartment Details X1" };
+            string[] dataTransportationDepartment2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie TransportationDepartment Role X2) Movie TransportationDepartment Details X2" };
+            string[] dataTransportationDepartment3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie TransportationDepartment Role X3) Movie TransportationDepartment Details X3" };
 
             switch (value)
             {
@@ -3821,9 +3821,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Crew
-            string[] dataOtherCrew1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Other Crew Role X1) Movie Other Crew Details X1" };
-            string[] dataOtherCrew2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Other Crew Role X2) Movie Other Crew Details X2" };
-            string[] dataOtherCrew3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Other Crew Role X3) Movie Other Crew Details X3" };
+            string[] dataOtherCrew1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie OtherCrew Role X1) Movie OtherCrew Details X1" };
+            string[] dataOtherCrew2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie OtherCrew Role X2) Movie OtherCrew Details X2" };
+            string[] dataOtherCrew3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie OtherCrew Role X3) Movie OtherCrew Details X3" };
 
             switch (value)
             {
@@ -3840,9 +3840,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Thanks
-            string[] dataThanks1 = { Formatter.AsInternalLink(pathDirector, "Person First Name X Person Last Name X Person Name AddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
-            string[] dataThanks2 = { Formatter.AsInternalLink(pathDirector, "Person First Name Y Person Last Name Y Person Name AddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
-            string[] dataThanks3 = { Formatter.AsInternalLink(pathDirector, "Person First Name Z Person Last Name Z Person Name AddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
+            string[] dataThanks1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Thanks Role X1) Movie Thanks Details X1" };
+            string[] dataThanks2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Thanks Role X2) Movie Thanks Details X2" };
+            string[] dataThanks3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Thanks Role X3) Movie Thanks Details X3" };
 
             switch (value)
             {
@@ -3861,13 +3861,13 @@ namespace WikiPageCreator.Export.Create.Tests
             switch (value)
             {
                 case "en":
-                    content.Add("Crew is Status English Title X.");
+                    content.Add("Crew is Status EnglishTitle X.");
                     break;
                 case "de":
-                    content.Add("Crew ist Status German Title X.");
+                    content.Add("Crew ist Status GermanTitle X.");
                     break;
                 default:
-                    content.Add("Crew ist Status German Title X.");
+                    content.Add("Crew ist Status GermanTitle X.");
                     break;
             }
 
@@ -3884,9 +3884,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Production Company
             string[] pathProductionCompany = { value, "company" };
-            string[] dataProductionCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Production Company Role X1) Movie Production Company Details X1" };
-            string[] dataProductionCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Production Company Role X2) Movie Production Company Details X2" };
-            string[] dataProductionCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Production Company Role X3) Movie Production Company Details X3" };
+            string[] dataProductionCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company NameAddOn X"), "(Movie ProductionCompany Role X1) Movie ProductionCompany Details X1" };
+            string[] dataProductionCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company NameAddOn Y"), "(Movie ProductionCompany Role X2) Movie ProductionCompany Details X2" };
+            string[] dataProductionCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company NameAddOn Z"), "(Movie ProductionCompany Role X3) Movie ProductionCompany Details X3" };
 
             switch (value)
             {
@@ -3905,12 +3905,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Distributor
             string[] pathDistributorCountry = { value, "info" };
 
-            string[] dataDistributor1En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name X", "Country English Short Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
-            string[] dataDistributor1De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), $"(Movie Distributor Release Date X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name X", "Country German Short Name X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
-            string[] dataDistributor2En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name Y", "Country English Short Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
-            string[] dataDistributor2De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), $"(Movie Distributor Release Date X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name Y", "Country German Short Name Y")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
-            string[] dataDistributor3En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name Z", "Country English Short Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
-            string[] dataDistributor3De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), $"(Movie Distributor Release Date X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country Original Full Name Z", "Country German Short Name Z")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor1En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company NameAddOn X"), $"(Movie Distributor ReleaseDate X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor1De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company NameAddOn X"), $"(Movie Distributor ReleaseDate X1)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X1) Movie Distributor Details X1" };
+            string[] dataDistributor2En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company NameAddOn Y"), $"(Movie Distributor ReleaseDate X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor2De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company NameAddOn Y"), $"(Movie Distributor ReleaseDate X2)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X2) Movie Distributor Details X2" };
+            string[] dataDistributor3En = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company NameAddOn Z"), $"(Movie Distributor ReleaseDate X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country EnglishShortName X")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
+            string[] dataDistributor3De = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company NameAddOn Z"), $"(Movie Distributor ReleaseDate X3)", $"({Formatter.AsInternalLink(pathDistributorCountry, "Country OriginalFullName X", "Country GermanShortName X")})", "(Movie Distributor Role X3) Movie Distributor Details X3" };
 
             switch (value)
             {
@@ -3933,9 +3933,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Special Effects Company
-            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Special Effects Company Role X1) Movie Special Effects Company Details X1" };
-            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Special Effects Company Role X2) Movie Special Effects Company Details X2" };
-            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Special Effects Company Role X3) Movie Special Effects Company Details X3" };
+            string[] dataSpecialEffectsCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company NameAddOn X"), "(Movie SpecialEffectsCompany Role X1) Movie SpecialEffectsCompany Details X1" };
+            string[] dataSpecialEffectsCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company NameAddOn Y"), "(Movie SpecialEffectsCompany Role X2) Movie SpecialEffectsCompany Details X2" };
+            string[] dataSpecialEffectsCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company NameAddOn Z"), "(Movie SpecialEffectsCompany Role X3) Movie SpecialEffectsCompany Details X3" };
 
             switch (value)
             {
@@ -3952,9 +3952,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Other Company
-            string[] dataOtherCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company Name AddOn X"), "(Movie Other Company Role X1) Movie Other Company Details X1" };
-            string[] dataOtherCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company Name AddOn Y"), "(Movie Other Company Role X2) Movie Other Company Details X2" };
-            string[] dataOtherCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company Name AddOn Z"), "(Movie Other Company Role X3) Movie Other Company Details X3" };
+            string[] dataOtherCompany1 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name X Company NameAddOn X"), "(Movie OtherCompany Role X1) Movie OtherCompany Details X1" };
+            string[] dataOtherCompany2 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Y Company NameAddOn Y"), "(Movie OtherCompany Role X2) Movie OtherCompany Details X2" };
+            string[] dataOtherCompany3 = { Formatter.AsInternalLink(pathProductionCompany, "Company Name Z Company NameAddOn Z"), "(Movie OtherCompany Role X3) Movie OtherCompany Details X3" };
 
             switch (value)
             {
@@ -3981,15 +3981,15 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // FilmingLocation
             string[] pathFilmingLocation = { value, "info" };
-            string[] dataFilmingLocationEn1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name X", "Country English Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataFilmingLocationEn2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Y", "Country English Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataFilmingLocationEn3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Z", "Country English Short Name Z")} -- Movie Filming Location Details X3" };
-            string[] dataFilmingLocationDe1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name X", "Country German Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataFilmingLocationDe2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Y", "Country German Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataFilmingLocationDe3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Z", "Country German Short Name Z")} -- Movie Filming Location Details X3" };
-            string[] dataFilmingLocationZz1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name X", "Country German Short Name X")} -- Movie Filming Location Details X1" };
-            string[] dataFilmingLocationZz2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Y", "Country German Short Name Y")} -- Movie Filming Location Details X2" };
-            string[] dataFilmingLocationZz3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country Original Full Name Z", "Country German Short Name Z")} -- Movie Filming Location Details X3" };
+            string[] dataFilmingLocationEn1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName X", "Country EnglishShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataFilmingLocationEn2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Y", "Country EnglishShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataFilmingLocationEn3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Z", "Country EnglishShortName Z")} -- Movie FilmingLocation Details X3" };
+            string[] dataFilmingLocationDe1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName X", "Country GermanShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataFilmingLocationDe2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Y", "Country GermanShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataFilmingLocationDe3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Z", "Country GermanShortName Z")} -- Movie FilmingLocation Details X3" };
+            string[] dataFilmingLocationZz1 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location X")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName X", "Country GermanShortName X")} -- Movie FilmingLocation Details X1" };
+            string[] dataFilmingLocationZz2 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Y")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Y", "Country GermanShortName Y")} -- Movie FilmingLocation Details X2" };
+            string[] dataFilmingLocationZz3 = { $"{Formatter.AsInternalLink(pathFilmingLocation, $"Location Z")}, {Formatter.AsInternalLink(pathFilmingLocation, "Country OriginalFullName Z", "Country GermanShortName Z")} -- Movie FilmingLocation Details X3" };
 
             switch (value)
             {
@@ -4017,9 +4017,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Filming Dates
             string[] pathFilmingDates = { value, "date" };
-            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X1") }" };
-            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X2") }" };
-            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Filming Date End Date X3") }" };
+            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1") }" };
+            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2") }" };
+            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3") }" };
 
             switch (value)
             {
@@ -4036,9 +4036,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Dates
-            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X1") }" };
-            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X2") }" };
-            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date Start Date X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie Production Date End Date X3") }" };
+            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1") }" };
+            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2") }" };
+            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3") }" };
 
             switch (value)
             {
@@ -4063,15 +4063,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataAwardDe10 = { Formatter.AsInternalLink(pathAward, "Award Name X", "Award Name X"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataAwardDe20 = { Formatter.AsInternalLink(pathAward, "Award Name Y", "Award Name Y"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataAwardDe30 = { Formatter.AsInternalLink(pathAward, "Award Name Z", "Award Name Z"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            string[] dataAward11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
-            string[] dataAward12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
-            string[] dataAward13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
-            string[] dataAward21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
-            string[] dataAward22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
-            string[] dataAward23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
-            string[] dataAward31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name X Person Last Name X Person Name AddOn X", "Person First Name X Person Last Name X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
-            string[] dataAward32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Y Person Last Name Y Person Name AddOn Y", "Person First Name Y Person Last Name Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
-            string[] dataAward33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person First Name Z Person Last Name Z Person Name AddOn Z", "Person First Name Z Person Last Name Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
+            string[] dataAward11 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", "" };
+            string[] dataAward12 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", "" };
+            string[] dataAward13 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", "" };
+            string[] dataAward21 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", "" };
+            string[] dataAward22 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", "" };
+            string[] dataAward23 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", "" };
+            string[] dataAward31 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", "" };
+            string[] dataAward32 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", "" };
+            string[] dataAward33 = { Formatter.CellSpanVertically(), "", $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", "" };
 
             switch (value)
             {
@@ -4129,12 +4129,12 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Weblink Chapter
-            string dataWeblinksEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink English Title X") } (Language English Name X)";
-            string dataWeblinksEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink English Title Y") } (Language English Name Y)";
-            string dataWeblinksEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink English Title Z") } (Language English Name Z)";
-            string dataWeblinksDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink German Title X") } (Language German Name X)";
-            string dataWeblinksDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink German Title Y") } (Language German Name Y)";
-            string dataWeblinksDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink German Title Z") } (Language German Name Z)";
+            string dataWeblinksEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X") } (Language EnglishName X)";
+            string dataWeblinksEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y") } (Language EnglishName Y)";
+            string dataWeblinksEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z") } (Language EnglishName Z)";
+            string dataWeblinksDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X") } (Language GermanName X)";
+            string dataWeblinksDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y") } (Language GermanName Y)";
+            string dataWeblinksDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z") } (Language GermanName Z)";
 
             switch (value)
             {

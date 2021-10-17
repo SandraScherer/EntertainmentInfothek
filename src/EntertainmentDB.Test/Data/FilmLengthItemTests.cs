@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            FilmLengthItem item = new FilmLengthItem("_xxx", "FilmLength");
+            FilmLengthItem item = new FilmLengthItem("_xx1", "FilmLength");
             item.BaseTableName = value;
 
             // Act
@@ -81,11 +81,11 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(1, count);
 
-            Assert.AreEqual("_xxx", item.ID);
-            Assert.AreEqual($"{value} Film Length X", item.Length);
-            Assert.AreEqual($"{value} Film Length Details X", item.Details);
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value} FilmLength Length X1", item.Length);
+            Assert.AreEqual($"{value} FilmLength Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Film Length Last Updated X", item.LastUpdated);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            FilmLengthItem item = new FilmLengthItem("_xxx", "FilmLength");
+            FilmLengthItem item = new FilmLengthItem("_xx1", "FilmLength");
             item.BaseTableName = value;
 
             // Act
@@ -102,11 +102,11 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(1, count);
 
-            Assert.AreEqual("_xxx", item.ID);
-            Assert.AreEqual($"{value} Film Length X", item.Length);
-            Assert.AreEqual($"{value} Film Length Details X", item.Details);
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value} FilmLength Length X1", item.Length);
+            Assert.AreEqual($"{value} FilmLength Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Film Length Last Updated X", item.LastUpdated);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest_withValidID(string value)
         {
             // Arrange
-            FilmLengthItem item = new FilmLengthItem("_xxx", "FilmLength");
+            FilmLengthItem item = new FilmLengthItem("_xx1", "FilmLength");
             item.BaseTableName = value;
 
             // Act
@@ -186,7 +186,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_BasicInfoOnly(string value)
         {
             // Arrange
-            FilmLengthItem item = new FilmLengthItem("_xxx", "FilmLength");
+            FilmLengthItem item = new FilmLengthItem("_xx1", "FilmLength");
             item.BaseTableName = value;
 
             // Act
@@ -195,11 +195,11 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(1, count);
 
-            Assert.AreEqual("_xxx", item.ID);
-            Assert.AreEqual($"{value} Film Length X", item.Length);
-            Assert.AreEqual($"{value} Film Length Details X", item.Details);
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value} FilmLength Length X1", item.Length);
+            Assert.AreEqual($"{value} FilmLength Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Film Length Last Updated X", item.LastUpdated);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -207,7 +207,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_AdditionalInfo(string value)
         {
             // Arrange
-            FilmLengthItem item = new FilmLengthItem("_xxx", "FilmLength");
+            FilmLengthItem item = new FilmLengthItem("_xx1", "FilmLength");
             item.BaseTableName = value;
 
             // Act
@@ -216,11 +216,11 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(1, count);
 
-            Assert.AreEqual("_xxx", item.ID);
-            Assert.AreEqual($"{value} Film Length X", item.Length);
-            Assert.AreEqual($"{value} Film Length Details X", item.Details);
+            Assert.AreEqual("_xx1", item.ID);
+            Assert.AreEqual($"{value} FilmLength Length X1", item.Length);
+            Assert.AreEqual($"{value} FilmLength Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Film Length Last Updated X", item.LastUpdated);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -276,13 +276,25 @@ namespace EntertainmentDB.Data.Tests
             List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, value, "_xxx", "FilmLength");
 
             // Assert
-            Assert.AreEqual(1, list.Count);
+            Assert.AreEqual(3, list.Count);
 
-            Assert.AreEqual("_xxx", list[0].ID);
-            Assert.AreEqual($"{value} Film Length X", list[0].Length);
-            Assert.AreEqual($"{value} Film Length Details X", list[0].Details);
+            Assert.AreEqual("_xx1", list[0].ID);
+            Assert.AreEqual($"{value} FilmLength Length X1", list[0].Length);
+            Assert.AreEqual($"{value} FilmLength Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Film Length Last Updated X", list[0].LastUpdated);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X1", list[0].LastUpdated);
+
+            Assert.AreEqual("_xx2", list[1].ID);
+            Assert.AreEqual($"{value} FilmLength Length X2", list[1].Length);
+            Assert.AreEqual($"{value} FilmLength Details X2", list[1].Details);
+            Assert.AreEqual("_xxx", list[1].Status.ID);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X2", list[1].LastUpdated);
+
+            Assert.AreEqual("_xx3", list[2].ID);
+            Assert.AreEqual($"{value} FilmLength Length X3", list[2].Length);
+            Assert.AreEqual($"{value} FilmLength Details X3", list[2].Details);
+            Assert.AreEqual("_xxx", list[2].Status.ID);
+            Assert.AreEqual($"{value} FilmLength LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

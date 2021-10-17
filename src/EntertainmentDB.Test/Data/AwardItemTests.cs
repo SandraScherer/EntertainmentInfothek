@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X1", item.LastUpdated);
 
             Assert.IsNull(item.Persons);
         }
@@ -123,7 +123,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X1", item.LastUpdated);
 
             Assert.IsNull(item.Persons);
         }
@@ -236,7 +236,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X1", item.LastUpdated);
 
             Assert.IsNull(item.Persons);
         }
@@ -262,7 +262,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"1", item.Winner);
             Assert.AreEqual($"{value} Award Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X1", item.LastUpdated);
 
             Assert.AreEqual(3, item.Persons.Count);
             Assert.AreEqual("_x11", item.Persons[0].ID);
@@ -342,7 +342,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"1", list[0].Winner);
             Assert.AreEqual($"{value} Award Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual(3, list[0].Persons.Count);
             Assert.AreEqual("_x11", list[0].Persons[0].ID);
@@ -356,7 +356,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"0", list[1].Winner);
             Assert.AreEqual($"{value} Award Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual(3, list[1].Persons.Count);
             Assert.AreEqual("_x21", list[1].Persons[0].ID);
@@ -370,7 +370,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"0", list[2].Winner);
             Assert.AreEqual($"{value} Award Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} Award Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} Award LastUpdated X3", list[2].LastUpdated);
 
             Assert.AreEqual(3, list[2].Persons.Count);
             Assert.AreEqual("_x31", list[2].Persons[0].ID);

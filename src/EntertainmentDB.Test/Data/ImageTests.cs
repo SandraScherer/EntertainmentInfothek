@@ -85,13 +85,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Image File Name X", entry.FileName);
+            Assert.AreEqual("Image FileName X", entry.FileName);
             Assert.AreEqual("Image Description X", entry.Description);
             Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Image Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Image Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Image LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Sources);
         }
@@ -109,13 +109,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Image File Name X", entry.FileName);
+            Assert.AreEqual("Image FileName X", entry.FileName);
             Assert.AreEqual("Image Description X", entry.Description);
             Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Image Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Image Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Image LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Sources);
         }
@@ -212,13 +212,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Image File Name X", entry.FileName);
+            Assert.AreEqual("Image FileName X", entry.FileName);
             Assert.AreEqual("Image Description X", entry.Description);
             Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Image Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Image Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Image LastUpdated X", entry.LastUpdated);
 
             Assert.IsNull(entry.Sources);
         }
@@ -236,13 +236,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Image File Name X", entry.FileName);
+            Assert.AreEqual("Image FileName X", entry.FileName);
             Assert.AreEqual("Image Description X", entry.Description);
             Assert.AreEqual("_xxx", entry.Type.ID);
             Assert.AreEqual("_xxx", entry.Country.ID);
             Assert.AreEqual("Image Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Image Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Image LastUpdated X", entry.LastUpdated);
 
             Assert.AreEqual(3, entry.Sources.Count);
             Assert.AreEqual("_xx1", entry.Sources[0].ID);

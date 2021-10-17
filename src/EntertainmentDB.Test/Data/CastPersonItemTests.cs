@@ -91,7 +91,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} {value2} Character X1", item.Character);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} {value2} Character X1", item.Character);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -213,7 +213,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} {value2} Character X1", item.Role);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -236,7 +236,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} {value2} Character X1", item.Role);
             Assert.AreEqual($"{value} {value2} Details X1", item.Details);
             Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", item.LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X1", item.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -304,23 +304,23 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{value} {value2} Character X1", list[0].Character);
             Assert.AreEqual($"{value} {value2} Details X1", list[0].Details);
             Assert.AreEqual("_xxx", list[0].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X1", list[0].LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X1", list[0].LastUpdated);
 
             Assert.AreEqual("_xx2", list[1].ID);
             Assert.AreEqual("_yyy", list[1].Actor.ID);
-            Assert.AreEqual("_yyy", list[1].GermanDubber.ID);
+            Assert.AreEqual("_xxx", list[1].GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X2", list[1].Character);
             Assert.AreEqual($"{value} {value2} Details X2", list[1].Details);
             Assert.AreEqual("_xxx", list[1].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X2", list[1].LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X2", list[1].LastUpdated);
 
             Assert.AreEqual("_xx3", list[2].ID);
             Assert.AreEqual("_zzz", list[2].Actor.ID);
-            Assert.AreEqual("_zzz", list[2].GermanDubber.ID);
+            Assert.AreEqual("_xxx", list[2].GermanDubber.ID);
             Assert.AreEqual($"{value} {value2} Character X3", list[2].Character);
             Assert.AreEqual($"{value} {value2} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
-            Assert.AreEqual($"{value} {value2} Last Updated X3", list[2].LastUpdated);
+            Assert.AreEqual($"{value} {value2} LastUpdated X3", list[2].LastUpdated);
         }
     }
 }

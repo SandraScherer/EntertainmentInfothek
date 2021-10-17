@@ -70,16 +70,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person First Name X Person Last Name X", entry.Name);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -95,16 +95,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person First Name X Person Last Name X", entry.Name);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -196,16 +196,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person First Name X Person Last Name X", entry.Name);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
@@ -221,16 +221,16 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person First Name X Person Last Name X", entry.Name);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
