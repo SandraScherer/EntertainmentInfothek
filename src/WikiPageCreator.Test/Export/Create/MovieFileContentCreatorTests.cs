@@ -1542,9 +1542,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cast
-            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
-            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
-            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast1 = { Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Cast Character X1) Movie Cast Details X1", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast2 = { Formatter.AsInternalLink(path, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast3 = { Formatter.AsInternalLink(path, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3", Formatter.AsInternalLink(path, "Person FirstName X Person LastName X Person NameAddOn X") };
 
             switch (value)
             {
@@ -3296,9 +3296,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Cast
-            string[] dataCast1 = { "Movie Cast Character X1", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "Movie Cast Details X1", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
-            string[] dataCast2 = { "Movie Cast Character X2", Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "Movie Cast Details X2", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
-            string[] dataCast3 = { "Movie Cast Character X3", Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "Movie Cast Details X3", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast1 = { Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X"), "(Movie Cast Character X1) Movie Cast Details X1", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast2 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Y Person LastName Y Person NameAddOn Y"), "(Movie Cast Character X2) Movie Cast Details X2", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
+            string[] dataCast3 = { Formatter.AsInternalLink(pathDirector, "Person FirstName Z Person LastName Z Person NameAddOn Z"), "(Movie Cast Character X3) Movie Cast Details X3", Formatter.AsInternalLink(pathDirector, "Person FirstName X Person LastName X Person NameAddOn X") };
 
             switch (value)
             {
