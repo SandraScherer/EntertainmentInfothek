@@ -2287,7 +2287,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     else
                     {
-                        data[1] = "";
+                        data[1] = " ";
                     }
 
                     if (persons[i].GermanDubber != null)
@@ -2481,7 +2481,7 @@ namespace WikiPageCreator.Export.Create
                     }
                     else
                     {
-                        data[1] = "";
+                        data[1] = " ";
                     }
 
                     // prepare country information
@@ -2754,6 +2754,10 @@ namespace WikiPageCreator.Export.Create
                     {
                         data[3] = $"{Movie.Awards[i].Details}";
                     }
+                    else
+                    {
+                        data[3] = " ";
+                    }
                     Content.Add(Formatter.AsTableRow(data));
 
                     if ((Movie.Awards[i].Persons != null) && (Movie.Awards[i].Persons.Count > 0))
@@ -2764,29 +2768,32 @@ namespace WikiPageCreator.Export.Create
 
                             if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.Name) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.NameAddOn))
                             {
-                                dataPersons[2] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name} {Movie.Awards[i].Persons[j].Person.NameAddOn}", $"{Movie.Awards[i].Persons[j].Person.Name}");
+                                dataPersons[1] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name} {Movie.Awards[i].Persons[j].Person.NameAddOn}", $"{Movie.Awards[i].Persons[j].Person.Name}");
                             }
                             else
                             {
-                                dataPersons[2] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name}", $"{Movie.Awards[i].Persons[j].Person.Name}");
+                                dataPersons[1] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name}", $"{Movie.Awards[i].Persons[j].Person.Name}");
                             }
 
                             if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
                             {
-                                dataPersons[2] = dataPersons[2] + $" ({Movie.Awards[i].Persons[j].Role}) {Movie.Awards[i].Persons[j].Details}";
+                                dataPersons[1] = dataPersons[1] + $" ({Movie.Awards[i].Persons[j].Role}) {Movie.Awards[i].Persons[j].Details}";
                             }
                             else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role))
                             {
-                                dataPersons[2] = dataPersons[2] + $" ({Movie.Awards[i].Persons[j].Role})";
+                                dataPersons[1] = dataPersons[1] + $" ({Movie.Awards[i].Persons[j].Role})";
                             }
                             else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
                             {
-                                dataPersons[2] = dataPersons[2] + $" {Movie.Awards[i].Persons[j].Details}";
+                                dataPersons[1] = dataPersons[1] + $" {Movie.Awards[i].Persons[j].Details}";
                             }
                             else
                             {
                                 // nothing to do
                             }
+
+                            dataPersons[2] = " ";
+                            dataPersons[3] = " ";
                             Content.Add(Formatter.AsTableRow(dataPersons));
                         }
                     }
