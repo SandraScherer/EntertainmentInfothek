@@ -49,7 +49,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// Initializes a database reader.
         /// </summary>
-        public DBReader()
+        protected DBReader()
         {
             Logger.Trace($"DBReader() angelegt");
         }
@@ -59,8 +59,9 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// Retrieves the information from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>The number of data records retrieved.</returns>
-        public abstract int Retrieve();
+        public abstract int Retrieve(bool retrieveBasicInfoOnly);
 
     }
 }

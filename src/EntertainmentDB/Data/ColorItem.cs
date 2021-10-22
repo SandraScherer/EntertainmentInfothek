@@ -45,7 +45,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a color item with an empty id string.
         /// </summary>
-        public ColorItem() : this("")
+        public ColorItem() : this("", "")
         {
         }
 
@@ -55,21 +55,18 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the color item.</param>
         /// <param name="targetTableName">The target table name of the color item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public ColorItem(string id, string targetTableName = "Color")
+        public ColorItem(string id, string targetTableName) : base(id, targetTableName)
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
-            if (String.IsNullOrEmpty(targetTableName))
+            if (targetTableName == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(targetTableName));
             }
 
             Logger.Trace($"ColorItem() angelegt");
-
-            ID = id;
-            TargetTableName = targetTableName;
         }
 
         // --- Methods ---
@@ -77,28 +74,16 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the color item from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-            if (String.IsNullOrEmpty(BaseTableName))
-            {
-                throw new NullReferenceException(nameof(BaseTableName));
-            }
-            if (String.IsNullOrEmpty(TargetTableName))
-            {
-                throw new NullReferenceException(nameof(TargetTableName));
-            }
-
             Reader.Query = $"SELECT ID, ColorID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -107,14 +92,14 @@ namespace EntertainmentDB.Data
                 {
                     Color = new Color();
                     Color.ID = row["ColorID"].ToString();
-                    Color.RetrieveBasicInformation();
+                    Color.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
 
@@ -147,11 +132,11 @@ namespace EntertainmentDB.Data
         /// <returns></returns>
         /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
-        public static List<ColorItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName = "Color", string order = "ID")
+        public static List<ColorItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
             {
-                throw new NullReferenceException(nameof(reader));
+                throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
@@ -179,7 +164,7 @@ namespace EntertainmentDB.Data
 
             List<ColorItem> list = new List<ColorItem>();
 
-            if (reader.Retrieve() > 0)
+            if (reader.Retrieve(true) > 0)
             {
                 list.Capacity = reader.Table.Rows.Count;
 
@@ -187,15 +172,12 @@ namespace EntertainmentDB.Data
                 {
                     ColorItem item = new ColorItem();
                     item.BaseTableName = baseTableName;
+                    item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
-                    item.RetrieveBasicInformation();
+                    item.Retrieve(false);
                     list.Add(item);
                 }
-            }
-            else
-            {
-                // nothing to do
             }
 
             return list;

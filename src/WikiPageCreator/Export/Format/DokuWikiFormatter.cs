@@ -509,6 +509,55 @@ namespace WikiPageCreator.Export.Format
         /// <param name="filename">The filename of the image.</param>
         /// <param name="width">The width for the image.</param>
         /// <param name="height">The height for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string[] path, string filename, int width, int height, string text)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (width == 0)
+            {
+                throw new ArgumentNullException(nameof(width));
+            }
+
+            if (height == 0)
+            {
+                throw new ArgumentNullException(nameof(height));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            string formatted = "";
+            foreach (string item in path)
+            {
+                if (!String.IsNullOrEmpty(item))
+                {
+                    formatted = String.Concat(formatted, item, ":");
+                }
+            }
+
+            return AsImage(formatted + filename, width, height, text);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="height">The height for the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, int width, int height)
@@ -543,6 +592,49 @@ namespace WikiPageCreator.Export.Format
             }
 
             return AsImage(formatted + filename, width, height);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string[] path, string filename, int width, string text)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (width == 0)
+            {
+                throw new ArgumentNullException(nameof(width));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            string formatted = "";
+            foreach (string item in path)
+            {
+                if (!String.IsNullOrEmpty(item))
+                {
+                    formatted = String.Concat(formatted, item, ":");
+                }
+            }
+
+            return AsImage(formatted + filename, width, text);
         }
 
         /// <summary>
@@ -587,6 +679,43 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         /// <param name="path">The path of the image.</param>
         /// <param name="filename">The filename of the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string[] path, string filename, string text)
+        {
+            if (path == null)
+            {
+                throw new ArgumentNullException(nameof(path));
+            }
+
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            string formatted = "";
+            foreach (string item in path)
+            {
+                if (!String.IsNullOrEmpty(item))
+                {
+                    formatted = String.Concat(formatted, item, ":");
+                }
+            }
+
+            return AsImage(formatted + filename, text);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="path">The path of the image.</param>
+        /// <param name="filename">The filename of the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename)
@@ -611,6 +740,40 @@ namespace WikiPageCreator.Export.Format
             }
 
             return AsImage(formatted + filename);
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
+        /// <param name="height">The height for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string filename, int width, int height, string text)
+        {
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (width == 0)
+            {
+                throw new ArgumentNullException(nameof(width));
+            }
+
+            if (height == 0)
+            {
+                throw new ArgumentNullException(nameof(height));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            return $"{{{{{filename}?{width}x{height}|{text}}}}}";
         }
 
         /// <summary>
@@ -646,6 +809,35 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         /// <param name="filename">The filename of the image.</param>
         /// <param name="width">The width for the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string filename, int width, string text)
+        {
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (width == 0)
+            {
+                throw new ArgumentNullException(nameof(width));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            return $"{{{{{filename}?{width}|{text}}}}}";
+        }
+
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
+        /// <param name="width">The width for the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, int width)
@@ -667,6 +859,28 @@ namespace WikiPageCreator.Export.Format
         /// Formats the given parameters as an image.
         /// </summary>
         /// <param name="filename">The filename of the image.</param>
+        /// <param name="text">The text to be displayed for the image.</param>
+        /// <returns>The parameters formatted as an image.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImage(string filename, string text)
+        {
+            if (String.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            return $"{{{{{filename}|{text}}}}}";
+        }
+
+        /// <summary>
+        /// Formats the given parameters as an image.
+        /// </summary>
+        /// <param name="filename">The filename of the image.</param>
         /// <returns>The parameters formatted as an image.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename)
@@ -677,6 +891,22 @@ namespace WikiPageCreator.Export.Format
             }
 
             return $"{{{{{filename}}}}}";
+        }
+
+        /// <summary>
+        /// Formats the given imagelink as an imagebox.
+        /// </summary>
+        /// <param name="imagelink">The imagelink to be boxed.</param>
+        /// <returns>The boxed imagelink.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public override string AsImageBox(string imagelink)
+        {
+            if (String.IsNullOrEmpty(imagelink))
+            {
+                throw new ArgumentNullException(nameof(imagelink));
+            }
+
+            return $"[{imagelink}]";
         }
 
         /// <summary>
@@ -714,7 +944,7 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to force a new line.</returns>
         public override string ForceNewLine()
         {
-            return $"\\";
+            return $"\\\\";
         }
 
         /// <summary>

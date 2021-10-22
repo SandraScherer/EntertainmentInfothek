@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Status() angelegt");
@@ -103,12 +103,16 @@ namespace EntertainmentDB.Data
         /// Retrieves the information of the status from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
+        public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
             Logger.Trace($"Retrieve() aufgerufen");
 
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
+            int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
+
+            if (!retrieveBasicInfoOnly)
+            {
+                RetrieveAdditionalInformation();
+            }
 
             return count;
         }
@@ -116,20 +120,16 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the status from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public virtual int RetrieveBasicInformation()
+        public virtual int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
                            $"FROM Status " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 

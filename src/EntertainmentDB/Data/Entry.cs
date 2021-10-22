@@ -64,7 +64,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry with an empty id string.
         /// </summary>
-        public Entry() : this("")
+        protected Entry() : this("")
         {
         }
 
@@ -72,11 +72,11 @@ namespace EntertainmentDB.Data
         /// Initializes an entry with the given id string.
         /// </summary>
         /// <param name="id"></param>
-        public Entry(string id)
+        protected Entry(string id)
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Entry() angelegt");
@@ -89,13 +89,18 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the information of the entry from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve()
+        public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
             Logger.Trace($"Retrieve() aufgerufen");
 
-            int count = RetrieveBasicInformation();
-            RetrieveAdditionalInformation();
+            int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
+
+            if (!retrieveBasicInfoOnly)
+            {
+                RetrieveAdditionalInformation();
+            }
 
             return count;
         }
@@ -103,8 +108,9 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the entry from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public abstract int RetrieveBasicInformation();
+        public abstract int RetrieveBasicInformation(bool retrieveBasicInfoOnly);
 
         /// <summary>
         /// Retrieves the additional information of the entry from the database.

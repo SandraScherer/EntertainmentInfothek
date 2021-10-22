@@ -32,6 +32,6 @@ namespace EntertainmentDB.DBAccess.Read
         /// Retrieves the information from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        int Retrieve();
+        int Retrieve(bool retrieveBasicInfoOnly);
     }
 }

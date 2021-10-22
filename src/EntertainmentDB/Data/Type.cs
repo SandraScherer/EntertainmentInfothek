@@ -59,16 +59,14 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the type.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Type(string id)
+        public Type(string id) : base(id)
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Type() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---
@@ -76,20 +74,16 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the type from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
                            $"FROM Type " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -101,7 +95,7 @@ namespace EntertainmentDB.Data
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
             }

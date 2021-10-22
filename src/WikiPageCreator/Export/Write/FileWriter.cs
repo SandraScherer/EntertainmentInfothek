@@ -84,11 +84,6 @@ namespace WikiPageCreator.Export.Write
                     Logger.Error(ex, $"Pfad '{directory}' ist zu lang");
                     throw new PathTooLongException("Path '{directory}' is too long", ex);
                 }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, $"Unbekannter Fehler");
-                    throw new Exception("Unexpected error", ex);
-                }
             }
 
             // create complete filename incl. path
@@ -115,11 +110,6 @@ namespace WikiPageCreator.Export.Write
             {
                 Logger.Error(ex, $"Pfad '{filename}' ist zu lang");
                 throw new PathTooLongException("Path '{directory}' is too long", ex);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, $"Unbekannter Fehler");
-                throw new Exception("Unexpected error", ex);
             }
 
             // write content

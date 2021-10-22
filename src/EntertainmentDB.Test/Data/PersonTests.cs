@@ -23,6 +23,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
             Assert.IsNull(entry.FirstName);
             Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.BirthName);
             Assert.IsNull(entry.DateOfBirth);
@@ -46,6 +47,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.ID);
             Assert.IsNull(entry.FirstName);
             Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.BirthName);
             Assert.IsNull(entry.DateOfBirth);
@@ -56,37 +58,63 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID()
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Person entry = new Person("_xxx");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID()
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Person entry = new Person("_xxx");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
+            Assert.AreEqual("Person Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Person entry = new Person("_aaa");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -94,6 +122,32 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.FirstName);
             Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.NameAddOn);
+            Assert.IsNull(entry.BirthName);
+            Assert.IsNull(entry.DateOfBirth);
+            Assert.IsNull(entry.DateOfDeath);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Person entry = new Person("_aaa");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.FirstName);
+            Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.BirthName);
             Assert.IsNull(entry.DateOfBirth);
@@ -130,37 +184,63 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        public void RetrieveTest_withValidID()
+        public void RetrieveTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Person entry = new Person("_xxx");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Person First Name X", entry.FirstName);
-            Assert.AreEqual("Person Last Name X", entry.LastName);
-            Assert.AreEqual("Person Name AddOn X", entry.NameAddOn);
-            Assert.AreEqual("Person Birth Name X", entry.BirthName);
-            Assert.AreEqual("Person Date of Birth X", entry.DateOfBirth);
-            Assert.AreEqual("Person Date of Death X", entry.DateOfDeath);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
             Assert.AreEqual("Person Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Person Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void RetrieveTest_withInvalidID()
+        public void RetrieveTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Person entry = new Person("_xxx");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Person FirstName X", entry.FirstName);
+            Assert.AreEqual("Person LastName X", entry.LastName);
+            Assert.AreEqual("Person FirstName X Person LastName X", entry.Name);
+            Assert.AreEqual("Person NameAddOn X", entry.NameAddOn);
+            Assert.AreEqual("Person BirthName X", entry.BirthName);
+            Assert.AreEqual("Person DateOfBirth X", entry.DateOfBirth);
+            Assert.AreEqual("Person DateOfDeath X", entry.DateOfDeath);
+            Assert.AreEqual("Person Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Person LastUpdated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Person entry = new Person("_aaa");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(0, count);
@@ -168,6 +248,32 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_aaa", entry.ID);
             Assert.IsNull(entry.FirstName);
             Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.NameAddOn);
+            Assert.IsNull(entry.BirthName);
+            Assert.IsNull(entry.DateOfBirth);
+            Assert.IsNull(entry.DateOfDeath);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Person entry = new Person("_aaa");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.FirstName);
+            Assert.IsNull(entry.LastName);
+            Assert.IsNull(entry.Name);
             Assert.IsNull(entry.NameAddOn);
             Assert.IsNull(entry.BirthName);
             Assert.IsNull(entry.DateOfBirth);

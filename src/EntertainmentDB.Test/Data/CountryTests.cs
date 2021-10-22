@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EntertainmentDB.Test.Data
+namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
     public class CountryTests
@@ -38,9 +38,12 @@ namespace EntertainmentDB.Test.Data
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -58,51 +61,108 @@ namespace EntertainmentDB.Test.Data
             Assert.IsNotNull(entry.Reader);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID()
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Country entry = new Country("_xxx");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID()
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Country entry = new Country("_xxx");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
+            Assert.AreEqual("Country Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Country entry = new Country("_aaa");
 
             // Act
-            int count = entry.RetrieveBasicInformation();
+            int count = entry.RetrieveBasicInformation(true);
 
             // Assert
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Country entry = new Country("_aaa");
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -135,42 +195,96 @@ namespace EntertainmentDB.Test.Data
         }
 
         [TestMethod()]
-        public void RetrieveTest_withValidID()
+        public void RetrieveTest_withValidID_BasicInfoOnly()
         {
             // Arrange
             Country entry = new Country("_xxx");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Country Original Name X", entry.OriginalName);
-            Assert.AreEqual("Country English Name X", entry.EnglishName);
-            Assert.AreEqual("Country German Name X", entry.GermanName);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
             Assert.AreEqual("Country Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Country Last Updated X", entry.LastUpdated);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void Retrieve_withInvalidID()
+        public void RetrieveTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            Country entry = new Country("_xxx");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Country OriginalShortName X", entry.OriginalShortName);
+            Assert.AreEqual("Country OriginalFullName X", entry.OriginalFullName);
+            Assert.AreEqual("Country EnglishShortName X", entry.EnglishShortName);
+            Assert.AreEqual("Country EnglishFullName X", entry.EnglishFullName);
+            Assert.AreEqual("Country GermanShortName X", entry.GermanShortName);
+            Assert.AreEqual("Country GermanFullName X", entry.GermanFullName);
+            Assert.AreEqual("Country Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Country LastUpdated X", entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void Retrieve_withInvalidID_BasicInfoOnly()
         {
             // Arrange
             Country entry = new Country("_aaa");
 
             // Act
-            int count = entry.Retrieve();
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.AreEqual(0, count);
 
             Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.OriginalName);
-            Assert.IsNull(entry.EnglishName);
-            Assert.IsNull(entry.GermanName);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void Retrieve_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            Country entry = new Country("_aaa");
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual("_aaa", entry.ID);
+            Assert.IsNull(entry.OriginalShortName);
+            Assert.IsNull(entry.OriginalFullName);
+            Assert.IsNull(entry.EnglishShortName);
+            Assert.IsNull(entry.EnglishFullName);
+            Assert.IsNull(entry.GermanShortName);
+            Assert.IsNull(entry.GermanFullName);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);

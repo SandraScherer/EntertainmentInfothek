@@ -30,19 +30,34 @@ namespace EntertainmentDB.Data
         // --- Properties ---
 
         /// <summary>
-        /// The original name of the country.
+        /// The original short name of the country.
         /// </summary>
-        public string OriginalName { get; set; }
+        public string OriginalShortName { get; set; }
 
         /// <summary>
-        /// The english name of the country.
+        /// The original full name of the country.
         /// </summary>
-        public string EnglishName { get; set; }
+        public string OriginalFullName { get; set; }
 
         /// <summary>
-        /// The german name of the country.
+        /// The english short name of the country.
         /// </summary>
-        public string GermanName { get; set; }
+        public string EnglishShortName { get; set; }
+
+        /// <summary>
+        /// The english full name of the country.
+        /// </summary>
+        public string EnglishFullName { get; set; }
+
+        /// <summary>
+        /// The german short name of the country.
+        /// </summary>
+        public string GermanShortName { get; set; }
+
+        /// <summary>
+        /// The german full name of the country.
+        /// </summary>
+        public string GermanFullName { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -63,16 +78,14 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="id">The id of the country.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Country(string id)
+        public Country(string id) : base(id)
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Country() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---
@@ -80,33 +93,32 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the country from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-
-            Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
+            Reader.Query = $"SELECT ID, OriginalShortName, OriginalFullName, EnglishShortName, EnglishFullName, GermanShortName, GermanFullName, Details, StatusID, LastUpdated " +
                            $"FROM Country " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
-                OriginalName = row["OriginalName"].ToString();
-                EnglishName = row["EnglishName"].ToString();
-                GermanName = row["GermanName"].ToString();
+                OriginalShortName = row["OriginalShortName"].ToString();
+                OriginalFullName = row["OriginalFullName"].ToString();
+                EnglishShortName = row["EnglishShortName"].ToString();
+                EnglishFullName = row["EnglishFullName"].ToString();
+                GermanShortName = row["GermanShortName"].ToString();
+                GermanFullName = row["GermanFullName"].ToString();
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
             }

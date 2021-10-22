@@ -60,21 +60,18 @@ namespace EntertainmentDB.Data
         /// <param name="id">The id of the person item.</param>
         /// <param name="targetTableName">The target table name of the person item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public PersonItem(string id, string targetTableName)
+        public PersonItem(string id, string targetTableName) : base(id, targetTableName)
         {
             if (id == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(id));
             }
             if (targetTableName == null)
             {
-                throw new NullReferenceException(nameof(ID));
+                throw new ArgumentNullException(nameof(targetTableName));
             }
 
             Logger.Trace($"PersonItem() angelegt");
-
-            ID = id;
-            TargetTableName = targetTableName;
         }
 
         // --- Methods ---
@@ -82,28 +79,16 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the basic information of the person item from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
-        public override int RetrieveBasicInformation()
+        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            if (String.IsNullOrEmpty(ID))
-            {
-                throw new NullReferenceException(nameof(ID));
-            }
-            if (String.IsNullOrEmpty(BaseTableName))
-            {
-                throw new NullReferenceException(nameof(BaseTableName));
-            }
-            if (String.IsNullOrEmpty(TargetTableName))
-            {
-                throw new NullReferenceException(nameof(TargetTableName));
-            }
-
             Reader.Query = $"SELECT ID, PersonID, Role, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID=\"{ID}\"";
 
-            if (1 == Reader.Retrieve())
+            if (Reader.Retrieve(true) == 1)
             {
                 DataRow row = Reader.Table.Rows[0];
 
@@ -112,7 +97,7 @@ namespace EntertainmentDB.Data
                 {
                     Person = new Person();
                     Person.ID = row["PersonID"].ToString();
-                    Person.RetrieveBasicInformation();
+                    Person.Retrieve(retrieveBasicInfoOnly);
                 }
                 Role = row["Role"].ToString();
                 Details = row["Details"].ToString();
@@ -120,7 +105,7 @@ namespace EntertainmentDB.Data
                 {
                     Status = new Status();
                     Status.ID = row["StatusID"].ToString();
-                    Status.RetrieveBasicInformation();
+                    Status.Retrieve(retrieveBasicInfoOnly);
                 }
                 LastUpdated = row["LastUpdated"].ToString();
 
@@ -158,7 +143,7 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
-                throw new NullReferenceException(nameof(reader));
+                throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
@@ -186,7 +171,7 @@ namespace EntertainmentDB.Data
 
             List<PersonItem> list = new List<PersonItem>();
 
-            if (reader.Retrieve() > 0)
+            if (reader.Retrieve(true) > 0)
             {
                 list.Capacity = reader.Table.Rows.Count;
 
@@ -197,13 +182,9 @@ namespace EntertainmentDB.Data
                     item.TargetTableName = targetTableName;
 
                     item.ID = row["ID"].ToString();
-                    item.RetrieveBasicInformation();
+                    item.Retrieve(false);
                     list.Add(item);
                 }
-            }
-            else
-            {
-                // nothing to do
             }
 
             return list;
