@@ -2717,45 +2717,47 @@ namespace WikiPageCreator.Export.Create
 
                 Logger.Trace($"Anzahl Awards:  '{Movie.Awards.Count}'");
 
-                string[] data = new string[4];
+                string[] data = new string[5];
                 string[] path = { targetLanguageCode, "info" };
-                string[] dataPersons = new string[4];
+                string[] pathDate = { targetLanguageCode, "date" };
+                string[] dataPersons = new string[5];
                 string[] pathPersons = { targetLanguageCode, "biography" };
 
                 for (int i = 0; i < Movie.Awards.Count; i++)
                 {
                     data[0] = $"{Formatter.AsInternalLink(path, Movie.Awards[i].Award.Name, Movie.Awards[i].Award.Name)}";
-                    data[1] = $"{Movie.Awards[i].Category}";
+                    data[1] = $"{Formatter.AsInternalLink(pathDate, Movie.Awards[i].Date, Movie.Awards[i].Date)}";
+                    data[2] = $"{Movie.Awards[i].Category}";
                     if (targetLanguageCode.Equals("en"))
                     {
                         if (Movie.Awards[i].Winner.Equals("1"))
                         {
-                            data[2] = "Winner";
+                            data[3] = "Winner";
                         }
                         else
                         {
-                            data[2] = "Nominee";
+                            data[3] = "Nominee";
                         }
                     }
                     else // incl. case "de"
                     {
                         if (Movie.Awards[i].Winner.Equals("1"))
                         {
-                            data[2] = "Gewinner";
+                            data[3] = "Gewinner";
                         }
                         else
                         {
-                            data[2] = "Nominierter";
+                            data[3] = "Nominierter";
                         }
 
                     }
                     if (!String.IsNullOrEmpty(Movie.Awards[i].Details))
                     {
-                        data[3] = $"{Movie.Awards[i].Details}";
+                        data[4] = $"{Movie.Awards[i].Details}";
                     }
                     else
                     {
-                        data[3] = " ";
+                        data[4] = " ";
                     }
                     Content.Add(Formatter.AsTableRow(data));
 
@@ -2764,35 +2766,36 @@ namespace WikiPageCreator.Export.Create
                         for (int j = 0; j < Movie.Awards[i].Persons.Count; j++)
                         {
                             dataPersons[0] = Formatter.CellSpanVertically();
+                            dataPersons[1] = Formatter.CellSpanVertically();
 
                             if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.Name) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Person.NameAddOn))
                             {
-                                dataPersons[1] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name} {Movie.Awards[i].Persons[j].Person.NameAddOn}", $"{Movie.Awards[i].Persons[j].Person.Name}");
+                                dataPersons[2] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name} {Movie.Awards[i].Persons[j].Person.NameAddOn}", $"{Movie.Awards[i].Persons[j].Person.Name}");
                             }
                             else
                             {
-                                dataPersons[1] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name}", $"{Movie.Awards[i].Persons[j].Person.Name}");
+                                dataPersons[2] = Formatter.AsInternalLink(pathPersons, $"{Movie.Awards[i].Persons[j].Person.Name}", $"{Movie.Awards[i].Persons[j].Person.Name}");
                             }
 
                             if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role) && !String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
                             {
-                                dataPersons[1] = dataPersons[1] + $" ({Movie.Awards[i].Persons[j].Role}) {Movie.Awards[i].Persons[j].Details}";
+                                dataPersons[2] = dataPersons[2] + $" ({Movie.Awards[i].Persons[j].Role}) {Movie.Awards[i].Persons[j].Details}";
                             }
                             else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Role))
                             {
-                                dataPersons[1] = dataPersons[1] + $" ({Movie.Awards[i].Persons[j].Role})";
+                                dataPersons[2] = dataPersons[2] + $" ({Movie.Awards[i].Persons[j].Role})";
                             }
                             else if (!String.IsNullOrEmpty(Movie.Awards[i].Persons[j].Details))
                             {
-                                dataPersons[1] = dataPersons[1] + $" {Movie.Awards[i].Persons[j].Details}";
+                                dataPersons[2] = dataPersons[2] + $" {Movie.Awards[i].Persons[j].Details}";
                             }
                             else
                             {
                                 // nothing to do
                             }
 
-                            dataPersons[2] = " ";
                             dataPersons[3] = " ";
+                            dataPersons[4] = " ";
                             Content.Add(Formatter.AsTableRow(dataPersons));
                         }
                     }
