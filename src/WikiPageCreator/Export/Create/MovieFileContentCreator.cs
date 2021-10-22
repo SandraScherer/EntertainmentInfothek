@@ -1940,7 +1940,6 @@ namespace WikiPageCreator.Export.Create
                     }
 
                     Content.Add(Formatter.AsImageBox(Formatter.AsImage(path, images[i].Image.FileName, 200, text)));
-                    Content.Add("");
                 }
 
                 Content.Add("");

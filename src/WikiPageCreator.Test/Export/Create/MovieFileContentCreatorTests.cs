@@ -1167,27 +1167,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
@@ -1230,27 +1221,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
@@ -1450,27 +1432,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
@@ -3047,27 +3020,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
@@ -3084,27 +3048,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
@@ -3223,27 +3178,18 @@ namespace WikiPageCreator.Export.Create.Tests
             {
                 case "en":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type EnglishTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type EnglishTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type EnglishTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 case "de":
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
                 default:
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName X?200|Type GermanTitle X \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Y?200|Type GermanTitle Y \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     content.Add($"[{{{{cinema_and_television_movie:Image FileName Z?200|Type GermanTitle Z \\\\ ({Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, {Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, {Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})}}}}]");
-                    content.Add("");
                     break;
             }
             content.Add("");
