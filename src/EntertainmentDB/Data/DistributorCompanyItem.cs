@@ -38,7 +38,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The release date of the distributor company item.
         /// </summary>
-        public String ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
 
         /// <summary>
         /// The logger to log everything.
