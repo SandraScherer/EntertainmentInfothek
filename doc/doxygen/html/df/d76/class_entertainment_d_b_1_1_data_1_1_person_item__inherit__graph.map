@@ -1,0 +1,7 @@
+<map id="EntertainmentDB.Data.PersonItem" name="EntertainmentDB.Data.PersonItem">
+<area shape="rect" id="node1" title="Provides a person item." alt="" coords="5,229,228,256"/>
+<area shape="rect" id="node5" href="$d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html" title="Provides a cast person item." alt="" coords="25,304,208,345"/>
+<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="77,155,156,181"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="90,80,143,107"/>
+<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="68,5,165,32"/>
+</map>
