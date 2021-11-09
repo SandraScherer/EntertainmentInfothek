@@ -23,6 +23,9 @@ using System.Text;
 
 namespace EntertainmentDB.Data
 {
+    /// <summary>
+    /// Provides a location item.
+    /// </summary>
     public class LocationItem : EntryItem
     {
         // --- Properties ---

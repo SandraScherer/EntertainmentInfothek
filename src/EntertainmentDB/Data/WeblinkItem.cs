@@ -23,6 +23,9 @@ using System.Text;
 
 namespace EntertainmentDB.Data
 {
+    /// <summary>
+    /// Provides a weblink item.
+    /// </summary>
     public class WeblinkItem : EntryItem
     {
         // --- Properties ---
