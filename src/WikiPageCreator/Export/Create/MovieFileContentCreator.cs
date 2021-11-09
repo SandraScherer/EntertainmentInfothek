@@ -1728,7 +1728,7 @@ namespace WikiPageCreator.Export.Create
         /// Creates a formatted text section of the movie page.
         /// </summary>
         /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="images">The list of texts for the section.</param>
+        /// <param name="texts">The list of texts for the section.</param>
         private void CreateTextItemSection(string targetLanguageCode, List<TextItem> texts)
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
