@@ -100,7 +100,6 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, FirstName, LastName, NameAddOn, BirthName, DateOfBirth, DateOfDeath, Details, StatusID, LastUpdated " +
