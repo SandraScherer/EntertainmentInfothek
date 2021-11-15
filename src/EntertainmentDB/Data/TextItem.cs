@@ -69,7 +69,6 @@ namespace EntertainmentDB.Data
             Logger.Trace($"TextItem() angelegt");
         }
 
-
         // --- Methods ---
 
         /// <summary>
@@ -77,7 +76,6 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the id, base table name or target table name is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, TextID, Details, StatusID, LastUpdated " +
@@ -130,9 +128,8 @@ namespace EntertainmentDB.Data
         /// <param name="baseTableID">The base table id of the text item.</param>
         /// <param name="targetTableName">The target table name of the text item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
-        /// <returns></returns>
-        /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
-        /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
+        /// <returns>The list of text items.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, base table name, base table id, target table name or order is null.</exception>
         public static List<TextItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)

@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data
         /// <param name="targetTableName">The target table name of the award item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of award items.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given base table name, base table id, target table name or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, base table name, base table id, target table name or order is null.</exception>
         public static List<AwardItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
