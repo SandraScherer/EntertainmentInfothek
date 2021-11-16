@@ -40,7 +40,7 @@
 <area shape="rect" id="node27" href="$d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html" title="Provides an image item." alt="" coords="807,583,1023,610"/>
 <area shape="rect" id="node28" href="$dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html" title="Provides a laboratory item." alt="" coords="793,634,1036,661"/>
 <area shape="rect" id="node29" href="$d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html" title="Provides a language item." alt="" coords="796,685,1033,711"/>
-<area shape="rect" id="node30" href="$d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title=" " alt="" coords="799,735,1030,762"/>
+<area shape="rect" id="node30" href="$d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title="Provides a location item." alt="" coords="799,735,1030,762"/>
 <area shape="rect" id="node31" href="$d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html" title="Provides a negative format item." alt="" coords="812,787,1017,828"/>
 <area shape="rect" id="node32" href="$dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html" title="Provides a person item." alt="" coords="803,853,1026,879"/>
 <area shape="rect" id="node34" href="$d2/d4a/class_entertainment_d_b_1_1_data_1_1_printed_film_format_item.html" title="Provides a printed film format item." alt="" coords="816,904,1013,945"/>
@@ -48,7 +48,7 @@
 <area shape="rect" id="node36" href="$d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html" title="Provides a sound mix item." alt="" coords="818,1021,1011,1063"/>
 <area shape="rect" id="node37" href="$dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html" title="Provides a text item." alt="" coords="811,1087,1018,1114"/>
 <area shape="rect" id="node38" href="$d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html" title="Provides a time span item." alt="" coords="796,1138,1033,1165"/>
-<area shape="rect" id="node39" href="$d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title=" " alt="" coords="801,1189,1029,1215"/>
+<area shape="rect" id="node39" href="$d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title="Provides a weblink item." alt="" coords="801,1189,1029,1215"/>
 <area shape="rect" id="node23" href="$d3/deb/class_entertainment_d_b_1_1_data_1_1_distributor_company_item.html" title="Provides a distributor company item." alt="" coords="1089,357,1304,399"/>
 <area shape="rect" id="node33" href="$d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html" title="Provides a cast person item." alt="" coords="1105,845,1288,887"/>
 </map>

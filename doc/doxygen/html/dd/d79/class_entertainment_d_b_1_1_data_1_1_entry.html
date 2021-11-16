@@ -121,7 +121,7 @@ Inheritance diagram for EntertainmentDB.Data.Entry:</div>
 <area shape="rect" href="../../d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html" title="Provides an image item." alt="" coords="705,559,921,586"/>
 <area shape="rect" href="../../dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html" title="Provides a laboratory item." alt="" coords="692,610,935,637"/>
 <area shape="rect" href="../../d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html" title="Provides a language item." alt="" coords="695,661,932,687"/>
-<area shape="rect" href="../../d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title=" " alt="" coords="698,711,929,738"/>
+<area shape="rect" href="../../d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title="Provides a location item." alt="" coords="698,711,929,738"/>
 <area shape="rect" href="../../d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html" title="Provides a negative format item." alt="" coords="711,763,916,804"/>
 <area shape="rect" href="../../dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html" title="Provides a person item." alt="" coords="702,829,925,855"/>
 <area shape="rect" href="../../d2/d4a/class_entertainment_d_b_1_1_data_1_1_printed_film_format_item.html" title="Provides a printed film format item." alt="" coords="715,880,912,921"/>
@@ -129,7 +129,7 @@ Inheritance diagram for EntertainmentDB.Data.Entry:</div>
 <area shape="rect" href="../../d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html" title="Provides a sound mix item." alt="" coords="717,997,910,1039"/>
 <area shape="rect" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html" title="Provides a text item." alt="" coords="710,1063,917,1090"/>
 <area shape="rect" href="../../d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html" title="Provides a time span item." alt="" coords="695,1114,932,1141"/>
-<area shape="rect" href="../../d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title=" " alt="" coords="699,1165,927,1191"/>
+<area shape="rect" href="../../d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title="Provides a weblink item." alt="" coords="699,1165,927,1191"/>
 <area shape="rect" href="../../d3/deb/class_entertainment_d_b_1_1_data_1_1_distributor_company_item.html" title="Provides a distributor company item." alt="" coords="988,333,1203,375"/>
 <area shape="rect" href="../../d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html" title="Provides a cast person item." alt="" coords="1004,821,1187,863"/>
 </map>
@@ -237,7 +237,13 @@ Static Private Attributes</h2></td></tr>
 <p>Initializes an entry with the given id string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">id</td><td>The id of the entry.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given id is null.</td></tr>
   </table>
   </dd>
 </dl>

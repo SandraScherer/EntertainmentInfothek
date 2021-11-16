@@ -96,7 +96,7 @@ Inheritance diagram for EntertainmentDB.Data.EntryItem:</div>
 <area shape="rect" href="../../d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html" title="Provides an image item." alt="" coords="531,559,747,586"/>
 <area shape="rect" href="../../dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html" title="Provides a laboratory item." alt="" coords="517,610,760,637"/>
 <area shape="rect" href="../../d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html" title="Provides a language item." alt="" coords="520,661,757,687"/>
-<area shape="rect" href="../../d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title=" " alt="" coords="523,711,754,738"/>
+<area shape="rect" href="../../d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title="Provides a location item." alt="" coords="523,711,754,738"/>
 <area shape="rect" href="../../d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html" title="Provides a negative format item." alt="" coords="536,763,741,804"/>
 <area shape="rect" href="../../dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html" title="Provides a person item." alt="" coords="527,829,750,855"/>
 <area shape="rect" href="../../d2/d4a/class_entertainment_d_b_1_1_data_1_1_printed_film_format_item.html" title="Provides a printed film format item." alt="" coords="540,880,737,921"/>
@@ -104,7 +104,7 @@ Inheritance diagram for EntertainmentDB.Data.EntryItem:</div>
 <area shape="rect" href="../../d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html" title="Provides a sound mix item." alt="" coords="542,997,735,1039"/>
 <area shape="rect" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html" title="Provides a text item." alt="" coords="535,1063,742,1090"/>
 <area shape="rect" href="../../d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html" title="Provides a time span item." alt="" coords="520,1114,757,1141"/>
-<area shape="rect" href="../../d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title=" " alt="" coords="525,1165,753,1191"/>
+<area shape="rect" href="../../d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title="Provides a weblink item." alt="" coords="525,1165,753,1191"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="151,585,204,611"/>
 <area shape="rect" href="../../df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="5,585,103,611"/>
 <area shape="rect" href="../../d3/deb/class_entertainment_d_b_1_1_data_1_1_distributor_company_item.html" title="Provides a distributor company item." alt="" coords="813,333,1028,375"/>
@@ -239,7 +239,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Initializes an entry item with the given id string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">id</td><td>The id of the entry item.</td></tr>
+    <tr><td class="paramname">targetTableName</td><td>The target table name of the entry item.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given id or targetTableName is null.</td></tr>
   </table>
   </dd>
 </dl>

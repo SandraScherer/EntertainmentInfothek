@@ -301,12 +301,6 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if data record was retrieved; 0 if no data record matched the id.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">NullReferenceException</td><td>Thrown when the id, base table name or target table name is null.</td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p>Implements <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8">EntertainmentDB.Data.Entry</a>.</p>
 
@@ -377,11 +371,10 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The list of company items.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">NullReferenceException</td><td>Thrown when the given reader is null.</td></tr>
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given base table name, base table id, target table name or order is null.</td></tr>
+    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given reader, base table name, base table id, target table name or order is null.</td></tr>
   </table>
   </dd>
 </dl>
