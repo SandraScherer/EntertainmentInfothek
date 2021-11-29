@@ -102,6 +102,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Retrieves the information of the status from the database.
         /// </summary>
+        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>The number of data records retrieved.</returns>
         public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
@@ -122,7 +123,6 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public virtual int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +

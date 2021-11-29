@@ -421,7 +421,6 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the id is null.</exception>
         public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, LogoID, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
@@ -491,7 +490,6 @@ namespace EntertainmentDB.Data
         /// Retrieves the additional information of the movie from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        /// <exception cref="NullReferenceException">Thrown when the reader or id is null.</exception>
         public override int RetrieveAdditionalInformation()
         {
             int count = 0;
@@ -689,8 +687,7 @@ namespace EntertainmentDB.Data
         /// <param name="reader">The reader to be used to retrieve the data records.</param>
         /// <param name="status">The status of the movies.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
-        /// <returns></returns>
-        /// <exception cref="NullReferenceException">Thrown when the given reader is null.</exception>
+        /// <returns>The list of movies.</returns>
         /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
         public static List<Movie> RetrieveList(DBReader reader, string status, string order = "ID")
         {

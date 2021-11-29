@@ -3,13 +3,13 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>0.0.1</Version>
-    <Authors>Sandra Scherer</Authors>
+		<Version>1.0.1</Version>
+		<Authors>Sandra Scherer</Authors>
     <Copyright>(c) 2020 Sandra Scherer</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.7.11" />
+    <PackageReference Include="NLog" Version="4.7.12" />
   </ItemGroup>
 
   <ItemGroup>

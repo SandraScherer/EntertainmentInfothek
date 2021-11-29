@@ -55,7 +55,9 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry item with the given id string.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the entry item.</param>
+        /// <param name="targetTableName">The target table name of the entry item.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given id or targetTableName is null.</exception>
         protected EntryItem(string id, string targetTableName) : base(id)
         {
             if (id == null)

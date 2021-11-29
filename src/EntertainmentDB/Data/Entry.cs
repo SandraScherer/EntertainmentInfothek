@@ -71,7 +71,8 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry with the given id string.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the entry.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         protected Entry(string id)
         {
             if (id == null)
