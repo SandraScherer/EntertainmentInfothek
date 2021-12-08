@@ -595,6 +595,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Awards);
             Assert.IsNull(entry.Weblinks);
         }
+
         [TestMethod()]
         public void RetrieveAdditionalInformationTest_withValidID()
         {
@@ -1524,7 +1525,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<Movie> list = Data.Movie.RetrieveList(reader, "_xxx");
+            List<Movie> list = Movie.RetrieveList(reader, "_xxx");
 
             // Assert
             Assert.AreEqual(1, list.Count);

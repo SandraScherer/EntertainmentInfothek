@@ -4,5 +4,7 @@ var searchData=
   ['nameaddon_1',['NameAddOn',['../df/d8a/class_entertainment_d_b_1_1_data_1_1_company.html#ad6afbbfbf48796cbbe0d08104f738ef2',1,'EntertainmentDB.Data.Company.NameAddOn()'],['../d2/d0f/class_entertainment_d_b_1_1_data_1_1_person.html#a6e789b07baef4e86bceb7c5172ff311b',1,'EntertainmentDB.Data.Person.NameAddOn()']]],
   ['negativeformatitem_2',['NegativeFormatItem',['../d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html',1,'EntertainmentDB.Data.NegativeFormatItem'],['../d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html#ad3ae173fc072d6a4e83f66103dee1ae2',1,'EntertainmentDB.Data.NegativeFormatItem.NegativeFormatItem()'],['../d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html#a69b0db110d6703b9241f26575164c650',1,'EntertainmentDB.Data.NegativeFormatItem.NegativeFormatItem(string id, string targetTableName)']]],
   ['negativeformatitem_2ecs_3',['NegativeFormatItem.cs',['../d9/d39/_negative_format_item_8cs.html',1,'']]],
-  ['negativeformats_4',['NegativeFormats',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a80bef8909d5c9f5bd32cc1f35f11f732',1,'EntertainmentDB::Data::Movie']]]
+  ['negativeformats_4',['NegativeFormats',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a80bef8909d5c9f5bd32cc1f35f11f732',1,'EntertainmentDB::Data::Movie']]],
+  ['noofepisodes_5',['NoOfEpisodes',['../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a4eb33471f803b0716c40d256f4a0f2aa',1,'EntertainmentDB::Data::Series']]],
+  ['noofseasons_6',['NoOfSeasons',['../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a0254affc5784050b1196c007d3a6ae8c',1,'EntertainmentDB::Data::Series']]]
 ];

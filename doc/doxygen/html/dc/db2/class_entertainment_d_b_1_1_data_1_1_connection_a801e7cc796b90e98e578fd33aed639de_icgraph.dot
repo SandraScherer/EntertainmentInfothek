@@ -1,0 +1,10 @@
+digraph "EntertainmentDB.Data.Connection.Connection"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="EntertainmentDB.Data.Connection.\lConnection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Initializes a connection with an empty id string."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="EntertainmentDB.Data.Connection.\lRetrieveBasicInformation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html#a80fcc86d236307a860ab6a34f32fafa6",tooltip="Retrieves the basic information of the connection from the database."];
+}

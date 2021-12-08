@@ -6,5 +6,5 @@ var searchData=
   ['thanks_3',['Thanks',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ad4c62cae3a9e026b48e7a28cab05a1b5',1,'EntertainmentDB::Data::Movie']]],
   ['title_4',['Title',['../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html#a200e518b0b5c5bbe79cfdf36ec057373',1,'EntertainmentDB::Data::Connection']]],
   ['transportationdepartment_5',['TransportationDepartment',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a6b4f0d7b73ba004812462f2650e5f855',1,'EntertainmentDB::Data::Movie']]],
-  ['type_6',['Type',['../d0/dee/class_entertainment_d_b_1_1_data_1_1_image.html#a674daeacf66fe0c9041dc1c7a6c9be04',1,'EntertainmentDB.Data.Image.Type()'],['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#af16a6b28cdb5ccaadc87b5b2a509a5bb',1,'EntertainmentDB.Data.Movie.Type()']]]
+  ['type_6',['Type',['../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#af65ce89f33df3aabcd632362b58b14a0',1,'EntertainmentDB.Data.Article.Type()'],['../d0/dee/class_entertainment_d_b_1_1_data_1_1_image.html#a674daeacf66fe0c9041dc1c7a6c9be04',1,'EntertainmentDB.Data.Image.Type()']]]
 ];

@@ -1,0 +1,11 @@
+digraph "WikiPageCreator.Export.Format.DokuWikiFormatter.AsImage"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="WikiPageCreator.Export.Format.\lDokuWikiFormatter.AsImage",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Formats the given parameters as an image."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="WikiPageCreator.Export.Format.\lDokuWikiFormatter.AsImage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#ae1a0f04e244e46b170d03146e01c2fdb",tooltip="Formats the given parameters as an image."];
+  Node2 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

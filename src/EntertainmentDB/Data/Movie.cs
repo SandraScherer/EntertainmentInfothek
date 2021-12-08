@@ -26,34 +26,9 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a movie.
     /// </summary>
-    public class Movie : Entry
+    public class Movie : Article
     {
         // --- Properties ---
-
-        /// <summary>
-        /// The original title of the movie.
-        /// </summary>
-        public string OriginalTitle { get; set; }
-
-        /// <summary>
-        /// The english title of the movie.
-        /// </summary>
-        public string EnglishTitle { get; set; }
-
-        /// <summary>
-        /// The german title of the movie.
-        /// </summary>
-        public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The type of the movie.
-        /// </summary>
-        public Type Type { get; set; }
-
-        /// <summary>
-        /// The release date of the movie.
-        /// </summary>
-        public string ReleaseDate { get; set; }
 
         /// <summary>
         /// The logo of the movie.
@@ -84,11 +59,6 @@ namespace EntertainmentDB.Data
         /// The crew status of the entry.
         /// </summary>
         public Status CrewStatus { get; set; }
-
-        /// <summary>
-        /// The connection of the movie.
-        /// </summary>
-        public Connection Connection { get; set; }
 
         /// <summary>
         /// The list of genres of the movie.
