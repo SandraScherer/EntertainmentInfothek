@@ -394,6 +394,9 @@ doc/drivers
 # SonarQube project files
 .sonarqube/
 
+# VisualStudio Code files
+.vscode
+
 # My Stuff
 *.db
 *.zip

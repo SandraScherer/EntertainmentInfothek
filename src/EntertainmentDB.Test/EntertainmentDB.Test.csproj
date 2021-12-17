@@ -14,17 +14,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EntertainmentDB\EntertainmentDB.csproj" />
   </ItemGroup>
 
-	<Target Name="CopyAppConfig" AfterTargets="Build" DependsOnTargets="Build">
-		<CreateItem Include="$(OutputPath)$(AssemblyName).dll.config">
-			<Output TaskParameter="Include" ItemName="FilesToCopy" />
-		</CreateItem>
-		<Copy SourceFiles="@(FilesToCopy)" DestinationFiles="$(OutputPath)testhost.dll.config" />
-	</Target>
-	
+  <Target Name="CopyAppConfig" AfterTargets="Build" DependsOnTargets="Build">
+    <CreateItem Include="$(OutputPath)$(AssemblyName).dll.config">
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
+    </CreateItem>
+    <Copy SourceFiles="@(FilesToCopy)" DestinationFiles="$(OutputPath)testhost.dll.config" />
+  </Target>
+
 </Project>
