@@ -37,7 +37,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// The data table of the database reader.
         /// </summary>
-        public DataTable Table { get; protected set; } = new DataTable();
+        public virtual DataTable Table { get; protected set; } = new DataTable();
 
         /// <summary>
         /// The logger to log everything.

@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
             // Arrange
             Mock<DBReader> mockDBReader = new Mock<DBReader>();
 
-           // DataTable aufbauen...
+            // DataTable aufbauen...
             DataTable table = new DataTable();
             DataColumn column;
             DataRow row;
@@ -120,7 +120,7 @@ namespace EntertainmentDB.Data.Tests
 
             // Setup Mock
             mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Table).Returns(table);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
 
             Status entry = new Status("_xxx");
 
@@ -142,6 +142,59 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
         {
             // Arrange
+            // Arrange
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // DataTable aufbauen...
+            DataTable table = new DataTable();
+            DataColumn column;
+            DataRow row;
+
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "ID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "EnglishTitle";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "GermanTitle";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Details";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "StatusID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "LastUpdated";
+            table.Columns.Add(column);
+
+            // Create new DataRow object and add to DataTable
+            row = table.NewRow();
+            row["ID"] = "_xxx";
+            row["EnglishTitle"] = "Status EnglishTitle X";
+            row["GermanTitle"] = "Status GermanTitle X";
+            row["Details"] = "Status Details X";
+            row["StatusID"] = "";
+            row["LastUpdated"] = "Status LastUpdated X";
+            table.Rows.Add(row);
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
             Status entry = new Status("_xxx");
 
             // Act
@@ -162,6 +215,59 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
+            // Arrange
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // DataTable aufbauen...
+            DataTable table = new DataTable();
+            DataColumn column;
+            DataRow row;
+
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "ID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "EnglishTitle";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "GermanTitle";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Details";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "StatusID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "LastUpdated";
+            table.Columns.Add(column);
+
+            // Create new DataRow object and add to DataTable
+            row = table.NewRow();
+            row["ID"] = "_xxx";
+            row["EnglishTitle"] = "Status EnglishTitle X";
+            row["GermanTitle"] = "Status GermanTitle X";
+            row["Details"] = "Status Details X";
+            row["StatusID"] = "";
+            row["LastUpdated"] = "Status LastUpdated X";
+            table.Rows.Add(row);
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
             Status entry = new Status("_aaa");
 
             // Act
