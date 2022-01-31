@@ -28,6 +28,11 @@ namespace EntertainmentDB.Data.Tests
     [TestClass()]
     public class StatusTests
     {
+        // TODO: delete tests of 'internal' methods RetrieveBasicInformation() and RetrieveAdditionalInformation()
+
+        const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
+
         [TestMethod()]
         public void StatusTest()
         {
@@ -39,93 +44,64 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.Reader);
 
+            Assert.IsNull(entry.EnglishTitle);
+            Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.StatusString);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void StatusTest_withoutID()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void StatusTest_withID()
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void StatusTest_withID(string value)
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(value);
 
             // Act
             // Assert
-            Assert.IsNotNull(entry);
-            Assert.IsNotNull(entry.Reader);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
+            Assert.AreEqual(value, entry.ID);
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void StatusTest_withIDnull()
+        {
+            // Arrange, Act, Assert
+            Status entry = new Status(null);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
         {
             // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
             Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "EnglishTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "GermanTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["EnglishTitle"] = "Status EnglishTitle X";
-            row["GermanTitle"] = "Status GermanTitle X";
-            row["Details"] = "Status Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Status LastUpdated X";
-            table.Rows.Add(row);
 
             // Setup Mock
             mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
             mockDBReader.SetupGet(x => x.Table).Returns(table);
 
-            Status entry = new Status("_xxx");
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.RetrieveBasicInformation(true);
+            int count = entry.RetrieveBasicInformation(value);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -138,145 +114,29 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
         {
             // Arrange
-            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
             Mock<DBReader> mockDBReader = new Mock<DBReader>();
 
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "EnglishTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "GermanTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["EnglishTitle"] = "Status EnglishTitle X";
-            row["GermanTitle"] = "Status GermanTitle X";
-            row["Details"] = "Status Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Status LastUpdated X";
-            table.Rows.Add(row);
-
             // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
 
-            Status entry = new Status("_xxx");
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.RetrieveBasicInformation(false);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
-            Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
-            Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
-            Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
-        {
-            // Arrange
-            // Arrange
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "EnglishTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "GermanTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["EnglishTitle"] = "Status EnglishTitle X";
-            row["GermanTitle"] = "Status GermanTitle X";
-            row["Details"] = "Status Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Status LastUpdated X";
-            table.Rows.Add(row);
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
-            Status entry = new Status("_aaa");
-
-            // Act
-            int count = entry.RetrieveBasicInformation(true);
+            int count = entry.RetrieveBasicInformation(value);
 
             // Assert
             Assert.AreEqual(0, count);
 
-            Assert.AreEqual("_aaa", entry.ID);
+            Assert.AreEqual(INVALID_ID, entry.ID);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
@@ -284,31 +144,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
         {
             // Arrange
-            Status entry = new Status("_aaa");
-
-            // Act
-            int count = entry.RetrieveBasicInformation(false);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withValidID()
-        {
-            // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(value);
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -317,24 +159,22 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
         }
 
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withInvalidID()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID(bool value)
         {
             // Arrange
-            Status entry = new Status("_aaa");
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
 
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
 
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withValidID_BasicInfoOnly()
-        {
-            // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(true);
@@ -350,39 +190,29 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveTest_withValidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID(bool value)
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(false);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
-            Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
-            Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
-            Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_BasicInfoOnly()
-        {
-            // Arrange
-            Status entry = new Status("_aaa");
-
-            // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(0, count);
 
-            Assert.AreEqual("_aaa", entry.ID);
+            Assert.AreEqual(INVALID_ID, entry.ID);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
@@ -390,24 +220,55 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_AdditionalInfo()
+        private DataTable CreateDataTableWithCompleteData()
         {
-            // Arrange
-            Status entry = new Status("_aaa");
+            // DataTable aufbauen...
+            DataTable table = new DataTable();
+            DataColumn column;
+            DataRow row;
 
-            // Act
-            int count = entry.Retrieve(false);
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "ID";
+            table.Columns.Add(column);
 
-            // Assert
-            Assert.AreEqual(0, count);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "EnglishTitle";
+            table.Columns.Add(column);
 
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "GermanTitle";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Details";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "StatusID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "LastUpdated";
+            table.Columns.Add(column);
+
+            // Create new DataRow object and add to DataTable
+            row = table.NewRow();
+            row["ID"] = "_xxx";
+            row["EnglishTitle"] = "Status EnglishTitle X";
+            row["GermanTitle"] = "Status GermanTitle X";
+            row["Details"] = "Status Details X";
+            row["StatusID"] = "";
+            row["LastUpdated"] = "Status LastUpdated X";
+            table.Rows.Add(row);
+
+            return table;
         }
     }
 }

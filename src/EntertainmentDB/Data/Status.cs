@@ -28,13 +28,15 @@ namespace EntertainmentDB.Data
     /// </summary>
     public class Status : IDBReadable
     {
+        // TODO: make 'internal' methods RetrieveBasicInformation() and RetrieveAdditionalInformation() protected
+
         // --- Properties ---
 
         /// <summary>
         /// The database reader to be used to read the status information from the database.
         /// </summary>
         // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public DBReader Reader { get; set; } = new SQLiteReader();
 
         /// <summary>
         /// The id of the status.
