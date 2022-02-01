@@ -26,8 +26,12 @@ namespace EntertainmentDB.Data.Tests
     [TestClass()]
     public class StatusTests_withDB
     {
+        const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
+
+        // obsolete
         [TestMethod()]
-        public void StatusTest()
+        public void StatusTest_checkEntry()
         {
             // Arrange
             Status entry = new Status();
@@ -35,40 +39,121 @@ namespace EntertainmentDB.Data.Tests
             // Act
             // Assert
             Assert.IsNotNull(entry);
-            Assert.IsNotNull(entry.Reader);
-
-            Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void StatusTest_withID()
+        // obsolete
+       [TestMethod()]
+        public void StatusTest_checkReader()
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status();
 
             // Act
             // Assert
-            Assert.IsNotNull(entry);
             Assert.IsNotNull(entry.Reader);
+        }
 
-            Assert.AreEqual("_xxx", entry.ID);
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_checkEnglishTitle()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.EnglishTitle);
+        }
+
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_checkGermanTitle()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.GermanTitle);
+        }
+
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_checkDetails()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.Details);
+        }
+
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_checkStatus()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.StatusString);
+        }
+
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_checkLastUpdated()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // obsolete
+        [TestMethod()]
+        public void StatusTest_withoutID_checkID()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
+            Assert.AreEqual("", entry.ID);
+        }
+
+        // obsolete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void StatusTest_withID_checkID(string value)
+        {
+            // Arrange
+            Status entry = new Status(value);
+
+            // Act
+            // Assert
+            Assert.AreEqual(value, entry.ID);
+        }
+
+        // obsolete
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void StatusTest_withIDnull_checkException()
+        {
+            // Arrange, Act, Assert
+            Status entry = new Status(null);
+        }
+
+        // TODO: delete
         [TestMethod()]
         public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(VALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(true);
@@ -84,11 +169,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
+        // TODO: delete
         [TestMethod()]
         public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(VALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(false);
@@ -104,11 +190,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
+        // TODO: delete
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
         {
             // Arrange
-            Status entry = new Status("_aaa");
+            Status entry = new Status(INVALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(true);
@@ -116,7 +203,7 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(0, count);
 
-            Assert.AreEqual("_aaa", entry.ID);
+            Assert.AreEqual(INVALID_ID, entry.ID);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
@@ -124,11 +211,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // TODO: delete
         [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
         {
             // Arrange
-            Status entry = new Status("_aaa");
+            Status entry = new Status(INVALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(false);
@@ -136,7 +224,7 @@ namespace EntertainmentDB.Data.Tests
             // Assert
             Assert.AreEqual(0, count);
 
-            Assert.AreEqual("_aaa", entry.ID);
+            Assert.AreEqual(INVALID_ID, entry.ID);
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
@@ -144,11 +232,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withValidID()
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(value);
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -157,96 +248,213 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
         }
 
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withInvalidID()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            Status entry = new Status("_aaa");
+            Status entry = new Status(VALID_ID);
 
             // Act
-            int count = entry.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withValidID_BasicInfoOnly()
-        {
-            // Arrange
-            Status entry = new Status("_xxx");
-
-            // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(1, count);
+        }
 
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkID(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("_xxx", entry.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkEnglishTitle(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkGermanTitle(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkDetails(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Status Details X", entry.Details);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkStatus(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("", entry.StatusString);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            Status entry = new Status(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveTest_withValidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            Status entry = new Status("_xxx");
+            Status entry = new Status(INVALID_ID);
 
             // Act
-            int count = entry.Retrieve(false);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
-            Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
-            Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
-            Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_BasicInfoOnly()
-        {
-            // Arrange
-            Status entry = new Status("_aaa");
-
-            // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(0, count);
-
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            Status entry = new Status("_aaa");
+            Status entry = new Status(INVALID_ID);
 
             // Act
-            int count = entry.Retrieve(false);
+            int count = entry.Retrieve(value);
 
             // Assert
-            Assert.AreEqual(0, count);
+            Assert.AreEqual(INVALID_ID, entry.ID);
+        }
 
-            Assert.AreEqual("_aaa", entry.ID);
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkEnglishTitle(bool value)
+        {
+            // Arrange
+            Status entry = new Status(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.EnglishTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkGermanTitle(bool value)
+        {
+            // Arrange
+            Status entry = new Status(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.GermanTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkDetails(bool value)
+        {
+            // Arrange
+            Status entry = new Status(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Details);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkStatus(bool value)
+        {
+            // Arrange
+            Status entry = new Status(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.StatusString);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            Status entry = new Status(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.LastUpdated);
         }
     }
