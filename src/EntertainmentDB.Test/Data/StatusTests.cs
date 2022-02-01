@@ -158,7 +158,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -182,7 +182,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("_xxx", entry.ID);
@@ -206,7 +206,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
@@ -230,7 +230,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
@@ -254,7 +254,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("Status Details X", entry.Details);
@@ -278,7 +278,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("", entry.StatusString);
@@ -302,7 +302,7 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
@@ -466,7 +466,7 @@ namespace EntertainmentDB.Data.Tests
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.StatusString);
+            Assert.IsNull(entry.LastUpdated);
         }
 
         private DataTable CreateDataTableWithCompleteData()
