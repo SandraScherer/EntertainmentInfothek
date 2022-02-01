@@ -28,13 +28,11 @@ namespace EntertainmentDB.Data.Tests
     [TestClass()]
     public class StatusTests
     {
-        // TODO: delete tests of 'internal' methods RetrieveBasicInformation() and RetrieveAdditionalInformation()
-
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
         [TestMethod()]
-        public void StatusTest()
+        public void StatusTest_checkEntry()
         {
             // Arrange
             Status entry = new Status();
@@ -42,17 +40,76 @@ namespace EntertainmentDB.Data.Tests
             // Act
             // Assert
             Assert.IsNotNull(entry);
-            Assert.IsNotNull(entry.Reader);
+        }
 
+        [TestMethod()]
+        public void StatusTest_checkReader()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
+            Assert.IsNotNull(entry.Reader);
+        }
+
+        [TestMethod()]
+        public void StatusTest_checkEnglishTitle()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.EnglishTitle);
+        }
+
+        [TestMethod()]
+        public void StatusTest_checkGermanTitle()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.GermanTitle);
+        }
+
+        [TestMethod()]
+        public void StatusTest_checkDetails()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.Details);
+        }
+
+        [TestMethod()]
+        public void StatusTest_checkStatus()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.StatusString);
+        }
+
+        [TestMethod()]
+        public void StatusTest_checkLastUpdated()
+        {
+            // Arrange
+            Status entry = new Status();
+
+            // Act
+            // Assert
             Assert.IsNull(entry.LastUpdated);
         }
 
         [TestMethod()]
-        public void StatusTest_withoutID()
+        public void StatusTest_withoutID_checkID()
         {
             // Arrange
             Status entry = new Status();
@@ -65,7 +122,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        public void StatusTest_withID(string value)
+        public void StatusTest_withID_checkID(string value)
         {
             // Arrange
             Status entry = new Status(value);
@@ -77,7 +134,7 @@ namespace EntertainmentDB.Data.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void StatusTest_withIDnull()
+        public void StatusTest_withIDnull_checkException()
         {
             // Arrange, Act, Assert
             Status entry = new Status(null);
@@ -86,83 +143,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveBasicInformationTest_withValidID(bool value)
-        {
-            // Arrange
-            DataTable table = CreateDataTableWithCompleteData();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
-            Status entry = new Status(VALID_ID);
-            entry.Reader = mockDBReader.Object;
-
-            // Act
-            int count = entry.RetrieveBasicInformation(value);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
-            Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
-            Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
-            Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void RetrieveBasicInformationTest_withInvalidID(bool value)
-        {
-            // Arrange
-            DataTable table = CreateDataTableWithCompleteData();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
-            Status entry = new Status(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
-
-            // Act
-            int count = entry.RetrieveBasicInformation(value);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual(INVALID_ID, entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(VALID_ID)]
-        [DataRow(INVALID_ID)]
-        public void RetrieveAdditionalInformationTest(string value)
-        {
-            // Arrange
-            Status entry = new Status(value);
-
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void RetrieveTest_withValidID(bool value)
+        public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
             DataTable table = CreateDataTableWithCompleteData();
@@ -181,19 +162,156 @@ namespace EntertainmentDB.Data.Tests
 
             // Assert
             Assert.AreEqual(1, count);
+        }
 
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkID(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("_xxx", entry.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkEnglishTitle(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkGermanTitle(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkDetails(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("Status Details X", entry.Details);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkStatus(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("", entry.StatusString);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Status entry = new Status(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(true);
+
+            // Assert
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveTest_withInvalidID(bool value)
+        public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
             DataTable table = CreateDataTableWithCompleteData();
@@ -211,13 +329,144 @@ namespace EntertainmentDB.Data.Tests
 
             // Assert
             Assert.AreEqual(0, count);
+        }
 
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkID(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual(INVALID_ID, entry.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkEnglishTitle(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.EnglishTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkGermanTitle(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.GermanTitle);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkDetails(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Details);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkStatus(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithCompleteData();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Status entry = new Status(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
+            Assert.IsNull(entry.StatusString);
         }
 
         private DataTable CreateDataTableWithCompleteData()
