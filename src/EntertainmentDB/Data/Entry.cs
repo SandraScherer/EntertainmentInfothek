@@ -32,7 +32,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The database reader to be used to read the entry information from the database.
         /// </summary>
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public DBReader Reader { get; set; } = new SQLiteReader();
 
         /// <summary>
         /// The id of the entry.

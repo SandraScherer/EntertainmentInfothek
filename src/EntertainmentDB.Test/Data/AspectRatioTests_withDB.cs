@@ -16,21 +16,20 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using EntertainmentDB.DBAccess.Read;
+using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class AspectRatioTests
+    public class AspectRatioTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_checkEntry()
         {
@@ -42,6 +41,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AspectRatioTest_checkReader()
         {
@@ -53,6 +53,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
         }
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_checkRatio()
         {
@@ -64,6 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Ratio);
         }
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_checkDetails()
         {
@@ -75,6 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
         }
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_checkStatus()
         {
@@ -86,6 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
         }
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_checkLastUpdated()
         {
@@ -97,6 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // obsolete
         [TestMethod()]
         public void AspectRatioTest_withoutID_checkID()
         {
@@ -108,6 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
         }
 
+        // obsolete
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
@@ -121,6 +127,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(value, entry.ID);
         }
 
+        // obsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioTest_withIDnull_checkException()
@@ -129,22 +136,109 @@ namespace EntertainmentDB.Data.Tests
             AspectRatio entry = new AspectRatio(null);
         }
 
+        // TODO: delete
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
+        {
+            // Arrange
+            AspectRatio entry = new AspectRatio(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        {
+            // Arrange
+            AspectRatio entry = new AspectRatio(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("AspectRatio Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
+        {
+            // Arrange
+            AspectRatio entry = new AspectRatio(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [TestMethod()]
+        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        {
+            // Arrange
+            AspectRatio entry = new AspectRatio(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(false);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
+        {
+            // Arrange
+            AspectRatio entry = new AspectRatio(value);
+
+            // Act
+            int count = entry.RetrieveAdditionalInformation();
+
+            // Assert
+            Assert.AreEqual(0, count);
+        }
+
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -159,16 +253,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -183,16 +268,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkRatio(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -207,16 +283,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -231,22 +298,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Status);
+            Assert.AreEqual("_xxx", entry.Status.ID);
         }
 
         [DataTestMethod()]
@@ -255,16 +313,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             AspectRatio entry = new AspectRatio(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -279,15 +328,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -302,15 +343,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -325,15 +358,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkRatio(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -348,15 +373,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -371,15 +388,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -394,66 +403,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             AspectRatio entry = new AspectRatio(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
             Assert.IsNull(entry.LastUpdated);
-        }
-
-        private DataTable CreateDataTableWithMissingData_StatusID()
-        {
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Ratio";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["Ratio"] = "AspectRatio Ratio X";
-            row["Details"] = "AspectRatio Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "AspectRatio LastUpdated X";
-            table.Rows.Add(row);
-
-            return table;
         }
     }
 }
