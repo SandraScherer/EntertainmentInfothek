@@ -16,9 +16,11 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EntertainmentDB.Data;
+using Moq;
+using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
@@ -26,8 +28,11 @@ namespace EntertainmentDB.Data.Tests
     [TestClass()]
     public class CameraTests
     {
+        const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
+
         [TestMethod()]
-        public void CameraTest()
+        public void CameraTest_checkEntry()
         {
             // Arrange
             Camera entry = new Camera();
@@ -35,219 +40,484 @@ namespace EntertainmentDB.Data.Tests
             // Act
             // Assert
             Assert.IsNotNull(entry);
-            Assert.IsNotNull(entry.Reader);
+        }
 
+        [TestMethod()]
+        public void CameraTest_checkReader()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNotNull(entry.Reader);
+        }
+
+        [TestMethod()]
+        public void CameraTest_checkName()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+              Assert.IsNull(entry.Name);
+        }
+
+        [TestMethod()]
+        public void CameraTest_checkLenses()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNull(entry.Lenses);
+        }
+
+        [TestMethod()]
+        public void CameraTest_checkDetails()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNull(entry.Details);
+        }
+
+        [TestMethod()]
+        public void CameraTest_checkStatus()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNull(entry.Status);
+        }
+
+        [TestMethod()]
+        public void CameraTest_checkLastUpdated()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        [TestMethod()]
+        public void CameraTest_withoutID_checkID()
+        {
+            // Arrange
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
             Assert.AreEqual("", entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lenses);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void CameraTest_withID()
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void CameraTest_withID_checkID(string value)
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            Camera entry = new Camera(value);
 
             // Act
             // Assert
-            Assert.IsNotNull(entry);
-            Assert.IsNotNull(entry.Reader);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lenses);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
+            Assert.AreEqual(value, entry.ID);
         }
 
         [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CameraTest_withIDnull_checkException()
         {
-            // Arrange
-            Camera entry = new Camera("_xxx");
-
-            // Act
-            int count = entry.RetrieveBasicInformation(true);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lenses X", entry.Lenses);
-            Assert.AreEqual("Camera Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
+            // Arrange, Act, Assert
+            Camera entry = new Camera(null);
         }
 
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            Camera entry = new Camera("_xxx");
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.RetrieveBasicInformation(false);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(1, count);
+        }
 
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkID(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("_xxx", entry.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkName(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Camera Name X", entry.Name);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkLenses(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Camera Lenses X", entry.Lenses);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkDetails(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Camera Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkStatus(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
+            Assert.IsNull(entry.Status);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Camera entry = new Camera(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            Camera entry = new Camera("_aaa");
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.RetrieveBasicInformation(true);
+            int count = entry.Retrieve(value);
 
             // Assert
             Assert.AreEqual(0, count);
+        }
 
-            Assert.AreEqual("_aaa", entry.ID);
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkID(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
+            Assert.AreEqual(INVALID_ID, entry.ID);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkName(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Name);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkLenses(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Lenses);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkDetails(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Details);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkStatus(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.Status);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
+
+            Camera entry = new Camera(INVALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
+        private DataTable CreateDataTableWithMissingData_StatusID()
         {
-            // Arrange
-            Camera entry = new Camera("_aaa");
+            // DataTable aufbauen...
+            DataTable table = new DataTable();
+            DataColumn column;
+            DataRow row;
 
-            // Act
-            int count = entry.RetrieveBasicInformation(false);
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "ID";
+            table.Columns.Add(column);
 
-            // Assert
-            Assert.AreEqual(0, count);
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Name";
+            table.Columns.Add(column);
 
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lenses);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
-        }
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Lenses";
+            table.Columns.Add(column);
 
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withValidID()
-        {
-            // Arrange
-            Camera entry = new Camera("_xxx");
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Details";
+            table.Columns.Add(column);
 
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "StatusID";
+            table.Columns.Add(column);
 
-            // Assert
-            Assert.AreEqual(0, count);
-        }
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "LastUpdated";
+            table.Columns.Add(column);
 
-        [TestMethod()]
-        public void RetrieveAdditionalInformationTest_withInvalidID()
-        {
-            // Arrange
-            Camera entry = new Camera("_aaa");
+            // Create new DataRow object and add to DataTable
+            row = table.NewRow();
+            row["ID"] = "_xxx";
+            row["Name"] = "Camera Name X";
+            row["Lenses"] = "Camera Lenses X";
+            row["Details"] = "Camera Details X";
+            row["StatusID"] = "";
+            row["LastUpdated"] = "Camera LastUpdated X";
+            table.Rows.Add(row);
 
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withValidID_BasicInfoOnly()
-        {
-            // Arrange
-            Camera entry = new Camera("_xxx");
-
-            // Act
-            int count = entry.Retrieve(true);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lenses X", entry.Lenses);
-            Assert.AreEqual("Camera Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withValidID_AdditionalInfo()
-        {
-            // Arrange
-            Camera entry = new Camera("_xxx");
-
-            // Act
-            int count = entry.Retrieve(false);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Camera Name X", entry.Name);
-            Assert.AreEqual("Camera Lenses X", entry.Lenses);
-            Assert.AreEqual("Camera Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_BasicInfoOnly()
-        {
-            // Arrange
-            Camera entry = new Camera("_aaa");
-
-            // Act
-            int count = entry.Retrieve(true);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lenses);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [TestMethod()]
-        public void RetrieveTest_withInvalidID_AdditionalInfo()
-        {
-            // Arrange
-            Camera entry = new Camera("_aaa");
-
-            // Act
-            int count = entry.Retrieve(false);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual("_aaa", entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.Lenses);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
+            return table;
         }
     }
 }

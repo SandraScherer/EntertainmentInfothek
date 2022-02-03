@@ -24,29 +24,29 @@ using System.Text;
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class AspectRatioTests_withDB
+    public class CameraTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkEntry()
+        public void CameraTest_checkEntry()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
             Assert.IsNotNull(entry);
         }
 
-        // oblsolete
+        // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkReader()
+        public void CameraTest_checkReader()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
@@ -55,22 +55,34 @@ namespace EntertainmentDB.Data.Tests
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkRatio()
+        public void CameraTest_checkName()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
-            Assert.IsNull(entry.Ratio);
+              Assert.IsNull(entry.Name);
         }
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkDetails()
+        public void CameraTest_checkLenses()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
+
+            // Act
+            // Assert
+            Assert.IsNull(entry.Lenses);
+        }
+
+        // obsolete
+        [TestMethod()]
+        public void CameraTest_checkDetails()
+        {
+            // Arrange
+            Camera entry = new Camera();
 
             // Act
             // Assert
@@ -79,10 +91,10 @@ namespace EntertainmentDB.Data.Tests
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkStatus()
+        public void CameraTest_checkStatus()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
@@ -91,10 +103,10 @@ namespace EntertainmentDB.Data.Tests
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_checkLastUpdated()
+        public void CameraTest_checkLastUpdated()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
@@ -103,10 +115,10 @@ namespace EntertainmentDB.Data.Tests
 
         // obsolete
         [TestMethod()]
-        public void AspectRatioTest_withoutID_checkID()
+        public void CameraTest_withoutID_checkID()
         {
             // Arrange
-            AspectRatio entry = new AspectRatio();
+            Camera entry = new Camera();
 
             // Act
             // Assert
@@ -117,10 +129,10 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        public void AspectRatioTest_withID_checkID(string value)
+        public void CameraTest_withID_checkID(string value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(value);
+            Camera entry = new Camera(value);
 
             // Act
             // Assert
@@ -130,10 +142,10 @@ namespace EntertainmentDB.Data.Tests
         // obsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void AspectRatioTest_withIDnull_checkException()
+        public void CameraTest_withIDnull_checkException()
         {
             // Arrange, Act, Assert
-            AspectRatio entry = new AspectRatio(null);
+            Camera entry = new Camera(null);
         }
 
         // TODO: delete
@@ -143,7 +155,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveBasicInformationTest_withValidID(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(value);
@@ -152,20 +164,22 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, count);
 
             Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
-            Assert.AreEqual("AspectRatio Details X", entry.Details);
+            Assert.AreEqual("Camera Name X", entry.Name);
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
+            Assert.AreEqual("Camera Details X", entry.Details);
             Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
+            Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
         }
 
         // TODO: delete
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
+        [TestMethod()]
         public void RetrieveBasicInformationTest_withInvalidID(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.RetrieveBasicInformation(value);
@@ -174,7 +188,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(0, count);
 
             Assert.AreEqual(INVALID_ID, entry.ID);
-            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Lenses);
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
@@ -187,7 +202,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveAdditionalInformationTest(string value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(value);
+            Camera entry = new Camera(value);
 
             // Act
             int count = entry.RetrieveAdditionalInformation();
@@ -202,7 +217,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -217,7 +232,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -229,16 +244,31 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveTest_withValidID_checkRatio(bool value)
+        public void RetrieveTest_withValidID_checkName(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
+            Assert.AreEqual("Camera Name X", entry.Name);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withValidID_checkLenses(bool value)
+        {
+            // Arrange
+            Camera entry = new Camera(VALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
+            Assert.AreEqual("Camera Lenses X", entry.Lenses);
         }
 
         [DataTestMethod()]
@@ -247,13 +277,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.AreEqual("AspectRatio Details X", entry.Details);
+            Assert.AreEqual("Camera Details X", entry.Details);
         }
 
         [DataTestMethod()]
@@ -262,7 +292,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -277,13 +307,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(VALID_ID);
+            Camera entry = new Camera(VALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
+            Assert.AreEqual("Camera LastUpdated X", entry.LastUpdated);
         }
 
         [DataTestMethod()]
@@ -292,7 +322,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -307,7 +337,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -319,16 +349,31 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveTest_withInvalidID_checkRatio(bool value)
+        public void RetrieveTest_withInvalidID_checkName(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Ratio);
+            Assert.IsNull(entry.Name);
+        }
+
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveTest_withInvalidID_checkLenses(bool value)
+        {
+            // Arrange
+            Camera entry = new Camera(INVALID_ID);
+
+            // Act
+            int count = entry.Retrieve(value);
+
+            // Assert
+            Assert.IsNull(entry.Lenses);
         }
 
         [DataTestMethod()]
@@ -337,7 +382,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -352,7 +397,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);
@@ -367,7 +412,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            AspectRatio entry = new AspectRatio(INVALID_ID);
+            Camera entry = new Camera(INVALID_ID);
 
             // Act
             int count = entry.Retrieve(value);

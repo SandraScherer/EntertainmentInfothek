@@ -149,14 +149,16 @@ namespace EntertainmentDB.Data.Tests
         }
 
         // TODO: delete
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_BasicInfoOnly()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
         {
             // Arrange
             Status entry = new Status(VALID_ID);
 
             // Act
-            int count = entry.RetrieveBasicInformation(true);
+            int count = entry.RetrieveBasicInformation(value);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -170,56 +172,16 @@ namespace EntertainmentDB.Data.Tests
         }
 
         // TODO: delete
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withValidID_AdditionalInfo()
-        {
-            // Arrange
-            Status entry = new Status(VALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(false);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual("_xxx", entry.ID);
-            Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
-            Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
-            Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
-            Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
-        }
-
-        // TODO: delete
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_BasicInfoOnly()
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
         {
             // Arrange
             Status entry = new Status(INVALID_ID);
 
             // Act
-            int count = entry.RetrieveBasicInformation(true);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual(INVALID_ID, entry.ID);
-            Assert.IsNull(entry.EnglishTitle);
-            Assert.IsNull(entry.GermanTitle);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        // TODO: delete
-        [TestMethod()]
-        public void RetrieveBasicInformationTest_withInvalidID_AdditionalInfo()
-        {
-            // Arrange
-            Status entry = new Status(INVALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(false);
+            int count = entry.RetrieveBasicInformation(value);
 
             // Assert
             Assert.AreEqual(0, count);
