@@ -16,21 +16,20 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using EntertainmentDB.DBAccess.Read;
+using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class AwardTests
+    public class AwardTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkEntry()
         {
@@ -42,6 +41,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkReader()
         {
@@ -53,6 +53,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkName()
         {
@@ -64,6 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Name);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkPresenter()
         {
@@ -75,6 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Presenter);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkDetails()
         {
@@ -86,6 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkStatus()
         {
@@ -97,6 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_checkLastUpdated()
         {
@@ -108,6 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // oblsolete
         [TestMethod()]
         public void AwardTest_withoutID_checkID()
         {
@@ -119,6 +125,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
         }
 
+        // oblsolete
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
@@ -132,6 +139,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(value, entry.ID);
         }
 
+        // oblsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void AwardTest_withIDnull_checkException()
@@ -140,22 +148,75 @@ namespace EntertainmentDB.Data.Tests
             Award entry = new Award(null);
         }
 
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
+        {
+            // Arrange
+            Award entry = new Award(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Award Name X", entry.Name);
+            Assert.AreEqual("_xxx", entry.Presenter.ID);
+            Assert.AreEqual("Award Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Award LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
+        {
+            // Arrange
+            Award entry = new Award(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Presenter);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
+        {
+            // Arrange
+            Award entry = new Award(value);
+
+            // Act
+            int count = entry.RetrieveAdditionalInformation();
+
+            // Assert
+            Assert.AreEqual(0, count);
+        }
+
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -170,16 +231,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -194,16 +246,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -218,22 +261,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkPresenter(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Presenter);
+            Assert.AreEqual("_xxx", entry.Presenter.ID);
         }
 
         [DataTestMethod()]
@@ -242,16 +276,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -266,22 +291,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Status);
+            Assert.AreEqual("_xxx", entry.Status.ID);
         }
 
         [DataTestMethod()]
@@ -290,16 +306,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Award entry = new Award(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -314,15 +321,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -337,15 +336,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -360,15 +351,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -383,15 +366,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkPresenter(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -406,15 +381,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -429,15 +396,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -452,72 +411,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_PresenterID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Award entry = new Award(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
             Assert.IsNull(entry.LastUpdated);
-        }
-
-        private DataTable CreateDataTableWithMissingData_PresenterID_StatusID()
-        {
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Name";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "PresenterID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["Name"] = "Award Name X";
-            row["PresenterID"] = "";
-            row["Details"] = "Award Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Award LastUpdated X";
-            table.Rows.Add(row);
-
-            return table;
         }
     }
 }
