@@ -16,21 +16,20 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using EntertainmentDB.DBAccess.Read;
+using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class CertificationTests
+    public class CertificationTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkEntry()
         {
@@ -42,6 +41,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkReader()
         {
@@ -53,6 +53,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkName()
         {
@@ -64,6 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Name);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkImage()
         {
@@ -75,6 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Image);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkCountry()
         {
@@ -86,6 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Country);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkDetails()
         {
@@ -97,6 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkStatus()
         {
@@ -108,6 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_checkLastUpdated()
         {
@@ -119,6 +125,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // oblsolete
         [TestMethod()]
         public void CertificationTest_withoutID_checkID()
         {
@@ -130,6 +137,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
         }
 
+        // oblsolete
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
@@ -143,6 +151,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(value, entry.ID);
         }
 
+        // oblsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void CertificationTest_withIDnull_checkException()
@@ -151,22 +160,77 @@ namespace EntertainmentDB.Data.Tests
             Certification entry = new Certification(null);
         }
 
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
+        {
+            // Arrange
+            Certification entry = new Certification(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Certification Name X", entry.Name);
+            Assert.AreEqual("_xxx", entry.Image.ID);
+            Assert.AreEqual("_xxx", entry.Country.ID);
+            Assert.AreEqual("Certification Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Certification LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
+        {
+            // Arrange
+            Certification entry = new Certification(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Image);
+            Assert.IsNull(entry.Country);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
+        {
+            // Arrange
+            Certification entry = new Certification(value);
+
+            // Act
+            int count = entry.RetrieveAdditionalInformation();
+
+            // Assert
+            Assert.AreEqual(0, count);
+        }
+
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -181,16 +245,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -205,16 +260,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -229,22 +275,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkImage(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Image);
+            Assert.AreEqual("_xxx", entry.Image.ID);
         }
 
         [DataTestMethod()]
@@ -253,22 +290,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkCountry(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Country);
+            Assert.AreEqual("_xxx", entry.Country.ID);
         }
 
         [DataTestMethod()]
@@ -277,16 +305,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -301,22 +320,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Status);
+            Assert.AreEqual("_xxx", entry.Status.ID);
         }
 
         [DataTestMethod()]
@@ -325,16 +335,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Certification entry = new Certification(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -349,15 +350,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -372,15 +365,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -395,15 +380,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -418,15 +395,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkImage(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -441,15 +410,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCountry(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -464,15 +425,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -487,15 +440,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -510,78 +455,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_ImageID_CountryID_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Certification entry = new Certification(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
             Assert.IsNull(entry.LastUpdated);
-        }
-
-        private DataTable CreateDataTableWithMissingData_ImageID_CountryID_StatusID()
-        {
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Name";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ImageID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "CountryID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["Name"] = "Certification Name X";
-            row["ImageID"] = "";
-            row["CountryID"] = "";
-            row["Details"] = "Certification Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Certification LastUpdated X";
-            table.Rows.Add(row);
-
-            return table;
         }
     }
 }
