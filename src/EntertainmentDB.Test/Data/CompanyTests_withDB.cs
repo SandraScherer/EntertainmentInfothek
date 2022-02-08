@@ -129,7 +129,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        public void CompanyTest_withID(string value)
+        public void CompanyTest_withID_checkID(string value)
         {
             // Arrange
             Company entry = new Company(value);
