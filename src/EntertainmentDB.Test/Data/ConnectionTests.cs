@@ -134,7 +134,7 @@ namespace EntertainmentDB.Data.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void CompanyTest_withIDnull_checkException()
+        public void ConnectionTest_withIDnull_checkException()
         {
             // Arrange, Act, Assert
             Connection entry = new Connection(null);
