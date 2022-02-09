@@ -288,7 +288,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveTest_withValidID_checkLastUpdated(bool value)
+        public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
             Edition entry = new Edition(VALID_ID);
@@ -303,7 +303,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveTest_withValidID_checkStatus(bool value)
+        public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
             Edition entry = new Edition(VALID_ID);
