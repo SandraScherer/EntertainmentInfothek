@@ -140,7 +140,6 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        [TestMethod()]
         public void RetrieveBasicInformationTest_withValidID(bool value)
         {
             // Arrange
