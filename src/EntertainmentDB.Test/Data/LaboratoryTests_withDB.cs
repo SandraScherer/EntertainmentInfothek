@@ -16,21 +16,20 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using EntertainmentDB.DBAccess.Read;
+using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class LaboratoryTests
+    public class LaboratoryTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkEntry()
         {
@@ -42,6 +41,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkReader()
         {
@@ -53,6 +53,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkName()
         {
@@ -64,6 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Name);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkDetails()
         {
@@ -75,6 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkStatus()
         {
@@ -86,6 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_checkLastUpdated()
         {
@@ -97,6 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // oblsolete
         [TestMethod()]
         public void LaboratoryTest_withoutID_checkID()
         {
@@ -108,6 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
         }
 
+        // oblsolete
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
@@ -121,6 +127,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(value, entry.ID);
         }
 
+        // oblsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void LaboratoryTest_withIDnull_checkException()
@@ -129,22 +136,73 @@ namespace EntertainmentDB.Data.Tests
             Laboratory entry = new Laboratory(null);
         }
 
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
+        {
+            // Arrange
+            Laboratory entry = new Laboratory(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("Laboratory Name X", entry.Name);
+            Assert.AreEqual("Laboratory Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("Laboratory LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
+        {
+            // Arrange
+            Laboratory entry = new Laboratory(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.Name);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
+        {
+            // Arrange
+            Laboratory entry = new Laboratory(value);
+
+            // Act
+            int count = entry.RetrieveAdditionalInformation();
+
+            // Assert
+            Assert.AreEqual(0, count);
+        }
+
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -159,16 +217,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -183,16 +232,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -207,16 +247,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -231,22 +262,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Status);
+            Assert.AreEqual("_xxx", entry.Status.ID);
         }
 
         [DataTestMethod()]
@@ -255,16 +277,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             Laboratory entry = new Laboratory(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -279,15 +292,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -302,15 +307,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -325,15 +322,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkName(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -348,15 +337,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -371,15 +352,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -394,66 +367,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             Laboratory entry = new Laboratory(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
             Assert.IsNull(entry.LastUpdated);
-        }
-
-        private DataTable CreateDataTableWithMissingData_StatusID()
-        {
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Name";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["Name"] = "Laboratory Name X";
-            row["Details"] = "Laboratory Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "Laboratory LastUpdated X";
-            table.Rows.Add(row);
-
-            return table;
         }
     }
 }
