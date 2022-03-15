@@ -1,0 +1,5 @@
+<map id="WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateLastEpisode" name="WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateLastEpisode">
+<area shape="rect" id="node1" title="Creates the formatted infobox release date content of a given series." alt="" coords="5,31,236,87"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#acb66b112b66da200e5eb193345c65e55" title="Formats the given parameters as an internal link." alt="" coords="284,5,495,47"/>
+<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="284,71,495,112"/>
+</map>

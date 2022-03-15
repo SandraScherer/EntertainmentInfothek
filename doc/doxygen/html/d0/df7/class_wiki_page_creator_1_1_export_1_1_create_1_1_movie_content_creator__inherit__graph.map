@@ -1,0 +1,5 @@
+<map id="WikiPageCreator.Export.Create.MovieContentCreator" name="WikiPageCreator.Export.Create.MovieContentCreator">
+<area shape="rect" id="node1" title="Provides a content creator for a movie." alt="" coords="5,155,213,196"/>
+<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="92,80,239,107"/>
+<area shape="rect" id="node3" href="$db/dde/interface_wiki_page_creator_1_1_export_1_1_create_1_1_i_file_content_creatable.html" title="Provides an interface for a file content creator." alt="" coords="36,5,183,32"/>
+</map>

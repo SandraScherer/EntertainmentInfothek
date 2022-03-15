@@ -1,0 +1,8 @@
+<map id="EntertainmentDB.Data.TimespanItem.RetrieveList" name="EntertainmentDB.Data.TimespanItem.RetrieveList">
+<area shape="rect" id="node1" title="Retrieves a list of time span items from the database." alt="" coords="5,103,217,144"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="276,37,467,79"/>
+<area shape="rect" id="node5" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="276,103,467,144"/>
+<area shape="rect" id="node6" href="$d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html#aaa9a40be9aac21ad7bf635e2d7fb9642" title="Initializes a time span item with an empty id string." alt="" coords="265,168,477,209"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="525,5,716,47"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="525,71,716,112"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="EntertainmentDB.Data.ColorItem.ColorItem" name="EntertainmentDB.Data.ColorItem.ColorItem">
+<area shape="rect" id="node1" title="Initializes a color item with an empty id string." alt="" coords="481,5,668,47"/>
+<area shape="rect" id="node2" href="$dd/d82/class_entertainment_d_b_1_1_data_1_1_color_item.html#ad0106da1a53feb50ae577d2f966b1595" title="Retrieves a list of color items from the database." alt="" coords="247,5,433,47"/>
+<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
+</map>

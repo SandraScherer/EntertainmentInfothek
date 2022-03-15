@@ -1,0 +1,6 @@
+<map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateTextItemSection" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateTextItemSection">
+<area shape="rect" id="node1" title="Creates a formatted text section of the movie page." alt="" coords="623,45,853,101"/>
+<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#adf4e2605441dda3c60649d19a796491a" title="Creates the formatted description chapter of the movie page." alt="" coords="304,5,575,61"/>
+<area shape="rect" id="node4" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7e9d35a161280e68cb8af80b95080233" title="Creates the formatted review chapter of the movie page." alt="" coords="317,85,562,141"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,53,256,94"/>
+</map>

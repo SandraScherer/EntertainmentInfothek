@@ -1,0 +1,5 @@
+<map id="EntertainmentDB.Data.CinematographicProcessItem.CinematographicProcessItem" name="EntertainmentDB.Data.CinematographicProcessItem.CinematographicProcessItem">
+<area shape="rect" id="node1" title="Initializes a cinematographic process item with an empty id string." alt="" coords="548,5,817,47"/>
+<area shape="rect" id="node2" href="$d3/d8c/class_entertainment_d_b_1_1_data_1_1_cinematographic_process_item.html#a691b59da9aba4297174245d8c9fb6372" title="Retrieves a list of cinematographic process items from the database." alt="" coords="247,5,500,47"/>
+<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
+</map>
