@@ -1,0 +1,4 @@
+<map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoBoxEnd" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoBoxEnd">
+<area shape="rect" id="node1" title="Creates the formatted infobox end content of a given article" alt="" coords="5,5,213,61"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab49f6cd3e2d59d9b2118eb32a0644abf" title="Inserts an indicator to end a box." alt="" coords="261,13,472,54"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateReviewChapter" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateReviewChapter">
+<area shape="rect" id="node1" title="Creates the formatted review chapter of the movie page." alt="" coords="5,35,251,91"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="309,5,519,47"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a85bedec5cc6a7deefc80f875aa2617f8" title="Creates a formatted text section of the movie page." alt="" coords="299,71,529,127"/>
+</map>

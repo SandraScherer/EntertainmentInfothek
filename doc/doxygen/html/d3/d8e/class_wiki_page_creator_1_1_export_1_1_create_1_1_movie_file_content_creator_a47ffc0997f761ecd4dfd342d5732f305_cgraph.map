@@ -1,0 +1,5 @@
+<map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLogo" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLogo">
+<area shape="rect" id="node1" title="Creates the formatted infobox logo field of the movie page." alt="" coords="5,31,231,87"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab089a176dccb3c7b970e5031f7be5c46" title="Formats the given parameters as an image." alt="" coords="279,5,489,47"/>
+<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="279,71,489,112"/>
+</map>

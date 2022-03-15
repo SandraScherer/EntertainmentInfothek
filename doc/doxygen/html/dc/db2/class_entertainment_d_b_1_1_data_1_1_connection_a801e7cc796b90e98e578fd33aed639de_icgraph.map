@@ -1,0 +1,4 @@
+<map id="EntertainmentDB.Data.Connection.Connection" name="EntertainmentDB.Data.Connection.Connection">
+<area shape="rect" id="node1" title="Initializes a connection with an empty id string." alt="" coords="279,5,504,47"/>
+<area shape="rect" id="node2" href="$dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html#a80fcc86d236307a860ab6a34f32fafa6" title="Retrieves the basic information of the connection from the database." alt="" coords="5,5,231,47"/>
+</map>

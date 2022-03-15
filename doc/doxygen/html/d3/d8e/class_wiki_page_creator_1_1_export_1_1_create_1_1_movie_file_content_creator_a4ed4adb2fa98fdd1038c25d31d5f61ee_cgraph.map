@@ -1,0 +1,6 @@
+<map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCompanyItemSection" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCompanyItemSection">
+<area shape="rect" id="node1" title="Creates a formatted company section of the movie page." alt="" coords="5,63,265,119"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d25e407ff096035bb54e878f5bfc7a7" title="Formats the given text as a level 3 heading." alt="" coords="313,5,524,47"/>
+<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#acb66b112b66da200e5eb193345c65e55" title="Formats the given parameters as an internal link." alt="" coords="313,71,524,112"/>
+<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="313,136,524,177"/>
+</map>

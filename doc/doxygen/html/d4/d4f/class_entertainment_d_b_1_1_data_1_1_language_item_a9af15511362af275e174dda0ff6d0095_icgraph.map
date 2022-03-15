@@ -1,0 +1,5 @@
+<map id="EntertainmentDB.Data.LanguageItem.LanguageItem" name="EntertainmentDB.Data.LanguageItem.LanguageItem">
+<area shape="rect" id="node1" title="Initializes a language item with an empty id string." alt="" coords="507,5,719,47"/>
+<area shape="rect" id="node2" href="$d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html#aa4639b30383c78620b127126a2aff877" title="Retrieves a list of language items from the database." alt="" coords="247,5,459,47"/>
+<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
+</map>

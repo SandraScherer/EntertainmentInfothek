@@ -1,0 +1,5 @@
+<map id="EntertainmentDB.Data.ImageItem.ImageItem" name="EntertainmentDB.Data.ImageItem.ImageItem">
+<area shape="rect" id="node1" title="Initializes an image item with an empty id string." alt="" coords="485,5,676,47"/>
+<area shape="rect" id="node2" href="$d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html#a8895c5edb830ea06525434a32a34ffdc" title="Retrieves a list of image items from the database." alt="" coords="247,5,437,47"/>
+<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
+</map>

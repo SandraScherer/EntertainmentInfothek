@@ -1,0 +1,7 @@
+<map id="EntertainmentDB.Data.CompanyItem.CompanyItem" name="EntertainmentDB.Data.CompanyItem.CompanyItem">
+<area shape="rect" id="node1" title="Initializes a company item with an empty id string." alt="" coords="507,71,717,112"/>
+<area shape="rect" id="node2" href="$d4/de2/class_entertainment_d_b_1_1_data_1_1_company_item.html#a5e3eed1e8d5a3c138ef3b748e31074dd" title="Retrieves a list of company items from the database." alt="" coords="248,71,459,112"/>
+<area shape="rect" id="node3" href="$d0/dee/class_entertainment_d_b_1_1_data_1_1_image.html#ab3ed3a02e108f6bf1925dfffbed8b36a" title="Retrieves the additional information of the image from the database (none available)." alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node4" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="6,71,199,112"/>
+<area shape="rect" id="node5" href="$da/dad/class_entertainment_d_b_1_1_data_1_1_text.html#a2e33615f1ccb059c6e77bc9097c7600f" title="Retrieves the additional information of the text from the database (none available)." alt="" coords="9,136,197,177"/>
+</map>

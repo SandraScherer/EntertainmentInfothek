@@ -1,0 +1,10 @@
+<map id="EntertainmentDB.Data.DistributorCompanyItem.RetrieveBasicInformation" name="EntertainmentDB.Data.DistributorCompanyItem.RetrieveBasicInformation">
+<area shape="rect" id="node1" title="Retrieves the basic information of the person item from the database." alt="" coords="5,168,253,209"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="305,71,496,112"/>
+<area shape="rect" id="node5" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#abac782aafccbbef4034d4ddb71aed7e2" title="Retrieves the information of the status from the database." alt="" coords="301,168,500,209"/>
+<area shape="rect" id="node8" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="795,231,985,272"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="552,5,743,47"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="552,71,743,112"/>
+<area shape="rect" id="node6" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a10b6642be4830cce662ce604e5052ccc" title="Retrieves the additional information of the status from the database (none available)." alt="" coords="548,136,747,177"/>
+<area shape="rect" id="node7" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#af017a672c77b22eb998512ee60f5d0ac" title="Retrieves the basic information of the status from the database." alt="" coords="548,201,747,243"/>
+</map>
