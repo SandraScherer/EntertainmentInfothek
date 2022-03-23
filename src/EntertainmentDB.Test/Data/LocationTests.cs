@@ -122,7 +122,7 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        public void LocationTestTest_withID_checkID(string value)
+        public void LocationTest_withID_checkID(string value)
         {
             // Arrange
             Location entry = new Location(value);

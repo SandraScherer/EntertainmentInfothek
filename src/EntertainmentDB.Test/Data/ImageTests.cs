@@ -389,10 +389,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Image LastUpdated X", entry.LastUpdated);
         }
 
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void RetrieveTest_withValidID_checkSources(bool value)
+        [TestMethod()]
+        public void RetrieveTest_withValidID_basicInfoOnly_checkSources()
         {
             // Arrange
             DataTable table = CreateDataTableWithMissingData_TypeID_CountryID_StatusID();
@@ -407,10 +405,32 @@ namespace EntertainmentDB.Data.Tests
             entry.Reader = mockDBReader.Object;
 
             // Act
-            int count = entry.Retrieve(value);
+            int count = entry.Retrieve(true);
 
             // Assert
             Assert.IsNull(entry.Sources);
+        }
+
+        [TestMethod()]
+        public void RetrieveTest_withValidID_additionalInfo_checkSources()
+        {
+            // Arrange
+            DataTable table = CreateDataTableWithMissingData_TypeID_CountryID_StatusID();
+            Mock<DBReader> mockDBReader = new Mock<DBReader>();
+
+            // Setup Mock
+            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
+            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
+            mockDBReader.SetupGet(x => x.Table).Returns(table);
+
+            Image entry = new Image(VALID_ID);
+            entry.Reader = mockDBReader.Object;
+
+            // Act
+            int count = entry.Retrieve(false);
+
+            // Assert
+            Assert.IsNotNull(entry.Sources);
         }
 
         [DataTestMethod()]
