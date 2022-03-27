@@ -15,9 +15,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -29,12 +28,12 @@ namespace EntertainmentDB.Data
         // --- Properties ---
 
         /// <summary>
-        /// The base table name of the entry.
+        /// The base table name of the entry item.
         /// </summary>
         public string BaseTableName { get; set; }
 
         /// <summary>
-        /// The target table name of the entry.
+        /// The target table name of the entry item.
         /// </summary>
         public string TargetTableName { get; set; }
 
@@ -48,30 +47,41 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an entry item with an emtpy id string.
         /// </summary>
-        protected EntryItem() : this("", "")
+        /// <param name="reader">The database reader to be used to read the entry item information from the database.</param>
+        protected EntryItem(DBReader reader) : this(reader, "", "", "")
         {
         }
 
         /// <summary>
         /// Initializes an entry item with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the entry item information from the database.</param>
         /// <param name="id">The id of the entry item.</param>
+        /// <param name="baseTableName">The base table name of the entry item.</param>
         /// <param name="targetTableName">The target table name of the entry item.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id or targetTableName is null.</exception>
-        protected EntryItem(string id, string targetTableName) : base(id)
+        protected EntryItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
+            }
+            if (baseTableName == null)
+            {
+                throw new ArgumentNullException(nameof(baseTableName));
             }
             if (targetTableName == null)
             {
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"Entry() angelegt");
+            Logger.Trace($"EntryItem() angelegt");
 
-            BaseTableName = "";
+            BaseTableName = baseTableName;
             TargetTableName = targetTableName;
         }
 

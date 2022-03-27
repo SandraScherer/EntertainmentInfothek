@@ -17,8 +17,6 @@
 
 using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -32,7 +30,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The database reader to be used to read the entry information from the database.
         /// </summary>
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public DBReader Reader { get; protected set; }
 
         /// <summary>
         /// The id of the entry.
@@ -62,19 +60,25 @@ namespace EntertainmentDB.Data
         // --- Constructor ---
 
         /// <summary>
-        /// Initializes an entry with an empty id string.
+        /// Initializes an entry with the given reader and id string.
         /// </summary>
-        protected Entry() : this("")
+        /// <param name="reader">The database reader to be used to read the entry information from the database.</param>
+        protected Entry(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
-        /// Initializes an entry with the given id string.
+        /// Initializes an entry with the given reader and id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the entry information from the database.</param>
         /// <param name="id">The id of the entry.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        protected Entry(string id)
+        protected Entry(DBReader reader, string id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -82,6 +86,7 @@ namespace EntertainmentDB.Data
 
             Logger.Trace($"Entry() angelegt");
 
+            Reader = reader;
             ID = id;
         }
 

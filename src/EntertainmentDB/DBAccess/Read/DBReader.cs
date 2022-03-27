@@ -57,6 +57,12 @@ namespace EntertainmentDB.DBAccess.Read
         // --- Methods ---
 
         /// <summary>
+        /// Creates a new DBReader of the same class as the current DBReader.
+        /// </summary>
+        /// <returns>A new DBReader which the same class as the current DBReader.</returns>
+        public abstract DBReader New();
+
+        /// <summary>
         /// Retrieves the information from the database.
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>

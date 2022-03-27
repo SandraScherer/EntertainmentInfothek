@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Text;
 using EntertainmentDB.Data;
 using WikiPageCreator.Export.Format;
+using EntertainmentDB.DBAccess.Read;
 
 namespace WikiPageCreator.Export.Create.Tests
 {
@@ -35,8 +36,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void MovieFileContentCreatorTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -48,8 +51,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void GetFileNameTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -63,8 +68,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateHeaderTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -95,8 +102,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateFooterTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -119,8 +128,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateTitleTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -148,8 +159,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxHeaderTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -173,8 +186,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxEndTest()
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -201,8 +216,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxTitleTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -234,8 +251,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxLogoTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -270,8 +289,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxTypeTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -305,8 +326,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxOriginalReleaseDateTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -340,8 +363,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxGenreTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -393,8 +418,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxCertificationTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -446,8 +473,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxCountryTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -499,8 +528,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxLanguageTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -552,8 +583,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxBudgetTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -586,8 +619,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxWorldwideGrossTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -621,8 +656,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxRuntimeTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -673,8 +710,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxSoundMixTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -726,8 +765,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxColorTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -779,8 +820,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxAspectRatioTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -831,8 +874,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxCameraTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -883,8 +928,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxLaboratoryTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -935,8 +982,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxFilmLengthTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -987,8 +1036,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxNegativeFormatTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1039,8 +1090,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxCinematographicProcessTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1091,8 +1144,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateInfoBoxPrintedFilmFormatTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1143,8 +1198,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreatePosterChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1197,8 +1254,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateCoverChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1251,7 +1310,8 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateDescriptionChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
@@ -1329,8 +1389,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateReviewChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1408,8 +1470,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateImageChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -1462,8 +1526,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateCastAndCrewChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2049,8 +2115,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateCompanyChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2161,8 +2229,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateFilmingAndProductionChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2267,8 +2337,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateAwardChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2364,8 +2436,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateWeblinkChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2423,8 +2497,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateConnectionChapterTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act
@@ -2459,8 +2535,10 @@ namespace WikiPageCreator.Export.Create.Tests
         public void CreateContentTest(string value)
         {
             // Arrange
-            Movie movie = new Movie("_xxx");
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, "_xxx");
             movie.Retrieve(false);
+
             MovieFileContentCreator creator = new MovieFileContentCreator(movie);
 
             // Act

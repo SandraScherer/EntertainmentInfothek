@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -64,17 +64,23 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an image with an empty id string.
         /// </summary>
-        public Image() : this("")
+        /// <param name="reader">The database reader to be used to read the image information from the database.</param>
+        public Image(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         /// Initializes an image with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the image information from the database.</param>
         /// <param name="id">The id of the image.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Image(string id) : base(id)
+        public Image(DBReader reader, string id) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -105,20 +111,20 @@ namespace EntertainmentDB.Data
                 Description = row["Description"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
-                    Type = new Type();
+                    Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
                     Type.Retrieve(retrieveBasicInfoOnly);
                 }
                 if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
                 {
-                    Country = new Country();
+                    Country = new Country(Reader.New());
                     Country.ID = row["CountryID"].ToString();
                     Country.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Status = new Status();
+                    Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
                 }
@@ -140,7 +146,7 @@ namespace EntertainmentDB.Data
         {
             int count = 0;
 
-            Sources = CompanyItem.RetrieveList(Reader, $"Image", ID, "Source");
+            Sources = CompanyItem.RetrieveList(Reader, "Image", ID, "Source");
             count += Sources.Count;
 
             return count;

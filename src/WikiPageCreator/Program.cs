@@ -26,7 +26,7 @@ using WikiPageCreator.Export.Write;
 
 namespace WikiPageCreator
 {
-    public class Program
+    public static class Program
     {
         // --- Properties ---
 
@@ -189,7 +189,8 @@ namespace WikiPageCreator
         /// <param name="outputFolder">The output folder for the page.</param>
         private static void CreateMoviePage(string id, string targetLanguageCode, string outputFolder)
         {
-            Movie movie = new Movie(id);
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
             movie.Retrieve(false);
 
             MovieContentCreator creator = new MovieContentCreator();
@@ -210,7 +211,8 @@ namespace WikiPageCreator
         /// <param name="outputFolder">The output folder for the page.</param>
         private static void CreateSeriesPage(string id, string targetLanguageCode, string outputFolder)
         {
-            Series series = new Series(id);
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
             series.Retrieve(false);
 
             SeriesContentCreator creator = new SeriesContentCreator();

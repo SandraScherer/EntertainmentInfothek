@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -59,25 +59,29 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a text with an empty id string.
         /// </summary>
-        public Text() : this("")
+        /// <param name="reader">The database reader to be used to read the text information from the database.</param>
+        public Text(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         ///  Initializes a text with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the text information from the database.</param>
         /// <param name="id">The id of the text.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Text(string id)
+        public Text(DBReader reader, string id) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
 
             Logger.Trace($"Text() angelegt");
-
-            ID = id;
         }
 
         // --- Methods ---
@@ -101,14 +105,14 @@ namespace EntertainmentDB.Data
                 Content = row["Content"].ToString();
                 if (!String.IsNullOrEmpty(row["LanguageID"].ToString()))
                 {
-                    Language = new Language();
+                    Language = new Language(Reader.New());
                     Language.ID = row["LanguageID"].ToString();
                     Language.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Status = new Status();
+                    Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
                 }
@@ -130,11 +134,25 @@ namespace EntertainmentDB.Data
         {
             int count = 0;
 
-            Authors = PersonItem.RetrieveList(Reader, $"Text", ID, "Author");
-            count += Authors.Count;
+            Authors = PersonItem.RetrieveList(Reader, "Text", ID, "Author");
+            if (Authors.Count == 0)
+            {
+                Authors = null;
+            }
+            else
+            {
+                count += Authors.Count;
+            }
 
-            Sources = CompanyItem.RetrieveList(Reader, $"Text", ID, "Source");
-            count += Sources.Count;
+            Sources = CompanyItem.RetrieveList(Reader, "Text", ID, "Source");
+            if (Sources.Count == 0)
+            {
+                Sources = null;
+            }
+            else
+            {
+                count += Sources.Count;
+            }
 
             return count;
         }
