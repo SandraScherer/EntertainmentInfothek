@@ -769,6 +769,72 @@ namespace EntertainmentDB.Data.Tests
 
             // Assert
             Assert.AreEqual(0, count);
+
+            //Assert.IsNull(entry.Genres);
+            //Assert.IsNull(entry.Certifications);
+            //Assert.IsNull(entry.Countries);
+            //Assert.IsNull(entry.Languages);
+            //Assert.IsNull(entry.Runtimes);
+            //Assert.IsNull(entry.SoundMixes);
+            //Assert.IsNull(entry.Colors);
+            //Assert.IsNull(entry.AspectRatios);
+            //Assert.IsNull(entry.Cameras);
+            //Assert.IsNull(entry.Laboratories);
+            //Assert.IsNull(entry.FilmLengths);
+            //Assert.IsNull(entry.NegativeFormats);
+            //Assert.IsNull(entry.CinematographicProcesses);
+            //Assert.IsNull(entry.PrintedFilmFormats);
+
+            //Assert.IsNull(entry.Creators);
+            //Assert.IsNull(entry.Directors);
+            //Assert.IsNull(entry.Writers);
+            //Assert.IsNull(entry.Cast);
+            //Assert.IsNull(entry.Producers);
+            //Assert.IsNull(entry.Music);
+            //Assert.IsNull(entry.Cinematography);
+            //Assert.IsNull(entry.FilmEditing);
+            //Assert.IsNull(entry.Casting);
+            //Assert.IsNull(entry.ProductionDesign);
+            //Assert.IsNull(entry.ArtDirection);
+            //Assert.IsNull(entry.SetDecoration);
+            //Assert.IsNull(entry.CostumeDesign);
+            //Assert.IsNull(entry.MakeupDepartment);
+            //Assert.IsNull(entry.ProductionManagement);
+            //Assert.IsNull(entry.AssistantDirectors);
+            //Assert.IsNull(entry.ArtDepartment);
+            //Assert.IsNull(entry.SoundDepartment);
+            //Assert.IsNull(entry.SpecialEffects);
+            //Assert.IsNull(entry.VisualEffects);
+            //Assert.IsNull(entry.Stunts);
+            //Assert.IsNull(entry.ElectricalDepartment);
+            //Assert.IsNull(entry.AnimationDepartment);
+            //Assert.IsNull(entry.CastingDepartment);
+            //Assert.IsNull(entry.CostumeDepartment);
+            //Assert.IsNull(entry.EditorialDepartment);
+            //Assert.IsNull(entry.LocationManagement);
+            //Assert.IsNull(entry.MusicDepartment);
+            //Assert.IsNull(entry.ContinuityDepartment);
+            //Assert.IsNull(entry.TransportationDepartment);
+            //Assert.IsNull(entry.OtherCrew);
+
+            //Assert.IsNull(entry.ProductionCompanies);
+            //Assert.IsNull(entry.Distributors);
+            //Assert.IsNull(entry.SpecialEffectsCompanies);
+            //Assert.IsNull(entry.OtherCompanies);
+
+            //Assert.IsNull(entry.FilmingLocations);
+            //Assert.IsNull(entry.FilmingDates);
+            //Assert.IsNull(entry.ProductionDates);
+
+            //Assert.IsNull(entry.Posters);
+            //Assert.IsNull(entry.Covers);
+            //Assert.IsNull(entry.Images);
+
+            //Assert.IsNull(entry.Descriptions);
+            //Assert.IsNull(entry.Reviews);
+
+            //Assert.IsNull(entry.Awards);
+            //Assert.IsNull(entry.Weblinks);
         }
 
         [TestMethod()]

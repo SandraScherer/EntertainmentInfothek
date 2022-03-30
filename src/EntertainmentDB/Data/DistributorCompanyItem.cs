@@ -140,7 +140,6 @@ namespace EntertainmentDB.Data
         public override int RetrieveAdditionalInformation()
         {
             // nothing to do
-
             return 0;
         }
 

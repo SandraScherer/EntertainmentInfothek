@@ -152,13 +152,10 @@ namespace EntertainmentDB.Data
             int count = 0;
 
             Persons = PersonItem.RetrieveList(Reader, $"Movie_Award", ID, "Person");
+            count += Persons.Count;
             if (Persons.Count == 0)
             {
                 Persons = null;
-            }
-            else
-            {
-                count += Persons.Count;
             }
 
             return count;

@@ -210,6 +210,8 @@ namespace EntertainmentDB.Data.Tests
 
             // Assert
             Assert.AreEqual(0, count);
+
+            Assert.IsNull(item.Persons);
         }
 
         [DataTestMethod()]

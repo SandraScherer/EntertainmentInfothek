@@ -148,6 +148,10 @@ namespace EntertainmentDB.Data
 
             Sources = CompanyItem.RetrieveList(Reader, "Image", ID, "Source");
             count += Sources.Count;
+            if (Sources.Count == 0)
+            {
+                Sources = null;
+            }
 
             return count;
         }

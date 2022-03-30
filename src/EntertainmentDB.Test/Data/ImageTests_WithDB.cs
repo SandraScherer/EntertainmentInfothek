@@ -181,6 +181,8 @@ namespace EntertainmentDB.Data.Tests
 
             // Assert
             Assert.AreEqual(0, count);
+
+            Assert.IsNull(entry.Sources);
         }
 
         [TestMethod()]
@@ -259,6 +261,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
+
+            Assert.IsNull(entry.Sources);
         }
     }
 }

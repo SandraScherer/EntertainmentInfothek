@@ -142,7 +142,6 @@ namespace EntertainmentDB.Data
         {
             // nothing to do
             return 0;
-
         }
     }
 }

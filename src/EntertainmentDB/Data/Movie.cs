@@ -471,98 +471,98 @@ namespace EntertainmentDB.Data
 
             // InfoBox data
             Genres = GenreItem.RetrieveList(Reader, "Movie", ID, "Genre");
-                count += Genres.Count;
+            count += Genres.Count;
             if (Genres.Count == 0)
             {
                 Genres = null;
             }
 
             Certifications = CertificationItem.RetrieveList(Reader, "Movie", ID, "Certification");
-                count += Certifications.Count;
+            count += Certifications.Count;
             if (Certifications.Count == 0)
             {
                 Certifications = null;
             }
 
             Countries = CountryItem.RetrieveList(Reader, "Movie", ID, "Country");
-                count += Countries.Count;
+            count += Countries.Count;
             if (Countries.Count == 0)
             {
                 Countries = null;
             }
 
             Languages = LanguageItem.RetrieveList(Reader, "Movie", ID, "Language");
-                count += Languages.Count;
+            count += Languages.Count;
             if (Languages.Count == 0)
             {
                 Languages = null;
             }
 
             Runtimes = RuntimeItem.RetrieveList(Reader, "Movie", ID, "Runtime");
-                count += Runtimes.Count;
+            count += Runtimes.Count;
             if (Runtimes.Count == 0)
             {
                 Runtimes = null;
             }
 
             SoundMixes = SoundMixItem.RetrieveList(Reader, "Movie", ID, "SoundMix");
-                count += SoundMixes.Count;
+            count += SoundMixes.Count;
             if (SoundMixes.Count == 0)
             {
                 SoundMixes = null;
             }
 
             Colors = ColorItem.RetrieveList(Reader, "Movie", ID, "Color");
-                count += Colors.Count;
+            count += Colors.Count;
             if (Colors.Count == 0)
             {
                 Colors = null;
             }
 
             AspectRatios = AspectRatioItem.RetrieveList(Reader, "Movie", ID, "AspectRatio");
-                count += AspectRatios.Count;
+            count += AspectRatios.Count;
             if (AspectRatios.Count == 0)
             {
                 AspectRatios = null;
             }
 
             Cameras = CameraItem.RetrieveList(Reader, "Movie", ID, "Camera");
-                count += Cameras.Count;
+            count += Cameras.Count;
             if (Cameras.Count == 0)
             {
                 Cameras = null;
             }
 
             Laboratories = LaboratoryItem.RetrieveList(Reader, "Movie", ID, "Laboratory");
-                count += Laboratories.Count;
+            count += Laboratories.Count;
             if (Laboratories.Count == 0)
             {
                 Laboratories = null;
             }
 
             FilmLengths = FilmLengthItem.RetrieveList(Reader, "Movie", ID, "FilmLength");
-                count += FilmLengths.Count;
+            count += FilmLengths.Count;
             if (FilmLengths.Count == 0)
             {
                 FilmLengths = null;
             }
 
             NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Movie", ID, "NegativeFormat");
-                count += NegativeFormats.Count;
+            count += NegativeFormats.Count;
             if (NegativeFormats.Count == 0)
             {
                 NegativeFormats = null;
             }
 
             CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Movie", ID, "CinematographicProcess");
-                count += CinematographicProcesses.Count;
+            count += CinematographicProcesses.Count;
             if (CinematographicProcesses.Count == 0)
             {
                 CinematographicProcesses = null;
             }
 
             PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Movie", ID, "PrintedFilmFormat");
-                count += PrintedFilmFormats.Count;
+            count += PrintedFilmFormats.Count;
             if (PrintedFilmFormats.Count == 0)
             {
                 PrintedFilmFormats = null;
@@ -570,217 +570,217 @@ namespace EntertainmentDB.Data
 
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, "Movie", ID, "Director");
-                count += Directors.Count;
+            count += Directors.Count;
             if (Directors.Count == 0)
             {
                 Directors = null;
             }
 
             Writers = PersonItem.RetrieveList(Reader, "Movie", ID, "Writer");
-                count += Writers.Count;
+            count += Writers.Count;
             if (Writers.Count == 0)
             {
                 Writers = null;
             }
 
             Cast = CastPersonItem.RetrieveList(Reader, "Movie", ID, "Cast");
-                count += Cast.Count;
+            count += Cast.Count;
             if (Cast.Count == 0)
             {
                 Cast = null;
             }
 
             Producers = PersonItem.RetrieveList(Reader, "Movie", ID, "Producer");
-                count += Producers.Count;
+            count += Producers.Count;
             if (Producers.Count == 0)
             {
                 Producers = null;
             }
 
             Music = PersonItem.RetrieveList(Reader, "Movie", ID, "Music");
-                count += Music.Count;
+            count += Music.Count;
             if (Music.Count == 0)
             {
                 Music = null;
             }
 
             Cinematography = PersonItem.RetrieveList(Reader, "Movie", ID, "Cinematography");
-                count += Cinematography.Count;
+            count += Cinematography.Count;
             if (Cinematography.Count == 0)
             {
                 Cinematography = null;
             }
 
             FilmEditing = PersonItem.RetrieveList(Reader, "Movie", ID, "FilmEditing");
-                count += FilmEditing.Count;
+            count += FilmEditing.Count;
             if (FilmEditing.Count == 0)
             {
                 FilmEditing = null;
             }
 
             Casting = PersonItem.RetrieveList(Reader, "Movie", ID, "Casting");
-                count += Casting.Count;
+            count += Casting.Count;
             if (Casting.Count == 0)
             {
                 Casting = null;
             }
 
             ProductionDesign = PersonItem.RetrieveList(Reader, "Movie", ID, "ProductionDesign");
-                count += ProductionDesign.Count;
+            count += ProductionDesign.Count;
             if (ProductionDesign.Count == 0)
             {
                 ProductionDesign = null;
             }
 
             ArtDirection = PersonItem.RetrieveList(Reader, "Movie", ID, "ArtDirection");
-                count += ArtDirection.Count;
+            count += ArtDirection.Count;
             if (ArtDirection.Count == 0)
             {
                 ArtDirection = null;
             }
 
             SetDecoration = PersonItem.RetrieveList(Reader, "Movie", ID, "SetDecoration");
-                count += SetDecoration.Count;
+            count += SetDecoration.Count;
             if (SetDecoration.Count == 0)
             {
                 SetDecoration = null;
             }
 
             CostumeDesign = PersonItem.RetrieveList(Reader, "Movie", ID, "CostumeDesign");
-                count += CostumeDesign.Count;
+            count += CostumeDesign.Count;
             if (CostumeDesign.Count == 0)
             {
                 CostumeDesign = null;
             }
 
             MakeupDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "MakeupDepartment");
-                count += MakeupDepartment.Count;
+            count += MakeupDepartment.Count;
             if (MakeupDepartment.Count == 0)
             {
                 MakeupDepartment = null;
             }
 
             ProductionManagement = PersonItem.RetrieveList(Reader, "Movie", ID, "ProductionManagement");
-                count += ProductionManagement.Count;
+            count += ProductionManagement.Count;
             if (ProductionManagement.Count == 0)
             {
                 ProductionManagement = null;
             }
 
             AssistantDirectors = PersonItem.RetrieveList(Reader, "Movie", ID, "AssistantDirector");
-                count += AssistantDirectors.Count;
+            count += AssistantDirectors.Count;
             if (AssistantDirectors.Count == 0)
             {
                 AssistantDirectors = null;
             }
 
             ArtDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "ArtDepartment");
-                count += ArtDepartment.Count;
+            count += ArtDepartment.Count;
             if (ArtDepartment.Count == 0)
             {
                 ArtDepartment = null;
             }
 
             SoundDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "SoundDepartment");
-                count += SoundDepartment.Count;
+            count += SoundDepartment.Count;
             if (SoundDepartment.Count == 0)
             {
                 SoundDepartment = null;
             }
 
             SpecialEffects = PersonItem.RetrieveList(Reader, "Movie", ID, "SpecialEffects");
-                count += SpecialEffects.Count;
+            count += SpecialEffects.Count;
             if (SpecialEffects.Count == 0)
             {
                 SpecialEffects = null;
             }
 
             VisualEffects = PersonItem.RetrieveList(Reader, "Movie", ID, "VisualEffects");
-                count += VisualEffects.Count;
+            count += VisualEffects.Count;
             if (VisualEffects.Count == 0)
             {
                 VisualEffects = null;
             }
 
             Stunts = PersonItem.RetrieveList(Reader, "Movie", ID, "Stunts");
-                count += Stunts.Count;
+            count += Stunts.Count;
             if (Stunts.Count == 0)
             {
                 Stunts = null;
             }
 
             ElectricalDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "ElectricalDepartment");
-                count += ElectricalDepartment.Count;
+            count += ElectricalDepartment.Count;
             if (ElectricalDepartment.Count == 0)
             {
                 ElectricalDepartment = null;
             }
 
             AnimationDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "AnimationDepartment");
-                count += AnimationDepartment.Count;
+            count += AnimationDepartment.Count;
             if (AnimationDepartment.Count == 0)
             {
                 AnimationDepartment = null;
             }
 
             CastingDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "CastingDepartment");
-                count += CastingDepartment.Count;
+            count += CastingDepartment.Count;
             if (CastingDepartment.Count == 0)
             {
                 CastingDepartment = null;
             }
 
             CostumeDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "CostumeDepartment");
-                count += CostumeDepartment.Count;
+            count += CostumeDepartment.Count;
             if (CostumeDepartment.Count == 0)
             {
                 CostumeDepartment = null;
             }
 
             EditorialDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "EditorialDepartment");
-                count += EditorialDepartment.Count;
+            count += EditorialDepartment.Count;
             if (EditorialDepartment.Count == 0)
             {
                 EditorialDepartment = null;
             }
 
             LocationManagement = PersonItem.RetrieveList(Reader, "Movie", ID, "LocationManagement");
-                count += LocationManagement.Count;
+            count += LocationManagement.Count;
             if (LocationManagement.Count == 0)
             {
                 LocationManagement = null;
             }
 
             MusicDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "MusicDepartment");
-                count += MusicDepartment.Count;
+            count += MusicDepartment.Count;
             if (MusicDepartment.Count == 0)
             {
                 MusicDepartment = null;
             }
 
             ContinuityDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "ContinuityDepartment");
-                count += ContinuityDepartment.Count;
+            count += ContinuityDepartment.Count;
             if (ContinuityDepartment.Count == 0)
             {
                 ContinuityDepartment = null;
             }
 
             TransportationDepartment = PersonItem.RetrieveList(Reader, "Movie", ID, "TransportationDepartment");
-                count += TransportationDepartment.Count;
+            count += TransportationDepartment.Count;
             if (TransportationDepartment.Count == 0)
             {
                 TransportationDepartment = null;
             }
 
             OtherCrew = PersonItem.RetrieveList(Reader, "Movie", ID, "OtherCrew");
-                count += OtherCrew.Count;
+            count += OtherCrew.Count;
             if (OtherCrew.Count == 0)
             {
                 OtherCrew = null;
             }
 
             Thanks = PersonItem.RetrieveList(Reader, "Movie", ID, "Thanks");
-                count += Thanks.Count;
+            count += Thanks.Count;
             if (Thanks.Count == 0)
             {
                 Thanks = null;
@@ -788,28 +788,28 @@ namespace EntertainmentDB.Data
 
             // Company data
             ProductionCompanies = CompanyItem.RetrieveList(Reader, "Movie", ID, "ProductionCompany");
-                count += ProductionCompanies.Count;
+            count += ProductionCompanies.Count;
             if (ProductionCompanies.Count == 0)
             {
                 ProductionCompanies = null;
             }
 
             Distributors = DistributorCompanyItem.RetrieveList(Reader, "Movie", ID, "Distributor");
-                count += Distributors.Count;
+            count += Distributors.Count;
             if (Distributors.Count == 0)
             {
                 Distributors = null;
             }
 
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Movie", ID, "SpecialEffectsCompany");
-                count += SpecialEffectsCompanies.Count;
+            count += SpecialEffectsCompanies.Count;
             if (SpecialEffectsCompanies.Count == 0)
             {
                 SpecialEffectsCompanies = null;
             }
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Movie", ID, "OtherCompany");
-                count += OtherCompanies.Count;
+            count += OtherCompanies.Count;
             if (OtherCompanies.Count == 0)
             {
                 OtherCompanies = null;
@@ -817,21 +817,21 @@ namespace EntertainmentDB.Data
 
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Movie", ID, "FilmingLocation");
-                count += FilmingLocations.Count;
+            count += FilmingLocations.Count;
             if (FilmingLocations.Count == 0)
             {
                 FilmingLocations = null;
             }
 
             FilmingDates = TimespanItem.RetrieveList(Reader, "Movie", ID, "FilmingDate");
-                count += FilmingDates.Count;
+            count += FilmingDates.Count;
             if (FilmingDates.Count == 0)
             {
                 FilmingDates = null;
             }
 
             ProductionDates = TimespanItem.RetrieveList(Reader, "Movie", ID, "ProductionDate");
-                count += ProductionDates.Count;
+            count += ProductionDates.Count;
             if (ProductionDates.Count == 0)
             {
                 ProductionDates = null;
@@ -839,21 +839,21 @@ namespace EntertainmentDB.Data
 
             // Image data
             Posters = ImageItem.RetrieveList(Reader, "Movie", ID, "Poster");
-                count += Posters.Count;
+            count += Posters.Count;
             if (Posters.Count == 0)
             {
                 Posters = null;
             }
 
             Covers = ImageItem.RetrieveList(Reader, "Movie", ID, "Cover");
-                count += Covers.Count;
+            count += Covers.Count;
             if (Covers.Count == 0)
             {
                 Covers = null;
             }
 
             Images = ImageItem.RetrieveList(Reader, "Movie", ID, "Image");
-                count += Images.Count;
+            count += Images.Count;
             if (Images.Count == 0)
             {
                 Images = null;
@@ -861,14 +861,14 @@ namespace EntertainmentDB.Data
 
             // Text data
             Descriptions = TextItem.RetrieveList(Reader, "Movie", ID, "Description");
-                count += Descriptions.Count;
+            count += Descriptions.Count;
             if (Descriptions.Count == 0)
             {
                 Descriptions = null;
             }
 
             Reviews = TextItem.RetrieveList(Reader, "Movie", ID, "Review");
-                count += Reviews.Count;
+            count += Reviews.Count;
             if (Reviews.Count == 0)
             {
                 Reviews = null;
@@ -876,14 +876,14 @@ namespace EntertainmentDB.Data
 
             // other data
             Awards = AwardItem.RetrieveList(Reader, "Movie", ID, "Award");
-                count += Awards.Count;
+            count += Awards.Count;
             if (Awards.Count == 0)
             {
                 Awards = null;
             }
 
             Weblinks = WeblinkItem.RetrieveList(Reader, "Movie", ID, "Weblink");
-                count += Weblinks.Count;
+            count += Weblinks.Count;
             if (Weblinks.Count == 0)
             {
                 Weblinks = null;
