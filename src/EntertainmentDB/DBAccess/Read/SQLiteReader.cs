@@ -48,9 +48,9 @@ namespace EntertainmentDB.DBAccess.Read
         // --- Methods ---
 
         /// <summary>
-        /// Returns a copy of the current SQLiteReader. 
+        /// Returns a new SQLiteReader. 
         /// </summary>
-        /// <returns>A new SQLiteReader which ist a copy of the current SQLiteReader.</returns>
+        /// <returns>A new SQLiteReader.</returns>
         public override DBReader New()
         {
             return new SQLiteReader();

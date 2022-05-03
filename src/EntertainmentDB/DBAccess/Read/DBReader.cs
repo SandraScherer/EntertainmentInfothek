@@ -59,7 +59,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// Creates a new DBReader of the same class as the current DBReader.
         /// </summary>
-        /// <returns>A new DBReader which the same class as the current DBReader.</returns>
+        /// <returns>A new DBReader of the same class as the current DBReader.</returns>
         public abstract DBReader New();
 
         /// <summary>

@@ -26,6 +26,9 @@ namespace EntertainmentDB.DBAccess.Read.Tests
     [TestClass()]
     public class SQLiteReaderTests
     {
+        const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
+
         [TestMethod()]
         public void SQLiteReaderTest()
         {
@@ -39,16 +42,35 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             Assert.IsNotNull(reader.Table);
         }
 
-        [DataTestMethod()]
-        [DataRow("Movie")]
-        public void RetrieveTest_validID_BasicInfoOnly(string value)
+        [TestMethod()]
+        public void NewTest()
         {
             // Arrange
             SQLiteReader reader = new SQLiteReader();
-            reader.Query = $"SELECT ID FROM {value} WHERE ID LIKE \"_xxx\"";
 
             // Act
-            reader.Retrieve(true);
+            DBReader newReader = reader.New();
+
+            // Assert
+            Assert.IsNotNull((SQLiteReader) newReader);
+            Assert.IsNotNull(newReader);
+            Assert.AreEqual("", newReader.Query);
+            Assert.IsNotNull(newReader.Table);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", true)]
+        [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
+        public void RetrieveTest_withValidID(string tableName, bool basicInfoOnly)
+        {
+            // Arrange
+            SQLiteReader reader = new SQLiteReader();
+            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE \"{VALID_ID}\"";
+
+            // Act
+            reader.Retrieve(basicInfoOnly);
 
             // Assert
             Assert.AreEqual(1, reader.Table.Columns.Count);
@@ -56,19 +78,22 @@ namespace EntertainmentDB.DBAccess.Read.Tests
         }
 
         [DataTestMethod()]
-        [DataRow("Movie")]
-        public void RetrieveTest_validID_AdditionalInfo(string value)
+        [DataRow("Movie", true)]
+        [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
+        public void RetrieveTest_withInvalidID(string tableName, bool basicInfoOnly)
         {
             // Arrange
             SQLiteReader reader = new SQLiteReader();
-            reader.Query = $"SELECT ID FROM {value} WHERE ID LIKE \"_xxx\"";
+            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE \"{INVALID_ID}\"";
 
             // Act
-            reader.Retrieve(false);
+            reader.Retrieve(basicInfoOnly);
 
             // Assert
-            Assert.AreEqual(1, reader.Table.Columns.Count);
-            Assert.AreEqual(1, reader.Table.Rows.Count);
+            Assert.AreEqual(0, reader.Table.Columns.Count);
+            Assert.AreEqual(0, reader.Table.Rows.Count);
         }
     }
 }
