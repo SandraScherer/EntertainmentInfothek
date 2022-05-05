@@ -92,7 +92,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             reader.Retrieve(basicInfoOnly);
 
             // Assert
-            Assert.AreEqual(0, reader.Table.Columns.Count);
+            Assert.AreEqual(1, reader.Table.Columns.Count);
             Assert.AreEqual(0, reader.Table.Rows.Count);
         }
     }
