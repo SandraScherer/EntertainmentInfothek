@@ -15,10 +15,9 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -49,17 +48,23 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an award with an empty id string.
         /// </summary>
-        public Award() : this("")
+        /// <param name="reader">The database reader to be used to read the award information from the database.</param>
+        public Award(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         ///  Initializes an award with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the award information from the database.</param>
         /// <param name="id">The id of the award.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Award(string id) : base(id)
+        public Award(DBReader reader, string id) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -89,14 +94,14 @@ namespace EntertainmentDB.Data
                 Name = row["Name"].ToString();
                 if (!String.IsNullOrEmpty(row["PresenterID"].ToString()))
                 {
-                    Presenter = new Company();
+                    Presenter = new Company(Reader.New());
                     Presenter.ID = row["PresenterID"].ToString();
                     Presenter.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Status = new Status();
+                    Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
                 }

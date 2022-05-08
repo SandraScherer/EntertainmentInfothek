@@ -1,8 +1,9 @@
 <map id="EntertainmentDB.Data.Series.RetrieveList" name="EntertainmentDB.Data.Series.RetrieveList">
-<area shape="rect" id="node1" title="Retrieves a list of series from the database." alt="" coords="5,103,203,144"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="254,37,445,79"/>
-<area shape="rect" id="node5" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="254,103,445,144"/>
-<area shape="rect" id="node6" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a9d1944f6f0a1a02ebd9d0712e47f7d72" title="Initializes a series with an empty id string." alt="" coords="251,168,448,209"/>
-<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="496,5,687,47"/>
-<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="496,71,687,112"/>
+<area shape="rect" id="node1" title="Retrieves a list of series from the database." alt="" coords="5,104,203,145"/>
+<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="254,5,445,47"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="254,71,445,112"/>
+<area shape="rect" id="node6" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="254,136,445,177"/>
+<area shape="rect" id="node7" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa88d1b83e7a8c3996c5a2b99fb65fc38" title="Initializes a series with an empty id string." alt="" coords="251,201,448,243"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="496,39,687,80"/>
+<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="496,104,687,145"/>
 </map>

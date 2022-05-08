@@ -14,11 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+
 using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -69,17 +67,23 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes an article with an empty id string.
         /// </summary>
-        protected Article() : this("")
+        /// <param name="reader">The database reader to be used to read the article information from the database.</param>
+        protected Article(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         /// Initializes an article with the given id string.
         /// </summary>
-        /// <param name="id">The id of the series.</param>
+        /// <param name="reader">The database reader to be used to read the article information from the database.</param>
+        /// <param name="id">The id of the article.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        protected Article(string id) : base(id)
+        protected Article(DBReader reader, string id) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));

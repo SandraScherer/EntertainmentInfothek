@@ -1,0 +1,4 @@
+<map id="EntertainmentDB.DBAccess.Read.SQLiteReader.SQLiteReader" name="EntertainmentDB.DBAccess.Read.SQLiteReader.SQLiteReader">
+<area shape="rect" id="node1" title="Initializes a SQLite database reader." alt="" coords="244,5,467,47"/>
+<area shape="rect" id="node2" href="$db/d4b/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_s_q_lite_reader.html#a31b1ba1e98b1d1b92ce71270359daeb3" title="Returns a copy of the current SQLiteReader." alt="" coords="5,5,196,47"/>
+</map>

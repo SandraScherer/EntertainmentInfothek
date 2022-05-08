@@ -19,7 +19,6 @@ using EntertainmentDB.DBAccess.Read;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -45,21 +44,32 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a cinematographic process item with an empty id string.
         /// </summary>
-        public CinematographicProcessItem() : this("", "")
+        /// <param name="reader">The database reader to be used to read the cinematographic process item information from the database.</param>
+        public CinematographicProcessItem(DBReader reader) : this(reader, "", "", "")
         {
         }
 
         /// <summary>
         /// Initializes a cinematographic process item with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the cinematographic process item information from the database.</param>
         /// <param name="id">The id of the cinematographic process item.</param>
+        /// <param name="baseTableName">The base table name of the cinematographic process item.</param>
         /// <param name="targetTableName">The target table name of the cinematographic process item.</param>
-        /// <exception cref="ArgumentNullException">Thrown when the given id or target table name is null.</exception>
-        public CinematographicProcessItem(string id, string targetTableName) : base(id, targetTableName)
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
+        public CinematographicProcessItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
+            }
+            if (baseTableName == null)
+            {
+                throw new ArgumentNullException(nameof(baseTableName));
             }
             if (targetTableName == null)
             {
@@ -89,14 +99,14 @@ namespace EntertainmentDB.Data
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["CinematographicProcessID"].ToString()))
                 {
-                    CinematographicProcess = new CinematographicProcess();
+                    CinematographicProcess = new CinematographicProcess(Reader.New());
                     CinematographicProcess.ID = row["CinematographicProcessID"].ToString();
                     CinematographicProcess.Retrieve(retrieveBasicInfoOnly);
                 }
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Status = new Status();
+                    Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
                 }
@@ -129,7 +139,7 @@ namespace EntertainmentDB.Data
         /// <param name="targetTableName">The target table name of the cinematographic process item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of cinematographic process items.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given reader, base table name, base table id, target table name or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public static List<CinematographicProcessItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
             if (reader == null)
@@ -168,7 +178,7 @@ namespace EntertainmentDB.Data
 
                 foreach (DataRow row in reader.Table.Rows)
                 {
-                    CinematographicProcessItem item = new CinematographicProcessItem();
+                    CinematographicProcessItem item = new CinematographicProcessItem(reader.New());
                     item.BaseTableName = baseTableName;
                     item.TargetTableName = targetTableName;
 

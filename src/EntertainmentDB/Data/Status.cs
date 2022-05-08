@@ -17,9 +17,7 @@
 
 using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -33,8 +31,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The database reader to be used to read the status information from the database.
         /// </summary>
-        // TODO: which DB reader is to be used should be defined in configuration
-        public DBReader Reader { get; protected set; } = new SQLiteReader();
+        public DBReader Reader { get; protected set; }
 
         /// <summary>
         /// The id of the status.
@@ -76,17 +73,23 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a status with an empty id string.
         /// </summary>
-        public Status() : this("")
+        /// <param name="reader">The database reader to be used to read the status information from the database.</param>
+        public Status(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         /// Initializes a status with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the status information from the database.</param>
         /// <param name="id">The id of the status.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Status(string id)
+        public Status(DBReader reader, string id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -94,6 +97,7 @@ namespace EntertainmentDB.Data
 
             Logger.Trace($"Status() angelegt");
 
+            Reader = reader;
             ID = id;
         }
 

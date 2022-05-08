@@ -17,9 +17,7 @@
 
 using EntertainmentDB.DBAccess.Read;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace EntertainmentDB.Data
 {
@@ -50,17 +48,23 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// Initializes a type with an empty id string.
         /// </summary>
-        public Type() : this("")
+        /// <param name="reader">The database reader to be used to read the type information from the database.</param>
+        public Type(DBReader reader) : this(reader, "")
         {
         }
 
         /// <summary>
         /// Initializes a type with the given id string.
         /// </summary>
+        /// <param name="reader">The database reader to be used to read the type information from the database.</param>
         /// <param name="id">The id of the type.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Type(string id) : base(id)
+        public Type(DBReader reader, string id) : base(reader, id)
         {
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
             if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
@@ -92,7 +96,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Status = new Status();
+                    Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
                 }

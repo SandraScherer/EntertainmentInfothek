@@ -1,9 +1,9 @@
 <map id="WikiPageCreator.Program.Main" name="WikiPageCreator.Program.Main">
-<area shape="rect" id="node1" title=" " alt="" coords="5,718,211,745"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,734,211,761"/>
 <area shape="rect" id="node2" href="$d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="269,596,446,637"/>
 <area shape="rect" id="node27" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="269,661,446,703"/>
-<area shape="rect" id="node28" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a1c79d31f7b77afc35e754cb79c516692" title="Retrieves a list of movies from the database." alt="" coords="261,743,454,784"/>
-<area shape="rect" id="node31" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a2e3ca9e408b57d1c9a108ce7ef8314d5" title="Retrieves a list of series from the database." alt="" coords="259,808,456,849"/>
+<area shape="rect" id="node28" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a1c79d31f7b77afc35e754cb79c516692" title="Retrieves a list of movies from the database." alt="" coords="261,759,454,800"/>
+<area shape="rect" id="node32" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a2e3ca9e408b57d1c9a108ce7ef8314d5" title="Retrieves a list of series from the database." alt="" coords="259,824,456,865"/>
 <area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#acadd56ff0714e901bb9b73d937500645" title="Creates the file content of a given entry." alt="" coords="513,455,722,511"/>
 <area shape="rect" id="node22" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#ac153298fd719d0c4e539426ffcfd1fe8" title="Creates the file name of the article page (or not)." alt="" coords="504,563,731,604"/>
 <area shape="rect" id="node23" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="522,693,713,735"/>
@@ -28,7 +28,8 @@
 <area shape="rect" id="node21" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab49f6cd3e2d59d9b2118eb32a0644abf" title="Inserts an indicator to end a box." alt="" coords="1083,609,1294,651"/>
 <area shape="rect" id="node24" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="800,761,991,803"/>
 <area shape="rect" id="node25" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="800,696,991,737"/>
-<area shape="rect" id="node29" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ab44dda301ec8fbddd5140413cc31046d" title="Initializes a movie with an empty id string." alt="" coords="521,759,714,800"/>
-<area shape="rect" id="node30" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="522,824,713,865"/>
-<area shape="rect" id="node32" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a9d1944f6f0a1a02ebd9d0712e47f7d72" title="Initializes a series with an empty id string." alt="" coords="519,889,716,931"/>
+<area shape="rect" id="node29" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a8eac679879d60d1536e5a93b1397ce5f" title="Initializes a movie with an empty id string." alt="" coords="521,759,714,800"/>
+<area shape="rect" id="node30" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="522,824,713,865"/>
+<area shape="rect" id="node31" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="522,889,713,931"/>
+<area shape="rect" id="node33" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa88d1b83e7a8c3996c5a2b99fb65fc38" title="Initializes a series with an empty id string." alt="" coords="519,955,716,996"/>
 </map>

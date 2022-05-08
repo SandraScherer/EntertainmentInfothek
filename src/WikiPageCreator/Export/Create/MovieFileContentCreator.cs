@@ -1750,15 +1750,12 @@ namespace WikiPageCreator.Export.Create
 
                 for (int i = 0; i < texts.Count; i++)
                 {
-                    if (targetLanguageCode.Equals("en") && texts[i].Text.Language.ID.Equals("en"))
+                    if ((targetLanguageCode.Equals("en") && texts[i].Text.Language.ID.Equals("en")) ||
+                       (targetLanguageCode.Equals("de") && texts[i].Text.Language.ID.Equals("de")))
                     {
                         data = texts[i].Text.Content;
                     }
-                    else if (targetLanguageCode.Equals("de") && texts[i].Text.Language.ID.Equals("de"))
-                    {
-                        data = texts[i].Text.Content;
-                    }
-                    else // for testing purposes
+                    else
                     {
                         data = texts[i].Text.Content;
                     }
