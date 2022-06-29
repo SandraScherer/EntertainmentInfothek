@@ -33,7 +33,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <summary>
         /// The logger to log everything.
         /// </summary>
-        private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         // --- Constructors ---
 
