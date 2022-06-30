@@ -116,12 +116,16 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public abstract int RetrieveBasicInformation(bool retrieveBasicInfoOnly);
+        protected abstract int RetrieveBasicInformation(bool retrieveBasicInfoOnly);
 
         /// <summary>
         /// Retrieves the additional information of the entry from the database.
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        public abstract int RetrieveAdditionalInformation();
+        protected virtual int RetrieveAdditionalInformation()
+        {
+            // nothing to do
+            return 0;
+        }
     }
 }

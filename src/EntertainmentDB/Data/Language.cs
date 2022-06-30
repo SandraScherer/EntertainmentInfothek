@@ -85,7 +85,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
+        protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
                            $"FROM Language " +
@@ -114,16 +114,6 @@ namespace EntertainmentDB.Data
             }
 
             return 1;
-        }
-
-        /// <summary>
-        /// Retrieves the additional information of the language from the database (none available).
-        /// </summary>
-        /// <returns>0</returns>
-        public override int RetrieveAdditionalInformation()
-        {
-            // nothing to do
-            return 0;
         }
     }
 }

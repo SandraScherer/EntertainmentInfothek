@@ -89,66 +89,6 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveBasicInformationTest_withValidID(bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, VALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual(VALID_ID, entry.ID);
-            Assert.AreEqual("AspectRatio Ratio X", entry.Ratio);
-            Assert.AreEqual("AspectRatio Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void RetrieveBasicInformationTest_withInvalidID(bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, INVALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual(INVALID_ID, entry.ID);
-            Assert.IsNull(entry.Ratio);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(VALID_ID)]
-        [DataRow(INVALID_ID)]
-        public void RetrieveAdditionalInformationTest(string id)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, id);
-
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
         public void RetrieveTest_withValidID(bool basicInfoOnly)
         {
             // Arrange

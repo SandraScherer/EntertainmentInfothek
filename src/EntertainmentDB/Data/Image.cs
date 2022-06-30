@@ -96,7 +96,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
+        protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, FileName, Description, TypeID, CountryID, Details, StatusID, LastUpdated " +
                            $"FROM Image " +
@@ -142,7 +142,7 @@ namespace EntertainmentDB.Data
         /// Retrieves the additional information of the image from the database (none available).
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        public override int RetrieveAdditionalInformation()
+        protected override int RetrieveAdditionalInformation()
         {
             int count = 0;
 

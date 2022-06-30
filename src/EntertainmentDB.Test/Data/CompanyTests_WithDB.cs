@@ -91,68 +91,6 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
-        public void RetrieveBasicInformationTest_withValidID(bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Company entry = new Company(reader, VALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual(VALID_ID, entry.ID);
-            Assert.AreEqual("Company Name X", entry.Name);
-            Assert.AreEqual("Company NameAddOn X", entry.NameAddOn);
-            Assert.AreEqual("Company Details X", entry.Details);
-            Assert.AreEqual("_xxx", entry.Status.ID);
-            Assert.AreEqual("Company LastUpdated X", entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
-        public void RetrieveBasicInformationTest_withInvalidID(bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Company entry = new Company(reader, INVALID_ID);
-
-            // Act
-            int count = entry.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual(INVALID_ID, entry.ID);
-            Assert.IsNull(entry.Name);
-            Assert.IsNull(entry.NameAddOn);
-            Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.Status);
-            Assert.IsNull(entry.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow(VALID_ID)]
-        [DataRow(INVALID_ID)]
-        public void RetrieveAdditionalInformationTest(string id)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Company entry = new Company(reader, id);
-
-            // Act
-            int count = entry.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [DataTestMethod()]
-        [DataRow(true)]
-        [DataRow(false)]
         public void RetrieveTest_withValidID(bool basicInfoOnly)
         {
             // Arrange

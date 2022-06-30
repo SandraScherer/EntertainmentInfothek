@@ -116,66 +116,6 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
-        public void RetrieveBasicInformationTest_withValidID(string baseTableName, bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, VALID_ID, baseTableName, "Camera");
-
-            // Act
-            int count = item.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(1, count);
-
-            Assert.AreEqual(VALID_ID, item.ID);
-            Assert.AreEqual("_xxx", item.Camera.ID);
-            Assert.AreEqual($"{baseTableName} Camera Details X1", item.Details);
-            Assert.AreEqual("_xxx", item.Status.ID);
-            Assert.AreEqual($"{baseTableName} Camera LastUpdated X1", item.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow("Movie", true)]
-        [DataRow("Movie", false)]
-        public void RetrieveBasicInformationTest_withInvalidID(string baseTableName, bool basicInfoOnly)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, INVALID_ID, baseTableName, "Camera");
-
-            // Act
-            int count = item.RetrieveBasicInformation(basicInfoOnly);
-
-            // Assert
-            Assert.AreEqual(0, count);
-
-            Assert.AreEqual(INVALID_ID, item.ID);
-            Assert.IsNull(item.Camera);
-            Assert.IsNull(item.Details);
-            Assert.IsNull(item.Status);
-            Assert.IsNull(item.LastUpdated);
-        }
-
-        [DataTestMethod()]
-        [DataRow("Movie", VALID_ID)]
-        [DataRow("Movie", INVALID_ID)]
-        public void RetrieveAdditionalInformationTest(string baseTableName, string id)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, id, baseTableName, "Camera");
-
-            // Act
-            int count = item.RetrieveAdditionalInformation();
-
-            // Assert
-            Assert.AreEqual(0, count);
-        }
-
-        [DataTestMethod()]
-        [DataRow("Movie", true)]
-        [DataRow("Movie", false)]
         public void RetrieveTest_withValidID(string baseTableName, bool basicInfoOnly)
         {
             // Arrange
