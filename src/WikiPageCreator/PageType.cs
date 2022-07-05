@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2021 Sandra Scherer
+// Copyright (C) 2022 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,24 +16,31 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-using EntertainmentDB.Data;
+using System;
 using System.Collections.Generic;
-using WikiPageCreator.Export.Format;
+using System.Text;
 
-namespace WikiPageCreator.Export.Create
+namespace WikiPageCreator
 {
     /// <summary>
-    /// Provides an interface for a section content creator.
+    /// Specifies constants that define possible page types.
     /// </summary>
-    public interface ISectionContentCreatable
+    public enum PageType
     {
-        /// <summary>
-        /// Creates the section content of a given entry.
-        /// </summary>
-        /// <param name="entry">The entry that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted content of the movie.</returns>
-        List<string> CreateSectionContent(Entry entry, string targetLanguageCode, Formatter formatter);
+        Movie,
+        Series,
+        Episode,
+        Videogame,
+        Book,
+        Music,
+
+        Biography,
+        Company,
+
+        Award,
+        Genre,
+        Location,
+        Country,
+        Language
     }
 }

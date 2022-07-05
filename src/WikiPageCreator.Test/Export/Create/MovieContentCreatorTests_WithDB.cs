@@ -29,33 +29,112 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
     public class MovieContentCreatorTests_WithDB
     {
         const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
 
-        public Formatter Formatter { get; set; } = new DokuWikiFormatter();
-
-        [TestMethod()]
-        public void MovieContentCreatorTest()
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void MovieContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
-            MovieContentCreator creator = new MovieContentCreator();
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
 
             // Act
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
             // Assert
             Assert.IsNotNull(creator);
+            Assert.AreEqual(movie, creator.Movie);
+            Assert.AreEqual(formatter, creator.Formatter);
+            Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
 
-        [TestMethod()]
-        public void GetFileNameTest_withValidID()
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MovieContentCreatorTest_withMovieNull(string targetLanguageCode)
+        {
+            // Arrange
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            MovieContentCreator creator = new MovieContentCreator(null, formatter, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MovieContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
+
+            // Act, Assert
+            MovieContentCreator creator = new MovieContentCreator(movie, null, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MovieContentCreatorTest_withTargetLanguageCodeNull(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, null);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void MovieContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, "");
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void GetPageNameTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Movie movie = new Movie(reader, VALID_ID);
             movie.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator();
-            string testContent = $"{Formatter.AsPagename("Movie OriginalTitle X (Movi)")}";
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
+            string testContent = $"{formatter.AsPagename("Movie OriginalTitle X (Movi)")}";
 
             // Act
-            string content = creator.GetFileName(movie, Formatter);
+            string content = creator.GetPageName();
 
             // Assert
             Assert.AreEqual(testContent, content);
@@ -65,55 +144,58 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateFileContentTest_withValidID(string languageCode)
+        public void CreatePageContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Movie movie = new Movie(reader, VALID_ID);
             movie.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator();
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
             List<string> testContent = new List<string>();
+
             string[] data = new string[2];
-            string[] pathInfo = { languageCode, "info" };
-            string[] pathDate = { languageCode, "date" };
+            string[] pathInfo = { targetLanguageCode, "info" };
+            string[] pathDate = { targetLanguageCode, "date" };
 
             // File Header
-            testContent.Add(Formatter.DisableCache());
-            testContent.Add(Formatter.DisableTOC());
-            testContent.Add(Formatter.BeginComment());
+            testContent.Add(formatter.DisableCache());
+            testContent.Add(formatter.DisableTOC());
+            testContent.Add(formatter.BeginComment());
             testContent.Add($"   Movie OriginalTitle X");
             testContent.Add($"");
             testContent.Add($"   @author  WikiPageCreator");
             testContent.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             testContent.Add($"   @version Status EnglishTitle X: Movie LastUpdated X");
-            testContent.Add(Formatter.EndComment());
+            testContent.Add(formatter.EndComment());
             testContent.Add($"");
             testContent.Add($"");
 
             // Title
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(Formatter.AsHeading1("Movie EnglishTitle X"));
+                testContent.Add(formatter.AsHeading1("Movie EnglishTitle X"));
             }
-            else if (languageCode.Equals("de"))
+            else if (targetLanguageCode.Equals("de"))
             {
-                testContent.Add(Formatter.AsHeading1("Movie GermanTitle X"));
+                testContent.Add(formatter.AsHeading1("Movie GermanTitle X"));
             }
             else
             {
-                testContent.Add(Formatter.AsHeading1("Movie OriginalTitle X"));
+                testContent.Add(formatter.AsHeading1("Movie OriginalTitle X"));
             }
             testContent.Add($"");
             testContent.Add($"");
 
             // InfoBox Begin
             int[] width = { 30, 70 };
-            testContent.Add(Formatter.BeginBox(475, Alignment.Right));
-            testContent.Add(Formatter.DefineTable(445, width));
+            testContent.Add(formatter.BeginBox(475, Alignment.Right));
+            testContent.Add(formatter.DefineTable(445, width));
 
             // InfoBox Title
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Original Title";
                 data[1] = "Movie OriginalTitle X";
@@ -123,75 +205,77 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 data[0] = "Originaltitel";
                 data[1] = "Movie OriginalTitle X";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Type
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Type";
-                data[1] = Formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
             }
             else
             {
                 data[0] = "Typ";
-                data[1] = Formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Original Release Date";
-                data[1] = Formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
             }
             else
             {
                 data[0] = "Erstausstrahlung";
-                data[1] = Formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Budget
             data[0] = "Budget";
             data[1] = "Movie Budget X";
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Worldwide Gross
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Worldwide Gross";
-                data[1] = $"Movie WorldwideGross X ({Formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
             }
             else
             {
                 data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Movie WorldwideGross X ({Formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox End
-            testContent.Add(Formatter.EndBox());
+            testContent.Add(formatter.EndBox());
             testContent.Add($"");
             testContent.Add($"");
 
             // Connection Chapter
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(Formatter.AsHeading2("Connections to other articles"));
+                testContent.Add(formatter.AsHeading2("Connections to other articles"));
             }
             else
             {
-                testContent.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln"));
+                testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
             }
-            testContent.Add(Formatter.AsInsertPage(languageCode + ":navigation:_xxx"));
             testContent.Add($"");
             testContent.Add($"");
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));
 
             // File Footer
-            // nothing to do
+            testContent.Add($"");
+            testContent.Add($"");
 
             // Act
-            List<string> content = creator.CreateFileContent(movie, languageCode, Formatter);
+            List<string> content = creator.CreatePageContent();
 
             // Assert
             Assert.AreEqual(testContent.Count, content.Count);
@@ -199,6 +283,156 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 Assert.AreEqual(testContent[i], content[i]);
             }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, VALID_ID);
+            movie.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
+
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+
+            string[] data = new string[2];
+            string[] pathInfo = { targetLanguageCode, "info" };
+            string[] pathDate = { targetLanguageCode, "date" };
+
+            // InfoBox Title
+            if (targetLanguageCode.Equals("en"))
+            {
+                data[0] = "Original Title";
+                data[1] = "Movie OriginalTitle X";
+            }
+            else
+            {
+                data[0] = "Originaltitel";
+                data[1] = "Movie OriginalTitle X";
+            }
+            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox Type
+            if (targetLanguageCode.Equals("en"))
+            {
+                data[0] = "Type";
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
+            }
+            else
+            {
+                data[0] = "Typ";
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
+            }
+            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox ReleaseDate
+            if (targetLanguageCode.Equals("en"))
+            {
+                data[0] = "Original Release Date";
+                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+            }
+            else
+            {
+                data[0] = "Erstausstrahlung";
+                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+            }
+            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox Budget
+            data[0] = "Budget";
+            data[1] = "Movie Budget X";
+            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox Worldwide Gross
+            if (targetLanguageCode.Equals("en"))
+            {
+                data[0] = "Worldwide Gross";
+                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+            }
+            else
+            {
+                data[0] = "Einspielergebnis (weltweit)";
+                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+            }
+            testContent.Add(formatter.AsTableRow(data));
+
+            // Act
+            List<string> content = creator.CreateInfoBoxContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateChapterContentTest_withValidID(string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, VALID_ID);
+            movie.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
+
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+
+            // Act
+            List<string> content = creator.CreateChapterContent();
+
+            // Connection Chapter
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading2("Connections to other articles"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateSectionContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Movie movie = new Movie(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateSectionContent();
         }
     }
 }

@@ -26,9 +26,20 @@ namespace WikiPageCreator.Export.Create
     /// <summary>
     /// Provides a content creator for a connection.
     /// </summary>
-    public class ConnectionContentCreator : ISectionContentCreatable
+    public class ConnectionContentCreator : EntryContentCreator
     {
         // --- Properties ---
+
+        /// <summary>
+        /// The connection to be used to create the content.
+        /// </summary>
+        public Connection Connection
+        {
+            get
+            { return (Connection)Entry; }
+            set
+            { Entry = value; }
+        }
 
         /// <summary>
         /// The logger to log everything.
@@ -40,88 +51,113 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new ConnectionContentCreator.
         /// </summary>
-        public ConnectionContentCreator()
+        /// <param name="connection">The connection to be used to create content.</param>
+        /// <param name="formatter">The formatter to be used to format the content</param>
+        /// <param name="targetLanguageCode">The language code for the created content.</param>
+        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
+        public ConnectionContentCreator(Connection connection, Formatter formatter, string targetLanguageCode)
+            : base(connection, formatter, targetLanguageCode)
         {
+            if (connection == null)
+            {
+                throw new ArgumentNullException(nameof(connection));
+            }
+            if (formatter == null)
+            {
+                throw new ArgumentNullException(nameof(formatter));
+            }
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
             Logger.Trace($"ConnectionContentCreator() angelegt");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the section content of a given entry.
+        /// Returns the page name of the types page.
         /// </summary>
-        /// <param name="entry">The entry that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted content of the entry.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public virtual List<string> CreateSectionContent(Entry entry, string targetLanguageCode, Formatter formatter)
+        /// <returns>The formatted page name for the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override string GetPageName()
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException(nameof(entry));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
+            throw new NotSupportedException();
+        }
 
-            Logger.Trace($"CreateSectionContent() für Connection '{((Connection)entry).ID}' gestartet");
+        /// <summary>
+        /// Creates the page content of the type.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override List<string> CreatePageContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the formatted header content of a given type.
+        /// </summary>
+        /// <returns>The formatted header content of the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreatePageHeader()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the formatted file title content of a given type.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreatePageTitle()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the infobox content of a given type.
+        /// </summary>
+        /// <returns>The formatted content of the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override List<string> CreateInfoBoxContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the chapter content of a given type.
+        /// </summary>
+        /// <returns>The formatted content of the type.</returns>
+        public override List<string> CreateChapterContent()
+        {
+            Logger.Trace($"CreateSectionContent() für Connection '{Connection.ID}' gestartet");
 
             List<string> content = new List<string>();
 
-            content.AddRange(this.CreateSectionConnection((Connection)entry, targetLanguageCode, formatter));
-            content.Add("");
-            content.Add("");
+            if (Connection != null)
+            {
+                if (Connection.BaseConnection == null)
+                {
+                    content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.ID));
+                }
+                else
+                {
+                    content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.BaseConnection.ID));
+                }
+            }
 
-            Logger.Trace($"CreateSectionContent() für Connection '{((Connection)entry).ID}' beendet");
+            Logger.Trace($"CreateSectionContent() für Connection '{Connection.ID}' beendet");
 
             return content;
         }
 
         /// <summary>
-        /// Creates the formatted connection section content of a given connection.
+        /// Creates the section content of a given type.
         /// </summary>
-        /// <param name="connection">The connection that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted section content of the connection.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateSectionConnection(Connection connection, string targetLanguageCode, Formatter formatter)
+        /// <returns>The formatted section content of the type.</returns>
+        public override List<string> CreateSectionContent()
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException(nameof(connection));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateSectionConnection() für Connection '{connection.ID}' gestartet");
-
-            List<string> content = new List<string>();
-
-            if (connection.BaseConnection == null)
-            {
-                content.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + connection.ID));
-            }
-            else
-            {
-                content.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + connection.BaseConnection.ID));
-            }
-
-            Logger.Trace($"CreateSectionConnection() für Connection '{connection.ID}' beendet");
-
-            return content;
+            return CreateChapterContent();
         }
     }
 }

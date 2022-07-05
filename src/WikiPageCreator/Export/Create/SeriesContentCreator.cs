@@ -26,9 +26,20 @@ namespace WikiPageCreator.Export.Create
     /// <summary>
     /// Provides a content creator for a series.
     /// </summary>
-    public class SeriesContentCreator : ArticleContentCreator, IFileContentCreatable
+    public class SeriesContentCreator : ArticleContentCreator
     {
         // --- Properties ---
+
+        /// <summary>
+        /// The series to be used to create the content.
+        /// </summary>
+        public Series Series
+        {
+            get
+            { return (Series)Article; }
+            protected set
+            { Article = value; }
+        }
 
         /// <summary>
         /// The logger to log everything.
@@ -40,146 +51,126 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new SeriesContentCreator.
         /// </summary>
-        public SeriesContentCreator()
+        /// <param name="series">The series to be used to create content.</param>
+        /// <param name="formatter">The formatter to be used to format the content</param>
+        /// <param name="targetLanguageCode">The language code for the created content.</param>
+        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
+        public SeriesContentCreator(Series series, Formatter formatter, string targetLanguageCode)
+            : base(series, formatter, targetLanguageCode)
         {
+            if (series == null)
+            {
+                throw new ArgumentNullException(nameof(series));
+            }
+            if (formatter == null)
+            {
+                throw new ArgumentNullException(nameof(formatter));
+            }
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
             Logger.Trace($"SeriesContentCreator() angelegt");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given entry.
+        /// Creates the infobox content of a given series.
         /// </summary>
-        /// <param name="entry">The entry that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted content of the entry.</returns>
+        /// <returns>The formatted content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected override List<string> CreateInfoBoxContent(Entry entry, string targetLanguageCode, Formatter formatter)
+        public override List<string> CreateInfoBoxContent()
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException(nameof(entry));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxContent() für Series {((Series)entry).OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            content.AddRange(base.CreateInfoBoxContent((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxLogo((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxReleaseDateFirstEpisode((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxReleaseDateLastEpisode((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxGenre((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxCertification((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxCountry((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxLanguage((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxNoOfSeasons((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxNoOfEpisodes((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxBudget((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxWorldwideGross((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxRuntime((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxSoundMix((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxColor((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxAspectRatio((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxCamera((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxLaboratory((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxFilmLength((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxNegativeFormat((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxCinematographicProcess((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateInfoBoxPrintedFilmFormat((Series)entry, targetLanguageCode, formatter));
+            content.AddRange(CreateInfoBoxTitle());
+            content.AddRange(CreateInfoBoxType());
+            content.AddRange(CreateInfoBoxLogo());
+            content.AddRange(CreateInfoBoxReleaseDateFirstEpisode());
+            content.AddRange(CreateInfoBoxReleaseDateLastEpisode());
+            content.AddRange(CreateInfoBoxGenre());
+            content.AddRange(CreateInfoBoxCertification());
+            content.AddRange(CreateInfoBoxCountry());
+            content.AddRange(CreateInfoBoxLanguage());
+            content.AddRange(CreateInfoBoxNoOfSeasons());
+            content.AddRange(CreateInfoBoxNoOfEpisodes());
+            content.AddRange(CreateInfoBoxBudget());
+            content.AddRange(CreateInfoBoxWorldwideGross());
+            content.AddRange(CreateInfoBoxRuntime());
+            content.AddRange(CreateInfoBoxSoundMix());
+            content.AddRange(CreateInfoBoxColor());
+            content.AddRange(CreateInfoBoxAspectRatio());
+            content.AddRange(CreateInfoBoxCamera());
+            content.AddRange(CreateInfoBoxLaboratory());
+            content.AddRange(CreateInfoBoxFilmLength());
+            content.AddRange(CreateInfoBoxNegativeFormat());
+            content.AddRange(CreateInfoBoxCinematographicProcess());
+            content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContent() für Series {((Series)entry).OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' beendet");
 
             return content;
         }
 
         /// <summary>
-        /// Creates the chapter content of a given entry.
+        /// Creates the chapter content of a given series.
         /// </summary>
-        /// <param name="entry">The entry that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted content of the entry.</returns>
+        /// <returns>The formatted content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected override List<string> CreateChapterContent(Entry entry, string targetLanguageCode, Formatter formatter)
+        public override List<string> CreateChapterContent()
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException(nameof(entry));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterContent() für Series '{((Series)entry).OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterContent() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            content.AddRange(CreateChapterPoster((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterCover((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterDescription((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterReview((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterImage((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterCastAndCrew((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterCompany((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterFilmingAndProduction((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterAward((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterWeblink((Series)entry, targetLanguageCode, formatter));
-            content.AddRange(CreateChapterConnection((Series)entry, targetLanguageCode, formatter));
+            content.AddRange(CreateChapterPoster());
+            content.AddRange(CreateChapterCover());
+            content.AddRange(CreateChapterDescription());
+            content.AddRange(CreateChapterReview());
+            content.AddRange(CreateChapterImage());
+            content.AddRange(CreateChapterCastAndCrew());
+            content.AddRange(CreateChapterCompany());
+            content.AddRange(CreateChapterFilmingAndProduction());
+            content.AddRange(CreateChapterAward());
+            content.AddRange(CreateChapterWeblink());
+            content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateInfoBoxContent() für Series {((Series)entry).OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' beendet");
 
             return content;
+        }
+
+        /// <summary>
+        /// Creates the section content of a given series.
+        /// </summary>
+        /// <returns>The formatted section content of the series.</returns>
+        public override List<string> CreateSectionContent()
+        {
+            throw new NotSupportedException();
         }
 
         /// <summary>
         /// Creates the formatted infobox logo content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox logo content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxLogo(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxLogo()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
-            //if (series.Logo != null)
+            //if (Series.Logo != null)
             //{
-            //    content.AddRange((new ImageContentCreator()).CreateInfoBoxContent(series.Logo, targetLanguageCode, formatter));
+            //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -187,50 +178,33 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox release date content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox release date content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxReleaseDateFirstEpisode(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxReleaseDateFirstEpisode()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
-            string[] path = { targetLanguageCode, "date" };
+            string[] path = { TargetLanguageCode, "date" };
 
-            if (!String.IsNullOrEmpty(series.ReleaseDateFirstEpisode))
+            if (!String.IsNullOrEmpty(Series.ReleaseDateFirstEpisode))
             {
-                if (targetLanguageCode.Equals("en"))
+                if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (First Episode): '{series.ReleaseDateFirstEpisode}' (englisch)");
+                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (englisch)");
                     data[0] = "Release Date (First Episode)";
-                    data[1] = formatter.AsInternalLink(path, series.ReleaseDateFirstEpisode, series.ReleaseDateFirstEpisode);
+                    data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (First Episode): '{series.ReleaseDateFirstEpisode}' (deutsch, ...)");
+                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (deutsch, ...)");
                     data[0] = "Erstausstrahlung (Erste Folge)";
-                    data[1] = formatter.AsInternalLink(path, series.ReleaseDateFirstEpisode, series.ReleaseDateFirstEpisode);
+                    data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -238,50 +212,33 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox release date content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox release date content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxReleaseDateLastEpisode(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxReleaseDateLastEpisode()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
-            string[] path = { targetLanguageCode, "date" };
+            string[] path = { TargetLanguageCode, "date" };
 
-            if (!String.IsNullOrEmpty(series.ReleaseDateLastEpisode))
+            if (!String.IsNullOrEmpty(Series.ReleaseDateLastEpisode))
             {
-                if (targetLanguageCode.Equals("en"))
+                if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{series.ReleaseDateLastEpisode}' (englisch)");
+                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (englisch)");
                     data[0] = "Release Date (Last Episode)";
-                    data[1] = formatter.AsInternalLink(path, series.ReleaseDateLastEpisode, series.ReleaseDateLastEpisode);
+                    data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{series.ReleaseDateLastEpisode}' (deutsch, ...)");
+                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (deutsch, ...)");
                     data[0] = "Erstausstrahlung (Letzte Folge)";
-                    data[1] = formatter.AsInternalLink(path, series.ReleaseDateLastEpisode, series.ReleaseDateLastEpisode);
+                    data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -289,37 +246,21 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox genre content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox genre content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxGenre(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxGenre()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxGenre() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxGenre() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Genres != null)
+            //TODO: implement following stuff
+            //if (Series.Genres != null)
             //{
-            //    content.AddRange((new GenreContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxGenre() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxGenre() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -327,37 +268,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox certification content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox certification content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxCertification(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxCertification()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxCertification() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCertification() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Certifications != null)
-            //{
-            //    content.AddRange((new CertificationContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
-            //}
+            //TODO: implement following stuff
+            //if (Series.Certifications != null)
+            // {
+            //     content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            // }
 
-            Logger.Trace($"CreateInfoBoxCertification() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCertification() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -365,37 +289,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox country content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox country content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxCountry(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxCountry()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxCountry() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCountry() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Countries != null)
+            //TODO: implement following stuff
+            //if (Series.Countries != null)
             //{
-            //    content.AddRange((new CountryContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxCountry() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCountry() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -403,37 +310,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox language content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxLanguage(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxLanguage()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxLanguage() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLanguage() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Languages != null)
+            //TODO: implement following stuff
+            //if (Series.Languages != null)
             //{
-            //    content.AddRange((new LanguageContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxLanguage() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLanguage() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -441,49 +331,32 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox language content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxNoOfSeasons(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxNoOfSeasons()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
-            if (!String.IsNullOrEmpty(series.NoOfSeasons))
+            if (!String.IsNullOrEmpty(Series.NoOfSeasons))
             {
-                if (targetLanguageCode.Equals("en"))
+                if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Seasons: '{series.NoOfSeasons}' (englisch)");
-                    data[0] = "No of Seasons";
-                    data[1] = series.NoOfSeasons;
+                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (englisch)");
+                    data[0] = "# Seasons";
+                    data[1] = Series.NoOfSeasons;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Seasons: '{series.NoOfSeasons}' (deutsch, ...)");
+                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (deutsch, ...)");
                     data[0] = "# Staffeln";
-                    data[1] = series.NoOfSeasons;
+                    data[1] = Series.NoOfSeasons;
                 }
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -491,49 +364,32 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox language content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxNoOfEpisodes(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxNoOfEpisodes()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
-            if (!String.IsNullOrEmpty(series.NoOfEpisodes))
+            if (!String.IsNullOrEmpty(Series.NoOfEpisodes))
             {
-                if (targetLanguageCode.Equals("en"))
+                if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Episodes: '{series.NoOfEpisodes}' (englisch)");
-                    data[0] = "No of Episodes";
-                    data[1] = series.NoOfEpisodes;
+                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (englisch)");
+                    data[0] = "# Episodes";
+                    data[1] = Series.NoOfEpisodes;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Episodes: '{series.NoOfEpisodes}' (deutsch, ...)");
+                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (deutsch, ...)");
                     data[0] = "# Folgen";
-                    data[1] = series.NoOfEpisodes;
+                    data[1] = Series.NoOfEpisodes;
                 }
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -541,40 +397,23 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox budget content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox budget content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxBudget(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxBudget()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxBudget() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxBudget() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
-            if (!String.IsNullOrEmpty(series.Budget))
+            if (!String.IsNullOrEmpty(Series.Budget))
             {
-                Logger.Trace($"Budget: {series.Budget}");
+                Logger.Trace($"Budget: {Series.Budget}");
                 data[0] = "Budget";
-                data[1] = $"{series.Budget}";
+                data[1] = $"{Series.Budget}";
 
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxBudget() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxBudget() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -582,37 +421,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox worldwide gross content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox worldwide gross content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxWorldwideGross(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxWorldwideGross()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
-            string[] path = { targetLanguageCode, "date" };
+            string[] path = { TargetLanguageCode, "date" };
 
-            if (!String.IsNullOrEmpty(series.WorldwideGross))
+            if (!String.IsNullOrEmpty(Series.WorldwideGross))
             {
-                Logger.Trace($"Worldwide Gross: {series.WorldwideGross}");
+                Logger.Trace($"Worldwide Gross: {Series.WorldwideGross}");
 
-                if (targetLanguageCode.Equals("en"))
+                if (TargetLanguageCode.Equals("en"))
                 {
                     data[0] = "Worldwide Gross";
                 }
@@ -621,17 +443,17 @@ namespace WikiPageCreator.Export.Create
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 
-                if (!String.IsNullOrEmpty(series.WorldwideGrossDate))
+                if (!String.IsNullOrEmpty(Series.WorldwideGrossDate))
                 {
-                    data[1] = $"{series.WorldwideGross} ({formatter.AsInternalLink(path, series.WorldwideGrossDate, series.WorldwideGrossDate)})";
+                    data[1] = $"{Series.WorldwideGross} ({Formatter.AsInternalLink(path, Series.WorldwideGrossDate, Series.WorldwideGrossDate)})";
                 }
                 else
                 {
-                    data[1] = $"{series.WorldwideGross}";
+                    data[1] = $"{Series.WorldwideGross}";
                 }
-                content.Add(formatter.AsTableRow(data));
+                content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -639,37 +461,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox runtime content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox runtime content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxRuntime(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxRuntime()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxRuntime() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxRuntime() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Runtimes != null)
+            //TODO: implement following stuff
+            //if (Series.Runtimes != null)
             //{
-            //    content.AddRange((new RuntimeContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxRuntime() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxRuntime() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -677,37 +482,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox soundmix content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox soundmix content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxSoundMix(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxSoundMix()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.SoundMixes != null)
+            //TODO: implement following stuff
+            //if (Series.SoundMixes != null)
             //{
-            //    content.AddRange((new SoundMixContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -715,37 +503,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox color content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox color content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxColor(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxColor()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxColor() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxColor() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Colors != null)
+            //TODO: implement following stuff
+            //if (Series.Colors != null)
             //{
-            //    content.AddRange((new ColorContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxColor() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxColor() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -753,37 +524,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox aspect ratio content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox aspect ratio content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxAspectRatio(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxAspectRatio()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.AspectRatios != null)
+            //TODO: implement following stuff
+            //if (Series.AspectRatios != null)
             //{
-            //    content.AddRange((new AspectRatioContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -791,75 +545,41 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox camera content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox camera content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxCamera(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxCamera()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxCamera() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Cameras != null)
+            //TODO: implement following stuff
+            //if (Series.Cameras != null)
             //{
-            //    content.AddRange((new CameraContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxCamera() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
 
         /// <summary>
-        /// Creates the formatted infobox laboratory content of a given series.
+        /// Creates the formatted infobox camera content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted infobox laboratory content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxLaboratory(Series series, string targetLanguageCode, Formatter formatter)
+        /// <returns>The formatted infobox camera content of the series.</returns>
+        protected virtual List<string> CreateInfoBoxLaboratory()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.Laboratories != null)
+            //TODO: implement following stuff
+            //if (Series.Laboratories != null)
             //{
-            //    content.AddRange((new LaboratoryContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -867,37 +587,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox film length content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox film length content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxFilmLength(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxFilmLength()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.FilmLengths != null)
+            //TODO: implement following stuff
+            //if (Series.FilmLengths != null)
             //{
-            //    content.AddRange((new FilmLengthContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -905,37 +608,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox negative format content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox negative format content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxNegativeFormat(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxNegativeFormat()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.NegativeFormats != null)
+            //TODO: implement following stuff
+            //if (Series.NegativeFormats != null)
             //{
-            //    content.AddRange((new NegativeFormatContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -943,37 +629,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox cinematographic process content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox cinematographic process content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxCinematographicProcess(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxCinematographicProcess()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.CinematographicProcesses != null)
-            //{
-            //    content.AddRange((new CinematographicProcessContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
-            //}
+            //TODO: implement following stuff
+            //if (Series.CinematographicProcesses != null)
+            // {
+            //     content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            // }
 
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -981,37 +650,20 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted infobox printed film format content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted infobox printed film format content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxPrintedFilmFormat(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (series.PrintedFilmFormats != null)
+            //TODO: implement following stuff
+            //if (Series.PrintedFilmFormats != null)
             //{
-            //    content.AddRange((new PrintedFilmFormatContentCreator()).CreateInfoBoxContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1019,41 +671,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted poster chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted poster chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterPoster(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterPoster()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterPoster() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterPoster() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Poster");
             title.Add("de", "Poster");
 
-            // TODO: implement following stuff
-            //if (series.Posters != null)
+            //TODO: implement following stuff
+            //if (Series.Posters != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new PosterContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterPoster() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterPoster() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1061,41 +696,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted cover chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted cover chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterCover(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterCover()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterCover() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCover() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Cover");
             title.Add("de", "Cover");
 
-            // TODO: implement following stuff
-            //if (series.Covers != null)
+            //TODO: implement following stuff
+            //if (Series.Covers != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new CoverContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterCover() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCover() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1103,41 +721,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted description chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted description chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterDescription(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterDescription()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterDescription() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterDescription() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Descriptions");
             title.Add("de", "Beschreibungen");
 
-            // TODO: implement following stuff
-            //if (series.Descriptions != null)
+            //TODO: implement following stuff
+            //if (Series.Descriptions != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new DescriptionContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterDescription() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterDescription() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1145,41 +746,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted review chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted review chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterReview(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterReview()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterReview() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterReview() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Reviews");
             title.Add("de", "Rezensionen");
 
-            // TODO: implement following stuff
-            //if (series.Reviews != null)
+            //TODO: implement following stuff
+            //if (Series.Reviews != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new ReviewContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterReview() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterReview() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1187,41 +771,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted image chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted image chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterImage(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterImage()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterImage() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterImage() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Images");
             title.Add("de", "Bilder");
 
-            // TODO: implement following stuff
-            //if (series.Images != null)
+            //TODO: implement following stuff
+            //if (Series.Images != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new ImageContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterImage() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterImage() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1229,41 +796,38 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted cast and crew chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted cast and crew chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterCastAndCrew(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterCastAndCrew()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterCastAndCrew() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCastAndCrew() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Cast and Crew");
             title.Add("de", "Darsteller und Mannschaft");
 
-            // TODO: implement following stuff
-            //if (series.x != null)
-            //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new CastAndCrewContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
-            //}
+            //TODO: implement following stuff
+            //content.AddRange(CreateNewChapter(title));
 
-            Logger.Trace($"CreateChapterCastAndCrew() für Series '{series.OriginalTitle}' beendet");
+            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
+
+            //if (Series.Directors != null)
+            //{
+            //    titleSection.Add("en", "Director");
+            //    titleSection.Add("de", "Regie");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new PersonContentCreator(Series.Directors, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            //if (Series.Writers != null)
+            //{
+            //    titleSection.Add("en", "Writers");
+            //    titleSection.Add("de", "Drehbuch");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new PersonContentCreator(Series.Writers, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            // TODO: add more cast and crew sections
+
+            Logger.Trace($"CreateChapterCastAndCrew() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1271,41 +835,38 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted company chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted company chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterCompany(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterCompany()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterCompany() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCompany() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Company Credits");
             title.Add("de", "Beteiligte Firmen");
 
-            // TODO: implement following stuff
-            //if (series.x != null)
-            //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new CompanyCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
-            //}
+            //TODO: implement following stuff
+            //content.AddRange(CreateNewChapter(title));
 
-            Logger.Trace($"CreateChapterCompany() für Series '{series.OriginalTitle}' beendet");
+            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
+
+            //if (Series.Directors != null)
+            //{
+            //    titleSection.Add("en", "Production Company");
+            //    titleSection.Add("de", "Produktionsfirmen");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new CompanyContentCreator(Series.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            //if (Series.Writers != null)
+            //{
+            //    titleSection.Add("en", "Distributors");
+            //    titleSection.Add("de", "Vertrieb");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new CompanyContentCreator(Series.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            // TODO: add more cast and crew sections
+
+            Logger.Trace($"CreateChapterCompany() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1313,41 +874,44 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted filming and production chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted filming and production chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterFilmingAndProduction(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterFilmingAndProduction()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Filming and Production");
             title.Add("de", "Produktion");
 
-            // TODO: implement following stuff
-            //if (series.x != null)
+            //TODO: implement following stuff
+            //content.AddRange(CreateNewChapter(title));
+
+            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
+
+            //if (Series.FilmingLocations != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new ProductionCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    titleSection.Add("en", "Filming Locations");
+            //    titleSection.Add("de", "Drehorte");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new LocationContentCreator(Series.FilmingLocations, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            //if (Series.FilmingDates != null)
+            //{
+            //    titleSection.Add("en", "Filming Dates");
+            //    titleSection.Add("de", "");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new TimeSpanContentCreator(Series.FilmingDates, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+            //if (Series.ProductionDates != null)
+            //{
+            //    titleSection.Add("en", "Production Dates");
+            //    titleSection.Add("de", "");
+            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(new TimeSpanContentCreator(Series.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
 
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1355,41 +919,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted award chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted award chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterAward(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterAward()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterAward() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterAward() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Awards");
             title.Add("de", "Auszeichnungen");
 
-            // TODO: implement following stuff
-            //if (series.Awards != null)
+            //TODO: implement following stuff
+            //if (Series.Awards != null)
             //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new AwardContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterAward() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterAward() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -1397,82 +944,24 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the formatted weblink chapter content of a given series.
         /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <returns>The formatted weblink chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterWeblink(Series series, string targetLanguageCode, Formatter formatter)
+        protected virtual List<string> CreateChapterWeblink()
         {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterWeblink() für Series '{series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterWeblink() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Other Sites");
             title.Add("de", "Andere Webseiten");
 
-            // TODO: implement following stuff
-            //if (series.Weblinks != null)
-            //{
-            //    content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-            //    content.AddRange((new WeblinkContentCreator()).CreateChapterContent(series.Genres, targetLanguageCode, formatter));
-            //}
+            //TODO: implement following stuff
+            //if (Series.Weblinks != null)
+            // {
+            //     content.AddRange(CreateNewChapter(title));
+            //     content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
+            // }
 
-            Logger.Trace($"CreateChapterWeblink() für Series '{series.OriginalTitle}' beendet");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted weblink chapter content of a given series.
-        /// </summary>
-        /// <param name="series">The series that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted weblink chapter content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateChapterConnection(Series series, string targetLanguageCode, Formatter formatter)
-        {
-            if (series == null)
-            {
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
-
-            Logger.Trace($"CreateChapterConnection() für Series '{series.OriginalTitle}' gestartet");
-
-            List<string> content = new List<string>();
-            Dictionary<string, string> title = new Dictionary<string, string>();
-            title.Add("en", "Connections to other articles");
-            title.Add("de", "Bezüge zu anderen Artikeln");
-
-            if (series.Connection != null)
-            {
-                content.AddRange(CreateNewChapter(title, targetLanguageCode, formatter));
-                content.AddRange((new ConnectionContentCreator()).CreateSectionContent(series.Connection, targetLanguageCode, formatter));
-            }
-
-            Logger.Trace($"CreateChapterConnection() für Series '{series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterWeblink() für Series '{Series.OriginalTitle}' beendet");
 
             return content;
         }

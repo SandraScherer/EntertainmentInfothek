@@ -19,6 +19,7 @@
 using EntertainmentDB.Data;
 using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using WikiPageCreator.Export.Format;
 
@@ -28,40 +29,260 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
     public class ConnectionContentCreatorTests_WithDB
     {
         const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
 
-        public Formatter Formatter { get; set; } = new DokuWikiFormatter();
-
-        [TestMethod()]
-        public void ConnectionContentCreatorTest()
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void ConnectionContentCreatorTest(string id,  string targetLanguageCode)
         {
             // Arrange
-            ConnectionContentCreator creator = new ConnectionContentCreator();
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
 
             // Act
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
             // Assert
             Assert.IsNotNull(creator);
+            Assert.AreEqual(connection, creator.Connection);
+            Assert.AreEqual(formatter, creator.Formatter);
+            Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateSectionContentTest_withValidID(string languageCode)
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConnectionContentCreatorTest_withConnectionNull(string targetLanguageCode)
+        {
+            // Arrange
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            ConnectionContentCreator creator = new ConnectionContentCreator(null, formatter, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConnectionContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+
+            // Act, Assert
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, null, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConnectionContentCreatorTest_withTargetLanguageCodeNull(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, null);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ConnectionContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, "");
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void GetPageNameTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.GetPageName();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreatePageContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreatePageContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateInfoBoxContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateInfoBoxContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateChapterContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Connection connection = new Connection(reader, VALID_ID);
-            connection.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator();
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
             List<string> testContent = new List<string>();
 
-            testContent.Add(Formatter.AsInsertPage(languageCode + ":navigation:" + VALID_ID));
-            testContent.Add("");
-            testContent.Add("");
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + VALID_ID));
 
             // Act
-            List<string> content = creator.CreateSectionContent(connection, languageCode, Formatter);
+            List<string> content = creator.CreateChapterContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateChapterContentTest_withInvalidID(string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, INVALID_ID);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + INVALID_ID));
+
+            // Act
+            List<string> content = creator.CreateChapterContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateSectionContentTest_withValidID(string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, VALID_ID);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + VALID_ID));
+
+            // Act
+            List<string> content = creator.CreateSectionContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateSectionContentTest_withInvalidID(string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Connection connection = new Connection(reader, INVALID_ID);
+            Formatter formatter = new DokuWikiFormatter();
+
+            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + INVALID_ID));
+
+            // Act
+            List<string> content = creator.CreateSectionContent();
 
             // Assert
             Assert.AreEqual(testContent.Count, content.Count);

@@ -18,6 +18,7 @@
 
 using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using WikiPageCreator.Export.Format;
 using Type = EntertainmentDB.Data.Type;
@@ -28,48 +29,167 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
     public class TypeContentCreatorTests_WithDB
     {
         const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
 
-        public Formatter Formatter { get; set; } = new DokuWikiFormatter();
-
-        [TestMethod()]
-        public void TypeContentCreatorTest()
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void TypeContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
-            TypeContentCreator creator = new TypeContentCreator();
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
 
             // Act
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
             // Assert
             Assert.IsNotNull(creator);
+            Assert.AreEqual(type, creator.Type);
+            Assert.AreEqual(formatter, creator.Formatter);
+            Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateInfoBoxContentTest_withValidID(string languageCode)
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TypeContentCreatorTest_withTypeNull(string targetLanguageCode)
+        {
+            // Arrange
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            TypeContentCreator creator = new TypeContentCreator(null, formatter, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TypeContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+
+            // Act, Assert
+            TypeContentCreator creator = new TypeContentCreator(type, null, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TypeContentCreatorTest_withTargetLanguageCodeNull(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, null);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TypeContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, "");
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void GetPageNameTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.GetPageName();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreatePageContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, VALID_ID);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreatePageContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Type type = new Type(reader, VALID_ID);
             type.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator();
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
             List<string> testContent = new List<string>();
-            string[] path = { languageCode, "info" };
-            string[] dataEn = { "Type", Formatter.AsInternalLink(path, "Type EnglishTitle X", "Type EnglishTitle X") };
-            string[] dataDe = { "Typ", Formatter.AsInternalLink(path, "Type EnglishTitle X", "Type GermanTitle X") };
 
-            if (languageCode.Equals("en"))
+            string[] pathInfo = { targetLanguageCode, "info" };
+            string[] dataEn = { "Type", formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") };
+            string[] dataDe = { "Typ", formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") };
+
+            if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(Formatter.AsTableRow(dataEn));
+                testContent.Add(formatter.AsTableRow(dataEn));
             }
             else
             {
-                testContent.Add(Formatter.AsTableRow(dataDe));
+                testContent.Add(formatter.AsTableRow(dataDe));
             }
 
             // Act
-            List<string> content = creator.CreateInfoBoxContent(type, languageCode, Formatter);
+            List<string> content = creator.CreateInfoBoxContent();
 
             // Assert
             Assert.AreEqual(testContent.Count, content.Count);
@@ -77,6 +197,48 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 Assert.AreEqual(testContent[i], content[i]);
             }
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateChapterContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateChapterContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateSectionContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Type type = new Type(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateSectionContent();
         }
     }
 }

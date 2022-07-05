@@ -16,7 +16,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
 using WikiPageCreator.Export.Format;
@@ -27,9 +26,20 @@ namespace WikiPageCreator.Export.Create
     /// <summary>
     /// Provides a content creator for a type
     /// </summary>
-    public class TypeContentCreator : IInfoBoxContentCreatable
+    public class TypeContentCreator : EntryContentCreator
     {
         // --- Properties ---
+
+        /// <summary>
+        /// The type to be used to create the content.
+        /// </summary>
+        public Type Type
+        {
+            get
+            { return (Type)Entry; }
+            set
+            { Entry = value; }
+        }
 
         /// <summary>
         /// The logger to log everything.
@@ -41,91 +51,140 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new TypeContentCreator.
         /// </summary>
-        public TypeContentCreator()
+        /// <param name="type">The type to be used to create content.</param>
+        /// <param name="formatter">The formatter to be used to format the content</param>
+        /// <param name="targetLanguageCode">The language code for the created content.</param>
+        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
+        public TypeContentCreator(Type type, Formatter formatter, string targetLanguageCode)
+            : base(type, formatter, targetLanguageCode)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+            if (formatter == null)
+            {
+                throw new ArgumentNullException(nameof(formatter));
+            }
+            if (String.IsNullOrEmpty(targetLanguageCode))
+            {
+                throw new ArgumentNullException(nameof(targetLanguageCode));
+            }
+
             Logger.Trace($"TypeContentCreator() angelegt");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given entry.
+        /// Returns the page name of the types page.
         /// </summary>
-        /// <param name="entry">The entry that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted content of the entry.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public virtual List<string> CreateInfoBoxContent(Entry entry, string targetLanguageCode, Formatter formatter)
+        /// <returns>The formatted page name for the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override string GetPageName()
         {
-            if (entry == null)
-            {
-                throw new ArgumentNullException(nameof(entry));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
+            throw new NotSupportedException();
+        }
 
-            Logger.Trace($"CreateInfoBoxContent() für Type '{((Type)entry).ID}' gestartet");
+        /// <summary>
+        /// Creates the page content of the type.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override List<string> CreatePageContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the formatted header content of a given type.
+        /// </summary>
+        /// <returns>The formatted header content of the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreatePageHeader()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the formatted file title content of a given type.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreatePageTitle()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the infobox content of a given type.
+        /// </summary>
+        /// <returns>The formatted content of the type.</returns>
+        public override List<string> CreateInfoBoxContent()
+        {
+            Logger.Trace($"CreateInfoBoxContent() für Type '{Type.ID}' gestartet");
 
             List<string> content = new List<string>();
+            string[] data = new string[2];
+            string[] path = { TargetLanguageCode, "info" };
 
-            content.AddRange(this.CreateInfoBoxType((Type)entry, targetLanguageCode, formatter));
-
-            Logger.Trace($"CreateInfoBoxContent() für Type '{((Type)entry).ID}' beendet");
+            if (Type != null)
+            {
+                if (TargetLanguageCode.Equals("en"))
+                {
+                    data[0] = "Type";
+                    data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.EnglishTitle);
+                }
+                else // incl. case "de"
+                {
+                    data[0] = "Typ";
+                    data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.GermanTitle);
+                }
+                content.Add(Formatter.AsTableRow(data));
+            }
+            Logger.Trace($"CreateInfoBoxContent() für Type '{Type.ID}' beendet");
 
             return content;
         }
 
         /// <summary>
-        /// Creates the formatted infobox content of a given type.
+        /// Creates a formatted chapter heading with the given title.
         /// </summary>
-        /// <param name="type">The type that is to be used to create the content.</param>
-        /// <param name="targetLanguageCode">The language code of the target language.</param>
-        /// <param name="formatter">The formatter to be used to format the content.</param>
-        /// <returns>The formatted infobox content of the type.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxType(Type type, string targetLanguageCode, Formatter formatter)
+        /// <param name="title">The title that is to be used as heading.</param>
+        /// <returns>The fomatted chapter heading.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreateNewChapter(Dictionary<string, string> title)
         {
-            if (type == null)
-            {
-                throw new ArgumentNullException(nameof(type));
-            }
-            if (targetLanguageCode == null)
-            {
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (formatter == null)
-            {
-                throw new ArgumentNullException(nameof(formatter));
-            }
+            throw new NotSupportedException();
+        }
 
-            Logger.Trace($"CreateInfoBoxType() für Type '{type.ID}' gestartet");
+        /// <summary>
+        /// Creates the chapter content of a given type.
+        /// </summary>
+        /// <returns>The formatted content of the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override List<string> CreateChapterContent()
+        {
+            throw new NotSupportedException();
+        }
 
-            List<string> content = new List<string>();
-            string[] data = new string[2];
-            string[] path = { targetLanguageCode, "info" };
+        /// <summary>
+        /// Creates a formatted section heading with the given title.
+        /// </summary>
+        /// <param name="title">The title that is to be used as heading.</param>
+        /// <returns>The fomatted chapter heading.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected override List<string> CreateNewSection(Dictionary<string, string> title)
+        {
+            throw new NotSupportedException();
+        }
 
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Type";
-                data[1] = formatter.AsInternalLink(path, type.EnglishTitle, type.EnglishTitle);
-            }
-            else // incl. case "de"
-            {
-                data[0] = "Typ";
-                data[1] = formatter.AsInternalLink(path, type.EnglishTitle, type.GermanTitle);
-            }
-            content.Add(formatter.AsTableRow(data));
-
-            Logger.Trace($"CreateInfoBoxType() für Type '{type.ID}' beendet");
-
-            return content;
+        /// <summary>
+        /// Creates the section content of a given type.
+        /// </summary>
+        /// <returns>The formatted section content of the type.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public override List<string> CreateSectionContent()
+        {
+            throw new NotSupportedException();
         }
     }
 }
