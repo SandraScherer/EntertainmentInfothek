@@ -1,7 +1,10 @@
 <map id="WikiPageCreator.Export.Format.Formatter.AsInsertPage" name="WikiPageCreator.Export.Format.Formatter.AsInsertPage">
-<area shape="rect" id="node1" title="Formats the given parameters as an inserted page." alt="" coords="632,53,843,94"/>
-<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a76b21d2f3de8fcafa0e2355d6ec511fd" title="Creates the formatted connection chapter of the movie page." alt="" coords="313,5,584,61"/>
-<area shape="rect" id="node4" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#adaed0b759795de8f9476e4040b58233a" title="Creates the formatted connection section content of a given connection." alt="" coords="319,85,579,141"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="10,13,261,54"/>
-<area shape="rect" id="node5" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c" title="Creates the section content of a given entry." alt="" coords="5,85,265,141"/>
+<area shape="rect" id="node1" title="Formats the given parameters as an inserted page." alt="" coords="913,169,1124,210"/>
+<area shape="rect" id="node2" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219" title="Creates the chapter content of a given type." alt="" coords="599,121,861,177"/>
+<area shape="rect" id="node7" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a76b21d2f3de8fcafa0e2355d6ec511fd" title="Creates the formatted connection chapter of the movie page." alt="" coords="595,201,865,257"/>
+<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#adb5c21619a91db8b3aa04f8a26ec7c47" title="Creates the formatted connection chapter content of a given article." alt="" coords="300,45,533,101"/>
+<area shape="rect" id="node6" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9dedc2131a131569339d3d2a5ee1ecc7" title="Creates the section content of a given type." alt="" coords="287,125,547,181"/>
+<area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a1ae5a3cbe513d6c9484d8bbae1589f37" title="Creates the chapter content of a given movie." alt="" coords="7,5,237,61"/>
+<area shape="rect" id="node5" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#aa6fc828aa5d60b638b5f725d3b774275" title="Creates the chapter content of a given series." alt="" coords="5,85,239,141"/>
+<area shape="rect" id="node8" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="291,209,542,250"/>
 </map>

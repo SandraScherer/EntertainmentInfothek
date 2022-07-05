@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../dd/d60/class_entertainment_d_b_1_1_data_1_1_text_item-members.html">List of all members</a>  </div>
@@ -98,12 +99,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4cb2d862b1d8d2b502220eb359a3e78f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a4cb2d862b1d8d2b502220eb359a3e78f">TextItem</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id, string baseTableName, string targetTableName)</td></tr>
 <tr class="memdesc:a4cb2d862b1d8d2b502220eb359a3e78f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a text item with the given id string.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a4cb2d862b1d8d2b502220eb359a3e78f">More...</a><br /></td></tr>
 <tr class="separator:a4cb2d862b1d8d2b502220eb359a3e78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b911bbeef420dc02b47544567f567d6"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0b911bbeef420dc02b47544567f567d6">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
-<tr class="memdesc:a0b911bbeef420dc02b47544567f567d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the text item from the database.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0b911bbeef420dc02b47544567f567d6">More...</a><br /></td></tr>
-<tr class="separator:a0b911bbeef420dc02b47544567f567d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65077fda5724f97ffa9614552d31d17b"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a65077fda5724f97ffa9614552d31d17b">RetrieveAdditionalInformation</a> ()</td></tr>
-<tr class="memdesc:a65077fda5724f97ffa9614552d31d17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the text item from the database (none available).  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a65077fda5724f97ffa9614552d31d17b">More...</a><br /></td></tr>
-<tr class="separator:a65077fda5724f97ffa9614552d31d17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
 <tr class="memitem:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">Retrieve</a> (bool retrieveBasicInfoOnly)</td></tr>
 <tr class="memdesc:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the information of the entry from the database.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">More...</a><br /></td></tr>
@@ -114,6 +109,29 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a26d7419faf9eeeb0b511fea242224db2"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html">TextItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a26d7419faf9eeeb0b511fea242224db2">RetrieveList</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string baseTableName, string baseTableID, string targetTableName, string order=&quot;ID&quot;)</td></tr>
 <tr class="memdesc:a26d7419faf9eeeb0b511fea242224db2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of text items from the database.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a26d7419faf9eeeb0b511fea242224db2">More...</a><br /></td></tr>
 <tr class="separator:a26d7419faf9eeeb0b511fea242224db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a0b911bbeef420dc02b47544567f567d6"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0b911bbeef420dc02b47544567f567d6">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
+<tr class="memdesc:a0b911bbeef420dc02b47544567f567d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the text item from the database.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0b911bbeef420dc02b47544567f567d6">More...</a><br /></td></tr>
+<tr class="separator:a0b911bbeef420dc02b47544567f567d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html">EntertainmentDB.Data.EntryItem</a></td></tr>
+<tr class="memitem:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#ae5ed8db63fa292cbc1fd4644b61535f9">EntryItem</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry item with an emtpy id string.  <a href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#ae5ed8db63fa292cbc1fd4644b61535f9">More...</a><br /></td></tr>
+<tr class="separator:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#a6a12ca61d1d24b131321cddecb7b7201">EntryItem</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id, string baseTableName, string targetTableName)</td></tr>
+<tr class="memdesc:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry item with the given id string.  <a href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#a6a12ca61d1d24b131321cddecb7b7201">More...</a><br /></td></tr>
+<tr class="separator:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
+<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
+<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
+<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
+<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d444718bd11523f260893e7498db40e inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e">RetrieveAdditionalInformation</a> ()</td></tr>
+<tr class="memdesc:a4d444718bd11523f260893e7498db40e inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the entry from the database.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e">More...</a><br /></td></tr>
+<tr class="separator:a4d444718bd11523f260893e7498db40e inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -146,26 +164,9 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a8ab07904b33eec70dd5eeb125430a6f6"><td class="memItemLeft" align="right" valign="top">static NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a8ab07904b33eec70dd5eeb125430a6f6">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
-<tr class="memdesc:a8ab07904b33eec70dd5eeb125430a6f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a8ab07904b33eec70dd5eeb125430a6f6">More...</a><br /></td></tr>
-<tr class="separator:a8ab07904b33eec70dd5eeb125430a6f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html">EntertainmentDB.Data.EntryItem</a></td></tr>
-<tr class="memitem:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#ae5ed8db63fa292cbc1fd4644b61535f9">EntryItem</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry item with an emtpy id string.  <a href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#ae5ed8db63fa292cbc1fd4644b61535f9">More...</a><br /></td></tr>
-<tr class="separator:ae5ed8db63fa292cbc1fd4644b61535f9 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#a6a12ca61d1d24b131321cddecb7b7201">EntryItem</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id, string baseTableName, string targetTableName)</td></tr>
-<tr class="memdesc:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry item with the given id string.  <a href="../../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#a6a12ca61d1d24b131321cddecb7b7201">More...</a><br /></td></tr>
-<tr class="separator:a6a12ca61d1d24b131321cddecb7b7201 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry_item"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
-<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
-<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
-<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
-<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f49b9de8151210b1d30a1ff7a61e2c1"><td class="memItemLeft" align="right" valign="top">static readonly NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0f49b9de8151210b1d30a1ff7a61e2c1">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
+<tr class="memdesc:a0f49b9de8151210b1d30a1ff7a61e2c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#a0f49b9de8151210b1d30a1ff7a61e2c1">More...</a><br /></td></tr>
+<tr class="separator:a0f49b9de8151210b1d30a1ff7a61e2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides a text item. </p>
@@ -266,36 +267,6 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a65077fda5724f97ffa9614552d31d17b" name="a65077fda5724f97ffa9614552d31d17b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65077fda5724f97ffa9614552d31d17b">&#9670;&nbsp;</a></span>RetrieveAdditionalInformation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override int EntertainmentDB.Data.TextItem.RetrieveAdditionalInformation </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Retrieves the additional information of the text item from the database (none available). </p>
-<dl class="section return"><dt>Returns</dt><dd>0</dd></dl>
-
-<p>Implements <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446">EntertainmentDB.Data.Entry</a>.</p>
-
-</div>
-</div>
 <a id="a0b911bbeef420dc02b47544567f567d6" name="a0b911bbeef420dc02b47544567f567d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b911bbeef420dc02b47544567f567d6">&#9670;&nbsp;</a></span>RetrieveBasicInformation()</h2>
 
@@ -315,7 +286,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -340,7 +311,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="251,71,441,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#abac782aafccbbef4034d4ddb71aed7e2" title="Retrieves the information of the status from the database." alt="" coords="247,136,445,177"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="740,231,931,272"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="497,5,688,47"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="497,5,688,47"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="497,71,688,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a10b6642be4830cce662ce604e5052ccc" title="Retrieves the additional information of the status from the database (none available)." alt="" coords="493,136,692,177"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#af017a672c77b22eb998512ee60f5d0ac" title="Retrieves the basic information of the status from the database." alt="" coords="493,201,692,243"/>
@@ -431,7 +402,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="235,71,425,112"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="235,136,425,177"/>
 <area shape="rect" href="../../dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html#af205a1dbcd1cb8c41128b8059e68c84a" title="Initializes a text item with an empty id string." alt="" coords="239,201,421,243"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="473,39,664,80"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="473,39,664,80"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="473,104,664,145"/>
 </map>
 </div>
@@ -448,8 +419,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a8ab07904b33eec70dd5eeb125430a6f6" name="a8ab07904b33eec70dd5eeb125430a6f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ab07904b33eec70dd5eeb125430a6f6">&#9670;&nbsp;</a></span>Logger</h2>
+<a id="a0f49b9de8151210b1d30a1ff7a61e2c1" name="a0f49b9de8151210b1d30a1ff7a61e2c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f49b9de8151210b1d30a1ff7a61e2c1">&#9670;&nbsp;</a></span>Logger</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,7 +429,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">NLog.Logger EntertainmentDB.Data.TextItem.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
+          <td class="memname">readonly NLog.Logger EntertainmentDB.Data.TextItem.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
         </tr>
       </table>
   </td>

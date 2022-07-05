@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d1/d09/class_entertainment_d_b_1_1_data_1_1_series-members.html">List of all members</a>  </div>
@@ -98,12 +99,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaff8a9c389222786ce7bfba3c640204a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aaff8a9c389222786ce7bfba3c640204a">Series</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
 <tr class="memdesc:aaff8a9c389222786ce7bfba3c640204a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a series with the given id string.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aaff8a9c389222786ce7bfba3c640204a">More...</a><br /></td></tr>
 <tr class="separator:aaff8a9c389222786ce7bfba3c640204a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67ef335f40842cb15d9e924087ad42ee"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
-<tr class="memdesc:a67ef335f40842cb15d9e924087ad42ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the series from the database.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">More...</a><br /></td></tr>
-<tr class="separator:a67ef335f40842cb15d9e924087ad42ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa799888d3fa4f4f3aac704169618f715"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa799888d3fa4f4f3aac704169618f715">RetrieveAdditionalInformation</a> ()</td></tr>
-<tr class="memdesc:aa799888d3fa4f4f3aac704169618f715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the series from the database.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa799888d3fa4f4f3aac704169618f715">More...</a><br /></td></tr>
-<tr class="separator:aa799888d3fa4f4f3aac704169618f715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
 <tr class="memitem:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">Retrieve</a> (bool retrieveBasicInfoOnly)</td></tr>
 <tr class="memdesc:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the information of the entry from the database.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">More...</a><br /></td></tr>
@@ -114,6 +109,29 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e3ca9e408b57d1c9a108ce7ef8314d5"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html">Series</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a2e3ca9e408b57d1c9a108ce7ef8314d5">RetrieveList</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string status, string order=&quot;ID&quot;)</td></tr>
 <tr class="memdesc:a2e3ca9e408b57d1c9a108ce7ef8314d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of series from the database.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a2e3ca9e408b57d1c9a108ce7ef8314d5">More...</a><br /></td></tr>
 <tr class="separator:a2e3ca9e408b57d1c9a108ce7ef8314d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a67ef335f40842cb15d9e924087ad42ee"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
+<tr class="memdesc:a67ef335f40842cb15d9e924087ad42ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the series from the database.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">More...</a><br /></td></tr>
+<tr class="separator:a67ef335f40842cb15d9e924087ad42ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa799888d3fa4f4f3aac704169618f715"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa799888d3fa4f4f3aac704169618f715">RetrieveAdditionalInformation</a> ()</td></tr>
+<tr class="memdesc:aa799888d3fa4f4f3aac704169618f715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the series from the database.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa799888d3fa4f4f3aac704169618f715">More...</a><br /></td></tr>
+<tr class="separator:aa799888d3fa4f4f3aac704169618f715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_article')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html">EntertainmentDB.Data.Article</a></td></tr>
+<tr class="memitem:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with an empty id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">More...</a><br /></td></tr>
+<tr class="separator:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
+<tr class="memdesc:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with the given id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">More...</a><br /></td></tr>
+<tr class="separator:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
+<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
+<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
+<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
+<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -182,26 +200,9 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:abf0219ef250bbfa06d14763f5a714505"><td class="memItemLeft" align="right" valign="top">static NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#abf0219ef250bbfa06d14763f5a714505">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
-<tr class="memdesc:abf0219ef250bbfa06d14763f5a714505"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#abf0219ef250bbfa06d14763f5a714505">More...</a><br /></td></tr>
-<tr class="separator:abf0219ef250bbfa06d14763f5a714505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_article')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html">EntertainmentDB.Data.Article</a></td></tr>
-<tr class="memitem:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with an empty id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">More...</a><br /></td></tr>
-<tr class="separator:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
-<tr class="memdesc:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with the given id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">More...</a><br /></td></tr>
-<tr class="separator:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
-<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
-<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
-<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
-<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8ec8fddb90eae12b1a5687493e80087"><td class="memItemLeft" align="right" valign="top">static readonly NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa8ec8fddb90eae12b1a5687493e80087">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
+<tr class="memdesc:aa8ec8fddb90eae12b1a5687493e80087"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa8ec8fddb90eae12b1a5687493e80087">More...</a><br /></td></tr>
+<tr class="separator:aa8ec8fddb90eae12b1a5687493e80087"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides a series. </p>
@@ -306,7 +307,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -314,7 +315,7 @@ Here is the caller graph for this function:</div>
 <p>Retrieves the additional information of the series from the database. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of data records retrieved.</dd></dl>
 
-<p>Implements <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446">EntertainmentDB.Data.Entry</a>.</p>
+<p>Reimplemented from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e">EntertainmentDB.Data.Entry</a>.</p>
 
 </div>
 </div>
@@ -337,7 +338,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -362,7 +363,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="255,71,445,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#abac782aafccbbef4034d4ddb71aed7e2" title="Retrieves the information of the status from the database." alt="" coords="251,136,449,177"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="744,231,935,272"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="501,5,692,47"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="501,5,692,47"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="501,71,692,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a10b6642be4830cce662ce604e5052ccc" title="Retrieves the additional information of the status from the database (none available)." alt="" coords="497,136,696,177"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#af017a672c77b22eb998512ee60f5d0ac" title="Retrieves the basic information of the status from the database." alt="" coords="497,201,696,243"/>
@@ -439,7 +440,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="254,71,445,112"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="254,136,445,177"/>
 <area shape="rect" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa88d1b83e7a8c3996c5a2b99fb65fc38" title="Initializes a series with an empty id string." alt="" coords="251,201,448,243"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="496,39,687,80"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="496,39,687,80"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="496,104,687,145"/>
 </map>
 </div>
@@ -456,8 +457,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="abf0219ef250bbfa06d14763f5a714505" name="abf0219ef250bbfa06d14763f5a714505"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf0219ef250bbfa06d14763f5a714505">&#9670;&nbsp;</a></span>Logger</h2>
+<a id="aa8ec8fddb90eae12b1a5687493e80087" name="aa8ec8fddb90eae12b1a5687493e80087"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8ec8fddb90eae12b1a5687493e80087">&#9670;&nbsp;</a></span>Logger</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -466,7 +467,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">NLog.Logger EntertainmentDB.Data.Series.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
+          <td class="memname">readonly NLog.Logger EntertainmentDB.Data.Series.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
         </tr>
       </table>
   </td>
@@ -505,7 +506,7 @@ Here is the caller graph for this function:</div>
 
 <p>The budget of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a3f8bfdb9b4de8c296230a4cea971f5a2">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxBudget()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a31e924eb4c5230af638143dfddbe9acd">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxBudget()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -583,7 +584,7 @@ Here is the caller graph for this function:</div>
 
 <p>The number of episodes of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#af5650b5417725eaa079b032afd613338">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxNoOfEpisodes()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a127e4875808ad4f6b04fa6d28220bf73">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxNoOfEpisodes()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -609,7 +610,7 @@ Here is the caller graph for this function:</div>
 
 <p>The number of seasons of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#abae424dd31d10bd18b0f4752fb8e813d">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxNoOfSeasons()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a002a7c23294e7005f1dfa6c6a9911d9b">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxNoOfSeasons()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -635,7 +636,7 @@ Here is the caller graph for this function:</div>
 
 <p>The release date of the first episode (or pilot) of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#aca303aaacfd21815f5d6880370549ac3">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateFirstEpisode()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#affc8af1c6070fdb5cf7af075043b1449">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateFirstEpisode()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -661,7 +662,7 @@ Here is the caller graph for this function:</div>
 
 <p>The release date of the last episode of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#aba8cda292dd32c57d81a5dc1f415f04f">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateLastEpisode()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a538b2d7226a85b0bbbceb3334b90ab5d">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxReleaseDateLastEpisode()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -687,7 +688,7 @@ Here is the caller graph for this function:</div>
 
 <p>The worldwide gross of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a7384c3d69164561a89b991da39384346">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a69d49b84024c9b2e629e275fd23a2611">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -713,7 +714,7 @@ Here is the caller graph for this function:</div>
 
 <p>The corresponding date to the worldwide gross of the series. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a7384c3d69164561a89b991da39384346">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a69d49b84024c9b2e629e275fd23a2611">WikiPageCreator.Export.Create.SeriesContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#a67ef335f40842cb15d9e924087ad42ee">EntertainmentDB.Data.Series.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>

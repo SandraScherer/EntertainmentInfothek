@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d9/dae/class_entertainment_d_b_1_1_data_1_1_movie-members.html">List of all members</a>  </div>
@@ -98,12 +99,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c9a684a6b897746138902e0a086e4b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a9c9a684a6b897746138902e0a086e4b4">Movie</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
 <tr class="memdesc:a9c9a684a6b897746138902e0a086e4b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a movie with the given id string.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a9c9a684a6b897746138902e0a086e4b4">More...</a><br /></td></tr>
 <tr class="separator:a9c9a684a6b897746138902e0a086e4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada6ab644ba28095a3870a88344b8cd07"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
-<tr class="memdesc:ada6ab644ba28095a3870a88344b8cd07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the movie from the database.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">More...</a><br /></td></tr>
-<tr class="separator:ada6ab644ba28095a3870a88344b8cd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99f0e883926dc4bff73274a483db2f31"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">RetrieveAdditionalInformation</a> ()</td></tr>
-<tr class="memdesc:a99f0e883926dc4bff73274a483db2f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the movie from the database.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">More...</a><br /></td></tr>
-<tr class="separator:a99f0e883926dc4bff73274a483db2f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
 <tr class="memitem:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">Retrieve</a> (bool retrieveBasicInfoOnly)</td></tr>
 <tr class="memdesc:a179b02ba040f9f25b2e1a535e7719652 inherit pub_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the information of the entry from the database.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652">More...</a><br /></td></tr>
@@ -114,6 +109,29 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c79d31f7b77afc35e754cb79c516692"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html">Movie</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a1c79d31f7b77afc35e754cb79c516692">RetrieveList</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string status, string order=&quot;ID&quot;)</td></tr>
 <tr class="memdesc:a1c79d31f7b77afc35e754cb79c516692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of movies from the database.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a1c79d31f7b77afc35e754cb79c516692">More...</a><br /></td></tr>
 <tr class="separator:a1c79d31f7b77afc35e754cb79c516692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ada6ab644ba28095a3870a88344b8cd07"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">RetrieveBasicInformation</a> (bool retrieveBasicInfoOnly)</td></tr>
+<tr class="memdesc:ada6ab644ba28095a3870a88344b8cd07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the basic information of the movie from the database.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">More...</a><br /></td></tr>
+<tr class="separator:ada6ab644ba28095a3870a88344b8cd07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f0e883926dc4bff73274a483db2f31"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">RetrieveAdditionalInformation</a> ()</td></tr>
+<tr class="memdesc:a99f0e883926dc4bff73274a483db2f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the additional information of the movie from the database.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">More...</a><br /></td></tr>
+<tr class="separator:a99f0e883926dc4bff73274a483db2f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_article')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html">EntertainmentDB.Data.Article</a></td></tr>
+<tr class="memitem:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with an empty id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">More...</a><br /></td></tr>
+<tr class="separator:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
+<tr class="memdesc:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with the given id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">More...</a><br /></td></tr>
+<tr class="separator:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
+<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
+<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
+<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
+<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
+<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
@@ -350,26 +368,9 @@ Properties</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a0a22a175fdfc6c756ec9aafb1c9df27a"><td class="memItemLeft" align="right" valign="top">static NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a0a22a175fdfc6c756ec9aafb1c9df27a">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
-<tr class="memdesc:a0a22a175fdfc6c756ec9aafb1c9df27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a0a22a175fdfc6c756ec9aafb1c9df27a">More...</a><br /></td></tr>
-<tr class="separator:a0a22a175fdfc6c756ec9aafb1c9df27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_article')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html">EntertainmentDB.Data.Article</a></td></tr>
-<tr class="memitem:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with an empty id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a9edfc38888d0f2536dacda79dd97f1bf">More...</a><br /></td></tr>
-<tr class="separator:a9edfc38888d0f2536dacda79dd97f1bf inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">Article</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
-<tr class="memdesc:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an article with the given id string.  <a href="../../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#ad9f6b0bb3595cfa0e2d1803cd77fde31">More...</a><br /></td></tr>
-<tr class="separator:ad9f6b0bb3595cfa0e2d1803cd77fde31 inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_article"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entertainment_d_b_1_1_data_1_1_entry')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">EntertainmentDB.Data.Entry</a></td></tr>
-<tr class="memitem:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader)</td></tr>
-<tr class="memdesc:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a01d53677e6ba7c56eda76f102e7b6f0c">More...</a><br /></td></tr>
-<tr class="separator:a01d53677e6ba7c56eda76f102e7b6f0c inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">Entry</a> (<a class="el" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html">DBReader</a> reader, string id)</td></tr>
-<tr class="memdesc:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an entry with the given reader and id string.  <a href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#adfdfd09f8a488a5fd30ff270fe3449aa">More...</a><br /></td></tr>
-<tr class="separator:adfdfd09f8a488a5fd30ff270fe3449aa inherit pro_methods_class_entertainment_d_b_1_1_data_1_1_entry"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a274d068a72a35b0ca5ff0f3bb3ed4146"><td class="memItemLeft" align="right" valign="top">static readonly NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a274d068a72a35b0ca5ff0f3bb3ed4146">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
+<tr class="memdesc:a274d068a72a35b0ca5ff0f3bb3ed4146"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a274d068a72a35b0ca5ff0f3bb3ed4146">More...</a><br /></td></tr>
+<tr class="separator:a274d068a72a35b0ca5ff0f3bb3ed4146"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides a movie. </p>
@@ -474,7 +475,7 @@ Here is the caller graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -482,7 +483,7 @@ Here is the caller graph for this function:</div>
 <p>Retrieves the additional information of the movie from the database. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of data records retrieved.</dd></dl>
 
-<p>Implements <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446">EntertainmentDB.Data.Entry</a>.</p>
+<p>Reimplemented from <a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e">EntertainmentDB.Data.Entry</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -562,7 +563,7 @@ Here is the call graph for this function:</div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -587,7 +588,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="251,71,441,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#abac782aafccbbef4034d4ddb71aed7e2" title="Retrieves the information of the status from the database." alt="" coords="247,136,445,177"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="740,231,931,272"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="497,5,688,47"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="497,5,688,47"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="497,71,688,112"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a10b6642be4830cce662ce604e5052ccc" title="Retrieves the additional information of the status from the database (none available)." alt="" coords="493,136,692,177"/>
 <area shape="rect" href="../../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#af017a672c77b22eb998512ee60f5d0ac" title="Retrieves the basic information of the status from the database." alt="" coords="493,201,692,243"/>
@@ -664,7 +665,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="248,71,439,112"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="248,136,439,177"/>
 <area shape="rect" href="../../d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="248,201,439,243"/>
-<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a0dca3986dd33f53ab7f789a44aeb8446" title="Retrieves the additional information of the entry from the database." alt="" coords="488,104,679,145"/>
+<area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="488,104,679,145"/>
 <area shape="rect" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="488,169,679,211"/>
 </map>
 </div>
@@ -681,8 +682,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0a22a175fdfc6c756ec9aafb1c9df27a" name="a0a22a175fdfc6c756ec9aafb1c9df27a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a22a175fdfc6c756ec9aafb1c9df27a">&#9670;&nbsp;</a></span>Logger</h2>
+<a id="a274d068a72a35b0ca5ff0f3bb3ed4146" name="a274d068a72a35b0ca5ff0f3bb3ed4146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a274d068a72a35b0ca5ff0f3bb3ed4146">&#9670;&nbsp;</a></span>Logger</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -691,7 +692,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">NLog.Logger EntertainmentDB.Data.Movie.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
+          <td class="memname">readonly NLog.Logger EntertainmentDB.Data.Movie.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
         </tr>
       </table>
   </td>
@@ -808,7 +809,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of aspect ratios of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0669c45bd241ea06649888e5ac8e5eea">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxAspectRatio()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a43bec80377a40ae0aec60c8be9b12cc3">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxAspectRatio()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0669c45bd241ea06649888e5ac8e5eea">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxAspectRatio()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -860,7 +861,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of awards of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a52cf1c2bf9d3ceff4b434fe6f0e05958">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateAwardChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a52cf1c2bf9d3ceff4b434fe6f0e05958">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateAwardChapter()</a>, <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#aca7a0dfc73226c7b44208225606f532c">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterAward()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -886,7 +887,7 @@ Here is the caller graph for this function:</div>
 
 <p>The budget of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#acb26c7279396ba3f096a908ea97f7685">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxBudget()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7fe90a619c933d7306feedb0af910958">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxBudget()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a49c17982477d3fd8c58fdac1f7310d48">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxBudget()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7fe90a619c933d7306feedb0af910958">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxBudget()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -912,7 +913,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of cameras of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ad470ae5544f0ffd397c5bd53cb2711df">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCamera()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a6d70a7a19876eaffeb95cc0965013559">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxCamera()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ad470ae5544f0ffd397c5bd53cb2711df">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCamera()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1043,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of certifications of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a595d21c15f24507b3e7843c9257a3eab">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCertification()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a874bdf1a565a4f47553dd774e96db394">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxCertification()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a595d21c15f24507b3e7843c9257a3eab">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCertification()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1069,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of cinematographic processes of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aae6f242524a717fc4e0c3502c67d56e5">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCinematographicProcess()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a2c9fde9fe6824a46e6206cd71a96b740">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxCinematographicProcess()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aae6f242524a717fc4e0c3502c67d56e5">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCinematographicProcess()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1121,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of colors of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7879d8f0167a56e6c5e14bd3fd1a9274">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxColor()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a88bca4572c6ca702c0fa44e8ce9ba5cc">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxColor()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7879d8f0167a56e6c5e14bd3fd1a9274">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxColor()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1224,7 +1225,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of countries of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae12dfbc049c98627f1c03d2f4f086a62">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCountry()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a93f6d4e73f994ca7873cfb7104455496">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxCountry()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae12dfbc049c98627f1c03d2f4f086a62">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxCountry()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1250,7 +1251,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of covers of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0dec1d92fcbcc5f74994c59055b5724d">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCoverChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ae2526848cea31c00d02d79de2cfc9e0e">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterCover()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0dec1d92fcbcc5f74994c59055b5724d">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCoverChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1302,7 +1303,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of descriptions of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#adf4e2605441dda3c60649d19a796491a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateDescriptionChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a06ecf2a4999dddfc3cb7d63a12029eb3">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterDescription()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#adf4e2605441dda3c60649d19a796491a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateDescriptionChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1511,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of film lengths of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a10b5fb501a77fdbfcacb87c03c3c22f1">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxFilmLength()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a77d7ffe07deeab078d90e8bf70be21e5">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxFilmLength()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a10b5fb501a77fdbfcacb87c03c3c22f1">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxFilmLength()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1536,7 +1537,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of genres of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a97e65daae7bd5fb7cefab94e92faa433">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxGenre()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#aa65a5cb8eeff6feda8c31d42b223e33e">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxGenre()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a97e65daae7bd5fb7cefab94e92faa433">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxGenre()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1562,7 +1563,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of images of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae66c106f24ffac9e8697ed6776c519da">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateImageChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a44956f27d383a95412fd2e384aa18e18">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterImage()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae66c106f24ffac9e8697ed6776c519da">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateImageChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1588,7 +1589,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of laboratories of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a78fbcf25c1b84b3de7070d99500f3ce0">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLaboratory()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a09f7f95c157e7845a7dd5f50737236e9">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxLaboratory()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a78fbcf25c1b84b3de7070d99500f3ce0">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLaboratory()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1614,7 +1615,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of languages of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a05c458d66b5833e9361825d68d1127d8">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLanguage()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a4c8200769e1122bf3050178f4666e17f">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxLanguage()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a05c458d66b5833e9361825d68d1127d8">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLanguage()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +1667,7 @@ Here is the caller graph for this function:</div>
 
 <p>The logo of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a47ffc0997f761ecd4dfd342d5732f305">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLogo()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#aeac927b5ce16201935fd4b3bce798cc8">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxLogo()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a47ffc0997f761ecd4dfd342d5732f305">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxLogo()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -1770,7 +1771,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of negative formats of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a46c531fa462871d08a1e152431617762">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxNegativeFormat()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#acafd149b23d428cefd7f358960c59a10">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxNegativeFormat()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a46c531fa462871d08a1e152431617762">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxNegativeFormat()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1848,7 +1849,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of posters of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ad04e2e22d75531b52f1914be9c87d713">WikiPageCreator.Export.Create.MovieFileContentCreator.CreatePosterChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a373f9f53d2a0034b233271970c8bf1b7">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterPoster()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ad04e2e22d75531b52f1914be9c87d713">WikiPageCreator.Export.Create.MovieFileContentCreator.CreatePosterChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -1874,7 +1875,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of printed film formats of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a32815682ab569189f9c4f130201ed531">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxPrintedFilmFormat()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a4b79976b574358f12f4855bb4a1b5598">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxPrintedFilmFormat()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a32815682ab569189f9c4f130201ed531">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxPrintedFilmFormat()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -2030,7 +2031,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of reviews of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7e9d35a161280e68cb8af80b95080233">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateReviewChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#aafd062568235a81dd6aeed5e0280bf9a">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterReview()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a7e9d35a161280e68cb8af80b95080233">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateReviewChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -2056,7 +2057,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of runtimes of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a967e1b1df5ddff68e9220e60311f4507">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxRuntime()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ad0154e19022476ad93a963feddffaff2">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxRuntime()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a967e1b1df5ddff68e9220e60311f4507">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxRuntime()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -2134,7 +2135,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of sound mixes of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aedfd6edae99905d997962db45e3ad4cc">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxSoundMix()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ae0e3ab4868d8a1f372aa32ebb1cd52f4">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxSoundMix()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aedfd6edae99905d997962db45e3ad4cc">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxSoundMix()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -2316,7 +2317,7 @@ Here is the caller graph for this function:</div>
 
 <p>The list of weblinks of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab5f81016b74748d671cbadcad3d6ab64">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateWeblinkChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ad07b4b30b3e43d9d372366d06495e187">WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterWeblink()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab5f81016b74748d671cbadcad3d6ab64">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateWeblinkChapter()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31">EntertainmentDB.Data.Movie.RetrieveAdditionalInformation()</a>.</p>
 
 </div>
 </div>
@@ -2342,7 +2343,7 @@ Here is the caller graph for this function:</div>
 
 <p>The worldwide gross of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a843f0b32d124203aba396770a95f081f">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxWorldwideGross()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aa4fbb48f97d620ce9095b4a3e7c1ed3a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a3046297f7c13de7e27c0dfe137d6edf9">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxWorldwideGross()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aa4fbb48f97d620ce9095b4a3e7c1ed3a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>
@@ -2368,7 +2369,7 @@ Here is the caller graph for this function:</div>
 
 <p>The corresponding date to the worldwide gross of the movie. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a843f0b32d124203aba396770a95f081f">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxWorldwideGross()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aa4fbb48f97d620ce9095b4a3e7c1ed3a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a3046297f7c13de7e27c0dfe137d6edf9">WikiPageCreator.Export.Create.MovieContentCreator.CreateInfoBoxWorldwideGross()</a>, <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#aa4fbb48f97d620ce9095b4a3e7c1ed3a">WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxWorldwideGross()</a>, and <a class="el" href="../../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ada6ab644ba28095a3870a88344b8cd07">EntertainmentDB.Data.Movie.RetrieveBasicInformation()</a>.</p>
 
 </div>
 </div>

@@ -1,4 +1,0 @@
-<map id="WikiPageCreator.Export.Create.ArticleContentCreator.GetFileName" name="WikiPageCreator.Export.Create.ArticleContentCreator.GetFileName">
-<area shape="rect" id="node1" title="Creates the file name of the article page." alt="" coords="5,5,232,47"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ade629915fbf013f1813fe1d3fcb3a1dc" title="Formats the given filename as a page name." alt="" coords="280,5,491,47"/>
-</map>
