@@ -1,5 +1,5 @@
 <map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoBoxTitle" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoBoxTitle">
 <area shape="rect" id="node1" title="Creates the formatted infobox title content of a given article." alt="" coords="284,45,492,101"/>
-<area shape="rect" id="node2" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ab74565516dab97959037692b348e88b2" title="Creates the infobox content of a given movie." alt="" coords="7,5,234,61"/>
-<area shape="rect" id="node3" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a347421101460086d0e3bf24bdfed676d" title="Creates the infobox content of a given series." alt="" coords="5,85,236,141"/>
+<area shape="rect" id="node2" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ad427dd1dd026f3c9db9762d054aa0c4c" title="Creates the infobox content of a given movie." alt="" coords="7,5,234,61"/>
+<area shape="rect" id="node3" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a26528b6f172020faa30bf048f2acf5d5" title="Creates the infobox content of a given series." alt="" coords="5,85,236,141"/>
 </map>

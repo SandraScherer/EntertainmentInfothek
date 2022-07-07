@@ -1,7 +1,8 @@
 <map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreateChapterConnection" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreateChapterConnection">
 <area shape="rect" id="node1" title="Creates the formatted connection chapter content of a given article." alt="" coords="5,43,239,99"/>
 <area shape="rect" id="node2" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219" title="Creates the chapter content of a given type." alt="" coords="287,5,548,61"/>
-<area shape="rect" id="node4" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afc28e2189a05a74f699127dfb2a70972" title="Creates a formatted chapter heading with the given title." alt="" coords="291,86,543,127"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="596,13,807,54"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="596,86,807,127"/>
+<area shape="rect" id="node5" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afc28e2189a05a74f699127dfb2a70972" title="Creates a formatted chapter heading with the given title." alt="" coords="291,86,543,127"/>
+<area shape="rect" id="node3" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa" title="Creates the chapter content of a given type." alt="" coords="596,5,857,61"/>
+<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="905,13,1116,54"/>
+<area shape="rect" id="node6" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="621,86,832,127"/>
 </map>
