@@ -181,21 +181,24 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateChapterContentTest_withValidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, VALID_ID);
+            Connection connection = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + VALID_ID));
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + id));
 
             // Act
             List<string> content = creator.CreateChapterContent();
@@ -209,77 +212,24 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateChapterContentTest_withInvalidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, INVALID_ID);
+            Connection connection = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + INVALID_ID));
-
-            // Act
-            List<string> content = creator.CreateChapterContent();
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
-        }
-
-        [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateSectionContentTest_withValidID(string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, VALID_ID);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
-
-            List<string> testContent = new List<string>();
-
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + VALID_ID));
-
-            // Act
-            List<string> content = creator.CreateSectionContent();
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
-        }
-
-        [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateSectionContentTest_withInvalidID(string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, INVALID_ID);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
-
-            List<string> testContent = new List<string>();
-
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + INVALID_ID));
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + id));
 
             // Act
             List<string> content = creator.CreateSectionContent();

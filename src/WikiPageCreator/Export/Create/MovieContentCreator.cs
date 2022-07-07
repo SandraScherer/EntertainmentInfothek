@@ -80,9 +80,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the infobox content of a given movie.
         /// </summary>
         /// <returns>The formatted content of the movie.</returns>
-        public override List<string> CreateInfoBoxContent()
+        protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContent() für Movie {Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Movie {Movie.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -107,7 +107,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateInfoBoxCinematographicProcess());
             content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContent() für Movie {Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Movie {Movie.OriginalTitle}' beendet");
 
             return content;
         }
@@ -116,9 +116,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the chapter content of a given movie.
         /// </summary>
         /// <returns>The formatted content of the movie.</returns>
-        public override List<string> CreateChapterContent()
+        protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateChapterContent() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal() für Movie '{Movie.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -134,18 +134,9 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateChapterContent() für Movie {Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterContentInternal() für Movie {Movie.OriginalTitle}' beendet");
 
             return content;
-        }
-
-        /// <summary>
-        /// Creates the section content of a given movie.
-        /// </summary>
-        /// <returns>The formatted section content of the movie.</returns>
-        public override List<string> CreateSectionContent()
-        {
-            throw new NotSupportedException();
         }
 
         /// <summary>
@@ -162,7 +153,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Logo != null)
             {
                 // TODO: implement following stuff
-                //content.AddRange(new ImageContentCreator(Movie.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new ImageContentCreator(Movie.Logo, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxReleaseDate() für Movie '{Movie.OriginalTitle}' beendet");
@@ -184,7 +175,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Genres != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' beendet");
@@ -205,7 +196,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Certifications != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' beendet");
@@ -226,7 +217,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Countries != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' beendet");
@@ -247,7 +238,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Languages != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' beendet");
@@ -333,7 +324,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Runtimes != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' beendet");
@@ -354,7 +345,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.SoundMixes != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxSoundMix() für Movie '{Movie.OriginalTitle}' beendet");
@@ -375,7 +366,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Colors != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new ColorContentCreator(Movie.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new ColorContentCreator(Movie.Colors, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxColor() für Movie '{Movie.OriginalTitle}' beendet");
@@ -396,7 +387,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.AspectRatios != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' beendet");
@@ -417,7 +408,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Cameras != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxCamera() für Movie '{Movie.OriginalTitle}' beendet");
@@ -438,7 +429,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Laboratories != null)
             {
                 //TODO: implement following stuff
-                ////content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                ////content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' beendet");
@@ -459,7 +450,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.FilmLengths != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' beendet");
@@ -480,7 +471,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.NegativeFormats != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxNegativeFormat() für Movie '{Movie.OriginalTitle}' beendet");
@@ -501,7 +492,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.CinematographicProcesses != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' beendet");
@@ -522,7 +513,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.PrintedFilmFormats != null)
             {
                 //TODO: implement following stuff
-                //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             }
 
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' beendet");
@@ -547,7 +538,7 @@ namespace WikiPageCreator.Export.Create
             {
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new ImageContentCreator(Movie.Posters, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterPoster() für Movie '{Movie.OriginalTitle}' beendet");
@@ -572,7 +563,7 @@ namespace WikiPageCreator.Export.Create
             {
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new ImageContentCreator(Movie.Covers, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterCover() für Movie '{Movie.OriginalTitle}' beendet");
@@ -597,7 +588,7 @@ namespace WikiPageCreator.Export.Create
             {
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new TextContentCreator(Movie.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new TextContentCreator(Movie.Descriptions, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterDescription() für Movie '{Movie.OriginalTitle}' beendet");
@@ -622,7 +613,7 @@ namespace WikiPageCreator.Export.Create
             {
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new TextContentCreator(Movie.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new TextContentCreator(Movie.Reviews, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterReview() für Movie '{Movie.OriginalTitle}' beendet");
@@ -647,7 +638,7 @@ namespace WikiPageCreator.Export.Create
             {
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Images, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new ImageContentCreator(Movie.Images, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterImage() für Movie '{Movie.OriginalTitle}' beendet");
@@ -795,7 +786,7 @@ namespace WikiPageCreator.Export.Create
             {
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new AwardContentCreator(Movie.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new AwardContentCreator(Movie.Awards, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterAward() für Movie '{Movie.OriginalTitle}' beendet");
@@ -820,7 +811,7 @@ namespace WikiPageCreator.Export.Create
             {
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new WeblinkContentCreator(Movie.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
+                //content.AddRange(new WeblinkContentCreator(Movie.Weblinks, Formatter, TargetLanguageCode).CreateChapter4Series());
             }
 
             Logger.Trace($"CreateChapterWeblink() für Movie '{Movie.OriginalTitle}' beendet");

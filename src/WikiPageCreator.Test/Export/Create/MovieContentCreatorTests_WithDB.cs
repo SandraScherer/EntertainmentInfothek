@@ -286,132 +286,45 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateInfoBoxContentTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, VALID_ID);
-            movie.Retrieve(false);
+            Movie movie = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
 
-            List<string> testContent = new List<string>();
-
-            string[] data = new string[2];
-            string[] pathInfo = { targetLanguageCode, "info" };
-            string[] pathDate = { targetLanguageCode, "date" };
-
-            // InfoBox Title
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Original Title";
-                data[1] = "Movie OriginalTitle X";
-            }
-            else
-            {
-                data[0] = "Originaltitel";
-                data[1] = "Movie OriginalTitle X";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Type
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Type";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
-            }
-            else
-            {
-                data[0] = "Typ";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox ReleaseDate
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Original Release Date";
-                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
-            }
-            else
-            {
-                data[0] = "Erstausstrahlung";
-                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Budget
-            data[0] = "Budget";
-            data[1] = "Movie Budget X";
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Worldwide Gross
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Worldwide Gross";
-                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
-            }
-            else
-            {
-                data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // Act
-            List<string> content = creator.CreateInfoBoxContent();
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
+            // Act, Assert
+            creator.CreateInfoBoxContent();
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateChapterContentTest_withValidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, VALID_ID);
-            movie.Retrieve(false);
+            Movie movie = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
 
-            List<string> testContent = new List<string>();
-
-            // Act
-            List<string> content = creator.CreateChapterContent();
-
-            // Connection Chapter
-            if (targetLanguageCode.Equals("en"))
-            {
-                testContent.Add(formatter.AsHeading2("Connections to other articles"));
-            }
-            else
-            {
-                testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
-            }
-            testContent.Add($"");
-            testContent.Add($"");
-
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
+            // Act, Assert
+            creator.CreateChapterContent();
         }
 
         [DataTestMethod()]

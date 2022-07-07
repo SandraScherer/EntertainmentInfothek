@@ -87,14 +87,29 @@ namespace WikiPageCreator.Export.Create
         /// Returns the page name of the entrys page.
         /// </summary>
         /// <returns>The formatted page name for the entry.</returns>
-        public abstract string GetPageName();
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public virtual string GetPageName()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates the page content of the entry.
         /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreatePageContent()
         {
-            Logger.Trace($"CreatePageContent() für ID '{Entry.ID}' gestartet");
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the page content of the entry.
+        /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        protected virtual List<string> CreatePageContentInternal()
+        {
+            Logger.Trace($"CreatePageContentInternal() für ID '{Entry.ID}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -102,14 +117,14 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreatePageTitle());
 
             content.AddRange(CreateInfoBoxBegin());
-            content.AddRange(CreateInfoBoxContent());
+            content.AddRange(CreateInfoBoxContentInternal());
             content.AddRange(CreateInfoBoxEnd());
 
-            content.AddRange(CreateChapterContent());
+            content.AddRange(CreateChapterContentInternal());
 
             content.AddRange(CreatePageFooter());
 
-            Logger.Trace($"CreatePageContent() für ID '{Entry.ID}' beendet");
+            Logger.Trace($"CreatePageContentInternal() für ID '{Entry.ID}' beendet");
 
             return content;
         }
@@ -118,12 +133,21 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted header content of a given entry.
         /// </summary>
         /// <returns>The formatted header content of the entry.</returns>
-        protected abstract List<string> CreatePageHeader();
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreatePageHeader()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates the formatted file title content of a given entry.
         /// </summary>
-        protected abstract List<string> CreatePageTitle();
+        /// <returns>The formatted file title of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreatePageTitle()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates the formatted infobox begin content of a given entry
@@ -149,7 +173,21 @@ namespace WikiPageCreator.Export.Create
         /// Creates the infobox content of a given entry.
         /// </summary>
         /// <returns>The formatted infobox content of the entry.</returns>
-        public abstract List<string> CreateInfoBoxContent();
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public virtual List<string> CreateInfoBoxContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the infobox content of a given entry.
+        /// </summary>
+        /// <returns>The formatted infobox content of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreateInfoBoxContentInternal()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates the formatted infobox end content of a given entry
@@ -213,7 +251,21 @@ namespace WikiPageCreator.Export.Create
         /// Creates the chapter content of a given entry.
         /// </summary>
         /// <returns>The formatted content of the entry.</returns>
-        public abstract List<string> CreateChapterContent();
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public virtual List<string> CreateChapterContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the chapter content of a given entry.
+        /// </summary>
+        /// <returns>The formatted content of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreateChapterContentInternal()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates a formatted section heading with the given title.
@@ -255,7 +307,21 @@ namespace WikiPageCreator.Export.Create
         /// Creates the section content of a given entry.
         /// </summary>
         /// <returns>The formatted section content of the entry.</returns>
-        public abstract List<string> CreateSectionContent();
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        public virtual List<string> CreateSectionContent()
+        {
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the section content of a given entry.
+        /// </summary>
+        /// <returns>The formatted section content of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreateSectionContentInternal()
+        {
+            throw new NotSupportedException();
+        }
 
         /// <summary>
         /// Creates the formatted footer content of a given entry.

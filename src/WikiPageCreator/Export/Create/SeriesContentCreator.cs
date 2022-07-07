@@ -81,9 +81,9 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         /// <returns>The formatted content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public override List<string> CreateInfoBoxContent()
+        protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Series {Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -111,7 +111,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateInfoBoxCinematographicProcess());
             content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Series {Series.OriginalTitle}' beendet");
 
             return content;
         }
@@ -121,9 +121,9 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         /// <returns>The formatted content of the series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public override List<string> CreateChapterContent()
+        protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateChapterContent() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal() für Series '{Series.OriginalTitle}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -139,18 +139,9 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateInfoBoxContent() für Series {Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterContentInternal() für Series {Series.OriginalTitle}' beendet");
 
             return content;
-        }
-
-        /// <summary>
-        /// Creates the section content of a given series.
-        /// </summary>
-        /// <returns>The formatted section content of the series.</returns>
-        public override List<string> CreateSectionContent()
-        {
-            throw new NotSupportedException();
         }
 
         /// <summary>
@@ -167,7 +158,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Logo != null)
             //{
-            //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{Series.OriginalTitle}' beendet");
@@ -257,7 +248,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Genres != null)
             //{
-            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxGenre() für Series '{Series.OriginalTitle}' beendet");
@@ -278,7 +269,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Certifications != null)
             // {
-            //     content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //     content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             // }
 
             Logger.Trace($"CreateInfoBoxCertification() für Series '{Series.OriginalTitle}' beendet");
@@ -299,7 +290,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Countries != null)
             //{
-            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxCountry() für Series '{Series.OriginalTitle}' beendet");
@@ -320,7 +311,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Languages != null)
             //{
-            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxLanguage() für Series '{Series.OriginalTitle}' beendet");
@@ -471,7 +462,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Runtimes != null)
             //{
-            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxRuntime() für Series '{Series.OriginalTitle}' beendet");
@@ -492,7 +483,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.SoundMixes != null)
             //{
-            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxSoundMix() für Series '{Series.OriginalTitle}' beendet");
@@ -513,7 +504,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Colors != null)
             //{
-            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxColor() für Series '{Series.OriginalTitle}' beendet");
@@ -534,7 +525,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.AspectRatios != null)
             //{
-            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{Series.OriginalTitle}' beendet");
@@ -555,7 +546,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Cameras != null)
             //{
-            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' beendet");
@@ -576,7 +567,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.Laboratories != null)
             //{
-            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxLaboratory() für Series '{Series.OriginalTitle}' beendet");
@@ -597,7 +588,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.FilmLengths != null)
             //{
-            //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxFilmLength() für Series '{Series.OriginalTitle}' beendet");
@@ -618,7 +609,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.NegativeFormats != null)
             //{
-            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{Series.OriginalTitle}' beendet");
@@ -639,7 +630,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.CinematographicProcesses != null)
             // {
-            //     content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //     content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             // }
 
             Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{Series.OriginalTitle}' beendet");
@@ -660,7 +651,7 @@ namespace WikiPageCreator.Export.Create
             //TODO: implement following stuff
             //if (Series.PrintedFilmFormats != null)
             //{
-            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
             //}
 
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{Series.OriginalTitle}' beendet");
@@ -685,7 +676,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Posters != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterPoster() für Series '{Series.OriginalTitle}' beendet");
@@ -710,7 +701,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Covers != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterCover() für Series '{Series.OriginalTitle}' beendet");
@@ -735,7 +726,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Descriptions != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterDescription() für Series '{Series.OriginalTitle}' beendet");
@@ -760,7 +751,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Reviews != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterReview() für Series '{Series.OriginalTitle}' beendet");
@@ -785,7 +776,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Images != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterImage() für Series '{Series.OriginalTitle}' beendet");
@@ -933,7 +924,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Awards != null)
             //{
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
+            //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapter4Series());
             //}
 
             Logger.Trace($"CreateChapterAward() für Series '{Series.OriginalTitle}' beendet");
@@ -958,7 +949,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Weblinks != null)
             // {
             //     content.AddRange(CreateNewChapter(title));
-            //     content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
+            //     content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapter4Series());
             // }
 
             Logger.Trace($"CreateChapterWeblink() für Series '{Series.OriginalTitle}' beendet");

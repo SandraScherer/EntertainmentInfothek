@@ -88,6 +88,15 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the page content of the entry.
+        /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        public override List<string> CreatePageContent()
+        {
+            return CreatePageContentInternal();
+        }
+
+        /// <summary>
         /// Creates the formatted header content of a given article.
         /// </summary>
         /// <returns>The formatted haeder content of the article.</returns>

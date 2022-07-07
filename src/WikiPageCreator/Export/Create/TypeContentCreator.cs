@@ -77,50 +77,21 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Returns the page name of the types page.
+        /// Creates the infobox content of a given type.
         /// </summary>
-        /// <returns>The formatted page name for the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override string GetPageName()
+        /// <returns>The formatted content of the type.</returns>
+        public override List<string> CreateInfoBoxContent()
         {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the page content of the type.
-        /// </summary>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override List<string> CreatePageContent()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the formatted header content of a given type.
-        /// </summary>
-        /// <returns>The formatted header content of the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreatePageHeader()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the formatted file title content of a given type.
-        /// </summary>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreatePageTitle()
-        {
-            throw new NotSupportedException();
+            return CreateInfoBoxContentInternal();
         }
 
         /// <summary>
         /// Creates the infobox content of a given type.
         /// </summary>
         /// <returns>The formatted content of the type.</returns>
-        public override List<string> CreateInfoBoxContent()
+        protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContent() für Type '{Type.ID}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Type '{Type.ID}' gestartet");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -140,51 +111,9 @@ namespace WikiPageCreator.Export.Create
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxContent() für Type '{Type.ID}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal() für Type '{Type.ID}' beendet");
 
             return content;
-        }
-
-        /// <summary>
-        /// Creates a formatted chapter heading with the given title.
-        /// </summary>
-        /// <param name="title">The title that is to be used as heading.</param>
-        /// <returns>The fomatted chapter heading.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreateNewChapter(Dictionary<string, string> title)
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the chapter content of a given type.
-        /// </summary>
-        /// <returns>The formatted content of the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override List<string> CreateChapterContent()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates a formatted section heading with the given title.
-        /// </summary>
-        /// <param name="title">The title that is to be used as heading.</param>
-        /// <returns>The fomatted chapter heading.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreateNewSection(Dictionary<string, string> title)
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the section content of a given type.
-        /// </summary>
-        /// <returns>The formatted section content of the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override List<string> CreateSectionContent()
-        {
-            throw new NotSupportedException();
         }
     }
 }

@@ -325,171 +325,46 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateInfoBoxContentTest_withValidID(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, VALID_ID);
+            Series series = new Series(reader, id);
             series.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
             SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
 
-            List<string> testContent = new List<string>();
-
-            string[] data = new string[2];
-            string[] pathInfo = { targetLanguageCode, "info" };
-            string[] pathDate = { targetLanguageCode, "date" };
-
-            // InfoBox Title
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Original Title";
-                data[1] = "Series OriginalTitle X";
-            }
-            else
-            {
-                data[0] = "Originaltitel";
-                data[1] = "Series OriginalTitle X";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Type
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Type";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
-            }
-            else
-            {
-                data[0] = "Typ";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox ReleaseDate First Episode
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Release Date (First Episode)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
-            }
-            else
-            {
-                data[0] = "Erstausstrahlung (Erste Folge)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox ReleaseDate Last Episode
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Release Date (Last Episode)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
-            }
-            else
-            {
-                data[0] = "Erstausstrahlung (Letzte Folge)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // Infobox No of Seasons
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "# Seasons";
-                data[1] = "Series NoOfSeasons X";
-            }
-            else
-            {
-                data[0] = "# Staffeln";
-                data[1] = "Series NoOfSeasons X";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // Infobox No of Episodes
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "# Episodes";
-                data[1] = "Series NoOfEpisodes X";
-            }
-            else
-            {
-                data[0] = "# Folgen";
-                data[1] = "Series NoOfEpisodes X";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Budget
-            data[0] = "Budget";
-            data[1] = "Series Budget X";
-            testContent.Add(formatter.AsTableRow(data));
-
-            // InfoBox Worldwide Gross
-            if (targetLanguageCode.Equals("en"))
-            {
-                data[0] = "Worldwide Gross";
-                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
-            }
-            else
-            {
-                data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
-            }
-            testContent.Add(formatter.AsTableRow(data));
-
-            // Act
-            List<string> content = creator.CreateInfoBoxContent();
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
+            // Act, Assert
+            creator.CreateInfoBoxContent();
         }
 
         [DataTestMethod()]
-        [DataRow("en")]
-        [DataRow("de")]
-        [DataRow("zz")]
-        public void CreateChapterContentTest_withValidID(string targetLanguageCode)
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateChapterContentTest_withValidID(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, VALID_ID);
-            series.Retrieve(false);
+            Series series = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
 
-            List<string> testContent = new List<string>();
-
-            // Act
-            List<string> content = creator.CreateChapterContent();
-
-            // Connection Chapter
-            if (targetLanguageCode.Equals("en"))
-            {
-                testContent.Add(formatter.AsHeading2("Connections to other articles"));
-            }
-            else
-            {
-                testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
-            }
-            testContent.Add($"");
-            testContent.Add($"");
-
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
+            // Act, Assert
+            creator.CreateChapterContent();
         }
 
         [DataTestMethod()]

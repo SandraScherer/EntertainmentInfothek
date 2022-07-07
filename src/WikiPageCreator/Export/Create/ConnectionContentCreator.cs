@@ -77,60 +77,30 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Returns the page name of the types page.
-        /// </summary>
-        /// <returns>The formatted page name for the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override string GetPageName()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the page content of the type.
-        /// </summary>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override List<string> CreatePageContent()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the formatted header content of a given type.
-        /// </summary>
-        /// <returns>The formatted header content of the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreatePageHeader()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the formatted file title content of a given type.
-        /// </summary>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected override List<string> CreatePageTitle()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the infobox content of a given type.
+        /// Creates the chapter content of a given type.
         /// </summary>
         /// <returns>The formatted content of the type.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public override List<string> CreateInfoBoxContent()
+        public override List<string> CreateChapterContent()
         {
-            throw new NotSupportedException();
+            return CreateChapterContentInternal();
+        }
+
+        /// <summary>
+        /// Creates the section content of a given type.
+        /// </summary>
+        /// <returns>The formatted section content of the type.</returns>
+        public override List<string> CreateSectionContent()
+        {
+            return CreateChapterContentInternal();
         }
 
         /// <summary>
         /// Creates the chapter content of a given type.
         /// </summary>
         /// <returns>The formatted content of the type.</returns>
-        public override List<string> CreateChapterContent()
+        protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateSectionContent() für Connection '{Connection.ID}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal() für Connection '{Connection.ID}' gestartet");
 
             List<string> content = new List<string>();
 
@@ -146,18 +116,9 @@ namespace WikiPageCreator.Export.Create
                 }
             }
 
-            Logger.Trace($"CreateSectionContent() für Connection '{Connection.ID}' beendet");
+            Logger.Trace($"CreateChapterContentInternal() für Connection '{Connection.ID}' beendet");
 
             return content;
-        }
-
-        /// <summary>
-        /// Creates the section content of a given type.
-        /// </summary>
-        /// <returns>The formatted section content of the type.</returns>
-        public override List<string> CreateSectionContent()
-        {
-            return CreateChapterContent();
         }
     }
 }
