@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d6/d43/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">WikiPageCreator.Export.Create.ConnectionContentCreator Class Reference</div></div>
@@ -83,36 +84,99 @@ Inheritance diagram for WikiPageCreator.Export.Create.ConnectionContentCreator:<
 <div class="center"><img src="../../da/db1/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator__inherit__graph.png" border="0" usemap="#a_wiki_page_creator_8_export_8_create_8_connection_content_creator_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_wiki_page_creator_8_export_8_create_8_connection_content_creator_inherit__map" id="a_wiki_page_creator_8_export_8_create_8_connection_content_creator_inherit__map">
 <area shape="rect" title="Provides a content creator for a connection." alt="" coords="5,80,213,121"/>
-<area shape="rect" href="../../da/db0/interface_wiki_page_creator_1_1_export_1_1_create_1_1_i_section_content_creatable.html" title="Provides an interface for a section content creator." alt="" coords="25,5,194,32"/>
+<area shape="rect" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="39,5,179,32"/>
 </map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a3e15cf9719c13db6fc779a298b5ae2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a5a3e15cf9719c13db6fc779a298b5ae2">ConnectionContentCreator</a> ()</td></tr>
-<tr class="memdesc:a5a3e15cf9719c13db6fc779a298b5ae2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html" title="Provides a content creator for a connection.">ConnectionContentCreator</a>.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a5a3e15cf9719c13db6fc779a298b5ae2">More...</a><br /></td></tr>
-<tr class="separator:a5a3e15cf9719c13db6fc779a298b5ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace7756390239463d94c83aecc41ecf9c"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c">CreateSectionContent</a> (<a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">Entry</a> entry, string targetLanguageCode, <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a> formatter)</td></tr>
-<tr class="memdesc:ace7756390239463d94c83aecc41ecf9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the section content of a given entry.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c">More...</a><br /></td></tr>
-<tr class="separator:ace7756390239463d94c83aecc41ecf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a339542218d486cd43d406cf50ef89acb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a339542218d486cd43d406cf50ef89acb">ConnectionContentCreator</a> (<a class="el" href="../../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html">Connection</a> connection, <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a> formatter, string targetLanguageCode)</td></tr>
+<tr class="memdesc:a339542218d486cd43d406cf50ef89acb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html" title="Provides a content creator for a connection.">ConnectionContentCreator</a>.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a339542218d486cd43d406cf50ef89acb">More...</a><br /></td></tr>
+<tr class="separator:a339542218d486cd43d406cf50ef89acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d78cd977bfd947b2bcaddaaec2d219"><td class="memItemLeft" align="right" valign="top">override List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219">CreateChapterContent</a> ()</td></tr>
+<tr class="memdesc:a47d78cd977bfd947b2bcaddaaec2d219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the chapter content of a given type.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219">More...</a><br /></td></tr>
+<tr class="separator:a47d78cd977bfd947b2bcaddaaec2d219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dedc2131a131569339d3d2a5ee1ecc7"><td class="memItemLeft" align="right" valign="top">override List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9dedc2131a131569339d3d2a5ee1ecc7">CreateSectionContent</a> ()</td></tr>
+<tr class="memdesc:a9dedc2131a131569339d3d2a5ee1ecc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the section content of a given type.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9dedc2131a131569339d3d2a5ee1ecc7">More...</a><br /></td></tr>
+<tr class="separator:a9dedc2131a131569339d3d2a5ee1ecc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html">WikiPageCreator.Export.Create.EntryContentCreator</a></td></tr>
+<tr class="memitem:a3a4373e6878496400b230b98c244765a inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a3a4373e6878496400b230b98c244765a">GetPageName</a> ()</td></tr>
+<tr class="memdesc:a3a4373e6878496400b230b98c244765a inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the page name of the entrys page.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a3a4373e6878496400b230b98c244765a">More...</a><br /></td></tr>
+<tr class="separator:a3a4373e6878496400b230b98c244765a inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5e689df548fe88cddd20a8074a4077 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ade5e689df548fe88cddd20a8074a4077">CreatePageContent</a> ()</td></tr>
+<tr class="memdesc:ade5e689df548fe88cddd20a8074a4077 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the page content of the entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ade5e689df548fe88cddd20a8074a4077">More...</a><br /></td></tr>
+<tr class="separator:ade5e689df548fe88cddd20a8074a4077 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37fbdda77c7cc1ec45335b15690b15b3 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a37fbdda77c7cc1ec45335b15690b15b3">CreateInfoBoxContent</a> ()</td></tr>
+<tr class="memdesc:a37fbdda77c7cc1ec45335b15690b15b3 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the infobox content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a37fbdda77c7cc1ec45335b15690b15b3">More...</a><br /></td></tr>
+<tr class="separator:a37fbdda77c7cc1ec45335b15690b15b3 inherit pub_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:adaed0b759795de8f9476e4040b58233a"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#adaed0b759795de8f9476e4040b58233a">CreateSectionConnection</a> (<a class="el" href="../../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html">Connection</a> connection, string targetLanguageCode, <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a> formatter)</td></tr>
-<tr class="memdesc:adaed0b759795de8f9476e4040b58233a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted connection section content of a given connection.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#adaed0b759795de8f9476e4040b58233a">More...</a><br /></td></tr>
-<tr class="separator:adaed0b759795de8f9476e4040b58233a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb6027e231079cac5a26a0b7955eefa"><td class="memItemLeft" align="right" valign="top">override List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa">CreateChapterContentInternal</a> ()</td></tr>
+<tr class="memdesc:a9fb6027e231079cac5a26a0b7955eefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the chapter content of a given type.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa">More...</a><br /></td></tr>
+<tr class="separator:a9fb6027e231079cac5a26a0b7955eefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html">WikiPageCreator.Export.Create.EntryContentCreator</a></td></tr>
+<tr class="memitem:a9ef19d339226ce651115d5cd4b4e171e inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a9ef19d339226ce651115d5cd4b4e171e">EntryContentCreator</a> (<a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">Entry</a> entry, <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a> formatter, string targetLanguageCode)</td></tr>
+<tr class="memdesc:a9ef19d339226ce651115d5cd4b4e171e inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry.">EntryContentCreator</a> with the given entry, formatter and target language code.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a9ef19d339226ce651115d5cd4b4e171e">More...</a><br /></td></tr>
+<tr class="separator:a9ef19d339226ce651115d5cd4b4e171e inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de243cdf51bd4bf0c9dcd3cea0862b1 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8de243cdf51bd4bf0c9dcd3cea0862b1">CreatePageContentInternal</a> ()</td></tr>
+<tr class="memdesc:a8de243cdf51bd4bf0c9dcd3cea0862b1 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the page content of the entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8de243cdf51bd4bf0c9dcd3cea0862b1">More...</a><br /></td></tr>
+<tr class="separator:a8de243cdf51bd4bf0c9dcd3cea0862b1 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f2905a7c08fa46b19dbe207e38c101 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ac3f2905a7c08fa46b19dbe207e38c101">CreatePageHeader</a> ()</td></tr>
+<tr class="memdesc:ac3f2905a7c08fa46b19dbe207e38c101 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted header content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ac3f2905a7c08fa46b19dbe207e38c101">More...</a><br /></td></tr>
+<tr class="separator:ac3f2905a7c08fa46b19dbe207e38c101 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ed997cd260345a8ff8735ab570ec88c inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a5ed997cd260345a8ff8735ab570ec88c">CreatePageTitle</a> ()</td></tr>
+<tr class="memdesc:a5ed997cd260345a8ff8735ab570ec88c inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted file title content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a5ed997cd260345a8ff8735ab570ec88c">More...</a><br /></td></tr>
+<tr class="separator:a5ed997cd260345a8ff8735ab570ec88c inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5d195a9a6362a2a074160835cf1ddc inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a2f5d195a9a6362a2a074160835cf1ddc">CreateInfoBoxBegin</a> ()</td></tr>
+<tr class="memdesc:a2f5d195a9a6362a2a074160835cf1ddc inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted infobox begin content of a given entry  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a2f5d195a9a6362a2a074160835cf1ddc">More...</a><br /></td></tr>
+<tr class="separator:a2f5d195a9a6362a2a074160835cf1ddc inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062b6a959f58a881be6721017cf7fa21 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a062b6a959f58a881be6721017cf7fa21">CreateInfoBoxContentInternal</a> ()</td></tr>
+<tr class="memdesc:a062b6a959f58a881be6721017cf7fa21 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the infobox content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a062b6a959f58a881be6721017cf7fa21">More...</a><br /></td></tr>
+<tr class="separator:a062b6a959f58a881be6721017cf7fa21 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9f92c3fe87a97fb888174e55e0a782 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a2d9f92c3fe87a97fb888174e55e0a782">CreateInfoBoxEnd</a> ()</td></tr>
+<tr class="memdesc:a2d9f92c3fe87a97fb888174e55e0a782 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted infobox end content of a given entry  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a2d9f92c3fe87a97fb888174e55e0a782">More...</a><br /></td></tr>
+<tr class="separator:a2d9f92c3fe87a97fb888174e55e0a782 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc28e2189a05a74f699127dfb2a70972 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afc28e2189a05a74f699127dfb2a70972">CreateNewChapter</a> (Dictionary&lt; string, string &gt; title)</td></tr>
+<tr class="memdesc:afc28e2189a05a74f699127dfb2a70972 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a formatted chapter heading with the given title.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afc28e2189a05a74f699127dfb2a70972">More...</a><br /></td></tr>
+<tr class="separator:afc28e2189a05a74f699127dfb2a70972 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7650dc37009481a7415a269478a5bcae inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a7650dc37009481a7415a269478a5bcae">CreateNewSection</a> (Dictionary&lt; string, string &gt; title)</td></tr>
+<tr class="memdesc:a7650dc37009481a7415a269478a5bcae inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a formatted section heading with the given title.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a7650dc37009481a7415a269478a5bcae">More...</a><br /></td></tr>
+<tr class="separator:a7650dc37009481a7415a269478a5bcae inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab19c6ce4e0b219a6c03b90757168afd2 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ab19c6ce4e0b219a6c03b90757168afd2">CreateSectionContentInternal</a> ()</td></tr>
+<tr class="memdesc:ab19c6ce4e0b219a6c03b90757168afd2 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the section content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#ab19c6ce4e0b219a6c03b90757168afd2">More...</a><br /></td></tr>
+<tr class="separator:ab19c6ce4e0b219a6c03b90757168afd2 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6b6babda5d24e5fbd6eb873c812a51 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">virtual List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a9c6b6babda5d24e5fbd6eb873c812a51">CreatePageFooter</a> ()</td></tr>
+<tr class="memdesc:a9c6b6babda5d24e5fbd6eb873c812a51 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the formatted footer content of a given entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a9c6b6babda5d24e5fbd6eb873c812a51">More...</a><br /></td></tr>
+<tr class="separator:a9c6b6babda5d24e5fbd6eb873c812a51 inherit pro_methods_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a51022a420f6fd44f0705ee48475a874e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html">Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a51022a420f6fd44f0705ee48475a874e">Connection</a><code> [getset]</code></td></tr>
+<tr class="memdesc:a51022a420f6fd44f0705ee48475a874e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connection to be used to create the content.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a51022a420f6fd44f0705ee48475a874e">More...</a><br /></td></tr>
+<tr class="separator:a51022a420f6fd44f0705ee48475a874e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td colspan="2" onclick="javascript:toggleInherit('properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator')"><img src="../../closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html">WikiPageCreator.Export.Create.EntryContentCreator</a></td></tr>
+<tr class="memitem:a3c8980d5a6af25534471754b263ebeba inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a3c8980d5a6af25534471754b263ebeba">Formatter</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:a3c8980d5a6af25534471754b263ebeba inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The formatter to be used to format the information of the entry.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a3c8980d5a6af25534471754b263ebeba">More...</a><br /></td></tr>
+<tr class="separator:a3c8980d5a6af25534471754b263ebeba inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba9ef0544a309dc3afbf8d37901600cf inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">Entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#aba9ef0544a309dc3afbf8d37901600cf">Entry</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:aba9ef0544a309dc3afbf8d37901600cf inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entry to be used to create the content.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#aba9ef0544a309dc3afbf8d37901600cf">More...</a><br /></td></tr>
+<tr class="separator:aba9ef0544a309dc3afbf8d37901600cf inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a4426f29b51df92c96d424850b76252 inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8a4426f29b51df92c96d424850b76252">TargetLanguageCode</a><code> [getprotected set]</code></td></tr>
+<tr class="memdesc:a8a4426f29b51df92c96d424850b76252 inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The target language (as a language code) to specify the language of the created content.  <a href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8a4426f29b51df92c96d424850b76252">More...</a><br /></td></tr>
+<tr class="separator:a8a4426f29b51df92c96d424850b76252 inherit properties_class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a22d721a0a71200233a643e2f00df4983"><td class="memItemLeft" align="right" valign="top">static NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a22d721a0a71200233a643e2f00df4983">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
-<tr class="memdesc:a22d721a0a71200233a643e2f00df4983"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a22d721a0a71200233a643e2f00df4983">More...</a><br /></td></tr>
-<tr class="separator:a22d721a0a71200233a643e2f00df4983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296cd4493a6ad72ddba32defbc86e4c0"><td class="memItemLeft" align="right" valign="top">static readonly NLog.Logger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a296cd4493a6ad72ddba32defbc86e4c0">Logger</a> = NLog.LogManager.GetCurrentClassLogger()</td></tr>
+<tr class="memdesc:a296cd4493a6ad72ddba32defbc86e4c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger to log everything.  <a href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a296cd4493a6ad72ddba32defbc86e4c0">More...</a><br /></td></tr>
+<tr class="separator:a296cd4493a6ad72ddba32defbc86e4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides a content creator for a connection. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5a3e15cf9719c13db6fc779a298b5ae2" name="a5a3e15cf9719c13db6fc779a298b5ae2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a3e15cf9719c13db6fc779a298b5ae2">&#9670;&nbsp;</a></span>ConnectionContentCreator()</h2>
+<a id="a339542218d486cd43d406cf50ef89acb" name="a339542218d486cd43d406cf50ef89acb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a339542218d486cd43d406cf50ef89acb">&#9670;&nbsp;</a></span>ConnectionContentCreator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,43 +184,20 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">WikiPageCreator.Export.Create.ConnectionContentCreator.ConnectionContentCreator </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes a new <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html" title="Provides a content creator for a connection.">ConnectionContentCreator</a>. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="adaed0b759795de8f9476e4040b58233a" name="adaed0b759795de8f9476e4040b58233a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaed0b759795de8f9476e4040b58233a">&#9670;&nbsp;</a></span>CreateSectionConnection()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual List&lt; string &gt; WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionConnection </td>
-          <td>(</td>
           <td class="paramtype"><a class="el" href="../../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html">Connection</a>&#160;</td>
           <td class="paramname"><em>connection</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>targetLanguageCode</em>, </td>
+          <td class="paramtype"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a>&#160;</td>
+          <td class="paramname"><em>formatter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a>&#160;</td>
-          <td class="paramname"><em>formatter</em>&#160;</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>targetLanguageCode</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,23 +205,17 @@ Static Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Creates the formatted connection section content of a given connection. </p>
+<p>Initializes a new <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html" title="Provides a content creator for a connection.">ConnectionContentCreator</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">connection</td><td>The connection that is to be used to create the content.</td></tr>
-    <tr><td class="paramname">targetLanguageCode</td><td>The language code of the target language.</td></tr>
-    <tr><td class="paramname">formatter</td><td>The formatter to be used to format the content.</td></tr>
+    <tr><td class="paramname">connection</td><td>The connection to be used to create content.</td></tr>
+    <tr><td class="paramname">formatter</td><td>The formatter to be used to format the content</td></tr>
+    <tr><td class="paramname">targetLanguageCode</td><td>The language code for the created content.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted section content of the connection.</dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">ArgumentNullException</td><td>Thrown when one the given parameters is null.</td></tr>
@@ -188,30 +223,11 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionContent()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_cgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_cgraph" alt=""/></div>
-<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_cgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_cgraph">
-<area shape="rect" title="Creates the formatted connection section content of a given connection." alt="" coords="5,5,265,61"/>
-<area shape="rect" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="313,13,524,54"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_icgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_icgraph" alt=""/></div>
-<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_icgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_adaed0b759795de8f9476e4040b58233a_icgraph">
-<area shape="rect" title="Creates the formatted connection section content of a given connection." alt="" coords="313,5,573,61"/>
-<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c" title="Creates the section content of a given entry." alt="" coords="5,5,265,61"/>
-</map>
-</div>
-
 </div>
 </div>
-<a id="ace7756390239463d94c83aecc41ecf9c" name="ace7756390239463d94c83aecc41ecf9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace7756390239463d94c83aecc41ecf9c">&#9670;&nbsp;</a></span>CreateSectionContent()</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a47d78cd977bfd947b2bcaddaaec2d219" name="a47d78cd977bfd947b2bcaddaaec2d219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d78cd977bfd947b2bcaddaaec2d219">&#9670;&nbsp;</a></span>CreateChapterContent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,27 +236,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual List&lt; string &gt; WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionContent </td>
+          <td class="memname">override List&lt; string &gt; WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html">Entry</a>&#160;</td>
-          <td class="paramname"><em>entry</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>targetLanguageCode</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html">Formatter</a>&#160;</td>
-          <td class="paramname"><em>formatter</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -250,40 +249,38 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Creates the section content of a given entry. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">entry</td><td>The entry that is to be used to create the content.</td></tr>
-    <tr><td class="paramname">targetLanguageCode</td><td>The language code of the target language.</td></tr>
-    <tr><td class="paramname">formatter</td><td>The formatter to be used to format the content.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted content of the entry.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when one the given parameters is null.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Creates the chapter content of a given type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The formatted content of the type.</dd></dl>
 
-<p>Implements <a class="el" href="../../da/db0/interface_wiki_page_creator_1_1_export_1_1_create_1_1_i_section_content_creatable.html#a72c9aa3252bd4b3bd88a8e7e82557a69">WikiPageCreator.Export.Create.ISectionContentCreatable</a>.</p>
+<p>Reimplemented from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a96811b1987097e5ac63037cc43e55058">WikiPageCreator.Export.Create.EntryContentCreator</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#adb5c21619a91db8b3aa04f8a26ec7c47">WikiPageCreator.Export.Create.ArticleContentCreator.CreateChapterConnection()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_ace7756390239463d94c83aecc41ecf9c_cgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_ace7756390239463d94c83aecc41ecf9c_cgraph" alt=""/></div>
-<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_ace7756390239463d94c83aecc41ecf9c_cgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_ace7756390239463d94c83aecc41ecf9c_cgraph">
-<area shape="rect" title="Creates the section content of a given entry." alt="" coords="5,5,265,61"/>
-<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#adaed0b759795de8f9476e4040b58233a" title="Creates the formatted connection section content of a given connection." alt="" coords="313,5,573,61"/>
-<area shape="rect" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="621,13,832,54"/>
+<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_cgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_cgraph" alt=""/></div>
+<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_cgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_cgraph">
+<area shape="rect" title="Creates the chapter content of a given type." alt="" coords="5,5,267,61"/>
+<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa" title="Creates the chapter content of a given type." alt="" coords="315,5,576,61"/>
+<area shape="rect" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="624,13,835,54"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_icgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_icgraph" alt=""/></div>
+<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_icgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a47d78cd977bfd947b2bcaddaaec2d219_icgraph">
+<area shape="rect" title="Creates the chapter content of a given type." alt="" coords="568,45,829,101"/>
+<area shape="rect" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#adb5c21619a91db8b3aa04f8a26ec7c47" title="Creates the formatted connection chapter content of a given article." alt="" coords="287,45,520,101"/>
+<area shape="rect" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#acfd5569844984663770e4e5c415dd085" title="Creates the chapter content of a given movie." alt="" coords="7,5,237,61"/>
+<area shape="rect" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a8cb8ccdbb88bfec2c9179f2c7f604f6b" title="Creates the chapter content of a given series." alt="" coords="5,85,239,141"/>
 </map>
 </div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a22d721a0a71200233a643e2f00df4983" name="a22d721a0a71200233a643e2f00df4983"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22d721a0a71200233a643e2f00df4983">&#9670;&nbsp;</a></span>Logger</h2>
+<a id="a9fb6027e231079cac5a26a0b7955eefa" name="a9fb6027e231079cac5a26a0b7955eefa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb6027e231079cac5a26a0b7955eefa">&#9670;&nbsp;</a></span>CreateChapterContentInternal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +289,102 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">NLog.Logger WikiPageCreator.Export.Create.ConnectionContentCreator.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
+          <td class="memname">override List&lt; string &gt; WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContentInternal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the chapter content of a given type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The formatted content of the type.</dd></dl>
+
+<p>Reimplemented from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#addd090658804c2056dd7b0cebe79d64e">WikiPageCreator.Export.Create.EntryContentCreator</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContent()</a>, and <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9dedc2131a131569339d3d2a5ee1ecc7">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionContent()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_cgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_cgraph" alt=""/></div>
+<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_cgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_cgraph">
+<area shape="rect" title="Creates the chapter content of a given type." alt="" coords="5,5,267,61"/>
+<area shape="rect" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="315,13,525,54"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_icgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_icgraph" alt=""/></div>
+<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_icgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9fb6027e231079cac5a26a0b7955eefa_icgraph">
+<area shape="rect" title="Creates the chapter content of a given type." alt="" coords="877,85,1139,141"/>
+<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219" title="Creates the chapter content of a given type." alt="" coords="568,45,829,101"/>
+<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9dedc2131a131569339d3d2a5ee1ecc7" title="Creates the section content of a given type." alt="" coords="569,125,829,181"/>
+<area shape="rect" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#adb5c21619a91db8b3aa04f8a26ec7c47" title="Creates the formatted connection chapter content of a given article." alt="" coords="287,45,520,101"/>
+<area shape="rect" href="../../d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#acfd5569844984663770e4e5c415dd085" title="Creates the chapter content of a given movie." alt="" coords="7,5,237,61"/>
+<area shape="rect" href="../../db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a8cb8ccdbb88bfec2c9179f2c7f604f6b" title="Creates the chapter content of a given series." alt="" coords="5,85,239,141"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9dedc2131a131569339d3d2a5ee1ecc7" name="a9dedc2131a131569339d3d2a5ee1ecc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dedc2131a131569339d3d2a5ee1ecc7">&#9670;&nbsp;</a></span>CreateSectionContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override List&lt; string &gt; WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionContent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the section content of a given type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The formatted section content of the type.</dd></dl>
+
+<p>Reimplemented from <a class="el" href="../../d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a36bfb7dd41605d63e0a8e9be506655e3">WikiPageCreator.Export.Create.EntryContentCreator</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9dedc2131a131569339d3d2a5ee1ecc7_cgraph.png" border="0" usemap="#ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9dedc2131a131569339d3d2a5ee1ecc7_cgraph" alt=""/></div>
+<map name="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9dedc2131a131569339d3d2a5ee1ecc7_cgraph" id="ad3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator_a9dedc2131a131569339d3d2a5ee1ecc7_cgraph">
+<area shape="rect" title="Creates the section content of a given type." alt="" coords="5,5,265,61"/>
+<area shape="rect" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa" title="Creates the chapter content of a given type." alt="" coords="313,5,575,61"/>
+<area shape="rect" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="623,13,833,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a296cd4493a6ad72ddba32defbc86e4c0" name="a296cd4493a6ad72ddba32defbc86e4c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a296cd4493a6ad72ddba32defbc86e4c0">&#9670;&nbsp;</a></span>Logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly NLog.Logger WikiPageCreator.Export.Create.ConnectionContentCreator.Logger = NLog.LogManager.GetCurrentClassLogger()</td>
         </tr>
       </table>
   </td>
@@ -304,7 +396,32 @@ Here is the call graph for this function:</div>
 
 <p>The logger to log everything. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a5a3e15cf9719c13db6fc779a298b5ae2">WikiPageCreator.Export.Create.ConnectionContentCreator.ConnectionContentCreator()</a>, <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#adaed0b759795de8f9476e4040b58233a">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionConnection()</a>, and <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#ace7756390239463d94c83aecc41ecf9c">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateSectionContent()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a339542218d486cd43d406cf50ef89acb">WikiPageCreator.Export.Create.ConnectionContentCreator.ConnectionContentCreator()</a>, and <a class="el" href="../../d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a9fb6027e231079cac5a26a0b7955eefa">WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContentInternal()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a51022a420f6fd44f0705ee48475a874e" name="a51022a420f6fd44f0705ee48475a874e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51022a420f6fd44f0705ee48475a874e">&#9670;&nbsp;</a></span>Connection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/db2/class_entertainment_d_b_1_1_data_1_1_connection.html">Connection</a> WikiPageCreator.Export.Create.ConnectionContentCreator.Connection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The connection to be used to create the content. </p>
 
 </div>
 </div>

@@ -1,5 +1,0 @@
-<map id="WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterConnection" name="WikiPageCreator.Export.Create.MovieContentCreator.CreateChapterConnection">
-<area shape="rect" id="node1" title="Creates the formatted weblink chapter content of a given movie." alt="" coords="5,5,235,61"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a899705be387a98380a188dd4593aac82" title="Creates a formatted chapter heading with the given title." alt="" coords="283,13,541,54"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="589,13,800,54"/>
-</map>

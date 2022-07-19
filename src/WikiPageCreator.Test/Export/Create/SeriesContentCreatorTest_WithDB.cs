@@ -29,33 +29,112 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
     public class SeriesContentCreatorTests_WithDB
     {
         const string VALID_ID = "_xxx";
+        const string INVALID_ID = "_aaa";
 
-        public Formatter Formatter { get; set; } = new DokuWikiFormatter();
-
-        [TestMethod()]
-        public void SeriesContentCreatorTest()
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void SeriesContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
-            SeriesContentCreator creator = new SeriesContentCreator();
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
 
             // Act
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
             // Assert
             Assert.IsNotNull(creator);
+            Assert.AreEqual(series, creator.Series);
+            Assert.AreEqual(formatter, creator.Formatter);
+            Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
 
-        [TestMethod()]
-        public void GetFileNameTest_withValidID()
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SeriesContentCreatorTest_withSeriesNull(string targetLanguageCode)
+        {
+            // Arrange
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            SeriesContentCreator creator = new SeriesContentCreator(null, formatter, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SeriesContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+
+            // Act, Assert
+            SeriesContentCreator creator = new SeriesContentCreator(series, null, targetLanguageCode);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SeriesContentCreatorTest_withTargetLanguageCodeNull(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, null);
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SeriesContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, "");
+        }
+
+        [DataTestMethod()]
+        [DataRow("en")]
+        [DataRow("de")]
+        [DataRow("zz")]
+        public void GetPageNameTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Series series = new Series(reader, VALID_ID);
             series.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator();
-            string testContent = $"{Formatter.AsPagename("Series OriginalTitle X (Seri)")}";
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
+            string testContent = $"{formatter.AsPagename("Series OriginalTitle X (Seri)")}";
 
             // Act
-            string content = creator.GetFileName(series, Formatter);
+            string content = creator.GetPageName();
 
             // Assert
             Assert.AreEqual(testContent, content);
@@ -65,55 +144,58 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreateFileContentTest_withValidID(string languageCode)
+        public void CreatePageContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Series series = new Series(reader, VALID_ID);
             series.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator();
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
             List<string> testContent = new List<string>();
+
             string[] data = new string[2];
-            string[] pathInfo = { languageCode, "info" };
-            string[] pathDate = { languageCode, "date" };
+            string[] pathInfo = { targetLanguageCode, "info" };
+            string[] pathDate = { targetLanguageCode, "date" };
 
             // File Header
-            testContent.Add(Formatter.DisableCache());
-            testContent.Add(Formatter.DisableTOC());
-            testContent.Add(Formatter.BeginComment());
+            testContent.Add(formatter.DisableCache());
+            testContent.Add(formatter.DisableTOC());
+            testContent.Add(formatter.BeginComment());
             testContent.Add($"   Series OriginalTitle X");
             testContent.Add($"");
             testContent.Add($"   @author  WikiPageCreator");
             testContent.Add($"   @date    {DateTime.Now:yyyy-MM-dd}");
             testContent.Add($"   @version Status EnglishTitle X: Series LastUpdated X");
-            testContent.Add(Formatter.EndComment());
+            testContent.Add(formatter.EndComment());
             testContent.Add($"");
             testContent.Add($"");
 
             // Title
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(Formatter.AsHeading1("Series EnglishTitle X"));
+                testContent.Add(formatter.AsHeading1("Series EnglishTitle X"));
             }
-            else if (languageCode.Equals("de"))
+            else if (targetLanguageCode.Equals("de"))
             {
-                testContent.Add(Formatter.AsHeading1("Series GermanTitle X"));
+                testContent.Add(formatter.AsHeading1("Series GermanTitle X"));
             }
             else
             {
-                testContent.Add(Formatter.AsHeading1("Series OriginalTitle X"));
+                testContent.Add(formatter.AsHeading1("Series OriginalTitle X"));
             }
             testContent.Add($"");
             testContent.Add($"");
 
             // InfoBox Begin
             int[] width = { 30, 70 };
-            testContent.Add(Formatter.BeginBox(475, Alignment.Right));
-            testContent.Add(Formatter.DefineTable(445, width));
+            testContent.Add(formatter.BeginBox(475, Alignment.Right));
+            testContent.Add(formatter.DefineTable(445, width));
 
             // InfoBox Title
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Original Title";
                 data[1] = "Series OriginalTitle X";
@@ -123,51 +205,51 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 data[0] = "Originaltitel";
                 data[1] = "Series OriginalTitle X";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Type
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Type";
-                data[1] = Formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
             }
             else
             {
                 data[0] = "Typ";
-                data[1] = Formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
+                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate First Episode
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Release Date (First Episode)";
-                data[1] = Formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
+                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
             }
             else
             {
                 data[0] = "Erstausstrahlung (Erste Folge)";
-                data[1] = Formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
+                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate Last Episode
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Release Date (Last Episode)";
-                data[1] = Formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
+                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
             }
             else
             {
                 data[0] = "Erstausstrahlung (Letzte Folge)";
-                data[1] = Formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
+                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
-            // InfoBox No of Seasons
-            if (languageCode.Equals("en"))
+            // Infobox No of Seasons
+            if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "No of Seasons";
+                data[0] = "# Seasons";
                 data[1] = "Series NoOfSeasons X";
             }
             else
@@ -175,12 +257,12 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 data[0] = "# Staffeln";
                 data[1] = "Series NoOfSeasons X";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
-            // InfoBox No of Episodes
-            if (languageCode.Equals("en"))
+            // Infobox No of Episodes
+            if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "No of Episodes";
+                data[0] = "# Episodes";
                 data[1] = "Series NoOfEpisodes X";
             }
             else
@@ -188,56 +270,122 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 data[0] = "# Folgen";
                 data[1] = "Series NoOfEpisodes X";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Budget
             data[0] = "Budget";
             data[1] = "Series Budget X";
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Worldwide Gross
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
                 data[0] = "Worldwide Gross";
-                data[1] = $"Series WorldwideGross X ({Formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
+                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
             }
             else
             {
                 data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Series WorldwideGross X ({Formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
+                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
             }
-            testContent.Add(Formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox End
-            testContent.Add(Formatter.EndBox());
+            testContent.Add(formatter.EndBox());
             testContent.Add($"");
             testContent.Add($"");
 
             // Connection Chapter
-            if (languageCode.Equals("en"))
+            if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(Formatter.AsHeading2("Connections to other articles"));
+                testContent.Add(formatter.AsHeading2("Connections to other articles"));
             }
             else
             {
-                testContent.Add(Formatter.AsHeading2("Bezüge zu anderen Artikeln"));
+                testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
             }
-            testContent.Add(Formatter.AsInsertPage(languageCode + ":navigation:_xxx"));
             testContent.Add($"");
             testContent.Add($"");
+
+            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));
 
             // File Footer
-            // nothing to do
+            testContent.Add($"");
+            testContent.Add($"");
 
             // Act
-            List<string> content = creator.CreateFileContent(series, languageCode, Formatter);
+            List<string> content = creator.CreatePageContent();
 
             // Assert
-            //Assert.AreEqual(testContent.Count, content.Count);
+            Assert.AreEqual(testContent.Count, content.Count);
             for (int i = 0; i < testContent.Count; i++)
             {
                 Assert.AreEqual(testContent[i], content[i]);
             }
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateInfoBoxContentTest_withValidID(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            series.Retrieve(false);
+            Formatter formatter = new DokuWikiFormatter();
+
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateInfoBoxContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateChapterContentTest_withValidID(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateChapterContent();
+        }
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void CreateSectionContentTest(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            Series series = new Series(reader, id);
+            Formatter formatter = new DokuWikiFormatter();
+
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+
+            // Act, Assert
+            creator.CreateSectionContent();
         }
     }
 }

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['left_0',['Left',['../da/d8c/namespace_wiki_page_creator_1_1_export_1_1_format.html#a33861749a2861115073b818b0a3180aea945d5e233cf7d6240f6b783b36a374ff',1,'WikiPageCreator::Export::Format']]]
+  ['biography_0',['Biography',['../d9/df5/namespace_wiki_page_creator.html#ac16643ed6b93f237fbd95824d05bcc3aa9100c7317c2f55730e163e7e710c0a52',1,'WikiPageCreator']]],
+  ['book_1',['Book',['../d9/df5/namespace_wiki_page_creator.html#ac16643ed6b93f237fbd95824d05bcc3aa2b1f94ef23b79bf90eb891cae1df7a90',1,'WikiPageCreator']]]
 ];

@@ -1,10 +1,6 @@
 <map id="WikiPageCreator.Export.Format.Formatter.EndComment" name="WikiPageCreator.Export.Format.Formatter.EndComment">
-<area shape="rect" id="node1" title="Inserts an indicator to end a (multiline) comment." alt="" coords="1077,75,1288,116"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a8e9749bef1ac60f1cca0776560cb65b5" title="Creates the formatted header content of a given article." alt="" coords="801,30,1011,86"/>
-<area shape="rect" id="node7" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab646a554ffd0ad419742069286951477" title="Creates the formatted header of the movie page." alt="" coords="783,111,1029,152"/>
-<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#acadd56ff0714e901bb9b73d937500645" title="Creates the file content of a given entry." alt="" coords="505,30,714,86"/>
-<area shape="rect" id="node4" href="$d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="259,5,436,47"/>
-<area shape="rect" id="node6" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="259,71,436,112"/>
-<area shape="rect" id="node5" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a1c3035946485e1d3b7bbbf76fdc25765" title=" " alt="" coords="5,46,211,73"/>
-<area shape="rect" id="node8" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="484,111,735,152"/>
+<area shape="rect" id="node1" title="Inserts an indicator to end a (multiline) comment." alt="" coords="599,43,809,84"/>
+<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab646a554ffd0ad419742069286951477" title="Creates the formatted header of the movie page." alt="" coords="304,5,551,47"/>
+<area shape="rect" id="node4" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#aa49c29a0e37ea508439da8d76214edb8" title="Creates the formatted header content of a given article." alt="" coords="318,71,537,127"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,5,256,47"/>
 </map>

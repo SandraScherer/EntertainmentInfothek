@@ -52,7 +52,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The logger to log everything.
         /// </summary>
-        private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         // --- Constructors ---
 
@@ -91,7 +91,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        public override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
+        protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Reader.Query = $"SELECT ID, Content, LanguageID, Details, StatusID, LastUpdated " +
                            $"FROM Text " +
@@ -130,7 +130,7 @@ namespace EntertainmentDB.Data
         /// Retrieves the additional information of the text from the database (none available).
         /// </summary>
         /// <returns>The number of data records retrieved.</returns>
-        public override int RetrieveAdditionalInformation()
+        protected override int RetrieveAdditionalInformation()
         {
             int count = 0;
 

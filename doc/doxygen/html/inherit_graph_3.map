@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d5/d7a/interface_wiki_page_creator_1_1_export_1_1_create_1_1_i_info_box_content_creatable.html" title="Provides an interface for an infobox content creator." alt="" coords="5,5,213,47"/>
-<area shape="rect" id="node2" href="$d1/d7f/class_wiki_page_creator_1_1_export_1_1_create_1_1_type_content_creator.html" title="Provides a content creator for a type" alt="" coords="261,5,469,47"/>
+<area shape="rect" id="node1" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html" title="Provides a formatter." alt="" coords="5,5,216,47"/>
+<area shape="rect" id="node2" href="$d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html" title="Provides a formatter for a DokuWiki." alt="" coords="264,5,475,47"/>
 </map>

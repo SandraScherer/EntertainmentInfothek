@@ -1,6 +1,0 @@
-<map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoboxType" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreateInfoboxType">
-<area shape="rect" id="node1" title="Creates the formatted infobox type content of a given article." alt="" coords="5,13,263,54"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a1be1298509462d3b4ce9f58322fe5e10" title="Creates the infobox content of a given entry." alt="" coords="311,5,519,61"/>
-<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a80788d9c4a000ee90561d30e5fd551ca" title="Creates the formatted infobox title content of a given article." alt="" coords="567,5,775,61"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="823,13,1033,54"/>
-</map>

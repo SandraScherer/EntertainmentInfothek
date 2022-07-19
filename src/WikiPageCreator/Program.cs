@@ -33,7 +33,7 @@ namespace WikiPageCreator
         /// <summary>
         /// The logger to log everything.
         /// </summary>
-        private static NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         // --- Methods ---
 
@@ -76,105 +76,87 @@ namespace WikiPageCreator
             do
             {
                 // Output Type
-                string outputTypeUser;
+                string pageTypeUser;
 
                 do
                 {
                     Console.WriteLine($"");
                     Console.WriteLine($"Bitte geben Sie ein, wofür Sie eine Wiki-Seite erstellen wollen (oder 'q' für Beenden):");
-                    Console.WriteLine($"1 - Film");
-                    Console.WriteLine($"2 - Serie");
+                    Console.WriteLine($"{PageType.Movie} - Film");
+                    Console.WriteLine($"{PageType.Series} - Serie");
 
-                    outputTypeUser = Console.ReadLine();
+                    pageTypeUser = Console.ReadLine();
                 }
-                while (String.IsNullOrEmpty(outputTypeUser));
+                while (String.IsNullOrEmpty(pageTypeUser));
 
-                if (outputTypeUser.Equals("q") || outputTypeUser.Equals("Q"))
+                if (pageTypeUser.Equals("q") || pageTypeUser.Equals("Q"))
                 {
                     break;
                 }
 
-                if (outputTypeUser.Equals("1"))
+                do
                 {
-                    do
-                    {
-                        Console.WriteLine($"");
-                        Console.WriteLine($"Bitte geben Sie die ID des Films ein, für den eine Wiki-Seite erstellt werden soll (oder 'q' für Beenden):");
+                    Console.WriteLine($"");
+                    Console.WriteLine($"Bitte geben Sie die ID des Datensatzes ein, für den eine Wiki-Seite erstellt werden soll (oder 'q' für Beenden):");
 
-                        idUser = Console.ReadLine();
-                    }
-                    while (String.IsNullOrEmpty(idUser));
+                    idUser = Console.ReadLine();
+                }
+                while (String.IsNullOrEmpty(idUser));
 
-                    if (idUser.Equals("q") || idUser.Equals("Q"))
-                    {
-                        break;
-                    }
+                if (idUser.Equals("q") || idUser.Equals("Q"))
+                {
+                    break;
+                }
 
-                    Logger.Trace($"Film ID: {idUser}");
+                Logger.Trace($"ID: {idUser}");
 
-                    // do work
+
+                // TODO: change if..else if to a better solution
+
+                if (pageTypeUser.Equals(PageType.Movie))
+                {
+                    List<Movie> list = new List<Movie>();
+                    
                     if (idUser.Equals("*"))
                     {
-                        List<Movie> list = Movie.RetrieveList(reader, "ok");
-
-                        foreach (Movie item in list)
-                        {
-                            CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolder);
-                            Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
-                        }
+                        list = Movie.RetrieveList(reader, "ok");
                     }
                     else
                     {
-                        CreateMoviePage(idUser, targetLanguageCodeUser, outputFolder);
-                        Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
+                        list.Add(new Movie(reader, idUser));
                     }
 
-                    // End
-                    Console.WriteLine($"");
-                    Console.WriteLine($"Alle Film-Seiten erfolgreich erstellt.");
-                    Console.ReadLine();
+                    foreach (Movie item in list)
+                    {
+                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolder);
+                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                    }
                 }
-
-                else if (outputTypeUser.Equals("2"))
+                else if (pageTypeUser.Equals(PageType.Series))
                 {
-                    do
-                    {
-                        Console.WriteLine($"");
-                        Console.WriteLine($"Bitte geben Sie die ID der Serie ein, für den eine Wiki-Seite erstellt werden soll (oder 'q' für Beenden):");
+                    List<Series> list = new List<Series>();
 
-                        idUser = Console.ReadLine();
-                    }
-                    while (String.IsNullOrEmpty(idUser));
-
-                    if (idUser.Equals("q") || idUser.Equals("Q"))
-                    {
-                        break;
-                    }
-
-                    Logger.Trace($"Serien ID: {idUser}");
-
-                    // do work
                     if (idUser.Equals("*"))
                     {
-                        List<Series> list = Series.RetrieveList(reader, "ok");
+                        list = Series.RetrieveList(reader, "ok");
 
-                        foreach (Series item in list)
-                        {
-                            CreateSeriesPage(item.ID, targetLanguageCodeUser, outputFolder);
-                            Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
-                        }
                     }
                     else
                     {
-                        CreateSeriesPage(idUser, targetLanguageCodeUser, outputFolder);
-                        Console.WriteLine($"Seitenerstellung für ID: {idUser} erfolgreich beendet.");
+                        list.Add(new Series(reader, idUser));
                     }
 
-                    // End
-                    Console.WriteLine($"");
-                    Console.WriteLine($"Alle Serien-Seiten erfolgreich erstellt.");
-                    Console.ReadLine();
+                    foreach (Series item in list)
+                    {
+                        CreateSeriesPage(item.ID, targetLanguageCodeUser, outputFolder);
+                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                    }
                 }
+
+                // End
+                Console.WriteLine($"");
+                Console.WriteLine($"Alle Seiten erfolgreich erstellt.");
+                Console.ReadLine();
             }
             while (true);
 
@@ -192,15 +174,15 @@ namespace WikiPageCreator
             DBReader reader = new SQLiteReader();
             Movie movie = new Movie(reader, id);
             movie.Retrieve(false);
-
-            MovieContentCreator creator = new MovieContentCreator();
-            List<string> content = new List<string>();
             Formatter formatter = new DokuWikiFormatter();
+            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
 
-            content.AddRange(creator.CreateFileContent(movie, targetLanguageCode, formatter));
+            List<string> content = new List<string>();
+
+            content.AddRange(creator.CreatePageContent());
 
             FileWriter writer = new FileWriter();
-            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetFileName(movie, formatter), content);
+            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetPageName(), content);
         }
 
         /// <summary>
@@ -214,15 +196,15 @@ namespace WikiPageCreator
             DBReader reader = new SQLiteReader();
             Series series = new Series(reader, id);
             series.Retrieve(false);
-
-            SeriesContentCreator creator = new SeriesContentCreator();
-            List<string> content = new List<string>();
             Formatter formatter = new DokuWikiFormatter();
+            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
 
-            content.AddRange(creator.CreateFileContent(series, targetLanguageCode, formatter));
+            List<string> content = new List<string>();
+
+            content.AddRange(creator.CreatePageContent());
 
             FileWriter writer = new FileWriter();
-            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator.GetFileName(series, formatter), content);
+            writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator.GetPageName(), content);
         }
     }
 }
