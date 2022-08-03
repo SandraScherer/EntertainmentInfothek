@@ -77,12 +77,12 @@ namespace WikiPageCreator.Export.Write
                 catch (UnauthorizedAccessException ex)
                 {
                     Logger.Error(ex, $"???");
-                    throw new UnauthorizedAccessException("???", ex);
+                    throw ;
                 }
                 catch (PathTooLongException ex)
                 {
-                    Logger.Error(ex, $"Pfad '{directory}' ist zu lang");
-                    throw new PathTooLongException("Path '{directory}' is too long", ex);
+                    Logger.Error(ex, $"Path '{directory}' is too long");
+                    throw;
                 }
             }
 
@@ -104,12 +104,12 @@ namespace WikiPageCreator.Export.Write
             catch (UnauthorizedAccessException ex)
             {
                 Logger.Error(ex, $"???");
-                throw new UnauthorizedAccessException("???", ex);
+                throw;
             }
             catch (PathTooLongException ex)
             {
-                Logger.Error(ex, $"Pfad '{filename}' ist zu lang");
-                throw new PathTooLongException("Path '{directory}' is too long", ex);
+                Logger.Error(ex, $"Path '{filename}' is too long");
+                throw;
             }
 
             // write content
