@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, OriginalName, EnglishName, GermanName, Details, StatusID, LastUpdated " +
                            $"FROM Language " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

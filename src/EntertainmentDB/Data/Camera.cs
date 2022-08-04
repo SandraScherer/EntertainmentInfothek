@@ -84,7 +84,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Name, Lenses, Details, StatusID, LastUpdated " +
                            $"FROM Camera " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

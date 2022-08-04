@@ -84,7 +84,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Name, PresenterID, Details, StatusID, LastUpdated " +
                            $"FROM Award " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

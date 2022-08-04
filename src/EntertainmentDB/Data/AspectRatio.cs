@@ -79,7 +79,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Ratio, Details, StatusID, LastUpdated " +
                            $"FROM AspectRatio " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

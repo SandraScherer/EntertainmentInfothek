@@ -125,7 +125,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDateFirstEpisode, ReleaseDateLastEpisode, NoOfSeasons, NoOfEpisodes, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Series " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

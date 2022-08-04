@@ -100,7 +100,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, FileName, Description, TypeID, CountryID, Details, StatusID, LastUpdated " +
                            $"FROM Image " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {

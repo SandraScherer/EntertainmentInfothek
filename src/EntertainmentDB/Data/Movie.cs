@@ -400,7 +400,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDate, LogoID, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Movie " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {
@@ -919,7 +919,7 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM Movie " +
-                           $"WHERE StatusID=\"{status}\"" +
+                           $"WHERE StatusID='{status}'" +
                            $"ORDER BY {order}";
 
             List<Movie> list = new List<Movie>();

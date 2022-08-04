@@ -95,7 +95,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Content, LanguageID, Details, StatusID, LastUpdated " +
                            $"FROM Text " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {
