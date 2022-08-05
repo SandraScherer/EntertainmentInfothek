@@ -42,7 +42,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// </summary>
         public SQLiteReader()
         {
-            Logger.Trace($"SQLiteReader() angelegt");
+            Logger.Trace($"SQLiteReader() with ID = '{id}' created");
         }
 
         // --- Methods ---

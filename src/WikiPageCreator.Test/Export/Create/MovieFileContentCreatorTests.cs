@@ -61,7 +61,7 @@ namespace WikiPageCreator.Export.Create.Tests
             string filename = creator.GetFileName();
 
             // Assert
-            Assert.AreEqual(creator.Formatter.AsPagename($"{movie.OriginalTitle} ({movie.ReleaseDate[0..4]})"), filename);
+            Assert.AreEqual(creator.Formatter.AsFilename($"{movie.OriginalTitle} ({movie.ReleaseDate[0..4]})"), filename);
         }
 
         [TestMethod()]

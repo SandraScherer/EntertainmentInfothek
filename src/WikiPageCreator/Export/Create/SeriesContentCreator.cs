@@ -60,18 +60,21 @@ namespace WikiPageCreator.Export.Create
         {
             if (series == null)
             {
+                Logger.Fatal($"Series not specified");
                 throw new ArgumentNullException(nameof(series));
             }
             if (formatter == null)
             {
+                Logger.Fatal($"Formatter not specified");
                 throw new ArgumentNullException(nameof(formatter));
             }
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"SeriesContentCreator() angelegt");
+            Logger.Trace($"SeriesContentCreator() with ID = '{id}' created");
         }
 
         // --- Methods ---

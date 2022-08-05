@@ -64,22 +64,26 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
             if (baseTableName == null)
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (targetTableName == null)
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"EntryItem() angelegt");
+            Logger.Trace($"EntryItem() with ID = '{id}' created");
 
             BaseTableName = baseTableName;
             TargetTableName = targetTableName;

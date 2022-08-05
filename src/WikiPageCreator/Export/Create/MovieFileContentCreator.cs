@@ -61,10 +61,11 @@ namespace WikiPageCreator.Export.Create
         {
             if (movie == null)
             {
+                Logger.Fatal($"Movie not specified");
                 throw new ArgumentNullException(nameof(movie));
             }
 
-            Logger.Trace($"MovieFileContentCreator() angelegt");
+            Logger.Trace($"MovieFileContentCreator() with ID = '{id}' created");
 
             Movie = movie;
         }
@@ -79,7 +80,7 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"GetFileName() für Movie '{Movie.OriginalTitle}' aufgerufen");
 
-            return Formatter.AsPagename($"{Movie.OriginalTitle} ({Movie.ReleaseDate[0..4]})");
+            return Formatter.AsFilename($"{Movie.OriginalTitle} ({Movie.ReleaseDate[0..4]})");
         }
 
         /// <summary>
@@ -91,6 +92,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -156,6 +158,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -184,6 +187,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -204,6 +208,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -242,6 +247,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -262,6 +268,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -282,6 +289,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -312,6 +320,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -348,6 +357,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -384,6 +394,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -420,6 +431,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -499,6 +511,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -594,6 +607,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -673,6 +687,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -752,6 +767,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -779,6 +795,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -830,6 +847,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -909,6 +927,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -988,6 +1007,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1067,6 +1087,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1145,6 +1166,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1223,6 +1245,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1301,6 +1324,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1379,6 +1403,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1457,6 +1482,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1535,6 +1561,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1613,6 +1640,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1642,6 +1670,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1672,6 +1701,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1702,6 +1732,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1733,10 +1764,12 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
             if (texts == null)
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(texts));
             }
 
@@ -1840,6 +1873,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -1871,10 +1905,12 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
             if (images == null)
             {
+                Logger.Fatal($"Images not specified");
                 throw new ArgumentNullException(nameof(images));
             }
 
@@ -1951,6 +1987,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -2150,14 +2187,12 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (heading.Length != 2)
-            {
-                throw new ArgumentException(nameof(heading));
             }
             if (persons == null)
             {
+                Logger.Fatal($"Persons not specified");
                 throw new ArgumentNullException(nameof(persons));
             }
 
@@ -2222,11 +2257,8 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (heading.Length != 2)
-            {
-                throw new ArgumentException(nameof(heading));
             }
 
             if (persons != null)
@@ -2318,6 +2350,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -2365,14 +2398,12 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (heading.Length != 2)
-            {
-                throw new ArgumentException(nameof(heading));
             }
             if (companies == null)
             {
+                Logger.Fatal($"Companies not specified");
                 throw new ArgumentNullException(nameof(companies));
             }
 
@@ -2437,11 +2468,8 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-            if (heading.Length != 2)
-            {
-                throw new ArgumentException(nameof(heading));
             }
 
             if (companies != null)
@@ -2526,6 +2554,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -2696,6 +2725,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -2813,6 +2843,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
@@ -2859,6 +2890,7 @@ namespace WikiPageCreator.Export.Create
         {
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 

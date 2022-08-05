@@ -60,18 +60,21 @@ namespace WikiPageCreator.Export.Create
         {
             if (article == null)
             {
+                Logger.Fatal($"Article not specified");
                 throw new ArgumentNullException(nameof(article));
             }
             if (formatter == null)
             {
+                Logger.Fatal($"Formatter not specified");
                 throw new ArgumentNullException(nameof(formatter));
             }
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ArticleContentCreator() angelegt");
+            Logger.Trace($"ArticleContentCreator() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -84,7 +87,7 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"GetPageName() für Article '{Article.OriginalTitle}' aufgerufen");
 
-            return Formatter.AsPagename($"{Article.OriginalTitle} ({Article.ReleaseDate[0..4]})");
+            return Formatter.AsFilename($"{Article.OriginalTitle} ({Article.ReleaseDate[0..4]})");
         }
 
         /// <summary>

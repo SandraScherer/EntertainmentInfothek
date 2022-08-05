@@ -104,14 +104,16 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Series() angelegt");
+            Logger.Trace($"Series() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -125,7 +127,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDateFirstEpisode, ReleaseDateLastEpisode, NoOfSeasons, NoOfEpisodes, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Series " +
-                           $"WHERE ID='{ID}'";
+                           $"WHERE ID=\"{ID}\"";
 
             if (Reader.Retrieve(true) == 1)
             {
@@ -390,14 +392,17 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(status))
             {
+                Logger.Fatal($"Status not specified");
                 throw new ArgumentNullException(nameof(status));
             }
             if (String.IsNullOrEmpty(order))
             {
+                Logger.Fatal($"Order not specified");
                 throw new ArgumentNullException(nameof(order));
             }
 

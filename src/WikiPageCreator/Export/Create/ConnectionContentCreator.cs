@@ -60,18 +60,21 @@ namespace WikiPageCreator.Export.Create
         {
             if (connection == null)
             {
+                Logger.Fatal($"Connection not specified");
                 throw new ArgumentNullException(nameof(connection));
             }
             if (formatter == null)
             {
+                Logger.Fatal($"Formatter not specified");
                 throw new ArgumentNullException(nameof(formatter));
             }
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ConnectionContentCreator() angelegt");
+            Logger.Trace($"ConnectionContentCreator() with ID = '{id}' created");
         }
 
         // --- Methods ---

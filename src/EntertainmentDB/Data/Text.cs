@@ -74,14 +74,16 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Text() angelegt");
+            Logger.Trace($"Text() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -95,7 +97,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Content, LanguageID, Details, StatusID, LastUpdated " +
                            $"FROM Text " +
-                           $"WHERE ID='{ID}'";
+                           $"WHERE ID=\"{ID}\"";
 
             if (Reader.Retrieve(true) == 1)
             {

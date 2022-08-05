@@ -61,22 +61,26 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
             if (baseTableName == null)
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (targetTableName == null)
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"CountryItem() angelegt");
+            Logger.Trace($"CountryItem() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -90,7 +94,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, CountryID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
-                           $"WHERE ID='{ID}'";
+                           $"WHERE ID=\"{ID}\"";
 
             if (Reader.Retrieve(true) == 1)
             {
@@ -134,22 +138,27 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (String.IsNullOrEmpty(baseTableID))
             {
+                Logger.Fatal($"BaseTableID not specified");
                 throw new ArgumentNullException(nameof(baseTableID));
             }
             if (String.IsNullOrEmpty(targetTableName))
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
             if (String.IsNullOrEmpty(order))
             {
+                Logger.Fatal($"Order not specified");
                 throw new ArgumentNullException(nameof(order));
             }
 
@@ -157,7 +166,7 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM {baseTableName}_{targetTableName} " +
-                           $"WHERE {baseTableName}ID='{baseTableID}'" +
+                           $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
                            $"ORDER BY {order}";
 
             List<CountryItem> list = new List<CountryItem>();

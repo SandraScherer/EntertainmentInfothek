@@ -41,16 +41,16 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         protected Formatter()
         {
-            Logger.Trace($"Formatter() angelegt");
+            Logger.Trace($"Formatter() with ID = '{id}' created");
         }
 
         // --- Methods ---
         /// <summary>
-        /// Formats the given filename as a page name.
+        /// Formats the given pagename as a filename.
         /// </summary>
-        /// <param name="filename">The filename to be formatted.</param>
-        /// <returns>The formatted pagename.</returns>
-        public abstract string AsPagename(string filename);
+        /// <param name="pagename">The pagename to be formatted.</param>
+        /// <returns>The formatted filename.</returns>
+        public abstract string AsFilename(string pagename);
 
         /// <summary>
         /// Formats the given text as bold text.

@@ -42,7 +42,7 @@ namespace WikiPageCreator.Export.Write
         /// </summary>
         public FileWriter()
         {
-            Logger.Trace($"FileWriter() angelegt");
+            Logger.Trace($"FileWriter() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -51,15 +51,17 @@ namespace WikiPageCreator.Export.Write
         {
             if (String.IsNullOrEmpty(directory))
             {
+                Logger.Fatal($"Directory not specified");
                 throw new ArgumentNullException(nameof(directory));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
             if (content == null)
             {
+                Logger.Fatal($"Content not specified");
                 throw new ArgumentNullException(nameof(content));
             }
 

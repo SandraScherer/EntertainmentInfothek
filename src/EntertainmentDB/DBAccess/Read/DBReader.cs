@@ -51,7 +51,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// </summary>
         protected DBReader()
         {
-            Logger.Trace($"DBReader() angelegt");
+            Logger.Trace($"DBReader() with ID = '{id}' created");
         }
 
         // --- Methods ---

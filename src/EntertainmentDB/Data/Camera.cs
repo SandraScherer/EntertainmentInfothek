@@ -63,14 +63,16 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Camera() angelegt");
+            Logger.Trace($"Camera() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -84,7 +86,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, Name, Lenses, Details, StatusID, LastUpdated " +
                            $"FROM Camera " +
-                           $"WHERE ID='{ID}'";
+                           $"WHERE ID=\"{ID}\"";
 
             if (Reader.Retrieve(true) == 1)
             {

@@ -63,18 +63,21 @@ namespace WikiPageCreator.Export.Create
         {
             if (entry == null)
             {
+                Logger.Fatal($"Entry not specified");
                 throw new ArgumentNullException(nameof(entry));
             }
             if (formatter == null)
             {
+                Logger.Fatal($"Formatter not specified");
                 throw new ArgumentNullException(nameof(formatter));
             }
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ContentCreator() angelegt");
+            Logger.Trace($"ContentCreator() with ID = '{id}' created");
 
             Entry = entry;
             Formatter = formatter;
@@ -90,6 +93,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual string GetPageName()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -100,6 +104,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreatePageContent()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -136,6 +141,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreatePageHeader()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -146,6 +152,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreatePageTitle()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -176,6 +183,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreateInfoBoxContent()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -186,6 +194,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreateInfoBoxContentInternal()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -218,11 +227,8 @@ namespace WikiPageCreator.Export.Create
         {
             if (title == null)
             {
+                Logger.Fatal($"Title not specified");
                 throw new ArgumentNullException(nameof(title));
-            }
-            if (title.Count != 2)
-            {
-                throw new ArgumentOutOfRangeException(nameof(title));
             }
 
             Logger.Trace($"CreateNewChapter() gestartet");
@@ -254,6 +260,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreateChapterContent()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -264,6 +271,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreateChapterContentInternal()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -277,12 +285,10 @@ namespace WikiPageCreator.Export.Create
         {
             if (title == null)
             {
+                Logger.Fatal($"Title not specified");
                 throw new ArgumentNullException(nameof(title));
             }
-            if (title.Count != 2)
-            {
-                throw new ArgumentOutOfRangeException(nameof(title));
-            }
+
             Logger.Trace($"CreateNewSection() gestartet");
 
             List<string> content = new List<string>();
@@ -310,6 +316,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreateSectionContent()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 
@@ -320,6 +327,7 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreateSectionContentInternal()
         {
+            Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
         }
 

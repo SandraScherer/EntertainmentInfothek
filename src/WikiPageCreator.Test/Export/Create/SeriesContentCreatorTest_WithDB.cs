@@ -131,7 +131,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
 
-            string testContent = $"{formatter.AsPagename("Series OriginalTitle X (Seri)")}";
+            string testContent = $"{formatter.AsFilename("Series OriginalTitle X (Seri)")}";
 
             // Act
             string content = creator.GetPageName();
