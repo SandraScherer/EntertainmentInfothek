@@ -67,7 +67,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
         {
             // Arrange
             SQLiteReader reader = new SQLiteReader();
-            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE \"{VALID_ID}\"";
+            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE '{VALID_ID}'";
 
             // Act
             reader.Retrieve(basicInfoOnly);
@@ -86,7 +86,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
         {
             // Arrange
             SQLiteReader reader = new SQLiteReader();
-            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE \"{INVALID_ID}\"";
+            reader.Query = $"SELECT ID FROM {tableName} WHERE ID LIKE '{INVALID_ID}'";
 
             // Act
             reader.Retrieve(basicInfoOnly);

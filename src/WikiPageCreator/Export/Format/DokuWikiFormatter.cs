@@ -41,52 +41,53 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         public DokuWikiFormatter()
         {
-            Logger.Trace($"DokuWikiFormatter() angelegt");
+            Logger.Trace($"DokuWikiFormatter() with ID = '{id}' created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Formats the given filename as a page name.
+        /// Formats the given pagename as a filename.
         /// </summary>
-        /// <param name="filename">The filename to be formatted.</param>
-        /// <returns>The formatted pagename.</returns>
+        /// <param name="pagename">The pagename to be formatted.</param>
+        /// <returns>The formatted filename.</returns>
         /// <exception cref="ArgumentNullException">Thrown when the given filename is null.</exception>
-        public override string AsPagename(string filename)
+        public override string AsFilename(string pagename)
         {
-            if (String.IsNullOrEmpty(filename))
+            if (String.IsNullOrEmpty(pagename))
             {
-                throw new ArgumentNullException(nameof(filename));
+                Logger.Fatal($"Pagename not specified");
+                throw new ArgumentNullException(nameof(pagename));
             }
 
-            filename = filename.ToLower();
+            pagename = pagename.ToLower();
 
-            filename = filename.Replace(' ', '_');
-            filename = filename.Replace('+', '_');
-            filename = filename.Replace('/', '_');
-            filename = filename.Replace('%', '_');
-            filename = filename.Replace('\'', '_');
-            filename = filename.Replace('!', '_');
-            filename = filename.Replace('&', '_');
-            filename = filename.Replace('?', '_');
-            filename = filename.Replace('=', '_');
-            filename = filename.Replace('*', '_');
-            filename = filename.Replace('#', '_');
-            filename = filename.Replace('<', '_');
-            filename = filename.Replace('>', '_');
-            filename = filename.Replace('ä', 'a');
-            filename = filename.Replace('ö', 'o');
-            filename = filename.Replace('ü', 'u');
-            filename = filename.Replace('ß', 's');
+            pagename = pagename.Replace(' ', '_');
+            pagename = pagename.Replace('+', '_');
+            pagename = pagename.Replace('/', '_');
+            pagename = pagename.Replace('%', '_');
+            pagename = pagename.Replace('\'', '_');
+            pagename = pagename.Replace('!', '_');
+            pagename = pagename.Replace('&', '_');
+            pagename = pagename.Replace('?', '_');
+            pagename = pagename.Replace('=', '_');
+            pagename = pagename.Replace('*', '_');
+            pagename = pagename.Replace('#', '_');
+            pagename = pagename.Replace('<', '_');
+            pagename = pagename.Replace('>', '_');
+            pagename = pagename.Replace('ä', 'a');
+            pagename = pagename.Replace('ö', 'o');
+            pagename = pagename.Replace('ü', 'u');
+            pagename = pagename.Replace('ß', 's');
 
-            filename = filename.Replace(",", "");
-            filename = filename.Replace(":", "");
-            filename = filename.Replace("(", "");
-            filename = filename.Replace(")", "");
+            pagename = pagename.Replace(",", "");
+            pagename = pagename.Replace(":", "");
+            pagename = pagename.Replace("(", "");
+            pagename = pagename.Replace(")", "");
 
-            filename = String.Concat(filename, ".txt");
+            pagename = String.Concat(pagename, ".txt");
 
-            return filename;
+            return pagename;
         }
 
         /// <summary>
@@ -99,6 +100,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -115,6 +117,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -131,6 +134,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -147,6 +151,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -163,6 +168,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -179,6 +185,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -200,21 +207,22 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
-
             if (String.IsNullOrEmpty(section))
             {
+                Logger.Fatal($"Section not specified");
                 throw new ArgumentNullException(nameof(section));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -242,16 +250,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 return AsInternalLink(path, pagename);
             }
 
@@ -278,11 +287,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
@@ -310,16 +320,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
-
             if (String.IsNullOrEmpty(section))
             {
+                Logger.Fatal($"Section not specified");
                 throw new ArgumentNullException(nameof(section));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -337,11 +348,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -358,6 +370,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
@@ -375,11 +388,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(link))
             {
+                Logger.Fatal($"Link not specified");
                 throw new ArgumentNullException(nameof(link));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -396,6 +410,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(link))
             {
+                Logger.Fatal($"Link not specified");
                 throw new ArgumentNullException(nameof(link));
             }
 
@@ -412,6 +427,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(mail))
             {
+                Logger.Fatal($"Mail not specified");
                 throw new ArgumentNullException(nameof(mail));
             }
 
@@ -430,6 +446,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -446,6 +463,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -462,6 +480,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -478,6 +497,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -494,6 +514,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -516,26 +537,27 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (height == 0)
             {
+                Logger.Fatal($"Height not specified");
                 throw new ArgumentNullException(nameof(height));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -564,21 +586,22 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (height == 0)
             {
+                Logger.Fatal($"Height not specified");
                 throw new ArgumentNullException(nameof(height));
             }
 
@@ -607,21 +630,22 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -649,16 +673,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
 
@@ -686,16 +711,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -722,11 +748,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
 
@@ -755,21 +782,22 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (height == 0)
             {
+                Logger.Fatal($"Height not specified");
                 throw new ArgumentNullException(nameof(height));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -788,16 +816,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (height == 0)
             {
+                Logger.Fatal($"Height not specified");
                 throw new ArgumentNullException(nameof(height));
             }
 
@@ -816,16 +845,17 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -844,11 +874,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (width == 0)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
 
@@ -866,11 +897,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
-
             if (String.IsNullOrEmpty(text))
             {
+                Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
@@ -887,6 +919,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
 
@@ -903,6 +936,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(imagelink))
             {
+                Logger.Fatal($"ImageLink not specified");
                 throw new ArgumentNullException(nameof(imagelink));
             }
 
@@ -920,6 +954,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(imagelink))
             {
+                Logger.Fatal($"ImageLink not specified");
                 throw new ArgumentNullException(nameof(imagelink));
             }
 
@@ -987,11 +1022,12 @@ namespace WikiPageCreator.Export.Format
         {
             if (path == null)
             {
+                Logger.Fatal($"Path not specified");
                 throw new ArgumentNullException(nameof(path));
             }
-
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
@@ -1017,6 +1053,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(pagename))
             {
+                Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
@@ -1076,18 +1113,19 @@ namespace WikiPageCreator.Export.Format
         {
             if (size == 0)
             {
+                Logger.Fatal($"Size not specified");
                 throw new ArgumentNullException(nameof(size));
             }
-
             if (width == null)
             {
+                Logger.Fatal($"Width not specified");
                 throw new ArgumentNullException(nameof(width));
             }
-
             foreach (int item in width)
             {
                 if (item == 0)
                 {
+                    Logger.Fatal($"Width not specified");
                     throw new ArgumentNullException(nameof(width));
                 }
             }
@@ -1121,6 +1159,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (data == null)
             {
+                Logger.Fatal($"Data not specified");
                 throw new ArgumentNullException(nameof(data));
             }
 
@@ -1150,6 +1189,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (size == 0)
             {
+                Logger.Fatal($"Size not specified");
                 throw new ArgumentNullException(nameof(size));
             }
 
@@ -1177,6 +1217,7 @@ namespace WikiPageCreator.Export.Format
         {
             if (String.IsNullOrEmpty(name))
             {
+                Logger.Fatal($"Name not specified");
                 throw new ArgumentNullException(nameof(name));
             }
 

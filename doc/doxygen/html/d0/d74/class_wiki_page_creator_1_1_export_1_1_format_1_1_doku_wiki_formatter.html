@@ -91,9 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a3344b39905b8dcb03615d1dfb951ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a1a3344b39905b8dcb03615d1dfb951ff">DokuWikiFormatter</a> ()</td></tr>
 <tr class="memdesc:a1a3344b39905b8dcb03615d1dfb951ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a DokuWiki formatter.  <a href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a1a3344b39905b8dcb03615d1dfb951ff">More...</a><br /></td></tr>
 <tr class="separator:a1a3344b39905b8dcb03615d1dfb951ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c901f6cd77dc4776264489c512bab7f"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0c901f6cd77dc4776264489c512bab7f">AsPagename</a> (string filename)</td></tr>
-<tr class="memdesc:a0c901f6cd77dc4776264489c512bab7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given filename as a page name.  <a href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0c901f6cd77dc4776264489c512bab7f">More...</a><br /></td></tr>
-<tr class="separator:a0c901f6cd77dc4776264489c512bab7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7c919a1ab309c416731bc8a520daec"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a2a7c919a1ab309c416731bc8a520daec">AsFilename</a> (string pagename)</td></tr>
+<tr class="memdesc:a2a7c919a1ab309c416731bc8a520daec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given pagename as a filename.  <a href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a2a7c919a1ab309c416731bc8a520daec">More...</a><br /></td></tr>
+<tr class="separator:a2a7c919a1ab309c416731bc8a520daec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bc5b7453be5ae41f32274268af72565"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a4bc5b7453be5ae41f32274268af72565">AsBold</a> (string text)</td></tr>
 <tr class="memdesc:a4bc5b7453be5ae41f32274268af72565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given text as bold text.  <a href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a4bc5b7453be5ae41f32274268af72565">More...</a><br /></td></tr>
 <tr class="separator:a4bc5b7453be5ae41f32274268af72565"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -579,6 +579,49 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0a1f0f5958a3e7cfb5b079fa08a68d1e" title="Formats the given parameters as an internal link." alt="" coords="280,29,500,71"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a2a7c919a1ab309c416731bc8a520daec" name="a2a7c919a1ab309c416731bc8a520daec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7c919a1ab309c416731bc8a520daec">&#9670;&nbsp;</a></span>AsFilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string WikiPageCreator.Export.Format.DokuWikiFormatter.AsFilename </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pagename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Formats the given pagename as a filename. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pagename</td><td>The pagename to be formatted.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted filename.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given filename is null.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a30850c9ff485419049c30f720541cfb6">WikiPageCreator.Export.Format.Formatter</a>.</p>
 
 </div>
 </div>
@@ -2167,49 +2210,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a0c901f6cd77dc4776264489c512bab7f" name="a0c901f6cd77dc4776264489c512bab7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c901f6cd77dc4776264489c512bab7f">&#9670;&nbsp;</a></span>AsPagename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override string WikiPageCreator.Export.Format.DokuWikiFormatter.AsPagename </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Formats the given filename as a page name. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The filename to be formatted.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted pagename.</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">ArgumentNullException</td><td>Thrown when the given filename is null.</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ade629915fbf013f1813fe1d3fcb3a1dc">WikiPageCreator.Export.Format.Formatter</a>.</p>
-
-</div>
-</div>
 <a id="a38ec11c8c8d987f74c2896e850846595" name="a38ec11c8c8d987f74c2896e850846595"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38ec11c8c8d987f74c2896e850846595">&#9670;&nbsp;</a></span>AsSubscript()</h2>
 
@@ -2886,12 +2886,12 @@ Here is the call graph for this function:</div>
 
 <p>The logger to log everything. </p>
 
-<p class="reference">Referenced by <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a1a3344b39905b8dcb03615d1dfb951ff">WikiPageCreator.Export.Format.DokuWikiFormatter.DokuWikiFormatter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a41a244fa27a598ba4a47f097986a974b">WikiPageCreator.Export.Format.DokuWikiFormatter.AlignImage()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a4bc5b7453be5ae41f32274268af72565">WikiPageCreator.Export.Format.DokuWikiFormatter.AsBold()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#ac1f0308ec4795ca3df54d61e39e639c3">WikiPageCreator.Export.Format.DokuWikiFormatter.AsDeleted()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a78b15e03c738c399cb053236b98593d4">WikiPageCreator.Export.Format.DokuWikiFormatter.AsEMail()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a6472b53f284babc64790e3dc601bf4d9">WikiPageCreator.Export.Format.DokuWikiFormatter.AsExternalLink()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a2a7c919a1ab309c416731bc8a520daec">WikiPageCreator.Export.Format.DokuWikiFormatter.AsFilename()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#aa4d6dacd235464e9d08da78d46e54c34">WikiPageCreator.Export.Format.DokuWikiFormatter.AsHeading1()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#afd3126908986b2c69a9ad56869d8c6f8">WikiPageCreator.Export.Format.DokuWikiFormatter.AsHeading2()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#af0fc1b8e63e08d9ab54cbf9ba45b3af5">WikiPageCreator.Export.Format.DokuWikiFormatter.AsHeading3()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a42ff74496b2ba00738771d98162ce9ad">WikiPageCreator.Export.Format.DokuWikiFormatter.AsHeading4()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a20a4418e0c6f79ac210a16e90f534085">WikiPageCreator.Export.Format.DokuWikiFormatter.AsHeading5()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#ae1a0f04e244e46b170d03146e01c2fdb">WikiPageCreator.Export.Format.DokuWikiFormatter.AsImage()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a73dae35326126f3c1fc0f38902349b2d">WikiPageCreator.Export.Format.DokuWikiFormatter.AsImageBox()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a8fb1ee512f5d5c82d13207b7d06168b9">WikiPageCreator.Export.Format.DokuWikiFormatter.AsInsertPage()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0a1f0f5958a3e7cfb5b079fa08a68d1e">WikiPageCreator.Export.Format.DokuWikiFormatter.AsInternalLink()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a56a3fcceb4893e2b22cddc9bec68d49f">WikiPageCreator.Export.Format.DokuWikiFormatter.AsItalic()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a38ec11c8c8d987f74c2896e850846595">WikiPageCreator.Export.Format.DokuWikiFormatter.AsSubscript()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#aa3e6fabf9acda968942e907754dd7b56">WikiPageCreator.Export.Format.DokuWikiFormatter.AsSuperscript()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0835d0f750916efcdfc841b2675ec9ac">WikiPageCreator.Export.Format.DokuWikiFormatter.AsTableRow()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a94cd8f2251a337764ad4d9212050414b">WikiPageCreator.Export.Format.DokuWikiFormatter.AsUnderlined()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#af45e6253c94aad411d1f54732ad38f09">WikiPageCreator.Export.Format.DokuWikiFormatter.BeginBox()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a4bde8e570ddc895b6c7649fc56376a41">WikiPageCreator.Export.Format.DokuWikiFormatter.BeginDataEntry()</a>, <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#ace994a2d4c3f39315ef5061ddf162a23">WikiPageCreator.Export.Format.DokuWikiFormatter.DefineTable()</a>, and <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a1a3344b39905b8dcb03615d1dfb951ff">WikiPageCreator.Export.Format.DokuWikiFormatter.DokuWikiFormatter()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Sandra/Projekte/GitHub/EntertainmentInfothek_public/src/WikiPageCreator/Export/Format/<a class="el" href="../../d6/d7b/_doku_wiki_formatter_8cs.html">DokuWikiFormatter.cs</a></li>
+<li>EntertainmentInfothek/src/WikiPageCreator/Export/Format/<a class="el" href="../../d6/d7b/_doku_wiki_formatter_8cs.html">DokuWikiFormatter.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -89,9 +89,9 @@ Inheritance diagram for WikiPageCreator.Export.Format.Formatter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ade629915fbf013f1813fe1d3fcb3a1dc"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ade629915fbf013f1813fe1d3fcb3a1dc">AsPagename</a> (string filename)</td></tr>
-<tr class="memdesc:ade629915fbf013f1813fe1d3fcb3a1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given filename as a page name.  <a href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ade629915fbf013f1813fe1d3fcb3a1dc">More...</a><br /></td></tr>
-<tr class="separator:ade629915fbf013f1813fe1d3fcb3a1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30850c9ff485419049c30f720541cfb6"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a30850c9ff485419049c30f720541cfb6">AsFilename</a> (string pagename)</td></tr>
+<tr class="memdesc:a30850c9ff485419049c30f720541cfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given pagename as a filename.  <a href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a30850c9ff485419049c30f720541cfb6">More...</a><br /></td></tr>
+<tr class="separator:a30850c9ff485419049c30f720541cfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5057b5a16fa78dd16cfbf8057660ddb"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#aa5057b5a16fa78dd16cfbf8057660ddb">AsBold</a> (string text)</td></tr>
 <tr class="memdesc:aa5057b5a16fa78dd16cfbf8057660ddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the given text as bold text.  <a href="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#aa5057b5a16fa78dd16cfbf8057660ddb">More...</a><br /></td></tr>
 <tr class="separator:aa5057b5a16fa78dd16cfbf8057660ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -530,6 +530,58 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The parameters formatted as an external link.</dd></dl>
 
 <p>Implemented in <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a6472b53f284babc64790e3dc601bf4d9">WikiPageCreator.Export.Format.DokuWikiFormatter</a>.</p>
+
+</div>
+</div>
+<a id="a30850c9ff485419049c30f720541cfb6" name="a30850c9ff485419049c30f720541cfb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30850c9ff485419049c30f720541cfb6">&#9670;&nbsp;</a></span>AsFilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string WikiPageCreator.Export.Format.Formatter.AsFilename </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pagename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Formats the given pagename as a filename. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pagename</td><td>The pagename to be formatted.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The formatted filename.</dd></dl>
+
+<p>Implemented in <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a2a7c919a1ab309c416731bc8a520daec">WikiPageCreator.Export.Format.DokuWikiFormatter</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae050f0369e8917a29c1e44165ff9d43d">WikiPageCreator.Export.Create.MovieFileContentCreator.GetFileName()</a>, and <a class="el" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#af5b04f4fd14ede654271d3599eb1f1be">WikiPageCreator.Export.Create.ArticleContentCreator.GetPageName()</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_a30850c9ff485419049c30f720541cfb6_icgraph.png" border="0" usemap="#ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_a30850c9ff485419049c30f720541cfb6_icgraph" alt=""/></div>
+<map name="ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_a30850c9ff485419049c30f720541cfb6_icgraph" id="ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_a30850c9ff485419049c30f720541cfb6_icgraph">
+<area shape="rect" title="Formats the given pagename as a filename." alt="" coords="775,39,985,80"/>
+<area shape="rect" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae050f0369e8917a29c1e44165ff9d43d" title="Creates the file name of the movie page." alt="" coords="484,5,727,47"/>
+<area shape="rect" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#af5b04f4fd14ede654271d3599eb1f1be" title="Creates the page name of the article page." alt="" coords="488,71,723,112"/>
+<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="259,37,436,79"/>
+<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="259,103,436,144"/>
+<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#a1c3035946485e1d3b7bbbf76fdc25765" title=" " alt="" coords="5,78,211,105"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1973,58 +2025,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ade629915fbf013f1813fe1d3fcb3a1dc" name="ade629915fbf013f1813fe1d3fcb3a1dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade629915fbf013f1813fe1d3fcb3a1dc">&#9670;&nbsp;</a></span>AsPagename()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">abstract string WikiPageCreator.Export.Format.Formatter.AsPagename </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Formats the given filename as a page name. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">filename</td><td>The filename to be formatted.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The formatted pagename.</dd></dl>
-
-<p>Implemented in <a class="el" href="../../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a0c901f6cd77dc4776264489c512bab7f">WikiPageCreator.Export.Format.DokuWikiFormatter</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae050f0369e8917a29c1e44165ff9d43d">WikiPageCreator.Export.Create.MovieFileContentCreator.GetFileName()</a>, and <a class="el" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#af5b04f4fd14ede654271d3599eb1f1be">WikiPageCreator.Export.Create.ArticleContentCreator.GetPageName()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_ade629915fbf013f1813fe1d3fcb3a1dc_icgraph.png" border="0" usemap="#ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_ade629915fbf013f1813fe1d3fcb3a1dc_icgraph" alt=""/></div>
-<map name="ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_ade629915fbf013f1813fe1d3fcb3a1dc_icgraph" id="ad3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter_ade629915fbf013f1813fe1d3fcb3a1dc_icgraph">
-<area shape="rect" title="Formats the given filename as a page name." alt="" coords="775,39,985,80"/>
-<area shape="rect" href="../../d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae050f0369e8917a29c1e44165ff9d43d" title="Creates the file name of the movie page." alt="" coords="484,5,727,47"/>
-<area shape="rect" href="../../d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#af5b04f4fd14ede654271d3599eb1f1be" title="Creates the page name of the article page." alt="" coords="488,71,723,112"/>
-<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="259,37,436,79"/>
-<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="259,103,436,144"/>
-<area shape="rect" href="../../d4/dad/class_wiki_page_creator_1_1_program.html#a1c3035946485e1d3b7bbbf76fdc25765" title=" " alt="" coords="5,78,211,105"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a6f77cc36f3d27c13ee67620683d61adf" name="a6f77cc36f3d27c13ee67620683d61adf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f77cc36f3d27c13ee67620683d61adf">&#9670;&nbsp;</a></span>AsSubscript()</h2>
 
@@ -2850,7 +2850,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Sandra/Projekte/GitHub/EntertainmentInfothek_public/src/WikiPageCreator/Export/Format/<a class="el" href="../../d4/dc6/_formatter_8cs.html">Formatter.cs</a></li>
+<li>EntertainmentInfothek/src/WikiPageCreator/Export/Format/<a class="el" href="../../d4/dc6/_formatter_8cs.html">Formatter.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

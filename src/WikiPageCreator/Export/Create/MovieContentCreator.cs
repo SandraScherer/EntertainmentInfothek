@@ -60,18 +60,21 @@ namespace WikiPageCreator.Export.Create
         {
             if (movie == null)
             {
+                Logger.Fatal($"Movie not specified");
                 throw new ArgumentNullException(nameof(movie));
             }
             if (formatter == null)
             {
+                Logger.Fatal($"Formatter not specified");
                 throw new ArgumentNullException(nameof(formatter));
             }
             if (String.IsNullOrEmpty(targetLanguageCode))
             {
+                Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"MovieContentCreator() angelegt");
+            Logger.Trace($"MovieContentCreator() with ID = '{id}' created");
         }
 
         // --- Methods ---

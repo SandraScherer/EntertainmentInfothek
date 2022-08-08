@@ -42,7 +42,7 @@ namespace WikiPageCreator.Export.Write
         /// </summary>
         public FileWriter()
         {
-            Logger.Trace($"FileWriter() angelegt");
+            Logger.Trace($"FileWriter() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -51,15 +51,17 @@ namespace WikiPageCreator.Export.Write
         {
             if (String.IsNullOrEmpty(directory))
             {
+                Logger.Fatal($"Directory not specified");
                 throw new ArgumentNullException(nameof(directory));
             }
-
             if (String.IsNullOrEmpty(filename))
             {
+                Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
             if (content == null)
             {
+                Logger.Fatal($"Content not specified");
                 throw new ArgumentNullException(nameof(content));
             }
 
@@ -77,12 +79,12 @@ namespace WikiPageCreator.Export.Write
                 catch (UnauthorizedAccessException ex)
                 {
                     Logger.Error(ex, $"???");
-                    throw new UnauthorizedAccessException("???", ex);
+                    throw ;
                 }
                 catch (PathTooLongException ex)
                 {
-                    Logger.Error(ex, $"Pfad '{directory}' ist zu lang");
-                    throw new PathTooLongException("Path '{directory}' is too long", ex);
+                    Logger.Error(ex, $"Path '{directory}' is too long");
+                    throw;
                 }
             }
 
@@ -104,12 +106,12 @@ namespace WikiPageCreator.Export.Write
             catch (UnauthorizedAccessException ex)
             {
                 Logger.Error(ex, $"???");
-                throw new UnauthorizedAccessException("???", ex);
+                throw;
             }
             catch (PathTooLongException ex)
             {
-                Logger.Error(ex, $"Pfad '{filename}' ist zu lang");
-                throw new PathTooLongException("Path '{directory}' is too long", ex);
+                Logger.Error(ex, $"Path '{filename}' is too long");
+                throw;
             }
 
             // write content

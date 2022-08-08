@@ -379,14 +379,16 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Movie() angelegt");
+            Logger.Trace($"Movie() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -904,14 +906,17 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(status))
             {
+                Logger.Fatal($"Status not specified");
                 throw new ArgumentNullException(nameof(status));
             }
             if (String.IsNullOrEmpty(order))
             {
+                Logger.Fatal($"Order not specified");
                 throw new ArgumentNullException(nameof(order));
             }
 

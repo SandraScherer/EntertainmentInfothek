@@ -83,22 +83,26 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
             if (baseTableName == null)
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (targetTableName == null)
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"CastPersonItem() angelegt");
+            Logger.Trace($"CastPersonItem() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -163,22 +167,27 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (String.IsNullOrEmpty(baseTableID))
             {
+                Logger.Fatal($"BaseTableID not specified");
                 throw new ArgumentNullException(nameof(baseTableID));
             }
             if (String.IsNullOrEmpty(targetTableName))
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
             if (String.IsNullOrEmpty(order))
             {
+                Logger.Fatal($"Order not specified");
                 throw new ArgumentNullException(nameof(order));
             }
 

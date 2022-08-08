@@ -131,7 +131,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
 
-            string testContent = $"{formatter.AsPagename("Movie OriginalTitle X (Movi)")}";
+            string testContent = $"{formatter.AsFilename("Movie OriginalTitle X (Movi)")}";
 
             // Act
             string content = creator.GetPageName();

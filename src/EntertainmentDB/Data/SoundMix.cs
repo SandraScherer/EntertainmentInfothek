@@ -63,14 +63,16 @@ namespace EntertainmentDB.Data
         {
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (id == null)
             {
+                Logger.Fatal($"ID not specified");
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"SoundMix() angelegt");
+            Logger.Trace($"SoundMix() with ID = '{id}' created");
         }
 
         // --- Methods ---
