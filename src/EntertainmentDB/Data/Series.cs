@@ -102,6 +102,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Series(DBReader reader, string id) : base(reader, id)
         {
+            Logger.Trace($"Series()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -113,7 +115,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Series() with ID = '{id}' created");
+            Logger.Trace($"Series(): Series with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -125,12 +127,19 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Series.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, OriginalTitle, EnglishTitle, GermanTitle, TypeID, ReleaseDateFirstEpisode, ReleaseDateLastEpisode, NoOfSeasons, NoOfEpisodes, Budget, WorldwideGross, WorldwideGrossDate, CastStatusID, CrewStatusID, ConnectionID, Details, StatusID, LastUpdated " +
                            $"FROM Series " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
@@ -139,6 +148,8 @@ namespace EntertainmentDB.Data
                 GermanTitle = row["GermanTitle"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
+                    Logger.Info($"Series.TypeID is not null -> retrieve");
+
                     Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
                     Type.Retrieve(retrieveBasicInfoOnly);
@@ -152,18 +163,24 @@ namespace EntertainmentDB.Data
                 WorldwideGrossDate = row["WorldwideGrossDate"].ToString();
                 if (!String.IsNullOrEmpty(row["CastStatusID"].ToString()))
                 {
+                    Logger.Info($"Series.CastStatusID is not null -> retrieve");
+
                     CastStatus = new Status(Reader.New());
                     CastStatus.ID = row["CastStatusID"].ToString();
                     CastStatus.Retrieve(retrieveBasicInfoOnly);
                 }
                 if (!String.IsNullOrEmpty(row["CrewStatusID"].ToString()))
                 {
+                    Logger.Info($"Series.CrewStatusID is not null -> retrieve");
+
                     CrewStatus = new Status(Reader.New());
                     CrewStatus.ID = row["CrewStatusID"].ToString();
                     CrewStatus.Retrieve(retrieveBasicInfoOnly);
                 }
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
+                    Logger.Info($"Series.ConnectionID is not null -> retrieve");
+
                     Connection = new Connection(Reader.New());
                     Connection.ID = row["ConnectionID"].ToString();
                     Connection.Retrieve(retrieveBasicInfoOnly);
@@ -171,6 +188,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Info($"Series.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -179,6 +198,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 
@@ -191,193 +211,200 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         protected override int RetrieveAdditionalInformation()
         {
-            int count = 0;
+            Logger.Trace($"Series.RetrieveAdditionalInformation()");
+
+            int noOfDataRecords = 0;
             /*
-                        // InfoBox data
-                        Genres = GenreItem.RetrieveList(Reader, "Series", ID, "Genre");
-                        count += Genres.Count;
+                // InfoBox data
+                Genres = GenreItem.RetrieveList(Reader, "Series", ID, "Genre");
+                noOfDataRecords += Genres.Count;
+                if (Genres.Count == 0)
+                {
+                    Logger.Info($"Series.Genres.Count == 0 -> null");
+                    Genres = null;
+                }
 
-                        Certifications = CertificationItem.RetrieveList(Reader, "Series", ID, "Certification");
-                        count += Certifications.Count;
+                Certifications = CertificationItem.RetrieveList(Reader, "Series", ID, "Certification");
+                noOfDataRecords += Certifications.Count;
 
-                        Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
-                        count += Countries.Count;
+                Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
+                noOfDataRecords += Countries.Count;
 
-                        Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
-                        count += Languages.Count;
+                Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
+                noOfDataRecords += Languages.Count;
 
-                        Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
-                        count += Runtimes.Count;
+                Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
+                noOfDataRecords += Runtimes.Count;
 
-                        SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
-                        count += SoundMixes.Count;
+                SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
+                noOfDataRecords += SoundMixes.Count;
 
-                        Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
-                        count += Colors.Count;
+                Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
+                noOfDataRecords += Colors.Count;
 
-                        AspectRatios = AspectRatioItem.RetrieveList(Reader, "Series", ID, "AspectRatio");
-                        count += AspectRatios.Count;
+                AspectRatios = AspectRatioItem.RetrieveList(Reader, "Series", ID, "AspectRatio");
+                noOfDataRecords += AspectRatios.Count;
 
-                        Cameras = CameraItem.RetrieveList(Reader, "Series", ID, "Camera");
-                        count += Cameras.Count;
+                Cameras = CameraItem.RetrieveList(Reader, "Series", ID, "Camera");
+                noOfDataRecords += Cameras.Count;
 
-                        Laboratories = LaboratoryItem.RetrieveList(Reader, "Series", ID, "Laboratory");
-                        count += Laboratories.Count;
+                Laboratories = LaboratoryItem.RetrieveList(Reader, "Series", ID, "Laboratory");
+                noOfDataRecords += Laboratories.Count;
 
-                        FilmLengths = FilmLengthItem.RetrieveList(Reader, "Series", ID, "FilmLength");
-                        count += FilmLengths.Count;
+                FilmLengths = FilmLengthItem.RetrieveList(Reader, "Series", ID, "FilmLength");
+                noOfDataRecords += FilmLengths.Count;
 
-                        NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Series", ID, "NegativeFormat");
-                        count += NegativeFormats.Count;
+                NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Series", ID, "NegativeFormat");
+                noOfDataRecords += NegativeFormats.Count;
 
-                        CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Series", ID, "CinematographicProcess");
-                        count += CinematographicProcesses.Count;
+                CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Series", ID, "CinematographicProcess");
+                noOfDataRecords += CinematographicProcesses.Count;
 
-                        PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
-                        count += PrintedFilmFormats.Count;
+                PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
+                noOfDataRecords += PrintedFilmFormats.Count;
 
-                        // Cast and crew data
-                        Directors = PersonItem.RetrieveList(Reader, "Series", ID, "Director");
-                        count += Directors.Count;
+                // Cast and crew data
+                Directors = PersonItem.RetrieveList(Reader, "Series", ID, "Director");
+                noOfDataRecords += Directors.Count;
 
-                        Writers = PersonItem.RetrieveList(Reader, "Series", ID, "Writer");
-                        count += Writers.Count;
+                Writers = PersonItem.RetrieveList(Reader, "Series", ID, "Writer");
+                noOfDataRecords += Writers.Count;
 
-                        Cast = CastPersonItem.RetrieveList(Reader, "Series", ID, "Cast");
-                        count += Cast.Count;
+                Cast = CastPersonItem.RetrieveList(Reader, "Series", ID, "Cast");
+                noOfDataRecords += Cast.Count;
 
-                        Producers = PersonItem.RetrieveList(Reader, "Series", ID, "Producer");
-                        count += Producers.Count;
+                Producers = PersonItem.RetrieveList(Reader, "Series", ID, "Producer");
+                noOfDataRecords += Producers.Count;
 
-                        Music = PersonItem.RetrieveList(Reader, "Series", ID, "Music");
-                        count += Music.Count;
+                Music = PersonItem.RetrieveList(Reader, "Series", ID, "Music");
+                noOfDataRecords += Music.Count;
 
-                        Cinematography = PersonItem.RetrieveList(Reader, "Series", ID, "Cinematography");
-                        count += Cinematography.Count;
+                Cinematography = PersonItem.RetrieveList(Reader, "Series", ID, "Cinematography");
+                noOfDataRecords += Cinematography.Count;
 
-                        FilmEditing = PersonItem.RetrieveList(Reader, "Series", ID, "FilmEditing");
-                        count += FilmEditing.Count;
+                FilmEditing = PersonItem.RetrieveList(Reader, "Series", ID, "FilmEditing");
+                noOfDataRecords += FilmEditing.Count;
 
-                        Casting = PersonItem.RetrieveList(Reader, "Series", ID, "Casting");
-                        count += Casting.Count;
+                Casting = PersonItem.RetrieveList(Reader, "Series", ID, "Casting");
+                noOfDataRecords += Casting.Count;
 
-                        ProductionDesign = PersonItem.RetrieveList(Reader, "Series", ID, "ProductionDesign");
-                        count += ProductionDesign.Count;
+                ProductionDesign = PersonItem.RetrieveList(Reader, "Series", ID, "ProductionDesign");
+                noOfDataRecords += ProductionDesign.Count;
 
-                        ArtDirection = PersonItem.RetrieveList(Reader, "Series", ID, "ArtDirection");
-                        count += ArtDirection.Count;
+                ArtDirection = PersonItem.RetrieveList(Reader, "Series", ID, "ArtDirection");
+                noOfDataRecords += ArtDirection.Count;
 
-                        SetDecoration = PersonItem.RetrieveList(Reader, "Series", ID, "SetDecoration");
-                        count += SetDecoration.Count;
+                SetDecoration = PersonItem.RetrieveList(Reader, "Series", ID, "SetDecoration");
+                noOfDataRecords += SetDecoration.Count;
 
-                        CostumeDesign = PersonItem.RetrieveList(Reader, "Series", ID, "CostumeDesign");
-                        count += CostumeDesign.Count;
+                CostumeDesign = PersonItem.RetrieveList(Reader, "Series", ID, "CostumeDesign");
+                noOfDataRecords += CostumeDesign.Count;
 
-                        MakeupDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "MakeupDepartment");
-                        count += MakeupDepartment.Count;
+                MakeupDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "MakeupDepartment");
+                noOfDataRecords += MakeupDepartment.Count;
 
-                        ProductionManagement = PersonItem.RetrieveList(Reader, "Series", ID, "ProductionManagement");
-                        count += ProductionManagement.Count;
+                ProductionManagement = PersonItem.RetrieveList(Reader, "Series", ID, "ProductionManagement");
+                noOfDataRecords += ProductionManagement.Count;
 
-                        AssistantDirectors = PersonItem.RetrieveList(Reader, "Series", ID, "AssistantDirector");
-                        count += AssistantDirectors.Count;
+                AssistantDirectors = PersonItem.RetrieveList(Reader, "Series", ID, "AssistantDirector");
+                noOfDataRecords += AssistantDirectors.Count;
 
-                        ArtDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ArtDepartment");
-                        count += ArtDepartment.Count;
+                ArtDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ArtDepartment");
+                noOfDataRecords += ArtDepartment.Count;
 
-                        SoundDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "SoundDepartment");
-                        count += SoundDepartment.Count;
+                SoundDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "SoundDepartment");
+                noOfDataRecords += SoundDepartment.Count;
 
-                        SpecialEffects = PersonItem.RetrieveList(Reader, "Series", ID, "SpecialEffects");
-                        count += SpecialEffects.Count;
+                SpecialEffects = PersonItem.RetrieveList(Reader, "Series", ID, "SpecialEffects");
+                noOfDataRecords += SpecialEffects.Count;
 
-                        VisualEffects = PersonItem.RetrieveList(Reader, "Series", ID, "VisualEffects");
-                        count += VisualEffects.Count;
+                VisualEffects = PersonItem.RetrieveList(Reader, "Series", ID, "VisualEffects");
+                noOfDataRecords += VisualEffects.Count;
 
-                        Stunts = PersonItem.RetrieveList(Reader, "Series", ID, "Stunts");
-                        count += Stunts.Count;
+                Stunts = PersonItem.RetrieveList(Reader, "Series", ID, "Stunts");
+                noOfDataRecords += Stunts.Count;
 
-                        ElectricalDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ElectricalDepartment");
-                        count += ElectricalDepartment.Count;
+                ElectricalDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ElectricalDepartment");
+                noOfDataRecords += ElectricalDepartment.Count;
 
-                        AnimationDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "AnimationDepartment");
-                        count += AnimationDepartment.Count;
+                AnimationDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "AnimationDepartment");
+                noOfDataRecords += AnimationDepartment.Count;
 
-                        CastingDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "CastingDepartment");
-                        count += CastingDepartment.Count;
+                CastingDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "CastingDepartment");
+                noOfDataRecords += CastingDepartment.Count;
 
-                        CostumeDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "CostumeDepartment");
-                        count += CostumeDepartment.Count;
+                CostumeDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "CostumeDepartment");
+                noOfDataRecords += CostumeDepartment.Count;
 
-                        EditorialDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "EditorialDepartment");
-                        count += EditorialDepartment.Count;
+                EditorialDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "EditorialDepartment");
+                noOfDataRecords += EditorialDepartment.Count;
 
-                        LocationManagement = PersonItem.RetrieveList(Reader, "Series", ID, "LocationManagement");
-                        count += LocationManagement.Count;
+                LocationManagement = PersonItem.RetrieveList(Reader, "Series", ID, "LocationManagement");
+                noOfDataRecords += LocationManagement.Count;
 
-                        MusicDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "MusicDepartment");
-                        count += MusicDepartment.Count;
+                MusicDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "MusicDepartment");
+                noOfDataRecords += MusicDepartment.Count;
 
-                        ContinuityDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ContinuityDepartment");
-                        count += ContinuityDepartment.Count;
+                ContinuityDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "ContinuityDepartment");
+                noOfDataRecords += ContinuityDepartment.Count;
 
-                        TransportationDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "TransportationDepartment");
-                        count += TransportationDepartment.Count;
+                TransportationDepartment = PersonItem.RetrieveList(Reader, "Series", ID, "TransportationDepartment");
+                noOfDataRecords += TransportationDepartment.Count;
 
-                        OtherCrew = PersonItem.RetrieveList(Reader, "Series", ID, "OtherCrew");
-                        count += OtherCrew.Count;
+                OtherCrew = PersonItem.RetrieveList(Reader, "Series", ID, "OtherCrew");
+                noOfDataRecords += OtherCrew.Count;
 
-                        Thanks = PersonItem.RetrieveList(Reader, "Series", ID, "Thanks");
-                        count += Thanks.Count;
+                Thanks = PersonItem.RetrieveList(Reader, "Series", ID, "Thanks");
+                noOfDataRecords += Thanks.Count;
 
-                        // Company data
-                        ProductionCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "ProductionCompany");
-                        count += ProductionCompanies.Count;
+                // Company data
+                ProductionCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "ProductionCompany");
+                noOfDataRecords += ProductionCompanies.Count;
 
-                        Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
-                        count += Distributors.Count;
+                Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
+                noOfDataRecords += Distributors.Count;
 
-                        SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
-                        count += SpecialEffectsCompanies.Count;
+                SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
+                noOfDataRecords += SpecialEffectsCompanies.Count;
 
-                        OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
-                        count += OtherCompanies.Count;
+                OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
+                noOfDataRecords += OtherCompanies.Count;
 
-                        // Production data
-                        FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
-                        count += FilmingLocations.Count;
+                // Production data
+                FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
+                noOfDataRecords += FilmingLocations.Count;
 
-                        FilmingDates = TimespanItem.RetrieveList(Reader, "Series", ID, "FilmingDate");
-                        count += FilmingDates.Count;
+                FilmingDates = TimespanItem.RetrieveList(Reader, "Series", ID, "FilmingDate");
+                noOfDataRecords += FilmingDates.Count;
 
-                        ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
-                        count += ProductionDates.Count;
+                ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
+                noOfDataRecords += ProductionDates.Count;
 
-                        // Image data
-                        Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
-                        count += Posters.Count;
+                // Image data
+                Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
+                noOfDataRecords += Posters.Count;
 
-                        Covers = ImageItem.RetrieveList(Reader, "Series", ID, "Cover");
-                        count += Covers.Count;
+                Covers = ImageItem.RetrieveList(Reader, "Series", ID, "Cover");
+                noOfDataRecords += Covers.Count;
 
-                        Images = ImageItem.RetrieveList(Reader, "Series", ID, "Image");
-                        count += Images.Count;
+                Images = ImageItem.RetrieveList(Reader, "Series", ID, "Image");
+                noOfDataRecords += Images.Count;
 
-                        // Text data
-                        Descriptions = TextItem.RetrieveList(Reader, "Series", ID, "Description");
-                        count += Descriptions.Count;
+                // Text data
+                Descriptions = TextItem.RetrieveList(Reader, "Series", ID, "Description");
+                noOfDataRecords += Descriptions.Count;
 
-                        Reviews = TextItem.RetrieveList(Reader, "Series", ID, "Review");
-                        count += Reviews.Count;
+                Reviews = TextItem.RetrieveList(Reader, "Series", ID, "Review");
+                noOfDataRecords += Reviews.Count;
 
-                        // other data
-                        Awards = AwardItem.RetrieveList(Reader, "Series", ID, "Award");
-                        count += Awards.Count;
+                // other data
+                Awards = AwardItem.RetrieveList(Reader, "Series", ID, "Award");
+                noOfDataRecords += Awards.Count;
 
-                        Weblinks = WeblinkItem.RetrieveList(Reader, "Series", ID, "Weblink");
-                        count += Weblinks.Count;
+                Weblinks = WeblinkItem.RetrieveList(Reader, "Series", ID, "Weblink");
+                noOfDataRecords += Weblinks.Count;
             */
-            return count;
+            return noOfDataRecords;
         }
 
         /// <summary>
@@ -410,7 +437,7 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM Series " +
-                           $"WHERE StatusID=\"{status}\"" +
+                           $"WHERE StatusID='{status}'" +
                            $"ORDER BY {order}";
 
             List<Series> list = new List<Series>();

@@ -86,6 +86,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Status(DBReader reader, string id)
         {
+            Logger.Trace($"Status()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -97,10 +99,10 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Status() with ID = '{id}' created");
-
             Reader = reader;
             ID = id;
+
+            Logger.Trace($"Status(): Status with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -112,16 +114,18 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
-            Logger.Trace($"Retrieve() aufgerufen");
+            Logger.Trace($"Status.Retrieve()");
 
-            int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
+            int noOfDataRecords = RetrieveBasicInformation(retrieveBasicInfoOnly);
 
             if (!retrieveBasicInfoOnly)
             {
+                Logger.Info($"Retrieve additional information as requested");
                 RetrieveAdditionalInformation();
             }
 
-            return count;
+            Logger.Info($"Retrieved basic data records: '{noOfDataRecords}");
+            return noOfDataRecords;
         }
 
         /// <summary>
@@ -131,12 +135,19 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected virtual int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Status.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, EnglishTitle, GermanTitle, Details, StatusID, LastUpdated " +
                            $"FROM Status " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
@@ -148,6 +159,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 

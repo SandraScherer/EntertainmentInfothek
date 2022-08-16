@@ -77,6 +77,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Image(DBReader reader, string id) : base(reader, id)
         {
+            Logger.Trace($"Image()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -88,7 +90,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Image() with ID = '{id}' created");
+            Logger.Trace($"Image(): Image with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -100,12 +102,19 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Image.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, FileName, Description, TypeID, CountryID, Details, StatusID, LastUpdated " +
                            $"FROM Image " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
@@ -113,12 +122,16 @@ namespace EntertainmentDB.Data
                 Description = row["Description"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
+                    Logger.Info($"Image.TypeID is not null -> retrieve");
+
                     Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
                     Type.Retrieve(retrieveBasicInfoOnly);
                 }
                 if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
                 {
+                    Logger.Info($"Image.CountryID is not null -> retrieve");
+
                     Country = new Country(Reader.New());
                     Country.ID = row["CountryID"].ToString();
                     Country.Retrieve(retrieveBasicInfoOnly);
@@ -126,6 +139,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Info($"Image.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -134,6 +149,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 
@@ -146,16 +162,20 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         protected override int RetrieveAdditionalInformation()
         {
-            int count = 0;
+            Logger.Trace($"Image.RetrieveAdditionalInformation()");
+
+            int noOfDataRecords = 0;
 
             Sources = CompanyItem.RetrieveList(Reader, "Image", ID, "Source");
-            count += Sources.Count;
+            noOfDataRecords += Sources.Count;
             if (Sources.Count == 0)
             {
+                Logger.Info($"Image.Sources.Count == 0 -> null");
                 Sources = null;
             }
 
-            return count;
+            Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+            return noOfDataRecords;
         }
     }
 }

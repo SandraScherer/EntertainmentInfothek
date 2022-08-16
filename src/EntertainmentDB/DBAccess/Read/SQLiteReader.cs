@@ -42,7 +42,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// </summary>
         public SQLiteReader()
         {
-            Logger.Trace($"SQLiteReader() with ID = '{id}' created");
+            Logger.Trace($"SQLiteReader(): SQLiteReader created");
         }
 
         // --- Methods ---
@@ -53,6 +53,7 @@ namespace EntertainmentDB.DBAccess.Read
         /// <returns>A new SQLiteReader.</returns>
         public override DBReader New()
         {
+            Logger.Trace($"SQLiteReader.New()");
             return new SQLiteReader();
         }
 
@@ -63,6 +64,8 @@ namespace EntertainmentDB.DBAccess.Read
         /// <exception cref="NullReferenceException">Thrown when the query/command text is null.</exception>
         public override int Retrieve(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"SQLiteReader.Retrieve()");
+
             string connectionString;
             try
             {
@@ -73,12 +76,14 @@ namespace EntertainmentDB.DBAccess.Read
                 Logger.Error(ex, $"ConnectionString \"Database\" in default configuration does not exist");
                 throw;
             }
+            Logger.Info($"ConnectionString to database from configuration: '{connectionString}'");
 
             SQLiteConnection connection;
             try
             {
                 connection = new SQLiteConnection(connectionString);
                 connection.Open();
+                Logger.Info($"Connection opened");
             }
             catch (SQLiteException ex)
             {
@@ -96,6 +101,7 @@ namespace EntertainmentDB.DBAccess.Read
             {
                 Table.Clear();
                 dataAdapter.Fill(Table);
+                Logger.Info($"Database table filled with data from database");
             }
             catch (InvalidOperationException ex)
             {
@@ -106,8 +112,10 @@ namespace EntertainmentDB.DBAccess.Read
             {
                 dataAdapter.Dispose();
                 connection.Close();
+                Logger.Info($"Connection closed");
             }
 
+            Logger.Info($"Retrieved data records: '{Table.Rows.Count}'");
             return Table.Rows.Count;
         }
     }

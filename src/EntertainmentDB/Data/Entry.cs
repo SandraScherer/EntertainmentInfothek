@@ -75,6 +75,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         protected Entry(DBReader reader, string id)
         {
+            Logger.Trace($"Entry()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -86,10 +88,10 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Entry() with ID = '{id}' created");
-
             Reader = reader;
             ID = id;
+
+            Logger.Trace($"Entry() with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -101,16 +103,18 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         public virtual int Retrieve(bool retrieveBasicInfoOnly)
         {
-            Logger.Trace($"Retrieve() aufgerufen");
+            Logger.Trace($"Entry.Retrieve()");
 
-            int count = RetrieveBasicInformation(retrieveBasicInfoOnly);
+            int noOfDataRecords = RetrieveBasicInformation(retrieveBasicInfoOnly);
 
             if (!retrieveBasicInfoOnly)
             {
+                Logger.Info($"Retrieve additional information as requested");
                 RetrieveAdditionalInformation();
             }
 
-            return count;
+            Logger.Info($"Retrieved basic data records: '{noOfDataRecords}");
+            return noOfDataRecords;
         }
 
         /// <summary>

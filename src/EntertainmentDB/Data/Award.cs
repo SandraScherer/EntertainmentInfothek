@@ -61,6 +61,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Award(DBReader reader, string id) : base(reader, id)
         {
+            Logger.Trace($"Award()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -72,7 +74,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Award() with ID = '{id}' created");
+            Logger.Trace($"Award(): Award with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -84,18 +86,27 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Award.RetrieveBaiscInformation()");
+
             Reader.Query = $"SELECT ID, Name, PresenterID, Details, StatusID, LastUpdated " +
                            $"FROM Award " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 Name = row["Name"].ToString();
                 if (!String.IsNullOrEmpty(row["PresenterID"].ToString()))
                 {
+                    Logger.Info($"Award.PresenterID is not null -> retrieve");
+
                     Presenter = new Company(Reader.New());
                     Presenter.ID = row["PresenterID"].ToString();
                     Presenter.Retrieve(retrieveBasicInfoOnly);
@@ -103,6 +114,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Info($"Award.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -111,6 +124,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 

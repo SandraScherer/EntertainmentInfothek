@@ -72,6 +72,7 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Text(DBReader reader, string id) : base(reader, id)
         {
+            Logger.Trace($"Text()");
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -83,7 +84,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Text() with ID = '{id}' created");
+            Logger.Trace($"Text()Text with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -95,18 +96,27 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Text.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, Content, LanguageID, Details, StatusID, LastUpdated " +
                            $"FROM Text " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 Content = row["Content"].ToString();
                 if (!String.IsNullOrEmpty(row["LanguageID"].ToString()))
                 {
+                    Logger.Info($"Text.LanguageID is not null -> retrieve");
+
                     Language = new Language(Reader.New());
                     Language.ID = row["LanguageID"].ToString();
                     Language.Retrieve(retrieveBasicInfoOnly);
@@ -114,6 +124,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Info($"Text.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -122,6 +134,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 
@@ -134,23 +147,28 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         protected override int RetrieveAdditionalInformation()
         {
-            int count = 0;
+            Logger.Trace($"Text.RetrieveAdditionalInformation()");
+
+            int noOfDataRecords = 0;
 
             Authors = PersonItem.RetrieveList(Reader, "Text", ID, "Author");
-            count += Authors.Count;
+            noOfDataRecords += Authors.Count;
             if (Authors.Count == 0)
             {
+                Logger.Info($"Text.Authors.Count == 0 -> null");
                 Authors = null;
             }
 
             Sources = CompanyItem.RetrieveList(Reader, "Text", ID, "Source");
-            count += Sources.Count;
+            noOfDataRecords += Sources.Count;
             if (Sources.Count == 0)
             {
+                Logger.Info($"Text.Sources.Count == 0 -> null");
                 Sources = null;
             }
 
-            return count;
+            Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+            return noOfDataRecords;
         }
     }
 }

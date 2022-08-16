@@ -116,7 +116,7 @@ namespace EntertainmentDB.Data
         {
             Reader.Query = $"SELECT ID, ActorID, GermanDubberID, Character, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
             if (Reader.Retrieve(true) == 1)
             {
@@ -195,7 +195,7 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM {baseTableName}_{targetTableName} " +
-                           $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
+                           $"WHERE {baseTableName}ID='{baseTableID}'" +
                            $"ORDER BY {order}";
 
             List<CastPersonItem> list = new List<CastPersonItem>();
