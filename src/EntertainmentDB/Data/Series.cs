@@ -417,6 +417,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
         public static List<Series> RetrieveList(DBReader reader, string status, string order = "ID")
         {
+            Logger.Trace($"Series.RetrieveList()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -440,10 +442,15 @@ namespace EntertainmentDB.Data
                            $"WHERE StatusID='{status}'" +
                            $"ORDER BY {order}";
 
+            Logger.Info($"Retrieve from DB: {reader.Query}");
+
             List<Series> list = new List<Series>();
 
-            if (reader.Retrieve(true) > 0)
+            int noOfDataRecords = reader.Retrieve(true);
+            if (noOfDataRecords > 0)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 list.Capacity = reader.Table.Rows.Count;
 
                 foreach (DataRow row in reader.Table.Rows)
@@ -454,10 +461,6 @@ namespace EntertainmentDB.Data
                     item.Retrieve(true);
                     list.Add(item);
                 }
-            }
-            else
-            {
-                //  nothing to do
             }
 
             return list;

@@ -62,6 +62,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id or targetTableName is null.</exception>
         protected EntryItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id)
         {
+            Logger.Trace($"EntryItem()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -83,10 +85,10 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"EntryItem() with ID = '{id}' created");
-
             BaseTableName = baseTableName;
             TargetTableName = targetTableName;
+
+            Logger.Trace($"EntryItem(): EntryItem with ID = '{id}' created");
         }
 
         // --- Methods ---

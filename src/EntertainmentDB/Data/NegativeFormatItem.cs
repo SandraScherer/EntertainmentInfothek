@@ -59,6 +59,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public NegativeFormatItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
+            Logger.Trace($"NegativeFormatItem()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -80,7 +82,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"NegativeFormatItem() with ID = '{id}' created");
+            Logger.Trace($"NegativeFormatItem(): NegativeFormatItem with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -92,17 +94,26 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"NegativeFormatItem.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, FilmFormatID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Info($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["FilmFormatID"].ToString()))
                 {
+                    Logger.Info($"NegativeFormatItem.FilmFormatID is not null -> retrieve");
+
                     FilmFormat = new FilmFormat(Reader.New());
                     FilmFormat.ID = row["FilmFormatID"].ToString();
                     FilmFormat.Retrieve(retrieveBasicInfoOnly);
@@ -110,6 +121,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Info($"NegativeFormatItem.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -120,6 +133,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
         }
@@ -136,6 +150,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public static List<NegativeFormatItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
+            Logger.Trace($"NegativeFormatItem.RetrieveList()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -169,10 +185,15 @@ namespace EntertainmentDB.Data
                            $"WHERE {baseTableName}ID='{baseTableID}'" +
                            $"ORDER BY {order}";
 
+            Logger.Info($"Retrieve from DB: {reader.Query}");
+
             List<NegativeFormatItem> list = new List<NegativeFormatItem>();
 
-            if (reader.Retrieve(true) > 0)
+            int noOfDataRecords = reader.Retrieve(true);
+            if (noOfDataRecords > 0)
             {
+                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+
                 list.Capacity = reader.Table.Rows.Count;
 
                 foreach (DataRow row in reader.Table.Rows)
