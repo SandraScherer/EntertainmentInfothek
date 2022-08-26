@@ -58,6 +58,8 @@ namespace WikiPageCreator.Export.Create
         protected ArticleContentCreator(Article article, Formatter formatter, string targetLanguageCode)
             : base(article, formatter, targetLanguageCode)
         {
+            Logger.Trace($"ArticleContentCreator()");
+
             if (article == null)
             {
                 Logger.Fatal($"Article not specified");
@@ -74,7 +76,7 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ArticleContentCreator() with ID = '{id}' created");
+            Logger.Trace($"ArticleContentCreator(): ArticleContentCreator created");
         }
 
         // --- Methods ---
@@ -85,7 +87,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted file name for the article.</returns>
         public override string GetPageName()
         {
-            Logger.Trace($"GetPageName() für Article '{Article.OriginalTitle}' aufgerufen");
+            Logger.Trace($"GetPageName()");
+            Logger.Info($"Article is '{Article.OriginalTitle}' from '{Article.ReleaseDate}'");
 
             return Formatter.AsFilename($"{Article.OriginalTitle} ({Article.ReleaseDate[0..4]})");
         }
@@ -105,7 +108,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted haeder content of the article.</returns>
         protected override List<string> CreatePageHeader()
         {
-            Logger.Trace($"CreatePageHeader() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreatePageHeader()");
+            Logger.Info($"Article is '{Article.OriginalTitle}");
 
             List<string> content = new List<string>();
 
@@ -122,7 +126,7 @@ namespace WikiPageCreator.Export.Create
             content.Add("");
             content.Add("");
 
-            Logger.Trace($"CreatePageHeader() für Article '{Article.OriginalTitle}' beendet");
+            Logger.Trace($"CreatePageHeader(): page header for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -133,29 +137,30 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted file title content of the article.</returns>
         protected override List<string> CreatePageTitle()
         {
-            Logger.Trace($"CreatePageTitle() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreatePageTitle()");
+            Logger.Info($"Article is '{Article.OriginalTitle}");
 
             List<string> content = new List<string>();
 
             if (TargetLanguageCode.Equals("en") && !String.IsNullOrEmpty(Article.EnglishTitle))
             {
-                Logger.Trace($"Title: '{Article.EnglishTitle}' (englisch)");
+                Logger.Info($"Title: '{Article.EnglishTitle}' (english)");
                 content.Add(Formatter.AsHeading1(Article.EnglishTitle));
             }
             else if (TargetLanguageCode.Equals("de") && !String.IsNullOrEmpty(Article.GermanTitle))
             {
-                Logger.Trace($"Title: '{Article.GermanTitle}' (deutsch)");
+                Logger.Info($"Title: '{Article.GermanTitle}' (german)");
                 content.Add(Formatter.AsHeading1(Article.GermanTitle));
             }
             else
             {
-                Logger.Trace($"Title: '{Article.OriginalTitle}' (original)");
+                Logger.Info($"Title: '{Article.OriginalTitle}' (original)");
                 content.Add(Formatter.AsHeading1(Article.OriginalTitle));
             }
             content.Add("");
             content.Add("");
 
-            Logger.Trace($"CreatePageTitle() für Article '{Article.OriginalTitle}' beendet");
+            Logger.Trace($"CreatePageTitle(): page title for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -166,26 +171,27 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox title content of the article.</returns>
         protected virtual List<string> CreateInfoBoxTitle()
         {
-            Logger.Trace($"CreateInfoBoxTitle() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxTitle()");
+            Logger.Info($"Article is '{Article.OriginalTitle}");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Trace($"Title: '{Article.OriginalTitle}' (englisch)");
+                Logger.Info($"Title: '{Article.OriginalTitle}' (english)");
                 data[0] = "Original Title";
                 data[1] = Article.OriginalTitle;
             }
             else // incl. case "de"
             {
-                Logger.Trace($"Title: '{Article.OriginalTitle}' (deutsch, ...)");
+                Logger.Info($"Title: '{Article.OriginalTitle}' (german, ...)");
                 data[0] = "Originaltitel";
                 data[1] = Article.OriginalTitle;
             }
             content.Add(Formatter.AsTableRow(data));
 
-            Logger.Trace($"CreateInfoBoxTitle() für Article '{Article.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxTitle(): infobox title for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -197,16 +203,18 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateInfoBoxType()
         {
-            Logger.Trace($"CreateInfoboxType() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoboxType()");
+            Logger.Info($"Article is '{Article.OriginalTitle}");
 
             List<string> content = new List<string>();
 
             if (Article.Type != null)
             {
+                Logger.Info($"Article.Type is not null -> create");
                 content.AddRange(new TypeContentCreator(Article.Type, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoboxType() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoboxType(): infobox type for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -217,7 +225,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox release date content of the article.</returns>
         protected virtual List<string> CreateInfoBoxReleaseDate()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDate()");
+            Logger.Info($"Article is '{Article.OriginalTitle}");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -227,20 +236,20 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date: '{Article.ReleaseDate}' (englisch)");
+                    Logger.Info($"Release Date: '{Article.ReleaseDate}' (english)");
                     data[0] = "Original Release Date";
                     data[1] = Formatter.AsInternalLink(path, Article.ReleaseDate, Article.ReleaseDate);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date: '{Article.ReleaseDate}' (deutsch, ...)");
+                    Logger.Info($"Release Date: '{Article.ReleaseDate}' (german, ...)");
                     data[0] = "Erstausstrahlung";
                     data[1] = Formatter.AsInternalLink(path, Article.ReleaseDate, Article.ReleaseDate);
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Article '{Article.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDate(): infobox release date for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -251,7 +260,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted conncetion chapter content of the article.</returns>
         protected virtual List<string> CreateChapterConnection()
         {
-            Logger.Trace($"CreateChapterConnection() für Article '{Article.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterConnection()");
+            Logger.Info($"Article is {Article.OriginalTitle}");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -260,11 +270,12 @@ namespace WikiPageCreator.Export.Create
 
             if (Article.Connection != null)
             {
+                Logger.Info($"Article.Connection is not null -> create");
                 content.AddRange(CreateNewChapter(title));
                 content.AddRange(new ConnectionContentCreator(Article.Connection, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterConnection() für Article '{Article.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterConnection(): chapter connection for Article '{Article.OriginalTitle}' created");
 
             return content;
         }

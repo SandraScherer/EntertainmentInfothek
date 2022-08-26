@@ -61,6 +61,8 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected EntryContentCreator(Entry entry, Formatter formatter, string targetLanguageCode)
         {
+            Logger.Trace($"EntryContentCreator()");
+
             if (entry == null)
             {
                 Logger.Fatal($"Entry not specified");
@@ -77,11 +79,11 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ContentCreator() with ID = '{id}' created");
-
             Entry = entry;
             Formatter = formatter;
             TargetLanguageCode = targetLanguageCode;
+
+            Logger.Trace($"EntryContentCreator(): EntryContentCreator created");
         }
 
         // --- Methods ---
@@ -114,7 +116,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted page content of the entry.</returns>
         protected virtual List<string> CreatePageContentInternal()
         {
-            Logger.Trace($"CreatePageContentInternal() für ID '{Entry.ID}' gestartet");
+            Logger.Trace($"CreatePageContentInternal()");
+            Logger.Info($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -129,7 +132,7 @@ namespace WikiPageCreator.Export.Create
 
             content.AddRange(CreatePageFooter());
 
-            Logger.Trace($"CreatePageContentInternal() für ID '{Entry.ID}' beendet");
+            Logger.Trace($"CreatePageContentInternal(): page content for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -162,7 +165,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox begin content of the entry.</returns>
         protected virtual List<string> CreateInfoBoxBegin()
         {
-            Logger.Trace($"CreateInfoBoxBegin() für ID '{Entry.ID}' gestartet");
+            Logger.Trace($"CreateInfoBoxBegin()");
+            Logger.Info($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -171,7 +175,7 @@ namespace WikiPageCreator.Export.Create
             int[] width = { 30, 70 };
             content.Add(Formatter.DefineTable(445, width));
 
-            Logger.Trace($"CreateInfoBoxBegin() für ID '{Entry.ID}' beendet");
+            Logger.Trace($"CreateInfoBoxBegin(): infobox begin for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -204,7 +208,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox end content of the article.</returns>
         protected virtual List<string> CreateInfoBoxEnd()
         {
-            Logger.Trace($"CreateInfoBoxEnd() für ID '{Entry.ID}' gestartet");
+            Logger.Trace($"CreateInfoBoxEnd()");
+            Logger.Info($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -212,7 +217,7 @@ namespace WikiPageCreator.Export.Create
             content.Add("");
             content.Add("");
 
-            Logger.Trace($"CreateInfoBoxEnd() für ID '{Entry.ID}' beendet");
+            Logger.Trace($"CreateInfoBoxEnd(): infobox end for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -225,30 +230,31 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateNewChapter(Dictionary<string, string> title)
         {
+            Logger.Trace($"CreateNewChapter()");
+            Logger.Info($"Entry is '{Entry.ID}'");
+
             if (title == null)
             {
                 Logger.Fatal($"Title not specified");
                 throw new ArgumentNullException(nameof(title));
             }
 
-            Logger.Trace($"CreateNewChapter() gestartet");
-
             List<string> content = new List<string>();
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Trace($"Chapter: {title["en"]}");
+                Logger.Info($"Chapter: {title["en"]} (english)");
                 content.Add(Formatter.AsHeading2(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Trace($"Chapter: {title["de"]}");
+                Logger.Info($"Chapter: {title["de"]} (german, ...)");
                 content.Add(Formatter.AsHeading2(title["de"]));
             }
             content.Add($"");
             content.Add($"");
 
-            Logger.Trace($"CreateNewChapter() beendet");
+            Logger.Trace($"CreateNewChapter(): new chapter for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -283,28 +289,29 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateNewSection(Dictionary<string, string> title)
         {
+            Logger.Trace($"CreateNewSection()");
+            Logger.Info($"Entry is '{Entry.ID}'");
+
             if (title == null)
             {
                 Logger.Fatal($"Title not specified");
                 throw new ArgumentNullException(nameof(title));
             }
 
-            Logger.Trace($"CreateNewSection() gestartet");
-
             List<string> content = new List<string>();
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Trace($"Section: {title["en"]}");
+                Logger.Info($"Section: {title["en"]} (english)");
                 content.Add(Formatter.AsHeading3(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Trace($"Section: {title["de"]}");
+                Logger.Trace($"Section: {title["de"]} (german, ...)");
                 content.Add(Formatter.AsHeading3(title["de"]));
             }
 
-            Logger.Trace($"CreateNewSection() beendet");
+            Logger.Trace($"CreateNewSection(): new section for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -337,14 +344,15 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted footer content of the entry.</returns>
         protected virtual List<string> CreatePageFooter()
         {
-            Logger.Trace($"CreatePageFooter() für ID '{Entry.ID}' gestartet");
+            Logger.Trace($"CreatePageFooter()");
+            Logger.Info($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
             content.Add($"");
             content.Add($"");
 
-            Logger.Trace($"CreatePageFooter() für ID '{Entry.ID}' beendet");
+            Logger.Trace($"CreatePageFooter(): page footer for Entry '{Entry.ID}' created");
 
             return content;
         }

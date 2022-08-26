@@ -58,6 +58,8 @@ namespace WikiPageCreator.Export.Create
         public ConnectionContentCreator(Connection connection, Formatter formatter, string targetLanguageCode)
             : base(connection, formatter, targetLanguageCode)
         {
+            Logger.Trace($"ConnectionContentCreator()");
+
             if (connection == null)
             {
                 Logger.Fatal($"Connection not specified");
@@ -74,7 +76,7 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"ConnectionContentCreator() with ID = '{id}' created");
+            Logger.Trace($"ConnectionContentCreator(): ConnectionContentCreator created");
         }
 
         // --- Methods ---
@@ -103,7 +105,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the type.</returns>
         protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateChapterContentInternal() für Connection '{Connection.ID}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal()");
+            Logger.Info($"Connection is {Connection.Title}");
 
             List<string> content = new List<string>();
 
@@ -111,15 +114,17 @@ namespace WikiPageCreator.Export.Create
             {
                 if (Connection.BaseConnection == null)
                 {
+                    Logger.Info($"Connection: '{Connection.ID}'");
                     content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.ID));
                 }
                 else
                 {
-                    content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.BaseConnection.ID));
+                    Logger.Info($"Connection.BaseConnection is not null -> create");
+                    content.AddRange(new ConnectionContentCreator(Connection.BaseConnection, Formatter, TargetLanguageCode).CreateChapterContent());
                 }
             }
 
-            Logger.Trace($"CreateChapterContentInternal() für Connection '{Connection.ID}' beendet");
+            Logger.Trace($"CreateChapterContentInternal(): chapter content for Connection '{Connection.Title}' created");
 
             return content;
         }

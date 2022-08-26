@@ -216,13 +216,13 @@ namespace WikiPageCreator.Export.Create
 
             if (targetLanguageCode.Equals("en") && !String.IsNullOrEmpty(Movie.EnglishTitle))
             {
-                Logger.Trace($"Title: '{Movie.EnglishTitle}' (englisch)");
+                Logger.Trace($"Title: '{Movie.EnglishTitle}' (english)");
 
                 Content.Add(Formatter.AsHeading1(Movie.EnglishTitle));
             }
             else if (targetLanguageCode.Equals("de") && !String.IsNullOrEmpty(Movie.GermanTitle))
             {
-                Logger.Trace($"Title: '{Movie.GermanTitle}' (deutsch)");
+                Logger.Trace($"Title: '{Movie.GermanTitle}' (german)");
 
                 Content.Add(Formatter.AsHeading1(Movie.GermanTitle));
             }

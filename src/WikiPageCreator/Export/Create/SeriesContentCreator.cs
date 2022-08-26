@@ -185,13 +185,13 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (englisch)");
+                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (english)");
                     data[0] = "Release Date (First Episode)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (deutsch, ...)");
+                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (german, ...)");
                     data[0] = "Erstausstrahlung (Erste Folge)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
@@ -219,13 +219,13 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (englisch)");
+                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (english)");
                     data[0] = "Release Date (Last Episode)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (deutsch, ...)");
+                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (german, ...)");
                     data[0] = "Erstausstrahlung (Letzte Folge)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
@@ -337,13 +337,13 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (englisch)");
+                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (english)");
                     data[0] = "# Seasons";
                     data[1] = Series.NoOfSeasons;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (deutsch, ...)");
+                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (german, ...)");
                     data[0] = "# Staffeln";
                     data[1] = Series.NoOfSeasons;
                 }
@@ -370,13 +370,13 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (englisch)");
+                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (english)");
                     data[0] = "# Episodes";
                     data[1] = Series.NoOfEpisodes;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (deutsch, ...)");
+                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (german, ...)");
                     data[0] = "# Folgen";
                     data[1] = Series.NoOfEpisodes;
                 }

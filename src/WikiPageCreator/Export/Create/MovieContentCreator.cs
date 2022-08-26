@@ -58,6 +58,8 @@ namespace WikiPageCreator.Export.Create
         public MovieContentCreator(Movie movie, Formatter formatter, string targetLanguageCode)
             : base(movie, formatter, targetLanguageCode)
         {
+            Logger.Trace($"MovieContentCreator()");
+
             if (movie == null)
             {
                 Logger.Fatal($"Movie not specified");
@@ -74,7 +76,7 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"MovieContentCreator() with ID = '{id}' created");
+            Logger.Trace($"MovieContentCreator(): MovieContentCreator created");
         }
 
         // --- Methods ---
@@ -85,7 +87,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the movie.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal() für Movie {Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -110,7 +113,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateInfoBoxCinematographicProcess());
             content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContentInternal() für Movie {Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal(): info box content for Movie {Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -121,7 +124,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the movie.</returns>
         protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateChapterContentInternal() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -137,7 +141,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateChapterContentInternal() für Movie {Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterContentInternal(): chapter content for Movie {Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -149,17 +153,20 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateInfoBoxLogo()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLogo()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Logo != null)
             {
+                Logger.Info($"Movie.Logo is not null -> create");
+
                 // TODO: implement following stuff
-                //content.AddRange(new ImageContentCreator(Movie.Logo, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new ImageContentCreator(Movie.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLogo(): infobox logo for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -171,17 +178,20 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateInfoBoxGenre()
         {
-            Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxGenre()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Genres != null)
             {
+                Logger.Info($"Movie.Genres is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxGenre() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -192,17 +202,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox certification content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxCertification()
         {
-            Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCertification()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Certifications != null)
             {
+                Logger.Info($"Movie.Certifications is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCertification() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -213,17 +226,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox country content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxCountry()
         {
-            Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCountry()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Countries != null)
             {
+                Logger.Info($"Movie.Countries is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCountry() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCountry(): infobox country for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -234,17 +250,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox language content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxLanguage()
         {
-            Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLanguage()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Languages != null)
             {
+                Logger.Info($"Movie.Languages is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxLanguage() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -255,21 +274,22 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox budget content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxBudget()
         {
-            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxBudget()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Movie.Budget))
             {
-                Logger.Trace($"Budget: {Movie.Budget}");
+                Logger.Info($"Budget: '{Movie.Budget}'");
                 data[0] = "Budget";
                 data[1] = $"{Movie.Budget}";
 
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxBudget() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxBudget(): infobox budget for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -280,7 +300,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox worldwide gross content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxWorldwideGross()
         {
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxWorldwideGross()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -288,14 +309,14 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Movie.WorldwideGross))
             {
-                Logger.Trace($"Worldwide Gross: {Movie.WorldwideGross}");
-
                 if (TargetLanguageCode.Equals("en"))
                 {
+                    Logger.Info($"Worldwide Gross: '{Movie.WorldwideGross}' (english)");
                     data[0] = "Worldwide Gross";
                 }
                 else //incl. case "de"
                 {
+                    Logger.Info($"Worldwide Gross: '{Movie.WorldwideGross}' (german, ...)");
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 
@@ -309,7 +330,8 @@ namespace WikiPageCreator.Export.Create
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Movie '{Movie.OriginalTitle}' beendet");
+
+            Logger.Trace($"CreateInfoBoxWorldwideGross(): infobox worldwide gross for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -320,17 +342,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox runtime content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxRuntime()
         {
-            Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxRuntime()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Runtimes != null)
             {
+                Logger.Info($"Movie.Runtimes is not null -> create");
                 //TODO: implement following stuff
-                //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxRuntime() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -341,17 +365,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox soundmix content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxSoundMix()
         {
-            Logger.Trace($"CreateInfoBoxSoundMix() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxSoundMix()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.SoundMixes != null)
             {
+                Logger.Info($"Movie.SoundMixes is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxSoundMix() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -362,17 +389,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox color content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxColor()
         {
-            Logger.Trace($"CreateInfoBoxColor() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxColor()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Colors != null)
             {
+                Logger.Info($"Movie.Colors is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new ColorContentCreator(Movie.Colors, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new ColorContentCreator(Movie.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxColor() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxColor(): infobox color for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -383,17 +413,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox aspect ratio content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxAspectRatio()
         {
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxAspectRatio()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.AspectRatios != null)
             {
+                Logger.Info($"Movie.AspectRatios is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -404,17 +437,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox camera content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxCamera()
         {
-            Logger.Trace($"CreateInfoBoxCamera() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCamera()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Cameras != null)
             {
+                Logger.Info($"Movie.Cameras is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCamera() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCamera(): infobox camera for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -425,17 +461,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox laboratory content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxLaboratory()
         {
-            Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLaboratory()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Laboratories != null)
             {
+                Logger.Info($"Movie.Laboratories is not null -> create");
+
                 //TODO: implement following stuff
-                ////content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxLaboratory() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -446,17 +485,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox film length content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxFilmLength()
         {
-            Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxFilmLength()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.FilmLengths != null)
             {
+                Logger.Info("Movie.FilmLengths is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxFilmLength() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -467,17 +509,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox negative format content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxNegativeFormat()
         {
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.NegativeFormats != null)
             {
+                Logger.Info($"Movie.NegativeFormats is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -488,17 +533,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox cinematographic process content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxCinematographicProcess()
         {
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.CinematographicProcesses != null)
             {
+                Logger.Info($"Movie.CinematicProcesses is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess(): infobox cinematic processes for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -509,17 +557,20 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox printed film format content of the movie.</returns>
         protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
         {
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.PrintedFilmFormats != null)
             {
+                Logger.Info($"Movie.PrintedFilmFormats is not null -> create");
+
                 //TODO: implement following stuff
-                //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+                //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat(): infobox printed film format for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
