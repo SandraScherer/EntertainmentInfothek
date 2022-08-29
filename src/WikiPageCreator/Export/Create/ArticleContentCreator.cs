@@ -109,7 +109,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreatePageHeader()
         {
             Logger.Trace($"CreatePageHeader()");
-            Logger.Info($"Article is '{Article.OriginalTitle}");
+            Logger.Info($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -138,7 +138,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreatePageTitle()
         {
             Logger.Trace($"CreatePageTitle()");
-            Logger.Info($"Article is '{Article.OriginalTitle}");
+            Logger.Info($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -172,7 +172,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxTitle()
         {
             Logger.Trace($"CreateInfoBoxTitle()");
-            Logger.Info($"Article is '{Article.OriginalTitle}");
+            Logger.Info($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -204,7 +204,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxType()
         {
             Logger.Trace($"CreateInfoboxType()");
-            Logger.Info($"Article is '{Article.OriginalTitle}");
+            Logger.Info($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -226,7 +226,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxReleaseDate()
         {
             Logger.Trace($"CreateInfoBoxReleaseDate()");
-            Logger.Info($"Article is '{Article.OriginalTitle}");
+            Logger.Info($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -261,7 +261,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterConnection()
         {
             Logger.Trace($"CreateChapterConnection()");
-            Logger.Info($"Article is {Article.OriginalTitle}");
+            Logger.Info($"Article is {Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();

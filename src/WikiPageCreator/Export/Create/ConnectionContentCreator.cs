@@ -106,7 +106,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateChapterContentInternal()
         {
             Logger.Trace($"CreateChapterContentInternal()");
-            Logger.Info($"Connection is {Connection.Title}");
+            Logger.Info($"Connection is '{Connection.Title}'");
 
             List<string> content = new List<string>();
 

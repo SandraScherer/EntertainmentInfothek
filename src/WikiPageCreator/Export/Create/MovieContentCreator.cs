@@ -113,7 +113,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateInfoBoxCinematographicProcess());
             content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContentInternal(): info box content for Movie {Movie.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentInternal(): info box content for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -141,7 +141,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateChapterContentInternal(): chapter content for Movie {Movie.OriginalTitle}' created");
+            Logger.Trace($"CreateChapterContentInternal(): chapter content for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -581,7 +581,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted poster chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterPoster()
         {
-            Logger.Trace($"CreateChapterPoster() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterPoster()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -590,12 +591,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Posters != null)
             {
+                Logger.Info($"Movie.Posters is not null -> create");
+
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Posters, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new ImageContentCreator(Movie.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterPoster() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterPoster(): chapter poster for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -606,7 +609,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted cover chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterCover()
         {
-            Logger.Trace($"CreateChapterCover() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCover()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -615,12 +619,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Covers != null)
             {
+                Logger.Info($"Movie.Covers is not null -> create");
+
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Covers, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new ImageContentCreator(Movie.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterCover() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCover(): chapter cover for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -631,7 +637,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted description chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterDescription()
         {
-            Logger.Trace($"CreateChapterDescription() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterDescription()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -640,12 +647,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Descriptions != null)
             {
+                Logger.Info($"Movie.Descriptions is not null -> create");
+
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new TextContentCreator(Movie.Descriptions, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new TextContentCreator(Movie.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterDescription() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterDescription(): chapter descriptions for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -656,7 +665,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted review chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterReview()
         {
-            Logger.Trace($"CreateChapterReview() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterReview()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -665,12 +675,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Reviews != null)
             {
+                Logger.Info($"Movie.Reviews is not null -> create");
+
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new TextContentCreator(Movie.Reviews, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new TextContentCreator(Movie.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterReview() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterReview(): chapter reviews for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -681,7 +693,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted image chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterImage()
         {
-            Logger.Trace($"CreateChapterImage() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterImage()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -690,12 +703,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Images != null)
             {
+                Logger.Info($"Movie.Images is not null -> create");
+
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new ImageContentCreator(Movie.Images, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new ImageContentCreator(Movie.Images, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterImage() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterImage(): chapter images for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -706,7 +721,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted cast and crew chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterCastAndCrew()
         {
-            Logger.Trace($"CreateChapterCastAndCrew() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCastAndCrew()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -720,6 +736,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Movie.Directors != null)
             //{
+            //    Logger.Info($"Movie.Directors is not null -> create");
             //    titleSection.Add("en", "Director");
             //    titleSection.Add("de", "Regie");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -727,6 +744,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.Writers != null)
             //{
+            //    Logger.Info($"Movie.Writers is not null -> create");
             //    titleSection.Add("en", "Writers");
             //    titleSection.Add("de", "Drehbuch");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -734,7 +752,7 @@ namespace WikiPageCreator.Export.Create
             //}
             // TODO: add more cast and crew sections
 
-            Logger.Trace($"CreateChapterCastAndCrew() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCastAndCrew(): chapter cast and crew for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -745,7 +763,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted company chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterCompany()
         {
-            Logger.Trace($"CreateChapterCompany() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCompany()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -757,23 +776,25 @@ namespace WikiPageCreator.Export.Create
 
             //Dictionary<string, string> titleSection = new Dictionary<string, string>();
 
-            //if (Movie.Directors != null)
+            //if (Movie.ProductionCompanies != null)
             //{
+            //    Logger.Info($"Movie.ProductionCompanies is not null -> create");
             //    titleSection.Add("en", "Production Company");
             //    titleSection.Add("de", "Produktionsfirmen");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new CompanyContentCreator(Movie.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
-            //if (Movie.Writers != null)
+            //if (Movie.Distributors != null)
             //{
+            //    Logger.Info($"Movie.Distributors is not null -> create");
             //    titleSection.Add("en", "Distributors");
             //    titleSection.Add("de", "Vertrieb");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new CompanyContentCreator(Movie.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
-            // TODO: add more cast and crew sections
+            // TODO: add more company sections
 
-            Logger.Trace($"CreateChapterCompany() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCompany(): chapter companies for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -784,7 +805,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted filming and production chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterFilmingAndProduction()
         {
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterFilmingAndProduction()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -798,6 +820,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Movie.FilmingLocations != null)
             //{
+            //    Logger.Info($"Movie.FilmingLocations is not null -> create");
             //    titleSection.Add("en", "Filming Locations");
             //    titleSection.Add("de", "Drehorte");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -805,6 +828,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.FilmingDates != null)
             //{
+            //    Logger.Info($"Movie.FilmingDates is not null -> create");
             //    titleSection.Add("en", "Filming Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -812,13 +836,14 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.ProductionDates != null)
             //{
+            //    Logger.Info($"Movie.ProductionDates is not null -> create");
             //    titleSection.Add("en", "Production Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new TimeSpanContentCreator(Movie.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
 
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -829,7 +854,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted award chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterAward()
         {
-            Logger.Trace($"CreateChapterAward() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterAward()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -838,12 +864,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Awards != null)
             {
+                Logger.Info($"Movie.Awards is not null -> create");
+
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new AwardContentCreator(Movie.Awards, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new AwardContentCreator(Movie.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterAward() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterAward(): chapter awards for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
@@ -854,7 +882,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted weblink chapter content of the movie.</returns>
         protected virtual List<string> CreateChapterWeblink()
         {
-            Logger.Trace($"CreateChapterWeblink() für Movie '{Movie.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterWeblink()");
+            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -863,12 +892,14 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Weblinks != null)
             {
+                Logger.Info($"Movie.Weblinks is not null -> create");
+
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
-                //content.AddRange(new WeblinkContentCreator(Movie.Weblinks, Formatter, TargetLanguageCode).CreateChapter4Series());
+                //content.AddRange(new WeblinkContentCreator(Movie.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 
-            Logger.Trace($"CreateChapterWeblink() für Movie '{Movie.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterWeblink(): chapter weblinks for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }

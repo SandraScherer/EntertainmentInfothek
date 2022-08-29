@@ -243,12 +243,12 @@ namespace WikiPageCreator.Export.Create
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Info($"Chapter: {title["en"]} (english)");
+                Logger.Info($"Chapter: '{title["en"]}' (english)");
                 content.Add(Formatter.AsHeading2(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Info($"Chapter: {title["de"]} (german, ...)");
+                Logger.Info($"Chapter: '{title["de"]}' (german, ...)");
                 content.Add(Formatter.AsHeading2(title["de"]));
             }
             content.Add($"");
@@ -302,12 +302,12 @@ namespace WikiPageCreator.Export.Create
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Info($"Section: {title["en"]} (english)");
+                Logger.Info($"Section: '{title["en"]}' (english)");
                 content.Add(Formatter.AsHeading3(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Trace($"Section: {title["de"]} (german, ...)");
+                Logger.Info($"Section: '{title["de"]}' (german, ...)");
                 content.Add(Formatter.AsHeading3(title["de"]));
             }
 
