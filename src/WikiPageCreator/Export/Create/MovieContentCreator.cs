@@ -311,12 +311,12 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Info($"Worldwide Gross: '{Movie.WorldwideGross}' (english)");
+                    Logger.Info($"WorldwideGross: '{Movie.WorldwideGross}' (english)");
                     data[0] = "Worldwide Gross";
                 }
                 else //incl. case "de"
                 {
-                    Logger.Info($"Worldwide Gross: '{Movie.WorldwideGross}' (german, ...)");
+                    Logger.Info($"WorldwideGross: '{Movie.WorldwideGross}' (german, ...)");
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 

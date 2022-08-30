@@ -58,6 +58,8 @@ namespace WikiPageCreator.Export.Create
         public SeriesContentCreator(Series series, Formatter formatter, string targetLanguageCode)
             : base(series, formatter, targetLanguageCode)
         {
+            Logger.Trace($"SeriesContentCreator()");
+
             if (series == null)
             {
                 Logger.Fatal($"Series not specified");
@@ -74,7 +76,7 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"SeriesContentCreator() with ID = '{id}' created");
+            Logger.Trace($"SeriesContentCreator(): SeriesContentCreator created");
         }
 
         // --- Methods ---
@@ -86,7 +88,8 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal() für Series {Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -114,7 +117,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateInfoBoxCinematographicProcess());
             content.AddRange(CreateInfoBoxPrintedFilmFormat());
 
-            Logger.Trace($"CreateInfoBoxContentInternal() für Series {Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for  Series {Series.OriginalTitle}' created");
 
             return content;
         }
@@ -126,7 +129,8 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected override List<string> CreateChapterContentInternal()
         {
-            Logger.Trace($"CreateChapterContentInternal() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterContentInternal()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -142,7 +146,7 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateChapterContentInternal() für Series {Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterContentInternal(): chapter content for Series {Series.OriginalTitle}' created");
 
             return content;
         }
@@ -154,17 +158,19 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateInfoBoxLogo()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLogo()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Logo != null)
             //{
-            //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Logo is not null -> create");
+            //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxReleaseDate() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLogo(): infobox logo for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -175,7 +181,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox release date content of the series.</returns>
         protected virtual List<string> CreateInfoBoxReleaseDateFirstEpisode()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -183,22 +190,24 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Series.ReleaseDateFirstEpisode))
             {
+                Logger.Info($"Series.ReleaseDateFirstEpisode is not null");
+
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (english)");
+                    Logger.Info($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (english)");
                     data[0] = "Release Date (First Episode)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (First Episode): '{Series.ReleaseDateFirstEpisode}' (german, ...)");
+                    Logger.Info($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (german, ...)");
                     data[0] = "Erstausstrahlung (Erste Folge)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode(): infobox release date of first episode for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -209,7 +218,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox release date content of the series.</returns>
         protected virtual List<string> CreateInfoBoxReleaseDateLastEpisode()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -217,22 +227,24 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Series.ReleaseDateLastEpisode))
             {
+                Logger.Info($"Series.ReleaseDateLastEpisode is not null");
+
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (english)");
+                    Logger.Trace($"ReleaseDate (Last Episode): '{Series.ReleaseDateLastEpisode}' (english)");
                     data[0] = "Release Date (Last Episode)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"Release Date (Last Episode): '{Series.ReleaseDateLastEpisode}' (german, ...)");
+                    Logger.Trace($"ReleaseDate (Last Episode): '{Series.ReleaseDateLastEpisode}' (german, ...)");
                     data[0] = "Erstausstrahlung (Letzte Folge)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateLastEpisode, Series.ReleaseDateLastEpisode);
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode(): infobox release date of last episode for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -244,17 +256,19 @@ namespace WikiPageCreator.Export.Create
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected virtual List<string> CreateInfoBoxGenre()
         {
-            Logger.Trace($"CreateInfoBoxGenre() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxGenre()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Genres != null)
             //{
-            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Genres is not null -> create");
+            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxGenre() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -265,17 +279,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox certification content of the series.</returns>
         protected virtual List<string> CreateInfoBoxCertification()
         {
-            Logger.Trace($"CreateInfoBoxCertification() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCertification()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Certifications != null)
-            // {
-            //     content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBox4Series());
-            // }
+            //{
+            //    Logger.Info($"Series.Certifications is not null -> create");
+            //    content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //}
 
-            Logger.Trace($"CreateInfoBoxCertification() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -286,17 +302,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox country content of the series.</returns>
         protected virtual List<string> CreateInfoBoxCountry()
         {
-            Logger.Trace($"CreateInfoBoxCountry() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCountry()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Countries != null)
             //{
-            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Countries is not null -> create");
+            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxCountry() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCountry(): infobox country for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -307,17 +325,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox language content of the series.</returns>
         protected virtual List<string> CreateInfoBoxLanguage()
         {
-            Logger.Trace($"CreateInfoBoxLanguage() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLanguage()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Languages != null)
             //{
-            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Languages is not null -> create");
+            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxLanguage() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -328,29 +348,32 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox language content of the series.</returns>
         protected virtual List<string> CreateInfoBoxNoOfSeasons()
         {
-            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNoOfSeasons()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Series.NoOfSeasons))
             {
+                Logger.Info($"Series.NoOfSeasons is not null or empty");
+
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (english)");
+                    Logger.Trace($"NoOfSeasons: '{Series.NoOfSeasons}' (english)");
                     data[0] = "# Seasons";
                     data[1] = Series.NoOfSeasons;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Seasons: '{Series.NoOfSeasons}' (german, ...)");
+                    Logger.Trace($"NoOfSeasons: '{Series.NoOfSeasons}' (german, ...)");
                     data[0] = "# Staffeln";
                     data[1] = Series.NoOfSeasons;
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfSeasons() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNoOfSeasons(): infobox no of seasons for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -361,29 +384,32 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox language content of the series.</returns>
         protected virtual List<string> CreateInfoBoxNoOfEpisodes()
         {
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNoOfEpisodes()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Series.NoOfEpisodes))
             {
+                Logger.Info($"Series.NoOfEpisodes is not null or empty");
+
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (english)");
+                    Logger.Trace($"NoOfEpisodes: '{Series.NoOfEpisodes}' (english)");
                     data[0] = "# Episodes";
                     data[1] = Series.NoOfEpisodes;
                 }
                 else // incl. case "de"
                 {
-                    Logger.Trace($"No of Episodes: '{Series.NoOfEpisodes}' (german, ...)");
+                    Logger.Trace($"NoOfEpisodes: '{Series.NoOfEpisodes}' (german, ...)");
                     data[0] = "# Folgen";
                     data[1] = Series.NoOfEpisodes;
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNoOfEpisodes(): infobox no of episodes for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -394,20 +420,21 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox budget content of the series.</returns>
         protected virtual List<string> CreateInfoBoxBudget()
         {
-            Logger.Trace($"CreateInfoBoxBudget() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxBudget()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Series.Budget))
             {
-                Logger.Trace($"Budget: {Series.Budget}");
+                Logger.Trace($"Budget: '{Series.Budget}'");
                 data[0] = "Budget";
                 data[1] = $"{Series.Budget}";
 
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxBudget() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxBudget(): infobox budget for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -418,7 +445,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox worldwide gross content of the series.</returns>
         protected virtual List<string> CreateInfoBoxWorldwideGross()
         {
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxWorldwideGross()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -426,14 +454,14 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Series.WorldwideGross))
             {
-                Logger.Trace($"Worldwide Gross: {Series.WorldwideGross}");
-
                 if (TargetLanguageCode.Equals("en"))
                 {
+                    Logger.Info($"WorldwideGross: '{Series.WorldwideGross}' (english)");
                     data[0] = "Worldwide Gross";
                 }
                 else //incl. case "de"
                 {
+                    Logger.Info($"WorldwideGross: '{Series.WorldwideGross}' (german, ...)");
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 
@@ -447,7 +475,7 @@ namespace WikiPageCreator.Export.Create
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxWorldwideGross() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxWorldwideGross(): infobox worldwide gross for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -458,17 +486,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox runtime content of the series.</returns>
         protected virtual List<string> CreateInfoBoxRuntime()
         {
-            Logger.Trace($"CreateInfoBoxRuntime() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxRuntime()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Runtimes != null)
             //{
-            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Runtimes is not null -> create");
+            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxRuntime() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -479,17 +509,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox soundmix content of the series.</returns>
         protected virtual List<string> CreateInfoBoxSoundMix()
         {
-            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxSoundMix()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.SoundMixes != null)
             //{
-            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.SoundMixes is not null -> create");
+            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxSoundMix() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -500,17 +532,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox color content of the series.</returns>
         protected virtual List<string> CreateInfoBoxColor()
         {
-            Logger.Trace($"CreateInfoBoxColor() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxColor()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Colors != null)
             //{
-            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Color is not null -> create");
+            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxColor() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxColor(): infobox color for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -521,17 +555,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox aspect ratio content of the series.</returns>
         protected virtual List<string> CreateInfoBoxAspectRatio()
         {
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxAspectRatio()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.AspectRatios != null)
             //{
-            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.AspectRatio is not null -> create");
+            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxAspectRatio() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -542,14 +578,16 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox camera content of the series.</returns>
         protected virtual List<string> CreateInfoBoxCamera()
         {
-            Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCamera()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Cameras != null)
             //{
-            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Cameras is not null -> create");
+            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
             Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' beendet");
@@ -563,17 +601,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox camera content of the series.</returns>
         protected virtual List<string> CreateInfoBoxLaboratory()
         {
-            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxLaboratory()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Laboratories != null)
             //{
-            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.Laboratories is not null -> create");
+            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxLaboratory() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -584,17 +624,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox film length content of the series.</returns>
         protected virtual List<string> CreateInfoBoxFilmLength()
         {
-            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxFilmLength()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.FilmLengths != null)
             //{
-            //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.FilmLengths is not null -> create");
+            //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxFilmLength() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -605,17 +647,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox negative format content of the series.</returns>
         protected virtual List<string> CreateInfoBoxNegativeFormat()
         {
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.NegativeFormats != null)
             //{
-            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.NegativeFormats is not null -> create");
+            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxNegativeFormat() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -626,17 +670,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox cinematographic process content of the series.</returns>
         protected virtual List<string> CreateInfoBoxCinematographicProcess()
         {
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.CinematographicProcesses != null)
-            // {
-            //     content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBox4Series());
-            // }
+            //{
+            //    Logger.Info($"Series.CinematographicProcesses is not null -> create");
+            //    content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            //}
 
-            Logger.Trace($"CreateInfoBoxCinematographicProcess() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxCinematographicProcess(): infobox cinematographic process for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -647,17 +693,19 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox printed film format content of the series.</returns>
         protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
         {
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.PrintedFilmFormats != null)
             //{
-            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBox4Series());
+            //    Logger.Info($"Series.PrintedFilmFormats is not null -> create");
+            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat(): infobox printed film formats for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -668,21 +716,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted poster chapter content of the series.</returns>
         protected virtual List<string> CreateChapterPoster()
         {
-            Logger.Trace($"CreateChapterPoster() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterPoster()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Poster");
             title.Add("de", "Poster");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Posters != null)
             //{
+            //    Logger.Info($"Series.Posters is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterPoster() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterPoster(): chapter poster for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -693,21 +743,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted cover chapter content of the series.</returns>
         protected virtual List<string> CreateChapterCover()
         {
-            Logger.Trace($"CreateChapterCover() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCover()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Cover");
             title.Add("de", "Cover");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Covers != null)
             //{
+            //    Logger.Info($"Series.Covers is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterCover() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCover(): chapter cover for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -718,21 +770,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted description chapter content of the series.</returns>
         protected virtual List<string> CreateChapterDescription()
         {
-            Logger.Trace($"CreateChapterDescription() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterDescription()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Descriptions");
             title.Add("de", "Beschreibungen");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Descriptions != null)
             //{
+            //    Logger.Info($"Series.Descriptions is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterDescription() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterDescription(): chapter descriptions for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -743,21 +797,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted review chapter content of the series.</returns>
         protected virtual List<string> CreateChapterReview()
         {
-            Logger.Trace($"CreateChapterReview() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterReview()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Reviews");
             title.Add("de", "Rezensionen");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Reviews != null)
             //{
+            //    Logger.Info($"Series.Reviews is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterReview() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterReview(): chapter reviews for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -768,21 +824,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted image chapter content of the series.</returns>
         protected virtual List<string> CreateChapterImage()
         {
-            Logger.Trace($"CreateChapterImage() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterImage()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Images");
             title.Add("de", "Bilder");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Images != null)
             //{
+            //    Logger.Info($"Series.Images is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterImage() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterImage(): chapter images for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -793,20 +851,22 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted cast and crew chapter content of the series.</returns>
         protected virtual List<string> CreateChapterCastAndCrew()
         {
-            Logger.Trace($"CreateChapterCastAndCrew() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCastAndCrew()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Cast and Crew");
             title.Add("de", "Darsteller und Mannschaft");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //content.AddRange(CreateNewChapter(title));
 
             //Dictionary<string, string> titleSection = new Dictionary<string, string>();
 
             //if (Series.Directors != null)
             //{
+            //    Logger.Info($"Series.Directors is not null -> create");
             //    titleSection.Add("en", "Director");
             //    titleSection.Add("de", "Regie");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -814,6 +874,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.Writers != null)
             //{
+            //    Logger.Info($"Series.Writers is not null -> create");
             //    titleSection.Add("en", "Writers");
             //    titleSection.Add("de", "Drehbuch");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -821,7 +882,7 @@ namespace WikiPageCreator.Export.Create
             //}
             // TODO: add more cast and crew sections
 
-            Logger.Trace($"CreateChapterCastAndCrew() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCastAndCrew(): chapter cast and crew for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -832,35 +893,38 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted company chapter content of the series.</returns>
         protected virtual List<string> CreateChapterCompany()
         {
-            Logger.Trace($"CreateChapterCompany() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterCompany()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Company Credits");
             title.Add("de", "Beteiligte Firmen");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //content.AddRange(CreateNewChapter(title));
 
             //Dictionary<string, string> titleSection = new Dictionary<string, string>();
 
-            //if (Series.Directors != null)
+            //if (Series.ProductionCompanies != null)
             //{
+            //    Logger.Info($"Series.ProductionCompanies is not null -> create");
             //    titleSection.Add("en", "Production Company");
             //    titleSection.Add("de", "Produktionsfirmen");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new CompanyContentCreator(Series.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
-            //if (Series.Writers != null)
+            //if (Series.Distributors != null)
             //{
+            //    Logger.Info($"Series.Distributors is not null -> create");
             //    titleSection.Add("en", "Distributors");
             //    titleSection.Add("de", "Vertrieb");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new CompanyContentCreator(Series.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
-            // TODO: add more cast and crew sections
+            // TODO: add more company sections
 
-            Logger.Trace($"CreateChapterCompany() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterCompany(): chapter companies for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -871,7 +935,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted filming and production chapter content of the series.</returns>
         protected virtual List<string> CreateChapterFilmingAndProduction()
         {
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterFilmingAndProduction()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -885,6 +950,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Series.FilmingLocations != null)
             //{
+            //    Logger.Info($"Series.FilmingLocations is not null -> create");
             //    titleSection.Add("en", "Filming Locations");
             //    titleSection.Add("de", "Drehorte");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -892,6 +958,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.FilmingDates != null)
             //{
+            //    Logger.Info($"Series.FilmingDates is not null -> create");
             //    titleSection.Add("en", "Filming Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -899,13 +966,14 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.ProductionDates != null)
             //{
+            //    Logger.Info($"Series.ProductionDates is not null -> create");
             //    titleSection.Add("en", "Production Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
             //    content.AddRange(new TimeSpanContentCreator(Series.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
 
-            Logger.Trace($"CreateChapterFilmingAndProduction() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -916,21 +984,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted award chapter content of the series.</returns>
         protected virtual List<string> CreateChapterAward()
         {
-            Logger.Trace($"CreateChapterAward() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterAward()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Awards");
             title.Add("de", "Auszeichnungen");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Awards != null)
             //{
+            //    Logger.Info($"Series.Awards is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
-            //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapter4Series());
+            //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
-            Logger.Trace($"CreateChapterAward() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterAward(): chapter awards for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -941,21 +1011,23 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted weblink chapter content of the series.</returns>
         protected virtual List<string> CreateChapterWeblink()
         {
-            Logger.Trace($"CreateChapterWeblink() für Series '{Series.OriginalTitle}' gestartet");
+            Logger.Trace($"CreateChapterWeblink()");
+            Logger.Info($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
             title.Add("en", "Other Sites");
             title.Add("de", "Andere Webseiten");
 
-            //TODO: implement following stuff
+            // TODO: implement following stuff
             //if (Series.Weblinks != null)
-            // {
-            //     content.AddRange(CreateNewChapter(title));
-            //     content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapter4Series());
-            // }
+            //{
+            //    Logger.Info($"Series.Weblinks is not null -> create");
+            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
+            //}
 
-            Logger.Trace($"CreateChapterWeblink() für Series '{Series.OriginalTitle}' beendet");
+            Logger.Trace($"CreateChapterWeblink(): chapter weblinks for Series '{Series.OriginalTitle}' created");
 
             return content;
         }

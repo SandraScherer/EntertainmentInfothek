@@ -41,7 +41,7 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         public DokuWikiFormatter()
         {
-            Logger.Trace($"DokuWikiFormatter() with ID = '{id}' created");
+            Logger.Trace($"DokuWikiFormatter() created");
         }
 
         // --- Methods ---
