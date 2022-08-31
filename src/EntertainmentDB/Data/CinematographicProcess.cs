@@ -87,12 +87,12 @@ namespace EntertainmentDB.Data
                            $"FROM CinematographicProcess " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -101,7 +101,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"CinematographicProcess.StatusID is not null -> retrieve");
+                    Logger.Debug($"CinematographicProcess.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();

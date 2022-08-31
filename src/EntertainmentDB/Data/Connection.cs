@@ -92,12 +92,12 @@ namespace EntertainmentDB.Data
                            $"FROM Connection " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data
                 Title = row["Title"].ToString();
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
-                    Logger.Info($"Connection.ConnectionID is not null -> retrieve");
+                    Logger.Debug($"Connection.ConnectionID is not null -> retrieve");
 
                     BaseConnection = new Connection(Reader.New());
                     BaseConnection.ID = row["ConnectionID"].ToString();
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Connection.StatusID is not null -> retrieve");
+                    Logger.Debug($"Connection.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();

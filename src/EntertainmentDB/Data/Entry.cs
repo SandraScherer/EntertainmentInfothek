@@ -109,11 +109,11 @@ namespace EntertainmentDB.Data
 
             if (!retrieveBasicInfoOnly)
             {
-                Logger.Info($"Retrieve additional information as requested");
+                Logger.Debug($"Retrieve additional information as requested");
                 RetrieveAdditionalInformation();
             }
 
-            Logger.Info($"Retrieved basic data records: '{noOfDataRecords}");
+            Logger.Debug($"Retrieved basic data records: '{noOfDataRecords}");
             return noOfDataRecords;
         }
 

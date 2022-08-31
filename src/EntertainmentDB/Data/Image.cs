@@ -108,12 +108,12 @@ namespace EntertainmentDB.Data
                            $"FROM Image " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -122,7 +122,7 @@ namespace EntertainmentDB.Data
                 Description = row["Description"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
-                    Logger.Info($"Image.TypeID is not null -> retrieve");
+                    Logger.Debug($"Image.TypeID is not null -> retrieve");
 
                     Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
@@ -130,7 +130,7 @@ namespace EntertainmentDB.Data
                 }
                 if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
                 {
-                    Logger.Info($"Image.CountryID is not null -> retrieve");
+                    Logger.Debug($"Image.CountryID is not null -> retrieve");
 
                     Country = new Country(Reader.New());
                     Country.ID = row["CountryID"].ToString();
@@ -139,7 +139,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Image.StatusID is not null -> retrieve");
+                    Logger.Debug($"Image.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -170,11 +170,11 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Sources.Count;
             if (Sources.Count == 0)
             {
-                Logger.Info($"Image.Sources.Count == 0 -> null");
+                Logger.Debug($"Image.Sources.Count == 0 -> null");
                 Sources = null;
             }
 
-            Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+            Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
             return noOfDataRecords;
         }
     }

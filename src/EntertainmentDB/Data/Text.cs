@@ -102,12 +102,12 @@ namespace EntertainmentDB.Data
                            $"FROM Text " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -115,7 +115,7 @@ namespace EntertainmentDB.Data
                 Content = row["Content"].ToString();
                 if (!String.IsNullOrEmpty(row["LanguageID"].ToString()))
                 {
-                    Logger.Info($"Text.LanguageID is not null -> retrieve");
+                    Logger.Debug($"Text.LanguageID is not null -> retrieve");
 
                     Language = new Language(Reader.New());
                     Language.ID = row["LanguageID"].ToString();
@@ -124,7 +124,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Text.StatusID is not null -> retrieve");
+                    Logger.Debug($"Text.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -155,7 +155,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Authors.Count;
             if (Authors.Count == 0)
             {
-                Logger.Info($"Text.Authors.Count == 0 -> null");
+                Logger.Debug($"Text.Authors.Count == 0 -> null");
                 Authors = null;
             }
 
@@ -163,11 +163,11 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Sources.Count;
             if (Sources.Count == 0)
             {
-                Logger.Info($"Text.Sources.Count == 0 -> null");
+                Logger.Debug($"Text.Sources.Count == 0 -> null");
                 Sources = null;
             }
 
-            Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+            Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
             return noOfDataRecords;
         }
     }

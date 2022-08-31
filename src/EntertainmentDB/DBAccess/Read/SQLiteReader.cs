@@ -76,14 +76,14 @@ namespace EntertainmentDB.DBAccess.Read
                 Logger.Error(ex, $"ConnectionString \"Database\" in default configuration does not exist");
                 throw;
             }
-            Logger.Info($"ConnectionString to database from configuration: '{connectionString}'");
+            Logger.Debug($"ConnectionString to database from configuration: '{connectionString}'");
 
             SQLiteConnection connection;
             try
             {
                 connection = new SQLiteConnection(connectionString);
                 connection.Open();
-                Logger.Info($"Connection opened");
+                Logger.Debug($"Connection opened");
             }
             catch (SQLiteException ex)
             {
@@ -101,7 +101,7 @@ namespace EntertainmentDB.DBAccess.Read
             {
                 Table.Clear();
                 dataAdapter.Fill(Table);
-                Logger.Info($"Database table filled with data from database");
+                Logger.Debug($"Database table filled with data from database");
             }
             catch (InvalidOperationException ex)
             {
@@ -112,10 +112,10 @@ namespace EntertainmentDB.DBAccess.Read
             {
                 dataAdapter.Dispose();
                 connection.Close();
-                Logger.Info($"Connection closed");
+                Logger.Debug($"Connection closed");
             }
 
-            Logger.Info($"Retrieved data records: '{Table.Rows.Count}'");
+            Logger.Debug($"Retrieved data records: '{Table.Rows.Count}'");
             return Table.Rows.Count;
         }
     }

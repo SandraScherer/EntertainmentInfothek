@@ -88,7 +88,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -125,7 +125,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateChapterContentInternal()
         {
             Logger.Trace($"CreateChapterContentInternal()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -154,13 +154,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLogo()
         {
             Logger.Trace($"CreateInfoBoxLogo()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Logo != null)
             {
-                Logger.Info($"Movie.Logo is not null -> create");
+                Logger.Debug($"Movie.Logo is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(new ImageContentCreator(Movie.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -179,13 +179,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxGenre()
         {
             Logger.Trace($"CreateInfoBoxGenre()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Genres != null)
             {
-                Logger.Info($"Movie.Genres is not null -> create");
+                Logger.Debug($"Movie.Genres is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -203,13 +203,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCertification()
         {
             Logger.Trace($"CreateInfoBoxCertification()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Certifications != null)
             {
-                Logger.Info($"Movie.Certifications is not null -> create");
+                Logger.Debug($"Movie.Certifications is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -227,13 +227,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCountry()
         {
             Logger.Trace($"CreateInfoBoxCountry()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Countries != null)
             {
-                Logger.Info($"Movie.Countries is not null -> create");
+                Logger.Debug($"Movie.Countries is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -251,13 +251,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLanguage()
         {
             Logger.Trace($"CreateInfoBoxLanguage()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Languages != null)
             {
-                Logger.Info($"Movie.Languages is not null -> create");
+                Logger.Debug($"Movie.Languages is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -275,14 +275,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxBudget()
         {
             Logger.Trace($"CreateInfoBoxBudget()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Movie.Budget))
             {
-                Logger.Info($"Budget: '{Movie.Budget}'");
+                Logger.Debug($"Budget: '{Movie.Budget}'");
                 data[0] = "Budget";
                 data[1] = $"{Movie.Budget}";
 
@@ -301,7 +301,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxWorldwideGross()
         {
             Logger.Trace($"CreateInfoBoxWorldwideGross()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -311,12 +311,12 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Info($"WorldwideGross: '{Movie.WorldwideGross}' (english)");
+                    Logger.Debug($"WorldwideGross: '{Movie.WorldwideGross}' (english)");
                     data[0] = "Worldwide Gross";
                 }
                 else //incl. case "de"
                 {
-                    Logger.Info($"WorldwideGross: '{Movie.WorldwideGross}' (german, ...)");
+                    Logger.Debug($"WorldwideGross: '{Movie.WorldwideGross}' (german, ...)");
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 
@@ -343,13 +343,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxRuntime()
         {
             Logger.Trace($"CreateInfoBoxRuntime()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Runtimes != null)
             {
-                Logger.Info($"Movie.Runtimes is not null -> create");
+                Logger.Debug($"Movie.Runtimes is not null -> create");
                 //TODO: implement following stuff
                 //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
@@ -366,13 +366,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxSoundMix()
         {
             Logger.Trace($"CreateInfoBoxSoundMix()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.SoundMixes != null)
             {
-                Logger.Info($"Movie.SoundMixes is not null -> create");
+                Logger.Debug($"Movie.SoundMixes is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -390,13 +390,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxColor()
         {
             Logger.Trace($"CreateInfoBoxColor()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Colors != null)
             {
-                Logger.Info($"Movie.Colors is not null -> create");
+                Logger.Debug($"Movie.Colors is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new ColorContentCreator(Movie.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -414,13 +414,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxAspectRatio()
         {
             Logger.Trace($"CreateInfoBoxAspectRatio()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.AspectRatios != null)
             {
-                Logger.Info($"Movie.AspectRatios is not null -> create");
+                Logger.Debug($"Movie.AspectRatios is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -438,13 +438,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCamera()
         {
             Logger.Trace($"CreateInfoBoxCamera()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Cameras != null)
             {
-                Logger.Info($"Movie.Cameras is not null -> create");
+                Logger.Debug($"Movie.Cameras is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -462,13 +462,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLaboratory()
         {
             Logger.Trace($"CreateInfoBoxLaboratory()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.Laboratories != null)
             {
-                Logger.Info($"Movie.Laboratories is not null -> create");
+                Logger.Debug($"Movie.Laboratories is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -486,13 +486,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxFilmLength()
         {
             Logger.Trace($"CreateInfoBoxFilmLength()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.FilmLengths != null)
             {
-                Logger.Info("Movie.FilmLengths is not null -> create");
+                Logger.Debug("Movie.FilmLengths is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -510,13 +510,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxNegativeFormat()
         {
             Logger.Trace($"CreateInfoBoxNegativeFormat()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.NegativeFormats != null)
             {
-                Logger.Info($"Movie.NegativeFormats is not null -> create");
+                Logger.Debug($"Movie.NegativeFormats is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -534,13 +534,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCinematographicProcess()
         {
             Logger.Trace($"CreateInfoBoxCinematographicProcess()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.CinematographicProcesses != null)
             {
-                Logger.Info($"Movie.CinematicProcesses is not null -> create");
+                Logger.Debug($"Movie.CinematicProcesses is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -558,13 +558,13 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
         {
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             if (Movie.PrintedFilmFormats != null)
             {
-                Logger.Info($"Movie.PrintedFilmFormats is not null -> create");
+                Logger.Debug($"Movie.PrintedFilmFormats is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
@@ -582,7 +582,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterPoster()
         {
             Logger.Trace($"CreateChapterPoster()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -591,7 +591,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Posters != null)
             {
-                Logger.Info($"Movie.Posters is not null -> create");
+                Logger.Debug($"Movie.Posters is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -610,7 +610,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCover()
         {
             Logger.Trace($"CreateChapterCover()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -619,7 +619,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Covers != null)
             {
-                Logger.Info($"Movie.Covers is not null -> create");
+                Logger.Debug($"Movie.Covers is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -638,7 +638,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterDescription()
         {
             Logger.Trace($"CreateChapterDescription()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -647,7 +647,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Descriptions != null)
             {
-                Logger.Info($"Movie.Descriptions is not null -> create");
+                Logger.Debug($"Movie.Descriptions is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -666,7 +666,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterReview()
         {
             Logger.Trace($"CreateChapterReview()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -675,7 +675,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Reviews != null)
             {
-                Logger.Info($"Movie.Reviews is not null -> create");
+                Logger.Debug($"Movie.Reviews is not null -> create");
 
                 //TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -694,7 +694,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterImage()
         {
             Logger.Trace($"CreateChapterImage()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -703,7 +703,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Images != null)
             {
-                Logger.Info($"Movie.Images is not null -> create");
+                Logger.Debug($"Movie.Images is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -722,7 +722,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCastAndCrew()
         {
             Logger.Trace($"CreateChapterCastAndCrew()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -736,7 +736,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Movie.Directors != null)
             //{
-            //    Logger.Info($"Movie.Directors is not null -> create");
+            //    Logger.Debug($"Movie.Directors is not null -> create");
             //    titleSection.Add("en", "Director");
             //    titleSection.Add("de", "Regie");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -744,7 +744,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.Writers != null)
             //{
-            //    Logger.Info($"Movie.Writers is not null -> create");
+            //    Logger.Debug($"Movie.Writers is not null -> create");
             //    titleSection.Add("en", "Writers");
             //    titleSection.Add("de", "Drehbuch");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -764,7 +764,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCompany()
         {
             Logger.Trace($"CreateChapterCompany()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -778,7 +778,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Movie.ProductionCompanies != null)
             //{
-            //    Logger.Info($"Movie.ProductionCompanies is not null -> create");
+            //    Logger.Debug($"Movie.ProductionCompanies is not null -> create");
             //    titleSection.Add("en", "Production Company");
             //    titleSection.Add("de", "Produktionsfirmen");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -786,7 +786,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.Distributors != null)
             //{
-            //    Logger.Info($"Movie.Distributors is not null -> create");
+            //    Logger.Debug($"Movie.Distributors is not null -> create");
             //    titleSection.Add("en", "Distributors");
             //    titleSection.Add("de", "Vertrieb");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -806,7 +806,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterFilmingAndProduction()
         {
             Logger.Trace($"CreateChapterFilmingAndProduction()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -820,7 +820,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Movie.FilmingLocations != null)
             //{
-            //    Logger.Info($"Movie.FilmingLocations is not null -> create");
+            //    Logger.Debug($"Movie.FilmingLocations is not null -> create");
             //    titleSection.Add("en", "Filming Locations");
             //    titleSection.Add("de", "Drehorte");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -828,7 +828,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.FilmingDates != null)
             //{
-            //    Logger.Info($"Movie.FilmingDates is not null -> create");
+            //    Logger.Debug($"Movie.FilmingDates is not null -> create");
             //    titleSection.Add("en", "Filming Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -836,7 +836,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Movie.ProductionDates != null)
             //{
-            //    Logger.Info($"Movie.ProductionDates is not null -> create");
+            //    Logger.Debug($"Movie.ProductionDates is not null -> create");
             //    titleSection.Add("en", "Production Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -855,7 +855,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterAward()
         {
             Logger.Trace($"CreateChapterAward()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -864,7 +864,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Awards != null)
             {
-                Logger.Info($"Movie.Awards is not null -> create");
+                Logger.Debug($"Movie.Awards is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));
@@ -883,7 +883,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterWeblink()
         {
             Logger.Trace($"CreateChapterWeblink()");
-            Logger.Info($"Movie is '{Movie.OriginalTitle}'");
+            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -892,7 +892,7 @@ namespace WikiPageCreator.Export.Create
 
             if (Movie.Weblinks != null)
             {
-                Logger.Info($"Movie.Weblinks is not null -> create");
+                Logger.Debug($"Movie.Weblinks is not null -> create");
 
                 // TODO: implement following stuff
                 //content.AddRange(CreateNewChapter(title));

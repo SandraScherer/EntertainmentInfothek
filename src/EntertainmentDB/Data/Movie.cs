@@ -408,12 +408,12 @@ namespace EntertainmentDB.Data
                            $"FROM Movie " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -423,7 +423,7 @@ namespace EntertainmentDB.Data
                 GermanTitle = row["GermanTitle"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
-                    Logger.Info($"Movie.TypeID is not null -> retrieve");
+                    Logger.Debug($"Movie.TypeID is not null -> retrieve");
 
                     Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
@@ -432,7 +432,7 @@ namespace EntertainmentDB.Data
                 ReleaseDate = row["ReleaseDate"].ToString();
                 if (!String.IsNullOrEmpty(row["LogoID"].ToString()))
                 {
-                    Logger.Info($"Movie.LogoID is not null -> retrieve");
+                    Logger.Debug($"Movie.LogoID is not null -> retrieve");
 
                     Logo = new Image(Reader.New());
                     Logo.ID = row["LogoID"].ToString();
@@ -443,7 +443,7 @@ namespace EntertainmentDB.Data
                 WorldwideGrossDate = row["WorldwideGrossDate"].ToString();
                 if (!String.IsNullOrEmpty(row["CastStatusID"].ToString()))
                 {
-                    Logger.Info($"Movie.CastStatusID is not null -> retrieve");
+                    Logger.Debug($"Movie.CastStatusID is not null -> retrieve");
 
                     CastStatus = new Status(Reader.New());
                     CastStatus.ID = row["CastStatusID"].ToString();
@@ -451,7 +451,7 @@ namespace EntertainmentDB.Data
                 }
                 if (!String.IsNullOrEmpty(row["CrewStatusID"].ToString()))
                 {
-                    Logger.Info($"Movie.CrewStatusID is not null -> retrieve");
+                    Logger.Debug($"Movie.CrewStatusID is not null -> retrieve");
 
                     CrewStatus = new Status(Reader.New());
                     CrewStatus.ID = row["CrewStatusID"].ToString();
@@ -459,7 +459,7 @@ namespace EntertainmentDB.Data
                 }
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
-                    Logger.Info($"Movie.ConnectionID is not null -> retrieve");
+                    Logger.Debug($"Movie.ConnectionID is not null -> retrieve");
 
                     Connection = new Connection(Reader.New());
                     Connection.ID = row["ConnectionID"].ToString();
@@ -468,7 +468,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Movie.StatusID is not null -> retrieve");
+                    Logger.Debug($"Movie.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -500,7 +500,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Genres.Count;
             if (Genres.Count == 0)
             {
-                Logger.Info($"Movie.Genres.Count == 0 -> null");
+                Logger.Debug($"Movie.Genres.Count == 0 -> null");
                 Genres = null;
             }
 
@@ -508,7 +508,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Certifications.Count;
             if (Certifications.Count == 0)
             {
-                Logger.Info($"Movie.Certifications.Count == 0 -> null");
+                Logger.Debug($"Movie.Certifications.Count == 0 -> null");
                 Certifications = null;
             }
 
@@ -516,7 +516,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Countries.Count;
             if (Countries.Count == 0)
             {
-                Logger.Info($"Movie.Countries.Count == 0 -> null");
+                Logger.Debug($"Movie.Countries.Count == 0 -> null");
                 Countries = null;
             }
 
@@ -524,7 +524,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Languages.Count;
             if (Languages.Count == 0)
             {
-                Logger.Info($"Movie.Languages.Count == 0 -> null");
+                Logger.Debug($"Movie.Languages.Count == 0 -> null");
                 Languages = null;
             }
 
@@ -532,7 +532,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Runtimes.Count;
             if (Runtimes.Count == 0)
             {
-                Logger.Info($"Movie.Runtimes.Count == 0 -> null");
+                Logger.Debug($"Movie.Runtimes.Count == 0 -> null");
                 Runtimes = null;
             }
 
@@ -540,7 +540,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += SoundMixes.Count;
             if (SoundMixes.Count == 0)
             {
-                Logger.Info($"Movie.SoundMixes.Count == 0 -> null");
+                Logger.Debug($"Movie.SoundMixes.Count == 0 -> null");
                 SoundMixes = null;
             }
 
@@ -548,7 +548,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Colors.Count;
             if (Colors.Count == 0)
             {
-                Logger.Info($"Movie.Colors.Count == 0 -> null");
+                Logger.Debug($"Movie.Colors.Count == 0 -> null");
                 Colors = null;
             }
 
@@ -556,7 +556,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += AspectRatios.Count;
             if (AspectRatios.Count == 0)
             {
-                Logger.Info($"Movie.AspectRatios.Count == 0 -> null");
+                Logger.Debug($"Movie.AspectRatios.Count == 0 -> null");
                 AspectRatios = null;
             }
 
@@ -564,7 +564,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Cameras.Count;
             if (Cameras.Count == 0)
             {
-                Logger.Info($"Movie.Cameras.Count == 0 -> null");
+                Logger.Debug($"Movie.Cameras.Count == 0 -> null");
                 Cameras = null;
             }
 
@@ -572,7 +572,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Laboratories.Count;
             if (Laboratories.Count == 0)
             {
-                Logger.Info($"Movie.Laboratories.Count == 0 -> null");
+                Logger.Debug($"Movie.Laboratories.Count == 0 -> null");
                 Laboratories = null;
             }
 
@@ -580,7 +580,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += FilmLengths.Count;
             if (FilmLengths.Count == 0)
             {
-                Logger.Info($"Movie.FilmLengths.Count == 0 -> null");
+                Logger.Debug($"Movie.FilmLengths.Count == 0 -> null");
                 FilmLengths = null;
             }
 
@@ -588,7 +588,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += NegativeFormats.Count;
             if (NegativeFormats.Count == 0)
             {
-                Logger.Info($"Movie.NegativeFormats.Count == 0 -> null");
+                Logger.Debug($"Movie.NegativeFormats.Count == 0 -> null");
                 NegativeFormats = null;
             }
 
@@ -596,7 +596,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += CinematographicProcesses.Count;
             if (CinematographicProcesses.Count == 0)
             {
-                Logger.Info($"Movie.CinematographicProcesses.Count == 0 -> null");
+                Logger.Debug($"Movie.CinematographicProcesses.Count == 0 -> null");
                 CinematographicProcesses = null;
             }
 
@@ -604,7 +604,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += PrintedFilmFormats.Count;
             if (PrintedFilmFormats.Count == 0)
             {
-                Logger.Info($"Movie.PrintedFilmFormats.Count == 0 -> null");
+                Logger.Debug($"Movie.PrintedFilmFormats.Count == 0 -> null");
                 PrintedFilmFormats = null;
             }
 
@@ -613,7 +613,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Directors.Count;
             if (Directors.Count == 0)
             {
-                Logger.Info($"Movie.Directors.Count == 0 -> null");
+                Logger.Debug($"Movie.Directors.Count == 0 -> null");
                 Directors = null;
             }
 
@@ -621,7 +621,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Writers.Count;
             if (Writers.Count == 0)
             {
-                Logger.Info($"Movie.Writers.Count == 0 -> null");
+                Logger.Debug($"Movie.Writers.Count == 0 -> null");
                 Writers = null;
             }
 
@@ -629,7 +629,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Cast.Count;
             if (Cast.Count == 0)
             {
-                Logger.Info($"Movie.Cast.Count == 0 -> null");
+                Logger.Debug($"Movie.Cast.Count == 0 -> null");
                 Cast = null;
             }
 
@@ -637,7 +637,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Producers.Count;
             if (Producers.Count == 0)
             {
-                Logger.Info($"Movie.Producers.Count == 0 -> null");
+                Logger.Debug($"Movie.Producers.Count == 0 -> null");
                 Producers = null;
             }
 
@@ -645,7 +645,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Music.Count;
             if (Music.Count == 0)
             {
-                Logger.Info($"Movie.Music.Count == 0 -> null");
+                Logger.Debug($"Movie.Music.Count == 0 -> null");
                 Music = null;
             }
 
@@ -653,7 +653,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Cinematography.Count;
             if (Cinematography.Count == 0)
             {
-                Logger.Info($"Movie.Cinematography.Count == 0 -> null");
+                Logger.Debug($"Movie.Cinematography.Count == 0 -> null");
                 Cinematography = null;
             }
 
@@ -661,7 +661,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += FilmEditing.Count;
             if (FilmEditing.Count == 0)
             {
-                Logger.Info($"Movie.FilmEditing.Count == 0 -> null");
+                Logger.Debug($"Movie.FilmEditing.Count == 0 -> null");
                 FilmEditing = null;
             }
 
@@ -669,7 +669,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Casting.Count;
             if (Casting.Count == 0)
             {
-                Logger.Info($"Movie.Casting.Count == 0 -> null");
+                Logger.Debug($"Movie.Casting.Count == 0 -> null");
                 Casting = null;
             }
 
@@ -677,7 +677,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ProductionDesign.Count;
             if (ProductionDesign.Count == 0)
             {
-                Logger.Info($"Movie.ProductionDesign.Count == 0 -> null");
+                Logger.Debug($"Movie.ProductionDesign.Count == 0 -> null");
                 ProductionDesign = null;
             }
 
@@ -685,7 +685,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ArtDirection.Count;
             if (ArtDirection.Count == 0)
             {
-                Logger.Info($"Movie.ArtDirection.Count == 0 -> null");
+                Logger.Debug($"Movie.ArtDirection.Count == 0 -> null");
                 ArtDirection = null;
             }
 
@@ -693,7 +693,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += SetDecoration.Count;
             if (SetDecoration.Count == 0)
             {
-                Logger.Info($"Movie.SetDecoration.Count == 0 -> null");
+                Logger.Debug($"Movie.SetDecoration.Count == 0 -> null");
                 SetDecoration = null;
             }
 
@@ -701,7 +701,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += CostumeDesign.Count;
             if (CostumeDesign.Count == 0)
             {
-                Logger.Info($"Movie.CostumeDesign.Count == 0 -> null");
+                Logger.Debug($"Movie.CostumeDesign.Count == 0 -> null");
                 CostumeDesign = null;
             }
 
@@ -709,7 +709,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += MakeupDepartment.Count;
             if (MakeupDepartment.Count == 0)
             {
-                Logger.Info($"Movie.MakeupDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.MakeupDepartment.Count == 0 -> null");
                 MakeupDepartment = null;
             }
 
@@ -717,7 +717,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ProductionManagement.Count;
             if (ProductionManagement.Count == 0)
             {
-                Logger.Info($"Movie.ProductionManagement.Count == 0 -> null");
+                Logger.Debug($"Movie.ProductionManagement.Count == 0 -> null");
                 ProductionManagement = null;
             }
 
@@ -725,7 +725,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += AssistantDirectors.Count;
             if (AssistantDirectors.Count == 0)
             {
-                Logger.Info($"Movie.AssistantDirectors.Count == 0 -> null");
+                Logger.Debug($"Movie.AssistantDirectors.Count == 0 -> null");
                 AssistantDirectors = null;
             }
 
@@ -733,7 +733,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ArtDepartment.Count;
             if (ArtDepartment.Count == 0)
             {
-                Logger.Info($"Movie.ArtDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.ArtDepartment.Count == 0 -> null");
                 ArtDepartment = null;
             }
 
@@ -741,7 +741,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += SoundDepartment.Count;
             if (SoundDepartment.Count == 0)
             {
-                Logger.Info($"Movie.SoundDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.SoundDepartment.Count == 0 -> null");
                 SoundDepartment = null;
             }
 
@@ -749,7 +749,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += SpecialEffects.Count;
             if (SpecialEffects.Count == 0)
             {
-                Logger.Info($"Movie.SpecialEffects.Count == 0 -> null");
+                Logger.Debug($"Movie.SpecialEffects.Count == 0 -> null");
                 SpecialEffects = null;
             }
 
@@ -757,7 +757,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += VisualEffects.Count;
             if (VisualEffects.Count == 0)
             {
-                Logger.Info($"Movie.VisualEffects.Count == 0 -> null");
+                Logger.Debug($"Movie.VisualEffects.Count == 0 -> null");
                 VisualEffects = null;
             }
 
@@ -765,7 +765,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Stunts.Count;
             if (Stunts.Count == 0)
             {
-                Logger.Info($"Movie.Stunts.Count == 0 -> null");
+                Logger.Debug($"Movie.Stunts.Count == 0 -> null");
                 Stunts = null;
             }
 
@@ -773,7 +773,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ElectricalDepartment.Count;
             if (ElectricalDepartment.Count == 0)
             {
-                Logger.Info($"Movie.ElectricalDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.ElectricalDepartment.Count == 0 -> null");
                 ElectricalDepartment = null;
             }
 
@@ -781,7 +781,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += AnimationDepartment.Count;
             if (AnimationDepartment.Count == 0)
             {
-                Logger.Info($"Movie.AnimationDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.AnimationDepartment.Count == 0 -> null");
                 AnimationDepartment = null;
             }
 
@@ -789,7 +789,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += CastingDepartment.Count;
             if (CastingDepartment.Count == 0)
             {
-                Logger.Info($"Movie.CastingDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.CastingDepartment.Count == 0 -> null");
                 CastingDepartment = null;
             }
 
@@ -797,7 +797,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += CostumeDepartment.Count;
             if (CostumeDepartment.Count == 0)
             {
-                Logger.Info($"Movie.CostumeDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.CostumeDepartment.Count == 0 -> null");
                 CostumeDepartment = null;
             }
 
@@ -805,7 +805,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += EditorialDepartment.Count;
             if (EditorialDepartment.Count == 0)
             {
-                Logger.Info($"Movie.EditorialDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.EditorialDepartment.Count == 0 -> null");
                 EditorialDepartment = null;
             }
 
@@ -813,7 +813,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += LocationManagement.Count;
             if (LocationManagement.Count == 0)
             {
-                Logger.Info($"Movie.LocationManagement.Count == 0 -> null");
+                Logger.Debug($"Movie.LocationManagement.Count == 0 -> null");
                 LocationManagement = null;
             }
 
@@ -821,7 +821,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += MusicDepartment.Count;
             if (MusicDepartment.Count == 0)
             {
-                Logger.Info($"Movie.MusicDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.MusicDepartment.Count == 0 -> null");
                 MusicDepartment = null;
             }
 
@@ -829,7 +829,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ContinuityDepartment.Count;
             if (ContinuityDepartment.Count == 0)
             {
-                Logger.Info($"Movie.ContinuityDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.ContinuityDepartment.Count == 0 -> null");
                 ContinuityDepartment = null;
             }
 
@@ -837,7 +837,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += TransportationDepartment.Count;
             if (TransportationDepartment.Count == 0)
             {
-                Logger.Info($"Movie.TransportationDepartment.Count == 0 -> null");
+                Logger.Debug($"Movie.TransportationDepartment.Count == 0 -> null");
                 TransportationDepartment = null;
             }
 
@@ -845,7 +845,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += OtherCrew.Count;
             if (OtherCrew.Count == 0)
             {
-                Logger.Info($"Movie.OtherCrew.Count == 0 -> null");
+                Logger.Debug($"Movie.OtherCrew.Count == 0 -> null");
                 OtherCrew = null;
             }
 
@@ -853,7 +853,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Thanks.Count;
             if (Thanks.Count == 0)
             {
-                Logger.Info($"Movie.Thanks.Count == 0 -> null");
+                Logger.Debug($"Movie.Thanks.Count == 0 -> null");
                 Thanks = null;
             }
 
@@ -862,7 +862,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ProductionCompanies.Count;
             if (ProductionCompanies.Count == 0)
             {
-                Logger.Info($"Movie.ProductionCompanies.Count == 0 -> null");
+                Logger.Debug($"Movie.ProductionCompanies.Count == 0 -> null");
                 ProductionCompanies = null;
             }
 
@@ -870,7 +870,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Distributors.Count;
             if (Distributors.Count == 0)
             {
-                Logger.Info($"Movie.Distributors.Count == 0 -> null");
+                Logger.Debug($"Movie.Distributors.Count == 0 -> null");
                 Distributors = null;
             }
 
@@ -878,7 +878,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += SpecialEffectsCompanies.Count;
             if (SpecialEffectsCompanies.Count == 0)
             {
-                Logger.Info($"Movie.SpecialEffectsCompanies.Count == 0 -> null");
+                Logger.Debug($"Movie.SpecialEffectsCompanies.Count == 0 -> null");
                 SpecialEffectsCompanies = null;
             }
 
@@ -886,7 +886,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += OtherCompanies.Count;
             if (OtherCompanies.Count == 0)
             {
-                Logger.Info($"Movie.OtherCompanies.Count == 0 -> null");
+                Logger.Debug($"Movie.OtherCompanies.Count == 0 -> null");
                 OtherCompanies = null;
             }
 
@@ -895,7 +895,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += FilmingLocations.Count;
             if (FilmingLocations.Count == 0)
             {
-                Logger.Info($"Movie.FilmingLocations.Count == 0 -> null");
+                Logger.Debug($"Movie.FilmingLocations.Count == 0 -> null");
                 FilmingLocations = null;
             }
 
@@ -903,7 +903,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += FilmingDates.Count;
             if (FilmingDates.Count == 0)
             {
-                Logger.Info($"Movie.FilmingDates.Count == 0 -> null");
+                Logger.Debug($"Movie.FilmingDates.Count == 0 -> null");
                 FilmingDates = null;
             }
 
@@ -911,7 +911,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += ProductionDates.Count;
             if (ProductionDates.Count == 0)
             {
-                Logger.Info($"Movie.ProductionDates.Count == 0 -> null");
+                Logger.Debug($"Movie.ProductionDates.Count == 0 -> null");
                 ProductionDates = null;
             }
 
@@ -920,7 +920,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Posters.Count;
             if (Posters.Count == 0)
             {
-                Logger.Info($"Movie.Posters.Count == 0 -> null");
+                Logger.Debug($"Movie.Posters.Count == 0 -> null");
                 Posters = null;
             }
 
@@ -928,7 +928,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Covers.Count;
             if (Covers.Count == 0)
             {
-                Logger.Info($"Movie.Covers.Count == 0 -> null");
+                Logger.Debug($"Movie.Covers.Count == 0 -> null");
                 Covers = null;
             }
 
@@ -936,7 +936,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Images.Count;
             if (Images.Count == 0)
             {
-                Logger.Info($"Movie.Images.Count == 0 -> null");
+                Logger.Debug($"Movie.Images.Count == 0 -> null");
                 Images = null;
             }
 
@@ -945,7 +945,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Descriptions.Count;
             if (Descriptions.Count == 0)
             {
-                Logger.Info($"Movie.Descriptions.Count == 0 -> null");
+                Logger.Debug($"Movie.Descriptions.Count == 0 -> null");
                 Descriptions = null;
             }
 
@@ -953,7 +953,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Reviews.Count;
             if (Reviews.Count == 0)
             {
-                Logger.Info($"Movie.Reviews.Count == 0 -> null");
+                Logger.Debug($"Movie.Reviews.Count == 0 -> null");
                 Reviews = null;
             }
 
@@ -962,7 +962,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Awards.Count;
             if (Awards.Count == 0)
             {
-                Logger.Info($"Movie.Awards.Count == 0 -> null");
+                Logger.Debug($"Movie.Awards.Count == 0 -> null");
                 Awards = null;
             }
 
@@ -970,7 +970,7 @@ namespace EntertainmentDB.Data
             noOfDataRecords += Weblinks.Count;
             if (Weblinks.Count == 0)
             {
-                Logger.Info($"Movie.Weblinks.Count == 0 -> null");
+                Logger.Debug($"Movie.Weblinks.Count == 0 -> null");
                 Weblinks = null;
             }
 
@@ -1012,14 +1012,14 @@ namespace EntertainmentDB.Data
                            $"WHERE StatusID='{status}'" +
                            $"ORDER BY {order}";
 
-            Logger.Info($"Retrieve from DB: {reader.Query}");
+            Logger.Debug($"Retrieve from DB: {reader.Query}");
 
             List<Movie> list = new List<Movie>();
 
             int noOfDataRecords = reader.Retrieve(true);
             if (noOfDataRecords > 0)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 list.Capacity = reader.Table.Rows.Count;
 

@@ -117,7 +117,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreatePageContentInternal()
         {
             Logger.Trace($"CreatePageContentInternal()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -166,7 +166,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxBegin()
         {
             Logger.Trace($"CreateInfoBoxBegin()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -209,7 +209,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxEnd()
         {
             Logger.Trace($"CreateInfoBoxEnd()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
@@ -231,7 +231,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateNewChapter(Dictionary<string, string> title)
         {
             Logger.Trace($"CreateNewChapter()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             if (title == null)
             {
@@ -243,12 +243,12 @@ namespace WikiPageCreator.Export.Create
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Info($"Chapter: '{title["en"]}' (english)");
+                Logger.Debug($"Chapter: '{title["en"]}' (english)");
                 content.Add(Formatter.AsHeading2(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Info($"Chapter: '{title["de"]}' (german, ...)");
+                Logger.Debug($"Chapter: '{title["de"]}' (german, ...)");
                 content.Add(Formatter.AsHeading2(title["de"]));
             }
             content.Add($"");
@@ -290,7 +290,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateNewSection(Dictionary<string, string> title)
         {
             Logger.Trace($"CreateNewSection()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             if (title == null)
             {
@@ -302,12 +302,12 @@ namespace WikiPageCreator.Export.Create
 
             if (TargetLanguageCode.Equals("en"))
             {
-                Logger.Info($"Section: '{title["en"]}' (english)");
+                Logger.Debug($"Section: '{title["en"]}' (english)");
                 content.Add(Formatter.AsHeading3(title["en"]));
             }
             else // incl. case "de"
             {
-                Logger.Info($"Section: '{title["de"]}' (german, ...)");
+                Logger.Debug($"Section: '{title["de"]}' (german, ...)");
                 content.Add(Formatter.AsHeading3(title["de"]));
             }
 
@@ -345,7 +345,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreatePageFooter()
         {
             Logger.Trace($"CreatePageFooter()");
-            Logger.Info($"Entry is '{Entry.ID}'");
+            Logger.Debug($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 

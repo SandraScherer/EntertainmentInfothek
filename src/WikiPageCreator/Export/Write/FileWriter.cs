@@ -70,21 +70,21 @@ namespace WikiPageCreator.Export.Write
             // if directory does not exist, create it
             if (!Directory.Exists(directory))
             {
-                Logger.Info($"Directory '{directory}' does not exist");
+                Logger.Debug($"Directory '{directory}' does not exist");
 
                 try
                 {
                     Directory.CreateDirectory(directory);
-                    Logger.Info($"Directory created");
+                    Logger.Debug($"Directory created");
                 }
                 catch (UnauthorizedAccessException ex)
                 {
-                    Logger.Error(ex, $"???");
+                    Logger.Fatal(ex, $"???");
                     throw ;
                 }
                 catch (PathTooLongException ex)
                 {
-                    Logger.Error(ex, $"Path '{directory}' is too long");
+                    Logger.Fatal(ex, $"Path '{directory}' is too long");
                     throw;
                 }
             }
@@ -96,7 +96,7 @@ namespace WikiPageCreator.Export.Write
             }
             filename = directory + filename;
 
-            Logger.Info($"Path is '{filename}'");
+            Logger.Debug($"Path is '{filename}'");
 
             StreamWriter writer;
 
@@ -107,12 +107,12 @@ namespace WikiPageCreator.Export.Write
             }
             catch (UnauthorizedAccessException ex)
             {
-                Logger.Error(ex, $"???");
+                Logger.Fatal(ex, $"???");
                 throw;
             }
             catch (PathTooLongException ex)
             {
-                Logger.Error(ex, $"Path '{filename}' is too long");
+                Logger.Fatal(ex, $"Path '{filename}' is too long");
                 throw;
             }
 

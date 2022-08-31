@@ -133,12 +133,12 @@ namespace EntertainmentDB.Data
                            $"FROM Series " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -148,7 +148,7 @@ namespace EntertainmentDB.Data
                 GermanTitle = row["GermanTitle"].ToString();
                 if (!String.IsNullOrEmpty(row["TypeID"].ToString()))
                 {
-                    Logger.Info($"Series.TypeID is not null -> retrieve");
+                    Logger.Debug($"Series.TypeID is not null -> retrieve");
 
                     Type = new Type(Reader.New());
                     Type.ID = row["TypeID"].ToString();
@@ -163,7 +163,7 @@ namespace EntertainmentDB.Data
                 WorldwideGrossDate = row["WorldwideGrossDate"].ToString();
                 if (!String.IsNullOrEmpty(row["CastStatusID"].ToString()))
                 {
-                    Logger.Info($"Series.CastStatusID is not null -> retrieve");
+                    Logger.Debug($"Series.CastStatusID is not null -> retrieve");
 
                     CastStatus = new Status(Reader.New());
                     CastStatus.ID = row["CastStatusID"].ToString();
@@ -171,7 +171,7 @@ namespace EntertainmentDB.Data
                 }
                 if (!String.IsNullOrEmpty(row["CrewStatusID"].ToString()))
                 {
-                    Logger.Info($"Series.CrewStatusID is not null -> retrieve");
+                    Logger.Debug($"Series.CrewStatusID is not null -> retrieve");
 
                     CrewStatus = new Status(Reader.New());
                     CrewStatus.ID = row["CrewStatusID"].ToString();
@@ -179,7 +179,7 @@ namespace EntertainmentDB.Data
                 }
                 if (!String.IsNullOrEmpty(row["ConnectionID"].ToString()))
                 {
-                    Logger.Info($"Series.ConnectionID is not null -> retrieve");
+                    Logger.Debug($"Series.ConnectionID is not null -> retrieve");
 
                     Connection = new Connection(Reader.New());
                     Connection.ID = row["ConnectionID"].ToString();
@@ -188,7 +188,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Series.StatusID is not null -> retrieve");
+                    Logger.Debug($"Series.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -220,7 +220,7 @@ namespace EntertainmentDB.Data
                 noOfDataRecords += Genres.Count;
                 if (Genres.Count == 0)
                 {
-                    Logger.Info($"Series.Genres.Count == 0 -> null");
+                    Logger.Debug($"Series.Genres.Count == 0 -> null");
                     Genres = null;
                 }
 
@@ -442,14 +442,14 @@ namespace EntertainmentDB.Data
                            $"WHERE StatusID='{status}'" +
                            $"ORDER BY {order}";
 
-            Logger.Info($"Retrieve from DB: {reader.Query}");
+            Logger.Debug($"Retrieve from DB: {reader.Query}");
 
             List<Series> list = new List<Series>();
 
             int noOfDataRecords = reader.Retrieve(true);
             if (noOfDataRecords > 0)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 list.Capacity = reader.Table.Rows.Count;
 

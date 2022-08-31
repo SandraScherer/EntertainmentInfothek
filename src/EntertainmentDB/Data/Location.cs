@@ -92,12 +92,12 @@ namespace EntertainmentDB.Data
                            $"FROM Location " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data
                 Name = row["Location"].ToString();
                 if (!String.IsNullOrEmpty(row["CountryID"].ToString()))
                 {
-                    Logger.Info($"Location.CountryID is not null -> retrieve");
+                    Logger.Debug($"Location.CountryID is not null -> retrieve");
 
                     Country = new Country(Reader.New());
                     Country.ID = row["CountryID"].ToString();
@@ -114,7 +114,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Location.StatusID is not null -> retrieve");
+                    Logger.Debug($"Location.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();

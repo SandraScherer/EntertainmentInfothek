@@ -89,7 +89,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -130,7 +130,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateChapterContentInternal()
         {
             Logger.Trace($"CreateChapterContentInternal()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
@@ -159,14 +159,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLogo()
         {
             Logger.Trace($"CreateInfoBoxLogo()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Logo != null)
             //{
-            //    Logger.Info($"Series.Logo is not null -> create");
+            //    Logger.Debug($"Series.Logo is not null -> create");
             //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -182,7 +182,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxReleaseDateFirstEpisode()
         {
             Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -190,17 +190,17 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Series.ReleaseDateFirstEpisode))
             {
-                Logger.Info($"Series.ReleaseDateFirstEpisode is not null");
+                Logger.Debug($"Series.ReleaseDateFirstEpisode is not null");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Info($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (english)");
+                    Logger.Debug($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (english)");
                     data[0] = "Release Date (First Episode)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Info($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (german, ...)");
+                    Logger.Debug($"ReleaseDate (First Episode): '{Series.ReleaseDateFirstEpisode}' (german, ...)");
                     data[0] = "Erstausstrahlung (Erste Folge)";
                     data[1] = Formatter.AsInternalLink(path, Series.ReleaseDateFirstEpisode, Series.ReleaseDateFirstEpisode);
                 }
@@ -219,7 +219,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxReleaseDateLastEpisode()
         {
             Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -227,7 +227,7 @@ namespace WikiPageCreator.Export.Create
 
             if (!String.IsNullOrEmpty(Series.ReleaseDateLastEpisode))
             {
-                Logger.Info($"Series.ReleaseDateLastEpisode is not null");
+                Logger.Debug($"Series.ReleaseDateLastEpisode is not null");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
@@ -257,14 +257,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxGenre()
         {
             Logger.Trace($"CreateInfoBoxGenre()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Genres != null)
             //{
-            //    Logger.Info($"Series.Genres is not null -> create");
+            //    Logger.Debug($"Series.Genres is not null -> create");
             //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -280,14 +280,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCertification()
         {
             Logger.Trace($"CreateInfoBoxCertification()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Certifications != null)
             //{
-            //    Logger.Info($"Series.Certifications is not null -> create");
+            //    Logger.Debug($"Series.Certifications is not null -> create");
             //    content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -303,14 +303,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCountry()
         {
             Logger.Trace($"CreateInfoBoxCountry()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Countries != null)
             //{
-            //    Logger.Info($"Series.Countries is not null -> create");
+            //    Logger.Debug($"Series.Countries is not null -> create");
             //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -326,14 +326,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLanguage()
         {
             Logger.Trace($"CreateInfoBoxLanguage()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Languages != null)
             //{
-            //    Logger.Info($"Series.Languages is not null -> create");
+            //    Logger.Debug($"Series.Languages is not null -> create");
             //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -349,14 +349,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxNoOfSeasons()
         {
             Logger.Trace($"CreateInfoBoxNoOfSeasons()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Series.NoOfSeasons))
             {
-                Logger.Info($"Series.NoOfSeasons is not null or empty");
+                Logger.Debug($"Series.NoOfSeasons is not null or empty");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
@@ -385,14 +385,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxNoOfEpisodes()
         {
             Logger.Trace($"CreateInfoBoxNoOfEpisodes()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
 
             if (!String.IsNullOrEmpty(Series.NoOfEpisodes))
             {
-                Logger.Info($"Series.NoOfEpisodes is not null or empty");
+                Logger.Debug($"Series.NoOfEpisodes is not null or empty");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
@@ -421,7 +421,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxBudget()
         {
             Logger.Trace($"CreateInfoBoxBudget()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -446,7 +446,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxWorldwideGross()
         {
             Logger.Trace($"CreateInfoBoxWorldwideGross()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -456,12 +456,12 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Info($"WorldwideGross: '{Series.WorldwideGross}' (english)");
+                    Logger.Debug($"WorldwideGross: '{Series.WorldwideGross}' (english)");
                     data[0] = "Worldwide Gross";
                 }
                 else //incl. case "de"
                 {
-                    Logger.Info($"WorldwideGross: '{Series.WorldwideGross}' (german, ...)");
+                    Logger.Debug($"WorldwideGross: '{Series.WorldwideGross}' (german, ...)");
                     data[0] = "Einspielergebnis (weltweit)";
                 }
 
@@ -487,14 +487,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxRuntime()
         {
             Logger.Trace($"CreateInfoBoxRuntime()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Runtimes != null)
             //{
-            //    Logger.Info($"Series.Runtimes is not null -> create");
+            //    Logger.Debug($"Series.Runtimes is not null -> create");
             //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -510,14 +510,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxSoundMix()
         {
             Logger.Trace($"CreateInfoBoxSoundMix()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.SoundMixes != null)
             //{
-            //    Logger.Info($"Series.SoundMixes is not null -> create");
+            //    Logger.Debug($"Series.SoundMixes is not null -> create");
             //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -533,14 +533,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxColor()
         {
             Logger.Trace($"CreateInfoBoxColor()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Colors != null)
             //{
-            //    Logger.Info($"Series.Color is not null -> create");
+            //    Logger.Debug($"Series.Color is not null -> create");
             //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -556,14 +556,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxAspectRatio()
         {
             Logger.Trace($"CreateInfoBoxAspectRatio()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.AspectRatios != null)
             //{
-            //    Logger.Info($"Series.AspectRatio is not null -> create");
+            //    Logger.Debug($"Series.AspectRatio is not null -> create");
             //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -579,14 +579,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCamera()
         {
             Logger.Trace($"CreateInfoBoxCamera()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Cameras != null)
             //{
-            //    Logger.Info($"Series.Cameras is not null -> create");
+            //    Logger.Debug($"Series.Cameras is not null -> create");
             //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -602,14 +602,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxLaboratory()
         {
             Logger.Trace($"CreateInfoBoxLaboratory()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.Laboratories != null)
             //{
-            //    Logger.Info($"Series.Laboratories is not null -> create");
+            //    Logger.Debug($"Series.Laboratories is not null -> create");
             //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -625,14 +625,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxFilmLength()
         {
             Logger.Trace($"CreateInfoBoxFilmLength()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.FilmLengths != null)
             //{
-            //    Logger.Info($"Series.FilmLengths is not null -> create");
+            //    Logger.Debug($"Series.FilmLengths is not null -> create");
             //    content.AddRange(new FilmLengthContentCreator(Series.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -648,14 +648,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxNegativeFormat()
         {
             Logger.Trace($"CreateInfoBoxNegativeFormat()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.NegativeFormats != null)
             //{
-            //    Logger.Info($"Series.NegativeFormats is not null -> create");
+            //    Logger.Debug($"Series.NegativeFormats is not null -> create");
             //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -671,14 +671,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxCinematographicProcess()
         {
             Logger.Trace($"CreateInfoBoxCinematographicProcess()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.CinematographicProcesses != null)
             //{
-            //    Logger.Info($"Series.CinematographicProcesses is not null -> create");
+            //    Logger.Debug($"Series.CinematographicProcesses is not null -> create");
             //    content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -694,14 +694,14 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
         {
             Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
             // TODO: implement following stuff
             //if (Series.PrintedFilmFormats != null)
             //{
-            //    Logger.Info($"Series.PrintedFilmFormats is not null -> create");
+            //    Logger.Debug($"Series.PrintedFilmFormats is not null -> create");
             //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
@@ -717,7 +717,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterPoster()
         {
             Logger.Trace($"CreateChapterPoster()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -727,7 +727,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Posters != null)
             //{
-            //    Logger.Info($"Series.Posters is not null -> create");
+            //    Logger.Debug($"Series.Posters is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -744,7 +744,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCover()
         {
             Logger.Trace($"CreateChapterCover()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -754,7 +754,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Covers != null)
             //{
-            //    Logger.Info($"Series.Covers is not null -> create");
+            //    Logger.Debug($"Series.Covers is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -771,7 +771,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterDescription()
         {
             Logger.Trace($"CreateChapterDescription()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -781,7 +781,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Descriptions != null)
             //{
-            //    Logger.Info($"Series.Descriptions is not null -> create");
+            //    Logger.Debug($"Series.Descriptions is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -798,7 +798,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterReview()
         {
             Logger.Trace($"CreateChapterReview()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -808,7 +808,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Reviews != null)
             //{
-            //    Logger.Info($"Series.Reviews is not null -> create");
+            //    Logger.Debug($"Series.Reviews is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -825,7 +825,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterImage()
         {
             Logger.Trace($"CreateChapterImage()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -835,7 +835,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Images != null)
             //{
-            //    Logger.Info($"Series.Images is not null -> create");
+            //    Logger.Debug($"Series.Images is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -852,7 +852,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCastAndCrew()
         {
             Logger.Trace($"CreateChapterCastAndCrew()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -866,7 +866,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Series.Directors != null)
             //{
-            //    Logger.Info($"Series.Directors is not null -> create");
+            //    Logger.Debug($"Series.Directors is not null -> create");
             //    titleSection.Add("en", "Director");
             //    titleSection.Add("de", "Regie");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -874,7 +874,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.Writers != null)
             //{
-            //    Logger.Info($"Series.Writers is not null -> create");
+            //    Logger.Debug($"Series.Writers is not null -> create");
             //    titleSection.Add("en", "Writers");
             //    titleSection.Add("de", "Drehbuch");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -894,7 +894,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterCompany()
         {
             Logger.Trace($"CreateChapterCompany()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -908,7 +908,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Series.ProductionCompanies != null)
             //{
-            //    Logger.Info($"Series.ProductionCompanies is not null -> create");
+            //    Logger.Debug($"Series.ProductionCompanies is not null -> create");
             //    titleSection.Add("en", "Production Company");
             //    titleSection.Add("de", "Produktionsfirmen");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -916,7 +916,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.Distributors != null)
             //{
-            //    Logger.Info($"Series.Distributors is not null -> create");
+            //    Logger.Debug($"Series.Distributors is not null -> create");
             //    titleSection.Add("en", "Distributors");
             //    titleSection.Add("de", "Vertrieb");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -936,7 +936,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterFilmingAndProduction()
         {
             Logger.Trace($"CreateChapterFilmingAndProduction()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -950,7 +950,7 @@ namespace WikiPageCreator.Export.Create
 
             //if (Series.FilmingLocations != null)
             //{
-            //    Logger.Info($"Series.FilmingLocations is not null -> create");
+            //    Logger.Debug($"Series.FilmingLocations is not null -> create");
             //    titleSection.Add("en", "Filming Locations");
             //    titleSection.Add("de", "Drehorte");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -958,7 +958,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.FilmingDates != null)
             //{
-            //    Logger.Info($"Series.FilmingDates is not null -> create");
+            //    Logger.Debug($"Series.FilmingDates is not null -> create");
             //    titleSection.Add("en", "Filming Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -966,7 +966,7 @@ namespace WikiPageCreator.Export.Create
             //}
             //if (Series.ProductionDates != null)
             //{
-            //    Logger.Info($"Series.ProductionDates is not null -> create");
+            //    Logger.Debug($"Series.ProductionDates is not null -> create");
             //    titleSection.Add("en", "Production Dates");
             //    titleSection.Add("de", "");
             //    content.AddRange(CreateNewSection(titleSection));
@@ -985,7 +985,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterAward()
         {
             Logger.Trace($"CreateChapterAward()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -995,7 +995,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Awards != null)
             //{
-            //    Logger.Info($"Series.Awards is not null -> create");
+            //    Logger.Debug($"Series.Awards is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
@@ -1012,7 +1012,7 @@ namespace WikiPageCreator.Export.Create
         protected virtual List<string> CreateChapterWeblink()
         {
             Logger.Trace($"CreateChapterWeblink()");
-            Logger.Info($"Series is '{Series.OriginalTitle}'");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -1022,7 +1022,7 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             //if (Series.Weblinks != null)
             //{
-            //    Logger.Info($"Series.Weblinks is not null -> create");
+            //    Logger.Debug($"Series.Weblinks is not null -> create");
             //    content.AddRange(CreateNewChapter(title));
             //    content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
             //}

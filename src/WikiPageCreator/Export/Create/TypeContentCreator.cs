@@ -97,7 +97,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
-            Logger.Info($"Type is '{Type.ID}'");
+            Logger.Debug($"Type is '{Type.ID}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -107,13 +107,13 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Info($"Type: '{Type.EnglishTitle}' (english)");
+                    Logger.Debug($"Type: '{Type.EnglishTitle}' (english)");
                     data[0] = "Type";
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.EnglishTitle);
                 }
                 else // incl. case "de"
                 {
-                    Logger.Info($"Type: '{Type.GermanTitle}' (german, ...)");
+                    Logger.Debug($"Type: '{Type.GermanTitle}' (german, ...)");
                     data[0] = "Typ";
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.GermanTitle);
                 }

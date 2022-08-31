@@ -106,7 +106,7 @@ namespace WikiPageCreator.Export.Create
         protected override List<string> CreateChapterContentInternal()
         {
             Logger.Trace($"CreateChapterContentInternal()");
-            Logger.Info($"Connection is '{Connection.Title}'");
+            Logger.Debug($"Connection is '{Connection.Title}'");
 
             List<string> content = new List<string>();
 
@@ -114,12 +114,12 @@ namespace WikiPageCreator.Export.Create
             {
                 if (Connection.BaseConnection == null)
                 {
-                    Logger.Info($"Connection: '{Connection.ID}'");
+                    Logger.Debug($"Connection: '{Connection.ID}'");
                     content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.ID));
                 }
                 else
                 {
-                    Logger.Info($"Connection.BaseConnection is not null -> create");
+                    Logger.Debug($"Connection.BaseConnection is not null -> create");
                     content.AddRange(new ConnectionContentCreator(Connection.BaseConnection, Formatter, TargetLanguageCode).CreateChapterContent());
                 }
             }

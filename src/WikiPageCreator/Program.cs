@@ -39,7 +39,7 @@ namespace WikiPageCreator
 
         static void Main(string[] args)
         {
-            Logger.Trace($"'WikiPageCreator' aufgerufen");
+            Logger.Trace($"Main()");
 
             Console.WriteLine($"Willkommen beim WikiPage Creator!");
 
@@ -60,12 +60,12 @@ namespace WikiPageCreator
             Console.WriteLine($"");
             Console.WriteLine($"Ihr ausgewählter Ausgabe-Ordner ist '{outputFolder}'");
 
-            Logger.Trace($"Ausgabeordner: {outputFolder}");
+            Logger.Debug($"Output folder is set to '{outputFolder}'");
 
             // Target language
             string targetLanguageCodeUser = "de";
 
-            Logger.Trace($"Zielsprache: {targetLanguageCodeUser}");
+            Logger.Debug($"Target language is set to '{targetLanguageCodeUser}'");
 
             // TODO: which DB reader is to be used should be defined in configuration
             SQLiteReader reader = new SQLiteReader();
@@ -94,6 +94,8 @@ namespace WikiPageCreator
                     break;
                 }
 
+                Logger.Debug($"Type is set to '{pageTypeUser}'");
+
                 do
                 {
                     Console.WriteLine($"");
@@ -108,7 +110,7 @@ namespace WikiPageCreator
                     break;
                 }
 
-                Logger.Trace($"ID: {idUser}");
+                Logger.Debug($"ID is set to '{idUser}'");
 
 
                 // TODO: change if..else if to a better solution
@@ -130,6 +132,8 @@ namespace WikiPageCreator
                     {
                         CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolder);
                         Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+
+                        Logger.Info($"Movie page for ID '{item.ID}' successfully created");
                     }
                 }
                 else if (pageTypeUser.Equals(PageType.Series))
@@ -150,6 +154,8 @@ namespace WikiPageCreator
                     {
                         CreateSeriesPage(item.ID, targetLanguageCodeUser, outputFolder);
                         Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+
+                        Logger.Info($"Series page for ID '{item.ID}' successfully created");
                     }
                 }
 
@@ -160,7 +166,7 @@ namespace WikiPageCreator
             }
             while (true);
 
-            Logger.Trace($"'WikiPageCreator' beendet");
+            Logger.Trace($"Main() done");
         }
 
         /// <summary>
@@ -171,6 +177,8 @@ namespace WikiPageCreator
         /// <param name="outputFolder">The output folder for the page.</param>
         private static void CreateMoviePage(string id, string targetLanguageCode, string outputFolder)
         {
+            Logger.Trace($"CreateMoviePage()");
+
             DBReader reader = new SQLiteReader();
             Movie movie = new Movie(reader, id);
             movie.Retrieve(false);
@@ -183,6 +191,8 @@ namespace WikiPageCreator
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetPageName(), content);
+
+            Logger.Trace($"CreateMoviePage() done");
         }
 
         /// <summary>
@@ -193,6 +203,8 @@ namespace WikiPageCreator
         /// <param name="outputFolder">The output folder for the page.</param>
         private static void CreateSeriesPage(string id, string targetLanguageCode, string outputFolder)
         {
+            Logger.Trace($"CreateSeriesPage()");
+
             DBReader reader = new SQLiteReader();
             Series series = new Series(reader, id);
             series.Retrieve(false);
@@ -205,6 +217,8 @@ namespace WikiPageCreator
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator.GetPageName(), content);
+
+            Logger.Trace($"CreateSeriesPage() done");
         }
     }
 }

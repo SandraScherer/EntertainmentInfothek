@@ -99,19 +99,19 @@ namespace EntertainmentDB.Data
                            $"FROM {BaseTableName}_{TargetTableName} " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["LanguageID"].ToString()))
                 {
-                    Logger.Info($"LanguageItem.LanguageID is not null -> retrieve");
+                    Logger.Debug($"LanguageItem.LanguageID is not null -> retrieve");
 
                     Language = new Language(Reader.New());
                     Language.ID = row["LanguageID"].ToString();
@@ -120,7 +120,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"LanguageItem.StatusID is not null -> retrieve");
+                    Logger.Debug($"LanguageItem.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -184,14 +184,14 @@ namespace EntertainmentDB.Data
                            $"WHERE {baseTableName}ID='{baseTableID}'" +
                            $"ORDER BY {order}";
 
-            Logger.Info($"Retrieve from DB: {reader.Query}");
+            Logger.Debug($"Retrieve from DB: {reader.Query}");
 
             List<LanguageItem> list = new List<LanguageItem>();
 
             int noOfDataRecords = reader.Retrieve(true);
             if (noOfDataRecords > 0)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 list.Capacity = reader.Table.Rows.Count;
 

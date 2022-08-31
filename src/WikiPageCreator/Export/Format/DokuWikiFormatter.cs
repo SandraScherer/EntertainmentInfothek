@@ -89,7 +89,7 @@ namespace WikiPageCreator.Export.Format
 
             pagename = String.Concat(pagename, ".txt");
 
-            Logger.Info($"AsFilename(): '{pagename}'");
+            Logger.Debug($"AsFilename(): '{pagename}'");
 
             return pagename;
         }
@@ -112,7 +112,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"**{text}**";
 
-            Logger.Info($"AsBold(): '{text}'");
+            Logger.Debug($"AsBold(): '{text}'");
 
             return text;
         }
@@ -135,7 +135,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"//{text}//";
 
-            Logger.Info($"AsItalic(): '{text}'");
+            Logger.Debug($"AsItalic(): '{text}'");
 
             return text;
         }
@@ -158,7 +158,7 @@ namespace WikiPageCreator.Export.Format
 
             text =  $"__{text}__";
 
-            Logger.Info($"AsUnderlined(): '{text}'");
+            Logger.Debug($"AsUnderlined(): '{text}'");
 
             return text;
         }
@@ -181,7 +181,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"<sub>{text}</sub>";
 
-            Logger.Info($"AsSubscript(): '{text}'");
+            Logger.Debug($"AsSubscript(): '{text}'");
 
             return text;
         }
@@ -204,7 +204,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"<sup>{text}</sup>";
 
-            Logger.Info($"AsSuperscript(): '{text}'");
+            Logger.Debug($"AsSuperscript(): '{text}'");
 
             return text;
         }
@@ -227,7 +227,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"<del>{text}</del>";
 
-            Logger.Info($"AsDeleted(): '{text}'");
+            Logger.Debug($"AsDeleted(): '{text}'");
 
             return text;
         }
@@ -384,7 +384,7 @@ namespace WikiPageCreator.Export.Format
 
             pagename = $"[[{pagename}#{section}|{text}]]";
 
-            Logger.Info($"AsInternalLink(): '{pagename}'");
+            Logger.Debug($"AsInternalLink(): '{pagename}'");
 
             return pagename;
         }
@@ -413,7 +413,7 @@ namespace WikiPageCreator.Export.Format
 
             pagename = $"[[{pagename}|{text}]]";
 
-            Logger.Info($"AsInternalLink(): '{pagename}'");
+            Logger.Debug($"AsInternalLink(): '{pagename}'");
 
             return pagename;
         }
@@ -436,7 +436,7 @@ namespace WikiPageCreator.Export.Format
 
             pagename = $"[[{pagename}]]";
 
-            Logger.Info($"AsInternalLink(): '{pagename}'");
+            Logger.Debug($"AsInternalLink(): '{pagename}'");
 
             return pagename;
         }
@@ -503,7 +503,7 @@ namespace WikiPageCreator.Export.Format
 
             mail = $"<{mail}>";
 
-            Logger.Info($"AsEMail(): '{mail}'");
+            Logger.Debug($"AsEMail(): '{mail}'");
 
             return mail;
         }
@@ -528,7 +528,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"====== {text} ======";
 
-            Logger.Info($"AsHeading1(): '{text}'");
+            Logger.Debug($"AsHeading1(): '{text}'");
 
             return text;
         }
@@ -551,7 +551,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"===== {text} =====";
 
-            Logger.Info($"AsHeading2(): '{text}'");
+            Logger.Debug($"AsHeading2(): '{text}'");
 
             return text;
         }
@@ -574,7 +574,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"==== {text} ====";
 
-            Logger.Info($"AsHeading3(): '{text}'");
+            Logger.Debug($"AsHeading3(): '{text}'");
 
             return text;
         }
@@ -597,7 +597,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"=== {text} ===";
 
-            Logger.Info($"AsHeading4(): '{text}'");
+            Logger.Debug($"AsHeading4(): '{text}'");
 
             return text;
         }
@@ -620,7 +620,7 @@ namespace WikiPageCreator.Export.Format
 
             text = $"== {text} ==";
 
-            Logger.Info($"AsHeading5(): '{text}'");
+            Logger.Debug($"AsHeading5(): '{text}'");
 
             return text;
         }
@@ -921,7 +921,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}?{width}x{height}|{text}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -956,7 +956,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}?{width}x{height}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -991,7 +991,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}?{width}|{text}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -1021,7 +1021,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}?{width}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -1050,7 +1050,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}|{text}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -1073,7 +1073,7 @@ namespace WikiPageCreator.Export.Format
 
             filename = $"{{{{{filename}}}}}";
 
-            Logger.Info($"AsImage(): '{filename}'");
+            Logger.Debug($"AsImage(): '{filename}'");
 
             return filename;
         }
@@ -1096,7 +1096,7 @@ namespace WikiPageCreator.Export.Format
 
             imagelink = $"[{imagelink}]";
 
-            Logger.Info($"AsImageBox(): '{imagelink}'");
+            Logger.Debug($"AsImageBox(): '{imagelink}'");
 
             return imagelink;
         }
@@ -1133,7 +1133,7 @@ namespace WikiPageCreator.Export.Format
                     break;
             }
 
-            Logger.Info($"AlignImage(): '{imagelink}'");
+            Logger.Debug($"AlignImage(): '{imagelink}'");
 
             return imagelink;
         }
@@ -1238,7 +1238,7 @@ namespace WikiPageCreator.Export.Format
 
             pagename = $"{{{{page>{pagename}}}}}";
 
-            Logger.Info($"AsInsertPage(): '{pagename}'");
+            Logger.Debug($"AsInsertPage(): '{pagename}'");
 
             return pagename;
         }
@@ -1330,7 +1330,7 @@ namespace WikiPageCreator.Export.Format
             }
             formatted = $"{formatted}>|";
 
-            Logger.Info($"DefineTable(): '{formatted}");
+            Logger.Debug($"DefineTable(): '{formatted}");
 
             return formatted;
         }
@@ -1372,7 +1372,7 @@ namespace WikiPageCreator.Export.Format
             }
             formatted = formatted[0..^1];
 
-            Logger.Info($"AsTableRow(): '{formatted}");
+            Logger.Debug($"AsTableRow(): '{formatted}");
 
             return formatted;
         }
@@ -1396,7 +1396,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(size));
             }
 
-            Logger.Info($"BeginBox(): '<WRAP box {size}px {align}>'");
+            Logger.Debug($"BeginBox(): '<WRAP box {size}px {align}>'");
 
             return $"<WRAP box {size}px {align}>";
         }
@@ -1432,7 +1432,7 @@ namespace WikiPageCreator.Export.Format
 
             name = $"---- dataentry " + name + " ----";
 
-            Logger.Info($"BeginDataEntry(): '{name}'");
+            Logger.Debug($"BeginDataEntry(): '{name}'");
 
             return name;
         }

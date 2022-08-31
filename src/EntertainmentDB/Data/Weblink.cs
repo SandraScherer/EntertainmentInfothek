@@ -102,12 +102,12 @@ namespace EntertainmentDB.Data
                            $"FROM Weblink " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
@@ -117,7 +117,7 @@ namespace EntertainmentDB.Data
                 GermanTitle = row["GermanTitle"].ToString();
                 if (!String.IsNullOrEmpty(row["LanguageID"].ToString()))
                 {
-                    Logger.Info($"Weblink.LanguageID is not null -> retrieve");
+                    Logger.Debug($"Weblink.LanguageID is not null -> retrieve");
 
                     Language = new Language(Reader.New());
                     Language.ID = row["LanguageID"].ToString();
@@ -126,7 +126,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Info($"Weblink.StatusID is not null -> retrieve");
+                    Logger.Debug($"Weblink.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();

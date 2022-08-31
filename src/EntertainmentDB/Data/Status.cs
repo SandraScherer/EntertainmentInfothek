@@ -120,11 +120,11 @@ namespace EntertainmentDB.Data
 
             if (!retrieveBasicInfoOnly)
             {
-                Logger.Info($"Retrieve additional information as requested");
+                Logger.Debug($"Retrieve additional information as requested");
                 RetrieveAdditionalInformation();
             }
 
-            Logger.Info($"Retrieved basic data records: '{noOfDataRecords}");
+            Logger.Debug($"Retrieved basic data records: '{noOfDataRecords}");
             return noOfDataRecords;
         }
 
@@ -141,12 +141,12 @@ namespace EntertainmentDB.Data
                            $"FROM Status " +
                            $"WHERE ID='{ID}'";
 
-            Logger.Info($"Retrieve from DB: {Reader.Query}");
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
 
             int noOfDataRecords = Reader.Retrieve(true);
             if (noOfDataRecords == 1)
             {
-                Logger.Info($"Retrieved data records: '{noOfDataRecords}'");
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
 
                 DataRow row = Reader.Table.Rows[0];
 
