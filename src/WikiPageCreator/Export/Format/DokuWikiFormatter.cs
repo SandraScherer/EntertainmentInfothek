@@ -54,6 +54,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given filename is null.</exception>
         public override string AsFilename(string pagename)
         {
+            Logger.Trace($"AsFilename()");
+
             if (String.IsNullOrEmpty(pagename))
             {
                 Logger.Fatal($"Pagename not specified");
@@ -87,6 +89,8 @@ namespace WikiPageCreator.Export.Format
 
             pagename = String.Concat(pagename, ".txt");
 
+            Logger.Info($"AsFilename(): '{pagename}'");
+
             return pagename;
         }
 
@@ -98,13 +102,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsBold(string text)
         {
+            Logger.Trace($"AsBold()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"**{text}**";
+            text = $"**{text}**";
+
+            Logger.Info($"AsBold(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -115,13 +125,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsItalic(string text)
         {
+            Logger.Trace($"AsItalic()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"//{text}//";
+            text = $"//{text}//";
+
+            Logger.Info($"AsItalic(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -132,13 +148,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsUnderlined(string text)
         {
+            Logger.Trace($"AsUnderlined()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"__{text}__";
+            text =  $"__{text}__";
+
+            Logger.Info($"AsUnderlined(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -149,13 +171,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsSubscript(string text)
         {
+            Logger.Trace($"AsSubscript()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"<sub>{text}</sub>";
+            text = $"<sub>{text}</sub>";
+
+            Logger.Info($"AsSubscript(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -166,13 +194,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsSuperscript(string text)
         {
+            Logger.Trace($"AsSuperscript()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"<sup>{text}</sup>";
+            text = $"<sup>{text}</sup>";
+
+            Logger.Info($"AsSuperscript(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -183,13 +217,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsDeleted(string text)
         {
+            Logger.Trace($"AsDeleted()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"<del>{text}</del>";
+            text = $"<del>{text}</del>";
+
+            Logger.Info($"AsDeleted(): '{text}'");
+
+            return text;
         }
 
         // ---------------
@@ -205,6 +245,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string[] path, string pagename, string section, string text)
         {
+            Logger.Trace($"AsInternalLink() [4 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -248,6 +290,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string[] path, string pagename, string text)
         {
+            Logger.Trace($"AsInternalLink() [3 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -285,6 +329,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string[] path, string pagename)
         {
+            Logger.Trace($"AsInternalLink() [2 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -318,6 +364,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string pagename, string section, string text)
         {
+            Logger.Trace($"AsInternalLink() [3 parameters]");
+
             if (String.IsNullOrEmpty(pagename))
             {
                 Logger.Fatal($"Pagename not specified");
@@ -334,7 +382,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"[[{pagename}#{section}|{text}]]";
+            pagename = $"[[{pagename}#{section}|{text}]]";
+
+            Logger.Info($"AsInternalLink(): '{pagename}'");
+
+            return pagename;
         }
 
         /// <summary>
@@ -346,6 +398,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string pagename, string text)
         {
+            Logger.Trace($"AsInternalLink() [2 parameters]");
+
             if (String.IsNullOrEmpty(pagename))
             {
                 Logger.Fatal($"Pagename not specified");
@@ -357,7 +411,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"[[{pagename}|{text}]]";
+            pagename = $"[[{pagename}|{text}]]";
+
+            Logger.Info($"AsInternalLink(): '{pagename}'");
+
+            return pagename;
         }
 
         /// <summary>
@@ -368,13 +426,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInternalLink(string pagename)
         {
+            Logger.Trace($"AsInternalLink() [1 parameter]");
+
             if (String.IsNullOrEmpty(pagename))
             {
                 Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
-            return $"[[{pagename}]]";
+            pagename = $"[[{pagename}]]";
+
+            Logger.Info($"AsInternalLink(): '{pagename}'");
+
+            return pagename;
         }
 
         /// <summary>
@@ -386,6 +450,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsExternalLink(string link, string text)
         {
+            Logger.Trace($"AsExternalLink() [2 parameters]");
+
             if (String.IsNullOrEmpty(link))
             {
                 Logger.Fatal($"Link not specified");
@@ -408,6 +474,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsExternalLink(string link)
         {
+            Logger.Trace($"AsExternalLink() [1 parameter]");
+
             if (String.IsNullOrEmpty(link))
             {
                 Logger.Fatal($"Link not specified");
@@ -425,13 +493,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given email address is null.</exception>
         public override string AsEMail(string mail)
         {
+            Logger.Trace($"AsEMail()");
+
             if (String.IsNullOrEmpty(mail))
             {
                 Logger.Fatal($"Mail not specified");
                 throw new ArgumentNullException(nameof(mail));
             }
 
-            return $"<{mail}>";
+            mail = $"<{mail}>";
+
+            Logger.Info($"AsEMail(): '{mail}'");
+
+            return mail;
         }
 
         // ---------------
@@ -444,13 +518,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsHeading1(string text)
         {
+            Logger.Trace($"AsHeading1()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"====== {text} ======";
+            text = $"====== {text} ======";
+
+            Logger.Info($"AsHeading1(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -461,13 +541,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsHeading2(string text)
         {
+            Logger.Trace($"AsHeading2()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"===== {text} =====";
+            text = $"===== {text} =====";
+
+            Logger.Info($"AsHeading2(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -478,13 +564,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsHeading3(string text)
         {
+            Logger.Trace($"AsHeading3()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"==== {text} ====";
+            text = $"==== {text} ====";
+
+            Logger.Info($"AsHeading3(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -495,13 +587,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsHeading4(string text)
         {
+            Logger.Trace($"AsHeading4()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"=== {text} ===";
+            text = $"=== {text} ===";
+
+            Logger.Info($"AsHeading4(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -512,13 +610,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
         public override string AsHeading5(string text)
         {
+            Logger.Trace($"AsHeading5()");
+
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"== {text} ==";
+            text = $"== {text} ==";
+
+            Logger.Info($"AsHeading5(): '{text}'");
+
+            return text;
         }
 
         // ---------------
@@ -535,6 +639,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, int width, int height, string text)
         {
+            Logger.Trace($"AsImage() [5 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -584,6 +690,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, int width, int height)
         {
+            Logger.Trace($"AsImage() [4 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -628,6 +736,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, int width, string text)
         {
+            Logger.Trace($"AsImage() [4 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -671,6 +781,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, int width)
         {
+            Logger.Trace($"AsImage() [3 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -709,6 +821,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename, string text)
         {
+            Logger.Trace($"AsImage() [3 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -746,6 +860,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string[] path, string filename)
         {
+            Logger.Trace($"AsImage() [2 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -780,6 +896,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, int width, int height, string text)
         {
+            Logger.Trace($"AsImage() [4 parameters]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
@@ -801,7 +919,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"{{{{{filename}?{width}x{height}|{text}}}}}";
+            filename = $"{{{{{filename}?{width}x{height}|{text}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
         /// <summary>
@@ -814,6 +936,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, int width, int height)
         {
+            Logger.Trace($"AsImage() [3 parameters]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
@@ -830,7 +954,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(height));
             }
 
-            return $"{{{{{filename}?{width}x{height}}}}}";
+            filename = $"{{{{{filename}?{width}x{height}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
         /// <summary>
@@ -843,6 +971,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, int width, string text)
         {
+            Logger.Trace($"AsImage() [3 parameters]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
@@ -859,7 +989,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"{{{{{filename}?{width}|{text}}}}}";
+            filename = $"{{{{{filename}?{width}|{text}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
 
@@ -872,6 +1006,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, int width)
         {
+            Logger.Trace($"AsImage() [2 parameters]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
@@ -883,7 +1019,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(width));
             }
 
-            return $"{{{{{filename}?{width}}}}}";
+            filename = $"{{{{{filename}?{width}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
         /// <summary>
@@ -895,6 +1035,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename, string text)
         {
+            Logger.Trace($"AsImage() [2 parameters]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
@@ -906,7 +1048,11 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return $"{{{{{filename}|{text}}}}}";
+            filename = $"{{{{{filename}|{text}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
         /// <summary>
@@ -917,13 +1063,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImage(string filename)
         {
+            Logger.Trace($"AsImage() [1 parameter]");
+
             if (String.IsNullOrEmpty(filename))
             {
                 Logger.Fatal($"Filename not specified");
                 throw new ArgumentNullException(nameof(filename));
             }
 
-            return $"{{{{{filename}}}}}";
+            filename = $"{{{{{filename}}}}}";
+
+            Logger.Info($"AsImage(): '{filename}'");
+
+            return filename;
         }
 
         /// <summary>
@@ -934,13 +1086,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AsImageBox(string imagelink)
         {
+            Logger.Trace($"AsImageBox()");
+
             if (String.IsNullOrEmpty(imagelink))
             {
                 Logger.Fatal($"ImageLink not specified");
                 throw new ArgumentNullException(nameof(imagelink));
             }
 
-            return $"[{imagelink}]";
+            imagelink = $"[{imagelink}]";
+
+            Logger.Info($"AsImageBox(): '{imagelink}'");
+
+            return imagelink;
         }
 
         /// <summary>
@@ -952,6 +1110,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AlignImage(string imagelink, Alignment align)
         {
+            Logger.Trace($"AlignImage()");
+
             if (String.IsNullOrEmpty(imagelink))
             {
                 Logger.Fatal($"ImageLink not specified");
@@ -961,14 +1121,21 @@ namespace WikiPageCreator.Export.Format
             switch (align)
             {
                 case Alignment.Left:
-                    return imagelink.Insert(imagelink.Length - 2, " ");
+                    imagelink = imagelink.Insert(imagelink.Length - 2, " ");
+                    break;
                 case Alignment.Centered:
-                    return imagelink.Insert(imagelink.Length - 2, " ").Insert(2, " ");
+                    imagelink = imagelink.Insert(imagelink.Length - 2, " ").Insert(2, " ");
+                    break;
                 case Alignment.Right:
-                    return imagelink.Insert(2, " ");
+                    imagelink = imagelink.Insert(2, " ");
+                    break;
                 default:
-                    return imagelink;
+                    break;
             }
+
+            Logger.Info($"AlignImage(): '{imagelink}'");
+
+            return imagelink;
         }
 
         // ---------------
@@ -979,6 +1146,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to force a new line.</returns>
         public override string ForceNewLine()
         {
+            Logger.Trace($"ForceNewLine()");
+
             return $"\\\\";
         }
 
@@ -988,6 +1157,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator for a list item for an unsorted list.</returns>
         public override string ListItemUnsorted()
         {
+            Logger.Trace($"ListItemUnsorted()");
+
             return $"* ";
         }
 
@@ -997,6 +1168,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator for a list item for a sorted list.</returns>
         public override string ListItemSorted()
         {
+            Logger.Trace($"ListItemSorted()");
+
             return $"- ";
         }
 
@@ -1006,6 +1179,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator for an indentation.</returns>
         public override string ListItemIndent()
         {
+            Logger.Trace($"ListItemIndent()");
+
             return $"  ";
         }
 
@@ -1020,6 +1195,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInsertPage(string[] path, string pagename)
         {
+            Logger.Trace($"AsInsertPage() [2 parameters]");
+
             if (path == null)
             {
                 Logger.Fatal($"Path not specified");
@@ -1051,13 +1228,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public override string AsInsertPage(string pagename)
         {
+            Logger.Trace($"AsInsertPage() [1 parameter]");
+
             if (String.IsNullOrEmpty(pagename))
             {
                 Logger.Fatal($"Pagename not specified");
                 throw new ArgumentNullException(nameof(pagename));
             }
 
-            return $"{{{{page>{pagename}}}}}";
+            pagename = $"{{{{page>{pagename}}}}}";
+
+            Logger.Info($"AsInsertPage(): '{pagename}'");
+
+            return pagename;
         }
 
         // ---------------
@@ -1068,6 +1251,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to disable the TOC.</returns>
         public override string DisableTOC()
         {
+            Logger.Trace($"DisableTOC()");
+
             return $"~~NOTOC~~";
         }
 
@@ -1077,6 +1262,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to disable the cache.</returns>
         public override string DisableCache()
         {
+            Logger.Trace($"DisableCache()");
+
             return $"~~NOCACHE~~";
         }
 
@@ -1088,6 +1275,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to begin a comment.</returns>
         public override string BeginComment()
         {
+            Logger.Trace($"BeginComment()");
+
             return $"/* ";
         }
 
@@ -1097,6 +1286,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to end a comment.</returns>
         public override string EndComment()
         {
+            Logger.Trace($"EndComment()");
+
             return $" */";
         }
 
@@ -1111,6 +1302,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is '0'.</exception>
         public override string DefineTable(int size, int[] width)
         {
+            Logger.Trace($"DefineTable()");
+
             if (size == 0)
             {
                 Logger.Fatal($"Size not specified");
@@ -1137,6 +1330,8 @@ namespace WikiPageCreator.Export.Format
             }
             formatted = $"{formatted}>|";
 
+            Logger.Info($"DefineTable(): '{formatted}");
+
             return formatted;
         }
 
@@ -1146,6 +1341,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to span cells vertically.</returns>
         public override string CellSpanVertically()
         {
+            Logger.Trace($"CellSpanVertically()");
+
             return $":::";
         }
 
@@ -1157,6 +1354,8 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given data is null.</exception>
         public override string AsTableRow(string[] data)
         {
+            Logger.Trace($"AsTableRow()");
+
             if (data == null)
             {
                 Logger.Fatal($"Data not specified");
@@ -1173,6 +1372,8 @@ namespace WikiPageCreator.Export.Format
             }
             formatted = formatted[0..^1];
 
+            Logger.Info($"AsTableRow(): '{formatted}");
+
             return formatted;
         }
 
@@ -1187,11 +1388,15 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given size is '0'.</exception>
         public override string BeginBox(int size, Alignment align)
         {
+            Logger.Trace($"BeginBox()");
+
             if (size == 0)
             {
                 Logger.Fatal($"Size not specified");
                 throw new ArgumentNullException(nameof(size));
             }
+
+            Logger.Info($"BeginBox(): '<WRAP box {size}px {align}>'");
 
             return $"<WRAP box {size}px {align}>";
         }
@@ -1202,6 +1407,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to end a box.</returns>
         public override string EndBox()
         {
+            Logger.Trace($"EndBox()");
+
             return $"</WRAP>";
         }
 
@@ -1215,13 +1422,19 @@ namespace WikiPageCreator.Export.Format
         /// <exception cref="ArgumentNullException">Thrown when the given name is null.</exception>
         public override string BeginDataEntry(string name)
         {
+            Logger.Trace($"BeginDataEntry()");
+
             if (String.IsNullOrEmpty(name))
             {
                 Logger.Fatal($"Name not specified");
                 throw new ArgumentNullException(nameof(name));
             }
 
-            return $"---- dataentry " + name + " ----";
+            name = $"---- dataentry " + name + " ----";
+
+            Logger.Info($"BeginDataEntry(): '{name}'");
+
+            return name;
         }
 
         /// <summary>
@@ -1230,6 +1443,8 @@ namespace WikiPageCreator.Export.Format
         /// <returns>Indicator to end a data entry.</returns>
         public override string EndDataEntry()
         {
+            Logger.Trace($"EndDataEntry()");
+
             return $"----";
         }
     }

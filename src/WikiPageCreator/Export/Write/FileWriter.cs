@@ -42,13 +42,15 @@ namespace WikiPageCreator.Export.Write
         /// </summary>
         public FileWriter()
         {
-            Logger.Trace($"FileWriter() with ID = '{id}' created");
+            Logger.Trace($"FileWriter() created");
         }
 
         // --- Methods ---
 
         public void WriteToFile(string directory, string filename, List<string> content)
         {
+            Logger.Trace($"WriteToFile()");
+
             if (String.IsNullOrEmpty(directory))
             {
                 Logger.Fatal($"Directory not specified");
@@ -65,16 +67,15 @@ namespace WikiPageCreator.Export.Write
                 throw new ArgumentNullException(nameof(content));
             }
 
-            Logger.Trace($"WriteToFile() mit Directory '{directory}' und Filename '{filename}' gestartet");
-
             // if directory does not exist, create it
             if (!Directory.Exists(directory))
             {
-                Logger.Trace($"Verzeichnis '{directory}' erstellen");
+                Logger.Info($"Directory '{directory}' does not exist");
 
                 try
                 {
                     Directory.CreateDirectory(directory);
+                    Logger.Info($"Directory created");
                 }
                 catch (UnauthorizedAccessException ex)
                 {
@@ -95,12 +96,13 @@ namespace WikiPageCreator.Export.Write
             }
             filename = directory + filename;
 
+            Logger.Info($"Path is '{filename}'");
+
             StreamWriter writer;
 
             // open file
             try
             {
-                Logger.Trace($"Datei '{filename}' erstellen bzw. öffnen");
                 writer = new StreamWriter(filename, false);
             }
             catch (UnauthorizedAccessException ex)
@@ -123,7 +125,7 @@ namespace WikiPageCreator.Export.Write
             // close file
             writer.Close();
 
-            Logger.Trace($"WriteToFile() mit Directory '{directory}' und Filename '{filename}' beendet");
+            Logger.Trace($"WriteToFile() done");
         }
     }
 }

@@ -41,7 +41,7 @@ namespace WikiPageCreator.Export.Format
         /// </summary>
         protected Formatter()
         {
-            Logger.Trace($"Formatter() with ID = '{id}' created");
+            Logger.Trace($"Formatter() created");
         }
 
         // --- Methods ---
