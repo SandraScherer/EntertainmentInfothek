@@ -81,6 +81,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Country(DBReader reader, string id) : base(reader, id)
         {
+            Logger.Trace($"Country()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -92,7 +94,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Logger.Trace($"Country() with ID = '{id}' created");
+            Logger.Trace($"Country(): Country with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -104,12 +106,19 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"Country.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, OriginalShortName, OriginalFullName, EnglishShortName, EnglishFullName, GermanShortName, GermanFullName, Details, StatusID, LastUpdated " +
                            $"FROM Country " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
@@ -122,6 +131,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Debug($"Country.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -130,6 +141,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
 

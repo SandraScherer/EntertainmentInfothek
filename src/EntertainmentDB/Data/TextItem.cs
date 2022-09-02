@@ -59,6 +59,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public TextItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
+            Logger.Trace($"TextItem()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -80,7 +82,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"TextItem() with ID = '{id}' created");
+            Logger.Trace($"TextItem(): TextItem with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -92,17 +94,26 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"TextItem.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, TextID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["TextID"].ToString()))
                 {
+                    Logger.Debug($"TextItem.TextID is not null -> retrieve");
+
                     Text = new Text(Reader.New());
                     Text.ID = row["TextID"].ToString();
                     Text.Retrieve(retrieveBasicInfoOnly);
@@ -110,6 +121,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Debug($"TextItem.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -120,6 +133,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
         }
@@ -136,24 +150,31 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public static List<TextItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
+            Logger.Trace($"TextItem.RetrieveList()");
+
             if (reader == null)
             {
+                Logger.Fatal($"DBReader not specified");
                 throw new ArgumentNullException(nameof(reader));
             }
             if (String.IsNullOrEmpty(baseTableName))
             {
+                Logger.Fatal($"BaseTableName not specified");
                 throw new ArgumentNullException(nameof(baseTableName));
             }
             if (String.IsNullOrEmpty(baseTableID))
             {
+                Logger.Fatal($"BaseTableID not specified");
                 throw new ArgumentNullException(nameof(baseTableID));
             }
             if (String.IsNullOrEmpty(targetTableName))
             {
+                Logger.Fatal($"TargetTableName not specified");
                 throw new ArgumentNullException(nameof(targetTableName));
             }
             if (String.IsNullOrEmpty(order))
             {
+                Logger.Fatal($"Order not specified");
                 throw new ArgumentNullException(nameof(order));
             }
 
@@ -161,13 +182,18 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM {baseTableName}_{targetTableName} " +
-                           $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
+                           $"WHERE {baseTableName}ID='{baseTableID}'" +
                            $"ORDER BY {order}";
+
+            Logger.Debug($"Retrieve from DB: {reader.Query}");
 
             List<TextItem> list = new List<TextItem>();
 
-            if (reader.Retrieve(true) > 0)
+            int noOfDataRecords = reader.Retrieve(true);
+            if (noOfDataRecords > 0)
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
+
                 list.Capacity = reader.Table.Rows.Count;
 
                 foreach (DataRow row in reader.Table.Rows)

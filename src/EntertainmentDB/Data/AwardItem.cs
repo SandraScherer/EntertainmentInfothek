@@ -79,6 +79,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public AwardItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
+            Logger.Trace($"AwardItem()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -100,7 +102,7 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"AwardItem() with ID = '{id}' created");
+            Logger.Trace($"AwardItem(): AwardItem with ID = '{id}' created");
         }
 
         // --- Methods ---
@@ -112,17 +114,26 @@ namespace EntertainmentDB.Data
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
+            Logger.Trace($"AwardItem.RetrieveBasicInformation()");
+
             Reader.Query = $"SELECT ID, AwardID, Category, Date, Winner, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
-                           $"WHERE ID=\"{ID}\"";
+                           $"WHERE ID='{ID}'";
 
-            if (Reader.Retrieve(true) == 1)
+            Logger.Debug($"Retrieve from DB: {Reader.Query}");
+
+            int noOfDataRecords = Reader.Retrieve(true);
+            if (noOfDataRecords == 1)
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
+
                 DataRow row = Reader.Table.Rows[0];
 
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["AwardID"].ToString()))
                 {
+                    Logger.Debug($"AwardItem.AwardID is not null -> retrieve");
+
                     Award = new Award(Reader.New());
                     Award.ID = row["AwardID"].ToString();
                     Award.Retrieve(retrieveBasicInfoOnly);
@@ -133,6 +144,8 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
+                    Logger.Debug($"AwardItem.StatusID is not null -> retrieve");
+
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
                     Status.Retrieve(retrieveBasicInfoOnly);
@@ -143,6 +156,7 @@ namespace EntertainmentDB.Data
             }
             else
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
                 return 0;
             }
         }
@@ -153,16 +167,19 @@ namespace EntertainmentDB.Data
         /// <returns>The number of data records retrieved.</returns>
         protected override int RetrieveAdditionalInformation()
         {
-            int count = 0;
+            Logger.Trace($"AwardItem.RetrieveAdditionalInformation()");
+
+            int noOfDataRecords = 0;
 
             Persons = PersonItem.RetrieveList(Reader, $"Movie_Award", ID, "Person");
-            count += Persons.Count;
+            noOfDataRecords += Persons.Count;
             if (Persons.Count == 0)
             {
+                Logger.Debug($"AwardItem.Persons.Count == 0 -> null");
                 Persons = null;
             }
 
-            return count;
+            return noOfDataRecords;
         }
 
         /// <summary>
@@ -177,6 +194,8 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public static List<AwardItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
+            Logger.Trace($"AwardItem.RetrieveList()");
+
             if (reader == null)
             {
                 Logger.Fatal($"DBReader not specified");
@@ -207,13 +226,18 @@ namespace EntertainmentDB.Data
 
             reader.Query = $"SELECT ID " +
                            $"FROM {baseTableName}_{targetTableName} " +
-                           $"WHERE {baseTableName}ID=\"{baseTableID}\"" +
+                           $"WHERE {baseTableName}ID='{baseTableID}'" +
                            $"ORDER BY {order}";
+
+            Logger.Debug($"Retrieve from DB: {reader.Query}");
 
             List<AwardItem> list = new List<AwardItem>();
 
-            if (reader.Retrieve(true) > 0)
+            int noOfDataRecords = reader.Retrieve(true);
+            if (noOfDataRecords > 0)
             {
+                Logger.Debug($"Retrieved data records: '{noOfDataRecords}'");
+
                 list.Capacity = reader.Table.Rows.Count;
 
                 foreach (DataRow row in reader.Table.Rows)

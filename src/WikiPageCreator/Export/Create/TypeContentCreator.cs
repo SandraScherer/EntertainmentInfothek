@@ -58,6 +58,8 @@ namespace WikiPageCreator.Export.Create
         public TypeContentCreator(Type type, Formatter formatter, string targetLanguageCode)
             : base(type, formatter, targetLanguageCode)
         {
+            Logger.Trace($"TypeContentCreator()");
+
             if (type == null)
             {
                 Logger.Fatal($"Type not specified");
@@ -74,7 +76,7 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Logger.Trace($"TypeContentCreator() with ID = '{id}' created");
+            Logger.Trace($"TypeContentCreator(): TypeContentCreator created");
         }
 
         // --- Methods ---
@@ -94,7 +96,8 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the type.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal() für Type '{Type.ID}' gestartet");
+            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Debug($"Type is '{Type.ID}'");
 
             List<string> content = new List<string>();
             string[] data = new string[2];
@@ -104,17 +107,19 @@ namespace WikiPageCreator.Export.Create
             {
                 if (TargetLanguageCode.Equals("en"))
                 {
+                    Logger.Debug($"Type: '{Type.EnglishTitle}' (english)");
                     data[0] = "Type";
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.EnglishTitle);
                 }
                 else // incl. case "de"
                 {
+                    Logger.Debug($"Type: '{Type.GermanTitle}' (german, ...)");
                     data[0] = "Typ";
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.GermanTitle);
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxContentInternal() für Type '{Type.ID}' beendet");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for Type '{Type.ID}' created");
 
             return content;
         }
