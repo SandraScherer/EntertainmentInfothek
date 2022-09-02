@@ -1,12 +1,3 @@
----
-name: Pull request
-about: ''
-title: ''
-labels: ''
-assignees: ''
-
----
-
 Fixes # .
 
 **Changes proposed in this pull request:**
