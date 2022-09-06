@@ -1,5 +1,5 @@
 ﻿// EntertainmentDB.dll: Provides access to the EntertainmentInfothek.db
-// Copyright (C) 2021 Sandra Scherer
+// Copyright (C) 2022 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,15 +23,14 @@ using System.Data;
 namespace EntertainmentDB.Data
 {
     /// <summary>
-    /// Provides a negative format item.
+    /// Provides a film format item.
     /// </summary>
-    [Obsolete]
-    public class NegativeFormatItem : EntryItem
+    public class FilmFormatItem : EntryItem
     {
         // --- Properties ---
 
         /// <summary>
-        /// The film format of the negative format item.
+        /// The film format of the film format item.
         /// </summary>
         public FilmFormat FilmFormat { get; set; }
 
@@ -43,24 +42,24 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a negative format item with an empty id string.
+        /// Initializes a film format item with an empty id string.
         /// </summary>
-        /// <param name="reader">The database reader to be used to read the negative format item information from the database.</param>
-        public NegativeFormatItem(DBReader reader) : this(reader, "", "", "")
+        /// <param name="reader">The database reader to be used to read the film format item information from the database.</param>
+        public FilmFormatItem(DBReader reader) : this(reader, "", "", "")
         {
         }
 
         /// <summary>
-        /// Initializes a negative format item with the given id string.
+        /// Initializes a film format item with the given id string.
         /// </summary>
-        /// <param name="reader">The database reader to be used to read the negative format item information from the database.</param>
-        /// <param name="id">The id of the negative format item.</param>
-        /// <param name="baseTableName">The base table name of the negative format item.</param>
-        /// <param name="targetTableName">The target table name of the negative format item.</param>
+        /// <param name="reader">The database reader to be used to read the film format item information from the database.</param>
+        /// <param name="id">The id of the film format item.</param>
+        /// <param name="baseTableName">The base table name of the film format item.</param>
+        /// <param name="targetTableName">The target table name of the film format item.</param>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
-        public NegativeFormatItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
+        public FilmFormatItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
-            Logger.Trace($"NegativeFormatItem()");
+            Logger.Trace($"FilmFormatItem()");
 
             if (reader == null)
             {
@@ -83,19 +82,19 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(targetTableName));
             }
 
-            Logger.Trace($"NegativeFormatItem(): NegativeFormatItem with ID = '{id}' created");
+            Logger.Trace($"FilmFormatItem(): FilmFormatItem with ID = '{id}' created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the basic information of the negative format item from the database.
+        /// Retrieves the basic information of the film format item from the database.
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
         protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
-            Logger.Trace($"NegativeFormatItem.RetrieveBasicInformation()");
+            Logger.Trace($"FilmFormatItem.RetrieveBasicInformation()");
 
             Reader.Query = $"SELECT ID, FilmFormatID, Details, StatusID, LastUpdated " +
                            $"FROM {BaseTableName}_{TargetTableName} " +
@@ -113,7 +112,7 @@ namespace EntertainmentDB.Data
                 ID = row["ID"].ToString();
                 if (!String.IsNullOrEmpty(row["FilmFormatID"].ToString()))
                 {
-                    Logger.Debug($"NegativeFormatItem.FilmFormatID is not null -> retrieve");
+                    Logger.Debug($"FilmFormatItem.FilmFormatID is not null -> retrieve");
 
                     FilmFormat = new FilmFormat(Reader.New());
                     FilmFormat.ID = row["FilmFormatID"].ToString();
@@ -122,7 +121,7 @@ namespace EntertainmentDB.Data
                 Details = row["Details"].ToString();
                 if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
                 {
-                    Logger.Debug($"NegativeFormatItem.StatusID is not null -> retrieve");
+                    Logger.Debug($"FilmFormatItem.StatusID is not null -> retrieve");
 
                     Status = new Status(Reader.New());
                     Status.ID = row["StatusID"].ToString();
@@ -140,18 +139,18 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Retrieves a list of negative format items from the database.
+        /// Retrieves a list of film format items from the database.
         /// </summary>
         /// <param name="reader">The reader to be used to retrieve the data records.</param>
-        /// <param name="baseTableName">The base table name of the negative format item.</param>
-        /// <param name="baseTableID">The base table id of the negative format item.</param>
-        /// <param name="targetTableName">The target table name of the negative format item.</param>
+        /// <param name="baseTableName">The base table name of the film format item.</param>
+        /// <param name="baseTableID">The base table id of the film format item.</param>
+        /// <param name="targetTableName">The target table name of the film format item.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
-        /// <returns>The list of negative format items.</returns>
+        /// <returns>The list of film format items.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
-        public static List<NegativeFormatItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
+        public static List<FilmFormatItem> RetrieveList(DBReader reader, string baseTableName, string baseTableID, string targetTableName, string order = "ID")
         {
-            Logger.Trace($"NegativeFormatItem.RetrieveList()");
+            Logger.Trace($"FilmFormatItem.RetrieveList()");
 
             if (reader == null)
             {
@@ -188,7 +187,7 @@ namespace EntertainmentDB.Data
 
             Logger.Debug($"Retrieve from DB: {reader.Query}");
 
-            List<NegativeFormatItem> list = new List<NegativeFormatItem>();
+            List<FilmFormatItem> list = new List<FilmFormatItem>();
 
             int noOfDataRecords = reader.Retrieve(true);
             if (noOfDataRecords > 0)
@@ -199,7 +198,7 @@ namespace EntertainmentDB.Data
 
                 foreach (DataRow row in reader.Table.Rows)
                 {
-                    NegativeFormatItem item = new NegativeFormatItem(reader.New());
+                    FilmFormatItem item = new FilmFormatItem(reader.New());
                     item.BaseTableName = baseTableName;
                     item.TargetTableName = targetTableName;
 

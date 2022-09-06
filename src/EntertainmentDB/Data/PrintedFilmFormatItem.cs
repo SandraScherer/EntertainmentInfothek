@@ -25,6 +25,7 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a printed film format item.
     /// </summary>
+    [Obsolete]
     public class PrintedFilmFormatItem : EntryItem
     {
         // --- Properties ---
