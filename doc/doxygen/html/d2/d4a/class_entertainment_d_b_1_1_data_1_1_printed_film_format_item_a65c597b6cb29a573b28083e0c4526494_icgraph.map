@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.PrintedFilmFormatItem.PrintedFilmFormatItem" name="EntertainmentDB.Data.PrintedFilmFormatItem.PrintedFilmFormatItem">
-<area shape="rect" id="node1" title="Initializes a printed film format item with an empty id string." alt="" coords="492,5,741,47"/>
-<area shape="rect" id="node2" href="$d2/d4a/class_entertainment_d_b_1_1_data_1_1_printed_film_format_item.html#aa22e7cf47a087826a7bc7262826c0f51" title="Retrieves a list of printed film format items from the database." alt="" coords="247,5,444,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

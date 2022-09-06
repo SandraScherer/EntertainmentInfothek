@@ -1,5 +1,5 @@
 <map id="EntertainmentDB.Data.EntryItem" name="EntertainmentDB.Data.EntryItem">
-<area shape="rect" id="node1" title="Provides an entry item." alt="" coords="252,585,464,611"/>
+<area shape="rect" id="node1" title="Provides an entry item." alt="" coords="252,574,464,601"/>
 <area shape="rect" id="node4" href="$df/d14/class_entertainment_d_b_1_1_data_1_1_aspect_ratio_item.html" title="Provides an aspect ratio item." alt="" coords="540,5,737,47"/>
 <area shape="rect" id="node5" href="$d7/d1c/class_entertainment_d_b_1_1_data_1_1_award_item.html" title="Provides an award item." alt="" coords="530,71,747,98"/>
 <area shape="rect" id="node6" href="$d9/dcf/class_entertainment_d_b_1_1_data_1_1_camera_item.html" title="Provides a camera item." alt="" coords="525,122,752,149"/>
@@ -8,22 +8,21 @@
 <area shape="rect" id="node9" href="$dd/d82/class_entertainment_d_b_1_1_data_1_1_color_item.html" title="Provides a color item." alt="" coords="533,290,744,317"/>
 <area shape="rect" id="node10" href="$d4/de2/class_entertainment_d_b_1_1_data_1_1_company_item.html" title="Provides a company item." alt="" coords="521,341,757,367"/>
 <area shape="rect" id="node12" href="$de/ddd/class_entertainment_d_b_1_1_data_1_1_country_item.html" title="Provides a country item." alt="" coords="525,391,752,418"/>
-<area shape="rect" id="node13" href="$db/d9f/class_entertainment_d_b_1_1_data_1_1_film_length_item.html" title="Provides a film legth item." alt="" coords="548,443,729,484"/>
-<area shape="rect" id="node14" href="$de/df1/class_entertainment_d_b_1_1_data_1_1_genre_item.html" title="Provides a genre item." alt="" coords="531,509,747,535"/>
-<area shape="rect" id="node15" href="$d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html" title="Provides an image item." alt="" coords="531,559,747,586"/>
-<area shape="rect" id="node16" href="$dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html" title="Provides a laboratory item." alt="" coords="517,610,760,637"/>
-<area shape="rect" id="node17" href="$d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html" title="Provides a language item." alt="" coords="520,661,757,687"/>
-<area shape="rect" id="node18" href="$d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title="Provides a location item." alt="" coords="523,711,754,738"/>
-<area shape="rect" id="node19" href="$d5/d5c/class_entertainment_d_b_1_1_data_1_1_negative_format_item.html" title="Provides a negative format item." alt="" coords="536,763,741,804"/>
-<area shape="rect" id="node20" href="$dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html" title="Provides a person item." alt="" coords="527,829,750,855"/>
-<area shape="rect" id="node22" href="$d2/d4a/class_entertainment_d_b_1_1_data_1_1_printed_film_format_item.html" title="Provides a printed film format item." alt="" coords="540,880,737,921"/>
-<area shape="rect" id="node23" href="$db/d8d/class_entertainment_d_b_1_1_data_1_1_runtime_item.html" title="Provides a runtime item." alt="" coords="524,946,753,973"/>
-<area shape="rect" id="node24" href="$d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html" title="Provides a sound mix item." alt="" coords="542,997,735,1039"/>
-<area shape="rect" id="node25" href="$dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html" title="Provides a text item." alt="" coords="535,1063,742,1090"/>
-<area shape="rect" id="node26" href="$d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html" title="Provides a time span item." alt="" coords="520,1114,757,1141"/>
-<area shape="rect" id="node27" href="$d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title="Provides a weblink item." alt="" coords="525,1165,753,1191"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="151,585,204,611"/>
-<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="5,585,103,611"/>
+<area shape="rect" id="node13" href="$d0/d48/class_entertainment_d_b_1_1_data_1_1_film_format_item.html" title="Provides a film format item." alt="" coords="548,443,729,484"/>
+<area shape="rect" id="node14" href="$db/d9f/class_entertainment_d_b_1_1_data_1_1_film_length_item.html" title="Provides a film legth item." alt="" coords="548,508,729,549"/>
+<area shape="rect" id="node15" href="$de/df1/class_entertainment_d_b_1_1_data_1_1_genre_item.html" title="Provides a genre item." alt="" coords="531,574,747,601"/>
+<area shape="rect" id="node16" href="$d8/d47/class_entertainment_d_b_1_1_data_1_1_image_item.html" title="Provides an image item." alt="" coords="531,625,747,651"/>
+<area shape="rect" id="node17" href="$dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html" title="Provides a laboratory item." alt="" coords="517,675,760,702"/>
+<area shape="rect" id="node18" href="$d4/d4f/class_entertainment_d_b_1_1_data_1_1_language_item.html" title="Provides a language item." alt="" coords="520,726,757,753"/>
+<area shape="rect" id="node19" href="$d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html" title="Provides a location item." alt="" coords="523,777,754,803"/>
+<area shape="rect" id="node20" href="$dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html" title="Provides a person item." alt="" coords="527,827,750,854"/>
+<area shape="rect" id="node22" href="$db/d8d/class_entertainment_d_b_1_1_data_1_1_runtime_item.html" title="Provides a runtime item." alt="" coords="524,878,753,905"/>
+<area shape="rect" id="node23" href="$d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html" title="Provides a sound mix item." alt="" coords="542,929,735,971"/>
+<area shape="rect" id="node24" href="$dd/d76/class_entertainment_d_b_1_1_data_1_1_text_item.html" title="Provides a text item." alt="" coords="535,995,742,1022"/>
+<area shape="rect" id="node25" href="$d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html" title="Provides a time span item." alt="" coords="520,1046,757,1073"/>
+<area shape="rect" id="node26" href="$d0/de6/class_entertainment_d_b_1_1_data_1_1_weblink_item.html" title="Provides a weblink item." alt="" coords="525,1097,753,1123"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="151,574,204,601"/>
+<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="5,574,103,601"/>
 <area shape="rect" id="node11" href="$d3/deb/class_entertainment_d_b_1_1_data_1_1_distributor_company_item.html" title="Provides a distributor company item." alt="" coords="813,333,1028,375"/>
-<area shape="rect" id="node21" href="$d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html" title="Provides a cast person item." alt="" coords="829,821,1012,863"/>
+<area shape="rect" id="node21" href="$d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html" title="Provides a cast person item." alt="" coords="829,820,1012,861"/>
 </map>

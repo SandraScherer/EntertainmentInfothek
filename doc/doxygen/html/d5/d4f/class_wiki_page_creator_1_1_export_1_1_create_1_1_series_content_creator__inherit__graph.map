@@ -1,5 +1,6 @@
 <map id="WikiPageCreator.Export.Create.SeriesContentCreator" name="WikiPageCreator.Export.Create.SeriesContentCreator">
-<area shape="rect" id="node1" title="Provides a content creator for a series." alt="" coords="5,155,213,196"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="36,80,183,107"/>
-<area shape="rect" id="node3" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="39,5,179,32"/>
+<area shape="rect" id="node1" title="Provides a content creator for a series." alt="" coords="5,244,213,285"/>
+<area shape="rect" id="node2" href="$da/d69/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_and_t_v_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="21,155,197,196"/>
+<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="36,80,183,107"/>
+<area shape="rect" id="node4" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="39,5,179,32"/>
 </map>
