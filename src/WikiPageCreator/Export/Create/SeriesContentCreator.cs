@@ -26,7 +26,7 @@ namespace WikiPageCreator.Export.Create
     /// <summary>
     /// Provides a content creator for a series.
     /// </summary>
-    public class SeriesContentCreator : ArticleContentCreator
+    public class SeriesContentCreator : MovieAndTVArticleContentCreator
     {
         // --- Properties ---
 
@@ -410,72 +410,6 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxNoOfEpisodes(): infobox no of episodes for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox budget content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox budget content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxBudget()
-        {
-            Logger.Trace($"CreateInfoBoxBudget()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            string[] data = new string[2];
-
-            if (!String.IsNullOrEmpty(Series.Budget))
-            {
-                Logger.Trace($"Budget: '{Series.Budget}'");
-                data[0] = "Budget";
-                data[1] = $"{Series.Budget}";
-
-                content.Add(Formatter.AsTableRow(data));
-            }
-            Logger.Trace($"CreateInfoBoxBudget(): infobox budget for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox worldwide gross content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox worldwide gross content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxWorldwideGross()
-        {
-            Logger.Trace($"CreateInfoBoxWorldwideGross()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            string[] data = new string[2];
-            string[] path = { TargetLanguageCode, "date" };
-
-            if (!String.IsNullOrEmpty(Series.WorldwideGross))
-            {
-                if (TargetLanguageCode.Equals("en"))
-                {
-                    Logger.Debug($"WorldwideGross: '{Series.WorldwideGross}' (english)");
-                    data[0] = "Worldwide Gross";
-                }
-                else //incl. case "de"
-                {
-                    Logger.Debug($"WorldwideGross: '{Series.WorldwideGross}' (german, ...)");
-                    data[0] = "Einspielergebnis (weltweit)";
-                }
-
-                if (!String.IsNullOrEmpty(Series.WorldwideGrossDate))
-                {
-                    data[1] = $"{Series.WorldwideGross} ({Formatter.AsInternalLink(path, Series.WorldwideGrossDate, Series.WorldwideGrossDate)})";
-                }
-                else
-                {
-                    data[1] = $"{Series.WorldwideGross}";
-                }
-                content.Add(Formatter.AsTableRow(data));
-            }
-            Logger.Trace($"CreateInfoBoxWorldwideGross(): infobox worldwide gross for Series '{Series.OriginalTitle}' created");
 
             return content;
         }

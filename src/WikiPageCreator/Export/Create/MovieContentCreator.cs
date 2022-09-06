@@ -26,7 +26,7 @@ namespace WikiPageCreator.Export.Create
     /// <summary>
     /// Provides a content creator for a movie.
     /// </summary>
-    public class MovieContentCreator : ArticleContentCreator
+    public class MovieContentCreator : MovieAndTVArticleContentCreator
     {
         // --- Properties ---
 
@@ -264,74 +264,6 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox budget content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox budget content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxBudget()
-        {
-            Logger.Trace($"CreateInfoBoxBudget()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            string[] data = new string[2];
-
-            if (!String.IsNullOrEmpty(Movie.Budget))
-            {
-                Logger.Debug($"Budget: '{Movie.Budget}'");
-                data[0] = "Budget";
-                data[1] = $"{Movie.Budget}";
-
-                content.Add(Formatter.AsTableRow(data));
-            }
-
-            Logger.Trace($"CreateInfoBoxBudget(): infobox budget for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox worldwide gross content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox worldwide gross content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxWorldwideGross()
-        {
-            Logger.Trace($"CreateInfoBoxWorldwideGross()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            string[] data = new string[2];
-            string[] path = { TargetLanguageCode, "date" };
-
-            if (!String.IsNullOrEmpty(Movie.WorldwideGross))
-            {
-                if (TargetLanguageCode.Equals("en"))
-                {
-                    Logger.Debug($"WorldwideGross: '{Movie.WorldwideGross}' (english)");
-                    data[0] = "Worldwide Gross";
-                }
-                else //incl. case "de"
-                {
-                    Logger.Debug($"WorldwideGross: '{Movie.WorldwideGross}' (german, ...)");
-                    data[0] = "Einspielergebnis (weltweit)";
-                }
-
-                if (!String.IsNullOrEmpty(Movie.WorldwideGrossDate))
-                {
-                    data[1] = $"{Movie.WorldwideGross} ({Formatter.AsInternalLink(path, Movie.WorldwideGrossDate, Movie.WorldwideGrossDate)})";
-                }
-                else
-                {
-                    data[1] = $"{Movie.WorldwideGross}";
-                }
-                content.Add(Formatter.AsTableRow(data));
-            }
-
-            Logger.Trace($"CreateInfoBoxWorldwideGross(): infobox worldwide gross for Movie '{Movie.OriginalTitle}' created");
 
             return content;
         }
