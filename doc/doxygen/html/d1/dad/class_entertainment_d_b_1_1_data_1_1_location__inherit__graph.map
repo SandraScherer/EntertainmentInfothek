@@ -1,5 +1,5 @@
 <map id="EntertainmentDB.Data.Location" name="EntertainmentDB.Data.Location">
-<area shape="rect" id="node1" title="Provides a location." alt="" coords="5,155,211,181"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="81,80,135,107"/>
-<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="59,5,157,32"/>
+<area shape="rect" id="node1" title="Provides a location." alt="" coords="5,152,211,177"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="81,79,135,104"/>
+<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="59,5,157,31"/>
 </map>

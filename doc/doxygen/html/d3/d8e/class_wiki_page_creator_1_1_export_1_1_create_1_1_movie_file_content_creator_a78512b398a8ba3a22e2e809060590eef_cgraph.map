@@ -1,9 +1,9 @@
 <map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCompanyChapter" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCompanyChapter">
-<area shape="rect" id="node1" title="Creates the formatted company chapter of the movie page." alt="" coords="5,71,265,127"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="340,5,551,47"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a4ed4adb2fa98fdd1038c25d31d5f61ee" title="Creates a formatted company section of the movie page." alt="" coords="315,151,575,207"/>
-<area shape="rect" id="node7" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a749c28a175548bbacd33fd2c7a95edee" title="Creates a formatted distributor company section of the movie page." alt="" coords="313,71,577,127"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d25e407ff096035bb54e878f5bfc7a7" title="Formats the given text as a level 3 heading." alt="" coords="625,53,836,95"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#acb66b112b66da200e5eb193345c65e55" title="Formats the given parameters as an internal link." alt="" coords="625,119,836,160"/>
-<area shape="rect" id="node6" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="625,184,836,225"/>
+<area shape="rect" id="node1" title="Creates the formatted company chapter of the movie page." alt="" coords="5,70,265,125"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="340,5,551,45"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a4ed4adb2fa98fdd1038c25d31d5f61ee" title="Creates a formatted company section of the movie page." alt="" coords="315,149,575,203"/>
+<area shape="rect" id="node7" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a749c28a175548bbacd33fd2c7a95edee" title="Creates a formatted distributor company section of the movie page." alt="" coords="313,70,577,125"/>
+<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d25e407ff096035bb54e878f5bfc7a7" title="Formats the given text as a level 3 heading." alt="" coords="625,52,836,92"/>
+<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#acb66b112b66da200e5eb193345c65e55" title="Formats the given parameters as an internal link." alt="" coords="625,116,836,156"/>
+<area shape="rect" id="node6" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="625,180,836,220"/>
 </map>

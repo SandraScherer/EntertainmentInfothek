@@ -1,7 +1,7 @@
 <map id="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator" name="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator">
-<area shape="rect" id="node1" title="Provides a content creator for an article." alt="" coords="388,39,607,80"/>
-<area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html" title="Provides a content creator for a movie." alt="" coords="655,5,863,47"/>
-<area shape="rect" id="node5" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html" title="Provides a content creator for a series." alt="" coords="655,71,863,112"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="193,46,340,73"/>
-<area shape="rect" id="node3" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="5,46,145,73"/>
+<area shape="rect" id="node1" title="Provides a content creator for an article." alt="" coords="388,37,607,77"/>
+<area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html" title="Provides a content creator for a movie." alt="" coords="655,5,863,45"/>
+<area shape="rect" id="node5" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html" title="Provides a content creator for a series." alt="" coords="655,69,863,109"/>
+<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="193,45,340,70"/>
+<area shape="rect" id="node3" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="5,45,145,70"/>
 </map>

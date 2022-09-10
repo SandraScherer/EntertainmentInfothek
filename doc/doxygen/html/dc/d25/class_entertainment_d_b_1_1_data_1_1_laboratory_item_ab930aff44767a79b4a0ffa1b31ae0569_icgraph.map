@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.LaboratoryItem.LaboratoryItem" name="EntertainmentDB.Data.LaboratoryItem.LaboratoryItem">
-<area shape="rect" id="node1" title="Initializes a laboratory item with an empty id string." alt="" coords="512,5,729,47"/>
-<area shape="rect" id="node2" href="$dc/d25/class_entertainment_d_b_1_1_data_1_1_laboratory_item.html#aae8af2f1e0273609e479c0e175ef367b" title="Retrieves a list of laboratory items from the database." alt="" coords="247,5,464,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

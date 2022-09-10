@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.CameraItem.CameraItem" name="EntertainmentDB.Data.CameraItem.CameraItem">
-<area shape="rect" id="node1" title="Initializes a camera item with an empty id string." alt="" coords="496,5,697,47"/>
-<area shape="rect" id="node2" href="$d9/dcf/class_entertainment_d_b_1_1_data_1_1_camera_item.html#a0d4e8e64ae120732b4b4d883845f7523" title="Retrieves a list of camera items from the database." alt="" coords="247,5,448,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

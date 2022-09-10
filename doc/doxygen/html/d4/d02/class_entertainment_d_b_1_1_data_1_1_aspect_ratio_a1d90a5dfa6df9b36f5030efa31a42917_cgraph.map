@@ -1,8 +1,8 @@
 <map id="EntertainmentDB.Data.AspectRatio.RetrieveBasicInformation" name="EntertainmentDB.Data.AspectRatio.RetrieveBasicInformation">
-<area shape="rect" id="node1" title="Retrieves the basic information of the aspect ratio from the database." alt="" coords="5,71,204,112"/>
-<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="256,5,447,47"/>
-<area shape="rect" id="node3" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#abac782aafccbbef4034d4ddb71aed7e2" title="Retrieves the information of the status from the database." alt="" coords="252,71,451,112"/>
-<area shape="rect" id="node6" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="745,100,936,141"/>
-<area shape="rect" id="node4" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a10b6642be4830cce662ce604e5052ccc" title="Retrieves the additional information of the status from the database (none available)." alt="" coords="499,5,697,47"/>
-<area shape="rect" id="node5" href="$dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#af017a672c77b22eb998512ee60f5d0ac" title="Retrieves the basic information of the status from the database." alt="" coords="499,71,697,112"/>
+<area shape="rect" id="node1" title="Retrieves the basic information of the aspect ratio from the database." alt="" coords="5,69,204,109"/>
+<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="252,5,443,45"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="252,69,443,109"/>
+<area shape="rect" id="node6" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="252,133,443,173"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="491,37,681,77"/>
+<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="491,101,681,141"/>
 </map>

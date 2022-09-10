@@ -1,9 +1,8 @@
 <map id="EntertainmentDB.Data.LocationItem.RetrieveList" name="EntertainmentDB.Data.LocationItem.RetrieveList">
-<area shape="rect" id="node1" title="Retrieves a list of location items from the database." alt="" coords="5,104,211,145"/>
-<area shape="rect" id="node2" href="$d5/d74/class_entertainment_d_b_1_1_data_1_1_location_item.html#ac6e062e843d7523a51b58231ac790a1a" title="Initializes a location item with an empty id string." alt="" coords="259,5,464,47"/>
-<area shape="rect" id="node3" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="266,71,457,112"/>
-<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="266,136,457,177"/>
-<area shape="rect" id="node7" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="266,201,457,243"/>
-<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="512,104,703,145"/>
-<area shape="rect" id="node6" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="512,169,703,211"/>
+<area shape="rect" id="node1" title="Retrieves a list of location items from the database." alt="" coords="5,69,211,109"/>
+<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="259,5,449,45"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="259,69,449,109"/>
+<area shape="rect" id="node6" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="259,133,449,173"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="497,37,688,77"/>
+<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="497,101,688,141"/>
 </map>

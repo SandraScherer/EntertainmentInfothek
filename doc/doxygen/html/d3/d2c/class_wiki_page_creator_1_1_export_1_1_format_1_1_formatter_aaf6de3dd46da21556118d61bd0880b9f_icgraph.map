@@ -1,6 +1,6 @@
 <map id="WikiPageCreator.Export.Format.Formatter.DisableCache" name="WikiPageCreator.Export.Format.Formatter.DisableCache">
-<area shape="rect" id="node1" title="Inserts an indicator to disable the cache." alt="" coords="599,43,809,84"/>
-<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab646a554ffd0ad419742069286951477" title="Creates the formatted header of the movie page." alt="" coords="304,5,551,47"/>
-<area shape="rect" id="node4" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#aa49c29a0e37ea508439da8d76214edb8" title="Creates the formatted header content of a given article." alt="" coords="318,71,537,127"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,5,256,47"/>
+<area shape="rect" id="node1" title="Inserts an indicator to disable the cache." alt="" coords="599,41,809,81"/>
+<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ab646a554ffd0ad419742069286951477" title="Creates the formatted header of the movie page." alt="" coords="304,5,551,45"/>
+<area shape="rect" id="node4" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#aa49c29a0e37ea508439da8d76214edb8" title="Creates the formatted header content of a given article." alt="" coords="318,70,537,125"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,5,256,45"/>
 </map>

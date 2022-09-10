@@ -1,5 +1,5 @@
 <map id="EntertainmentDB.Data.AspectRatio" name="EntertainmentDB.Data.AspectRatio">
-<area shape="rect" id="node1" title="Provides an aspect ratio." alt="" coords="5,155,203,196"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="77,80,131,107"/>
-<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="55,5,153,32"/>
+<area shape="rect" id="node1" title="Provides an aspect ratio." alt="" coords="5,152,203,192"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="77,79,131,104"/>
+<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="55,5,153,31"/>
 </map>

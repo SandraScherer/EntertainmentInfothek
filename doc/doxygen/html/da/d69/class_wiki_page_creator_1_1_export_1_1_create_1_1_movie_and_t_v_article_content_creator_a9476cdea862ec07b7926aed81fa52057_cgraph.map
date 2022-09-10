@@ -1,4 +1,4 @@
 <map id="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator.CreateInfoBoxWorldwideGross" name="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator.CreateInfoBoxWorldwideGross">
-<area shape="rect" id="node1" title="Creates the formatted infobox worldwide gross content of a given movie and tv article." alt="" coords="5,5,228,61"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="276,13,487,54"/>
+<area shape="rect" id="node1" title="Creates the formatted infobox worldwide gross content of a given movie and tv article." alt="" coords="5,5,228,60"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="276,13,487,53"/>
 </map>

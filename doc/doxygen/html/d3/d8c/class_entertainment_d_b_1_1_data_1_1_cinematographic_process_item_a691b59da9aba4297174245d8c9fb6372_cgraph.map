@@ -1,9 +1,8 @@
 <map id="EntertainmentDB.Data.CinematographicProcessItem.RetrieveList" name="EntertainmentDB.Data.CinematographicProcessItem.RetrieveList">
-<area shape="rect" id="node1" title="Retrieves a list of cinematographic process items from the database." alt="" coords="5,104,259,145"/>
-<area shape="rect" id="node2" href="$d3/d8c/class_entertainment_d_b_1_1_data_1_1_cinematographic_process_item.html#ab1f94b105166430d1c7054a01ad3c1b8" title="Initializes a cinematographic process item with an empty id string." alt="" coords="307,5,576,47"/>
-<area shape="rect" id="node3" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="346,71,537,112"/>
-<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="346,136,537,177"/>
-<area shape="rect" id="node7" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="346,201,537,243"/>
-<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="624,104,815,145"/>
-<area shape="rect" id="node6" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="624,169,815,211"/>
+<area shape="rect" id="node1" title="Retrieves a list of cinematographic process items from the database." alt="" coords="5,69,259,109"/>
+<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a5d95f5d1a238d0f239c719a819d7b087" title="Creates a new DBReader of the same class as the current DBReader." alt="" coords="307,5,497,45"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a179b02ba040f9f25b2e1a535e7719652" title="Retrieves the information of the entry from the database." alt="" coords="307,69,497,109"/>
+<area shape="rect" id="node6" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="307,133,497,173"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="545,37,736,77"/>
+<area shape="rect" id="node5" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="545,101,736,141"/>
 </map>

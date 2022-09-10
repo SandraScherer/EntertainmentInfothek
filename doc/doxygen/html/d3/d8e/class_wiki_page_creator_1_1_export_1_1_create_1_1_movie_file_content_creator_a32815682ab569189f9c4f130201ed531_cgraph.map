@@ -1,5 +1,5 @@
 <map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxPrintedFilmFormat" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateInfoBoxPrintedFilmFormat">
-<area shape="rect" id="node1" title="Creates the formatted infobox printed film format of the movie page." alt="" coords="5,31,231,87"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="279,5,489,47"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="279,71,489,112"/>
+<area shape="rect" id="node1" title="Creates the formatted infobox printed film format of the movie page." alt="" coords="5,30,231,85"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="279,5,489,45"/>
+<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="279,69,489,109"/>
 </map>

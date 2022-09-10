@@ -1,6 +1,6 @@
 <map id="EntertainmentDB.Data.LaboratoryItem" name="EntertainmentDB.Data.LaboratoryItem">
-<area shape="rect" id="node1" title="Provides a laboratory item." alt="" coords="5,229,248,256"/>
-<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="87,155,166,181"/>
-<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="100,80,153,107"/>
-<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="78,5,175,32"/>
+<area shape="rect" id="node1" title="Provides a laboratory item." alt="" coords="5,225,248,251"/>
+<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="87,152,166,177"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="100,79,153,104"/>
+<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="78,5,175,31"/>
 </map>

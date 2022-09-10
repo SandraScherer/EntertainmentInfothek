@@ -1,6 +1,6 @@
 <map id="EntertainmentDB.Data.FilmFormatItem" name="EntertainmentDB.Data.FilmFormatItem">
-<area shape="rect" id="node1" title="Provides a film format item." alt="" coords="5,229,187,271"/>
-<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="57,155,135,181"/>
-<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="69,80,123,107"/>
-<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="47,5,145,32"/>
+<area shape="rect" id="node1" title="Provides a film format item." alt="" coords="5,225,187,265"/>
+<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="57,152,135,177"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="69,79,123,104"/>
+<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="47,5,145,31"/>
 </map>

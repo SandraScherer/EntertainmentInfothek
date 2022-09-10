@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.CastPersonItem.CastPersonItem" name="EntertainmentDB.Data.CastPersonItem.CastPersonItem">
-<area shape="rect" id="node1" title="Initializes a cast person item with an empty id string." alt="" coords="477,5,663,47"/>
-<area shape="rect" id="node2" href="$d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html#abe4df94cdc203c2e50d0b0470bee4c3f" title="Retrieves a list of person items from the database." alt="" coords="247,5,429,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

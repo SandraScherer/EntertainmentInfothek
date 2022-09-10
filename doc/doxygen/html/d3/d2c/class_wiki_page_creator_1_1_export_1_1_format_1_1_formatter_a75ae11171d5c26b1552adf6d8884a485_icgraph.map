@@ -1,6 +1,6 @@
 <map id="WikiPageCreator.Export.Format.Formatter.AsHeading1" name="WikiPageCreator.Export.Format.Formatter.AsHeading1">
-<area shape="rect" id="node1" title="Formats the given text as a level 1 heading." alt="" coords="595,39,805,80"/>
-<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#ac1492c30ce1cc5c586cc7411320c7581" title="Creates the formatted file title content of a given article." alt="" coords="304,5,547,47"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#afb9215282e22a45b0c5b67654f5bce3d" title="Creates the formatted title of the movie page." alt="" coords="311,71,540,112"/>
-<area shape="rect" id="node4" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,71,256,112"/>
+<area shape="rect" id="node1" title="Formats the given text as a level 1 heading." alt="" coords="595,37,805,77"/>
+<area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#ac1492c30ce1cc5c586cc7411320c7581" title="Creates the formatted file title content of a given article." alt="" coords="304,5,547,45"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#afb9215282e22a45b0c5b67654f5bce3d" title="Creates the formatted title of the movie page." alt="" coords="311,69,540,109"/>
+<area shape="rect" id="node4" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,69,256,109"/>
 </map>

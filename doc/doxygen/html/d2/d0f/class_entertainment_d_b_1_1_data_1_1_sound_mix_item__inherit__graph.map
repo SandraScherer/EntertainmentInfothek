@@ -1,6 +1,6 @@
 <map id="EntertainmentDB.Data.SoundMixItem" name="EntertainmentDB.Data.SoundMixItem">
-<area shape="rect" id="node1" title="Provides a sound mix item." alt="" coords="5,229,199,271"/>
-<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="63,155,141,181"/>
-<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="75,80,129,107"/>
-<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="53,5,151,32"/>
+<area shape="rect" id="node1" title="Provides a sound mix item." alt="" coords="5,225,199,265"/>
+<area shape="rect" id="node2" href="$d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html" title="Provides an entry item." alt="" coords="63,152,141,177"/>
+<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="75,79,129,104"/>
+<area shape="rect" id="node4" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="53,5,151,31"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="EntertainmentDB.DBAccess.Read.DBReader" name="EntertainmentDB.DBAccess.Read.DBReader">
-<area shape="rect" id="node1" title="Provides a database reader." alt="" coords="5,80,196,121"/>
-<area shape="rect" id="node3" href="$db/d4b/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_s_q_lite_reader.html" title="Provides a SQLite database reader." alt="" coords="5,169,196,211"/>
-<area shape="rect" id="node2" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="52,5,149,32"/>
+<area shape="rect" id="node1" title="Provides a database reader." alt="" coords="5,79,196,119"/>
+<area shape="rect" id="node3" href="$db/d4b/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_s_q_lite_reader.html" title="Provides a SQLite database reader." alt="" coords="5,167,196,207"/>
+<area shape="rect" id="node2" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="52,5,149,31"/>
 </map>

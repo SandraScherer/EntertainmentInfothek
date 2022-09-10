@@ -22,6 +22,5 @@ var searchData=
   ['entrycontentcreator_2ecs_19',['EntryContentCreator.cs',['../d4/d23/_entry_content_creator_8cs.html',1,'']]],
   ['entryitem_20',['EntryItem',['../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html',1,'EntertainmentDB.Data.EntryItem'],['../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#ae5ed8db63fa292cbc1fd4644b61535f9',1,'EntertainmentDB.Data.EntryItem.EntryItem(DBReader reader)'],['../d9/de6/class_entertainment_d_b_1_1_data_1_1_entry_item.html#a6a12ca61d1d24b131321cddecb7b7201',1,'EntertainmentDB.Data.EntryItem.EntryItem(DBReader reader, string id, string baseTableName, string targetTableName)']]],
   ['entryitem_2ecs_21',['EntryItem.cs',['../dc/d55/_entry_item_8cs.html',1,'']]],
-  ['episode_22',['Episode',['../d9/df5/namespace_wiki_page_creator.html#ac16643ed6b93f237fbd95824d05bcc3aa74fb2c716513fcaa678c1aca5077c4d1',1,'WikiPageCreator']]],
-  ['read_23',['Read',['../d5/db1/namespace_entertainment_d_b_1_1_d_b_access_1_1_read.html',1,'EntertainmentDB::DBAccess']]]
+  ['read_22',['Read',['../d5/db1/namespace_entertainment_d_b_1_1_d_b_access_1_1_read.html',1,'EntertainmentDB::DBAccess']]]
 ];

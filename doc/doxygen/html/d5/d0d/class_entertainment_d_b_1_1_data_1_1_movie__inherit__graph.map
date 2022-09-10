@@ -1,7 +1,7 @@
 <map id="EntertainmentDB.Data.Movie" name="EntertainmentDB.Data.Movie">
-<area shape="rect" id="node1" title="Provides a movie." alt="" coords="5,304,195,331"/>
-<area shape="rect" id="node2" href="$df/d99/class_entertainment_d_b_1_1_data_1_1_movie_and_t_v_article.html" title="Provides a movie and tv article." alt="" coords="35,229,165,256"/>
-<area shape="rect" id="node3" href="$d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html" title="Provides an article." alt="" coords="71,155,129,181"/>
-<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="73,80,127,107"/>
-<area shape="rect" id="node5" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="51,5,149,32"/>
+<area shape="rect" id="node1" title="Provides a movie." alt="" coords="5,299,195,324"/>
+<area shape="rect" id="node2" href="$df/d99/class_entertainment_d_b_1_1_data_1_1_movie_and_t_v_article.html" title="Provides a movie and tv article." alt="" coords="35,225,165,251"/>
+<area shape="rect" id="node3" href="$d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html" title="Provides an article." alt="" coords="71,152,129,177"/>
+<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="73,79,127,104"/>
+<area shape="rect" id="node5" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="51,5,149,31"/>
 </map>

@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.DistributorCompanyItem.DistributorCompanyItem" name="EntertainmentDB.Data.DistributorCompanyItem.DistributorCompanyItem">
-<area shape="rect" id="node1" title="Initializes a distributor company item with an empty id string." alt="" coords="509,5,755,47"/>
-<area shape="rect" id="node2" href="$d3/deb/class_entertainment_d_b_1_1_data_1_1_distributor_company_item.html#ab4e6291f229629c021bc3238b8b62c3e" title="Retrieves a list of distributor company items from the database." alt="" coords="247,5,461,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

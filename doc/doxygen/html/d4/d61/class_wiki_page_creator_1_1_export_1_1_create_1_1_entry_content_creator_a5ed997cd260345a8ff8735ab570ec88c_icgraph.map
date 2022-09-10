@@ -1,8 +1,8 @@
 <map id="WikiPageCreator.Export.Create.EntryContentCreator.CreatePageTitle" name="WikiPageCreator.Export.Create.EntryContentCreator.CreatePageTitle">
-<area shape="rect" id="node1" title="Creates the formatted file title content of a given entry." alt="" coords="1056,39,1292,80"/>
-<area shape="rect" id="node2" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8de243cdf51bd4bf0c9dcd3cea0862b1" title="Creates the page content of the entry." alt="" coords="751,31,1008,87"/>
-<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a0f69077c52d6490f249259b560a2c6d7" title="Creates the page content of the entry." alt="" coords="484,31,703,87"/>
-<area shape="rect" id="node4" href="$d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="259,5,436,47"/>
-<area shape="rect" id="node6" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="259,71,436,112"/>
-<area shape="rect" id="node5" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a1c3035946485e1d3b7bbbf76fdc25765" title=" " alt="" coords="5,46,211,73"/>
+<area shape="rect" id="node1" title="Creates the formatted file title content of a given entry." alt="" coords="1056,37,1292,77"/>
+<area shape="rect" id="node2" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#a8de243cdf51bd4bf0c9dcd3cea0862b1" title="Creates the page content of the entry." alt="" coords="751,30,1008,85"/>
+<area shape="rect" id="node3" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html#a0f69077c52d6490f249259b560a2c6d7" title="Creates the page content of the entry." alt="" coords="484,30,703,85"/>
+<area shape="rect" id="node4" href="$d4/dad/class_wiki_page_creator_1_1_program.html#ad9aabd874a8e9ba2055481388bbfdfed" title="Creates a movie page with the specified parameters." alt="" coords="259,5,436,45"/>
+<area shape="rect" id="node6" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a89557ee23d0ff94b3c16988b6aa32bf6" title="Creates a series page with the specified parameters." alt="" coords="259,69,436,109"/>
+<area shape="rect" id="node5" href="$d4/dad/class_wiki_page_creator_1_1_program.html#a1c3035946485e1d3b7bbbf76fdc25765" title=" " alt="" coords="5,45,211,70"/>
 </map>
