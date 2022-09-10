@@ -24,19 +24,9 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a status.
     /// </summary>
-    public class Status : IDBReadable
+    public class Status : Entry
     {
         // --- Properties ---
-
-        /// <summary>
-        /// The database reader to be used to read the status information from the database.
-        /// </summary>
-        public DBReader Reader { get; protected set; }
-
-        /// <summary>
-        /// The id of the status.
-        /// </summary>
-        public string ID { get; set; }
 
         /// <summary>
         /// The english title of the status.
@@ -47,21 +37,6 @@ namespace EntertainmentDB.Data
         /// The german title of the status.
         /// </summary>
         public string GermanTitle { get; set; }
-
-        /// <summary>
-        /// The details of the status.
-        /// </summary>
-        public string Details { get; set; }
-
-        /// <summary>
-        /// The status string of the status.
-        /// </summary>
-        public string StatusString { get; set; }
-
-        /// <summary>
-        ///  The date of last update of the status.
-        /// </summary>
-        public string LastUpdated { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -84,7 +59,7 @@ namespace EntertainmentDB.Data
         /// <param name="reader">The database reader to be used to read the status information from the database.</param>
         /// <param name="id">The id of the status.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
-        public Status(DBReader reader, string id)
+        public Status(DBReader reader, string id) : base(reader, id)
         {
             Logger.Trace($"Status()");
 
@@ -99,41 +74,17 @@ namespace EntertainmentDB.Data
                 throw new ArgumentNullException(nameof(id));
             }
 
-            Reader = reader;
-            ID = id;
-
             Logger.Trace($"Status(): Status with ID = '{id}' created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Retrieves the information of the status from the database.
-        /// </summary>
-        /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
-        /// <returns>The number of data records retrieved.</returns>
-        public virtual int Retrieve(bool retrieveBasicInfoOnly)
-        {
-            Logger.Trace($"Status.Retrieve()");
-
-            int noOfDataRecords = RetrieveBasicInformation(retrieveBasicInfoOnly);
-
-            if (!retrieveBasicInfoOnly)
-            {
-                Logger.Debug($"Retrieve additional information as requested");
-                RetrieveAdditionalInformation();
-            }
-
-            Logger.Debug($"Retrieved basic data records: '{noOfDataRecords}");
-            return noOfDataRecords;
-        }
-
-        /// <summary>
         /// Retrieves the basic information of the status from the database.
         /// </summary>
         /// <param name="retrieveBasicInfoOnly">true if only the basic info is to be retrieved; false if also additional data is to be retrieved.</param>
         /// <returns>1 if data record was retrieved; 0 if no data record matched the id.</returns>
-        protected virtual int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
+        protected override int RetrieveBasicInformation(bool retrieveBasicInfoOnly)
         {
             Logger.Trace($"Status.RetrieveBasicInformation()");
 
@@ -154,7 +105,13 @@ namespace EntertainmentDB.Data
                 EnglishTitle = row["EnglishTitle"].ToString();
                 GermanTitle = row["GermanTitle"].ToString();
                 Details = row["Details"].ToString();
-                StatusString = row["StatusID"].ToString();
+                if (!String.IsNullOrEmpty(row["StatusID"].ToString()))
+                {
+                    Logger.Debug($"Status.StatusID is not null -> no retrieve, only save ID");
+
+                    Status = new Status(Reader.New());
+                    Status.ID = row["StatusID"].ToString();
+                }
                 LastUpdated = row["LastUpdated"].ToString();
             }
             else
@@ -164,16 +121,6 @@ namespace EntertainmentDB.Data
             }
 
             return 1;
-        }
-
-        /// <summary>
-        /// Retrieves the additional information of the status from the database (none available).
-        /// </summary>
-        /// <returns>0</returns>
-        protected virtual int RetrieveAdditionalInformation()
-        {
-            // nothing to do
-            return 0;
         }
     }
 }
