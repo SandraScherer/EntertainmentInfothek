@@ -1,7 +1,7 @@
 <map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateImageChapter" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateImageChapter">
-<area shape="rect" id="node1" title="Creates the formatted image chapter of the movie page." alt="" coords="5,35,245,91"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="308,5,519,47"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a6a1a2b0fef698c606ca5df92852d8757" title="Creates a formatted image section of the movie page." alt="" coords="293,71,533,127"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab089a176dccb3c7b970e5031f7be5c46" title="Formats the given parameters as an image." alt="" coords="581,45,792,87"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d8f90ede0ea370d5fcea1543f3a3bf5" title="Formats the given imagelink as an imagebox." alt="" coords="581,111,792,152"/>
+<area shape="rect" id="node1" title="Creates the formatted image chapter of the movie page." alt="" coords="5,34,245,89"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="308,5,519,45"/>
+<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a6a1a2b0fef698c606ca5df92852d8757" title="Creates a formatted image section of the movie page." alt="" coords="293,70,533,125"/>
+<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab089a176dccb3c7b970e5031f7be5c46" title="Formats the given parameters as an image." alt="" coords="581,45,792,85"/>
+<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d8f90ede0ea370d5fcea1543f3a3bf5" title="Formats the given imagelink as an imagebox." alt="" coords="581,109,792,149"/>
 </map>

@@ -43,7 +43,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
+            Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
@@ -65,7 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
+            Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
 
@@ -107,7 +107,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Status EnglishTitle X", entry.EnglishTitle);
             Assert.AreEqual("Status GermanTitle X", entry.GermanTitle);
             Assert.AreEqual("Status Details X", entry.Details);
-            Assert.AreEqual("", entry.StatusString);
+            Assert.IsNull(entry.Status);
             Assert.AreEqual("Status LastUpdated X", entry.LastUpdated);
         }
 
@@ -130,7 +130,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.EnglishTitle);
             Assert.IsNull(entry.GermanTitle);
             Assert.IsNull(entry.Details);
-            Assert.IsNull(entry.StatusString);
+            Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
         }
     }

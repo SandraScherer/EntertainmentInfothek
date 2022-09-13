@@ -1,4 +1,0 @@
-<map id="EntertainmentDB.Data.Status.RetrieveBasicInformation" name="EntertainmentDB.Data.Status.RetrieveBasicInformation">
-<area shape="rect" id="node1" title="Retrieves the basic information of the status from the database." alt="" coords="5,5,204,47"/>
-<area shape="rect" id="node2" href="$d8/dcd/class_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_d_b_reader.html#a408d344f093a53d1143079a2d1574cf6" title="Retrieves the information from the database." alt="" coords="252,5,443,47"/>
-</map>

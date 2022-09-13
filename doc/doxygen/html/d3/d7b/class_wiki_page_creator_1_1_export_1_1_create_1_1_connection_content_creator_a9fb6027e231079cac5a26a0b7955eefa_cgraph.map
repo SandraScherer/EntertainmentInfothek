@@ -1,5 +1,5 @@
 <map id="WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContentInternal" name="WikiPageCreator.Export.Create.ConnectionContentCreator.CreateChapterContentInternal">
-<area shape="rect" id="node1" title="Creates the chapter content of a given type." alt="" coords="5,35,267,91"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="331,5,541,47"/>
-<area shape="rect" id="node3" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a339542218d486cd43d406cf50ef89acb" title="Initializes a new ConnectionContentCreator." alt="" coords="315,71,557,127"/>
+<area shape="rect" id="node1" title="Creates the chapter content of a given type." alt="" coords="5,70,267,125"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#af544a76562d1b75d8c53c4739a3739c0" title="Formats the given parameters as an inserted page." alt="" coords="340,5,551,45"/>
+<area shape="rect" id="node3" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html#a47d78cd977bfd947b2bcaddaaec2d219" title="Creates the chapter content of a given type." alt="" coords="315,70,576,125"/>
 </map>

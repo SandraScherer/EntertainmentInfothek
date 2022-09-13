@@ -1,4 +1,4 @@
 <map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreatePageTitle" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreatePageTitle">
-<area shape="rect" id="node1" title="Creates the formatted file title content of a given article." alt="" coords="5,5,248,47"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a75ae11171d5c26b1552adf6d8884a485" title="Formats the given text as a level 1 heading." alt="" coords="296,5,507,47"/>
+<area shape="rect" id="node1" title="Creates the formatted file title content of a given article." alt="" coords="5,5,248,45"/>
+<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a75ae11171d5c26b1552adf6d8884a485" title="Formats the given text as a level 1 heading." alt="" coords="296,5,507,45"/>
 </map>

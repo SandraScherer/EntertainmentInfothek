@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.SoundMixItem.SoundMixItem" name="EntertainmentDB.Data.SoundMixItem.SoundMixItem">
-<area shape="rect" id="node1" title="Initializes a sound mix item with an empty id string." alt="" coords="488,5,681,47"/>
-<area shape="rect" id="node2" href="$d5/d1f/class_entertainment_d_b_1_1_data_1_1_sound_mix_item.html#aea2e8ef8475c2632a4380fcac98a826b" title="Retrieves a list of sound mix items from the database." alt="" coords="247,5,440,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>

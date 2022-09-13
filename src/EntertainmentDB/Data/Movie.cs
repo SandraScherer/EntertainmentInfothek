@@ -25,7 +25,7 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a movie.
     /// </summary>
-    public class Movie : Article
+    public class Movie : MovieAndTVArticle
     {
         // --- Properties ---
 
@@ -33,31 +33,6 @@ namespace EntertainmentDB.Data
         /// The logo of the movie.
         /// </summary>
         public Image Logo { get; set; }
-
-        /// <summary>
-        /// The budget of the movie.
-        /// </summary>
-        public string Budget { get; set; }
-
-        /// <summary>
-        /// The worldwide gross of the movie.
-        /// </summary>
-        public string WorldwideGross { get; set; }
-
-        /// <summary>
-        /// The corresponding date to the worldwide gross of the movie.
-        /// </summary>
-        public string WorldwideGrossDate { get; set; }
-
-        /// <summary>
-        /// The cast status of the entry.
-        /// </summary>
-        public Status CastStatus { get; set; }
-
-        /// <summary>
-        /// The crew status of the entry.
-        /// </summary>
-        public Status CrewStatus { get; set; }
 
         /// <summary>
         /// The list of genres of the movie.
@@ -117,7 +92,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The list of negative formats of the movie.
         /// </summary>
-        public List<NegativeFormatItem> NegativeFormats { get; set; }
+        public List<FilmFormatItem> NegativeFormats { get; set; }
 
         /// <summary>
         /// The list of cinematographic processes of the movie.
@@ -127,7 +102,7 @@ namespace EntertainmentDB.Data
         /// <summary>
         /// The list of printed film formats of the movie.
         /// </summary>
-        public List<PrintedFilmFormatItem> PrintedFilmFormats { get; set; }
+        public List<FilmFormatItem> PrintedFilmFormats { get; set; }
 
         /// <summary>
         /// The list of directors of the movie.
@@ -584,7 +559,7 @@ namespace EntertainmentDB.Data
                 FilmLengths = null;
             }
 
-            NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Movie", ID, "NegativeFormat");
+            NegativeFormats = FilmFormatItem.RetrieveList(Reader, "Movie", ID, "NegativeFormat");
             noOfDataRecords += NegativeFormats.Count;
             if (NegativeFormats.Count == 0)
             {
@@ -600,7 +575,7 @@ namespace EntertainmentDB.Data
                 CinematographicProcesses = null;
             }
 
-            PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Movie", ID, "PrintedFilmFormat");
+            PrintedFilmFormats = FilmFormatItem.RetrieveList(Reader, "Movie", ID, "PrintedFilmFormat");
             noOfDataRecords += PrintedFilmFormats.Count;
             if (PrintedFilmFormats.Count == 0)
             {

@@ -10,6 +10,5 @@ var searchData=
   ['specialeffectscompanies_7',['SpecialEffectsCompanies',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a1f0e65239b811377c6e147a4ec3ebc46',1,'EntertainmentDB::Data::Movie']]],
   ['startdate_8',['StartDate',['../d0/da8/class_entertainment_d_b_1_1_data_1_1_timespan_item.html#aaaef8f593126fd006f635d49a1339649',1,'EntertainmentDB::Data::TimespanItem']]],
   ['status_9',['Status',['../dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a89c65447278b4e4a3894e1aed759dc74',1,'EntertainmentDB::Data::Entry']]],
-  ['statusstring_10',['StatusString',['../dc/dd4/class_entertainment_d_b_1_1_data_1_1_status.html#a81bcdff637752344c7d1536275d5e94e',1,'EntertainmentDB::Data::Status']]],
-  ['stunts_11',['Stunts',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#aff40c936740906245f6ebe999679dde5',1,'EntertainmentDB::Data::Movie']]]
+  ['stunts_10',['Stunts',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#aff40c936740906245f6ebe999679dde5',1,'EntertainmentDB::Data::Movie']]]
 ];

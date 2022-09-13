@@ -24,7 +24,7 @@ namespace EntertainmentDB.Data
     /// <summary>
     /// Provides a series.
     /// </summary>
-    public class Series : Article
+    public class Series : MovieAndTVArticle
     {
         // --- Properties ---
 
@@ -53,31 +53,6 @@ namespace EntertainmentDB.Data
         /// The number of episodes of the series.
         /// </summary>
         public string NoOfEpisodes { get; set; }
-
-        /// <summary>
-        /// The budget of the series.
-        /// </summary>
-        public string Budget { get; set; }
-
-        /// <summary>
-        /// The worldwide gross of the series.
-        /// </summary>
-        public string WorldwideGross { get; set; }
-
-        /// <summary>
-        /// The corresponding date to the worldwide gross of the series.
-        /// </summary>
-        public string WorldwideGrossDate { get; set; }
-
-        /// <summary>
-        /// The cast status of the series.
-        /// </summary>
-        public Status CastStatus { get; set; }
-
-        /// <summary>
-        /// The crew status of the series.
-        /// </summary>
-        public Status CrewStatus { get; set; }
 
         /// <summary>
         /// The logger to log everything.

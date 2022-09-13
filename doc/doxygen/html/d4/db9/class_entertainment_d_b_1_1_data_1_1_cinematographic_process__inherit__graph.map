@@ -1,5 +1,5 @@
 <map id="EntertainmentDB.Data.CinematographicProcess" name="EntertainmentDB.Data.CinematographicProcess">
-<area shape="rect" id="node1" title="Provides a cinematographic process." alt="" coords="5,155,259,196"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="105,80,159,107"/>
-<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="83,5,181,32"/>
+<area shape="rect" id="node1" title="Provides a cinematographic process." alt="" coords="5,152,259,192"/>
+<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="105,79,159,104"/>
+<area shape="rect" id="node3" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="83,5,181,31"/>
 </map>

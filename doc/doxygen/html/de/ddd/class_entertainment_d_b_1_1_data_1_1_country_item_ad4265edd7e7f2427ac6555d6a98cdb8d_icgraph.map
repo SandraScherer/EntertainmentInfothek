@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.CountryItem.CountryItem" name="EntertainmentDB.Data.CountryItem.CountryItem">
-<area shape="rect" id="node1" title="Initializes a country item with an empty id string." alt="" coords="496,5,697,47"/>
-<area shape="rect" id="node2" href="$de/ddd/class_entertainment_d_b_1_1_data_1_1_country_item.html#ab51946ecc3d86fdad996d583bf8a8c54" title="Retrieves a list of country items from the database." alt="" coords="247,5,448,47"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,47"/>
-</map>
