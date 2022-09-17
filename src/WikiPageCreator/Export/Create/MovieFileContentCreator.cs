@@ -2394,13 +2394,8 @@ namespace WikiPageCreator.Export.Create
                 Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
-            if (persons == null)
-            {
-                Logger.Fatal($"Persons not specified");
-                throw new ArgumentNullException(nameof(persons));
-            }
 
-            if (persons.Count > 0)
+            if ((persons != null) && (persons.Count > 0))
             {
                 Logger.Trace($"no of persons ({heading[0]}): '{persons.Count}'");
 
@@ -2623,13 +2618,8 @@ namespace WikiPageCreator.Export.Create
                 Logger.Fatal($"TargetLanguageCode not specified");
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
-            if (companies == null)
-            {
-                Logger.Fatal($"Companies not specified");
-                throw new ArgumentNullException(nameof(companies));
-            }
 
-            if (companies.Count > 0)
+            if ((companies != null) && (companies.Count > 0))
             {
                 Logger.Trace($"no of companies ({heading[0]}):  '{companies.Count}'");
 

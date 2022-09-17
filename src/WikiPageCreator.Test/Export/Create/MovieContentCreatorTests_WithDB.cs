@@ -187,7 +187,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsHeading1("Movie OriginalTitle X"));
             }
             testContent.Add($"");
-            testContent.Add($"");
 
             // InfoBox Begin
             int[] width = { 30, 70 };
@@ -265,7 +264,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
             }
-            testContent.Add($"");
             testContent.Add($"");
 
             testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));

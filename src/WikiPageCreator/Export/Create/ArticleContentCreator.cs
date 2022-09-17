@@ -158,7 +158,6 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsHeading1(Article.OriginalTitle));
             }
             content.Add("");
-            content.Add("");
 
             Logger.Trace($"CreatePageTitle(): page title for Article '{Article.OriginalTitle}' created");
 

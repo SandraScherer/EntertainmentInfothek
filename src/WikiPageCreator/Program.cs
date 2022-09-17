@@ -82,8 +82,8 @@ namespace WikiPageCreator
                 {
                     Console.WriteLine($"");
                     Console.WriteLine($"Bitte geben Sie ein, wofür Sie eine Wiki-Seite erstellen wollen (oder 'q' für Beenden):");
-                    Console.WriteLine($"{PageType.Movie} - Film");
-                    Console.WriteLine($"{PageType.Series} - Serie");
+                    Console.WriteLine($"{(int)PageType.Movie} - Film");
+                    Console.WriteLine($"{(int)PageType.Series} - Serie");
 
                     pageTypeUser = Console.ReadLine();
                 }
@@ -115,7 +115,7 @@ namespace WikiPageCreator
 
                 // TODO: change if..else if to a better solution
 
-                if (pageTypeUser.Equals(PageType.Movie))
+                if (pageTypeUser.Equals(((int)PageType.Movie).ToString()))
                 {
                     List<Movie> list = new List<Movie>();
                     
@@ -136,7 +136,7 @@ namespace WikiPageCreator
                         Logger.Info($"Movie page for ID '{item.ID}' successfully created");
                     }
                 }
-                else if (pageTypeUser.Equals(PageType.Series))
+                else if (pageTypeUser.Equals(((int)PageType.Series).ToString()))
                 {
                     List<Series> list = new List<Series>();
 
