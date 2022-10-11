@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2021 Sandra Scherer
+// Copyright (C) 2022 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,17 +16,17 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.Data;
 using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using WikiPageCreator.Export.Format;
-using Type = EntertainmentDB.Data.Type;
 
 namespace WikiPageCreator.Export.Create.IntegrationTests
 {
     [TestClass()]
-    public class TypeContentCreatorTests_WithDB
+    public class GenreContentCreatorTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
@@ -38,19 +38,23 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void TypeContentCreatorTest(string id, string targetLanguageCode)
+        public void GenreContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(type, creator.Type);
+            Assert.AreEqual(list, creator.Genres);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -59,14 +63,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TypeContentCreatorTest_withTypeNull(string targetLanguageCode)
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GenreContentCreatorTest_withGenresNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(null, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(null, formatter, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -77,29 +81,37 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TypeContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        public void GenreContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, null, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TypeContentCreatorTest_withTargetLanguageCodeNull(string id)
+        public void GenreContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, null);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, null);
         }
 
         [DataTestMethod()]
@@ -110,11 +122,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, "");
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, "");
         }
 
         [DataTestMethod()]
@@ -129,10 +145,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -150,10 +170,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, VALID_ID);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -167,11 +191,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, VALID_ID);
-            type.Retrieve(false);
+            Genre genre = new Genre(reader, VALID_ID);
+            genre.Retrieve(false);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -180,14 +208,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Type",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
+                    new string[] { "Genre",
+                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X") } ));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Typ",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
+                    new string[] { "Genre",
+                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X") } ));
             }
 
             // Act
@@ -213,10 +241,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -234,10 +266,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Genre genre = new Genre(reader, id);
+            GenreItem item = new GenreItem(reader);
+            item.Genre = genre;
+            List<GenreItem> list = new List<GenreItem>();
+            list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

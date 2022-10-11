@@ -156,7 +156,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             List<string> testContent = new List<string>();
 
-            string[] data = new string[2];
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
 
@@ -196,98 +195,131 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             // InfoBox Title
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Original Title";
-                data[1] = "Series OriginalTitle X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Original Title",
+                                   "Series OriginalTitle X" } ));
             }
             else
             {
-                data[0] = "Originaltitel";
-                data[1] = "Series OriginalTitle X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Originaltitel",
+                                   "Series OriginalTitle X" }));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Type
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Type";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Type",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
             }
             else
             {
-                data[0] = "Typ";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Typ",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate First Episode
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Release Date (First Episode)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Release Date (First Episode)",
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
             }
             else
             {
-                data[0] = "Erstausstrahlung (Erste Folge)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Erstausstrahlung (Erste Folge)",
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate Last Episode
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Release Date (Last Episode)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Release Date (Last Episode)",
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
             }
             else
             {
-                data[0] = "Erstausstrahlung (Letzte Folge)";
-                data[1] = formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Erstausstrahlung (Letzte Folge)",
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox Genre
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Genre",
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X")} Series Genre Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Series Genre Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Series Genre Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Genre",
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X")} Series Genre Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Series Genre Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Series Genre Details X3" }));
+            }
 
             // Infobox No of Seasons
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "# Seasons";
-                data[1] = "Series NoOfSeasons X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "# Seasons",
+                                   "Series NoOfSeasons X" } ));
             }
             else
             {
-                data[0] = "# Staffeln";
-                data[1] = "Series NoOfSeasons X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "# Staffeln",
+                                   "Series NoOfSeasons X" } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // Infobox No of Episodes
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "# Episodes";
-                data[1] = "Series NoOfEpisodes X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "# Episodes",
+                                   "Series NoOfEpisodes X" } ));
             }
             else
             {
-                data[0] = "# Folgen";
-                data[1] = "Series NoOfEpisodes X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "# Folgen",
+                                   "Series NoOfEpisodes X" } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Budget
-            data[0] = "Budget";
-            data[1] = "Series Budget X";
-            testContent.Add(formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(
+                new string[] { "Budget",
+                               "Series Budget X" }));
 
             // InfoBox Worldwide Gross
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Worldwide Gross";
-                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Worldwide Gross",
+                                   $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})" }));
             }
             else
             {
-                data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Einspielergebnis (weltweit)",
+                                   $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})" }));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox End
             testContent.Add(formatter.EndBox());

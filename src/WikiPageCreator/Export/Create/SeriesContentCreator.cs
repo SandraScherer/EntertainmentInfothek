@@ -261,12 +261,11 @@ namespace WikiPageCreator.Export.Create
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (Series.Genres != null)
-            //{
-            //    Logger.Debug($"Series.Genres is not null -> create");
-            //    content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
+            if (Series.Genres != null)
+            {
+                Logger.Debug($"Series.Genres is not null -> create");
+                content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
 
             Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Series '{Series.OriginalTitle}' created");
 

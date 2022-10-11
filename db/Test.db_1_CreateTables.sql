@@ -1147,3 +1147,15 @@ CREATE TABLE Movie_User (
   FOREIGN KEY(CrewStatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(ConnectionID) REFERENCES Connection(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+  CREATE TABLE Series_Genre (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  GenreID     text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(GenreID) REFERENCES Genre(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
