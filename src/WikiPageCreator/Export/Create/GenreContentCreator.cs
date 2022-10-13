@@ -19,7 +19,6 @@
 using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create
@@ -30,6 +29,17 @@ namespace WikiPageCreator.Export.Create
     public class GenreContentCreator : EntryContentCreator
     {
         // --- Properties ---
+
+        /// <summary>
+        /// The genre to be used to create the content.
+        /// </summary>
+        //public Genre Genre
+        //{
+        //    get
+        //    { return (Genre)Entry; }
+        //    set
+        //    { Entry = value; }
+        //}
 
         /// <summary>
         /// The list of genre items to be used to create the content.
@@ -55,11 +65,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"GenreContentCreator()");
 
-            if (genres == null)
-            {
-                Logger.Fatal($"List<GenreItem> not specified");
-                throw new ArgumentNullException(nameof(genres));
-            }
             if (formatter == null)
             {
                 Logger.Fatal($"Formatter not specified");
