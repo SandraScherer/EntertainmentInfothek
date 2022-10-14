@@ -31,17 +31,6 @@ namespace WikiPageCreator.Export.Create
         // --- Properties ---
 
         /// <summary>
-        /// The genre to be used to create the content.
-        /// </summary>
-        //public Genre Genre
-        //{
-        //    get
-        //    { return (Genre)Entry; }
-        //    set
-        //    { Entry = value; }
-        //}
-
-        /// <summary>
         /// The list of genre items to be used to create the content.
         /// </summary>
         public List<GenreItem> Genres { get; set; }
@@ -101,7 +90,6 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContentInternal()");
 
             List<string> content = new List<string>();
-            string[] data = new string[2];
             string[] path = { TargetLanguageCode, "info" };
 
             if ((Genres != null) && (Genres.Count > 0))
@@ -113,68 +101,57 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Genre: '{Genres[0].Genre.EnglishTitle}' (english)");
 
-                    data[0] = "Genre";
-                    if (!String.IsNullOrEmpty(Genres[0].Details))
-                    {
-                        data[1] = $"{Formatter.AsInternalLink(path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle)} {Genres[0].Details}";
-                    }
-                    else
-                    {
-                        data[1] = $"{Formatter.AsInternalLink(path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle)}";
-                    }
-                    content.Add(Formatter.AsTableRow(data));
+                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle, Genres[0].Details);
 
                     for (int i = 1; i < Genres.Count; i++)
                     {
                         Logger.Debug($"Genre: '{Genres[i].Genre.EnglishTitle}' (english)");
 
-                        data[0] = Formatter.CellSpanVertically();
-                        if (!String.IsNullOrEmpty(Genres[i].Details))
-                        {
-                            data[1] = $"{Formatter.AsInternalLink(path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.EnglishTitle)} {Genres[i].Details}";
-                        }
-                        else
-                        {
-                            data[1] = $"{Formatter.AsInternalLink(path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.EnglishTitle)}";
-                        }
-                        content.Add(Formatter.AsTableRow(data));
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.EnglishTitle, Genres[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
                     Logger.Debug($"Genre: '{Genres[0].Genre.GermanTitle}' (german, ...)");
 
-                    data[0] = "Genre";
-                    if (!String.IsNullOrEmpty(Genres[0].Details))
-                    {
-                        data[1] = $"{Formatter.AsInternalLink(path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle)} {Genres[0].Details}";
-                    }
-                    else
-                    {
-                        data[1] = $"{Formatter.AsInternalLink(path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle)}";
-                    }
-                    content.Add(Formatter.AsTableRow(data));
+                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle, Genres[0].Details);
 
                     for (int i = 1; i < Genres.Count; i++)
                     {
                         Logger.Debug($"Genre: '{Genres[i].Genre.GermanTitle}' (german, ...)");
 
-                        data[0] = Formatter.CellSpanVertically();
-                        if (!String.IsNullOrEmpty(Genres[i].Details))
-                        {
-                            data[1] = $"{Formatter.AsInternalLink(path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.GermanTitle)} {Genres[i].Details}";
-                        }
-                        else
-                        {
-                            data[1] = $"{Formatter.AsInternalLink(path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.GermanTitle)}";
-                        }
-                        content.Add(Formatter.AsTableRow(data));
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.GermanTitle, Genres[i].Details);
                     }
                 }
             }
             Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Genres with Count '{Genres.Count}' created");
 
             return content;
+        }
+
+        /// <summary>
+        /// Creates the specific row of the infobox content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the infobox.</param>
+        /// <param name="title">The title for the row.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <param name="text">The text to be displayed for the link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        private void CreateInfoBoxContentHelper(List<string> content, string title, string[] path, string pagename, string text, string additionalInfo)
+        {
+            string[] data = new string[2];
+
+            data[0] = title;
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[1] = $"{Formatter.AsInternalLink(path, pagename, text)} {additionalInfo}";
+            }
+            else
+            {
+                data[1] = $"{Formatter.AsInternalLink(path, pagename, text)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
         }
     }
 }
