@@ -156,7 +156,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             List<string> testContent = new List<string>();
 
-            string[] data = new string[2];
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
 
@@ -187,7 +186,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsHeading1("Movie OriginalTitle X"));
             }
             testContent.Add($"");
-            testContent.Add($"");
 
             // InfoBox Begin
             int[] width = { 30, 70 };
@@ -197,59 +195,89 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             // InfoBox Title
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Original Title";
-                data[1] = "Movie OriginalTitle X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Original Title",
+                                   "Movie OriginalTitle X" } ));
             }
             else
             {
-                data[0] = "Originaltitel";
-                data[1] = "Movie OriginalTitle X";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Originaltitel",
+                                   "Movie OriginalTitle X" }));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox Type
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Type";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Type",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
             }
             else
             {
-                data[0] = "Typ";
-                data[1] = formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Typ",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox ReleaseDate
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Original Release Date";
-                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Original Release Date",
+                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") } ));
             }
             else
             {
-                data[0] = "Erstausstrahlung";
-                data[1] = formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X");
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Erstausstrahlung",
+                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") } ));
             }
-            testContent.Add(formatter.AsTableRow(data));
+
+            // InfoBox Genre
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Genre",
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X")} Movie Genre Details X1" } ));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Movie Genre Details X2" } ));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Movie Genre Details X3" } ));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Genre",
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" } ));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" } ));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" } ));
+            }
 
             // InfoBox Budget
-            data[0] = "Budget";
-            data[1] = "Movie Budget X";
-            testContent.Add(formatter.AsTableRow(data));
+            testContent.Add(formatter.AsTableRow(
+                new string[] { "Budget",
+                               "Movie Budget X" } ));
 
             // InfoBox Worldwide Gross
             if (targetLanguageCode.Equals("en"))
             {
-                data[0] = "Worldwide Gross";
-                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Worldwide Gross",
+                                   $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" } ));
             }
             else
             {
-                data[0] = "Einspielergebnis (weltweit)";
-                data[1] = $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})";
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Einspielergebnis (weltweit)",
+                                   $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" }));
             }
-            testContent.Add(formatter.AsTableRow(data));
 
             // InfoBox End
             testContent.Add(formatter.EndBox());
@@ -265,7 +293,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsHeading2("Bezüge zu anderen Artikeln"));
             }
-            testContent.Add($"");
             testContent.Add($"");
 
             testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:_xxx"));

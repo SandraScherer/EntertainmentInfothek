@@ -176,16 +176,18 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> testContent = new List<string>();
 
             string[] pathInfo = { targetLanguageCode, "info" };
-            string[] dataEn = { "Type", formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") };
-            string[] dataDe = { "Typ", formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") };
 
             if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(formatter.AsTableRow(dataEn));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Type",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
             }
             else
             {
-                testContent.Add(formatter.AsTableRow(dataDe));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Typ",
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
             }
 
             // Act
