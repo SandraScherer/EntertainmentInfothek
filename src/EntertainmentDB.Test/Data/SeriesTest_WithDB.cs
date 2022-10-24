@@ -59,7 +59,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
 
-            //Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
             //Assert.IsNull(entry.Countries);
             //Assert.IsNull(entry.Languages);
@@ -159,7 +159,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
 
-            //Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
             //Assert.IsNull(entry.Countries);
             //Assert.IsNull(entry.Languages);
@@ -277,7 +277,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Series LastUpdated X", entry.LastUpdated);
 
-            //Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
             //Assert.IsNull(entry.Countries);
             //Assert.IsNull(entry.Languages);
@@ -376,10 +376,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Series LastUpdated X", entry.LastUpdated);
 
-            //Assert.AreEqual(3, entry.Genres.Count);
-            //Assert.AreEqual("_xx1", entry.Genres[0].ID);
-            //Assert.AreEqual("_xx2", entry.Genres[1].ID);
-            //Assert.AreEqual("_xx3", entry.Genres[2].ID);
+            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.AreEqual("_xx1", entry.Genres[0].ID);
+            Assert.AreEqual("_xx2", entry.Genres[1].ID);
+            Assert.AreEqual("_xx3", entry.Genres[2].ID);
 
             //Assert.AreEqual(3, entry.Certifications.Count);
             //Assert.AreEqual("_xx1", entry.Certifications[0].ID);
@@ -706,7 +706,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
             Assert.IsNull(entry.LastUpdated);
 
-            //Assert.IsNull(entry.Genres);
+            Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
             //Assert.IsNull(entry.Countries);
             //Assert.IsNull(entry.Languages);

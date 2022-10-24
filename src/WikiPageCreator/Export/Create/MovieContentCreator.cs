@@ -186,9 +186,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Genres != null)
             {
                 Logger.Debug($"Movie.Genres is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                content.AddRange(new GenreContentCreator(Movie.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
             Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Movie '{Movie.OriginalTitle}' created");

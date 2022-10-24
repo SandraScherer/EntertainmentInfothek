@@ -252,7 +252,6 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsHeading2(title["de"]));
             }
             content.Add($"");
-            content.Add($"");
 
             Logger.Trace($"CreateNewChapter(): new chapter for Entry '{Entry.ID}' created");
 
@@ -310,6 +309,7 @@ namespace WikiPageCreator.Export.Create
                 Logger.Debug($"Section: '{title["de"]}' (german, ...)");
                 content.Add(Formatter.AsHeading3(title["de"]));
             }
+            content.Add($"");
 
             Logger.Trace($"CreateNewSection(): new section for Entry '{Entry.ID}' created");
 
