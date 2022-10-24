@@ -16,21 +16,20 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using EntertainmentDB.DBAccess.Read;
+using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 
 namespace EntertainmentDB.Data.Tests
 {
     [TestClass()]
-    public class SoundMixTests
+    public class SoundMixTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkEntry()
         {
@@ -42,6 +41,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkReader()
         {
@@ -53,6 +53,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNotNull(entry.Reader);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkEnglishTitle()
         {
@@ -64,6 +65,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.EnglishTitle);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkGermanTitle()
         {
@@ -75,6 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.GermanTitle);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkDetails()
         {
@@ -86,6 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Details);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkStatus()
         {
@@ -97,6 +101,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Status);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_checkLastUpdated()
         {
@@ -108,6 +113,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
+        // oblsolete
         [TestMethod()]
         public void SoundMixTest_withoutID_checkID()
         {
@@ -119,6 +125,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("", entry.ID);
         }
 
+        // oblsolete
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
@@ -132,6 +139,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(value, entry.ID);
         }
 
+        // oblsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void LocationTest_withIDnull_checkException()
@@ -140,22 +148,75 @@ namespace EntertainmentDB.Data.Tests
             SoundMix entry = new SoundMix(null);
         }
 
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withValidID(bool value)
+        {
+            // Arrange
+            SoundMix entry = new SoundMix(VALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(value);
+
+            // Assert
+            Assert.AreEqual(1, count);
+
+            Assert.AreEqual("_xxx", entry.ID);
+            Assert.AreEqual("SoundMix EnglishTitle X", entry.EnglishTitle);
+            Assert.AreEqual("SoundMix GermanTitle X", entry.GermanTitle);
+            Assert.AreEqual("SoundMix Details X", entry.Details);
+            Assert.AreEqual("_xxx", entry.Status.ID);
+            Assert.AreEqual("SoundMix LastUpdated X", entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void RetrieveBasicInformationTest_withInvalidID(bool value)
+        {
+            // Arrange
+            SoundMix entry = new SoundMix(INVALID_ID);
+
+            // Act
+            int count = entry.RetrieveBasicInformation(true);
+
+            // Assert
+            Assert.AreEqual(0, count);
+
+            Assert.AreEqual(INVALID_ID, entry.ID);
+            Assert.IsNull(entry.EnglishTitle);
+            Assert.IsNull(entry.GermanTitle);
+            Assert.IsNull(entry.Details);
+            Assert.IsNull(entry.Status);
+            Assert.IsNull(entry.LastUpdated);
+        }
+
+        // TODO: delete
+        [DataTestMethod()]
+        [DataRow(VALID_ID)]
+        [DataRow(INVALID_ID)]
+        public void RetrieveAdditionalInformationTest(string value)
+        {
+            // Arrange
+            SoundMix entry = new SoundMix(value);
+
+            // Act
+            int count = entry.RetrieveAdditionalInformation();
+
+            // Assert
+            Assert.AreEqual(0, count);
+        }
+
         [DataTestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -170,16 +231,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -194,16 +246,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkEnglishTitle(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -218,16 +261,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkGermanTitle(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -242,16 +276,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -266,22 +291,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
-            Assert.IsNull(entry.Status);
+            Assert.AreEqual("_xxx", entry.Status.ID);
         }
 
         [DataTestMethod()]
@@ -290,16 +306,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withValidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(1);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(1);
-            mockDBReader.SetupGet(x => x.Table).Returns(table);
-
             SoundMix entry = new SoundMix(VALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -314,15 +321,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkCount(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -337,15 +336,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkID(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -360,15 +351,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkEnglishTitle(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -383,15 +366,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkGermanTitle(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -406,15 +381,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkDetails(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -429,15 +396,7 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkStatus(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
@@ -452,72 +411,13 @@ namespace EntertainmentDB.Data.Tests
         public void RetrieveTest_withInvalidID_checkLastUpdated(bool value)
         {
             // Arrange
-            DataTable table = CreateDataTableWithMissingData_StatusID();
-            Mock<DBReader> mockDBReader = new Mock<DBReader>();
-
-            // Setup Mock
-            mockDBReader.Setup(x => x.Retrieve(true)).Returns(0);
-            mockDBReader.Setup(x => x.Retrieve(false)).Returns(0);
-
             SoundMix entry = new SoundMix(INVALID_ID);
-            entry.Reader = mockDBReader.Object;
 
             // Act
             int count = entry.Retrieve(value);
 
             // Assert
             Assert.IsNull(entry.LastUpdated);
-        }
-
-        private DataTable CreateDataTableWithMissingData_StatusID()
-        {
-            // DataTable aufbauen...
-            DataTable table = new DataTable();
-            DataColumn column;
-            DataRow row;
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "ID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "EnglishTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "GermanTitle";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "Details";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "StatusID";
-            table.Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = System.Type.GetType("System.String");
-            column.ColumnName = "LastUpdated";
-            table.Columns.Add(column);
-
-            // Create new DataRow object and add to DataTable
-            row = table.NewRow();
-            row["ID"] = "_xxx";
-            row["EnglishTitle"] = "SoundMix EnglishTitle X";
-            row["GermanTitle"] = "SoundMix GermanTitle X";
-            row["Details"] = "SoundMix Details X";
-            row["StatusID"] = "";
-            row["LastUpdated"] = "SoundMix LastUpdated X";
-            table.Rows.Add(row);
-
-            return table;
         }
     }
 }
