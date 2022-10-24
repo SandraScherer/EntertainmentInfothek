@@ -142,7 +142,7 @@ namespace EntertainmentDB.Data.Tests
         // oblsolete
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LocationTest_withIDnull_checkException()
+        public void SoundMixTest_withIDnull_checkException()
         {
             // Arrange, Act, Assert
             SoundMix entry = new SoundMix(null);
