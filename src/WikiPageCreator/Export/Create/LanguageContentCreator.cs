@@ -24,16 +24,16 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a genre.
+    /// Provides a content creator for a language.
     /// </summary>
-    public class GenreContentCreator : EntryContentCreator
+    public class LanguageContentCreator : EntryContentCreator
     {
         // --- Properties ---
 
         /// <summary>
-        /// The list of genre items to be used to create the content.
+        /// The list of language items to be used to create the content.
         /// </summary>
-        public List<GenreItem> Genres { get; set; }
+        public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -43,16 +43,16 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new GenreContentCreator.
+        /// Initializes a new LanguageContentCreator.
         /// </summary>
-        /// <param name="genres">The list of genre items to be used to create content.</param>
+        /// <param name="languages">The list of language items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public GenreContentCreator(List<GenreItem> genres, Formatter formatter, string targetLanguageCode)
-            : base(genres[0].Genre, formatter, targetLanguageCode)
+        public LanguageContentCreator(List<LanguageItem> languages, Formatter formatter, string targetLanguageCode)
+            : base(languages[0].Language, formatter, targetLanguageCode)
         {
-            Logger.Trace($"GenreContentCreator()");
+            Logger.Trace($"LanguageContentCreator()");
 
             if (formatter == null)
             {
@@ -65,26 +65,26 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Genres = genres;
+            Languages = languages;
 
-            Logger.Trace($"GenreContentCreator(): GenreContentCreator created");
+            Logger.Trace($"LanguageContentCreator(): LanguageContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given genre.
+        /// Creates the infobox content of a given language.
         /// </summary>
-        /// <returns>Teh formatted content of the genre.</returns>
+        /// <returns>Teh formatted content of the language.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();
         }
 
         /// <summary>
-        /// Creates the infobox content of a given list of genres.
+        /// Creates the infobox content of a given list of languages.
         /// </summary>
-        /// <returns>The formatted content of the list of genres.</returns>
+        /// <returns>The formatted content of the list of languages.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
@@ -92,41 +92,48 @@ namespace WikiPageCreator.Export.Create
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
 
-            if ((Genres != null) && (Genres.Count > 0))
+            if ((Languages != null) && (Languages.Count > 0))
             {
-                Logger.Debug($"Genres is not null");
-                Logger.Debug($"no of genres: '{Genres.Count}'");
+                Logger.Debug($"Languages is not null");
+                Logger.Debug($"no of languages: '{Languages.Count}'");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Debug($"Genre: '{Genres[0].Genre.EnglishTitle}' (english)");
+                    Logger.Debug($"Language: '{Languages[0].Language.EnglishName}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, "Language", path, Languages[0].Language.OriginalName, Languages[0].Language.EnglishName, Languages[0].Details);
 
-                    for (int i = 1; i < Genres.Count; i++)
+                    for (int i = 1; i < Languages.Count; i++)
                     {
-                        Logger.Debug($"Genre: '{Genres[i].Genre.EnglishTitle}' (english)");
+                        Logger.Debug($"Language: '{Languages[i].Language.EnglishName}' (english)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.EnglishTitle, Genres[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Languages[i].Language.OriginalName, Languages[i].Language.EnglishName, Languages[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
-                    Logger.Debug($"Genre: '{Genres[0].Genre.GermanTitle}' (german, ...)");
+                    Logger.Debug($"Language: '{Languages[0].Language.GermanName}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, "Sprache", path, Languages[0].Language.OriginalName, Languages[0].Language.GermanName, Languages[0].Details);
 
-                    for (int i = 1; i < Genres.Count; i++)
+                    for (int i = 1; i < Languages.Count; i++)
                     {
-                        Logger.Debug($"Genre: '{Genres[i].Genre.GermanTitle}' (german, ...)");
+                        Logger.Debug($"Language: '{Languages[i].Language.GermanName}' (german, ...)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.GermanTitle, Genres[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Languages[i].Language.OriginalName, Languages[i].Language.GermanName, Languages[i].Details);
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Genres with Count '{Genres.Count}' created");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Languages with Count '{Languages.Count}' created");
 
             return content;
         }
+
+
+
+
+
+
+
     }
 }
