@@ -1,7 +1,7 @@
 <map id="WikiPageCreator.Export.Create.GenreContentCreator.CreateInfoBoxContent" name="WikiPageCreator.Export.Create.GenreContentCreator.CreateInfoBoxContent">
 <area shape="rect" id="node1" title="Creates the infobox content of a given genre." alt="" coords="5,34,235,89"/>
 <area shape="rect" id="node2" href="$de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#ade7d43c08c73ac5fdab89c01cdb0017e" title="Creates the infobox content of a given list of genres." alt="" coords="283,34,512,89"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="569,5,780,45"/>
-<area shape="rect" id="node4" href="$de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#a945a6281842ff4333a1303877ca6442a" title="Creates the specific row of the infobox content." alt="" coords="560,70,789,125"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="837,77,1048,117"/>
+<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="567,5,778,45"/>
+<area shape="rect" id="node4" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afd99e7df96124d8b3c2620e5031751a0" title="Creates the specific row of the infobox content." alt="" coords="560,70,785,125"/>
+<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="833,77,1044,117"/>
 </map>
