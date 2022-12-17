@@ -16,10 +16,8 @@
 
 
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SQLite;
-using System.Text;
 
 namespace EntertainmentDB.DBAccess.Read
 {

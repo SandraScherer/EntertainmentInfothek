@@ -38,7 +38,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void ConnectionContentCreatorTest(string id,  string targetLanguageCode)
+        public void ConnectionContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();

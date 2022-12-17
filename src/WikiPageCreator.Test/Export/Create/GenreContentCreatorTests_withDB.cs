@@ -209,13 +209,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Genre",
-                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Genre",
-                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X") }));
             }
 
             // Act

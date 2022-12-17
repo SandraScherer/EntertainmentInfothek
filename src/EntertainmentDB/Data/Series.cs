@@ -60,6 +60,11 @@ namespace EntertainmentDB.Data
         public List<GenreItem> Genres { get; set; }
 
         /// <summary>
+        /// The list of languages of the movie.
+        /// </summary>
+        public List<LanguageItem> Languages { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -209,10 +214,15 @@ namespace EntertainmentDB.Data
 
             Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
             noOfDataRecords += Countries.Count;
-
+            */
             Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
             noOfDataRecords += Languages.Count;
-
+            if (Languages.Count == 0)
+            {
+                Logger.Debug($"Series.Languages.Count == 0 -> null");
+                Languages = null;
+            }
+            /*
             Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
             noOfDataRecords += Runtimes.Count;
 

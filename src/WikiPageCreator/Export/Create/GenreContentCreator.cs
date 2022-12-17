@@ -24,7 +24,7 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a genre
+    /// Provides a content creator for a genre.
     /// </summary>
     public class GenreContentCreator : EntryContentCreator
     {
@@ -46,7 +46,7 @@ namespace WikiPageCreator.Export.Create
         /// Initializes a new GenreContentCreator.
         /// </summary>
         /// <param name="genres">The list of genre items to be used to create content.</param>
-        /// <param name="formatter">The formatter to be used to format the content</param>
+        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         public GenreContentCreator(List<GenreItem> genres, Formatter formatter, string targetLanguageCode)
@@ -127,31 +127,6 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Genres with Count '{Genres.Count}' created");
 
             return content;
-        }
-
-        /// <summary>
-        /// Creates the specific row of the infobox content.
-        /// </summary>
-        /// <param name="content">The list that contains the content of the infobox.</param>
-        /// <param name="title">The title for the row.</param>
-        /// <param name="path">The path for the link.</param>
-        /// <param name="pagename">The pagename for the link.</param>
-        /// <param name="text">The text to be displayed for the link.</param>
-        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
-        private void CreateInfoBoxContentHelper(List<string> content, string title, string[] path, string pagename, string text, string additionalInfo)
-        {
-            string[] data = new string[2];
-
-            data[0] = title;
-            if (!String.IsNullOrEmpty(additionalInfo))
-            {
-                data[1] = $"{Formatter.AsInternalLink(path, pagename, text)} {additionalInfo}";
-            }
-            else
-            {
-                data[1] = $"{Formatter.AsInternalLink(path, pagename, text)}";
-            }
-            content.Add(Formatter.AsTableRow(data));
         }
     }
 }

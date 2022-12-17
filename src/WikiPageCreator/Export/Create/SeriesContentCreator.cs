@@ -329,12 +329,11 @@ namespace WikiPageCreator.Export.Create
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (Series.Languages != null)
-            //{
-            //    Logger.Debug($"Series.Languages is not null -> create");
-            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
+            if (Series.Languages != null)
+            {
+                Logger.Debug($"Series.Languages is not null -> create");
+                content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
 
             Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Series '{Series.OriginalTitle}' created");
 

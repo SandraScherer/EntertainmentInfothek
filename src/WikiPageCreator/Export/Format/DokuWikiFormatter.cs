@@ -17,8 +17,6 @@
 
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WikiPageCreator.Export.Format
 {
@@ -156,7 +154,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text =  $"__{text}__";
+            text = $"__{text}__";
 
             Logger.Debug($"AsUnderlined(): '{text}'");
 

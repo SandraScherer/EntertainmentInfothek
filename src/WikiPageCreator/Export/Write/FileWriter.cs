@@ -19,7 +19,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace WikiPageCreator.Export.Write
 {
@@ -80,7 +79,7 @@ namespace WikiPageCreator.Export.Write
                 catch (UnauthorizedAccessException ex)
                 {
                     Logger.Fatal(ex, $"???");
-                    throw ;
+                    throw;
                 }
                 catch (PathTooLongException ex)
                 {

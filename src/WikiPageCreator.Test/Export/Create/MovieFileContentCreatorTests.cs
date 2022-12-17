@@ -16,14 +16,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+using EntertainmentDB.Data;
+using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WikiPageCreator.Export.Create;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using EntertainmentDB.Data;
 using WikiPageCreator.Export.Format;
-using EntertainmentDB.DBAccess.Read;
 
 namespace WikiPageCreator.Export.Create.Tests
 {
