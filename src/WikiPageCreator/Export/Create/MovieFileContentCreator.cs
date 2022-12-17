@@ -19,7 +19,6 @@
 using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create
@@ -1605,7 +1604,7 @@ namespace WikiPageCreator.Export.Create
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
                         Logger.Debug($"NegativeFormat: '{Movie.NegativeFormats[i].FilmFormat.Format}' (german, ...)");
- 
+
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
@@ -1679,7 +1678,7 @@ namespace WikiPageCreator.Export.Create
                 else // incl. case "de"
                 {
                     Logger.Debug($"CinematographicProcess: '{Movie.CinematographicProcesses[0].CinematographicProcess.Name}' (german, ...)");
-                    
+
                     data[0] = "Filmprozess";
                     if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
                     {

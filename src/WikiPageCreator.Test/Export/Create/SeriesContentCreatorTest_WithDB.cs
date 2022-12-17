@@ -197,7 +197,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Original Title",
-                                   "Series OriginalTitle X" } ));
+                                   "Series OriginalTitle X" }));
             }
             else
             {
@@ -211,13 +211,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Type",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Typ",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") }));
             }
 
             // InfoBox ReleaseDate First Episode
@@ -225,13 +225,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Release Date (First Episode)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Erstausstrahlung (Erste Folge)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") }));
             }
 
             // InfoBox ReleaseDate Last Episode
@@ -239,13 +239,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Release Date (Last Episode)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Erstausstrahlung (Letzte Folge)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") }));
             }
 
             // InfoBox Genre
@@ -274,18 +274,44 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Series Genre Details X3" }));
             }
 
+            // InfoBox Language
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Language",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language EnglishName X")} Series Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language EnglishName Y")} Series Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language EnglishName Z")} Series Language Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Sprache",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language GermanName X")} Series Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language GermanName Y")} Series Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language GermanName Z")} Series Language Details X3" }));
+            }
+
             // Infobox No of Seasons
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Seasons",
-                                   "Series NoOfSeasons X" } ));
+                                   "Series NoOfSeasons X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Staffeln",
-                                   "Series NoOfSeasons X" } ));
+                                   "Series NoOfSeasons X" }));
             }
 
             // Infobox No of Episodes
@@ -293,13 +319,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Episodes",
-                                   "Series NoOfEpisodes X" } ));
+                                   "Series NoOfEpisodes X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Folgen",
-                                   "Series NoOfEpisodes X" } ));
+                                   "Series NoOfEpisodes X" }));
             }
 
             // InfoBox Budget

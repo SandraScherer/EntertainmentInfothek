@@ -332,9 +332,7 @@ namespace WikiPageCreator.Export.Create
             if (Series.Languages != null)
             {
                 Logger.Debug($"Series.Languages is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
             Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Series '{Series.OriginalTitle}' created");

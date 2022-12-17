@@ -17,10 +17,6 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WikiPageCreator.Export.Format;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WikiPageCreator.Export.Format.Tests
 {

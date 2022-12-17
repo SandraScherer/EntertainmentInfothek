@@ -256,9 +256,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Languages != null)
             {
                 Logger.Debug($"Movie.Languages is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                content.AddRange(new LanguageContentCreator(Movie.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
             Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Movie '{Movie.OriginalTitle}' created");
