@@ -224,7 +224,7 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.Countries.Count == 0 -> null");
                 Countries = null;
             }
-            
+
             Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
             noOfDataRecords += Languages.Count;
             if (Languages.Count == 0)
