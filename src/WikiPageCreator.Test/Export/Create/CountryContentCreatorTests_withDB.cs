@@ -26,7 +26,7 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create.IntegrationTests
 {
     [TestClass()]
-    public class GenreContentCreatorTests_withDB
+    public class CountryContentCreatorTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
@@ -38,23 +38,23 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void GenreContentCreatorTest(string id, string targetLanguageCode)
+        public void CountryContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(list, creator.Genres);
+            Assert.AreEqual(list, creator.Countries);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -64,13 +64,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("de")]
         [DataRow("zz")]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GenreContentCreatorTest_withGenresNull(string targetLanguageCode)
+        public void CountryContentCreatorTest_withCountriesNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(null, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(null, formatter, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -81,56 +81,56 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void GenreContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        public void CountryContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, null, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void GenreContentCreatorTest_withTargetLanguageCodeNull(string id)
+        public void CountryContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, null);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, null);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void GenreContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        public void CountryContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, "");
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, "");
         }
 
         [DataTestMethod()]
@@ -145,14 +145,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -170,14 +170,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -191,15 +191,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, VALID_ID);
-            genre.Retrieve(false);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, VALID_ID);
+            country.Retrieve(false);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -208,14 +208,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Genre",
-                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X") }));
+                    new string[] { "Production Country",
+                                   formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Genre",
-                                   formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X") }));
+                    new string[] { "Produktionsland",
+                                   formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X") }));
             }
 
             // Act
@@ -241,14 +241,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -266,14 +266,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
-            GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
-            List<GenreItem> list = new List<GenreItem>();
+            Country country = new Country(reader, id);
+            CountryItem item = new CountryItem(reader);
+            item.Country = country;
+            List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
+            CountryContentCreator creator = new CountryContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

@@ -24,16 +24,16 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a genre.
+    /// Provides a content creator for a country.
     /// </summary>
-    public class GenreContentCreator : EntryContentCreator
+    public class CountryContentCreator : EntryContentCreator
     {
         // --- Properties ---
 
         /// <summary>
-        /// The list of genre items to be used to create the content.
+        /// The list of country items to be used to create the content.
         /// </summary>
-        public List<GenreItem> Genres { get; set; }
+        public List<CountryItem> Countries { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -43,16 +43,16 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new GenreContentCreator.
+        /// Initializes a new CountryContentCreator.
         /// </summary>
-        /// <param name="genres">The list of genre items to be used to create content.</param>
+        /// <param name="countries">The list of country items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public GenreContentCreator(List<GenreItem> genres, Formatter formatter, string targetLanguageCode)
-            : base(genres[0].Genre, formatter, targetLanguageCode)
+        public CountryContentCreator(List<CountryItem> countries, Formatter formatter, string targetLanguageCode)
+            : base(countries[0].Country, formatter, targetLanguageCode)
         {
-            Logger.Trace($"GenreContentCreator()");
+            Logger.Trace($"CountryContentCreator()");
 
             if (formatter == null)
             {
@@ -65,26 +65,26 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Genres = genres;
+            Countries = countries;
 
-            Logger.Trace($"GenreContentCreator(): GenreContentCreator created");
+            Logger.Trace($"CountryContentCreator(): CountryContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given genre.
+        /// Creates the infobox content of a given country.
         /// </summary>
-        /// <returns>The formatted content of the genre.</returns>
+        /// <returns>The formatted content of the country.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();
         }
 
         /// <summary>
-        /// Creates the infobox content of a given list of genres.
+        /// Creates the infobox content of a given list of countries.
         /// </summary>
-        /// <returns>The formatted content of the list of genres.</returns>
+        /// <returns>The formatted content of the list of countries.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
@@ -92,39 +92,39 @@ namespace WikiPageCreator.Export.Create
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
 
-            if ((Genres != null) && (Genres.Count > 0))
+            if ((Countries != null) && (Countries.Count > 0))
             {
-                Logger.Debug($"Genres is not null");
-                Logger.Debug($"no of genres: '{Genres.Count}'");
+                Logger.Debug($"Countries is not null");
+                Logger.Debug($"no of countries: '{Countries.Count}'");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Debug($"Genre: '{Genres[0].Genre.EnglishTitle}' (english)");
+                    Logger.Debug($"Country: '{Countries[0].Country.OriginalFullName}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, "Production Country", path, Countries[0].Country.OriginalFullName, Countries[0].Country.EnglishShortName, Countries[0].Details);
 
-                    for (int i = 1; i < Genres.Count; i++)
+                    for (int i = 1; i < Countries.Count; i++)
                     {
-                        Logger.Debug($"Genre: '{Genres[i].Genre.EnglishTitle}' (english)");
+                        Logger.Debug($"Country: '{Countries[i].Country.OriginalFullName}' (english)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.EnglishTitle, Genres[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Countries[i].Country.OriginalFullName, Countries[i].Country.EnglishShortName, Countries[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
-                    Logger.Debug($"Genre: '{Genres[0].Genre.GermanTitle}' (german, ...)");
+                    Logger.Debug($"Country: '{Countries[0].Country.OriginalFullName}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, "Produktionsland", path, Countries[0].Country.OriginalFullName, Countries[0].Country.GermanShortName, Countries[0].Details);
 
-                    for (int i = 1; i < Genres.Count; i++)
+                    for (int i = 1; i < Countries.Count; i++)
                     {
-                        Logger.Debug($"Genre: '{Genres[i].Genre.GermanTitle}' (german, ...)");
+                        Logger.Debug($"Country: '{Countries[i].Country.OriginalFullName}' (german, ...)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Genres[i].Genre.EnglishTitle, Genres[i].Genre.GermanTitle, Genres[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Countries[i].Country.OriginalFullName, Countries[i].Country.GermanShortName, Countries[i].Details);
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Genres with Count '{Genres.Count}' created");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Countries with Count '{Countries.Count}' created");
 
             return content;
         }

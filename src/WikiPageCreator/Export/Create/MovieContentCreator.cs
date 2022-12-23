@@ -232,9 +232,7 @@ namespace WikiPageCreator.Export.Create
             if (Movie.Countries != null)
             {
                 Logger.Debug($"Movie.Countries is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+                content.AddRange(new CountryContentCreator(Movie.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
             Logger.Trace($"CreateInfoBoxCountry(): infobox country for Movie '{Movie.OriginalTitle}' created");

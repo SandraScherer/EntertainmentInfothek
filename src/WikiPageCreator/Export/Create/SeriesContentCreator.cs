@@ -306,12 +306,11 @@ namespace WikiPageCreator.Export.Create
 
             List<string> content = new List<string>();
 
-            // TODO: implement following stuff
-            //if (Series.Countries != null)
-            //{
-            //    Logger.Debug($"Series.Countries is not null -> create");
-            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
+            if (Series.Countries != null)
+            {
+                Logger.Debug($"Series.Countries is not null -> create");
+                content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
 
             Logger.Trace($"CreateInfoBoxCountry(): infobox country for Series '{Series.OriginalTitle}' created");
 
