@@ -61,7 +61,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
-            //Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
             //Assert.IsNull(entry.SoundMixes);
@@ -161,7 +161,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
-            //Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
             //Assert.IsNull(entry.SoundMixes);
@@ -279,7 +279,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
-            //Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
             //Assert.IsNull(entry.SoundMixes);
@@ -386,10 +386,10 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.Certifications[1].ID);
             //Assert.AreEqual("_xx3", entry.Certifications[2].ID);
 
-            //Assert.AreEqual(3, entry.Countries.Count);
-            //Assert.AreEqual("_xx1", entry.Countries[0].ID);
-            //Assert.AreEqual("_xx2", entry.Countries[1].ID);
-            //Assert.AreEqual("_xx3", entry.Countries[2].ID);
+            Assert.AreEqual(3, entry.Countries.Count);
+            Assert.AreEqual("_xx1", entry.Countries[0].ID);
+            Assert.AreEqual("_xx2", entry.Countries[1].ID);
+            Assert.AreEqual("_xx3", entry.Countries[2].ID);
 
             Assert.AreEqual(3, entry.Languages.Count);
             Assert.AreEqual("_xx1", entry.Languages[0].ID);
@@ -708,7 +708,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.Genres);
             //Assert.IsNull(entry.Certifications);
-            //Assert.IsNull(entry.Countries);
+            Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
             //Assert.IsNull(entry.SoundMixes);

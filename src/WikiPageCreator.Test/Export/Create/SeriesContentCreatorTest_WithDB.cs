@@ -274,6 +274,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Series Genre Details X3" }));
             }
 
+            // InfoBox Country
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Production Country",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")} Series Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country EnglishShortName Y")} Series Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country EnglishShortName Z")} Series Country Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Produktionsland",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")} Series Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country GermanShortName Y")} Series Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country GermanShortName Z")} Series Country Details X3" }));
+            }
+
             // InfoBox Language
             if (targetLanguageCode.Equals("en"))
             {

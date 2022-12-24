@@ -60,6 +60,11 @@ namespace EntertainmentDB.Data
         public List<GenreItem> Genres { get; set; }
 
         /// <summary>
+        /// The list of countries of the series.
+        /// </summary>
+        public List<CountryItem> Countries { get; set; }
+
+        /// <summary>
         /// The list of languages of the movie.
         /// </summary>
         public List<LanguageItem> Languages { get; set; }
@@ -211,10 +216,15 @@ namespace EntertainmentDB.Data
             /*
             Certifications = CertificationItem.RetrieveList(Reader, "Series", ID, "Certification");
             noOfDataRecords += Certifications.Count;
-
+            */
             Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
             noOfDataRecords += Countries.Count;
-            */
+            if (Countries.Count == 0)
+            {
+                Logger.Debug($"Series.Countries.Count == 0 -> null");
+                Countries = null;
+            }
+
             Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
             noOfDataRecords += Languages.Count;
             if (Languages.Count == 0)

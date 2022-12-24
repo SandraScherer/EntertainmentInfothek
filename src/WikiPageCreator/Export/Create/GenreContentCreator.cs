@@ -75,7 +75,7 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the infobox content of a given genre.
         /// </summary>
-        /// <returns>Teh formatted content of the genre.</returns>
+        /// <returns>The formatted content of the genre.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();

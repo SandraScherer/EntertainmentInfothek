@@ -1,4 +1,8 @@
 <map id="WikiPageCreator.Export.Create.LanguageContentCreator.CreateInfoBoxContentInternal" name="WikiPageCreator.Export.Create.LanguageContentCreator.CreateInfoBoxContentInternal">
-<area shape="rect" id="node1" title="Creates the infobox content of a given list of languages." alt="" coords="280,5,507,60"/>
-<area shape="rect" id="node2" href="$d3/d47/class_wiki_page_creator_1_1_export_1_1_create_1_1_language_content_creator.html#a3cf9098271a273c6f7459c58e394e73c" title="Creates the infobox content of a given language." alt="" coords="5,5,232,60"/>
+<area shape="rect" id="node1" title="Creates the infobox content of a given list of languages." alt="" coords="837,45,1064,100"/>
+<area shape="rect" id="node2" href="$d3/d47/class_wiki_page_creator_1_1_export_1_1_create_1_1_language_content_creator.html#a3cf9098271a273c6f7459c58e394e73c" title="Creates the infobox content of a given language." alt="" coords="563,45,789,100"/>
+<area shape="rect" id="node3" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#a4c8200769e1122bf3050178f4666e17f" title="Creates the formatted infobox language content of a given movie." alt="" coords="286,5,513,60"/>
+<area shape="rect" id="node5" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#ae1f6a3284dd02d98f43c4fa8002d7fd7" title="Creates the formatted infobox language content of a given series." alt="" coords="284,84,515,139"/>
+<area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ad427dd1dd026f3c9db9762d054aa0c4c" title="Creates the infobox content of a given movie." alt="" coords="7,5,234,60"/>
+<area shape="rect" id="node6" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a26528b6f172020faa30bf048f2acf5d5" title="Creates the infobox content of a given series." alt="" coords="5,84,236,139"/>
 </map>

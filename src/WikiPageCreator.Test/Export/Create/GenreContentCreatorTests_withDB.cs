@@ -118,7 +118,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TypeContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        public void GenreContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
