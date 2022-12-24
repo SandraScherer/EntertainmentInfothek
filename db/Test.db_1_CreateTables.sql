@@ -1183,3 +1183,15 @@ CREATE TABLE Series_Language (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(LanguageID) REFERENCES Language(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Certification (
+  ID              text NOT NULL, 
+  SeriesID        text, 
+  CertificationID text, 
+  Details         text, 
+  Notes           text, 
+  StatusID        text, 
+  LastUpdated     text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(CertificationID) REFERENCES Certification(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
