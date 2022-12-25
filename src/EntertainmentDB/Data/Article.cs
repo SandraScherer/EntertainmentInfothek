@@ -59,6 +59,11 @@ namespace EntertainmentDB.Data
         public List<GenreItem> Genres { get; set; }
 
         /// <summary>
+        /// The list of certifications of the article.
+        /// </summary>
+        public List<CertificationItem> Certifications { get; set; }
+
+        /// <summary>
         /// The connection of the article.
         /// </summary>
         public Connection Connection { get; set; }

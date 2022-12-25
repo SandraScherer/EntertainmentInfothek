@@ -198,10 +198,15 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.Genres.Count == 0 -> null");
                 Genres = null;
             }
-            /*
+
             Certifications = CertificationItem.RetrieveList(Reader, "Series", ID, "Certification");
             noOfDataRecords += Certifications.Count;
-            */
+            if (Certifications.Count == 0)
+            {
+                Logger.Debug($"Series.Certifiations.Count == 0 -> null");
+                Certifications = null;
+            }
+
             Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
             noOfDataRecords += Countries.Count;
             if (Countries.Count == 0)

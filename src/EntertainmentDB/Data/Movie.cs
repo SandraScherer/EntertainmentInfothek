@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of certifications of the movie.
-        /// </summary>
-        public List<CertificationItem> Certifications { get; set; }
-
-        /// <summary>
         /// The list of runtimes of the movie.
         /// </summary>
         public List<RuntimeItem> Runtimes { get; set; }
