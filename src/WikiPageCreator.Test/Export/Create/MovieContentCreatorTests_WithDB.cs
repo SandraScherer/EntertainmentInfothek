@@ -158,6 +158,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
+            string[] pathCertification = { "certification" };
 
             // File Header
             testContent.Add(formatter.DisableCache());
@@ -265,25 +266,25 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Certification",
-                                   $"{formatter.AsImage(pathInfo, "Image FileName X", 75)} Movie Certification Details X1" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsImage(pathInfo, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsImage(pathInfo, "Image FileName Z", 75)} Movie Certification Details X3" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Altersfreigabe",
-                                   $"{formatter.AsImage(pathInfo, "Image FileName X", 75)} Movie Certification Details X1" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsImage(pathInfo, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsImage(pathInfo, "Image FileName Z", 75)} Movie Certification Details X3" }));
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" }));
             }
 
             // InfoBox Country

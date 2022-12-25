@@ -203,7 +203,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             List<string> testContent = new List<string>();
 
-            string[] pathInfo = { targetLanguageCode, "info" };
+            string[] pathInfo = { "certification" };
 
             if (targetLanguageCode.Equals("en"))
             {

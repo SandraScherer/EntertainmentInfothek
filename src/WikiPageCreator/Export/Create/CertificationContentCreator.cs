@@ -83,7 +83,7 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContentInternal()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "info" };
+            string[] path = { "certification" };
 
             if ((Certifications != null) && (Certifications.Count > 0))
             {

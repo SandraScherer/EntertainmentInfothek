@@ -25,6 +25,7 @@ using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create.Tests
 {
+    [Ignore()] // MovieFileContentCreator is already deprecated; no changes will be commited to class 
     [TestClass()]
     public class MovieFileContentCreatorTests
     {
