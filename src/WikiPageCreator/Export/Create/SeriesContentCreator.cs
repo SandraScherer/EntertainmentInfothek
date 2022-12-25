@@ -250,29 +250,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox certification content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox certification content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxCertification()
-        {
-            Logger.Trace($"CreateInfoBoxCertification()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Certifications != null)
-            //{
-            //    Logger.Debug($"Series.Certifications is not null -> create");
-            //    content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
         /// <returns>The formatted infobox language content of the series.</returns>

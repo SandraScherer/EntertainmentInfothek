@@ -227,6 +227,26 @@ namespace WikiPageCreator.Export.Create
             content.Add(Formatter.AsTableRow(data));
         }
 
+        protected void CreateInfoBoxContentHelper(List<string> content, string title, string[] path, string pagename, Image image, int size, string additionalInfo)
+        {
+            string[] data = new string[2];
+
+            data[0] = title;
+            if ((image != null) && (!String.IsNullOrEmpty(additionalInfo)))
+            {
+                data[1] = $"{Formatter.AsImage(path, image.FileName, size)} {additionalInfo}";
+            }
+            else if (image != null)
+            {
+                data[1] = $"{Formatter.AsImage(path, image.FileName, size)}";
+            }
+            else
+            {
+                data[1] = $"{pagename}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
         /// <summary>
         /// Creates the formatted infobox end content of a given entry
         /// </summary>

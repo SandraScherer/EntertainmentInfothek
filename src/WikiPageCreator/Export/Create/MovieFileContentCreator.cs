@@ -1992,22 +1992,22 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
+                                    data = $"{Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
                                 }
                             }
                             else
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
+                                    data = $"{Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
                                 }
                             }
                         }
@@ -2023,22 +2023,22 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
+                                    data = $"{Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
                                 }
                             }
                             else
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
+                                    data = $"{Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
                                 }
                             }
                         }

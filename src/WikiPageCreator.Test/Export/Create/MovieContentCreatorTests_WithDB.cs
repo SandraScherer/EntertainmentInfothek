@@ -260,6 +260,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" }));
             }
 
+            // InfoBox Certifiction
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Certification",
+                                   $"{formatter.AsImage(pathInfo, "Image FileName X", 75)} Movie Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathInfo, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathInfo, "Image FileName Z", 75)} Movie Certification Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Altersfreigabe",
+                                   $"{formatter.AsImage(pathInfo, "Image FileName X", 75)} Movie Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathInfo, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathInfo, "Image FileName Z", 75)} Movie Certification Details X3" }));
+            }
+
             // InfoBox Country
             if (targetLanguageCode.Equals("en"))
             {

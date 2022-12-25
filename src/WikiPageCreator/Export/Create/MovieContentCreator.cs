@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox certification content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox certification content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxCertification()
-        {
-            Logger.Trace($"CreateInfoBoxCertification()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.Certifications != null)
-            {
-                Logger.Debug($"Movie.Certifications is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new CertificationContentCreator(Movie.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox runtime content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox runtime content of the movie.</returns>
