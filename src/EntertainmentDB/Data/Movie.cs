@@ -35,24 +35,9 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of genres of the movie.
-        /// </summary>
-        public List<GenreItem> Genres { get; set; }
-
-        /// <summary>
         /// The list of certifications of the movie.
         /// </summary>
         public List<CertificationItem> Certifications { get; set; }
-
-        /// <summary>
-        /// The list of countries of the movie.
-        /// </summary>
-        public List<CountryItem> Countries { get; set; }
-
-        /// <summary>
-        /// The list of languages of the movie.
-        /// </summary>
-        public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
         /// The list of runtimes of the movie.

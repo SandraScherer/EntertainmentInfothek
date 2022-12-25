@@ -55,21 +55,6 @@ namespace EntertainmentDB.Data
         public string NoOfEpisodes { get; set; }
 
         /// <summary>
-        /// The list of genres of the series.
-        /// </summary>
-        public List<GenreItem> Genres { get; set; }
-
-        /// <summary>
-        /// The list of countries of the series.
-        /// </summary>
-        public List<CountryItem> Countries { get; set; }
-
-        /// <summary>
-        /// The list of languages of the movie.
-        /// </summary>
-        public List<LanguageItem> Languages { get; set; }
-
-        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();

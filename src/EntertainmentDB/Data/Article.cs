@@ -17,6 +17,7 @@
 
 using EntertainmentDB.DBAccess.Read;
 using System;
+using System.Collections.Generic;
 
 namespace EntertainmentDB.Data
 {
@@ -28,32 +29,37 @@ namespace EntertainmentDB.Data
         // --- Properties ---
 
         /// <summary>
-        /// The original title of the series.
+        /// The original title of the article.
         /// </summary>
         public string OriginalTitle { get; set; }
 
         /// <summary>
-        /// The english title of the series.
+        /// The english title of the article.
         /// </summary>
         public string EnglishTitle { get; set; }
 
         /// <summary>
-        /// The german title of the series.
+        /// The german title of the article.
         /// </summary>
         public string GermanTitle { get; set; }
 
         /// <summary>
-        /// The type of the series.
+        /// The type of the article.
         /// </summary>
         public Type Type { get; set; }
 
         /// <summary>
-        /// The release date of the movie.
+        /// The release date of the article.
         /// </summary>
         public string ReleaseDate { get; set; }
 
         /// <summary>
-        /// The connection of the movie.
+        /// The list of genres of the article.
+        /// </summary>
+        public List<GenreItem> Genres { get; set; }
+
+        /// <summary>
+        /// The connection of the article.
         /// </summary>
         public Connection Connection { get; set; }
 
