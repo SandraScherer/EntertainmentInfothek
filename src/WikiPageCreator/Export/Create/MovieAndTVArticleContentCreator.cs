@@ -146,5 +146,49 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox country content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox country content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxCountry()
+        {
+            Logger.Trace($"CreateInfoBoxCountry()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Countries != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Countries is not null -> create");
+                content.AddRange(new CountryContentCreator(MovieAndTVArticle.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxCountry(): infobox country for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox language content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox language content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxLanguage()
+        {
+            Logger.Trace($"CreateInfoBoxLanguage()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Languages != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Languages is not null -> create");
+                content.AddRange(new LanguageContentCreator(MovieAndTVArticle.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxLanguage(): infobox language for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }

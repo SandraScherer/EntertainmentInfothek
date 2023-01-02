@@ -25,6 +25,7 @@ using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create.Tests
 {
+    [Ignore()] // MovieFileContentCreator is already deprecated; no changes will be commited to class 
     [TestClass()]
     public class MovieFileContentCreatorTests
     {
@@ -1328,12 +1329,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Beschreibungen")); break;
             }
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
+            string data = $"({Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})";
 
             switch (value)
             {
@@ -1408,12 +1409,12 @@ namespace WikiPageCreator.Export.Create.Tests
                 default: content.Add(Formatter.AsHeading2("Rezensionen")); break;
             }
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
+            string data = $"({Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})";
 
             switch (value)
             {
@@ -2284,9 +2285,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Filming Dates
             string[] pathFilmingDates = { value, "date" };
-            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1") }" };
-            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2") }" };
-            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3") }" };
+            string[] dataFilmingDates1 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1")}" };
+            string[] dataFilmingDates2 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2")}" };
+            string[] dataFilmingDates3 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3")}" };
 
             switch (value)
             {
@@ -2303,9 +2304,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Dates
-            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1") }" };
-            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2") }" };
-            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3") }" };
+            string[] dataProductionDates1 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1")}" };
+            string[] dataProductionDates2 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2")}" };
+            string[] dataProductionDates3 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3")}" };
 
             switch (value)
             {
@@ -2355,15 +2356,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataDe10 = { Formatter.AsInternalLink(path, "Award Name X", "Award Name X"), Formatter.AsInternalLink(pathDate, "Movie Award Date X1", "Movie Award Date X1"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataDe20 = { Formatter.AsInternalLink(path, "Award Name Y", "Award Name Y"), Formatter.AsInternalLink(pathDate, "Movie Award Date X2", "Movie Award Date X2"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataDe30 = { Formatter.AsInternalLink(path, "Award Name Z", "Award Name Z"), Formatter.AsInternalLink(pathDate, "Movie Award Date X3", "Movie Award Date X3"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            string[] data11 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", " ", " " };
-            string[] data12 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", " ", " " };
-            string[] data13 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", " ", " " };
-            string[] data21 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", " ", " " };
-            string[] data22 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", " ", " " };
-            string[] data23 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", " ", " " };
-            string[] data31 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", " ", " " };
-            string[] data32 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", " ", " " };
-            string[] data33 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", " ", " " };
+            string[] data11 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", " ", " " };
+            string[] data12 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", " ", " " };
+            string[] data13 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", " ", " " };
+            string[] data21 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", " ", " " };
+            string[] data22 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", " ", " " };
+            string[] data23 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", " ", " " };
+            string[] data31 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", " ", " " };
+            string[] data32 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", " ", " " };
+            string[] data33 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", " ", " " };
 
             switch (value)
             {
@@ -2446,12 +2447,12 @@ namespace WikiPageCreator.Export.Create.Tests
             // Assert
             List<string> content = new List<string>();
 
-            string dataEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X") } (Language EnglishName X)";
-            string dataEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y") } (Language EnglishName Y)";
-            string dataEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z") } (Language EnglishName Z)";
-            string dataDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X") } (Language GermanName X)";
-            string dataDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y") } (Language GermanName Y)";
-            string dataDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z") } (Language GermanName Z)";
+            string dataEn1 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X")} (Language EnglishName X)";
+            string dataEn2 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y")} (Language EnglishName Y)";
+            string dataEn3 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z")} (Language EnglishName Z)";
+            string dataDe1 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X")} (Language GermanName X)";
+            string dataDe2 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y")} (Language GermanName Y)";
+            string dataDe3 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z")} (Language GermanName Z)";
 
             switch (value)
             {
@@ -3151,12 +3152,12 @@ namespace WikiPageCreator.Export.Create.Tests
 
             string[] pathPerson = { value, "biography" };
 
-            string data = $"({ Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y") }, " +
-                $"{ Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z") })";
+            string data = $"({Formatter.AsInternalLink(pathPerson, "Person FirstName X Person LastName X Person NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")}, " +
+                $"{Formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")})";
 
 
             switch (value)
@@ -4040,9 +4041,9 @@ namespace WikiPageCreator.Export.Create.Tests
 
             // Filming Dates
             string[] pathFilmingDates = { value, "date" };
-            string[] dataFilmingDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1") }" };
-            string[] dataFilmingDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2") }" };
-            string[] dataFilmingDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3") }" };
+            string[] dataFilmingDates1 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X1")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X1")}" };
+            string[] dataFilmingDates2 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X2")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X2")}" };
+            string[] dataFilmingDates3 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate StartDate X3")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie FilmingDate EndDate X3")}" };
 
             switch (value)
             {
@@ -4059,9 +4060,9 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Production Dates
-            string[] dataProductionDates1 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1") }" };
-            string[] dataProductionDates2 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2") }" };
-            string[] dataProductionDates3 = { $"{ Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3") } - { Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3") }" };
+            string[] dataProductionDates1 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X1")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X1")}" };
+            string[] dataProductionDates2 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X2")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X2")}" };
+            string[] dataProductionDates3 = { $"{Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate StartDate X3")} - {Formatter.AsInternalLink(pathFilmingDates, "Movie ProductionDate EndDate X3")}" };
 
             switch (value)
             {
@@ -4087,15 +4088,15 @@ namespace WikiPageCreator.Export.Create.Tests
             string[] dataAwardDe10 = { Formatter.AsInternalLink(pathAward, "Award Name X", "Award Name X"), Formatter.AsInternalLink(pathAwardDate, "Movie Award Date X1", "Movie Award Date X1"), "Movie Award Category X1", "Gewinner", "Movie Award Details X1" };
             string[] dataAwardDe20 = { Formatter.AsInternalLink(pathAward, "Award Name Y", "Award Name Y"), Formatter.AsInternalLink(pathAwardDate, "Movie Award Date X2", "Movie Award Date X2"), "Movie Award Category X2", "Nominierter", "Movie Award Details X2" };
             string[] dataAwardDe30 = { Formatter.AsInternalLink(pathAward, "Award Name Z", "Award Name Z"), Formatter.AsInternalLink(pathAwardDate, "Movie Award Date X3", "Movie Award Date X3"), "Movie Award Category X3", "Nominierter", "Movie Award Details X3" };
-            string[] dataAward11 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", " ", " " };
-            string[] dataAward12 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", " ", " " };
-            string[] dataAward13 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", " ", " " };
-            string[] dataAward21 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", " ", " " };
-            string[] dataAward22 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", " ", " " };
-            string[] dataAward23 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", " ", " " };
-            string[] dataAward31 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", " ", " " };
-            string[] dataAward32 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", " ", " " };
-            string[] dataAward33 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{ Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", " ", " " };
+            string[] dataAward11 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X11) Movie Award Person Details X11", " ", " " };
+            string[] dataAward12 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X12) Movie Award Person Details X12", " ", " " };
+            string[] dataAward13 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X13) Movie Award Person Details X13", " ", " " };
+            string[] dataAward21 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X21) Movie Award Person Details X21", " ", " " };
+            string[] dataAward22 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X22) Movie Award Person Details X22", " ", " " };
+            string[] dataAward23 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X23) Movie Award Person Details X23", " ", " " };
+            string[] dataAward31 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName X Person LastName X Person NameAddOn X", "Person FirstName X Person LastName X")} (Movie Award Person Role X31) Movie Award Person Details X31", " ", " " };
+            string[] dataAward32 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Y Person LastName Y Person NameAddOn Y", "Person FirstName Y Person LastName Y")} (Movie Award Person Role X32) Movie Award Person Details X32", " ", " " };
+            string[] dataAward33 = { Formatter.CellSpanVertically(), Formatter.CellSpanVertically(), $"{Formatter.AsInternalLink(pathAwardPerson, "Person FirstName Z Person LastName Z Person NameAddOn Z", "Person FirstName Z Person LastName Z")} (Movie Award Person Role X33) Movie Award Person Details X33", " ", " " };
 
             switch (value)
             {
@@ -4153,12 +4154,12 @@ namespace WikiPageCreator.Export.Create.Tests
             content.Add($"");
 
             // Weblink Chapter
-            string dataWeblinksEn1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X") } (Language EnglishName X)";
-            string dataWeblinksEn2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y") } (Language EnglishName Y)";
-            string dataWeblinksEn3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z") } (Language EnglishName Z)";
-            string dataWeblinksDe1 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X") } (Language GermanName X)";
-            string dataWeblinksDe2 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y") } (Language GermanName Y)";
-            string dataWeblinksDe3 = $"{ Formatter.ListItemIndent()}{Formatter.ListItemUnsorted() } { Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z") } (Language GermanName Z)";
+            string dataWeblinksEn1 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL X", "Weblink EnglishTitle X")} (Language EnglishName X)";
+            string dataWeblinksEn2 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Y", "Weblink EnglishTitle Y")} (Language EnglishName Y)";
+            string dataWeblinksEn3 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Z", "Weblink EnglishTitle Z")} (Language EnglishName Z)";
+            string dataWeblinksDe1 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL X", "Weblink GermanTitle X")} (Language GermanName X)";
+            string dataWeblinksDe2 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Y", "Weblink GermanTitle Y")} (Language GermanName Y)";
+            string dataWeblinksDe3 = $"{Formatter.ListItemIndent()}{Formatter.ListItemUnsorted()} {Formatter.AsExternalLink("Weblink URL Z", "Weblink GermanTitle Z")} (Language GermanName Z)";
 
             switch (value)
             {

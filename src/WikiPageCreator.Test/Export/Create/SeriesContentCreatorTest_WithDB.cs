@@ -158,6 +158,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
+            string[] pathCertification = { "certification" };
 
             // File Header
             testContent.Add(formatter.DisableCache());
@@ -272,6 +273,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
                                    $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Series Genre Details X3" }));
+            }
+
+            // InfoBox Certifiction
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Certification",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Series Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Series Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Series Certification Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Altersfreigabe",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Series Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Series Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Series Certification Details X3" }));
             }
 
             // InfoBox Country

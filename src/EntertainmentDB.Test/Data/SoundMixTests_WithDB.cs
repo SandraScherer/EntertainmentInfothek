@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMix entry = new SoundMix(reader, INVALID_ID);
 
             // Act
-            int count = entry.Retrieve(true);
+            int count = entry.Retrieve(basicInfoOnly);
 
             // Assert
             Assert.AreEqual(0, count);
