@@ -222,12 +222,18 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.Languages.Count == 0 -> null");
                 Languages = null;
             }
-            /*
-            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
-            noOfDataRecords += Runtimes.Count;
 
             SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
             noOfDataRecords += SoundMixes.Count;
+            if (SoundMixes.Count == 0)
+            {
+                Logger.Debug($"Series.SoundMixes.Count == 0 -> null");
+                SoundMixes = null;
+            }
+
+            /*
+            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
+            noOfDataRecords += Runtimes.Count;
 
             Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
             noOfDataRecords += Colors.Count;
