@@ -1,4 +1,5 @@
 <map id="EntertainmentDB.Data.SoundMixItem.RetrieveList" name="EntertainmentDB.Data.SoundMixItem.RetrieveList">
-<area shape="rect" id="node1" title="Retrieves a list of sound mix items from the database." alt="" coords="247,5,440,45"/>
-<area shape="rect" id="node2" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="5,5,199,45"/>
+<area shape="rect" id="node1" title="Retrieves a list of sound mix items from the database." alt="" coords="251,37,444,77"/>
+<area shape="rect" id="node2" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="7,5,201,45"/>
+<area shape="rect" id="node3" href="$dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aa799888d3fa4f4f3aac704169618f715" title="Retrieves the additional information of the series from the database." alt="" coords="5,69,203,109"/>
 </map>
