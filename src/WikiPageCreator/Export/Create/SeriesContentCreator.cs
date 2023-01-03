@@ -345,29 +345,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox soundmix content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox soundmix content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxSoundMix()
-        {
-            Logger.Trace($"CreateInfoBoxSoundMix()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.SoundMixes != null)
-            //{
-            //    Logger.Debug($"Series.SoundMixes is not null -> create");
-            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox color content of a given series.
         /// </summary>
         /// <returns>The formatted infobox color content of the series.</returns>

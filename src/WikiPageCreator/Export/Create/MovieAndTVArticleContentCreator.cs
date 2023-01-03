@@ -190,5 +190,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox soundmix content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox soundmix content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxSoundMix()
+        {
+            Logger.Trace($"CreateInfoBoxSoundMix()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.SoundMixes != null)
+            {
+                Logger.Debug($"Movie.SoundMixes is not null -> create");
+                content.AddRange(new SoundMixContentCreator(MovieAndTVArticle.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }
