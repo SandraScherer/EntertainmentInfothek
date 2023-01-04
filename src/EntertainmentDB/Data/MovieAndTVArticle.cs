@@ -54,6 +54,11 @@ namespace EntertainmentDB.Data
         public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
+        /// The list of sound mixes of the movie and tv article.
+        /// </summary>
+        public List<SoundMixItem> SoundMixes { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }

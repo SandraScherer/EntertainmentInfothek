@@ -64,7 +64,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
-            //Assert.IsNull(entry.SoundMixes);
+            Assert.IsNull(entry.SoundMixes);
             //Assert.IsNull(entry.Colors);
             //Assert.IsNull(entry.AspectRatios);
             //Assert.IsNull(entry.Cameras);
@@ -164,7 +164,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
-            //Assert.IsNull(entry.SoundMixes);
+            Assert.IsNull(entry.SoundMixes);
             //Assert.IsNull(entry.Colors);
             //Assert.IsNull(entry.AspectRatios);
             //Assert.IsNull(entry.Cameras);
@@ -282,7 +282,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
-            //Assert.IsNull(entry.SoundMixes);
+            Assert.IsNull(entry.SoundMixes);
             //Assert.IsNull(entry.Colors);
             //Assert.IsNull(entry.AspectRatios);
             //Assert.IsNull(entry.Cameras);
@@ -401,10 +401,10 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
             //Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
 
-            //Assert.AreEqual(3, entry.SoundMixes.Count);
-            //Assert.AreEqual("_xx1", entry.SoundMixes[0].ID);
-            //Assert.AreEqual("_xx2", entry.SoundMixes[1].ID);
-            //Assert.AreEqual("_xx3", entry.SoundMixes[2].ID);
+            Assert.AreEqual(3, entry.SoundMixes.Count);
+            Assert.AreEqual("_xx1", entry.SoundMixes[0].ID);
+            Assert.AreEqual("_xx2", entry.SoundMixes[1].ID);
+            Assert.AreEqual("_xx3", entry.SoundMixes[2].ID);
 
             //Assert.AreEqual(3, entry.Colors.Count);
             //Assert.AreEqual("_xx1", entry.Colors[0].ID);
@@ -711,7 +711,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
             //Assert.IsNull(entry.Runtimes);
-            //Assert.IsNull(entry.SoundMixes);
+            Assert.IsNull(entry.SoundMixes);
             //Assert.IsNull(entry.Colors);
             //Assert.IsNull(entry.AspectRatios);
             //Assert.IsNull(entry.Cameras);

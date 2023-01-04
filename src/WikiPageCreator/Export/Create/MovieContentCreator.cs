@@ -195,30 +195,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox soundmix content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox soundmix content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxSoundMix()
-        {
-            Logger.Trace($"CreateInfoBoxSoundMix()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.SoundMixes != null)
-            {
-                Logger.Debug($"Movie.SoundMixes is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new SoundMixContentCreator(Movie.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox color content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox color content of the movie.</returns>

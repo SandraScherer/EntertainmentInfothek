@@ -1,0 +1,8 @@
+<map id="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator.CreateInfoBoxSoundMix" name="WikiPageCreator.Export.Create.MovieAndTVArticleContentCreator.CreateInfoBoxSoundMix">
+<area shape="rect" id="node1" title="Creates the formatted infobox soundmix content of a given movie and tv article." alt="" coords="5,34,228,89"/>
+<area shape="rect" id="node2" href="$d6/d58/class_wiki_page_creator_1_1_export_1_1_create_1_1_sound_mix_content_creator.html#ab830b611b5970cc3bbb8a6a7583e2629" title="Creates the infobox content of a given sound mix." alt="" coords="276,34,505,89"/>
+<area shape="rect" id="node3" href="$d6/d58/class_wiki_page_creator_1_1_export_1_1_create_1_1_sound_mix_content_creator.html#adf020489c29f537a589a207bc7e7478e" title="Creates the infobox content of a given list of sound mixes." alt="" coords="553,34,783,89"/>
+<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="838,5,1049,45"/>
+<area shape="rect" id="node5" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afd99e7df96124d8b3c2620e5031751a0" title="Creates the specific row of the infobox content." alt="" coords="831,70,1056,125"/>
+<area shape="rect" id="node6" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="1104,77,1315,117"/>
+</map>

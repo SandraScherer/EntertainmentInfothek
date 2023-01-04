@@ -75,7 +75,7 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Creates the infobox content of a given language.
         /// </summary>
-        /// <returns>Teh formatted content of the language.</returns>
+        /// <returns>The formatted content of the language.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();
@@ -128,12 +128,5 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
-
-
-
-
-
-
-
     }
 }

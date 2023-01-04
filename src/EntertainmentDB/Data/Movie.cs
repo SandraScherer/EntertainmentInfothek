@@ -40,11 +40,6 @@ namespace EntertainmentDB.Data
         public List<RuntimeItem> Runtimes { get; set; }
 
         /// <summary>
-        /// The list of sound mixes of the movie.
-        /// </summary>
-        public List<SoundMixItem> SoundMixes { get; set; }
-
-        /// <summary>
         /// The list of colors of the movie.
         /// </summary>
         public List<ColorItem> Colors { get; set; }
