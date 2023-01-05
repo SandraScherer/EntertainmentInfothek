@@ -223,6 +223,14 @@ namespace EntertainmentDB.Data
                 Languages = null;
             }
 
+            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
+            noOfDataRecords += Runtimes.Count;
+            if (Runtimes.Count == 0)
+            {
+                Logger.Debug($"Series.Runtimes.Count == 0 -> null");
+                Runtimes = null;
+            }
+
             SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
             noOfDataRecords += SoundMixes.Count;
             if (SoundMixes.Count == 0)
@@ -232,9 +240,6 @@ namespace EntertainmentDB.Data
             }
 
             /*
-            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
-            noOfDataRecords += Runtimes.Count;
-
             Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
             noOfDataRecords += Colors.Count;
 

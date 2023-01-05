@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of runtimes of the movie.
-        /// </summary>
-        public List<RuntimeItem> Runtimes { get; set; }
-
-        /// <summary>
         /// The list of colors of the movie.
         /// </summary>
         public List<ColorItem> Colors { get; set; }
