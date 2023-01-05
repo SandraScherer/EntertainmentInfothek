@@ -26,6 +26,8 @@ using WikiPageCreator.Export.Write;
 
 namespace WikiPageCreator
 {
+    public delegate void PageCreationHandler(string id, string targetLanguageCode, string outputFolder);
+
     public static class Program
     {
         // --- Properties ---
@@ -112,13 +114,11 @@ namespace WikiPageCreator
 
                 Logger.Debug($"ID is set to '{idUser}'");
 
-
-                // TODO: change if..else if to a better solution
+                PageCreationHandler createPage;
+                List<Article> list = new List<Article>();
 
                 if (pageTypeUser.Equals(((int)PageType.Movie).ToString()))
                 {
-                    List<Movie> list = new List<Movie>();
-
                     if (idUser.Equals("*"))
                     {
                         list = Movie.RetrieveList(reader, "ok");
@@ -127,36 +127,31 @@ namespace WikiPageCreator
                     {
                         list.Add(new Movie(reader, idUser));
                     }
-
-                    foreach (Movie item in list)
-                    {
-                        CreateMoviePage(item.ID, targetLanguageCodeUser, outputFolder);
-                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
-
-                        Logger.Info($"Movie page for ID '{item.ID}' successfully created");
-                    }
+                    createPage = new PageCreationHandler(CreateMoviePage);
                 }
                 else if (pageTypeUser.Equals(((int)PageType.Series).ToString()))
                 {
-                    List<Series> list = new List<Series>();
-
                     if (idUser.Equals("*"))
                     {
                         list = Series.RetrieveList(reader, "ok");
-
                     }
                     else
                     {
                         list.Add(new Series(reader, idUser));
                     }
+                    createPage = new PageCreationHandler(CreateSeriesPage);
+                }
+                else
+                {
+                    createPage = new PageCreationHandler(CreateMoviePage);
+                }
 
-                    foreach (Series item in list)
-                    {
-                        CreateSeriesPage(item.ID, targetLanguageCodeUser, outputFolder);
-                        Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
+                foreach (Article item in list)
+                {
+                    createPage(item.ID, targetLanguageCodeUser, outputFolder);
+                    Console.WriteLine($"Seitenerstellung für ID: {item.ID} erfolgreich beendet.");
 
-                        Logger.Info($"Series page for ID '{item.ID}' successfully created");
-                    }
+                    Logger.Info($"Article page for ID '{item.ID}' successfully created");
                 }
 
                 // End

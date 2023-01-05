@@ -411,7 +411,7 @@ namespace EntertainmentDB.Data
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of series.</returns>
         /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
-        public static List<Series> RetrieveList(DBReader reader, string status, string order = "ID")
+        public static List<Article> RetrieveList(DBReader reader, string status, string order = "ID")
         {
             Logger.Trace($"Series.RetrieveList()");
 
@@ -440,7 +440,7 @@ namespace EntertainmentDB.Data
 
             Logger.Debug($"Retrieve from DB: {reader.Query}");
 
-            List<Series> list = new List<Series>();
+            List<Article> list = new List<Article>();
 
             int noOfDataRecords = reader.Retrieve(true);
             if (noOfDataRecords > 0)

@@ -761,7 +761,7 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
 
             // Act
-            List<Movie> list = Movie.RetrieveList(reader, "_xxx");
+            List<Article> list = Movie.RetrieveList(reader, "_xxx");
 
             // Assert
             Assert.AreEqual(1, list.Count);
