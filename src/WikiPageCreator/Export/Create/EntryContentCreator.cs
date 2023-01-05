@@ -227,6 +227,16 @@ namespace WikiPageCreator.Export.Create
             content.Add(Formatter.AsTableRow(data));
         }
 
+        /// <summary>
+        /// Creates the specific row of the infobox content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the infobox.</param>
+        /// <param name="title">The title for the row.</param>
+        /// <param name="path">The path for the link</param>
+        /// <param name="pagename">The pagename for the link</param>
+        /// <param name="image">The image for the row.</param>
+        /// <param name="size">The size of the image.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
         protected void CreateInfoBoxContentHelper(List<string> content, string title, string[] path, string pagename, Image image, int size, string additionalInfo)
         {
             string[] data = new string[2];
@@ -243,6 +253,32 @@ namespace WikiPageCreator.Export.Create
             else
             {
                 data[1] = $"{pagename}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the infobox content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the infobox.</param>
+        /// <param name="title">The title for the row.</param>
+        /// <param name="runtime">The runtime for the row.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <param name="text">The text to be displayed for the link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        protected void CreateInfoBoxContentHelper(List<string> content, string title, int runtime, string[] path, string pagename, string text, string additionalInfo)
+        {
+            string[] data = new string[2];
+
+            data[0] = title;
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[1] = $"{runtime} min. ({Formatter.AsInternalLink(path, pagename, text)}) {additionalInfo}";
+            }
+            else
+            {
+                data[1] = $"{runtime} min. ({Formatter.AsInternalLink(path, pagename, text)})";
             }
             content.Add(Formatter.AsTableRow(data));
         }

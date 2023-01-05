@@ -322,29 +322,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox runtime content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox runtime content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxRuntime()
-        {
-            Logger.Trace($"CreateInfoBoxRuntime()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Runtimes != null)
-            //{
-            //    Logger.Debug($"Series.Runtimes is not null -> create");
-            //    content.AddRange(new RuntimeContentCreator(Series.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox color content of a given series.
         /// </summary>
         /// <returns>The formatted infobox color content of the series.</returns>

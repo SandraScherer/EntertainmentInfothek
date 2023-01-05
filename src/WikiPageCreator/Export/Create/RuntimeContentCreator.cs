@@ -24,16 +24,16 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a sound mix.
+    /// Provides a content creator for a runtime.
     /// </summary>
-    public class SoundMixContentCreator : EntryContentCreator
+    public class RuntimeContentCreator : EntryContentCreator
     {
         // --- Properties ---
 
         /// <summary>
-        /// The list of sound mix items to be used to create the content.
+        /// The list of runtime items to be used to create the content.
         /// </summary>
-        public List<SoundMixItem> SoundMixes { get; set; }
+        public List<RuntimeItem> Runtimes { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -43,17 +43,16 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new SoundMixContentCreator.
+        /// Initializes a new RuntimeContentCreator.
         /// </summary>
-        /// <param name="soundmixes">The list of sound mix items to be used to create content.</param>
+        /// <param name="runtimes">The list of runtime items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-
-        public SoundMixContentCreator(List<SoundMixItem> soundmixes, Formatter formatter, string targetLanguageCode)
-            : base(soundmixes[0].SoundMix, formatter, targetLanguageCode)
+        public RuntimeContentCreator(List<RuntimeItem> runtimes, Formatter formatter, string targetLanguageCode)
+            : base(runtimes[0].Edition, formatter, targetLanguageCode)
         {
-            Logger.Trace($"SoundMixContentCreator()");
+            Logger.Trace($"RuntimeContentCreator()");
 
             if (formatter == null)
             {
@@ -66,26 +65,26 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            SoundMixes = soundmixes;
+            Runtimes = runtimes;
 
-            Logger.Trace($"SoundMixContentCreator(): SoundMixContentCreator created");
+            Logger.Trace($"RuntimeContentCreator(): RuntimeContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given sound mix.
+        /// Creates the infobox content of a given runtime.
         /// </summary>
-        /// <returns>The formatted content of the sound mix.</returns>
+        /// <returns>The formatted content of the runtime.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();
         }
 
         /// <summary>
-        /// Creates the infobox content of a given list of sound mixes.
+        /// Creates the infobox content of a given list of runtimes.
         /// </summary>
-        /// <returns>The formatted content of the list of sound mixes.</returns>
+        /// <returns>The formatted content of the list of runtimes.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
@@ -93,39 +92,39 @@ namespace WikiPageCreator.Export.Create
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
 
-            if ((SoundMixes != null) && (SoundMixes.Count > 0))
+            if ((Runtimes != null) && (Runtimes.Count > 0))
             {
-                Logger.Debug($"SoundMixes is not null");
-                Logger.Debug($"no of sound mixes: '{SoundMixes.Count}'");
+                Logger.Debug($"Runtimes is not null");
+                Logger.Debug($"no of runtimes: '{Runtimes.Count}'");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Debug($"SoundMix: '{SoundMixes[0].SoundMix.EnglishTitle}' (english)");
+                    Logger.Debug($"Runtime: '{Runtimes[0].Runtime}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "SoundMix", path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].Details);
+                    CreateInfoBoxContentHelper(content, "Runtime", Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Details);
 
-                    for (int i = 1; i < SoundMixes.Count; i++)
+                    for (int i = 1; i < Runtimes.Count; i++)
                     {
-                        Logger.Debug($"SoundMix: '{SoundMixes[i].SoundMix.EnglishTitle}' (english)");
+                        Logger.Debug($"Runtime: '{Runtimes[i].Runtime}' (english)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, SoundMixes[i].SoundMix.EnglishTitle, SoundMixes[i].SoundMix.EnglishTitle, SoundMixes[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), Runtimes[i].Runtime, path, Runtimes[i].Edition.EnglishTitle, Runtimes[i].Edition.EnglishTitle, Runtimes[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
-                    Logger.Debug($"SoundMix: '{SoundMixes[0].SoundMix.GermanTitle}' (german, ...)");
+                    Logger.Debug($"Runtime: '{Runtimes[0].Runtime}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Tonmischung", path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.GermanTitle, SoundMixes[0].Details);
+                    CreateInfoBoxContentHelper(content, "Laufzeit", Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.GermanTitle, Runtimes[0].Details);
 
-                    for (int i = 1; i < SoundMixes.Count; i++)
+                    for (int i = 1; i < Runtimes.Count; i++)
                     {
-                        Logger.Debug($"SoundMix: '{SoundMixes[i].SoundMix.GermanTitle}' (german, ...)");
+                        Logger.Debug($"Runtime: '{Runtimes[i].Runtime}' (german, ...)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, SoundMixes[i].SoundMix.EnglishTitle, SoundMixes[i].SoundMix.GermanTitle, SoundMixes[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), Runtimes[i].Runtime, path, Runtimes[i].Edition.EnglishTitle, Runtimes[i].Edition.GermanTitle, Runtimes[i].Details);
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of SoundMixes with Count '{SoundMixes.Count}' created");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Runtimes with Count '{Runtimes.Count}' created");
 
             return content;
         }
