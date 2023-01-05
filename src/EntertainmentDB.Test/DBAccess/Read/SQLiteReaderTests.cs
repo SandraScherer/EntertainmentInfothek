@@ -16,10 +16,6 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EntertainmentDB.DBAccess.Read;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EntertainmentDB.DBAccess.Read.Tests
 {
@@ -52,7 +48,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             DBReader newReader = reader.New();
 
             // Assert
-            Assert.IsNotNull((SQLiteReader) newReader);
+            Assert.IsNotNull((SQLiteReader)newReader);
             Assert.IsNotNull(newReader);
             Assert.AreEqual("", newReader.Query);
             Assert.IsNotNull(newReader.Table);

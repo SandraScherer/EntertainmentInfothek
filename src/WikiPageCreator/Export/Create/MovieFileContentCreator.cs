@@ -19,7 +19,6 @@
 using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create
@@ -1605,7 +1604,7 @@ namespace WikiPageCreator.Export.Create
                     for (int i = 1; i < Movie.NegativeFormats.Count; i++)
                     {
                         Logger.Debug($"NegativeFormat: '{Movie.NegativeFormats[i].FilmFormat.Format}' (german, ...)");
- 
+
                         data[0] = Formatter.CellSpanVertically();
                         if (!String.IsNullOrEmpty(Movie.NegativeFormats[i].Details))
                         {
@@ -1679,7 +1678,7 @@ namespace WikiPageCreator.Export.Create
                 else // incl. case "de"
                 {
                     Logger.Debug($"CinematographicProcess: '{Movie.CinematographicProcesses[0].CinematographicProcess.Name}' (german, ...)");
-                    
+
                     data[0] = "Filmprozess";
                     if (!String.IsNullOrEmpty(Movie.CinematographicProcesses[0].Details))
                     {
@@ -1993,22 +1992,22 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
+                                    data = $"{Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name} {texts[i].Text.Authors[j].Person.NameAddOn}")}";
                                 }
                             }
                             else
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
+                                    data = $"{Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathBiography, $"{texts[i].Text.Authors[j].Person.Name}")}";
                                 }
                             }
                         }
@@ -2024,22 +2023,22 @@ namespace WikiPageCreator.Export.Create
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
+                                    data = $"{Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name} {texts[i].Text.Sources[j].Company.NameAddOn}")}";
                                 }
                             }
                             else
                             {
                                 if (String.IsNullOrEmpty(data))
                                 {
-                                    data = $"{ Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
+                                    data = $"{Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
                                 }
                                 else
                                 {
-                                    data = $"{data}, { Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
+                                    data = $"{data}, {Formatter.AsInternalLink(pathCompany, $"{texts[i].Text.Sources[j].Company.Name}")}";
                                 }
                             }
                         }

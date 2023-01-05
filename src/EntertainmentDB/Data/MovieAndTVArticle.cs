@@ -17,6 +17,7 @@
 
 using EntertainmentDB.DBAccess.Read;
 using System;
+using System.Collections.Generic;
 
 namespace EntertainmentDB.Data
 {
@@ -28,27 +29,42 @@ namespace EntertainmentDB.Data
         // --- Properties ---
 
         /// <summary>
-        /// The budget of the series.
+        /// The budget of the movie and tv article.
         /// </summary>
         public string Budget { get; set; }
 
         /// <summary>
-        /// The worldwide gross of the series.
+        /// The worldwide gross of the movie and tv article.
         /// </summary>
         public string WorldwideGross { get; set; }
 
         /// <summary>
-        /// The corresponding date to the worldwide gross of the series.
+        /// The corresponding date to the worldwide gross of the movie and tv article.
         /// </summary>
         public string WorldwideGrossDate { get; set; }
 
         /// <summary>
-        /// The cast status of the series.
+        /// The list of countries of the movie and tv article.
+        /// </summary>
+        public List<CountryItem> Countries { get; set; }
+
+        /// <summary>
+        /// The list of languages of the movie and tv article.
+        /// </summary>
+        public List<LanguageItem> Languages { get; set; }
+
+        /// <summary>
+        /// The list of sound mixes of the movie and tv article.
+        /// </summary>
+        public List<SoundMixItem> SoundMixes { get; set; }
+
+        /// <summary>
+        /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }
 
         /// <summary>
-        /// The crew status of the series.
+        /// The crew status of the movie ant tv article.
         /// </summary>
         public Status CrewStatus { get; set; }
 
@@ -68,10 +84,10 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes an article with the given id string.
+        /// Initializes a movie and tv article with the given id string.
         /// </summary>
-        /// <param name="reader">The database reader to be used to read the article information from the database.</param>
-        /// <param name="id">The id of the article.</param>
+        /// <param name="reader">The database reader to be used to read the movie and tv article information from the database.</param>
+        /// <param name="id">The id of the movie and tv article.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         protected MovieAndTVArticle(DBReader reader, string id) : base(reader, id)
         {

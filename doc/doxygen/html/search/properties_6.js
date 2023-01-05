@@ -1,7 +1,7 @@
 var searchData=
 [
   ['genre_0',['Genre',['../de/df1/class_entertainment_d_b_1_1_data_1_1_genre_item.html#a5b1d45dd30340d1aa14038a78b5c0c27',1,'EntertainmentDB::Data::GenreItem']]],
-  ['genres_1',['Genres',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#add700e2f5889e7466118e3cd9c3cb07a',1,'EntertainmentDB.Data.Movie.Genres()'],['../dc/d89/class_entertainment_d_b_1_1_data_1_1_series.html#aeebfe3ac3403dcd2ff1eb077a59b0f1c',1,'EntertainmentDB.Data.Series.Genres()'],['../de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#a25a2256992d9e10e6f8c7b08cd269904',1,'WikiPageCreator.Export.Create.GenreContentCreator.Genres()']]],
+  ['genres_1',['Genres',['../d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html#a669b396b9e0835681fe6a2f70993539b',1,'EntertainmentDB.Data.Article.Genres()'],['../de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#a25a2256992d9e10e6f8c7b08cd269904',1,'WikiPageCreator.Export.Create.GenreContentCreator.Genres()']]],
   ['germandubber_2',['GermanDubber',['../d9/d7a/class_entertainment_d_b_1_1_data_1_1_cast_person_item.html#a06b338c5fbdacce47b1c9574c1a6594c',1,'EntertainmentDB::Data::CastPersonItem']]],
   ['germanfullname_3',['GermanFullName',['../d5/da7/class_entertainment_d_b_1_1_data_1_1_country.html#a886f7a53f741a649890b450a34129afa',1,'EntertainmentDB::Data::Country']]],
   ['germanname_4',['GermanName',['../d8/d45/class_entertainment_d_b_1_1_data_1_1_language.html#a169d5e3400db0e32143f81fa576c38f1',1,'EntertainmentDB::Data::Language']]],

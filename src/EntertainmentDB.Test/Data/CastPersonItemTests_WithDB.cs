@@ -127,7 +127,7 @@ namespace EntertainmentDB.Data.Tests
             CastPersonItem item = new CastPersonItem(reader, VALID_ID, baseTableName, "Cast");
 
             // Act
-            int count = item.Retrieve(true);
+            int count = item.Retrieve(basicInfoOnly);
 
             // Assert
             Assert.AreEqual(1, count);
@@ -151,7 +151,7 @@ namespace EntertainmentDB.Data.Tests
             CastPersonItem item = new CastPersonItem(reader, INVALID_ID, baseTableName, "Cast");
 
             // Act
-            int count = item.Retrieve(true);
+            int count = item.Retrieve(basicInfoOnly);
 
             // Assert
             Assert.AreEqual(0, count);

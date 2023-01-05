@@ -118,7 +118,7 @@ namespace WikiPageCreator
                 if (pageTypeUser.Equals(((int)PageType.Movie).ToString()))
                 {
                     List<Movie> list = new List<Movie>();
-                    
+
                     if (idUser.Equals("*"))
                     {
                         list = Movie.RetrieveList(reader, "ok");

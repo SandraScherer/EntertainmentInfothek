@@ -1,9 +1,0 @@
-<map id="WikiPageCreator.Export.Create.GenreContentCreator.CreateInfoBoxContentHelper" name="WikiPageCreator.Export.Create.GenreContentCreator.CreateInfoBoxContentHelper">
-<area shape="rect" id="node1" title="Creates the specific row of the infobox content." alt="" coords="1153,45,1383,100"/>
-<area shape="rect" id="node2" href="$de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#ade7d43c08c73ac5fdab89c01cdb0017e" title="Creates the infobox content of a given list of genres." alt="" coords="876,45,1105,100"/>
-<area shape="rect" id="node3" href="$de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html#a7d9c61d18e2c6440d1f4101c9279192b" title="Creates the infobox content of a given genre." alt="" coords="599,45,828,100"/>
-<area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#aa65a5cb8eeff6feda8c31d42b223e33e" title="Creates the formatted infobox genre content of a given movie." alt="" coords="286,17,549,57"/>
-<area shape="rect" id="node6" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#adcf6b441647c5b4174622abcc70b88d7" title="Creates the formatted infobox genre content of a given series." alt="" coords="284,85,551,125"/>
-<area shape="rect" id="node5" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html#ad427dd1dd026f3c9db9762d054aa0c4c" title="Creates the infobox content of a given movie." alt="" coords="7,5,234,60"/>
-<area shape="rect" id="node7" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html#a26528b6f172020faa30bf048f2acf5d5" title="Creates the infobox content of a given series." alt="" coords="5,84,236,139"/>
-</map>

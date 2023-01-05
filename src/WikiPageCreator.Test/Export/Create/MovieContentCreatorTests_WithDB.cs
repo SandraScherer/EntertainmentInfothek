@@ -158,6 +158,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
+            string[] pathCertification = { "certification" };
 
             // File Header
             testContent.Add(formatter.DisableCache());
@@ -197,7 +198,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Original Title",
-                                   "Movie OriginalTitle X" } ));
+                                   "Movie OriginalTitle X" }));
             }
             else
             {
@@ -211,13 +212,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Type",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Typ",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") }));
             }
 
             // InfoBox ReleaseDate
@@ -225,13 +226,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Original Release Date",
-                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") } ));
+                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Erstausstrahlung",
-                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") } ));
+                                   formatter.AsInternalLink(pathDate, "Movie ReleaseDate X", "Movie ReleaseDate X") }));
             }
 
             // InfoBox Genre
@@ -239,44 +240,148 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Genre",
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X")} Movie Genre Details X1" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre EnglishTitle X")} Movie Genre Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Movie Genre Details X2" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre EnglishTitle Y")} Movie Genre Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Movie Genre Details X3" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre EnglishTitle Z")} Movie Genre Details X3" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Genre",
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle X", "Genre GermanTitle X")} Movie Genre Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Y", "Genre GermanTitle Y")} Movie Genre Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" } ));
+                                   $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Movie Genre Details X3" }));
+            }
+
+            // InfoBox Certification
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Certification",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Altersfreigabe",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Movie Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Movie Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Movie Certification Details X3" }));
+            }
+
+            // InfoBox Country
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Production Country",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")} Movie Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country EnglishShortName Y")} Movie Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country EnglishShortName Z")} Movie Country Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Produktionsland",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")} Movie Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie Country Details X3" }));
+            }
+
+            // InfoBox Language
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Language",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language EnglishName X")} Movie Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language EnglishName Y")} Movie Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language EnglishName Z")} Movie Language Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Sprache",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language GermanName X")} Movie Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language GermanName Y")} Movie Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language GermanName Z")} Movie Language Details X3" }));
             }
 
             // InfoBox Budget
             testContent.Add(formatter.AsTableRow(
                 new string[] { "Budget",
-                               "Movie Budget X" } ));
+                               "Movie Budget X" }));
 
             // InfoBox Worldwide Gross
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Worldwide Gross",
-                                   $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" } ));
+                                   $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Einspielergebnis (weltweit)",
                                    $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" }));
+            }
+
+            // InfoBox SoundMix
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "SoundMix",
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle X", "SoundMix EnglishTitle X")} Movie SoundMix Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Y", "SoundMix EnglishTitle Y")} Movie SoundMix Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Z", "SoundMix EnglishTitle Z")} Movie SoundMix Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Tonmischung",
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Movie SoundMix Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Movie SoundMix Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Movie SoundMix Details X3" }));
             }
 
             // InfoBox End

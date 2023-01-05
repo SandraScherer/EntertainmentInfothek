@@ -55,11 +55,6 @@ namespace EntertainmentDB.Data
         public string NoOfEpisodes { get; set; }
 
         /// <summary>
-        /// The list of genres of the series.
-        /// </summary>
-        public List<GenreItem> Genres { get; set; }
-
-        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -203,21 +198,42 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.Genres.Count == 0 -> null");
                 Genres = null;
             }
-            /*
+
             Certifications = CertificationItem.RetrieveList(Reader, "Series", ID, "Certification");
             noOfDataRecords += Certifications.Count;
+            if (Certifications.Count == 0)
+            {
+                Logger.Debug($"Series.Certifiations.Count == 0 -> null");
+                Certifications = null;
+            }
 
             Countries = CountryItem.RetrieveList(Reader, "Series", ID, "Country");
             noOfDataRecords += Countries.Count;
+            if (Countries.Count == 0)
+            {
+                Logger.Debug($"Series.Countries.Count == 0 -> null");
+                Countries = null;
+            }
 
             Languages = LanguageItem.RetrieveList(Reader, "Series", ID, "Language");
             noOfDataRecords += Languages.Count;
-
-            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
-            noOfDataRecords += Runtimes.Count;
+            if (Languages.Count == 0)
+            {
+                Logger.Debug($"Series.Languages.Count == 0 -> null");
+                Languages = null;
+            }
 
             SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
             noOfDataRecords += SoundMixes.Count;
+            if (SoundMixes.Count == 0)
+            {
+                Logger.Debug($"Series.SoundMixes.Count == 0 -> null");
+                SoundMixes = null;
+            }
+
+            /*
+            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
+            noOfDataRecords += Runtimes.Count;
 
             Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
             noOfDataRecords += Colors.Count;

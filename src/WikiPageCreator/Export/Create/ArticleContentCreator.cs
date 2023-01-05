@@ -254,6 +254,51 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted infobox genre content of a given article.
+        /// </summary>
+        /// <returns>The formatted infobox genre content of the article.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
+        protected virtual List<string> CreateInfoBoxGenre()
+        {
+            Logger.Trace($"CreateInfoBoxGenre()");
+            Logger.Debug($"Article is '{Article.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (Article.Genres != null)
+            {
+                Logger.Debug($"Article.Genres is not null -> create");
+                content.AddRange(new GenreContentCreator(Article.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Article '{Article.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox certification content of a given article.
+        /// </summary>
+        /// <returns>The formatted infobox certification content of the article.</returns>
+        protected virtual List<string> CreateInfoBoxCertification()
+        {
+            Logger.Trace($"CreateInfoBoxCertification()");
+            Logger.Debug($"Article is '{Article.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (Article.Certifications != null)
+            {
+                Logger.Debug($"Article.Certifications is not null -> create");
+                content.AddRange(new CertificationContentCreator(Article.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Article '{Article.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
         /// Creates the formatted connection chapter content of a given article.
         /// </summary>
         /// <returns>The formatted conncetion chapter content of the article.</returns>

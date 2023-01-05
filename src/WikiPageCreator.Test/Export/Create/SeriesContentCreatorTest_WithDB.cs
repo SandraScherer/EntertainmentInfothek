@@ -158,6 +158,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
+            string[] pathCertification = { "certification" };
 
             // File Header
             testContent.Add(formatter.DisableCache());
@@ -197,7 +198,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Original Title",
-                                   "Series OriginalTitle X" } ));
+                                   "Series OriginalTitle X" }));
             }
             else
             {
@@ -211,13 +212,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Type",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type EnglishTitle X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Typ",
-                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") } ));
+                                   formatter.AsInternalLink(pathInfo, "Type EnglishTitle X", "Type GermanTitle X") }));
             }
 
             // InfoBox ReleaseDate First Episode
@@ -225,13 +226,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Release Date (First Episode)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Erstausstrahlung (Erste Folge)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateFirstEpisode X", "Series ReleaseDateFirstEpisode X") }));
             }
 
             // InfoBox ReleaseDate Last Episode
@@ -239,13 +240,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Release Date (Last Episode)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Erstausstrahlung (Letzte Folge)",
-                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") } ));
+                                   formatter.AsInternalLink(pathDate, "Series ReleaseDateLastEpisode X", "Series ReleaseDateLastEpisode X") }));
             }
 
             // InfoBox Genre
@@ -274,18 +275,96 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "Genre EnglishTitle Z", "Genre GermanTitle Z")} Series Genre Details X3" }));
             }
 
+            // InfoBox Certifiction
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Certification",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Series Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Series Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Series Certification Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Altersfreigabe",
+                                   $"{formatter.AsImage(pathCertification, "Image FileName X", 75)} Series Certification Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Y", 75)} Series Certification Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsImage(pathCertification, "Image FileName Z", 75)} Series Certification Details X3" }));
+            }
+
+            // InfoBox Country
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Production Country",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")} Series Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country EnglishShortName Y")} Series Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country EnglishShortName Z")} Series Country Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Produktionsland",
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")} Series Country Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country GermanShortName Y")} Series Country Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country GermanShortName Z")} Series Country Details X3" }));
+            }
+
+            // InfoBox Language
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Language",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language EnglishName X")} Series Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language EnglishName Y")} Series Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language EnglishName Z")} Series Language Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Sprache",
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language GermanName X")} Series Language Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Y", "Language GermanName Y")} Series Language Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Language OriginalName Z", "Language GermanName Z")} Series Language Details X3" }));
+            }
+
             // Infobox No of Seasons
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Seasons",
-                                   "Series NoOfSeasons X" } ));
+                                   "Series NoOfSeasons X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Staffeln",
-                                   "Series NoOfSeasons X" } ));
+                                   "Series NoOfSeasons X" }));
             }
 
             // Infobox No of Episodes
@@ -293,13 +372,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Episodes",
-                                   "Series NoOfEpisodes X" } ));
+                                   "Series NoOfEpisodes X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "# Folgen",
-                                   "Series NoOfEpisodes X" } ));
+                                   "Series NoOfEpisodes X" }));
             }
 
             // InfoBox Budget
@@ -319,6 +398,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Einspielergebnis (weltweit)",
                                    $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})" }));
+            }
+
+            // InfoBox SoundMix
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "SoundMix",
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle X", "SoundMix EnglishTitle X")} Series SoundMix Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Y", "SoundMix EnglishTitle Y")} Series SoundMix Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Z", "SoundMix EnglishTitle Z")} Series SoundMix Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Tonmischung",
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle X", "SoundMix GermanTitle X")} Series SoundMix Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Y", "SoundMix GermanTitle Y")} Series SoundMix Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Series SoundMix Details X3" }));
             }
 
             // InfoBox End

@@ -250,98 +250,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox genre content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox genre content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxGenre()
-        {
-            Logger.Trace($"CreateInfoBoxGenre()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Series.Genres != null)
-            {
-                Logger.Debug($"Series.Genres is not null -> create");
-                content.AddRange(new GenreContentCreator(Series.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox certification content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox certification content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxCertification()
-        {
-            Logger.Trace($"CreateInfoBoxCertification()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Certifications != null)
-            //{
-            //    Logger.Debug($"Series.Certifications is not null -> create");
-            //    content.AddRange(new CertificationContentCreator(Series.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox country content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox country content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxCountry()
-        {
-            Logger.Trace($"CreateInfoBoxCountry()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Countries != null)
-            //{
-            //    Logger.Debug($"Series.Countries is not null -> create");
-            //    content.AddRange(new CountryContentCreator(Series.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxCountry(): infobox country for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox language content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox language content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxLanguage()
-        {
-            Logger.Trace($"CreateInfoBoxLanguage()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Languages != null)
-            //{
-            //    Logger.Debug($"Series.Languages is not null -> create");
-            //    content.AddRange(new LanguageContentCreator(Series.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxLanguage(): infobox language for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
         /// <returns>The formatted infobox language content of the series.</returns>
@@ -432,29 +340,6 @@ namespace WikiPageCreator.Export.Create
             //}
 
             Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox soundmix content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox soundmix content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxSoundMix()
-        {
-            Logger.Trace($"CreateInfoBoxSoundMix()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.SoundMixes != null)
-            //{
-            //    Logger.Debug($"Series.SoundMixes is not null -> create");
-            //    content.AddRange(new SoundMixContentCreator(Series.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
