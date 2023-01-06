@@ -1,13 +1,14 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="5,261,213,301"/>
+<area shape="rect" id="node1" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html" title="Provides a content creator for an entry." alt="" coords="5,293,213,333"/>
 <area shape="rect" id="node2" href="$d2/dd8/class_wiki_page_creator_1_1_export_1_1_create_1_1_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="261,37,469,77"/>
 <area shape="rect" id="node6" href="$d0/d6f/class_wiki_page_creator_1_1_export_1_1_create_1_1_certification_content_creator.html" title="Provides a content creator for a certification." alt="" coords="261,101,469,141"/>
 <area shape="rect" id="node7" href="$d3/d7b/class_wiki_page_creator_1_1_export_1_1_create_1_1_connection_content_creator.html" title="Provides a content creator for a connection." alt="" coords="261,165,469,205"/>
 <area shape="rect" id="node8" href="$d8/d76/class_wiki_page_creator_1_1_export_1_1_create_1_1_country_content_creator.html" title="Provides a content creator for a country." alt="" coords="261,229,469,269"/>
 <area shape="rect" id="node9" href="$de/d48/class_wiki_page_creator_1_1_export_1_1_create_1_1_genre_content_creator.html" title="Provides a content creator for a genre." alt="" coords="261,293,469,333"/>
 <area shape="rect" id="node10" href="$d3/d47/class_wiki_page_creator_1_1_export_1_1_create_1_1_language_content_creator.html" title="Provides a content creator for a language." alt="" coords="261,357,469,397"/>
-<area shape="rect" id="node11" href="$d6/d58/class_wiki_page_creator_1_1_export_1_1_create_1_1_sound_mix_content_creator.html" title="Provides a content creator for a sound mix." alt="" coords="261,421,469,461"/>
-<area shape="rect" id="node12" href="$d1/d7f/class_wiki_page_creator_1_1_export_1_1_create_1_1_type_content_creator.html" title="Provides a content creator for a type" alt="" coords="261,485,469,525"/>
+<area shape="rect" id="node11" href="$d4/d51/class_wiki_page_creator_1_1_export_1_1_create_1_1_runtime_content_creator.html" title="Provides a content creator for a runtime." alt="" coords="261,421,469,461"/>
+<area shape="rect" id="node12" href="$d6/d58/class_wiki_page_creator_1_1_export_1_1_create_1_1_sound_mix_content_creator.html" title="Provides a content creator for a sound mix." alt="" coords="261,485,469,525"/>
+<area shape="rect" id="node13" href="$d1/d7f/class_wiki_page_creator_1_1_export_1_1_create_1_1_type_content_creator.html" title="Provides a content creator for a type" alt="" coords="261,549,469,589"/>
 <area shape="rect" id="node3" href="$da/d69/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_and_t_v_article_content_creator.html" title="Provides a content creator for an article." alt="" coords="517,37,736,77"/>
 <area shape="rect" id="node4" href="$d5/d26/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_content_creator.html" title="Provides a content creator for a movie." alt="" coords="784,5,992,45"/>
 <area shape="rect" id="node5" href="$db/dae/class_wiki_page_creator_1_1_export_1_1_create_1_1_series_content_creator.html" title="Provides a content creator for a series." alt="" coords="784,69,992,109"/>
