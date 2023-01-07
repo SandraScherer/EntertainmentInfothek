@@ -8,5 +8,5 @@ var searchData=
   ['reviews_5',['Reviews',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a29285d8e9964471a263acc29cbfb60db',1,'EntertainmentDB::Data::Movie']]],
   ['role_6',['Role',['../d4/de2/class_entertainment_d_b_1_1_data_1_1_company_item.html#adee93d3fea6bf30094ec945668fa8a8b',1,'EntertainmentDB.Data.CompanyItem.Role()'],['../dd/d3b/class_entertainment_d_b_1_1_data_1_1_person_item.html#a6d870238c794e05002f105fab4701d90',1,'EntertainmentDB.Data.PersonItem.Role()']]],
   ['runtime_7',['Runtime',['../db/d8d/class_entertainment_d_b_1_1_data_1_1_runtime_item.html#ac9770c73145d67ac2d103904980bbca3',1,'EntertainmentDB::Data::RuntimeItem']]],
-  ['runtimes_8',['Runtimes',['../dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#ad24fdd94cf67093ea4a078f8c393b928',1,'EntertainmentDB::Data::Movie']]]
+  ['runtimes_8',['Runtimes',['../df/d99/class_entertainment_d_b_1_1_data_1_1_movie_and_t_v_article.html#a2ddfe8d46af4e0c117489f3c09ffea40',1,'EntertainmentDB.Data.MovieAndTVArticle.Runtimes()'],['../d4/d51/class_wiki_page_creator_1_1_export_1_1_create_1_1_runtime_content_creator.html#a10860fe9322d62dc86414329a1d74da9',1,'WikiPageCreator.Export.Create.RuntimeContentCreator.Runtimes()']]]
 ];

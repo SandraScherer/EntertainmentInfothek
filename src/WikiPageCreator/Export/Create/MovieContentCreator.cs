@@ -172,29 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox runtime content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox runtime content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxRuntime()
-        {
-            Logger.Trace($"CreateInfoBoxRuntime()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.Runtimes != null)
-            {
-                Logger.Debug($"Movie.Runtimes is not null -> create");
-                //TODO: implement following stuff
-                //content.AddRange(new RuntimeContentCreator(Movie.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox color content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox color content of the movie.</returns>

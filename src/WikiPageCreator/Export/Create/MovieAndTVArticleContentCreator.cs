@@ -192,6 +192,28 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted infobox runtime content of a given series.
+        /// </summary>
+        /// <returns>The formatted infobox runtime content of the series.</returns>
+        protected virtual List<string> CreateInfoBoxRuntime()
+        {
+            Logger.Trace($"CreateInfoBoxRuntime()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Runtimes != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Runtimes is not null -> create");
+                content.AddRange(new RuntimeContentCreator(MovieAndTVArticle.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
         /// Creates the formatted infobox soundmix content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox soundmix content of the movie and tv article.</returns>

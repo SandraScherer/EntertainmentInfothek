@@ -1195,6 +1195,19 @@ CREATE TABLE Series_Certification (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(CertificationID) REFERENCES Certification(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Runtime (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  Runtime     integer(10), 
+  EditionID   text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(EditionID) REFERENCES Edition(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
 CREATE TABLE Series_SoundMix (
   ID          text NOT NULL, 
   SeriesID    text, 

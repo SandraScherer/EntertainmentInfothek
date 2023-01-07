@@ -358,6 +358,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"Movie WorldwideGross X ({formatter.AsInternalLink(pathDate, "Movie WorldwideGrossDate X", "Movie WorldwideGrossDate X")})" }));
             }
 
+            // InfoBox Runtime
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Runtime",
+                                   $"11 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle X", "Edition EnglishTitle X")}) Movie Runtime Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"12 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Y", "Edition EnglishTitle Y")}) Movie Runtime Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"13 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Z", "Edition EnglishTitle Z")}) Movie Runtime Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Laufzeit",
+                                   $"11 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle X", "Edition GermanTitle X")}) Movie Runtime Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"12 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Movie Runtime Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"13 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Movie Runtime Details X3" }));
+            }
+
             // InfoBox SoundMix
             if (targetLanguageCode.Equals("en"))
             {

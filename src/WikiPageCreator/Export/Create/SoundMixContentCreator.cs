@@ -113,13 +113,13 @@ namespace WikiPageCreator.Export.Create
                 }
                 else // incl. case "de"
                 {
-                    Logger.Debug($"Tonmischung: '{SoundMixes[0].SoundMix.GermanTitle}' (german, ...)");
+                    Logger.Debug($"SoundMix: '{SoundMixes[0].SoundMix.GermanTitle}' (german, ...)");
 
                     CreateInfoBoxContentHelper(content, "Tonmischung", path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.GermanTitle, SoundMixes[0].Details);
 
                     for (int i = 1; i < SoundMixes.Count; i++)
                     {
-                        Logger.Debug($"Tonmischung: '{SoundMixes[i].SoundMix.GermanTitle}' (german, ...)");
+                        Logger.Debug($"SoundMix: '{SoundMixes[i].SoundMix.GermanTitle}' (german, ...)");
 
                         CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, SoundMixes[i].SoundMix.EnglishTitle, SoundMixes[i].SoundMix.GermanTitle, SoundMixes[i].Details);
                     }
