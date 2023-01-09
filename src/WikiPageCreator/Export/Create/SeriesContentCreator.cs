@@ -322,29 +322,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox color content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox color content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxColor()
-        {
-            Logger.Trace($"CreateInfoBoxColor()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Colors != null)
-            //{
-            //    Logger.Debug($"Series.Color is not null -> create");
-            //    content.AddRange(new ColorContentCreator(Series.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxColor(): infobox color for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox aspect ratio content of a given series.
         /// </summary>
         /// <returns>The formatted infobox aspect ratio content of the series.</returns>

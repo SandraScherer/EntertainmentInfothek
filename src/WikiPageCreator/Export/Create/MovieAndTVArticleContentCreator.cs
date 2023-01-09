@@ -234,5 +234,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox color content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox color content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxColor()
+        {
+            Logger.Trace($"CreateInfoBoxColor()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Colors != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Colors is not null -> create");
+                content.AddRange(new ColorContentCreator(MovieAndTVArticle.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxColor(): infobox color for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }
