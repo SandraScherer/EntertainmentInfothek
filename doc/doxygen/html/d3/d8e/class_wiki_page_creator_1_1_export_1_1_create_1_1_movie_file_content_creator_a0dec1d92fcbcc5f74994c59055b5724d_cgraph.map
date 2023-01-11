@@ -1,7 +1,0 @@
-<map id="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCoverChapter" name="WikiPageCreator.Export.Create.MovieFileContentCreator.CreateCoverChapter">
-<area shape="rect" id="node1" title="Creates the formatted cover chapter of the movie page." alt="" coords="5,34,243,89"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a798f74c62024dd440563e736f818186c" title="Formats the given text as a level 2 heading." alt="" coords="305,5,516,45"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a6a1a2b0fef698c606ca5df92852d8757" title="Creates a formatted image section of the movie page." alt="" coords="291,70,531,125"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ab089a176dccb3c7b970e5031f7be5c46" title="Formats the given parameters as an image." alt="" coords="579,45,789,85"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a3d8f90ede0ea370d5fcea1543f3a3bf5" title="Formats the given imagelink as an imagebox." alt="" coords="579,109,789,149"/>
-</map>

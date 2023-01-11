@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['beginbox_0',['BeginBox',['../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#af45e6253c94aad411d1f54732ad38f09',1,'WikiPageCreator.Export.Format.DokuWikiFormatter.BeginBox()'],['../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a75d7866b73888efb745b50ebf02cad5b',1,'WikiPageCreator.Export.Format.Formatter.BeginBox()']]],
-  ['begincomment_1',['BeginComment',['../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a636c9f4d2b4c79aba569646755e4e057',1,'WikiPageCreator.Export.Format.DokuWikiFormatter.BeginComment()'],['../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a07d8173843ca066481630ecfcbf1dbc7',1,'WikiPageCreator.Export.Format.Formatter.BeginComment()']]],
-  ['begindataentry_2',['BeginDataEntry',['../d0/d74/class_wiki_page_creator_1_1_export_1_1_format_1_1_doku_wiki_formatter.html#a4bde8e570ddc895b6c7649fc56376a41',1,'WikiPageCreator.Export.Format.DokuWikiFormatter.BeginDataEntry()'],['../d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ad4a7581d5c64d855a6626d3473bc4ebf',1,'WikiPageCreator.Export.Format.Formatter.BeginDataEntry()']]]
-];

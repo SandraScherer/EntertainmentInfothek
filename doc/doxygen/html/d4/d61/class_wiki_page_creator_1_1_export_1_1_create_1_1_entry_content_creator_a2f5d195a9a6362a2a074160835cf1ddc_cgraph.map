@@ -1,5 +1,0 @@
-<map id="WikiPageCreator.Export.Create.EntryContentCreator.CreateInfoBoxBegin" name="WikiPageCreator.Export.Create.EntryContentCreator.CreateInfoBoxBegin">
-<area shape="rect" id="node1" title="Creates the formatted infobox begin content of a given entry" alt="" coords="5,37,264,77"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a75d7866b73888efb745b50ebf02cad5b" title="Inserts an indicator to begin a box with the given size and alignment." alt="" coords="312,5,523,45"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#aa012e8834e05d4a17a7bd03c46507b63" title="Inserts an indicator to define a table with the given size and column widths." alt="" coords="312,69,523,109"/>
-</map>

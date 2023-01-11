@@ -1,7 +1,0 @@
-<map id="WikiPageCreator.Export.Create.RuntimeContentCreator.CreateInfoBoxContent" name="WikiPageCreator.Export.Create.RuntimeContentCreator.CreateInfoBoxContent">
-<area shape="rect" id="node1" title="Creates the infobox content of a given runtime." alt="" coords="5,34,224,89"/>
-<area shape="rect" id="node2" href="$d4/d51/class_wiki_page_creator_1_1_export_1_1_create_1_1_runtime_content_creator.html#abafe60aa4c49c23b2652454ab15b30a7" title="Creates the infobox content of a given list of runtimes." alt="" coords="272,34,491,89"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="546,5,757,45"/>
-<area shape="rect" id="node4" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afd99e7df96124d8b3c2620e5031751a0" title="Creates the specific row of the infobox content." alt="" coords="539,70,764,125"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="812,77,1023,117"/>
-</map>

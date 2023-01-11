@@ -1,7 +1,0 @@
-<map id="WikiPageCreator.Export.Create.ArticleContentCreator.CreatePageHeader" name="WikiPageCreator.Export.Create.ArticleContentCreator.CreatePageHeader">
-<area shape="rect" id="node1" title="Creates the formatted header content of a given article." alt="" coords="5,94,224,149"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a07d8173843ca066481630ecfcbf1dbc7" title="Inserts an indicator to begin a (multiline) comment." alt="" coords="272,5,483,45"/>
-<area shape="rect" id="node3" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#aaf6de3dd46da21556118d61bd0880b9f" title="Inserts an indicator to disable the cache." alt="" coords="272,69,483,109"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a2651807560ce3fe4f64bb5f90a24b9fb" title="Inserts an indicator to disable the TOC (table of contents)." alt="" coords="272,133,483,173"/>
-<area shape="rect" id="node5" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a67adb4a8a6d8217d95c9a6b9acbaf446" title="Inserts an indicator to end a (multiline) comment." alt="" coords="272,197,483,237"/>
-</map>

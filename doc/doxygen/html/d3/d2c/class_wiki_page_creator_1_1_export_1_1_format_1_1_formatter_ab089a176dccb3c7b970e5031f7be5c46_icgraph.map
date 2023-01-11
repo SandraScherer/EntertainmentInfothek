@@ -1,9 +1,0 @@
-<map id="WikiPageCreator.Export.Format.Formatter.AsImage" name="WikiPageCreator.Export.Format.Formatter.AsImage">
-<area shape="rect" id="node1" title="Formats the given parameters as an image." alt="" coords="883,165,1093,205"/>
-<area shape="rect" id="node2" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a6a1a2b0fef698c606ca5df92852d8757" title="Creates a formatted image section of the movie page." alt="" coords="595,101,835,156"/>
-<area shape="rect" id="node7" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a47ffc0997f761ecd4dfd342d5732f305" title="Creates the formatted infobox logo field of the movie page." alt="" coords="602,196,827,251"/>
-<area shape="rect" id="node3" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0dec1d92fcbcc5f74994c59055b5724d" title="Creates the formatted cover chapter of the movie page." alt="" coords="307,5,544,60"/>
-<area shape="rect" id="node5" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ae66c106f24ffac9e8697ed6776c519da" title="Creates the formatted image chapter of the movie page." alt="" coords="305,84,545,139"/>
-<area shape="rect" id="node6" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#ad04e2e22d75531b52f1914be9c87d713" title="Creates the formatted poster chapter of the movie page." alt="" coords="304,163,547,217"/>
-<area shape="rect" id="node4" href="$d3/d8e/class_wiki_page_creator_1_1_export_1_1_create_1_1_movie_file_content_creator.html#a0fd22514d4f74e7daa41c65fdb67f829" title="Creates the formatted content of the movie page." alt="" coords="5,131,256,171"/>
-</map>
