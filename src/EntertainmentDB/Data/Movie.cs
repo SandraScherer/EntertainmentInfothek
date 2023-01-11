@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of colors of the movie.
-        /// </summary>
-        public List<ColorItem> Colors { get; set; }
-
-        /// <summary>
         /// The list of aspect ratios of the movie.
         /// </summary>
         public List<AspectRatioItem> AspectRatios { get; set; }

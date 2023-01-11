@@ -239,10 +239,15 @@ namespace EntertainmentDB.Data
                 SoundMixes = null;
             }
 
-            /*
             Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
             noOfDataRecords += Colors.Count;
+            if (Colors.Count == 0)
+            {
+                Logger.Debug($"Series.Colors.Count == 0 -> null");
+                Colors = null;
+            }
 
+            /*
             AspectRatios = AspectRatioItem.RetrieveList(Reader, "Series", ID, "AspectRatio");
             noOfDataRecords += AspectRatios.Count;
 

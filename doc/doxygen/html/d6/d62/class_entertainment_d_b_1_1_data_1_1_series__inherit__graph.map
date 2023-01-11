@@ -1,7 +1,0 @@
-<map id="EntertainmentDB.Data.Series" name="EntertainmentDB.Data.Series">
-<area shape="rect" id="node1" title="Provides a series." alt="" coords="5,299,199,324"/>
-<area shape="rect" id="node2" href="$df/d99/class_entertainment_d_b_1_1_data_1_1_movie_and_t_v_article.html" title="Provides a movie and tv article." alt="" coords="37,225,167,251"/>
-<area shape="rect" id="node3" href="$d0/d65/class_entertainment_d_b_1_1_data_1_1_article.html" title="Provides an article." alt="" coords="73,152,131,177"/>
-<area shape="rect" id="node4" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html" title="Provides an entry." alt="" coords="75,79,129,104"/>
-<area shape="rect" id="node5" href="$df/d6b/interface_entertainment_d_b_1_1_d_b_access_1_1_read_1_1_i_d_b_readable.html" title="Provides an interface for a database reader." alt="" coords="53,5,151,31"/>
-</map>

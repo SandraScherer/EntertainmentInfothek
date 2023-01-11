@@ -64,6 +64,11 @@ namespace EntertainmentDB.Data
         public List<SoundMixItem> SoundMixes { get; set; }
 
         /// <summary>
+        /// The list of colors of the movie and tv article.
+        /// </summary>
+        public List<ColorItem> Colors { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }
