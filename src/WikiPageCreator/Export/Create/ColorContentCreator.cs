@@ -19,7 +19,6 @@
 using EntertainmentDB.Data;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create
