@@ -436,6 +436,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle Z", "Color GermanTitle Z")} Movie Color Details X3" }));
             }
 
+            // InfoBox AspectRatio
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Aspect Ratio",
+                                   $"{"AspectRatio Ratio X"} Movie AspectRatio Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{"AspectRatio Ratio Y"} Movie AspectRatio Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{"AspectRatio Ratio Z"} Movie AspectRatio Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Bildformat",
+                                   $"{"AspectRatio Ratio X"} Movie AspectRatio Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{"AspectRatio Ratio Y"} Movie AspectRatio Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{"AspectRatio Ratio Z"} Movie AspectRatio Details X3" }));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

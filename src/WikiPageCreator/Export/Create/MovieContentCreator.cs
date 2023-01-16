@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox aspect ratio content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox aspect ratio content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxAspectRatio()
-        {
-            Logger.Trace($"CreateInfoBoxAspectRatio()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.AspectRatios != null)
-            {
-                Logger.Debug($"Movie.AspectRatios is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new AspectRatioContentCreator(Movie.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox camera content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox camera content of the movie.</returns>
