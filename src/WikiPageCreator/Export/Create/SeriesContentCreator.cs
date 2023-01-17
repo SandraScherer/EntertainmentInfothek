@@ -322,29 +322,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox aspect ratio content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox aspect ratio content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxAspectRatio()
-        {
-            Logger.Trace($"CreateInfoBoxAspectRatio()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.AspectRatios != null)
-            //{
-            //    Logger.Debug($"Series.AspectRatio is not null -> create");
-            //    content.AddRange(new AspectRatioContentCreator(Series.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox camera content of a given series.
         /// </summary>
         /// <returns>The formatted infobox camera content of the series.</returns>

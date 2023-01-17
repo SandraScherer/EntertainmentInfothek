@@ -256,5 +256,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox aspect ratio content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox aspect ratio content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxAspectRatio()
+        {
+            Logger.Trace($"CreateInfoBoxAspectRatio()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.AspectRatios != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.AspectRatios is not null -> create");
+                content.AddRange(new AspectRatioContentCreator(MovieAndTVArticle.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }

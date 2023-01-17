@@ -24,16 +24,16 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a color.
+    /// Provides a content creator for a aspect ratio.
     /// </summary>
-    public class ColorContentCreator : EntryContentCreator
+    public class AspectRatioContentCreator : EntryContentCreator
     {
         // --- Properties ---
 
         /// <summary>
-        /// The list of color items to be used to create the content.
+        /// The list of aspect ratio items to be used to create the content.
         /// </summary>
-        public List<ColorItem> Colors { get; set; }
+        public List<AspectRatioItem> AspectRatios { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -43,16 +43,16 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new ColorContentCreator.
+        /// Initializes a new AspectRatioContentCreator.
         /// </summary>
-        /// <param name="colors">The list of color items to be used to create content.</param>
+        /// <param name="aspectratios">The list of aspect ratio items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public ColorContentCreator(List<ColorItem> colors, Formatter formatter, string targetLanguageCode)
-            : base(colors[0].Color, formatter, targetLanguageCode)
+        public AspectRatioContentCreator(List<AspectRatioItem> aspectratios, Formatter formatter, string targetLanguageCode)
+            : base(aspectratios[0].AspectRatio, formatter, targetLanguageCode)
         {
-            Logger.Trace($"ColorContentCreator()");
+            Logger.Trace($"AspectRatioContentCreator()");
 
             if (formatter == null)
             {
@@ -65,66 +65,65 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
-            Colors = colors;
+            AspectRatios = aspectratios;
 
-            Logger.Trace($"ColorContentCreator(): ColorContentCreator created");
+            Logger.Trace($"AspectRatioContentCreator(): AspectRatioContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given color.
+        /// Creates the infobox content of a given aspect ratio.
         /// </summary>
-        /// <returns>The formatted content of the color.</returns>
+        /// <returns>The formatted content of the aspect ratio.</returns>
         public override List<string> CreateInfoBoxContent()
         {
             return CreateInfoBoxContentInternal();
         }
 
         /// <summary>
-        /// Creates the infobox content of a given list of colors.
+        /// Creates the infobox content of a given list of aspect ratios.
         /// </summary>
-        /// <returns>The formatted content of the list of colors.</returns>
+        /// <returns>The formatted content of the list of aspect ratios.</returns>
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "info" };
 
-            if ((Colors != null) && (Colors.Count > 0))
+            if ((AspectRatios != null) && (AspectRatios.Count > 0))
             {
-                Logger.Debug($"Colors is not null");
-                Logger.Debug($"no of colors: '{Colors.Count}'");
+                Logger.Debug($"AspectRatios is not null");
+                Logger.Debug($"no of aspect ratios: '{AspectRatios.Count}'");
 
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    Logger.Debug($"Color: '{Colors[0].Color.EnglishTitle}' (english)");
+                    Logger.Debug($"AspectRatio: '{AspectRatios[0].AspectRatio.Ratio}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Color", path, Colors[0].Color.EnglishTitle, Colors[0].Color.EnglishTitle, Colors[0].Details);
+                    CreateInfoBoxContentHelper(content, "Aspect Ratio", AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
 
-                    for (int i = 1; i < Colors.Count; i++)
+                    for (int i = 1; i < AspectRatios.Count; i++)
                     {
-                        Logger.Debug($"Color: '{Colors[i].Color.EnglishTitle}' (english)");
+                        Logger.Debug($"AspectRatio: '{AspectRatios[i].AspectRatio.Ratio}' (english)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Colors[i].Color.EnglishTitle, Colors[i].Color.EnglishTitle, Colors[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), AspectRatios[i].AspectRatio.Ratio, AspectRatios[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
-                    Logger.Debug($"Color: '{Colors[0].Color.GermanTitle}' (german, ...)");
+                    Logger.Debug($"AspectRatio: '{AspectRatios[0].AspectRatio.Ratio}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Farbe", path, Colors[0].Color.EnglishTitle, Colors[0].Color.GermanTitle, Colors[0].Details);
+                    CreateInfoBoxContentHelper(content, "Bildformat", AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
 
-                    for (int i = 1; i < Colors.Count; i++)
+                    for (int i = 1; i < AspectRatios.Count; i++)
                     {
-                        Logger.Debug($"Color: '{Colors[i].Color.GermanTitle}' (german, ...)");
+                        Logger.Debug($"AspectRatio: '{AspectRatios[i].AspectRatio.Ratio}' (german, ...)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Colors[i].Color.EnglishTitle, Colors[i].Color.GermanTitle, Colors[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), AspectRatios[i].AspectRatio.Ratio, AspectRatios[i].Details);
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Colors with Count '{Colors.Count}' created");
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of AspectRatios with Count '{AspectRatios.Count}' created");
 
             return content;
         }

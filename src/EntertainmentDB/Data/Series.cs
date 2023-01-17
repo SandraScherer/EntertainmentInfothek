@@ -247,10 +247,15 @@ namespace EntertainmentDB.Data
                 Colors = null;
             }
 
-            /*
             AspectRatios = AspectRatioItem.RetrieveList(Reader, "Series", ID, "AspectRatio");
             noOfDataRecords += AspectRatios.Count;
+            if (AspectRatios.Count == 0)
+            {
+                Logger.Debug($"Series.AspectRatios.Count == 0 -> null");
+                AspectRatios = null;
+            }
 
+            /*
             Cameras = CameraItem.RetrieveList(Reader, "Series", ID, "Camera");
             noOfDataRecords += Cameras.Count;
 

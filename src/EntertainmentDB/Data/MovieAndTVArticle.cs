@@ -69,6 +69,11 @@ namespace EntertainmentDB.Data
         public List<ColorItem> Colors { get; set; }
 
         /// <summary>
+        /// The list of aspect ratios of the movie and tv article.
+        /// </summary>
+        public List<AspectRatioItem> AspectRatios { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }

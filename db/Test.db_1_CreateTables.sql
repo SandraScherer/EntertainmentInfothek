@@ -1232,3 +1232,15 @@ CREATE TABLE Series_Color (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(ColorID) REFERENCES Color(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_AspectRatio (
+  ID            text NOT NULL, 
+  SeriesID      text, 
+  AspectRatioID text, 
+  Details       text, 
+  Notes         text, 
+  StatusID      text, 
+  LastUpdated   text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(AspectRatioID) REFERENCES AspectRatio(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
