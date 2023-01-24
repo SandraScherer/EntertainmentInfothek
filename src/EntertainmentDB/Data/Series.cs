@@ -255,10 +255,15 @@ namespace EntertainmentDB.Data
                 AspectRatios = null;
             }
 
-            /*
             Cameras = CameraItem.RetrieveList(Reader, "Series", ID, "Camera");
             noOfDataRecords += Cameras.Count;
+            if (Cameras.Count == 0)
+            {
+                Logger.Debug($"Series.Cameras.Count == 0 -> null");
+                Cameras = null;
+            }
 
+            /*
             Laboratories = LaboratoryItem.RetrieveList(Reader, "Series", ID, "Laboratory");
             noOfDataRecords += Laboratories.Count;
 
