@@ -441,25 +441,51 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Aspect Ratio",
-                                   $"{"AspectRatio Ratio X"} Movie AspectRatio Details X1" }));
+                                   "AspectRatio Ratio X Movie AspectRatio Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{"AspectRatio Ratio Y"} Movie AspectRatio Details X2" }));
+                                   "AspectRatio Ratio Y Movie AspectRatio Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{"AspectRatio Ratio Z"} Movie AspectRatio Details X3" }));
+                                   "AspectRatio Ratio Z Movie AspectRatio Details X3" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Bildformat",
-                                   $"{"AspectRatio Ratio X"} Movie AspectRatio Details X1" }));
+                                   "AspectRatio Ratio X Movie AspectRatio Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{"AspectRatio Ratio Y"} Movie AspectRatio Details X2" }));
+                                   "AspectRatio Ratio Y Movie AspectRatio Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{"AspectRatio Ratio Z"} Movie AspectRatio Details X3" }));
+                                   "AspectRatio Ratio Z Movie AspectRatio Details X3" }));
+            }
+
+            // InfoBox Camera
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Camera",
+                                   "Camera Name X, Camera Lenses X Movie Camera Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Y, Camera Lenses Y Movie Camera Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Z, Camera Lenses Z Movie Camera Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Kamera",
+                                   "Camera Name X, Camera Lenses X Movie Camera Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Y, Camera Lenses Y Movie Camera Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Z, Camera Lenses Z Movie Camera Details X3" }));
             }
 
             // InfoBox End
