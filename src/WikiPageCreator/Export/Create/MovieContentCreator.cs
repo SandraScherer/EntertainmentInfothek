@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox camera content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox camera content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxCamera()
-        {
-            Logger.Trace($"CreateInfoBoxCamera()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.Cameras != null)
-            {
-                Logger.Debug($"Movie.Cameras is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new CameraContentCreator(Movie.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxCamera(): infobox camera for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox laboratory content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox laboratory content of the movie.</returns>

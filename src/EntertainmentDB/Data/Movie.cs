@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of cameras of the movie.
-        /// </summary>
-        public List<CameraItem> Cameras { get; set; }
-
-        /// <summary>
         /// The list of laboratories of the movie.
         /// </summary>
         public List<LaboratoryItem> Laboratories { get; set; }

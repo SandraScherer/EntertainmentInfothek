@@ -325,29 +325,6 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox camera content of a given series.
         /// </summary>
         /// <returns>The formatted infobox camera content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxCamera()
-        {
-            Logger.Trace($"CreateInfoBoxCamera()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Cameras != null)
-            //{
-            //    Logger.Debug($"Series.Cameras is not null -> create");
-            //    content.AddRange(new CameraContentCreator(Series.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxCamera() für Series '{Series.OriginalTitle}' beendet");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox camera content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox camera content of the series.</returns>
         protected virtual List<string> CreateInfoBoxLaboratory()
         {
             Logger.Trace($"CreateInfoBoxLaboratory()");

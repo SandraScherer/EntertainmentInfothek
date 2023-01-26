@@ -74,6 +74,11 @@ namespace EntertainmentDB.Data
         public List<AspectRatioItem> AspectRatios { get; set; }
 
         /// <summary>
+        /// The list of cameras of the movie.
+        /// </summary>
+        public List<CameraItem> Cameras { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }

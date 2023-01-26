@@ -278,5 +278,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox camera content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox camera content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxCamera()
+        {
+            Logger.Trace($"CreateInfoBoxCamera()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Cameras != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Cameras is not null -> create");
+                content.AddRange(new CameraContentCreator(MovieAndTVArticle.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxCamera(): infobox camera for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }
