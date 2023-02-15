@@ -1256,3 +1256,15 @@ CREATE TABLE Series_Camera (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(CameraID) REFERENCES Camera(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Laboratory (
+  ID           text NOT NULL, 
+  SeriesID     text, 
+  LaboratoryID text, 
+  Details      text, 
+  Notes        text, 
+  StatusID     text, 
+  LastUpdated  text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(LaboratoryID) REFERENCES Laboratory(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
