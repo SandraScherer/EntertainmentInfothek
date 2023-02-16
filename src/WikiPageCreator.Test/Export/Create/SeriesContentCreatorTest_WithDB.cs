@@ -530,6 +530,33 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    "Camera Name Z, Camera Lenses Z Series Camera Details X3" }));
             }
 
+            // InfoBox Laboratory
+            // InfoBox Laboratory
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Laboratory",
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X")} Series Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Y", "Laboratory Name Y")} Series Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Z", "Laboratory Name Z")} Series Laboratory Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Labor",
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X")} Series Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Y", "Laboratory Name Y")} Series Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Z", "Laboratory Name Z")} Series Laboratory Details X3" }));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

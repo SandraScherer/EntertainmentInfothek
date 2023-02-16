@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox laboratory content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox laboratory content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxLaboratory()
-        {
-            Logger.Trace($"CreateInfoBoxLaboratory()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.Laboratories != null)
-            {
-                Logger.Debug($"Movie.Laboratories is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new LaboratoryContentCreator(Movie.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox film length content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox film length content of the movie.</returns>
