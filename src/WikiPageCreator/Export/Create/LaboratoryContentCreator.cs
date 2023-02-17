@@ -90,7 +90,6 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContentInternal()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "info" };
 
             if ((Laboratories != null) && (Laboratories.Count > 0))
             {
@@ -101,26 +100,26 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Laboratory: '{Laboratories[0].Laboratory.Name}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Laboratory", path, Laboratories[0].Laboratory.Name, Laboratories[0].Laboratory.Name, Laboratories[0].Details);
+                    CreateInfoBoxContentHelper(content, "Laboratory", Laboratories[0].Laboratory.Name, Laboratories[0].Details);
 
                     for (int i = 1; i < Laboratories.Count; i++)
                     {
                         Logger.Debug($"Laboratory: '{Laboratories[i].Laboratory.Name}' (english)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Laboratories[i].Laboratory.Name, Laboratories[i].Laboratory.Name, Laboratories[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), Laboratories[i].Laboratory.Name, Laboratories[i].Details);
                     }
                 }
                 else // incl. case "de"
                 {
                     Logger.Debug($"Laboratory: '{Laboratories[0].Laboratory.Name}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Labor", path, Laboratories[0].Laboratory.Name, Laboratories[0].Laboratory.Name, Laboratories[0].Details);
+                    CreateInfoBoxContentHelper(content, "Labor", Laboratories[0].Laboratory.Name, Laboratories[0].Details);
 
                     for (int i = 1; i < Laboratories.Count; i++)
                     {
                         Logger.Debug($"Laboratory: '{Laboratories[i].Laboratory.Name}' (german, ...)");
 
-                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), path, Laboratories[i].Laboratory.Name, Laboratories[i].Laboratory.Name, Laboratories[i].Details);
+                        CreateInfoBoxContentHelper(content, Formatter.CellSpanVertically(), Laboratories[i].Laboratory.Name, Laboratories[i].Details);
                     }
                 }
             }

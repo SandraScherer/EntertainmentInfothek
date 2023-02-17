@@ -493,25 +493,25 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Laboratory",
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X")} Movie Laboratory Details X1" }));
+                                   "Laboratory Name X Movie Laboratory Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Y", "Laboratory Name Y")} Movie Laboratory Details X2" }));
+                                   "Laboratory Name Y Movie Laboratory Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Z", "Laboratory Name Z")} Movie Laboratory Details X3" }));
+                                   "Laboratory Name Z Movie Laboratory Details X3" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Labor",
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X")} Movie Laboratory Details X1" }));
+                                   "Laboratory Name X Movie Laboratory Details X1" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Y", "Laboratory Name Y")} Movie Laboratory Details X2" }));
+                                   "Laboratory Name Y Movie Laboratory Details X2" }));
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
-                                   $"{formatter.AsInternalLink(pathInfo, "Laboratory Name Z", "Laboratory Name Z")} Movie Laboratory Details X3" }));
+                                   "Laboratory Name Z Movie Laboratory Details X3" }));
             }
 
             // InfoBox End

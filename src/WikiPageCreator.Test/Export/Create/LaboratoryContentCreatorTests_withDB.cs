@@ -203,19 +203,17 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             List<string> testContent = new List<string>();
 
-            string[] pathInfo = { targetLanguageCode, "info" };
-
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Laboratory",
-                                   formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X") }));
+                                   "Laboratory Name X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
                     new string[] { "Labor",
-                                   formatter.AsInternalLink(pathInfo, "Laboratory Name X", "Laboratory Name X") }));
+                                   "Laboratory Name X" }));
             }
 
             // Act
