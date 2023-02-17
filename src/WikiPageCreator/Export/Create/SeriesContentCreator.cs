@@ -322,29 +322,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox camera content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox camera content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxLaboratory()
-        {
-            Logger.Trace($"CreateInfoBoxLaboratory()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.Laboratories != null)
-            //{
-            //    Logger.Debug($"Series.Laboratories is not null -> create");
-            //    content.AddRange(new LaboratoryContentCreator(Series.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox film length content of a given series.
         /// </summary>
         /// <returns>The formatted infobox film length content of the series.</returns>

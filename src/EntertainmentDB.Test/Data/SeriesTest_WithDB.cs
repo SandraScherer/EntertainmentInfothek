@@ -68,7 +68,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.Laboratories);
             //Assert.IsNull(entry.FilmLengths);
             //Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
@@ -168,7 +168,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.Laboratories);
             //Assert.IsNull(entry.FilmLengths);
             //Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
@@ -286,7 +286,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.Laboratories);
             //Assert.IsNull(entry.FilmLengths);
             //Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
@@ -421,10 +421,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Cameras[1].ID);
             Assert.AreEqual("_xx3", entry.Cameras[2].ID);
 
-            //Assert.AreEqual(3, entry.Laboratories.Count);
-            //Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
-            //Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
-            //Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
+            Assert.AreEqual(3, entry.Laboratories.Count);
+            Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
+            Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
+            Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
 
             //Assert.AreEqual(3, entry.FilmLengths.Count);
             //Assert.AreEqual("_xx1", entry.FilmLengths[0].ID);
@@ -715,7 +715,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Colors);
             Assert.IsNull(entry.AspectRatios);
             Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.Laboratories);
             //Assert.IsNull(entry.FilmLengths);
             //Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);

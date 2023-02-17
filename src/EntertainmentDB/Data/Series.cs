@@ -263,10 +263,15 @@ namespace EntertainmentDB.Data
                 Cameras = null;
             }
 
-            /*
             Laboratories = LaboratoryItem.RetrieveList(Reader, "Series", ID, "Laboratory");
             noOfDataRecords += Laboratories.Count;
+            if (Laboratories.Count == 0)
+            {
+                Logger.Debug($"Series.Laboratories.Count == 0 -> null");
+                Laboratories = null;
+            }
 
+            /*
             FilmLengths = FilmLengthItem.RetrieveList(Reader, "Series", ID, "FilmLength");
             noOfDataRecords += FilmLengths.Count;
 

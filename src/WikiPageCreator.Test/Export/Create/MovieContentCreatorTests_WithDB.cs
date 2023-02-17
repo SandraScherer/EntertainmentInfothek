@@ -488,6 +488,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    "Camera Name Z, Camera Lenses Z Movie Camera Details X3" }));
             }
 
+            // InfoBox Laboratory
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Laboratory",
+                                   "Laboratory Name X Movie Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Y Movie Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Z Movie Laboratory Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Labor",
+                                   "Laboratory Name X Movie Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Y Movie Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Z Movie Laboratory Details X3" }));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

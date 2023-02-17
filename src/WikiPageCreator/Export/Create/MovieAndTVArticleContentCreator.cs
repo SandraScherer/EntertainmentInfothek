@@ -300,5 +300,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox laboratory content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox laboratory content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxLaboratory()
+        {
+            Logger.Trace($"CreateInfoBoxLaboratory()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.Laboratories != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Laboratories is not null -> create");
+                content.AddRange(new LaboratoryContentCreator(MovieAndTVArticle.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }

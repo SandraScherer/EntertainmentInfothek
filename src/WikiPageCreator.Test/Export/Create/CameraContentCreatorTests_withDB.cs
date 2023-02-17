@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2022 Sandra Scherer
+// Copyright (C) 2023 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create.IntegrationTests
 {
     [TestClass()]
-    public class LanguageContentCreatorTests_withDB
+    public class CameraContentCreatorTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
@@ -38,23 +38,23 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void LanguageContentCreatorTest(string id, string targetLanguageCode)
+        public void CameraContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(list, creator.Languages);
+            Assert.AreEqual(list, creator.Cameras);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -64,13 +64,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("de")]
         [DataRow("zz")]
         [ExpectedException(typeof(NullReferenceException))]
-        public void LanguageContentCreatorTest_withLanguagesNull(string targetLanguageCode)
+        public void CameraContentCreatorTest_withCamerasNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(null, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(null, formatter, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -81,56 +81,56 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        public void CameraContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, null, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withTargetLanguageCodeNull(string id)
+        public void CameraContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, null);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, null);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        public void CameraContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, "");
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, "");
         }
 
         [DataTestMethod()]
@@ -145,14 +145,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -170,14 +170,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -191,15 +191,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, VALID_ID);
-            language.Retrieve(false);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, VALID_ID);
+            camera.Retrieve(false);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -208,14 +208,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Language",
-                                   formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language EnglishName X") }));
+                    new string[] { "Camera",
+                                   "Camera Name X, Camera Lenses X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Sprache",
-                                   formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language GermanName X") }));
+                    new string[] { "Kamera",
+                                   "Camera Name X, Camera Lenses X" }));
             }
 
             // Act
@@ -241,14 +241,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -266,14 +266,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Camera camera = new Camera(reader, id);
+            CameraItem item = new CameraItem(reader);
+            item.Camera = camera;
+            List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

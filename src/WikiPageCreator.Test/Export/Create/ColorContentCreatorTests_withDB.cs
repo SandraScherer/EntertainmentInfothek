@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2022 Sandra Scherer
+// Copyright (C) 2023 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create.IntegrationTests
 {
     [TestClass()]
-    public class LanguageContentCreatorTests_withDB
+    public class ColorContentCreatorTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
@@ -38,23 +38,23 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void LanguageContentCreatorTest(string id, string targetLanguageCode)
+        public void ColorContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(list, creator.Languages);
+            Assert.AreEqual(list, creator.Colors);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -64,13 +64,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("de")]
         [DataRow("zz")]
         [ExpectedException(typeof(NullReferenceException))]
-        public void LanguageContentCreatorTest_withLanguagesNull(string targetLanguageCode)
+        public void ColorContentCreatorTest_withColorsNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(null, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(null, formatter, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -81,56 +81,56 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        public void ColorContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, null, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withTargetLanguageCodeNull(string id)
+        public void ColorContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, null);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, null);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void LanguageContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        public void ColorContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, "");
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, "");
         }
 
         [DataTestMethod()]
@@ -145,14 +145,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -170,14 +170,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -191,15 +191,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, VALID_ID);
-            language.Retrieve(false);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, VALID_ID);
+            color.Retrieve(false);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -208,14 +208,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Language",
-                                   formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language EnglishName X") }));
+                    new string[] { "Color",
+                                   formatter.AsInternalLink(pathInfo, "Color EnglishTitle X", "Color EnglishTitle X") }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Sprache",
-                                   formatter.AsInternalLink(pathInfo, "Language OriginalName X", "Language GermanName X") }));
+                    new string[] { "Farbe",
+                                   formatter.AsInternalLink(pathInfo, "Color EnglishTitle X", "Color GermanTitle X") }));
             }
 
             // Act
@@ -241,14 +241,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -266,14 +266,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
-            LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
-            List<LanguageItem> list = new List<LanguageItem>();
+            Color color = new Color(reader, id);
+            ColorItem item = new ColorItem(reader);
+            item.Color = color;
+            List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            LanguageContentCreator creator = new LanguageContentCreator(list, formatter, targetLanguageCode);
+            ColorContentCreator creator = new ColorContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();
