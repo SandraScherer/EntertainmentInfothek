@@ -84,6 +84,11 @@ namespace EntertainmentDB.Data
         public List<LaboratoryItem> Laboratories { get; set; }
 
         /// <summary>
+        /// The list of film lengths of the movie and tv article.
+        /// </summary>
+        public List<FilmLengthItem> FilmLengths { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }

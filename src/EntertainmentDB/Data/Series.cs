@@ -271,10 +271,15 @@ namespace EntertainmentDB.Data
                 Laboratories = null;
             }
 
-            /*
             FilmLengths = FilmLengthItem.RetrieveList(Reader, "Series", ID, "FilmLength");
             noOfDataRecords += FilmLengths.Count;
+            if (FilmLengths.Count == 0)
+            {
+                Logger.Debug($"Series.FilmLengths.Count == 0 -> null");
+                FilmLengths = null;
+            }
 
+            /*
             NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Series", ID, "NegativeFormat");
             noOfDataRecords += NegativeFormats.Count;
 
