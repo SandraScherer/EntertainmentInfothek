@@ -514,6 +514,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    "Laboratory Name Z Movie Laboratory Details X3" }));
             }
 
+            // InfoBox FilmLength
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Film Length",
+                                  "Movie FilmLength Length X1 Movie FilmLength Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Movie FilmLength Length X2 Movie FilmLength Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Movie FilmLength Length X3 Movie FilmLength Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Filmlänge",
+                                  "Movie FilmLength Length X1 Movie FilmLength Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Movie FilmLength Length X2 Movie FilmLength Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Movie FilmLength Length X3 Movie FilmLength Details X3"}));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

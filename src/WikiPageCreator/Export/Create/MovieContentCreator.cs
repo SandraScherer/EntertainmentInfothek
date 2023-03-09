@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox film length content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox film length content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxFilmLength()
-        {
-            Logger.Trace($"CreateInfoBoxFilmLength()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.FilmLengths != null)
-            {
-                Logger.Debug("Movie.FilmLengths is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new FilmLengthContentCreator(Movie.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox negative format content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox negative format content of the movie.</returns>

@@ -322,5 +322,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox film length content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox film length content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxFilmLength()
+        {
+            Logger.Trace($"CreateInfoBoxFilmLength()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.FilmLengths != null)
+            {
+                Logger.Debug("MovieAndTVArticle.FilmLengths is not null -> create");
+                content.AddRange(new FilmLengthContentCreator(MovieAndTVArticle.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for Movie '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }
