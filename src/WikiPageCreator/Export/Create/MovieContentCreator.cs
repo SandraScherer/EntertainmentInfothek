@@ -172,30 +172,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox negative format content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox negative format content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxNegativeFormat()
-        {
-            Logger.Trace($"CreateInfoBoxNegativeFormat()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.NegativeFormats != null)
-            {
-                Logger.Debug($"Movie.NegativeFormats is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new NegativeFormatContentCreator(Movie.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox cinematographic process content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox cinematographic process content of the movie.</returns>

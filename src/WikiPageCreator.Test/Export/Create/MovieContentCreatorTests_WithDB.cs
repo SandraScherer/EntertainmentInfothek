@@ -540,6 +540,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                   "Movie FilmLength Length X3 Movie FilmLength Details X3"}));
             }
 
+            // InfoBox NegativeFormat
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Negative Format",
+                                  "FilmFormat Format X Movie NegativeFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Movie NegativeFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Movie NegativeFormat Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Negativformat",
+                                  "FilmFormat Format X Movie NegativeFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Movie NegativeFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Movie NegativeFormat Details X3"}));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

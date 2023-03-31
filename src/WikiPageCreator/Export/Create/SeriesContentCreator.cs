@@ -322,29 +322,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox negative format content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox negative format content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxNegativeFormat()
-        {
-            Logger.Trace($"CreateInfoBoxNegativeFormat()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.NegativeFormats != null)
-            //{
-            //    Logger.Debug($"Series.NegativeFormats is not null -> create");
-            //    content.AddRange(new NegativeFormatContentCreator(Series.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox cinematographic process content of a given series.
         /// </summary>
         /// <returns>The formatted infobox cinematographic process content of the series.</returns>
