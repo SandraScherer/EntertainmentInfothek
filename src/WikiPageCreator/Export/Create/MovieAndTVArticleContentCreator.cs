@@ -340,7 +340,29 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new FilmLengthContentCreator(MovieAndTVArticle.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for Movie '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox negative format content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox negative format content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxNegativeFormat()
+        {
+            Logger.Trace($"CreateInfoBoxNegativeFormat()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.NegativeFormats != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.NegativeFormats is not null -> create");
+                content.AddRange(new NegativeFormatContentCreator(MovieAndTVArticle.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }

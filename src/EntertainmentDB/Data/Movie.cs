@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of negative formats of the movie.
-        /// </summary>
-        public List<FilmFormatItem> NegativeFormats { get; set; }
-
-        /// <summary>
         /// The list of cinematographic processes of the movie.
         /// </summary>
         public List<CinematographicProcessItem> CinematographicProcesses { get; set; }

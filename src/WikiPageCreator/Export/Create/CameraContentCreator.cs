@@ -90,7 +90,6 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContentInternal()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "info" };
 
             if ((Cameras != null) && (Cameras.Count > 0))
             {
