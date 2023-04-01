@@ -54,9 +54,44 @@ namespace EntertainmentDB.Data
         public List<LanguageItem> Languages { get; set; }
 
         /// <summary>
+        /// The list of runtimes of the movie and tv article.
+        /// </summary>
+        public List<RuntimeItem> Runtimes { get; set; }
+
+        /// <summary>
         /// The list of sound mixes of the movie and tv article.
         /// </summary>
         public List<SoundMixItem> SoundMixes { get; set; }
+
+        /// <summary>
+        /// The list of colors of the movie and tv article.
+        /// </summary>
+        public List<ColorItem> Colors { get; set; }
+
+        /// <summary>
+        /// The list of aspect ratios of the movie and tv article.
+        /// </summary>
+        public List<AspectRatioItem> AspectRatios { get; set; }
+
+        /// <summary>
+        /// The list of cameras of the movie and tv article.
+        /// </summary>
+        public List<CameraItem> Cameras { get; set; }
+
+        /// <summary>
+        /// The list of laboratories of the movie and tv article.
+        /// </summary>
+        public List<LaboratoryItem> Laboratories { get; set; }
+
+        /// <summary>
+        /// The list of film lengths of the movie and tv article.
+        /// </summary>
+        public List<FilmLengthItem> FilmLengths { get; set; }
+
+        /// <summary>
+        /// The list of negative formats of the movie and tv article.
+        /// </summary>
+        public List<FilmFormatItem> NegativeFormats { get; set; }
 
         /// <summary>
         /// The cast status of the movie and tv article.

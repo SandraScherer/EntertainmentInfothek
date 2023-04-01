@@ -35,41 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of runtimes of the movie.
-        /// </summary>
-        public List<RuntimeItem> Runtimes { get; set; }
-
-        /// <summary>
-        /// The list of colors of the movie.
-        /// </summary>
-        public List<ColorItem> Colors { get; set; }
-
-        /// <summary>
-        /// The list of aspect ratios of the movie.
-        /// </summary>
-        public List<AspectRatioItem> AspectRatios { get; set; }
-
-        /// <summary>
-        /// The list of cameras of the movie.
-        /// </summary>
-        public List<CameraItem> Cameras { get; set; }
-
-        /// <summary>
-        /// The list of laboratories of the movie.
-        /// </summary>
-        public List<LaboratoryItem> Laboratories { get; set; }
-
-        /// <summary>
-        /// The list of film lengths of the movie.
-        /// </summary>
-        public List<FilmLengthItem> FilmLengths { get; set; }
-
-        /// <summary>
-        /// The list of negative formats of the movie.
-        /// </summary>
-        public List<FilmFormatItem> NegativeFormats { get; set; }
-
-        /// <summary>
         /// The list of cinematographic processes of the movie.
         /// </summary>
         public List<CinematographicProcessItem> CinematographicProcesses { get; set; }

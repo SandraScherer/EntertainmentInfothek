@@ -1,6 +1,0 @@
-<map id="EntertainmentDB.Data.PersonItem.RetrieveList" name="EntertainmentDB.Data.PersonItem.RetrieveList">
-<area shape="rect" id="node1" title="Retrieves a list of person items from the database." alt="" coords="271,69,468,109"/>
-<area shape="rect" id="node2" href="$d7/d1c/class_entertainment_d_b_1_1_data_1_1_award_item.html#a32d5f434cdd8311313eaf0b42f5dc199" title="Retrieves the additional information of the award item from the database." alt="" coords="5,5,223,45"/>
-<area shape="rect" id="node3" href="$dd/d21/class_entertainment_d_b_1_1_data_1_1_movie.html#a99f0e883926dc4bff73274a483db2f31" title="Retrieves the additional information of the movie from the database." alt="" coords="17,69,211,109"/>
-<area shape="rect" id="node4" href="$da/dad/class_entertainment_d_b_1_1_data_1_1_text.html#a2e33615f1ccb059c6e77bc9097c7600f" title="Retrieves the additional information of the text from the database (none available)." alt="" coords="20,133,208,173"/>
-</map>

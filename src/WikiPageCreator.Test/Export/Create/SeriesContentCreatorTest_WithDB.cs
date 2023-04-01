@@ -400,6 +400,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"Series WorldwideGross X ({formatter.AsInternalLink(pathDate, "Series WorldwideGrossDate X", "Series WorldwideGrossDate X")})" }));
             }
 
+            // InfoBox Runtime
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Runtime",
+                                   $"11 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle X", "Edition EnglishTitle X")}) Series Runtime Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"12 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Y", "Edition EnglishTitle Y")}) Series Runtime Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"13 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Z", "Edition EnglishTitle Z")}) Series Runtime Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Laufzeit",
+                                   $"11 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle X", "Edition GermanTitle X")}) Series Runtime Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"12 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Y", "Edition GermanTitle Y")}) Series Runtime Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"13 min. ({formatter.AsInternalLink(pathInfo, "Edition EnglishTitle Z", "Edition GermanTitle Z")}) Series Runtime Details X3" }));
+            }
+
             // InfoBox SoundMix
             if (targetLanguageCode.Equals("en"))
             {
@@ -424,6 +450,163 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
                                    $"{formatter.AsInternalLink(pathInfo, "SoundMix EnglishTitle Z", "SoundMix GermanTitle Z")} Series SoundMix Details X3" }));
+            }
+
+            // InfoBox Color
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Color",
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle X", "Color EnglishTitle X")} Series Color Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle Y", "Color EnglishTitle Y")} Series Color Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle Z", "Color EnglishTitle Z")} Series Color Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Farbe",
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle X", "Color GermanTitle X")} Series Color Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle Y", "Color GermanTitle Y")} Series Color Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "Color EnglishTitle Z", "Color GermanTitle Z")} Series Color Details X3" }));
+            }
+
+            // InfoBox AspectRatio
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Aspect Ratio",
+                                   "AspectRatio Ratio X Series AspectRatio Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "AspectRatio Ratio Y Series AspectRatio Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "AspectRatio Ratio Z Series AspectRatio Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Bildformat",
+                                   "AspectRatio Ratio X Series AspectRatio Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "AspectRatio Ratio Y Series AspectRatio Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "AspectRatio Ratio Z Series AspectRatio Details X3" }));
+            }
+
+            // InfoBox Camera
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Camera",
+                                   "Camera Name X, Camera Lenses X Series Camera Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Y, Camera Lenses Y Series Camera Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Z, Camera Lenses Z Series Camera Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Kamera",
+                                   "Camera Name X, Camera Lenses X Series Camera Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Y, Camera Lenses Y Series Camera Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Camera Name Z, Camera Lenses Z Series Camera Details X3" }));
+            }
+
+            // InfoBox Laboratory
+            // InfoBox Laboratory
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Laboratory",
+                                   "Laboratory Name X Series Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Y Series Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Z Series Laboratory Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Labor",
+                                   "Laboratory Name X Series Laboratory Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Y Series Laboratory Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   "Laboratory Name Z Series Laboratory Details X3" }));
+            }
+
+            // InfoBox FilmLength
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Film Length",
+                                  "Series FilmLength Length X1 Series FilmLength Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Series FilmLength Length X2 Series FilmLength Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Series FilmLength Length X3 Series FilmLength Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Filmlänge",
+                                  "Series FilmLength Length X1 Series FilmLength Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Series FilmLength Length X2 Series FilmLength Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "Series FilmLength Length X3 Series FilmLength Details X3"}));
+            }
+
+            // InfoBox NegativeFormat
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Negative Format",
+                                  "FilmFormat Format X Series NegativeFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Series NegativeFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Series NegativeFormat Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Negativformat",
+                                  "FilmFormat Format X Series NegativeFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Series NegativeFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Series NegativeFormat Details X3"}));
             }
 
             // InfoBox End

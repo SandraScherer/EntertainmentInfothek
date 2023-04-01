@@ -1,6 +1,0 @@
-<map id="WikiPageCreator.Export.Create.LanguageContentCreator.CreateInfoBoxContentInternal" name="WikiPageCreator.Export.Create.LanguageContentCreator.CreateInfoBoxContentInternal">
-<area shape="rect" id="node1" title="Creates the infobox content of a given list of languages." alt="" coords="5,34,232,89"/>
-<area shape="rect" id="node2" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#a95a8636523b2c26d1caf7bc2a62a2774" title="Inserts an indicator to span cells vertically." alt="" coords="287,5,498,45"/>
-<area shape="rect" id="node3" href="$d4/d61/class_wiki_page_creator_1_1_export_1_1_create_1_1_entry_content_creator.html#afd99e7df96124d8b3c2620e5031751a0" title="Creates the specific row of the infobox content." alt="" coords="280,70,505,125"/>
-<area shape="rect" id="node4" href="$d3/d2c/class_wiki_page_creator_1_1_export_1_1_format_1_1_formatter.html#ae592fd4befb7c3fdb3c17dc38b069ef4" title="Formats the given data as a table row." alt="" coords="553,77,764,117"/>
-</map>

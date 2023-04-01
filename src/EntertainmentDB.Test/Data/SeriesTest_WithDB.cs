@@ -63,14 +63,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Certifications);
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
-            //Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Runtimes);
             Assert.IsNull(entry.SoundMixes);
-            //Assert.IsNull(entry.Colors);
-            //Assert.IsNull(entry.AspectRatios);
-            //Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
-            //Assert.IsNull(entry.FilmLengths);
-            //Assert.IsNull(entry.NegativeFormats);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
+            Assert.IsNull(entry.Cameras);
+            Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
+            Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
             //Assert.IsNull(entry.PrintedFilmFormats);
 
@@ -163,14 +163,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Certifications);
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
-            //Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Runtimes);
             Assert.IsNull(entry.SoundMixes);
-            //Assert.IsNull(entry.Colors);
-            //Assert.IsNull(entry.AspectRatios);
-            //Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
-            //Assert.IsNull(entry.FilmLengths);
-            //Assert.IsNull(entry.NegativeFormats);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
+            Assert.IsNull(entry.Cameras);
+            Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
+            Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
             //Assert.IsNull(entry.PrintedFilmFormats);
 
@@ -281,13 +281,13 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Certifications);
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
-            //Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Runtimes);
             Assert.IsNull(entry.SoundMixes);
-            //Assert.IsNull(entry.Colors);
-            //Assert.IsNull(entry.AspectRatios);
-            //Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
-            //Assert.IsNull(entry.FilmLengths);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
+            Assert.IsNull(entry.Cameras);
+            Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
             //Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
             //Assert.IsNull(entry.PrintedFilmFormats);
@@ -396,45 +396,45 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.Languages[1].ID);
             Assert.AreEqual("_xx3", entry.Languages[2].ID);
 
-            //Assert.AreEqual(3, entry.Runtimes.Count);
-            //Assert.AreEqual("_xx1", entry.Runtimes[0].ID);
-            //Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
-            //Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
+            Assert.AreEqual(3, entry.Runtimes.Count);
+            Assert.AreEqual("_xx1", entry.Runtimes[0].ID);
+            Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
+            Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
 
             Assert.AreEqual(3, entry.SoundMixes.Count);
             Assert.AreEqual("_xx1", entry.SoundMixes[0].ID);
             Assert.AreEqual("_xx2", entry.SoundMixes[1].ID);
             Assert.AreEqual("_xx3", entry.SoundMixes[2].ID);
 
-            //Assert.AreEqual(3, entry.Colors.Count);
-            //Assert.AreEqual("_xx1", entry.Colors[0].ID);
-            //Assert.AreEqual("_xx2", entry.Colors[1].ID);
-            //Assert.AreEqual("_xx3", entry.Colors[2].ID);
+            Assert.AreEqual(3, entry.Colors.Count);
+            Assert.AreEqual("_xx1", entry.Colors[0].ID);
+            Assert.AreEqual("_xx2", entry.Colors[1].ID);
+            Assert.AreEqual("_xx3", entry.Colors[2].ID);
 
-            //Assert.AreEqual(3, entry.AspectRatios.Count);
-            //Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
-            //Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
-            //Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
+            Assert.AreEqual(3, entry.AspectRatios.Count);
+            Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
+            Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
+            Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
 
-            //Assert.AreEqual(3, entry.Cameras.Count);
-            //Assert.AreEqual("_xx1", entry.Cameras[0].ID);
-            //Assert.AreEqual("_xx2", entry.Cameras[1].ID);
-            //Assert.AreEqual("_xx3", entry.Cameras[2].ID);
+            Assert.AreEqual(3, entry.Cameras.Count);
+            Assert.AreEqual("_xx1", entry.Cameras[0].ID);
+            Assert.AreEqual("_xx2", entry.Cameras[1].ID);
+            Assert.AreEqual("_xx3", entry.Cameras[2].ID);
 
-            //Assert.AreEqual(3, entry.Laboratories.Count);
-            //Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
-            //Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
-            //Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
+            Assert.AreEqual(3, entry.Laboratories.Count);
+            Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
+            Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
+            Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmLengths.Count);
-            //Assert.AreEqual("_xx1", entry.FilmLengths[0].ID);
-            //Assert.AreEqual("_xx2", entry.FilmLengths[1].ID);
-            //Assert.AreEqual("_xx3", entry.FilmLengths[2].ID);
+            Assert.AreEqual(3, entry.FilmLengths.Count);
+            Assert.AreEqual("_xx1", entry.FilmLengths[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmLengths[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmLengths[2].ID);
 
-            //Assert.AreEqual(3, entry.NegativeFormats.Count);
-            //Assert.AreEqual("_xx1", entry.NegativeFormats[0].ID);
-            //Assert.AreEqual("_xx2", entry.NegativeFormats[1].ID);
-            //Assert.AreEqual("_xx3", entry.NegativeFormats[2].ID);
+            Assert.AreEqual(3, entry.NegativeFormats.Count);
+            Assert.AreEqual("_xx1", entry.NegativeFormats[0].ID);
+            Assert.AreEqual("_xx2", entry.NegativeFormats[1].ID);
+            Assert.AreEqual("_xx3", entry.NegativeFormats[2].ID);
 
             //Assert.AreEqual(3, entry.CinematographicProcesses.Count);
             //Assert.AreEqual("_xx1", entry.CinematographicProcesses[0].ID);
@@ -710,14 +710,14 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Certifications);
             Assert.IsNull(entry.Countries);
             Assert.IsNull(entry.Languages);
-            //Assert.IsNull(entry.Runtimes);
+            Assert.IsNull(entry.Runtimes);
             Assert.IsNull(entry.SoundMixes);
-            //Assert.IsNull(entry.Colors);
-            //Assert.IsNull(entry.AspectRatios);
-            //Assert.IsNull(entry.Cameras);
-            //Assert.IsNull(entry.Laboratories);
-            //Assert.IsNull(entry.FilmLengths);
-            //Assert.IsNull(entry.NegativeFormats);
+            Assert.IsNull(entry.Colors);
+            Assert.IsNull(entry.AspectRatios);
+            Assert.IsNull(entry.Cameras);
+            Assert.IsNull(entry.Laboratories);
+            Assert.IsNull(entry.FilmLengths);
+            Assert.IsNull(entry.NegativeFormats);
             //Assert.IsNull(entry.CinematographicProcesses);
             //Assert.IsNull(entry.PrintedFilmFormats);
 

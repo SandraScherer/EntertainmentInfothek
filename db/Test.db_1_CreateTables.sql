@@ -1195,6 +1195,19 @@ CREATE TABLE Series_Certification (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(CertificationID) REFERENCES Certification(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Runtime (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  Runtime     integer(10), 
+  EditionID   text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(EditionID) REFERENCES Edition(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
 CREATE TABLE Series_SoundMix (
   ID          text NOT NULL, 
   SeriesID    text, 
@@ -1206,4 +1219,75 @@ CREATE TABLE Series_SoundMix (
   PRIMARY KEY (ID), 
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(SoundMixID) REFERENCES SoundMix(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Color (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  ColorID     text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(ColorID) REFERENCES Color(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_AspectRatio (
+  ID            text NOT NULL, 
+  SeriesID      text, 
+  AspectRatioID text, 
+  Details       text, 
+  Notes         text, 
+  StatusID      text, 
+  LastUpdated   text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(AspectRatioID) REFERENCES AspectRatio(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Camera (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  CameraID    text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(CameraID) REFERENCES Camera(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Laboratory (
+  ID           text NOT NULL, 
+  SeriesID     text, 
+  LaboratoryID text, 
+  Details      text, 
+  Notes        text, 
+  StatusID     text, 
+  LastUpdated  text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(LaboratoryID) REFERENCES Laboratory(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_FilmLength (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  Length      text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_NegativeFormat (
+  ID           text NOT NULL, 
+  SeriesID     text, 
+  FilmFormatID text, 
+  Details      text, 
+  Notes        text, 
+  StatusID     text, 
+  LastUpdated  text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(FilmFormatID) REFERENCES FilmFormat(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);

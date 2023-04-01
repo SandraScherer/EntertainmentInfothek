@@ -223,6 +223,14 @@ namespace EntertainmentDB.Data
                 Languages = null;
             }
 
+            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
+            noOfDataRecords += Runtimes.Count;
+            if (Runtimes.Count == 0)
+            {
+                Logger.Debug($"Series.Runtimes.Count == 0 -> null");
+                Runtimes = null;
+            }
+
             SoundMixes = SoundMixItem.RetrieveList(Reader, "Series", ID, "SoundMix");
             noOfDataRecords += SoundMixes.Count;
             if (SoundMixes.Count == 0)
@@ -231,28 +239,55 @@ namespace EntertainmentDB.Data
                 SoundMixes = null;
             }
 
-            /*
-            Runtimes = RuntimeItem.RetrieveList(Reader, "Series", ID, "Runtime");
-            noOfDataRecords += Runtimes.Count;
-
             Colors = ColorItem.RetrieveList(Reader, "Series", ID, "Color");
             noOfDataRecords += Colors.Count;
+            if (Colors.Count == 0)
+            {
+                Logger.Debug($"Series.Colors.Count == 0 -> null");
+                Colors = null;
+            }
 
             AspectRatios = AspectRatioItem.RetrieveList(Reader, "Series", ID, "AspectRatio");
             noOfDataRecords += AspectRatios.Count;
+            if (AspectRatios.Count == 0)
+            {
+                Logger.Debug($"Series.AspectRatios.Count == 0 -> null");
+                AspectRatios = null;
+            }
 
             Cameras = CameraItem.RetrieveList(Reader, "Series", ID, "Camera");
             noOfDataRecords += Cameras.Count;
+            if (Cameras.Count == 0)
+            {
+                Logger.Debug($"Series.Cameras.Count == 0 -> null");
+                Cameras = null;
+            }
 
             Laboratories = LaboratoryItem.RetrieveList(Reader, "Series", ID, "Laboratory");
             noOfDataRecords += Laboratories.Count;
+            if (Laboratories.Count == 0)
+            {
+                Logger.Debug($"Series.Laboratories.Count == 0 -> null");
+                Laboratories = null;
+            }
 
             FilmLengths = FilmLengthItem.RetrieveList(Reader, "Series", ID, "FilmLength");
             noOfDataRecords += FilmLengths.Count;
+            if (FilmLengths.Count == 0)
+            {
+                Logger.Debug($"Series.FilmLengths.Count == 0 -> null");
+                FilmLengths = null;
+            }
 
-            NegativeFormats = NegativeFormatItem.RetrieveList(Reader, "Series", ID, "NegativeFormat");
+            NegativeFormats = FilmFormatItem.RetrieveList(Reader, "Series", ID, "NegativeFormat");
             noOfDataRecords += NegativeFormats.Count;
+            if (NegativeFormats.Count == 0)
+            {
+                Logger.Debug($"Series.NegativeFormats.Count == 0 -> null");
+                NegativeFormats = null;
+            }
 
+            /*
             CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Series", ID, "CinematographicProcess");
             noOfDataRecords += CinematographicProcesses.Count;
 

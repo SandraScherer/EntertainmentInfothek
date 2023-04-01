@@ -1,5 +1,0 @@
-<map id="EntertainmentDB.Data.Entry.Retrieve" name="EntertainmentDB.Data.Entry.Retrieve">
-<area shape="rect" id="node1" title="Retrieves the information of the entry from the database." alt="" coords="5,37,196,77"/>
-<area shape="rect" id="node2" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a4d444718bd11523f260893e7498db40e" title="Retrieves the additional information of the entry from the database." alt="" coords="244,5,435,45"/>
-<area shape="rect" id="node3" href="$dd/d79/class_entertainment_d_b_1_1_data_1_1_entry.html#a7e9f24afc9fc96ae2ad977c846bc6da8" title="Retrieves the basic information of the entry from the database." alt="" coords="244,69,435,109"/>
-</map>
