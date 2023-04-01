@@ -42,15 +42,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(connection, creator.Connection);
+            Assert.AreEqual(entry, creator.Connection);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -81,10 +81,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
 
             // Act, Assert
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, null, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -95,11 +95,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, null);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, null);
         }
 
         [DataTestMethod()]
@@ -110,11 +110,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, "");
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, "");
         }
 
         [DataTestMethod()]
@@ -129,10 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -150,10 +150,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -171,10 +171,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateInfoBoxContent();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -222,10 +222,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Connection connection = new Connection(reader, id);
+            Connection entry = new Connection(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            ConnectionContentCreator creator = new ConnectionContentCreator(connection, formatter, targetLanguageCode);
+            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 

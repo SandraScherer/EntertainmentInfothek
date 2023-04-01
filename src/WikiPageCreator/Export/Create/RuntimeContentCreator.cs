@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Runtimes = runtimes;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Runtime" },
+                { "de", "Laufzeit" }
+            };
 
             Logger.Trace($"RuntimeContentCreator(): RuntimeContentCreator created");
         }
@@ -101,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Runtime: '{Runtimes[0].Runtime}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Runtime", Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Details);
 
                     for (int i = 1; i < Runtimes.Count; i++)
                     {
@@ -114,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Runtime: '{Runtimes[0].Runtime}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Laufzeit", Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.GermanTitle, Runtimes[0].Details);
+                    CreateInfoBoxContentHelper(content,  Headings["de"], Runtimes[0].Runtime, path, Runtimes[0].Edition.EnglishTitle, Runtimes[0].Edition.GermanTitle, Runtimes[0].Details);
 
                     for (int i = 1; i < Runtimes.Count; i++)
                     {

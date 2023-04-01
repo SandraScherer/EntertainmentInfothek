@@ -42,15 +42,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(series, creator.Series);
+            Assert.AreEqual(entry, creator.Series);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -81,10 +81,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
 
             // Act, Assert
-            SeriesContentCreator creator = new SeriesContentCreator(series, null, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -95,11 +95,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, null);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, null);
         }
 
         [DataTestMethod()]
@@ -110,11 +110,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, "");
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, "");
         }
 
         [DataTestMethod()]
@@ -125,11 +125,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, VALID_ID);
-            series.Retrieve(false);
+            Series entry = new Series(reader, VALID_ID);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             string testContent = $"{formatter.AsFilename("Series OriginalTitle X (Seri)")}";
 
@@ -148,11 +148,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, VALID_ID);
-            series.Retrieve(false);
+            Series entry = new Series(reader, VALID_ID);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -654,11 +654,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
-            series.Retrieve(false);
+            Series entry = new Series(reader, id);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateInfoBoxContent();
@@ -676,10 +676,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -697,10 +697,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Series series = new Series(reader, id);
+            Series entry = new Series(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator = new SeriesContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

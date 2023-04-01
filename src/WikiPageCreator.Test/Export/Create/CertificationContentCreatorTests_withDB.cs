@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, VALID_ID);
-            certification.Retrieve(false);
+            Certification entry = new Certification(reader, VALID_ID);
+            entry.Retrieve(false);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Certification certification = new Certification(reader, id);
+            Certification entry = new Certification(reader, id);
             CertificationItem item = new CertificationItem(reader);
-            item.Certification = certification;
+            item.Certification = entry;
             List<CertificationItem> list = new List<CertificationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

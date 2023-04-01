@@ -46,6 +46,11 @@ namespace WikiPageCreator.Export.Create
         public string TargetLanguageCode { get; protected set; }
 
         /// <summary>
+        /// The dictionary of containing headings in the various languages.
+        /// </summary>
+        protected Dictionary<string, string> Headings { get; set; }
+
+        /// <summary>
         /// The logger to log everything.
         /// </summary>
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();

@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Countries = countries;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Production Country" },
+                { "de", "Produktionsland" }
+            };
 
             Logger.Trace($"CountryContentCreator(): CountryContentCreator created");
         }
@@ -101,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Country: '{Countries[0].Country.OriginalFullName}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Production Country", path, Countries[0].Country.OriginalFullName, Countries[0].Country.EnglishShortName, Countries[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, Countries[0].Country.OriginalFullName, Countries[0].Country.EnglishShortName, Countries[0].Details);
 
                     for (int i = 1; i < Countries.Count; i++)
                     {
@@ -114,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Country: '{Countries[0].Country.OriginalFullName}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Produktionsland", path, Countries[0].Country.OriginalFullName, Countries[0].Country.GermanShortName, Countries[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, Countries[0].Country.OriginalFullName, Countries[0].Country.GermanShortName, Countries[0].Details);
 
                     for (int i = 1; i < Countries.Count; i++)
                     {

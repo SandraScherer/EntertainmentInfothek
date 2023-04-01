@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, VALID_ID);
-            genre.Retrieve(false);
+            Genre entry = new Genre(reader, VALID_ID);
+            entry.Retrieve(false);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Genre genre = new Genre(reader, id);
+            Genre entry = new Genre(reader, id);
             GenreItem item = new GenreItem(reader);
-            item.Genre = genre;
+            item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

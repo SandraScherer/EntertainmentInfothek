@@ -76,6 +76,12 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Connections" },
+                { "de", "Verbindungen" }
+            };
+
             Logger.Trace($"ConnectionContentCreator(): ConnectionContentCreator created");
         }
 

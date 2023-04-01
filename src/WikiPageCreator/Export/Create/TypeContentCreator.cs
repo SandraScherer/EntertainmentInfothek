@@ -76,6 +76,12 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Type" },
+                { "de", "Typ" }
+            };
+
             Logger.Trace($"TypeContentCreator(): TypeContentCreator created");
         }
 
@@ -108,13 +114,13 @@ namespace WikiPageCreator.Export.Create
                 if (TargetLanguageCode.Equals("en"))
                 {
                     Logger.Debug($"Type: '{Type.EnglishTitle}' (english)");
-                    data[0] = "Type";
+                    data[0] = Headings["en"];
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.EnglishTitle);
                 }
                 else // incl. case "de"
                 {
                     Logger.Debug($"Type: '{Type.GermanTitle}' (german, ...)");
-                    data[0] = "Typ";
+                    data[0] = Headings["de"];
                     data[1] = Formatter.AsInternalLink(path, Type.EnglishTitle, Type.GermanTitle);
                 }
                 content.Add(Formatter.AsTableRow(data));

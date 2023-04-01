@@ -49,7 +49,6 @@ namespace WikiPageCreator.Export.Create
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-
         public SoundMixContentCreator(List<SoundMixItem> soundmixes, Formatter formatter, string targetLanguageCode)
             : base(soundmixes[0].SoundMix, formatter, targetLanguageCode)
         {
@@ -67,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             SoundMixes = soundmixes;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "SoundMix" },
+                { "de", "Tonmischung" }
+            };
 
             Logger.Trace($"SoundMixContentCreator(): SoundMixContentCreator created");
         }
@@ -102,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"SoundMix: '{SoundMixes[0].SoundMix.EnglishTitle}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "SoundMix", path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].Details);
 
                     for (int i = 1; i < SoundMixes.Count; i++)
                     {
@@ -115,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"SoundMix: '{SoundMixes[0].SoundMix.GermanTitle}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Tonmischung", path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.GermanTitle, SoundMixes[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, SoundMixes[0].SoundMix.EnglishTitle, SoundMixes[0].SoundMix.GermanTitle, SoundMixes[0].Details);
 
                     for (int i = 1; i < SoundMixes.Count; i++)
                     {

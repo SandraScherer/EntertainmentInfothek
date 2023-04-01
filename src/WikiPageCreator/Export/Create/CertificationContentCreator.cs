@@ -42,6 +42,13 @@ namespace WikiPageCreator.Export.Create
 
         // --- Constructors ---
 
+        /// <summary>
+        /// Initializes a new CertificationContentCreator.
+        /// </summary>
+        /// <param name="certifications">The list of certification items to be used to create content.</param>
+        /// <param name="formatter">The formatter to be used to format the content.</param>
+        /// <param name="targetLanguageCode">The language code for the created content.</param>
+        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         public CertificationContentCreator(List<CertificationItem> certifications, Formatter formatter, string targetLanguageCode)
             : base(certifications[0].Certification, formatter, targetLanguageCode)
         {
@@ -59,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Certifications = certifications;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Certification" },
+                { "de", "Altersfreigabe" }
+            };
 
             Logger.Trace($"CertificationContentCreator(): CertificationContentCreator created");
         }
@@ -94,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Certification: '{Certifications[0].Certification.Name}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Certification", path, Certifications[0].Certification.Name, Certifications[0].Certification.Image, 75, Certifications[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, Certifications[0].Certification.Name, Certifications[0].Certification.Image, 75, Certifications[0].Details);
 
                     for (int i = 1; i < Certifications.Count; i++)
                     {
@@ -107,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Certification: '{Certifications[0].Certification.Name}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Altersfreigabe", path, Certifications[0].Certification.Name, Certifications[0].Certification.Image, 75, Certifications[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, Certifications[0].Certification.Name, Certifications[0].Certification.Image, 75, Certifications[0].Details);
 
                     for (int i = 1; i < Certifications.Count; i++)
                     {

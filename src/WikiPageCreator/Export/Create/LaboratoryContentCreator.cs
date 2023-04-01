@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Laboratories = laboratories;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Laboratory" },
+                { "de", "Labor" }
+            };
 
             Logger.Trace($"LaboratoryContentCreator(): LaboratoryContentCreator created");
         }
@@ -100,7 +105,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Laboratory: '{Laboratories[0].Laboratory.Name}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Laboratory", Laboratories[0].Laboratory.Name, Laboratories[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], Laboratories[0].Laboratory.Name, Laboratories[0].Details);
 
                     for (int i = 1; i < Laboratories.Count; i++)
                     {
@@ -113,7 +118,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Laboratory: '{Laboratories[0].Laboratory.Name}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Labor", Laboratories[0].Laboratory.Name, Laboratories[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], Laboratories[0].Laboratory.Name, Laboratories[0].Details);
 
                     for (int i = 1; i < Laboratories.Count; i++)
                     {

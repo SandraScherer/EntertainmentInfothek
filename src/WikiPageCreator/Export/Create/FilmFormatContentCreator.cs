@@ -35,12 +35,6 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         public List<FilmFormatItem> FilmFormats { get; set; }
 
-        // TODO: refactor to EntryContentCreator
-        /// <summary>
-        /// The dictionary of containing headings in the various languages.
-        /// </summary>
-        protected Dictionary<string, string> Headings { get; set; }
-
         /// <summary>
         /// The logger to log everything.
         /// </summary>
@@ -54,7 +48,6 @@ namespace WikiPageCreator.Export.Create
         /// <param name="filmformats">The list of filmformat items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
-        /// <param name="heading">The heading for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         public FilmFormatContentCreator(List<FilmFormatItem> filmformats, Formatter formatter, string targetLanguageCode)
             : base(filmformats[0].FilmFormat, formatter, targetLanguageCode)
