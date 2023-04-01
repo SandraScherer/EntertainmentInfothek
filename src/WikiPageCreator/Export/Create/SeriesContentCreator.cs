@@ -76,6 +76,12 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Series" },
+                { "de", "Serie" }
+            };
+
             Logger.Trace($"SeriesContentCreator(): SeriesContentCreator created");
         }
 
@@ -85,7 +91,6 @@ namespace WikiPageCreator.Export.Create
         /// Creates the infobox content of a given series.
         /// </summary>
         /// <returns>The formatted content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected override List<string> CreateInfoBoxContentInternal()
         {
             Logger.Trace($"CreateInfoBoxContentInternal()");
@@ -126,7 +131,6 @@ namespace WikiPageCreator.Export.Create
         /// Creates the chapter content of a given series.
         /// </summary>
         /// <returns>The formatted content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         protected override List<string> CreateChapterContentInternal()
         {
             Logger.Trace($"CreateChapterContentInternal()");

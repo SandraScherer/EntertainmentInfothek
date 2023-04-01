@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             FilmLengths = filmlengths;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Film Length" },
+                { "de", "Filmlänge" }
+            };
 
             Logger.Trace($"FilmLengthContentCreator(): FilmLengthContentCreator created");
         }
@@ -100,7 +105,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"FilmLength: '{FilmLengths[0].Length}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Film Length", FilmLengths[0].Length, FilmLengths[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], FilmLengths[0].Length, FilmLengths[0].Details);
 
                     for (int i = 1; i < FilmLengths.Count; i++)
                     {
@@ -113,7 +118,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"FilmLength: '{FilmLengths[0].Length}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Filmlänge", FilmLengths[0].Length, FilmLengths[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], FilmLengths[0].Length, FilmLengths[0].Details);
 
                     for (int i = 1; i < FilmLengths.Count; i++)
                     {

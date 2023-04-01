@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Colors = colors;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Color" },
+                { "de", "Farbe" }
+            };
 
             Logger.Trace($"ColorContentCreator(): ColorContentCreator created");
         }
@@ -101,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Color: '{Colors[0].Color.EnglishTitle}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Color", path, Colors[0].Color.EnglishTitle, Colors[0].Color.EnglishTitle, Colors[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, Colors[0].Color.EnglishTitle, Colors[0].Color.EnglishTitle, Colors[0].Details);
 
                     for (int i = 1; i < Colors.Count; i++)
                     {
@@ -114,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Color: '{Colors[0].Color.GermanTitle}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Farbe", path, Colors[0].Color.EnglishTitle, Colors[0].Color.GermanTitle, Colors[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, Colors[0].Color.EnglishTitle, Colors[0].Color.GermanTitle, Colors[0].Details);
 
                     for (int i = 1; i < Colors.Count; i++)
                     {

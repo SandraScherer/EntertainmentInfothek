@@ -43,7 +43,6 @@ namespace WikiPageCreator.Export.Create
         /// <param name="filmformats">The list of filmformat items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
-        /// <param name="heading">The heading for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
         public NegativeFormatContentCreator(List<FilmFormatItem> filmformats, Formatter formatter, string targetLanguageCode)
             : base(filmformats, formatter, targetLanguageCode)

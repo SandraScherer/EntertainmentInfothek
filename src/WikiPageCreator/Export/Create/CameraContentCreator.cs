@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Cameras = cameras;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Camera" },
+                { "de", "Kamera" }
+            };
 
             Logger.Trace($"CameraContentCreator(): CameraContentCreator created");
         }
@@ -100,7 +105,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Camera: '{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Camera", $"{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}", Cameras[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], $"{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}", Cameras[0].Details);
 
                     for (int i = 1; i < Cameras.Count; i++)
                     {
@@ -113,7 +118,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Camera: '{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Kamera", $"{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}", Cameras[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], $"{Cameras[0].Camera.Name}, {Cameras[0].Camera.Lenses}", Cameras[0].Details);
 
                     for (int i = 1; i < Cameras.Count; i++)
                     {

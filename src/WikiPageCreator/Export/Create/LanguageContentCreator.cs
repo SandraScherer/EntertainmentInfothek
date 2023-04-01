@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Languages = languages;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Language" },
+                { "de", "Sprache" }
+            };
 
             Logger.Trace($"LanguageContentCreator(): LanguageContentCreator created");
         }
@@ -101,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Language: '{Languages[0].Language.EnglishName}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Language", path, Languages[0].Language.OriginalName, Languages[0].Language.EnglishName, Languages[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, Languages[0].Language.OriginalName, Languages[0].Language.EnglishName, Languages[0].Details);
 
                     for (int i = 1; i < Languages.Count; i++)
                     {
@@ -114,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Language: '{Languages[0].Language.GermanName}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Sprache", path, Languages[0].Language.OriginalName, Languages[0].Language.GermanName, Languages[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, Languages[0].Language.OriginalName, Languages[0].Language.GermanName, Languages[0].Details);
 
                     for (int i = 1; i < Languages.Count; i++)
                     {

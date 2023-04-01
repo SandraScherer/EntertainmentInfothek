@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             AspectRatios = aspectratios;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Aspect Ratio" },
+                { "de", "Bildformat" }
+            };
 
             Logger.Trace($"AspectRatioContentCreator(): AspectRatioContentCreator created");
         }
@@ -100,7 +105,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"AspectRatio: '{AspectRatios[0].AspectRatio.Ratio}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Aspect Ratio", AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
 
                     for (int i = 1; i < AspectRatios.Count; i++)
                     {
@@ -113,7 +118,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"AspectRatio: '{AspectRatios[0].AspectRatio.Ratio}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Bildformat", AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], AspectRatios[0].AspectRatio.Ratio, AspectRatios[0].Details);
 
                     for (int i = 1; i < AspectRatios.Count; i++)
                     {

@@ -66,6 +66,11 @@ namespace WikiPageCreator.Export.Create
             }
 
             Genres = genres;
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Genre" },
+                { "de", "Genre" }
+            };
 
             Logger.Trace($"GenreContentCreator(): GenreContentCreator created");
         }
@@ -101,7 +106,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Genre: '{Genres[0].Genre.EnglishTitle}' (english)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["en"], path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.EnglishTitle, Genres[0].Details);
 
                     for (int i = 1; i < Genres.Count; i++)
                     {
@@ -114,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Genre: '{Genres[0].Genre.GermanTitle}' (german, ...)");
 
-                    CreateInfoBoxContentHelper(content, "Genre", path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle, Genres[0].Details);
+                    CreateInfoBoxContentHelper(content, Headings["de"], path, Genres[0].Genre.EnglishTitle, Genres[0].Genre.GermanTitle, Genres[0].Details);
 
                     for (int i = 1; i < Genres.Count; i++)
                     {
