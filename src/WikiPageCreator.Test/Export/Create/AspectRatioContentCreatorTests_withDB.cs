@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, VALID_ID);
-            aspectratio.Retrieve(false);
+            AspectRatio entry = new AspectRatio(reader, VALID_ID);
+            entry.Retrieve(false);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -239,9 +239,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -264,9 +264,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio aspectratio = new AspectRatio(reader, id);
+            AspectRatio entry = new AspectRatio(reader, id);
             AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = aspectratio;
+            item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

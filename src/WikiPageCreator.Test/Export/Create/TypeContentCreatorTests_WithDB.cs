@@ -42,15 +42,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(type, creator.Type);
+            Assert.AreEqual(entry, creator.Type);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -81,10 +81,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, null, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -95,11 +95,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, null);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, null);
         }
 
         [DataTestMethod()]
@@ -110,11 +110,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, "");
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, "");
         }
 
         [DataTestMethod()]
@@ -129,10 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -150,10 +150,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, VALID_ID);
+            Type entry = new Type(reader, VALID_ID);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePageContent();
@@ -167,11 +167,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, VALID_ID);
-            type.Retrieve(false);
+            Type entry = new Type(reader, VALID_ID);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -213,10 +213,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -234,10 +234,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Type type = new Type(reader, id);
+            Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            TypeContentCreator creator = new TypeContentCreator(type, formatter, targetLanguageCode);
+            TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

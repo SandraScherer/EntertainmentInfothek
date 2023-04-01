@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, VALID_ID);
-            soundmix.Retrieve(false);
+            SoundMix entry = new SoundMix(reader, VALID_ID);
+            entry.Retrieve(false);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMix soundmix = new SoundMix(reader, id);
+            SoundMix entry = new SoundMix(reader, id);
             SoundMixItem item = new SoundMixItem(reader);
-            item.SoundMix = soundmix;
+            item.SoundMix = entry;
             List<SoundMixItem> list = new List<SoundMixItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

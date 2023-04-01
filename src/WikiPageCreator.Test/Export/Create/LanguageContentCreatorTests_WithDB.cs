@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, VALID_ID);
-            language.Retrieve(false);
+            Language entry = new Language(reader, VALID_ID);
+            entry.Retrieve(false);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Language language = new Language(reader, id);
+            Language entry = new Language(reader, id);
             LanguageItem item = new LanguageItem(reader);
-            item.Language = language;
+            item.Language = entry;
             List<LanguageItem> list = new List<LanguageItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

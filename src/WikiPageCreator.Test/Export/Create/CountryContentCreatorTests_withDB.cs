@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, VALID_ID);
-            country.Retrieve(false);
+            Country entry = new Country(reader, VALID_ID);
+            entry.Retrieve(false);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Country country = new Country(reader, id);
+            Country entry = new Country(reader, id);
             CountryItem item = new CountryItem(reader);
-            item.Country = country;
+            item.Country = entry;
             List<CountryItem> list = new List<CountryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, VALID_ID);
-            filmformat.Retrieve(false);
+            FilmFormat entry = new FilmFormat(reader, VALID_ID);
+            entry.Retrieve(false);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -239,9 +239,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -264,9 +264,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat filmformat = new FilmFormat(reader, id);
+            FilmFormat entry = new FilmFormat(reader, id);
             FilmFormatItem item = new FilmFormatItem(reader);
-            item.FilmFormat = filmformat;
+            item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

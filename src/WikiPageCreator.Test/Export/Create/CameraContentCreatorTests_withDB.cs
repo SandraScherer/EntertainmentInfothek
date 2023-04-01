@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, VALID_ID);
-            camera.Retrieve(false);
+            Camera entry = new Camera(reader, VALID_ID);
+            entry.Retrieve(false);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Camera camera = new Camera(reader, id);
+            Camera entry = new Camera(reader, id);
             CameraItem item = new CameraItem(reader);
-            item.Camera = camera;
+            item.Camera = entry;
             List<CameraItem> list = new List<CameraItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

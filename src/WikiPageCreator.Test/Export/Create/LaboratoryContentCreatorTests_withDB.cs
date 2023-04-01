@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, VALID_ID);
-            laboratory.Retrieve(false);
+            Laboratory entry = new Laboratory(reader, VALID_ID);
+            entry.Retrieve(false);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -239,9 +239,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -264,9 +264,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory laboratory = new Laboratory(reader, id);
+            Laboratory entry = new Laboratory(reader, id);
             LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = laboratory;
+            item.Laboratory = entry;
             List<LaboratoryItem> list = new List<LaboratoryItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();

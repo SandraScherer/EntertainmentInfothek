@@ -42,15 +42,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
-            Assert.AreEqual(movie, creator.Movie);
+            Assert.AreEqual(entry, creator.Movie);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
         }
@@ -81,10 +81,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(movie, null, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -95,11 +95,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, null);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, null);
         }
 
         [DataTestMethod()]
@@ -110,11 +110,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, "");
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, "");
         }
 
         [DataTestMethod()]
@@ -125,11 +125,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, VALID_ID);
-            movie.Retrieve(false);
+            Movie entry = new Movie(reader, VALID_ID);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             string testContent = $"{formatter.AsFilename("Movie OriginalTitle X (Movi)")}";
 
@@ -148,11 +148,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, VALID_ID);
-            movie.Retrieve(false);
+            Movie entry = new Movie(reader, VALID_ID);
+            entry.Retrieve(false);
             Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
 
@@ -611,10 +611,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateInfoBoxContent();
@@ -632,10 +632,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -653,10 +653,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Movie movie = new Movie(reader, id);
+            Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
 
-            MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateSectionContent();

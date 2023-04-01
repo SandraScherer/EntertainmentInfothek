@@ -42,9 +42,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -85,9 +85,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
 
@@ -103,9 +103,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -122,9 +122,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -145,9 +145,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -170,9 +170,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -191,10 +191,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, VALID_ID);
-            color.Retrieve(false);
+            Color entry = new Color(reader, VALID_ID);
+            entry.Retrieve(false);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -241,9 +241,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
@@ -266,9 +266,9 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         {
             // Arrange
             DBReader reader = new SQLiteReader();
-            Color color = new Color(reader, id);
+            Color entry = new Color(reader, id);
             ColorItem item = new ColorItem(reader);
-            item.Color = color;
+            item.Color = entry;
             List<ColorItem> list = new List<ColorItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
