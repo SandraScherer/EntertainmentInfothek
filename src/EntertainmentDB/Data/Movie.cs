@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of cinematographic processes of the movie.
-        /// </summary>
-        public List<CinematographicProcessItem> CinematographicProcesses { get; set; }
-
-        /// <summary>
         /// The list of printed film formats of the movie.
         /// </summary>
         public List<FilmFormatItem> PrintedFilmFormats { get; set; }

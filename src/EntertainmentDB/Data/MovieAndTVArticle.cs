@@ -94,6 +94,11 @@ namespace EntertainmentDB.Data
         public List<FilmFormatItem> NegativeFormats { get; set; }
 
         /// <summary>
+        /// The list of cinematographic processes of the movie and tv article.
+        /// </summary>
+        public List<CinematographicProcessItem> CinematographicProcesses { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }
