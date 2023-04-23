@@ -609,6 +609,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                   "FilmFormat Format Z Series NegativeFormat Details X3"}));
             }
 
+            // InfoBox CinematographicProcess
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Cinematographic Process",
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name X", "CinematographicProcess Name X")} Series CinematographicProcess Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Y", "CinematographicProcess Name Y")} Series CinematographicProcess Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Z", "CinematographicProcess Name Z")} Series CinematographicProcess Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { "Filmprozess",
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name X", "CinematographicProcess Name X")} Series CinematographicProcess Details X1" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Y", "CinematographicProcess Name Y")} Series CinematographicProcess Details X2" }));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] { formatter.CellSpanVertically(),
+                                   $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Z", "CinematographicProcess Name Z")} Series CinematographicProcess Details X3" }));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

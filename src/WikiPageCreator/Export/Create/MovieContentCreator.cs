@@ -178,30 +178,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox cinematographic process content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox cinematographic process content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxCinematographicProcess()
-        {
-            Logger.Trace($"CreateInfoBoxCinematographicProcess()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.CinematographicProcesses != null)
-            {
-                Logger.Debug($"Movie.CinematicProcesses is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new CinematographicProcessContentCreator(Movie.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxCinematographicProcess(): infobox cinematic processes for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted infobox printed film format content of a given movie.
         /// </summary>
         /// <returns>The formatted infobox printed film format content of the movie.</returns>
