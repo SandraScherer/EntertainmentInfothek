@@ -366,5 +366,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox cinematographic process content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox cinematographic process content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxCinematographicProcess()
+        {
+            Logger.Trace($"CreateInfoBoxCinematographicProcess()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.CinematographicProcesses != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.CinematicProcesses is not null -> create");
+                content.AddRange(new CinematographicProcessContentCreator(MovieAndTVArticle.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxCinematographicProcess(): infobox cinematic processes for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }

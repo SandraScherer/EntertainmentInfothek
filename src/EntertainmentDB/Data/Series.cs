@@ -287,10 +287,15 @@ namespace EntertainmentDB.Data
                 NegativeFormats = null;
             }
 
-            /*
             CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Series", ID, "CinematographicProcess");
             noOfDataRecords += CinematographicProcesses.Count;
+            if (CinematographicProcesses.Count == 0)
+            {
+                Logger.Debug($"Series.CinematographicProcesses.Count == 0 -> null");
+                CinematographicProcesses = null;
+            }
 
+            /*
             PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
             noOfDataRecords += PrintedFilmFormats.Count;
 

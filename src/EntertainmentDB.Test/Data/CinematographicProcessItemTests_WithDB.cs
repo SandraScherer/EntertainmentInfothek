@@ -138,6 +138,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -159,6 +161,7 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
+        [DataRow("Series")]
         public void RetrieveListTest_withValidData(string baseTableName)
         {
             // Arrange
