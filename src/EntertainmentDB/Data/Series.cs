@@ -295,10 +295,15 @@ namespace EntertainmentDB.Data
                 CinematographicProcesses = null;
             }
 
-            /*
-            PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
+            PrintedFilmFormats = FilmFormatItem.RetrieveList(Reader, "Movie", ID, "PrintedFilmFormat");
             noOfDataRecords += PrintedFilmFormats.Count;
+            if (PrintedFilmFormats.Count == 0)
+            {
+                Logger.Debug($"Movie.PrintedFilmFormats.Count == 0 -> null");
+                PrintedFilmFormats = null;
+            }
 
+            /*
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, "Series", ID, "Director");
             noOfDataRecords += Directors.Count;

@@ -35,11 +35,6 @@ namespace EntertainmentDB.Data
         public Image Logo { get; set; }
 
         /// <summary>
-        /// The list of printed film formats of the movie.
-        /// </summary>
-        public List<FilmFormatItem> PrintedFilmFormats { get; set; }
-
-        /// <summary>
         /// The list of directors of the movie.
         /// </summary>
         public List<PersonItem> Directors { get; set; }
