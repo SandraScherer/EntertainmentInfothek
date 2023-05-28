@@ -388,5 +388,27 @@ namespace WikiPageCreator.Export.Create
 
             return content;
         }
+
+        /// <summary>
+        /// Creates the formatted infobox printed film format content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox printed film format content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
+        {
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.PrintedFilmFormats != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.PrintedFilmFormats is not null -> create");
+                content.AddRange(new PrintedFilmFormatContentCreator(MovieAndTVArticle.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxPrintedFilmFormat(): infobox printed film format for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
     }
 }

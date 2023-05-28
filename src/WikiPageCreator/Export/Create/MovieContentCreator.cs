@@ -178,30 +178,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted infobox printed film format content of a given movie.
-        /// </summary>
-        /// <returns>The formatted infobox printed film format content of the movie.</returns>
-        protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
-        {
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            if (Movie.PrintedFilmFormats != null)
-            {
-                Logger.Debug($"Movie.PrintedFilmFormats is not null -> create");
-
-                //TODO: implement following stuff
-                //content.AddRange(new PrintedFilmFormatsContentCreator(Movie.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            }
-
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat(): infobox printed film format for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted poster chapter content of a given movie.
         /// </summary>
         /// <returns>The formatted poster chapter content of the movie.</returns>

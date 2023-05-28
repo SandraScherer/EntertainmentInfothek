@@ -531,7 +531,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
 
             // InfoBox Laboratory
-            // InfoBox Laboratory
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
@@ -633,6 +632,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 testContent.Add(formatter.AsTableRow(
                     new string[] { formatter.CellSpanVertically(),
                                    $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Z", "CinematographicProcess Name Z")} Series CinematographicProcess Details X3" }));
+            }
+
+            // InfoBox PrintedFilmFormat
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Printed Film Format",
+                                  "FilmFormat Format X Series PrintedFilmFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Series PrintedFilmFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Series PrintedFilmFormat Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Filmformat",
+                                  "FilmFormat Format X Series PrintedFilmFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Series PrintedFilmFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Series PrintedFilmFormat Details X3"}));
             }
 
             // InfoBox End

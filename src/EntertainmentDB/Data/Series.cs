@@ -295,11 +295,11 @@ namespace EntertainmentDB.Data
                 CinematographicProcesses = null;
             }
 
-            PrintedFilmFormats = FilmFormatItem.RetrieveList(Reader, "Movie", ID, "PrintedFilmFormat");
+            PrintedFilmFormats = FilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
             noOfDataRecords += PrintedFilmFormats.Count;
             if (PrintedFilmFormats.Count == 0)
             {
-                Logger.Debug($"Movie.PrintedFilmFormats.Count == 0 -> null");
+                Logger.Debug($"Series.PrintedFilmFormats.Count == 0 -> null");
                 PrintedFilmFormats = null;
             }
 
