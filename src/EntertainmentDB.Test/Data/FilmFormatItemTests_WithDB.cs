@@ -116,6 +116,10 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "NegativeFormat", false)]
         [DataRow("Movie", "PrintedFilmFormat", true)]
         [DataRow("Movie", "PrintedFilmFormat", false)]
+        [DataRow("Series", "NegativeFormat", true)]
+        [DataRow("Series", "NegativeFormat", false)]
+        [DataRow("Series", "PrintedFilmFormat", true)]
+        [DataRow("Series", "PrintedFilmFormat", false)]
         public void RetrieveTest_withValidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -140,6 +144,10 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "NegativeFormat", false)]
         [DataRow("Movie", "PrintedFilmFormat", true)]
         [DataRow("Movie", "PrintedFilmFormat", false)]
+        [DataRow("Series", "NegativeFormat", true)]
+        [DataRow("Series", "NegativeFormat", false)]
+        [DataRow("Series", "PrintedFilmFormat", true)]
+        [DataRow("Series", "PrintedFilmFormat", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -161,6 +169,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
+        [DataRow("Series", "NegativeFormat")]
+        [DataRow("Series", "PrintedFilmFormat")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
         {
             // Arrange

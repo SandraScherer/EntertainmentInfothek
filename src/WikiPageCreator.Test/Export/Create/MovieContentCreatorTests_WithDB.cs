@@ -592,6 +592,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                                    $"{formatter.AsInternalLink(pathInfo, "CinematographicProcess Name Z", "CinematographicProcess Name Z")} Movie CinematographicProcess Details X3" }));
             }
 
+            // InfoBox PrintedFilmFormat
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Printed Film Format",
+                                  "FilmFormat Format X Movie PrintedFilmFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Movie PrintedFilmFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Movie PrintedFilmFormat Details X3"}));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {"Filmformat",
+                                  "FilmFormat Format X Movie PrintedFilmFormat Details X1"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Y Movie PrintedFilmFormat Details X2"}));
+                testContent.Add(formatter.AsTableRow(
+                    new string[] {formatter.CellSpanVertically(),
+                                  "FilmFormat Format Z Movie PrintedFilmFormat Details X3"}));
+            }
+
             // InfoBox End
             testContent.Add(formatter.EndBox());
             testContent.Add($"");

@@ -116,6 +116,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
         public void RetrieveTest_withValidID(string baseTableName, bool basicInfoOnly)
         {
             // Arrange
