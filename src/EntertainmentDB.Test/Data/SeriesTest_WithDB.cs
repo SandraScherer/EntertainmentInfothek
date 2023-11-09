@@ -112,7 +112,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.OtherCompanies);
 
             //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.FilmingDates);
             //Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
@@ -212,7 +212,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.OtherCompanies);
 
             //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.FilmingDates);
             //Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
@@ -330,7 +330,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.OtherCompanies);
 
             //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.FilmingDates);
             //Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
@@ -626,10 +626,10 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
             //Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmingDates.Count);
-            //Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
-            //Assert.AreEqual("_xx2", entry.FilmingDates[1].ID);
-            //Assert.AreEqual("_xx3", entry.FilmingDates[2].ID);
+            Assert.AreEqual(3, entry.FilmingDates.Count);
+            Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmingDates[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmingDates[2].ID);
 
             //Assert.AreEqual(3, entry.ProductionDates.Count);
             //Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
@@ -759,7 +759,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.OtherCompanies);
 
             //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.FilmingDates);
             //Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);

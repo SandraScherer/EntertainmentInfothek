@@ -414,10 +414,15 @@ namespace EntertainmentDB.Data
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
             noOfDataRecords += FilmingLocations.Count;
-
+            */
             FilmingDates = TimespanItem.RetrieveList(Reader, "Series", ID, "FilmingDate");
             noOfDataRecords += FilmingDates.Count;
-
+            if (FilmingDates.Count == 0)
+            {
+                Logger.Debug($"Series.FilmingDates.Count == 0 -> null");
+                FilmingDates = null;
+            }
+            /*
             ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
             noOfDataRecords += ProductionDates.Count;
 
