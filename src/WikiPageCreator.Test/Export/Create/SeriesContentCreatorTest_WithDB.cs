@@ -53,6 +53,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(entry, creator.Series);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Dummy", creator.Headings["en"]);
+            Assert.AreEqual("Dummy", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -144,7 +146,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreatePageContentTest_withValidID(string targetLanguageCode)
+        public void CreatePageTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -665,6 +667,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Filming and Production Chapter
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading2("Filming and Production"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading2("Produktion"));
+            }
+            testContent.Add($"");
+
+            // Filming Dates Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Filming Dates"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Drehdaten"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableRow(new string[] { "Series FilmingDate StartDate X1 - Series FilmingDate EndDate X1 Series FilmingDate Details X1" }));
+            testContent.Add(formatter.AsTableRow(new string[] { "Series FilmingDate StartDate X2 - Series FilmingDate EndDate X2 Series FilmingDate Details X2" }));
+            testContent.Add(formatter.AsTableRow(new string[] { "Series FilmingDate StartDate X3 - Series FilmingDate EndDate X3 Series FilmingDate Details X3" }));
+
             // Connection Chapter
             if (targetLanguageCode.Equals("en"))
             {
@@ -683,7 +711,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
 
             // Act
-            List<string> content = creator.CreatePageContent();
+            List<string> content = creator.CreatePage();
 
             // Assert
             Assert.AreEqual(testContent.Count, content.Count);

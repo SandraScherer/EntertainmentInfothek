@@ -66,11 +66,6 @@ namespace WikiPageCreator.Export.Create
             }
 
             FilmFormats = filmformats;
-            Headings = new Dictionary<string, string>
-            {
-                { "en", "Film Format" },
-                { "de", "Filmformat" }
-            };
 
             Logger.Trace($"FilmFormatContentCreator(): FilmFormatContentCreator created");
         }
@@ -78,21 +73,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given filmformat.
-        /// </summary>
-        /// <returns>The formatted content of the filmformat.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of filmformats.
         /// </summary>
         /// <returns>The formatted content of the list of filmformats.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
 
@@ -128,7 +114,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of FilmFormats with Count '{FilmFormats.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of FilmFormats with count '{FilmFormats.Count}' created");
 
             return content;
         }

@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2021 Sandra Scherer
+// Copyright (C) 2023 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,22 +24,16 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a connection.
+    /// Provides a content creator for a timespan.
     /// </summary>
-    public class ConnectionContentCreator : EntryContentCreator
+    public class TimespanContentCreator : EntryContentCreator
     {
         // --- Properties ---
 
         /// <summary>
-        /// The connection to be used to create the content.
+        /// The list of timespan items to be used to create the content.
         /// </summary>
-        public Connection Connection
-        {
-            get
-            { return (Connection)Entry; }
-            set
-            { Entry = value; }
-        }
+        public List<TimespanItem> Timespans { get; set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -49,22 +43,17 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new ConnectionContentCreator.
+        /// Initializes a new TimespanContentCreator.
         /// </summary>
-        /// <param name="connection">The connection to be used to create content.</param>
-        /// <param name="formatter">The formatter to be used to format the content</param>
+        /// <param name="timespans">The list of timespan items to be used to create content.</param>
+        /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public ConnectionContentCreator(Connection connection, Formatter formatter, string targetLanguageCode)
-            : base(connection, formatter, targetLanguageCode)
+        public TimespanContentCreator(List<TimespanItem> timespans, Formatter formatter, string targetLanguageCode)
+            : base(timespans[0], formatter, targetLanguageCode)
         {
-            Logger.Trace($"ConnectionContentCreator()");
+            Logger.Trace($"TimespanContentCreator()");
 
-            if (connection == null)
-            {
-                Logger.Fatal($"Connection not specified");
-                throw new ArgumentNullException(nameof(connection));
-            }
             if (formatter == null)
             {
                 Logger.Fatal($"Formatter not specified");
@@ -76,43 +65,45 @@ namespace WikiPageCreator.Export.Create
                 throw new ArgumentNullException(nameof(targetLanguageCode));
             }
 
+            Timespans = timespans;
             Headings = new Dictionary<string, string>
             {
-                { "en", "Connections" },
-                { "de", "Verbindungen" }
+                { "en", "Dummy" },
+                { "de", "Dummy" }
             };
 
-            Logger.Trace($"ConnectionContentCreator(): ConnectionContentCreator created");
+            Logger.Trace($"TimespanContentCreator(): TimespanContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the chapter content of a given type.
+        /// Creates the section content of a given list of timespans.
         /// </summary>
-        /// <returns>The formatted content of the type.</returns>
-        public override List<string> CreateChapterContent()
+        /// <returns>The formatted content of the list of timespans.</returns>
+        public override List<string> CreateSectionContent()
         {
-            Logger.Trace($"CreateChapterContent()");
-            Logger.Debug($"Connection is '{Connection.Title}'");
+            Logger.Trace($"CreateSectionContent()");
 
             List<string> content = new List<string>();
 
-            if (Connection != null)
+            if ((Timespans != null) && (Timespans.Count > 0))
             {
-                if (Connection.BaseConnection == null)
+                Logger.Debug($"Timespans is not null");
+                Logger.Debug($"no of timespans: '{Timespans.Count}'");
+
+                Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
+
+                CreateSectionContentHelper(content, $"{Timespans[0].StartDate} - {Timespans[0].EndDate}", Timespans[0].Details);
+
+                for (int i = 1; i < Timespans.Count; i++)
                 {
-                    Logger.Debug($"Connection: '{Connection.ID}'");
-                    content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.ID));
-                }
-                else
-                {
-                    Logger.Debug($"Connection.BaseConnection is not null -> create");
-                    content.AddRange(new ConnectionContentCreator(Connection.BaseConnection, Formatter, TargetLanguageCode).CreateChapterContent());
+                    Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
+
+                    CreateSectionContentHelper(content, $"{Timespans[i].StartDate} - {Timespans[i].EndDate}", Timespans[i].Details);
                 }
             }
-
-            Logger.Trace($"CreateChapterContent(): chapter content for Connection '{Connection.Title}' created");
+            Logger.Trace($"CreateSectionContent(): section content for the list of Timespans with count '{Timespans.Count}' created");
 
             return content;
         }

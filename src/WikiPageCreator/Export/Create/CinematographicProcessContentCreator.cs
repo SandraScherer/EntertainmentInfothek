@@ -78,21 +78,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given cinematographic process.
-        /// </summary>
-        /// <returns>The formatted content of the cinematographic process.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of cinematographic processes.
         /// </summary>
         /// <returns>The formatted content of the list of cinematographic processes.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
@@ -129,7 +120,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of CinematographicProcesses with Count '{CinematographicProcesses.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of CinematographicProcesses with count '{CinematographicProcesses.Count}' created");
 
             return content;
         }

@@ -182,7 +182,7 @@ namespace WikiPageCreator
 
             List<string> content = new List<string>();
 
-            content.AddRange(creator.CreatePageContent());
+            content.AddRange(creator.CreatePage());
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetPageName(), content);
@@ -208,7 +208,7 @@ namespace WikiPageCreator
 
             List<string> content = new List<string>();
 
-            content.AddRange(creator.CreatePageContent());
+            content.AddRange(creator.CreatePage());
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator.GetPageName(), content);
