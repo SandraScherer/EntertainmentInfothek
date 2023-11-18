@@ -21,6 +21,7 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create.IntegrationTests
@@ -203,8 +204,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
 
-            // Act
-            List<string> content = creator.CreateInfoBoxContent();
+            // Act, Assert
+            creator.CreateInfoBoxContent();
         }
 
         [DataTestMethod()]
@@ -253,12 +254,21 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
+            string[] path = { targetLanguageCode, "date" };
 
-            testContent.Add(formatter.AsTableRow(
-                new string[] { formatter.AsInternalLink("StartDate X - EndDate X") }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(path, "unknown")} - {formatter.AsInternalLink(path, "unknown")}" }));
+            testContent.Add($"");
+            testContent.Add($"");
 
-            // Act, Assert
-            creator.CreateSectionContent();
+            // Act
+            List<string> content = creator.CreateSectionContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
         }
     }
 }
