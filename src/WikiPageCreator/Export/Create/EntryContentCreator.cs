@@ -428,9 +428,13 @@ namespace WikiPageCreator.Export.Create
             {
                 data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)} {additionalInfo}";
             }
-            else
+            else if (!String.IsNullOrEmpty(text2))
             {
                 data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, text)}";
             }
             content.Add(Formatter.AsTableRow(data));
         }
