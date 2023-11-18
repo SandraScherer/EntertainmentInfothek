@@ -420,20 +420,21 @@ namespace WikiPageCreator.Export.Create
         /// <param name="content">The list that contains the content of the section.</param>
         /// <param name="text">The text to be displayed.</param>
         /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
-        protected void CreateSectionContentHelper(List<string> content, string text, string additionalInfo)
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string text, string text2, string additionalInfo)
         {
             string[] data = new string[1];
 
             if (!String.IsNullOrEmpty(additionalInfo))
             {
-                data[0] = $"{text} {additionalInfo}";
+                data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)} {additionalInfo}";
             }
             else
             {
-                data[0] = $"{text}";
+                data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)}";
             }
             content.Add(Formatter.AsTableRow(data));
         }
+
         /// <summary>
         /// Creates the formatted footer content of a given entry.
         /// </summary>

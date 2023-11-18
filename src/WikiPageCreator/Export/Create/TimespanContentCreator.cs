@@ -86,6 +86,7 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateSectionContent()");
 
             List<string> content = new List<string>();
+            string[] path = { TargetLanguageCode, "date" };
 
             if ((Timespans != null) && (Timespans.Count > 0))
             {
@@ -94,14 +95,17 @@ namespace WikiPageCreator.Export.Create
 
                 Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
 
-                CreateSectionContentHelper(content, $"{Timespans[0].StartDate} - {Timespans[0].EndDate}", Timespans[0].Details);
+                CreateSectionContentHelper(content, path, $"{Timespans[0].StartDate}", $"{Timespans[0].EndDate}", Timespans[0].Details);
 
                 for (int i = 1; i < Timespans.Count; i++)
                 {
                     Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
 
-                    CreateSectionContentHelper(content, $"{Timespans[i].StartDate} - {Timespans[i].EndDate}", Timespans[i].Details);
+                    CreateSectionContentHelper(content, path, $"{Timespans[i].StartDate}", $"{Timespans[i].EndDate}", Timespans[i].Details);
                 }
+
+                content.Add("");
+                content.Add("");
             }
             Logger.Trace($"CreateSectionContent(): section content for the list of Timespans with count '{Timespans.Count}' created");
 

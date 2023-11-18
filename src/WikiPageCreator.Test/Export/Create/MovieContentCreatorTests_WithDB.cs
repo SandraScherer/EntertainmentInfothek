@@ -647,9 +647,11 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
             testContent.Add($"");
 
-            testContent.Add(formatter.AsTableRow(new string[] { "Movie FilmingDate StartDate X1 - Movie FilmingDate EndDate X1 Movie FilmingDate Details X1" }));
-            testContent.Add(formatter.AsTableRow(new string[] { "Movie FilmingDate StartDate X2 - Movie FilmingDate EndDate X2 Movie FilmingDate Details X2" }));
-            testContent.Add(formatter.AsTableRow(new string[] { "Movie FilmingDate StartDate X3 - Movie FilmingDate EndDate X3 Movie FilmingDate Details X3" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X1")} Movie FilmingDate Details X1" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X2")} Movie FilmingDate Details X2" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X3")} Movie FilmingDate Details X3" }));
+            testContent.Add($"");
+            testContent.Add($"");
 
             // Connection Chapter
             if (targetLanguageCode.Equals("en"))
