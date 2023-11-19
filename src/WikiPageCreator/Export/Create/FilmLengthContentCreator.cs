@@ -78,21 +78,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given filmlength.
-        /// </summary>
-        /// <returns>The formatted content of the filmlength.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of filmlengths.
         /// </summary>
         /// <returns>The formatted content of the list of filmlengths.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
 
@@ -128,7 +119,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of FilmLengths with Count '{FilmLengths.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of FilmLengths with count '{FilmLengths.Count}' created");
 
             return content;
         }

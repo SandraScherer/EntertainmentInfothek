@@ -78,21 +78,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given sound mix.
-        /// </summary>
-        /// <returns>The formatted content of the sound mix.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of sound mixes.
         /// </summary>
         /// <returns>The formatted content of the list of sound mixes.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
@@ -129,7 +120,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of SoundMixes with Count '{SoundMixes.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of SoundMixes with count '{SoundMixes.Count}' created");
 
             return content;
         }

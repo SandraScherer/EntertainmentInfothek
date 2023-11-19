@@ -53,6 +53,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(entry, creator.Movie);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Dummy", creator.Headings["en"]);
+            Assert.AreEqual("Dummy", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -144,7 +146,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        public void CreatePageContentTest_withValidID(string targetLanguageCode)
+        public void CreatePageTest_withValidID(string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -623,6 +625,34 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Filming and Production Chapter
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading2("Filming and Production"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading2("Produktion"));
+            }
+            testContent.Add($"");
+
+            // Filming Dates Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Filming Dates"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Drehdaten"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X1")} Movie FilmingDate Details X1" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X2")} Movie FilmingDate Details X2" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X3")} Movie FilmingDate Details X3" }));
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Connection Chapter
             if (targetLanguageCode.Equals("en"))
             {
@@ -641,7 +671,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
 
             // Act
-            List<string> content = creator.CreatePageContent();
+            List<string> content = creator.CreatePage();
 
             // Assert
             Assert.AreEqual(testContent.Count, content.Count);

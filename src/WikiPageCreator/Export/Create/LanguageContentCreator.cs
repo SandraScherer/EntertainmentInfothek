@@ -78,21 +78,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given language.
-        /// </summary>
-        /// <returns>The formatted content of the language.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of languages.
         /// </summary>
         /// <returns>The formatted content of the list of languages.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
             string[] path = { TargetLanguageCode, "info" };
@@ -129,7 +120,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Languages with Count '{Languages.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of Languages with count '{Languages.Count}' created");
 
             return content;
         }

@@ -78,21 +78,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given certification.
-        /// </summary>
-        /// <returns>The formatted content of the certification.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of certifications.
         /// </summary>
         /// <returns>The formatted content of the list of certifications.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
             string[] path = { "certification" };
@@ -129,7 +120,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Certifications with Count '{Certifications.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of Certifications with count '{Certifications.Count}' created");
 
             return content;
         }
