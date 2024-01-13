@@ -215,11 +215,6 @@ namespace EntertainmentDB.Data
         public List<LocationItem> FilmingLocations { get; set; }
 
         /// <summary>
-        /// The list of production dates of the movie.
-        /// </summary>
-        public List<TimespanItem> ProductionDates { get; set; }
-
-        /// <summary>
         /// The list of posters of the movie.
         /// </summary>
         public List<ImageItem> Posters { get; set; }

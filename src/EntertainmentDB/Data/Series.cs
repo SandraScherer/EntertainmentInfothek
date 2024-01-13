@@ -422,10 +422,15 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.FilmingDates.Count == 0 -> null");
                 FilmingDates = null;
             }
-            /*
+
             ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
             noOfDataRecords += ProductionDates.Count;
-
+            if (ProductionDates.Count == 0)
+            {
+                Logger.Debug($"Series.ProductionDates.Count == 0 -> null");
+                ProductionDates = null;
+            }
+            /*
             // Image data
             Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
             noOfDataRecords += Posters.Count;

@@ -109,6 +109,11 @@ namespace EntertainmentDB.Data
         public List<TimespanItem> FilmingDates { get; set; }
 
         /// <summary>
+        /// The list of production dates of the movie and tv article.
+        /// </summary>
+        public List<TimespanItem> ProductionDates { get; set; }
+
+        /// <summary>
         /// The cast status of the movie and tv article.
         /// </summary>
         public Status CastStatus { get; set; }
