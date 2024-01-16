@@ -651,6 +651,22 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X2")} Movie FilmingDate Details X2" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie FilmingDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Movie FilmingDate EndDate X3")} Movie FilmingDate Details X3" }));
             testContent.Add($"");
+
+            // Production Dates Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Production Dates"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Produktionsdaten"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie ProductionDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Movie ProductionDate EndDate X1")} Movie ProductionDate Details X1" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie ProductionDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Movie ProductionDate EndDate X2")} Movie ProductionDate Details X2" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Movie ProductionDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Movie ProductionDate EndDate X3")} Movie ProductionDate Details X3" }));
+            testContent.Add($"");
             testContent.Add($"");
 
             // Connection Chapter

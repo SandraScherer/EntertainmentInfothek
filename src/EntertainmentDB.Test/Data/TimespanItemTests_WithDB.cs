@@ -121,8 +121,8 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate", false)]
         [DataRow("Series", "FilmingDate", true)]
         [DataRow("Series", "FilmingDate", false)]
-        //[DataRow("Series", "ProductionDate", true)]
-        //[DataRow("Series", "ProductionDate", false)]
+        [DataRow("Series", "ProductionDate", true)]
+        [DataRow("Series", "ProductionDate", false)]
         public void RetrieveTest_withValidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -150,8 +150,8 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate", false)]
         [DataRow("Series", "FilmingDate", true)]
         [DataRow("Series", "FilmingDate", false)]
-        //[DataRow("Series", "ProductionDate", true)]
-        //[DataRow("Series", "ProductionDate", false)]
+        [DataRow("Series", "ProductionDate", true)]
+        [DataRow("Series", "ProductionDate", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
-        //[DataRow("Series", "ProductionDate")]
+        [DataRow("Series", "ProductionDate")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
         {
             // Arrange

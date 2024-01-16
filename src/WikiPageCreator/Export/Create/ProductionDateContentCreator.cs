@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2023 Sandra Scherer
+// Copyright (C) 2024 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,9 +24,9 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create
 {
     /// <summary>
-    /// Provides a content creator for a filming date.
+    /// Provides a content creator for a production date.
     /// </summary>
-    public class FilmingDatesContentCreator : TimespanContentCreator
+    public class ProductionDateContentCreator : TimespanContentCreator
     {
         // --- Properties ---
 
@@ -38,16 +38,16 @@ namespace WikiPageCreator.Export.Create
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a new FilmingDateContentCreator.
+        /// Initializes a new ProductionDateContentCreator.
         /// </summary>
-        /// <param name="timespans">The list of filming date items to be used to create content.</param>
+        /// <param name="timespans">The list of production date items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public FilmingDatesContentCreator(List<TimespanItem> timespans, Formatter formatter, string targetLanguageCode)
+        public ProductionDateContentCreator(List<TimespanItem> timespans, Formatter formatter, string targetLanguageCode)
             : base(timespans, formatter, targetLanguageCode)
         {
-            Logger.Trace($"FilmingDatesContentCreator()");
+            Logger.Trace($"ProductionDateContentCreator()");
 
             if (formatter == null)
             {
@@ -63,11 +63,11 @@ namespace WikiPageCreator.Export.Create
             Timespans = timespans;
             Headings = new Dictionary<string, string>
             {
-                { "en", "Filming Dates" },
-                { "de", "Filmdaten" }
+                { "en", "Production Dates" },
+                { "de", "Produktionsdaten" }
             };
 
-            Logger.Trace($"FilmingDatesContentCreator(): FilmingDatesContentCreator created");
+            Logger.Trace($"ProductionDateContentCreator(): ProductionDateContentCreator created");
         }
     }
 }

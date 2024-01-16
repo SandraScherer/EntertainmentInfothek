@@ -444,16 +444,16 @@ namespace WikiPageCreator.Export.Create
                 titleSection.Add("en", "Filming Dates");
                 titleSection.Add("de", "Drehdaten");
                 content.AddRange(CreateSectionHeading(titleSection));
-                content.AddRange(new FilmingDatesContentCreator(MovieAndTVArticle.FilmingDates, Formatter, TargetLanguageCode).CreateSectionContent());
+                content.AddRange(new FilmingDateContentCreator(MovieAndTVArticle.FilmingDates, Formatter, TargetLanguageCode).CreateSectionContent());
             }
-            //if (MovieAndTVArticle.ProductionDates != null)
-            //{
-            //    Logger.Debug($"MovieAndTVArticle.ProductionDates is not null -> create");
-            //    titleSection.Add("en", "Production Dates");
-            //    titleSection.Add("de", "");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new TimeSpanContentCreator(MovieAndTVArticle.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
+            if (MovieAndTVArticle.ProductionDates != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.ProductionDates is not null -> create");
+                titleSection.Add("en", "Production Dates");
+                titleSection.Add("de", "Produktionsdaten");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new ProductionDateContentCreator(MovieAndTVArticle.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
 
             Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for Movie '{MovieAndTVArticle.OriginalTitle}' created");
 
