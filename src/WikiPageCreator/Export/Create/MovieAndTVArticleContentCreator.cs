@@ -428,11 +428,10 @@ namespace WikiPageCreator.Export.Create
             // TODO: implement following stuff
             content.AddRange(CreateChapterHeading(title));
 
-            Dictionary<string, string> titleSection = new Dictionary<string, string>();
-
             //if (MovieAndTVArticle.FilmingLocations != null)
             //{
             //    Logger.Debug($"MovieAndTVArticle.FilmingLocations is not null -> create");
+            //    Dictionary<string, string> titleSection = new Dictionary<string, string>();
             //    titleSection.Add("en", "Filming Locations");
             //    titleSection.Add("de", "Drehorte");
             //    content.AddRange(CreateSectionHeading(titleSection));
@@ -441,6 +440,7 @@ namespace WikiPageCreator.Export.Create
             if (MovieAndTVArticle.FilmingDates != null)
             {
                 Logger.Debug($"MovieAndTVArticle.FilmingDates is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
                 titleSection.Add("en", "Filming Dates");
                 titleSection.Add("de", "Drehdaten");
                 content.AddRange(CreateSectionHeading(titleSection));
@@ -449,6 +449,7 @@ namespace WikiPageCreator.Export.Create
             if (MovieAndTVArticle.ProductionDates != null)
             {
                 Logger.Debug($"MovieAndTVArticle.ProductionDates is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
                 titleSection.Add("en", "Production Dates");
                 titleSection.Add("de", "Produktionsdaten");
                 content.AddRange(CreateSectionHeading(titleSection));

@@ -693,6 +693,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series FilmingDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Series FilmingDate EndDate X2")} Series FilmingDate Details X2" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series FilmingDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Series FilmingDate EndDate X3")} Series FilmingDate Details X3" }));
             testContent.Add($"");
+            testContent.Add($"");
 
             // Production Dates Section
             if (targetLanguageCode.Equals("en"))
