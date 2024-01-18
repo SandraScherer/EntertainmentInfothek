@@ -61,19 +61,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Status(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Status()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Status(): Status with ID = '{id}' created");
         }
 

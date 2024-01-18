@@ -64,16 +64,6 @@ namespace EntertainmentDB.Data
         {
             Logger.Trace($"EntryItem()");
 
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
             if (baseTableName == null)
             {
                 Logger.Fatal($"BaseTableName not specified");

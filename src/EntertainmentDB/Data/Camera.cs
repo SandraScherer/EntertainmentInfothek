@@ -61,19 +61,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Camera(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Camera()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Camera(): Camera with ID = '{id}' created");
         }
 

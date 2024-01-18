@@ -272,19 +272,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Movie(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Movie()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Movie(): Movie with ID = '{id}' created");
         }
 
@@ -884,11 +871,6 @@ namespace EntertainmentDB.Data
         {
             Logger.Trace($"Movie.RetrieveList()");
 
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
             if (String.IsNullOrEmpty(status))
             {
                 Logger.Fatal($"Status not specified");
