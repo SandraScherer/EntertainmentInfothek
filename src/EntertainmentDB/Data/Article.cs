@@ -76,14 +76,6 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an article with an empty id string.
-        /// </summary>
-        /// <param name="reader">The database reader to be used to read the article information from the database.</param>
-        protected Article(DBReader reader) : this(reader, "")
-        {
-        }
-
-        /// <summary>
         /// Initializes an article with the given id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the article information from the database.</param>

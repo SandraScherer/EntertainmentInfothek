@@ -788,5 +788,31 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.AreEqual("_xxx", list[0].ID);
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull()
+        {
+            // Arrange, Act, Assert
+            List<Article> list = Series.RetrieveList(null, "_xxx");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withStatusNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Series.RetrieveList(reader, null);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Series.RetrieveList(reader, "_xxx", null);
+        }
     }
 }

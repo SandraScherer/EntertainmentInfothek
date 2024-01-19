@@ -486,5 +486,42 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
             List<PersonItem> list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", null);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "Director")]
+        [DataRow("Movie", "Writer")]
+        [DataRow("Movie", "Producer")]
+        [DataRow("Movie", "Music")]
+        [DataRow("Movie", "Cinematography")]
+        [DataRow("Movie", "FilmEditing")]
+        [DataRow("Movie", "Casting")]
+        [DataRow("Movie", "ProductionDesign")]
+        [DataRow("Movie", "ArtDirection")]
+        [DataRow("Movie", "SetDecoration")]
+        [DataRow("Movie", "CostumeDesign")]
+        [DataRow("Movie", "MakeupDepartment")]
+        [DataRow("Movie", "ProductionManagement")]
+        [DataRow("Movie", "AssistantDirector")]
+        [DataRow("Movie", "ArtDepartment")]
+        [DataRow("Movie", "SoundDepartment")]
+        [DataRow("Movie", "SpecialEffects")]
+        [DataRow("Movie", "VisualEffects")]
+        [DataRow("Movie", "Stunts")]
+        [DataRow("Movie", "ElectricalDepartment")]
+        [DataRow("Movie", "AnimationDepartment")]
+        [DataRow("Movie", "CastingDepartment")]
+        [DataRow("Movie", "CostumeDepartment")]
+        [DataRow("Movie", "EditorialDepartment")]
+        [DataRow("Movie", "LocationManagement")]
+        [DataRow("Movie", "MusicDepartment")]
+        [DataRow("Movie", "ContinuityDepartment")]
+        [DataRow("Movie", "TransportationDepartment")]
+        [DataRow("Movie", "OtherCrew")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
+        {
+            DBReader reader = new SQLiteReader();
+            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null);
+        }
     }
 }

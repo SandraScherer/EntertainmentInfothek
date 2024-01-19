@@ -452,7 +452,7 @@ namespace EntertainmentDB.Data
         /// <param name="status">The status of the series.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, status or order is null.</exception>
         public static List<Article> RetrieveList(DBReader reader, string status, string order = "ID")
         {
             Logger.Trace($"Series.RetrieveList()");

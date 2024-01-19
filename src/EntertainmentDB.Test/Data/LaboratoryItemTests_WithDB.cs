@@ -234,5 +234,16 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
             List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", null);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", "Laboratory", null);
+        }
     }
 }

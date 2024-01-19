@@ -251,5 +251,17 @@ namespace EntertainmentDB.Data.Tests
             DBReader reader = new SQLiteReader();
             List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "NegativeFormat")]
+        [DataRow("Movie", "PrintedFilmFormat")]
+        [DataRow("Series", "NegativeFormat")]
+        [DataRow("Series", "PrintedFilmFormat")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
+        {
+            DBReader reader = new SQLiteReader();
+            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName, null);
+        }
     }
 }
