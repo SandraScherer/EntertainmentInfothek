@@ -193,5 +193,46 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} Laboratory LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(null, baseTableName, "_xxx", "Laboratory");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, null, "_xxx", "Laboratory");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, null, "Laboratory");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LaboratoryItem> list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
     }
 }

@@ -193,5 +193,46 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} Color LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<ColorItem> list = Data.ColorItem.RetrieveList(null, baseTableName, "_xxx", "Color");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, null, "_xxx", "Color");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, baseTableName, null, "Color");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
     }
 }

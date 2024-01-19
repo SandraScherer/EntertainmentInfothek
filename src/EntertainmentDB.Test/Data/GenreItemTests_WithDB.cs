@@ -193,5 +193,46 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} Genre LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<GenreItem> list = Data.GenreItem.RetrieveList(null, baseTableName, "_xxx", "Genre");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<GenreItem> list = Data.GenreItem.RetrieveList(reader, null, "_xxx", "Genre");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<GenreItem> list = Data.GenreItem.RetrieveList(reader, baseTableName, null, "Genre");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<GenreItem> list = Data.GenreItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
     }
 }

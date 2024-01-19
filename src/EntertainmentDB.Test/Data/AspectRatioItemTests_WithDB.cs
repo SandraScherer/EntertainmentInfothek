@@ -193,5 +193,46 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} AspectRatio LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(null, baseTableName, "_xxx", "AspectRatio");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
     }
 }

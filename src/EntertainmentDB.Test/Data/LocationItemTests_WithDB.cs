@@ -188,5 +188,43 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} FilmingLocation LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<LocationItem> list = Data.LocationItem.RetrieveList(null, baseTableName, "_xxx", "FilmingLocation");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LocationItem> list = Data.LocationItem.RetrieveList(reader, null, "_xxx", "FilmingLocation");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LocationItem> list = Data.LocationItem.RetrieveList(reader, baseTableName, null, "FilmingLocation");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<LocationItem> list = Data.LocationItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
     }
 }

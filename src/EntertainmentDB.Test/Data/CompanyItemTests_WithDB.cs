@@ -19,6 +19,7 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Reflection.PortableExecutable;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -209,6 +210,57 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Image", "Source")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            List<CompanyItem> list = Data.CompanyItem.RetrieveList(null, baseTableName, "_xxx", targetTableName);
+
+        }
+
+        [DataTestMethod()]
+        [DataRow("Image", "Source")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, null, "_xxx", targetTableName);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Image", "Source")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, baseTableName, null, targetTableName);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Image", "Source")]
+        [DataRow("Movie", "ProductionCompany")]
+        [DataRow("Movie", "SpecialEffectsCompany")]
+        [DataRow("Movie", "OtherCompany")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
+        {
+            DBReader reader = new SQLiteReader();
+            List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, baseTableName, "_xxx", null);
         }
     }
 }
