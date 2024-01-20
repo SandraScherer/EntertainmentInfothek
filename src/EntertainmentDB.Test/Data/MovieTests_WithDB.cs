@@ -19,6 +19,7 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Reflection.PortableExecutable;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -767,6 +768,32 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, list.Count);
 
             Assert.AreEqual("_xxx", list[0].ID);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull()
+        {
+            // Arrange, Act, Assert
+            List<Article> list = Movie.RetrieveList(null, "_xxx");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withStatusNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Movie.RetrieveList(reader, null);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Movie.RetrieveList(reader, "_xxx", null);
         }
     }
 }

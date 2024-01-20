@@ -21,7 +21,6 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Reflection.Metadata;
 using WikiPageCreator.Export.Format;
 
 namespace WikiPageCreator.Export.Create.IntegrationTests

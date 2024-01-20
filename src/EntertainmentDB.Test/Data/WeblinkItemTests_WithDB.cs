@@ -188,5 +188,53 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} Weblink LastUpdated X3", list[2].LastUpdated);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(null, baseTableName, "_xxx", "Weblink");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, null, "_xxx", "Weblink");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, null, "Weblink");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink", null);
+        }
     }
 }

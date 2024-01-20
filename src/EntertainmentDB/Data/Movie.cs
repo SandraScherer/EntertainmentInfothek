@@ -215,11 +215,6 @@ namespace EntertainmentDB.Data
         public List<LocationItem> FilmingLocations { get; set; }
 
         /// <summary>
-        /// The list of production dates of the movie.
-        /// </summary>
-        public List<TimespanItem> ProductionDates { get; set; }
-
-        /// <summary>
         /// The list of posters of the movie.
         /// </summary>
         public List<ImageItem> Posters { get; set; }
@@ -277,19 +272,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Movie(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Movie()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Movie(): Movie with ID = '{id}' created");
         }
 
@@ -884,7 +866,7 @@ namespace EntertainmentDB.Data
         /// <param name="status">The status of the movies.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of movies.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, status or order is null.</exception>
         public static List<Article> RetrieveList(DBReader reader, string status, string order = "ID")
         {
             Logger.Trace($"Movie.RetrieveList()");

@@ -77,19 +77,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Series(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Series()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Series(): Series with ID = '{id}' created");
         }
 
@@ -422,10 +409,15 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.FilmingDates.Count == 0 -> null");
                 FilmingDates = null;
             }
-            /*
+
             ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
             noOfDataRecords += ProductionDates.Count;
-
+            if (ProductionDates.Count == 0)
+            {
+                Logger.Debug($"Series.ProductionDates.Count == 0 -> null");
+                ProductionDates = null;
+            }
+            /*
             // Image data
             Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
             noOfDataRecords += Posters.Count;
@@ -460,7 +452,7 @@ namespace EntertainmentDB.Data
         /// <param name="status">The status of the series.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, status or order is null.</exception>
         public static List<Article> RetrieveList(DBReader reader, string status, string order = "ID")
         {
             Logger.Trace($"Series.RetrieveList()");

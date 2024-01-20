@@ -695,6 +695,23 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Production Dates Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Production Dates"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Produktionsdaten"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X1")} Series ProductionDate Details X1" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X2")} Series ProductionDate Details X2" }));
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X3")} Series ProductionDate Details X3" }));
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Connection Chapter
             if (targetLanguageCode.Equals("en"))
             {
