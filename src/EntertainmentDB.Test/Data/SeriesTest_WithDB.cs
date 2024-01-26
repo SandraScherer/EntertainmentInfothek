@@ -111,7 +111,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.SpecialEffectsCompanies);
             //Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
 
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.SpecialEffectsCompanies);
             //Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
 
@@ -329,7 +329,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.SpecialEffectsCompanies);
             //Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
 
@@ -621,10 +621,10 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.OtherCompanies[1].ID);
             //Assert.AreEqual("_xx3", entry.OtherCompanies[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmingLocations.Count);
-            //Assert.AreEqual("_xx1", entry.FilmingLocations[0].ID);
-            //Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
-            //Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
+            Assert.AreEqual(3, entry.FilmingLocations.Count);
+            Assert.AreEqual("_xx1", entry.FilmingLocations[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
 
             Assert.AreEqual(3, entry.FilmingDates.Count);
             Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
@@ -758,7 +758,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.SpecialEffectsCompanies);
             //Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingLocations);
             Assert.IsNull(entry.FilmingDates);
             Assert.IsNull(entry.ProductionDates);
 

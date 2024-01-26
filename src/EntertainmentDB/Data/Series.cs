@@ -397,11 +397,16 @@ namespace EntertainmentDB.Data
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
-
+            */
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
             noOfDataRecords += FilmingLocations.Count;
-            */
+            if (FilmingLocations.Count == 0)
+            {
+                Logger.Debug($"Series.FilmingLocations.Count == 0 -> null");
+                FilmingLocations = null;
+            }
+
             FilmingDates = TimespanItem.RetrieveList(Reader, "Series", ID, "FilmingDate");
             noOfDataRecords += FilmingDates.Count;
             if (FilmingDates.Count == 0)

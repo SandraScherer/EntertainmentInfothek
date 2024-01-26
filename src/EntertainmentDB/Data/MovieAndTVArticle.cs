@@ -104,6 +104,11 @@ namespace EntertainmentDB.Data
         public List<FilmFormatItem> PrintedFilmFormats { get; set; }
 
         /// <summary>
+        /// The list of filming locations of the movie and tv article.
+        /// </summary>
+        public List<LocationItem> FilmingLocations { get; set; }
+
+        /// <summary>
         /// The list of filming dates of the movie and tv article.
         /// </summary>
         public List<TimespanItem> FilmingDates { get; set; }
