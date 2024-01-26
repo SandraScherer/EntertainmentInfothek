@@ -1317,7 +1317,7 @@ CREATE TABLE Series_CinematographicProcess (
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
 CREATE TABLE Series_FilmingDate (
   ID          text NOT NULL, 
-  SeriesID     text, 
+  SeriesID    text, 
   StartDate   text, 
   EndDate     text, 
   Details     text, 
@@ -1329,7 +1329,7 @@ CREATE TABLE Series_FilmingDate (
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
 CREATE TABLE Series_ProductionDate (
   ID          text NOT NULL, 
-  SeriesID     text, 
+  SeriesID    text, 
   StartDate   text, 
   EndDate     text, 
   Details     text, 
@@ -1338,4 +1338,16 @@ CREATE TABLE Series_ProductionDate (
   LastUpdated text, 
   PRIMARY KEY (ID), 
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_FilmingLocation (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  LocationID  text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(LocationID) REFERENCES Location(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
