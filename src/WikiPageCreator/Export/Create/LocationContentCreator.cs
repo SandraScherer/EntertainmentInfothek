@@ -93,28 +93,58 @@ namespace WikiPageCreator.Export.Create
                 Logger.Debug($"Locations is not null");
                 Logger.Debug($"no of locations: '{Locations.Count}'");
 
-                Logger.Debug($"Location: '{Locations[0].Location.Name}'");
-
                 if (TargetLanguageCode.Equals("en"))
                 {
-                    CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.EnglishShortName, Locations[0].Details);
+                    Logger.Debug($"Location: '{Locations[0].Location.Name}' (english)");
+
+                    if (Locations[0].Location.Country != null)
+                    {
+                        CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.EnglishShortName, Locations[0].Details);
+                    }
+                    else
+                    {
+                        CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Details);
+                    }
 
                     for (int i = 1; i < Locations.Count; i++)
                     {
-                        Logger.Debug($"Location: '{Locations[i].Location.Name}'");
+                        Logger.Debug($"Location: '{Locations[i].Location.Name}' (english)");
 
-                        CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.EnglishShortName, Locations[i].Details);
+                        if (Locations[0].Location.Country != null)
+                        {
+                            CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.EnglishShortName, Locations[i].Details);
+                        }
+                        else
+                        {
+                            CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Details);
+                        }
                     }
                 }
                 else // incl. case "de"
                 {
-                    CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.GermanShortName, Locations[0].Details);
+                    Logger.Debug($"Location: '{Locations[0].Location.Name}' (german, ...)");
+
+                    if (Locations[0].Location.Country != null)
+                    {
+                        CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.GermanShortName, Locations[0].Details);
+                    }
+                    else
+                    {
+                        CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Details);
+                    }
 
                     for (int i = 1; i < Locations.Count; i++)
                     {
-                        Logger.Debug($"Location: '{Locations[i].Location.Name}'");
+                        Logger.Debug($"Location: '{Locations[i].Location.Name}' (german, ...)");
 
-                        CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.GermanShortName, Locations[i].Details);
+                        if (Locations[i].Location.Country != null)
+                        {
+                            CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.GermanShortName, Locations[i].Details);
+                        }
+                        else
+                        {
+                            CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Details);
+                        }
                     }
                 }
 
