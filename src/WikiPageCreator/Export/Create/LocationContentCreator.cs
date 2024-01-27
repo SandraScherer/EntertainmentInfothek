@@ -114,7 +114,7 @@ namespace WikiPageCreator.Export.Create
                     {
                         Logger.Debug($"Location: '{Locations[i].Location.Name}'");
 
-                        CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.EnglishShortName, Locations[i].Details);
+                        CreateSectionContentHelper(content, path, Locations[i].Location.Name, Locations[i].Location.Country.OriginalFullName, Locations[i].Location.Country.GermanShortName, Locations[i].Details);
                     }
                 }
 
