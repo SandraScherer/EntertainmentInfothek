@@ -269,5 +269,68 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
                 Assert.AreEqual(testContent[i], content[i]);
             }
         }
+
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        public void CreateSectionContentTest_withEndDateEmpty(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            TimespanItem item = new TimespanItem(reader);
+            item.StartDate = "unknown";
+            List<TimespanItem> list = new List<TimespanItem>();
+            list.Add(item);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+
+            List<string> testContent = new List<string>();
+            string[] path = { targetLanguageCode, "date" };
+
+            testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(path, "unknown")}" }));
+            testContent.Add($"");
+            testContent.Add($"");
+
+            // Act
+            List<string> content = creator.CreateSectionContent();
+
+            // Assert
+            Assert.AreEqual(testContent.Count, content.Count);
+            for (int i = 0; i < testContent.Count; i++)
+            {
+                Assert.AreEqual(testContent[i], content[i]);
+            }
+        }
+
+
+        [DataTestMethod()]
+        [DataRow(VALID_ID, "en")]
+        [DataRow(VALID_ID, "de")]
+        [DataRow(VALID_ID, "zz")]
+        [DataRow(INVALID_ID, "en")]
+        [DataRow(INVALID_ID, "de")]
+        [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreateSectionContentTest_withStartDateEmpty(string id, string targetLanguageCode)
+        {
+            // Arrange
+            DBReader reader = new SQLiteReader();
+            TimespanItem item = new TimespanItem(reader);
+            item.EndDate = "unknown";
+            List<TimespanItem> list = new List<TimespanItem>();
+            list.Add(item);
+            Formatter formatter = new DokuWikiFormatter();
+
+            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+
+            // Act, Assert
+            List<string> content = creator.CreateSectionContent();
+        }
     }
 }

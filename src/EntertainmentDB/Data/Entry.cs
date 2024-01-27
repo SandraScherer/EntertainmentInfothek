@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data
         /// </summary>
         /// <param name="reader">The database reader to be used to read the entry information from the database.</param>
         /// <param name="id">The id of the entry.</param>
-        /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader or id is null.</exception>
         protected Entry(DBReader reader, string id)
         {
             Logger.Trace($"Entry()");

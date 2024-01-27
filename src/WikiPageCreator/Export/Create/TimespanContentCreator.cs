@@ -99,7 +99,7 @@ namespace WikiPageCreator.Export.Create
 
                 for (int i = 1; i < Timespans.Count; i++)
                 {
-                    Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
+                    Logger.Debug($"Timespan: '{Timespans[i].StartDate} - {Timespans[i].EndDate}'");
 
                     CreateSectionContentHelper(content, path, $"{Timespans[i].StartDate}", $"{Timespans[i].EndDate}", Timespans[i].Details);
                 }
