@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"LaboratoryContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Laboratories = laboratories;
             Headings = new Dictionary<string, string>
             {

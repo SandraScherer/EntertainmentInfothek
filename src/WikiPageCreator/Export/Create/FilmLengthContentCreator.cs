@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"FilmLengthContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             FilmLengths = filmlengths;
             Headings = new Dictionary<string, string>
             {

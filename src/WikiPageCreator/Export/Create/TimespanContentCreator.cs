@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"TimespanContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Timespans = timespans;
             Headings = new Dictionary<string, string>
             {

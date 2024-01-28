@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"LocationContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Locations = locations;
             Headings = new Dictionary<string, string>
             {

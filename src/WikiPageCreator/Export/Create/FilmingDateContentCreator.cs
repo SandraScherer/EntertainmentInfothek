@@ -49,22 +49,11 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"FilmingDateContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Timespans = timespans;
             Headings = new Dictionary<string, string>
             {
                 { "en", "Filming Dates" },
-                { "de", "Filmdaten" }
+                { "de", "Drehdaten" }
             };
 
             Logger.Trace($"FilmingDateContentCreator(): FilmingDateContentCreator created");

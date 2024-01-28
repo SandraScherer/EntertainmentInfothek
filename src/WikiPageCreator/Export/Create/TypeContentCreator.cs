@@ -60,22 +60,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"TypeContentCreator()");
 
-            if (type == null)
-            {
-                Logger.Fatal($"Type not specified");
-                throw new ArgumentNullException(nameof(type));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Headings = new Dictionary<string, string>
             {
                 { "en", "Type" },
