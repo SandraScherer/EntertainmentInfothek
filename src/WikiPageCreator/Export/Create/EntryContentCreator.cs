@@ -418,23 +418,74 @@ namespace WikiPageCreator.Export.Create
         /// Creates the specific row of the section content.
         /// </summary>
         /// <param name="content">The list that contains the content of the section.</param>
-        /// <param name="text">The text to be displayed.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
         /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
-        protected void CreateSectionContentHelper(List<string> content, string[] path, string text, string text2, string additionalInfo)
+        /// <exception cref="ArgumentNullException">Thrown when the given pagename1 is null.</exception>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename, string additionalInfo)
         {
             string[] data = new string[1];
 
             if (!String.IsNullOrEmpty(additionalInfo))
             {
-                data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)} {additionalInfo}";
-            }
-            else if (!String.IsNullOrEmpty(text2))
-            {
-                data[0] = $"{Formatter.AsInternalLink(path, text)} - {Formatter.AsInternalLink(path, text2)}";
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)} {additionalInfo}";
             }
             else
             {
-                data[0] = $"{Formatter.AsInternalLink(path, text)}";
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the section.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="pagename2">The pagename for the link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given pagename1 is null.</exception>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename1, string pagename2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)} - {Formatter.AsInternalLink(path, pagename2)} {additionalInfo}";
+            }
+            else if (!String.IsNullOrEmpty(pagename2))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)} - {Formatter.AsInternalLink(path, pagename2)}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the section.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="text2">The text to be displayed for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        //CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.EnglishShortName, Locations[0].Details);
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename, string pagename2, string text2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)}, {Formatter.AsInternalLink(path, pagename2, text2)} {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)}, {Formatter.AsInternalLink(path, pagename2, text2)}";
             }
             content.Add(Formatter.AsTableRow(data));
         }

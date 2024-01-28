@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         public SeriesContentCreator(Series series, Formatter formatter, string targetLanguageCode)
             : base(series, formatter, targetLanguageCode)
         {
-            Logger.Trace($"SeriesContentCreator()");
-
-            if (series == null)
-            {
-                Logger.Fatal($"Series not specified");
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"SeriesContentCreator(): SeriesContentCreator created");
         }
 

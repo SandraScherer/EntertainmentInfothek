@@ -636,6 +636,32 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
             testContent.Add($"");
 
+            // Filming Location Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Filming Locations"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Drehorte"));
+            }
+            testContent.Add($"");
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location X")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")} Movie FilmingLocation Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location Y")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country EnglishShortName Y")} Movie FilmingLocation Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location Z")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country EnglishShortName Z")} Movie FilmingLocation Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location X")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")} Movie FilmingLocation Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location Y")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName Y", "Country GermanShortName Y")} Movie FilmingLocation Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location Z")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName Z", "Country GermanShortName Z")} Movie FilmingLocation Details X3" }));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Filming Dates Section
             if (targetLanguageCode.Equals("en"))
             {

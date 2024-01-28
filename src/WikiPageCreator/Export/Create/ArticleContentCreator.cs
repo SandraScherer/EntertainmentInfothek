@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         protected ArticleContentCreator(Article article, Formatter formatter, string targetLanguageCode)
             : base(article, formatter, targetLanguageCode)
         {
-            Logger.Trace($"ArticleContentCreator()");
-
-            if (article == null)
-            {
-                Logger.Fatal($"Article not specified");
-                throw new ArgumentNullException(nameof(article));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"ArticleContentCreator(): ArticleContentCreator created");
         }
 

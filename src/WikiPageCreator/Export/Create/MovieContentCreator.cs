@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         public MovieContentCreator(Movie movie, Formatter formatter, string targetLanguageCode)
             : base(movie, formatter, targetLanguageCode)
         {
-            Logger.Trace($"MovieContentCreator()");
-
-            if (movie == null)
-            {
-                Logger.Fatal($"Movie not specified");
-                throw new ArgumentNullException(nameof(movie));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"MovieContentCreator(): MovieContentCreator created");
         }
 

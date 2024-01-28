@@ -49,17 +49,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"PrintedFilmFormatContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             FilmFormats = filmformats;
             Headings = new Dictionary<string, string>
             {

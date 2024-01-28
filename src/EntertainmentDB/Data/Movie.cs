@@ -210,11 +210,6 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> OtherCompanies { get; set; }
 
         /// <summary>
-        /// The list of filming locations of the movie.
-        /// </summary>
-        public List<LocationItem> FilmingLocations { get; set; }
-
-        /// <summary>
         /// The list of posters of the movie.
         /// </summary>
         public List<ImageItem> Posters { get; set; }

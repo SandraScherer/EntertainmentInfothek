@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         protected MovieAndTVArticleContentCreator(MovieAndTVArticle article, Formatter formatter, string targetLanguageCode)
             : base(article, formatter, targetLanguageCode)
         {
-            Logger.Trace($"MovieAndTVArticleContentCreator()");
-
-            if (article == null)
-            {
-                Logger.Fatal($"Article not specified");
-                throw new ArgumentNullException(nameof(article));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"MovieAndTVArticleContentCreator(): MovieAndTVArticleContentCreator created");
         }
 
@@ -425,18 +407,17 @@ namespace WikiPageCreator.Export.Create
             title.Add("en", "Filming and Production");
             title.Add("de", "Produktion");
 
-            // TODO: implement following stuff
             content.AddRange(CreateChapterHeading(title));
 
-            //if (MovieAndTVArticle.FilmingLocations != null)
-            //{
-            //    Logger.Debug($"MovieAndTVArticle.FilmingLocations is not null -> create");
-            //    Dictionary<string, string> titleSection = new Dictionary<string, string>();
-            //    titleSection.Add("en", "Filming Locations");
-            //    titleSection.Add("de", "Drehorte");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new LocationContentCreator(MovieAndTVArticle.FilmingLocations, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
+            if (MovieAndTVArticle.FilmingLocations != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.FilmingLocations is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Filming Locations");
+                titleSection.Add("de", "Drehorte");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new LocationContentCreator(MovieAndTVArticle.FilmingLocations, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
             if (MovieAndTVArticle.FilmingDates != null)
             {
                 Logger.Debug($"MovieAndTVArticle.FilmingDates is not null -> create");

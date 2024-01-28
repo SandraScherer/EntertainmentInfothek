@@ -26,7 +26,7 @@ using WikiPageCreator.Export.Format;
 namespace WikiPageCreator.Export.Create.IntegrationTests
 {
     [TestClass()]
-    public class TimespanContentCreatorTests_withDB
+    public class ProductionDateContentCreatorTests_withDB
     {
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
@@ -38,7 +38,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void TimespanContentCreatorTest(string id, string targetLanguageCode)
+        public void ProductionDateContentCreatorTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -50,15 +50,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Formatter formatter = new DokuWikiFormatter();
 
             // Act
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Assert
             Assert.IsNotNull(creator);
             Assert.AreEqual(list, creator.Timespans);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
-            Assert.AreEqual("Dummy", creator.Headings["en"]);
-            Assert.AreEqual("Dummy", creator.Headings["de"]);
+            Assert.AreEqual("Production Dates", creator.Headings["en"]);
+            Assert.AreEqual("Produktionsdaten", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -66,13 +66,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("de")]
         [DataRow("zz")]
         [ExpectedException(typeof(NullReferenceException))]
-        public void TimespanContentCreatorTest_withTimespansNull(string targetLanguageCode)
+        public void ProductionDateContentCreatorTest_withProductionDatesNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TimespanContentCreator creator = new TimespanContentCreator(null, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(null, formatter, targetLanguageCode);
         }
 
         [DataTestMethod()]
@@ -83,7 +83,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TimespanContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
+        public void ProductionDateContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -94,14 +94,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
 
             // Act, Assert
-            TimespanContentCreator creator = new TimespanContentCreator(list, null, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, null, targetLanguageCode);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TimespanContentCreatorTest_withTargetLanguageCodeNull(string id)
+        public void ProductionDateContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -113,14 +113,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, null);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, null);
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TimespanContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
+        public void ProductionDateContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -132,7 +132,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, "");
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, "");
         }
 
         [DataTestMethod()]
@@ -154,7 +154,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.GetPageName();
@@ -179,7 +179,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreatePage();
@@ -201,7 +201,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateInfoBoxContent();
@@ -226,7 +226,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             creator.CreateChapterContent();
@@ -250,7 +250,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
             string[] path = { targetLanguageCode, "date" };
@@ -288,7 +288,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             List<string> testContent = new List<string>();
             string[] path = { targetLanguageCode, "date" };
@@ -327,7 +327,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
 
-            TimespanContentCreator creator = new TimespanContentCreator(list, formatter, targetLanguageCode);
+            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
             List<string> content = creator.CreateSectionContent();

@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"TimespanContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Timespans = timespans;
             Headings = new Dictionary<string, string>
             {
@@ -99,7 +88,7 @@ namespace WikiPageCreator.Export.Create
 
                 for (int i = 1; i < Timespans.Count; i++)
                 {
-                    Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
+                    Logger.Debug($"Timespan: '{Timespans[i].StartDate} - {Timespans[i].EndDate}'");
 
                     CreateSectionContentHelper(content, path, $"{Timespans[i].StartDate}", $"{Timespans[i].EndDate}", Timespans[i].Details);
                 }
