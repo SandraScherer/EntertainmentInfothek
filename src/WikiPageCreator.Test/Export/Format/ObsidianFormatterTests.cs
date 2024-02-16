@@ -17,6 +17,7 @@
 
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace WikiPageCreator.Export.Format.Tests
 {
@@ -44,7 +45,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsFilename("THIS IS A TEST+ FOR A FILE/NAME WITH% DIFFERENT* SPECIAL& CHARACTERS! ESPECIALLY# GERMAN= ONES: Ä, Ö, Ü, ß?");
 
             // Assert
-            Assert.AreEqual("this_is_a_test__for_a_file_name_with__different__special__characters__especially__german__ones_a_o_u_s_.txt", returnstring);
+            Assert.AreEqual("this_is_a_test__for_a_file_name_with__different__special__characters__especially__german__ones_a_o_u_s_.md", returnstring);
         }
 
         [TestMethod()]
@@ -70,7 +71,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsItalic("text");
 
             // Assert
-            Assert.AreEqual("//text//", returnstring);
+            Assert.AreEqual("_text_", returnstring);
         }
 
         [TestMethod()]
@@ -83,7 +84,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsUnderlined("text");
 
             // Assert
-            Assert.AreEqual("__text__", returnstring);
+            Assert.AreEqual("<u>text</u>", returnstring);
         }
 
         [TestMethod()]
@@ -133,10 +134,10 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Act
             string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, "pagename.txt", "section", "text");
+            string returnstring = formatter.AsInternalLink(path, "pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[[path1:path2:pagename.txt#section|text]]", returnstring);
+            Assert.AreEqual("[text](path1/path2/pagename#section)", returnstring);
         }
 
         [TestMethod()]
@@ -147,10 +148,10 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Act
             string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, "pagename.txt", "text");
+            string returnstring = formatter.AsInternalLink(path, "pagename", "text");
 
             // Assert
-            Assert.AreEqual("[[path1:path2:pagename.txt|text]]", returnstring);
+            Assert.AreEqual("[text](path1/path2/pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -160,10 +161,10 @@ namespace WikiPageCreator.Export.Format.Tests
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring = formatter.AsInternalLink("pagename.txt", "section", "text");
+            string returnstring = formatter.AsInternalLink("pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[[pagename.txt#section|text]]", returnstring);
+            Assert.AreEqual("[text](pagename#section)", returnstring);
         }
 
         [TestMethod()]
@@ -173,10 +174,10 @@ namespace WikiPageCreator.Export.Format.Tests
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring = formatter.AsInternalLink("pagename.txt", "text");
+            string returnstring = formatter.AsInternalLink("pagename", "text");
 
             // Assert
-            Assert.AreEqual("[[pagename.txt|text]]", returnstring);
+            Assert.AreEqual("[text](pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -186,10 +187,10 @@ namespace WikiPageCreator.Export.Format.Tests
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring = formatter.AsInternalLink("pagename.txt");
+            string returnstring = formatter.AsInternalLink("pagename");
 
             // Assert
-            Assert.AreEqual("[[pagename.txt]]", returnstring);
+            Assert.AreEqual("[pagename](pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -202,7 +203,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsExternalLink("link", "text");
 
             // Assert
-            Assert.AreEqual("[[link|text]]", returnstring);
+            Assert.AreEqual("[text](link)", returnstring);
         }
 
         [TestMethod()]
@@ -215,7 +216,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsExternalLink("link");
 
             // Assert
-            Assert.AreEqual("[[link]]", returnstring);
+            Assert.AreEqual("[link](link)", returnstring);
         }
 
         [TestMethod()]
@@ -241,7 +242,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsHeading1("heading");
 
             // Assert
-            Assert.AreEqual("====== heading ======", returnstring);
+            Assert.AreEqual("# heading", returnstring);
         }
 
         [TestMethod()]
@@ -254,7 +255,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsHeading2("heading");
 
             // Assert
-            Assert.AreEqual("===== heading =====", returnstring);
+            Assert.AreEqual("## heading", returnstring);
         }
 
         [TestMethod()]
@@ -266,7 +267,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsHeading3("heading");
 
             // Assert
-            Assert.AreEqual("==== heading ====", returnstring);
+            Assert.AreEqual("### heading", returnstring);
         }
 
         [TestMethod()]
@@ -279,7 +280,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsHeading4("heading");
 
             // Assert
-            Assert.AreEqual("=== heading ===", returnstring);
+            Assert.AreEqual("#### heading", returnstring);
         }
 
         [TestMethod()]
@@ -292,7 +293,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsHeading5("heading");
 
             // Assert
-            Assert.AreEqual("== heading ==", returnstring);
+            Assert.AreEqual("##### heading", returnstring);
         }
 
         [TestMethod()]
@@ -306,7 +307,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100);
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50x100}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg|50x100](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -320,7 +321,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50x100|text}}", returnstring);
+            Assert.AreEqual("![text|50x100](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -334,7 +335,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg", 50);
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg|50](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -348,7 +349,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50|text}}", returnstring);
+            Assert.AreEqual("![text|50](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -362,7 +363,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -376,7 +377,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage(path, "filename.jpg", "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg|text}}", returnstring);
+            Assert.AreEqual("![text](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -389,7 +390,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg", 50, 100);
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50x100}}", returnstring);
+            Assert.AreEqual("![filename.jpg|50x100](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -402,7 +403,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg", 50, 100, "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50x100|text}}", returnstring);
+            Assert.AreEqual("![text|50x100](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -415,20 +416,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg", 50);
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50}}", returnstring);
-        }
-
-        [TestMethod()]
-        public void AsImageBoxTest()
-        {
-            // Arrange
-            ObsidianFormatter formatter = new ObsidianFormatter();
-
-            // Act
-            string returnstring = formatter.AsImageBox("{{filename.jpg}}");
-
-            // Assert
-            Assert.AreEqual("[{{filename.jpg}}]", returnstring);
+            Assert.AreEqual("![filename.jpg|50](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -441,7 +429,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg", 50, "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50|text}}", returnstring);
+            Assert.AreEqual("![text|50](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -454,7 +442,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg}}", returnstring);
+            Assert.AreEqual("![filename.jpg](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -467,24 +455,31 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsImage("filename.jpg", "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg|text}}", returnstring);
+            Assert.AreEqual("![text](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
-        public void AlignImageTest()
+        public void AsImageBoxTest()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring1 = formatter.AlignImage("[[link]]", Alignment.Left);
-            string returnstring2 = formatter.AlignImage("[[link]]", Alignment.Centered);
-            string returnstring3 = formatter.AlignImage("[[link]]", Alignment.Right);
+            string returnstring = formatter.AsImageBox("![filename.jpg](filename.jpg)");
 
             // Assert
-            Assert.AreEqual("[[link ]]", returnstring1);
-            Assert.AreEqual("[[ link ]]", returnstring2);
-            Assert.AreEqual("[[ link]]", returnstring3);
+            Assert.AreEqual("![filename.jpg](filename.jpg)", returnstring);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void AlignImageTest()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            string returnstring = formatter.AlignImage("link", Alignment.Left);
         }
 
         [TestMethod()]
@@ -497,7 +492,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.ForceNewLine();
 
             // Assert
-            Assert.AreEqual("\\\\", returnstring);
+            Assert.AreEqual("<br>", returnstring);
         }
 
         [TestMethod()]
@@ -510,7 +505,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.ListItemUnsorted();
 
             // Assert
-            Assert.AreEqual("* ", returnstring);
+            Assert.AreEqual("- ", returnstring);
         }
 
         [TestMethod()]
@@ -523,7 +518,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.ListItemSorted();
 
             // Assert
-            Assert.AreEqual("- ", returnstring);
+            Assert.AreEqual("1. ", returnstring);
         }
 
         [TestMethod()]
@@ -536,7 +531,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.ListItemIndent();
 
             // Assert
-            Assert.AreEqual("  ", returnstring);
+            Assert.AreEqual("    ", returnstring);
         }
 
         [TestMethod()]
@@ -547,10 +542,10 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Act
             string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInsertPage(path, "pagename");
+            string returnstring = formatter.AsInsertPage(path, "pagename.md");
 
             // Assert
-            Assert.AreEqual("{{page>path1:path2:pagename}}", returnstring);
+            Assert.AreEqual("![[path1/path2/pagename.md]]", returnstring);
         }
 
         [TestMethod()]
@@ -560,10 +555,10 @@ namespace WikiPageCreator.Export.Format.Tests
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring = formatter.AsInsertPage("pagename");
+            string returnstring = formatter.AsInsertPage("pagename.md");
 
             // Assert
-            Assert.AreEqual("{{page>pagename}}", returnstring);
+            Assert.AreEqual("![[pagename.md]]", returnstring);
         }
 
         [TestMethod()]
@@ -576,7 +571,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableTOC();
 
             // Assert
-            Assert.AreEqual("~~NOTOC~~", returnstring);
+            Assert.AreEqual("", returnstring);
         }
 
         [TestMethod()]
@@ -589,7 +584,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableCache();
 
             // Assert
-            Assert.AreEqual("~~NOCACHE~~", returnstring);
+            Assert.AreEqual("", returnstring);
         }
 
         [TestMethod()]
@@ -602,7 +597,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.BeginComment();
 
             // Assert
-            Assert.AreEqual("/* ", returnstring);
+            Assert.AreEqual("%%", returnstring);
         }
 
         [TestMethod()]
@@ -615,7 +610,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.EndComment();
 
             // Assert
-            Assert.AreEqual(" */", returnstring);
+            Assert.AreEqual("%%", returnstring);
         }
 
         [TestMethod()]
@@ -629,7 +624,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DefineTable(500, width);
 
             // Assert
-            Assert.AreEqual("|<   500px   10%   20%   30%   40%   >|", returnstring);
+            Assert.AreEqual("| | | | |", returnstring);
         }
 
         [TestMethod()]
@@ -642,7 +637,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.CellSpanVertically();
 
             // Assert
-            Assert.AreEqual(":::", returnstring);
+            Assert.AreEqual("    ", returnstring);
         }
 
         [TestMethod()]
@@ -683,7 +678,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.BeginBox(500, Alignment.Left);
 
             // Assert
-            Assert.AreEqual("<WRAP box 500px Left>", returnstring);
+            Assert.AreEqual("", returnstring);
         }
 
         [TestMethod()]
@@ -696,7 +691,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.EndBox();
 
             // Assert
-            Assert.AreEqual("</WRAP>", returnstring);
+            Assert.AreEqual("", returnstring);
         }
 
         [TestMethod()]
@@ -709,7 +704,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.BeginDataEntry("name");
 
             // Assert
-            Assert.AreEqual("---- dataentry name ----", returnstring);
+            Assert.AreEqual("---", returnstring);
         }
 
         [TestMethod()]
@@ -722,7 +717,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.EndDataEntry();
 
             // Assert
-            Assert.AreEqual("----", returnstring);
+            Assert.AreEqual("---", returnstring);
         }
     }
 }
