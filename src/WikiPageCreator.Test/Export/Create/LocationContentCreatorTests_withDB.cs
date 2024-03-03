@@ -253,6 +253,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> testContent = new List<string>();
             string[] path = { targetLanguageCode, "info" };
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(path, "Location X")}, {formatter.AsInternalLink(path, "Country OriginalFullName X", "Country EnglishShortName X")}" }));

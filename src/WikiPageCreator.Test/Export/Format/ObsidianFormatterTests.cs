@@ -137,7 +137,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink(path, "pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[text](path1/path2/pagename#section)", returnstring);
+            Assert.AreEqual("[[path1/path2/pagename#section|text]]", returnstring);
         }
 
         [TestMethod()]
@@ -151,7 +151,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink(path, "pagename", "text");
 
             // Assert
-            Assert.AreEqual("[text](path1/path2/pagename)", returnstring);
+            Assert.AreEqual("[[path1/path2/pagename|text]]", returnstring);
         }
 
         [TestMethod()]
@@ -164,7 +164,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink("pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[text](pagename#section)", returnstring);
+            Assert.AreEqual("[[pagename#section|text]]", returnstring);
         }
 
         [TestMethod()]
@@ -177,7 +177,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink("pagename", "text");
 
             // Assert
-            Assert.AreEqual("[text](pagename)", returnstring);
+            Assert.AreEqual("[[pagename|text]]", returnstring);
         }
 
         [TestMethod()]
@@ -190,7 +190,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink("pagename");
 
             // Assert
-            Assert.AreEqual("[pagename](pagename)", returnstring);
+            Assert.AreEqual("[[pagename]]", returnstring);
         }
 
         [TestMethod()]
@@ -472,14 +472,16 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(NotSupportedException))]
         public void AlignImageTest()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
 
-            // Act, Assert
+            // Act
             string returnstring = formatter.AlignImage("link", Alignment.Left);
+
+            // Assert
+            Assert.AreEqual("link", returnstring);
         }
 
         [TestMethod()]
@@ -571,7 +573,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableTOC();
 
             // Assert
-            Assert.AreEqual("", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
@@ -584,7 +586,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableCache();
 
             // Assert
-            Assert.AreEqual("", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
@@ -624,7 +626,20 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DefineTable(500, width);
 
             // Assert
-            Assert.AreEqual("| | | | |", returnstring);
+            Assert.AreEqual(null, returnstring);
+        }
+
+        [TestMethod()]
+        public void AsTableTitleTest()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act
+            string returnstring = formatter.AsTableTitle(new string[] { "title", "title" });
+
+            // Assert
+            Assert.AreEqual("| title | title |\n| --- | --- |", returnstring);
         }
 
         [TestMethod()]
@@ -678,7 +693,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.BeginBox(500, Alignment.Left);
 
             // Assert
-            Assert.AreEqual("", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
@@ -691,7 +706,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.EndBox();
 
             // Assert
-            Assert.AreEqual("", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]

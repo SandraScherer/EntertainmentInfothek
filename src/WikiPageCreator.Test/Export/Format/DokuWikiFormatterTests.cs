@@ -633,6 +633,19 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
+        public void AsTableTitleTest()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act
+            string returnstring = formatter.AsTableTitle(new string[] { "title", "title" });
+
+            // Assert
+            Assert.AreEqual("^ title ^ title ^", returnstring);
+        }
+
+        [TestMethod()]
         public void CellSpanVerticallyTest()
         {
             // Arrange

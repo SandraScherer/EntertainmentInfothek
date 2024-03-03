@@ -480,7 +480,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(link));
             }
 
-            return link;
+            return $"[{link}]({link})";
         }
 
         /// <summary>
