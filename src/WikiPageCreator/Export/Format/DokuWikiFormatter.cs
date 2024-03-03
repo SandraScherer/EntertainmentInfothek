@@ -1334,6 +1334,36 @@ namespace WikiPageCreator.Export.Format
         }
 
         /// <summary>
+        /// Formats the given data as column titles.
+        /// </summary>
+        /// <param name="data">The data for the title row.</param>
+        /// <returns>The data formatted as a title row.</returns>
+        public override string AsTableTitle(string[] data)
+        {
+            Logger.Trace($"AsTableTitle()");
+
+            if (data == null)
+            {
+                Logger.Fatal($"Data not specified");
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            string formatted = $"^ ";
+            foreach (string item in data)
+            {
+                if (String.IsNullOrEmpty(item))
+                    formatted = String.Concat(formatted, "^ ");
+                else
+                    formatted = String.Concat(formatted, item, " ^ ");
+            }
+            formatted = formatted[0..^1];
+
+            Logger.Debug($"AsTableTitle(): '{formatted}");
+
+            return formatted;
+        }
+
+        /// <summary>
         /// Inserts an indicator to span cells vertically.
         /// </summary>
         /// <returns>Indicator to span cells vertically.</returns>

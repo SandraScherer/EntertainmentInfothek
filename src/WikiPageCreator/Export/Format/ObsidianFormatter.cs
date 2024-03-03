@@ -75,10 +75,10 @@ namespace WikiPageCreator.Export.Format
             pagename = pagename.Replace('#', '_');
             pagename = pagename.Replace('<', '_');
             pagename = pagename.Replace('>', '_');
-            pagename = pagename.Replace('Ã¤', 'a');
-            pagename = pagename.Replace('Ã¶', 'o');
-            pagename = pagename.Replace('Ã¼', 'u');
-            pagename = pagename.Replace('ÃŸ', 's');
+            pagename = pagename.Replace('ä', 'a');
+            pagename = pagename.Replace('ö', 'o');
+            pagename = pagename.Replace('ü', 'u');
+            pagename = pagename.Replace('ß', 's');
 
             pagename = pagename.Replace(",", "");
             pagename = pagename.Replace(":", "");
@@ -380,7 +380,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            pagename =$"[{text}]({pagename}#{section})";
+            pagename = $"[[{pagename}#{section}|{text}]]";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -409,7 +409,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            pagename = $"[{text}]({pagename})";
+            pagename = $"[[{pagename}|{text}]]";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -432,7 +432,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(pagename));
             }
 
-            pagename = $"[{pagename}]({pagename})";
+            pagename = $"[[{pagename}]]";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -461,7 +461,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return AsInternalLink(link, text);
+            return $"[{text}]({link})";
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(link));
             }
 
-            return AsInternalLink(link);
+            return link;
         }
 
         /// <summary>
@@ -1105,11 +1105,22 @@ namespace WikiPageCreator.Export.Format
         /// <param name="imagelink">The imagelink to be aligned.</param>
         /// <param name="align">The alignment to be used.</param>
         /// <returns>The Imagelink aligned as given.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
         public override string AlignImage(string imagelink, Alignment align)
         {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
+            Logger.Trace($"AlignImage()");
+
+            if (String.IsNullOrEmpty(imagelink))
+            {
+                Logger.Fatal($"ImageLink not specified");
+                throw new ArgumentNullException(nameof(imagelink));
+            }
+
+            Logger.Debug($"Alignment not supported");
+
+            Logger.Debug($"AlignImage(): '{imagelink}'");
+
+            return imagelink;
         }
 
         // ---------------
@@ -1228,7 +1239,7 @@ namespace WikiPageCreator.Export.Format
             Logger.Trace($"DisableTOC()");
             Logger.Trace($"Operation not supported");
 
-            return $"";
+            return null;
         }
 
         /// <summary>
@@ -1240,7 +1251,7 @@ namespace WikiPageCreator.Export.Format
             Logger.Trace($"DisableCache()");
             Logger.Trace($"Operation not supported");
 
-            return $"";
+            return null;
         }
 
         // ---------------
@@ -1279,37 +1290,47 @@ namespace WikiPageCreator.Export.Format
         public override string DefineTable(int size, int[] width)
         {
             Logger.Trace($"DefineTable()");
+            Logger.Trace($"Operation not supported");
 
-            if (size == 0)
+            return null;
+        }
+
+        /// <summary>
+        /// Formats the given data as column titles.
+        /// </summary>
+        /// <param name="data">The data for the title row.</param>
+        /// <returns>The data formatted as a title row.</returns>
+        public override string AsTableTitle(string[] data)
+        {
+            Logger.Trace($"AsTableTitle()");
+
+            if (data == null)
             {
-                Logger.Fatal($"Size not specified");
-                throw new ArgumentNullException(nameof(size));
+                Logger.Fatal($"Data not specified");
+                throw new ArgumentNullException(nameof(data));
             }
-            if (width == null)
+
+            string formatted1 = "| ";
+            string formatted2 = "| ";
+            foreach (string item in data)
             {
-                Logger.Fatal($"Width not specified");
-                throw new ArgumentNullException(nameof(width));
-            }
-            foreach (int item in width)
-            {
-                if (item == 0)
+                if (String.IsNullOrEmpty(item))
                 {
-                    Logger.Fatal($"Width not specified");
-                    throw new ArgumentNullException(nameof(width));
+                    formatted1 = String.Concat(formatted1, "| ");
+                    formatted2 = String.Concat(formatted2, "--- | ");
+                }
+                else
+                {
+                    formatted1 = String.Concat(formatted1, item, " | ");
+                    formatted2 = String.Concat(formatted2, "--- | ");
                 }
             }
+            formatted1 = formatted1[0..^1];
+            formatted2 = formatted2[0..^1];
 
-            Logger.Info($"DefineTable(): size and width are not supported and will be ignored");
+            Logger.Debug($"AsTableTitle(): '{formatted1}");
 
-            string formatted = $"|";
-            foreach (int item in width)
-            {
-                formatted = String.Concat(formatted, " |");
-            }
-
-            Logger.Debug($"DefineTable(): '{formatted}");
-
-            return formatted;
+            return $"{formatted1}\n{formatted2}";
         }
 
         /// <summary>
@@ -1345,7 +1366,7 @@ namespace WikiPageCreator.Export.Format
                 if (String.IsNullOrEmpty(item))
                     formatted = String.Concat(formatted[0..^1], "| ");
                 else
-                    formatted = String.Concat(formatted, item, " | ");
+                    formatted = String.Concat(formatted, item.Replace("|", "\\|"), " | ");
             }
             formatted = formatted[0..^1];
 
@@ -1368,7 +1389,7 @@ namespace WikiPageCreator.Export.Format
             Logger.Trace($"BeginBox()");
             Logger.Trace($"Operation not supported");
 
-            return $"";
+            return null;
         }
 
         /// <summary>
@@ -1380,7 +1401,7 @@ namespace WikiPageCreator.Export.Format
             Logger.Trace($"EndBox()");
             Logger.Trace($"Operation not supported");
 
-            return $"";
+            return null;
         }
 
         // ---------------

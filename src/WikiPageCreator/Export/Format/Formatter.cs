@@ -386,10 +386,17 @@ namespace WikiPageCreator.Export.Format
         /// <summary>
         /// Inserts an indicator to define a table with the given size and column widths.
         /// </summary>
-        /// <param name="size">The size of the table</param>
+        /// <param name="size">The size of the table.</param>
         /// <param name="width">The width(s) of the columns.</param>
         /// <returns>Indicator to define the table.</returns>
         public abstract string DefineTable(int size, int[] width);
+
+        /// <summary>
+        /// Formats the given data as column titles.
+        /// </summary>
+        /// <param name="data">The data for the title row.</param>
+        /// <returns>The data formatted as a title row.</returns>
+        public abstract string AsTableTitle(string[] data);
 
         /// <summary>
         /// Inserts an indicator to span cells vertically.

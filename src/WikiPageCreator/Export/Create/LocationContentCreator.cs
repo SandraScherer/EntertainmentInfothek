@@ -82,6 +82,9 @@ namespace WikiPageCreator.Export.Create
                 Logger.Debug($"Locations is not null");
                 Logger.Debug($"no of locations: '{Locations.Count}'");
 
+                string[] title = { null };
+                content.Add(Formatter.AsTableTitle(title));
+
                 if (TargetLanguageCode.Equals("en"))
                 {
                     Logger.Debug($"Location: '{Locations[0].Location.Name}' (english)");

@@ -118,7 +118,8 @@ namespace WikiPageCreator.Export.Write
             // write content
             foreach (String item in content)
             {
-                writer.WriteLine(item);
+                if (item != null)
+                    writer.WriteLine(item);
             }
 
             // close file
