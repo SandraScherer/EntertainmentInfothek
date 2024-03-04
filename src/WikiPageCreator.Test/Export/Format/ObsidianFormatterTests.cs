@@ -36,7 +36,7 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AsPagenameTest()
+        public void AsFilenameTest()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
@@ -46,6 +46,17 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Assert
             Assert.AreEqual("this_is_a_test__for_a_file_name_with__different__special__characters__especially__german__ones_a_o_u_s_.md", returnstring);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AsFilenameTest_withPagenameNull()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            string returnstring = formatter.AsFilename(null);
         }
 
         [TestMethod()]
@@ -62,6 +73,17 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AsBoldTest_withTextNull()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            string returnstring = formatter.AsBold(null);
+        }
+
+        [TestMethod()]
         public void AsItalicTest()
         {
             // Arrange
@@ -75,6 +97,17 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AsItalicTest_withTextNull()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            string returnstring = formatter.AsItalic(null);
+        }
+
+        [TestMethod()]
         public void AsUnderlinedTest()
         {
             // Arrange
@@ -85,6 +118,17 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Assert
             Assert.AreEqual("<u>text</u>", returnstring);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void AsUnderlinedTest_withTextNull()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            string returnstring = formatter.AsUnderlined(null);
         }
 
         [TestMethod()]
