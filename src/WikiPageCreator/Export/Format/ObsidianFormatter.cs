@@ -303,7 +303,7 @@ namespace WikiPageCreator.Export.Format
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
-                return AsInternalLink(path, pagename);
+                throw new ArgumentNullException(nameof(text));
             }
 
             string formatted = "";
@@ -1093,7 +1093,6 @@ namespace WikiPageCreator.Export.Format
             }
 
             Logger.Debug($"Boxing not supported");
-
             Logger.Debug($"AsImageBox(): '{imagelink}'");
 
             return imagelink;
@@ -1117,7 +1116,6 @@ namespace WikiPageCreator.Export.Format
             }
 
             Logger.Debug($"Alignment not supported");
-
             Logger.Debug($"AlignImage(): '{imagelink}'");
 
             return imagelink;
@@ -1290,6 +1288,26 @@ namespace WikiPageCreator.Export.Format
         public override string DefineTable(int size, int[] width)
         {
             Logger.Trace($"DefineTable()");
+
+            if (size == 0)
+            {
+                Logger.Fatal($"Size not specified");
+                throw new ArgumentNullException(nameof(size));
+            }
+            if (width == null)
+            {
+                Logger.Fatal($"Width not specified");
+                throw new ArgumentNullException(nameof(width));
+            }
+            foreach (int item in width)
+            {
+                if (item == 0)
+                {
+                    Logger.Fatal($"Width not specified");
+                    throw new ArgumentNullException(nameof(width));
+                }
+            }
+
             Logger.Trace($"Operation not supported");
 
             return null;
@@ -1387,6 +1405,13 @@ namespace WikiPageCreator.Export.Format
         public override string BeginBox(int size, Alignment align)
         {
             Logger.Trace($"BeginBox()");
+
+            if (size == 0)
+            {
+                Logger.Fatal($"Size not specified");
+                throw new ArgumentNullException(nameof(size));
+            }
+            
             Logger.Trace($"Operation not supported");
 
             return null;
@@ -1422,11 +1447,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(name));
             }
 
-            name = $"---";
-
-            Logger.Debug($"BeginDataEntry(): '{name}'");
-
-            return name;
+            return $"---";
         }
 
         /// <summary>

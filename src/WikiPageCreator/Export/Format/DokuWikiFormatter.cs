@@ -303,7 +303,7 @@ namespace WikiPageCreator.Export.Format
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
-                return AsInternalLink(path, pagename);
+                throw new ArgumentNullException(nameof(text));
             }
 
             string formatted = "";
