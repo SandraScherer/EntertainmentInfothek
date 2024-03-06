@@ -1208,7 +1208,7 @@ namespace WikiPageCreator.Export.Format.Tests
             DokuWikiFormatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0);
+            string returnstring = formatter.AsImage("filename.jpg", null);
         }
 
         [TestMethod()]
@@ -1487,6 +1487,18 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Act, Assert
             string returnstring = formatter.DefineTable(500, null);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void DefineTableTest_withWidthValueNull()
+        {
+            // Arrange
+            DokuWikiFormatter formatter = new DokuWikiFormatter();
+
+            // Act, Assert
+            int[] width = { 0, 20, 30 };
+            string returnstring = formatter.DefineTable(500, width);
         }
 
         [TestMethod()]

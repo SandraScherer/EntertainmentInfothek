@@ -1208,7 +1208,7 @@ namespace WikiPageCreator.Export.Format.Tests
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0);
+            string returnstring = formatter.AsImage("filename.jpg", null);
         }
 
         [TestMethod()]
@@ -1476,13 +1476,25 @@ namespace WikiPageCreator.Export.Format.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void DefineTableTest_withWidthNul()
+        public void DefineTableTest_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act, Assert
             string returnstring = formatter.DefineTable(500, null);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void DefineTableTest_withWidthValueNull()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act, Assert
+            int[] width = { 0, 20, 30 };
+            string returnstring = formatter.DefineTable(500, width);
         }
 
         [TestMethod()]
@@ -1497,6 +1509,20 @@ namespace WikiPageCreator.Export.Format.Tests
 
             // Assert
             Assert.AreEqual("| title | title |\n| --- | --- |", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsTableTitleTest2()
+        {
+            // Arrange
+            ObsidianFormatter formatter = new ObsidianFormatter();
+
+            // Act
+            string[] data = { "title", "", "title" };
+            string returnstring = formatter.AsTableTitle(data);
+
+            // Assert
+            Assert.AreEqual("| title | | title |\n| --- | --- | --- |", returnstring);
         }
 
         [TestMethod()]
