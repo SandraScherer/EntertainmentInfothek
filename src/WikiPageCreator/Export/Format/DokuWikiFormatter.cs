@@ -1079,7 +1079,6 @@ namespace WikiPageCreator.Export.Format
                     text = $"  {text}  ";
                     break;
                 case Alignment.Left:
-                default:
                     text = $"{text}  ";
                     break;
             }
