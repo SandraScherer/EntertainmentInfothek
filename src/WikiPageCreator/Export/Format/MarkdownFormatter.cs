@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2020 Sandra Scherer
+// Copyright (C) 2024 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,9 +21,9 @@ using System;
 namespace WikiPageCreator.Export.Format
 {
     /// <summary>
-    /// Provides a formatter for a DokuWiki.
+    /// Provides a formatter for a Markdown.
     /// </summary>
-    public class DokuWikiFormatter : MarkdownFormatter
+    public class MarkdownFormatter : Formatter
     {
         // --- Properties ---
 
@@ -35,11 +35,11 @@ namespace WikiPageCreator.Export.Format
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a DokuWiki formatter.
+        /// Initializes a Markdown formatter.
         /// </summary>
-        public DokuWikiFormatter()
+        public MarkdownFormatter()
         {
-            Logger.Trace($"DokuWikiFormatter() created");
+            Logger.Trace($"MarkdownFormatter() created");
         }
 
         // --- Methods ---
@@ -85,11 +85,34 @@ namespace WikiPageCreator.Export.Format
             pagename = pagename.Replace("(", "");
             pagename = pagename.Replace(")", "");
 
-            pagename = String.Concat(pagename, ".txt");
+            pagename = String.Concat(pagename, ".md");
 
             Logger.Debug($"AsFilename(): '{pagename}'");
 
             return pagename;
+        }
+
+        /// <summary>
+        /// Formats the given text as bold text.
+        /// </summary>
+        /// <param name="text">The text to be formatted.</param>
+        /// <returns>The text formatted as bold.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
+        public override string AsBold(string text)
+        {
+            Logger.Trace($"AsBold()");
+
+            if (String.IsNullOrEmpty(text))
+            {
+                Logger.Fatal($"Text not specified");
+                throw new ArgumentNullException(nameof(text));
+            }
+
+            text = $"**{text}**";
+
+            Logger.Debug($"AsBold(): '{text}'");
+
+            return text;
         }
 
         /// <summary>
@@ -108,7 +131,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"//{text}//";
+            text = $"_{text}_";
 
             Logger.Debug($"AsItalic(): '{text}'");
 
@@ -131,7 +154,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"__{text}__";
+            text = $"<u>{text}</u>";
 
             Logger.Debug($"AsUnderlined(): '{text}'");
 
@@ -154,7 +177,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"<sub>{text}</sub>";
+            text = $"~{text}~";
 
             Logger.Debug($"AsSubscript(): '{text}'");
 
@@ -177,7 +200,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"<sup>{text}</sup>";
+            text = $"^{text}^";
 
             Logger.Debug($"AsSuperscript(): '{text}'");
 
@@ -200,7 +223,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"<del>{text}</del>";
+            text = $"~~{text}~~";
 
             Logger.Debug($"AsDeleted(): '{text}'");
 
@@ -248,7 +271,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -288,7 +311,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -322,11 +345,15 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
-            return AsInternalLink(formatted + pagename);
+            pagename = $"[{pagename}]({formatted}{pagename})";
+
+            Logger.Debug($"AsInternalLink(): '{pagename}'");
+
+            return pagename;
         }
 
         /// <summary>
@@ -357,7 +384,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            pagename = $"[[{pagename}#{section}|{text}]]";
+            pagename = $"[{text}]({pagename}#{section})";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -386,7 +413,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            pagename = $"[[{pagename}|{text}]]";
+            pagename = $"[{text}]({pagename})";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -409,7 +436,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(pagename));
             }
 
-            pagename = $"[[{pagename}]]";
+            pagename = $"[{pagename}]({pagename})";
 
             Logger.Debug($"AsInternalLink(): '{pagename}'");
 
@@ -438,7 +465,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            return AsInternalLink(link, text);
+            return $"[{text}]({link})";
         }
 
         /// <summary>
@@ -457,7 +484,30 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(link));
             }
 
-            return AsInternalLink(link);
+            return $"[{link}]({link})";
+        }
+
+        /// <summary>
+        /// Formats the given email adress as an email link.
+        /// </summary>
+        /// <param name="mail">the email adress for the link.</param>
+        /// <returns>The email formatted as an email link.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when the given email address is null.</exception>
+        public override string AsEMail(string mail)
+        {
+            Logger.Trace($"AsEMail()");
+
+            if (String.IsNullOrEmpty(mail))
+            {
+                Logger.Fatal($"Mail not specified");
+                throw new ArgumentNullException(nameof(mail));
+            }
+
+            mail = $"<{mail}>";
+
+            Logger.Debug($"AsEMail(): '{mail}'");
+
+            return mail;
         }
 
         // ---------------
@@ -478,7 +528,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"====== {text} ======";
+            text = $"# {text}";
 
             Logger.Debug($"AsHeading1(): '{text}'");
 
@@ -501,7 +551,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"===== {text} =====";
+            text = $"## {text}";
 
             Logger.Debug($"AsHeading2(): '{text}'");
 
@@ -524,7 +574,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"==== {text} ====";
+            text = $"### {text}";
 
             Logger.Debug($"AsHeading3(): '{text}'");
 
@@ -547,7 +597,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"=== {text} ===";
+            text = $"#### {text}";
 
             Logger.Debug($"AsHeading4(): '{text}'");
 
@@ -570,7 +620,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            text = $"== {text} ==";
+            text = $"##### {text}";
 
             Logger.Debug($"AsHeading5(): '{text}'");
 
@@ -624,7 +674,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -670,7 +720,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -716,7 +766,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -756,7 +806,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -796,7 +846,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -830,7 +880,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -871,7 +921,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            filename = $"{{{{{filename}?{width}x{height}|{text}}}}}";
+            filename = $"![{text}|{width}x{height}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -906,7 +956,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(height));
             }
 
-            filename = $"{{{{{filename}?{width}x{height}}}}}";
+            filename = $"![{filename}|{width}x{height}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -941,7 +991,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            filename = $"{{{{{filename}?{width}|{text}}}}}";
+            filename = $"![{text}|{width}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -971,7 +1021,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(width));
             }
 
-            filename = $"{{{{{filename}?{width}}}}}";
+            filename = $"![{filename}|{width}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -1000,7 +1050,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(text));
             }
 
-            filename = $"{{{{{filename}|{text}}}}}";
+            filename = $"![{text}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -1023,7 +1073,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(filename));
             }
 
-            filename = $"{{{{{filename}}}}}";
+            filename = $"![{filename}]({filename})";
 
             Logger.Debug($"AsImage(): '{filename}'");
 
@@ -1046,8 +1096,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(imagelink));
             }
 
-            imagelink = $"[{imagelink}]";
-
+            Logger.Debug($"Operation not supported");
             Logger.Debug($"AsImageBox(): '{imagelink}'");
 
             return imagelink;
@@ -1073,13 +1122,13 @@ namespace WikiPageCreator.Export.Format
             switch (align)
             {
                 case Alignment.Right:
-                    text = $"  {text}";
+                    text = $"{text}:";
                     break;
                 case Alignment.Centered:
-                    text = $"  {text}  ";
+                    text = $":{text}:";
                     break;
                 case Alignment.Left:
-                    text = $"{text}  ";
+                    text = $":{text}";
                     break;
             }
 
@@ -1098,7 +1147,7 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"ForceNewLine()");
 
-            return $"\\\\";
+            return $"   ";
         }
 
         /// <summary>
@@ -1109,7 +1158,7 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"ListItemUnsorted()");
 
-            return $"* ";
+            return $"- ";
         }
 
         /// <summary>
@@ -1120,7 +1169,18 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"ListItemSorted()");
 
-            return $"- ";
+            return $"1. ";
+        }
+
+        /// <summary>
+        /// Inserts an indicator for an indentation.
+        /// </summary>
+        /// <returns>Indicator for an indentation.</returns>
+        public override string ListItemIndent()
+        {
+            Logger.Trace($"ListItemIndent()");
+
+            return $"    ";
         }
 
         // ---------------
@@ -1152,7 +1212,7 @@ namespace WikiPageCreator.Export.Format
             {
                 if (!String.IsNullOrEmpty(item))
                 {
-                    formatted = String.Concat(formatted, item, ":");
+                    formatted = String.Concat(formatted, item, "/");
                 }
             }
 
@@ -1175,9 +1235,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(pagename));
             }
 
-            pagename = $"{{{{page>{pagename}}}}}";
-
-            Logger.Debug($"AsInsertPage(): '{pagename}'");
+            Logger.Debug($"Operation not supported");
 
             return pagename;
         }
@@ -1191,8 +1249,9 @@ namespace WikiPageCreator.Export.Format
         public override string DisableTOC()
         {
             Logger.Trace($"DisableTOC()");
+            Logger.Trace($"Operation not supported");
 
-            return $"~~NOTOC~~";
+            return null;
         }
 
         /// <summary>
@@ -1202,8 +1261,9 @@ namespace WikiPageCreator.Export.Format
         public override string DisableCache()
         {
             Logger.Trace($"DisableCache()");
+            Logger.Trace($"Operation not supported");
 
-            return $"~~NOCACHE~~";
+            return null;
         }
 
         // ---------------
@@ -1216,7 +1276,7 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"BeginComment()");
 
-            return $"/* ";
+            return $"[";
         }
 
         /// <summary>
@@ -1227,7 +1287,7 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"EndComment()");
 
-            return $" */";
+            return $"]: #";
         }
 
         // ---------------
@@ -1262,16 +1322,9 @@ namespace WikiPageCreator.Export.Format
                 }
             }
 
-            string formatted = $"|<   {size}px   ";
-            foreach (int item in width)
-            {
-                formatted = String.Concat(formatted, item, "%   ");
-            }
-            formatted = $"{formatted}>|";
+            Logger.Trace($"Operation not supported");
 
-            Logger.Debug($"DefineTable(): '{formatted}");
-
-            return formatted;
+            return null;
         }
 
         /// <summary>
@@ -1289,19 +1342,27 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(data));
             }
 
-            string formatted = $"^ ";
+            string formatted1 = "| ";
+            string formatted2 = "| ";
             foreach (string item in data)
             {
                 if (String.IsNullOrEmpty(item))
-                    formatted = String.Concat(formatted, "^ ");
+                {
+                    formatted1 = String.Concat(formatted1, "| ");
+                    formatted2 = String.Concat(formatted2, "--- | ");
+                }
                 else
-                    formatted = String.Concat(formatted, item, " ^ ");
+                {
+                    formatted1 = String.Concat(formatted1, item, " | ");
+                    formatted2 = String.Concat(formatted2, "--- | ");
+                }
             }
-            formatted = formatted[0..^1];
+            formatted1 = formatted1[0..^1];
+            formatted2 = formatted2[0..^1];
 
-            Logger.Debug($"AsTableTitle(): '{formatted}");
+            Logger.Debug($"AsTableTitle(): '{formatted1}");
 
-            return formatted;
+            return $"{formatted1}\n{formatted2}";
         }
 
         /// <summary>
@@ -1311,8 +1372,9 @@ namespace WikiPageCreator.Export.Format
         public override string CellSpanVertically()
         {
             Logger.Trace($"CellSpanVertically()");
+            Logger.Debug($"Operation not supported");
 
-            return $":::";
+            return $"    ";
         }
 
         /// <summary>
@@ -1337,7 +1399,7 @@ namespace WikiPageCreator.Export.Format
                 if (String.IsNullOrEmpty(item))
                     formatted = String.Concat(formatted[0..^1], "| ");
                 else
-                    formatted = String.Concat(formatted, item, " | ");
+                    formatted = String.Concat(formatted, item.Replace("|", "\\|"), " | ");
             }
             formatted = formatted[0..^1];
 
@@ -1365,9 +1427,9 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(size));
             }
 
-            Logger.Debug($"BeginBox(): '<WRAP box {size}px {align}>'");
+            Logger.Trace($"Operation not supported");
 
-            return $"<WRAP box {size}px {align}>";
+            return null;
         }
 
         /// <summary>
@@ -1377,8 +1439,9 @@ namespace WikiPageCreator.Export.Format
         public override string EndBox()
         {
             Logger.Trace($"EndBox()");
+            Logger.Trace($"Operation not supported");
 
-            return $"</WRAP>";
+            return null;
         }
 
         // ---------------
@@ -1399,11 +1462,7 @@ namespace WikiPageCreator.Export.Format
                 throw new ArgumentNullException(nameof(name));
             }
 
-            name = $"---- dataentry " + name + " ----";
-
-            Logger.Debug($"BeginDataEntry(): '{name}'");
-
-            return name;
+            return $"---";
         }
 
         /// <summary>
@@ -1414,7 +1473,7 @@ namespace WikiPageCreator.Export.Format
         {
             Logger.Trace($"EndDataEntry()");
 
-            return $"----";
+            return $"---";
         }
     }
 }

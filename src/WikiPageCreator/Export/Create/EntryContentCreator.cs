@@ -179,6 +179,8 @@ namespace WikiPageCreator.Export.Create
 
             int[] width = { 30, 70 };
             content.Add(Formatter.DefineTable(445, width));
+            string[] title = { null, null };
+            content.Add(Formatter.AsTableTitle(title));
 
             Logger.Trace($"CreateInfoBoxBegin(): infobox begin for Entry '{Entry.ID}' created");
 
@@ -474,7 +476,6 @@ namespace WikiPageCreator.Export.Create
         /// <param name="pagename2">The pagename for the second link.</param>
         /// <param name="text2">The text to be displayed for the second link.</param>
         /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
-        //CreateSectionContentHelper(content, path, Locations[0].Location.Name, Locations[0].Location.Country.OriginalFullName, Locations[0].Location.Country.EnglishShortName, Locations[0].Details);
         protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename, string pagename2, string text2, string additionalInfo)
         {
             string[] data = new string[1];

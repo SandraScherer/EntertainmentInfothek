@@ -194,6 +194,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             int[] width = { 30, 70 };
             testContent.Add(formatter.BeginBox(475, Alignment.Right));
             testContent.Add(formatter.DefineTable(445, width));
+            testContent.Add(formatter.AsTableTitle(new string[] { null, null }));
 
             // InfoBox Title
             if (targetLanguageCode.Equals("en"))
@@ -689,6 +690,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
             testContent.Add($"");
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathInfo, "Location X")}, {formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")} Series FilmingLocation Details X1" }));
@@ -715,6 +718,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
             testContent.Add($"");
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series FilmingDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Series FilmingDate EndDate X1")} Series FilmingDate Details X1" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series FilmingDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Series FilmingDate EndDate X2")} Series FilmingDate Details X2" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series FilmingDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Series FilmingDate EndDate X3")} Series FilmingDate Details X3" }));
@@ -732,6 +736,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
             testContent.Add($"");
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X1")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X1")} Series ProductionDate Details X1" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X2")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X2")} Series ProductionDate Details X2" }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathDate, "Series ProductionDate StartDate X3")} - {formatter.AsInternalLink(pathDate, "Series ProductionDate EndDate X3")} Series ProductionDate Details X3" }));

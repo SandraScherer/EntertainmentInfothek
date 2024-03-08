@@ -1,6 +1,6 @@
 ﻿// WikiPageCreator.exe: Creates pages for use with a wiki from the
 // EntertainmentInfothek.db using EntertainmentDB.dll
-// Copyright (C) 2020 Sandra Scherer
+// Copyright (C) 2024 Sandra Scherer
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,13 +22,13 @@ using System;
 namespace WikiPageCreator.Export.Format.Tests
 {
     [TestClass()]
-    public class DokuWikiFormatterTests
+    public class MarkdownFormatterTests
     {
         [TestMethod()]
-        public void DokuWikiFormatterTest()
+        public void MarkdownFormatterTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             // Assert
@@ -39,13 +39,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsFilenameTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsFilename("THIS IS A TEST+ FOR A FILE/NAME WITH% DIFFERENT* SPECIAL& CHARACTERS! ESPECIALLY# GERMAN= ONES: Ä, Ö, Ü, ß?");
 
             // Assert
-            Assert.AreEqual("this_is_a_test__for_a_file_name_with__different__special__characters__especially__german__ones_a_o_u_s_.txt", returnstring);
+            Assert.AreEqual("this_is_a_test__for_a_file_name_with__different__special__characters__especially__german__ones_a_o_u_s_.md", returnstring);
         }
 
         [TestMethod()]
@@ -53,7 +53,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsFilenameTest_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsFilename(null);
@@ -63,7 +63,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsBoldTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsBold("text");
@@ -77,7 +77,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsBoldTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsBold(null);
@@ -87,13 +87,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsItalicTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsItalic("text");
 
             // Assert
-            Assert.AreEqual("//text//", returnstring);
+            Assert.AreEqual("_text_", returnstring);
         }
 
         [TestMethod()]
@@ -101,7 +101,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsItalicTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsItalic(null);
@@ -111,13 +111,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsUnderlinedTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsUnderlined("text");
 
             // Assert
-            Assert.AreEqual("__text__", returnstring);
+            Assert.AreEqual("<u>text</u>", returnstring);
         }
 
         [TestMethod()]
@@ -125,7 +125,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsUnderlinedTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsUnderlined(null);
@@ -135,13 +135,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsSubscriptTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsSubscript("text");
 
             // Assert
-            Assert.AreEqual("<sub>text</sub>", returnstring);
+            Assert.AreEqual("~text~", returnstring);
         }
 
         [TestMethod()]
@@ -149,7 +149,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsSubscriptTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsSubscript(null);
@@ -159,13 +159,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsSuperscriptTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsSuperscript("text");
 
             // Assert
-            Assert.AreEqual("<sup>text</sup>", returnstring);
+            Assert.AreEqual("^text^", returnstring);
         }
 
         [TestMethod()]
@@ -173,7 +173,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsSuperscriptTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsSuperscript(null);
@@ -183,13 +183,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsDeletedTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsDeleted("text");
 
             // Assert
-            Assert.AreEqual("<del>text</del>", returnstring);
+            Assert.AreEqual("~~text~~", returnstring);
         }
 
         [TestMethod()]
@@ -197,7 +197,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsDeletedTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsDeleted(null);
@@ -207,14 +207,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink4ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsInternalLink(path, "pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[[path1:path2:pagename#section|text]]", returnstring);
+            Assert.AreEqual("[text](path1/path2/pagename#section)", returnstring);
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink4ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInternalLink(null, "pagename", "section", "text");
@@ -233,7 +233,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink4ParametersTest_withPageNameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -245,7 +245,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink4ParametersTest_withSectionNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -257,7 +257,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink4ParametersTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -268,14 +268,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsInternalLink(path, "pagename", "text");
 
             // Assert
-            Assert.AreEqual("[[path1:path2:pagename|text]]", returnstring);
+            Assert.AreEqual("[text](path1/path2/pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -283,7 +283,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = null;
@@ -295,7 +295,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3ParametersTest_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -307,7 +307,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3ParametersTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -318,14 +318,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsInternalLink(path, "pagename");
 
             // Assert
-            Assert.AreEqual("[[path1:path2:pagename]]", returnstring);
+            Assert.AreEqual("[pagename](path1/path2/pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -333,7 +333,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = null;
@@ -345,7 +345,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2ParametersTest_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -356,13 +356,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3Parameters2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsInternalLink("pagename", "section", "text");
 
             // Assert
-            Assert.AreEqual("[[pagename#section|text]]", returnstring);
+            Assert.AreEqual("[text](pagename#section)", returnstring);
         }
 
         [TestMethod()]
@@ -370,7 +370,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3Parameters2Test_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string pagename = null;
@@ -382,7 +382,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3Parameters2Test_withSectionNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInternalLink("pagename", null, "text");
@@ -393,7 +393,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink3Parameters2Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInternalLink("pagename", "section", null);
@@ -403,13 +403,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2Parameters2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsInternalLink("pagename", "text");
 
             // Assert
-            Assert.AreEqual("[[pagename|text]]", returnstring);
+            Assert.AreEqual("[text](pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -417,7 +417,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2Parameters2Test_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string pagename = null;
@@ -429,7 +429,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink2Parameters2Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInternalLink("pagename", null);
@@ -439,13 +439,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink1ParameterTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsInternalLink("pagename");
 
             // Assert
-            Assert.AreEqual("[[pagename]]", returnstring);
+            Assert.AreEqual("[pagename](pagename)", returnstring);
         }
 
         [TestMethod()]
@@ -453,7 +453,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInternalLink1ParameterTest_withPagenameNul()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInternalLink(null);
@@ -463,13 +463,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsExternalLink2ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsExternalLink("link", "text");
 
             // Assert
-            Assert.AreEqual("[[link|text]]", returnstring);
+            Assert.AreEqual("[text](link)", returnstring);
         }
 
         [TestMethod()]
@@ -477,7 +477,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsExternalLink2ParametersTest_withLinkNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsExternalLink(null, "text");
@@ -488,7 +488,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsExternalLink2ParametersTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsExternalLink("link", null);
@@ -498,13 +498,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsExternalLink1ParameterTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsExternalLink("link");
 
             // Assert
-            Assert.AreEqual("[[link]]", returnstring);
+            Assert.AreEqual("[link](link)", returnstring);
         }
 
         [TestMethod()]
@@ -512,7 +512,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsExternalLink1ParameterTest_withLinkNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsExternalLink(null);
@@ -522,7 +522,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsEMailTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsEMail("mail");
@@ -536,7 +536,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsEMailTest_withMailNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsEMail(null);
@@ -546,13 +546,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading1Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsHeading1("heading");
 
             // Assert
-            Assert.AreEqual("====== heading ======", returnstring);
+            Assert.AreEqual("# heading", returnstring);
         }
 
         [TestMethod()]
@@ -560,7 +560,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading1Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsHeading1(null);
@@ -570,13 +570,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsHeading2("heading");
 
             // Assert
-            Assert.AreEqual("===== heading =====", returnstring);
+            Assert.AreEqual("## heading", returnstring);
         }
 
         [TestMethod()]
@@ -584,7 +584,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading2Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsHeading2(null);
@@ -593,20 +593,20 @@ namespace WikiPageCreator.Export.Format.Tests
         [TestMethod()]
         public void AsHeading3Test()
         {
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsHeading3("heading");
 
             // Assert
-            Assert.AreEqual("==== heading ====", returnstring);
+            Assert.AreEqual("### heading", returnstring);
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading3Test_withTextNull()
         {
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsHeading3(null);
@@ -616,13 +616,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading4Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsHeading4("heading");
 
             // Assert
-            Assert.AreEqual("=== heading ===", returnstring);
+            Assert.AreEqual("#### heading", returnstring);
         }
 
         [TestMethod()]
@@ -630,7 +630,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading4Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsHeading4(null);
@@ -640,13 +640,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading5Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsHeading5("heading");
 
             // Assert
-            Assert.AreEqual("== heading ==", returnstring);
+            Assert.AreEqual("##### heading", returnstring);
         }
 
         [TestMethod()]
@@ -654,7 +654,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsHeading5Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsHeading5(null);
@@ -664,14 +664,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50x100|text}}", returnstring);
+            Assert.AreEqual("![text|50x100](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -679,7 +679,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, "filename.jpg", 50, 100, "text");
@@ -690,7 +690,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -702,7 +702,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -714,7 +714,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest_withHeightNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -726,7 +726,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage5ParametersTest_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -737,14 +737,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100);
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50x100}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg|50x100](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -752,7 +752,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, "filename.jpg", 50, 100);
@@ -763,7 +763,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4ParametersTest_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -775,7 +775,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4ParametersTest_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -787,7 +787,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4ParametersTest_withHeightNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -798,14 +798,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", 50, "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50|text}}", returnstring);
+            Assert.AreEqual("![text|50](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -813,7 +813,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters2Test_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, "filename.jpg", 50, "text");
@@ -824,7 +824,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters2Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -836,7 +836,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters2Test_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -848,7 +848,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters2Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -859,14 +859,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", 50);
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg?50}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg|50](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -874,7 +874,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, "filename.jpg", 50);
@@ -885,7 +885,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3ParametersTest_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -897,7 +897,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3ParametersTest_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -908,14 +908,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg", "text");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg|text}}", returnstring);
+            Assert.AreEqual("![text](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -923,7 +923,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters2Test_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, "filename.jpg", "text");
@@ -934,7 +934,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters2Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -946,7 +946,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters2Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -957,14 +957,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsImage(path, "filename.jpg");
 
             // Assert
-            Assert.AreEqual("{{path1:path2:filename.jpg}}", returnstring);
+            Assert.AreEqual("![path1/path2/filename.jpg](path1/path2/filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -972,7 +972,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = null;
@@ -984,7 +984,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2ParametersTest_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -995,13 +995,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters3Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg", 50, 100, "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50x100|text}}", returnstring);
+            Assert.AreEqual("![text|50x100](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1009,7 +1009,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters3Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, 50, 100, "text");
@@ -1020,7 +1020,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters3Test_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 0, 100, "text");
@@ -1031,7 +1031,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters3Test_withHeightNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 50, 0, "text");
@@ -1042,7 +1042,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage4Parameters3Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 50, 100, null);
@@ -1052,13 +1052,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters3Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg", 50, 100);
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50x100}}", returnstring);
+            Assert.AreEqual("![filename.jpg|50x100](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1066,7 +1066,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters3Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, 50, 100);
@@ -1077,7 +1077,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters3Test_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 0, 100);
@@ -1088,7 +1088,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters3Test_withHeightNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 50, 0);
@@ -1098,13 +1098,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters4Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg", 50, "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50|text}}", returnstring);
+            Assert.AreEqual("![text|50](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1112,7 +1112,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters4Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, 50, "text");
@@ -1123,7 +1123,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters4Test_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 0, "text");
@@ -1134,7 +1134,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage3Parameters4Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 50, null);
@@ -1144,13 +1144,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters2Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg", 50);
 
             // Assert
-            Assert.AreEqual("{{filename.jpg?50}}", returnstring);
+            Assert.AreEqual("![filename.jpg|50](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1158,7 +1158,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters2Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null, 50);
@@ -1169,7 +1169,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters2Test_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", 0);
@@ -1179,13 +1179,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters3Test()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg", "text");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg|text}}", returnstring);
+            Assert.AreEqual("![text](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1193,7 +1193,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters3Test_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string filename = null;
@@ -1205,7 +1205,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage2Parameters3Test_withTextNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage("filename.jpg", null);
@@ -1215,13 +1215,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage1ParameterTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImage("filename.jpg");
 
             // Assert
-            Assert.AreEqual("{{filename.jpg}}", returnstring);
+            Assert.AreEqual("![filename.jpg](filename.jpg)", returnstring);
         }
 
         [TestMethod()]
@@ -1229,7 +1229,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImage1ParameterTest_withFilenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImage(null);
@@ -1239,13 +1239,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImageBoxTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsImageBox("imagelink");
 
             // Assert
-            Assert.AreEqual("[imagelink]", returnstring);
+            Assert.AreEqual("imagelink", returnstring);
         }
 
         [TestMethod()]
@@ -1253,7 +1253,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsImageBoxTest_withImageLinkNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsImageBox(null);
@@ -1263,7 +1263,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AlignTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring1 = formatter.Align("text", Alignment.Left);
@@ -1271,17 +1271,17 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring3 = formatter.Align("text", Alignment.Right);
 
             // Assert
-            Assert.AreEqual("text  ", returnstring1);
-            Assert.AreEqual("  text  ", returnstring2);
-            Assert.AreEqual("  text", returnstring3);
+            Assert.AreEqual(":text", returnstring1);
+            Assert.AreEqual(":text:", returnstring2);
+            Assert.AreEqual("text:", returnstring3);
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void AlignTest_withTextNull()
+        public void AlignTest_withImageLinkNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.Align(null, Alignment.Left);
@@ -1291,46 +1291,46 @@ namespace WikiPageCreator.Export.Format.Tests
         public void ForceNewLineTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.ForceNewLine();
 
             // Assert
-            Assert.AreEqual("\\\\", returnstring);
+            Assert.AreEqual("   ", returnstring);
         }
 
         [TestMethod()]
         public void ListItemUnsortedTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.ListItemUnsorted();
-
-            // Assert
-            Assert.AreEqual("* ", returnstring);
-        }
-
-        [TestMethod()]
-        public void ListItemSortedTest()
-        {
-            // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
-
-            // Act
-            string returnstring = formatter.ListItemSorted();
 
             // Assert
             Assert.AreEqual("- ", returnstring);
         }
 
         [TestMethod()]
+        public void ListItemSortedTest()
+        {
+            // Arrange
+            MarkdownFormatter formatter = new MarkdownFormatter();
+
+            // Act
+            string returnstring = formatter.ListItemSorted();
+
+            // Assert
+            Assert.AreEqual("1. ", returnstring);
+        }
+
+        [TestMethod()]
         public void ListItemIndentTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.ListItemIndent();
@@ -1343,14 +1343,14 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInsertPage2ParametersTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] path = { "path1", "path2" };
             string returnstring = formatter.AsInsertPage(path, "pagename");
 
             // Assert
-            Assert.AreEqual("{{page>path1:path2:pagename}}", returnstring);
+            Assert.AreEqual("path1/path2/pagename", returnstring);
         }
 
         [TestMethod()]
@@ -1358,7 +1358,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInsertPage2ParametersTest_withPathNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInsertPage(null, "pagename.md");
@@ -1369,7 +1369,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInsertPage2ParametersTest_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string[] path = { "path1", "path2" };
@@ -1380,13 +1380,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInsertPage1ParameterTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.AsInsertPage("pagename");
 
             // Assert
-            Assert.AreEqual("{{page>pagename}}", returnstring);
+            Assert.AreEqual("pagename", returnstring);
         }
 
         [TestMethod()]
@@ -1394,7 +1394,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsInsertPage1ParameterTest_withPagenameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsInsertPage(null);
@@ -1404,66 +1404,66 @@ namespace WikiPageCreator.Export.Format.Tests
         public void DisableTOCTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.DisableTOC();
 
             // Assert
-            Assert.AreEqual("~~NOTOC~~", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
         public void DisableCacheTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.DisableCache();
 
             // Assert
-            Assert.AreEqual("~~NOCACHE~~", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
         public void BeginCommentTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.BeginComment();
 
             // Assert
-            Assert.AreEqual("/* ", returnstring);
+            Assert.AreEqual("[", returnstring);
         }
 
         [TestMethod()]
         public void EndCommentTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.EndComment();
 
             // Assert
-            Assert.AreEqual(" */", returnstring);
+            Assert.AreEqual("]: #", returnstring);
         }
 
         [TestMethod()]
         public void DefineTableTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             int[] width = { 10, 20, 30, 40 };
             string returnstring = formatter.DefineTable(500, width);
 
             // Assert
-            Assert.AreEqual("|<   500px   10%   20%   30%   40%   >|", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
@@ -1471,7 +1471,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void DefineTableTest_withSizeNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             int[] width = { 10, 20, 30, 40 };
@@ -1480,10 +1480,10 @@ namespace WikiPageCreator.Export.Format.Tests
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void DefineTableTest_withWidthNul()
+        public void DefineTableTest_withWidthNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.DefineTable(500, null);
@@ -1494,7 +1494,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void DefineTableTest_withWidthValueNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             int[] width = { 0, 20, 30 };
@@ -1505,14 +1505,28 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsTableTitleTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] data = { "title", "title" };
             string returnstring = formatter.AsTableTitle(data);
 
             // Assert
-            Assert.AreEqual("^ title ^ title ^", returnstring);
+            Assert.AreEqual("| title | title |\n| --- | --- |", returnstring);
+        }
+
+        [TestMethod()]
+        public void AsTableTitleTest2()
+        {
+            // Arrange
+            MarkdownFormatter formatter = new MarkdownFormatter();
+
+            // Act
+            string[] data = { "title", "", "title" };
+            string returnstring = formatter.AsTableTitle(data);
+
+            // Assert
+            Assert.AreEqual("| title | | title |\n| --- | --- | --- |", returnstring);
         }
 
         [TestMethod()]
@@ -1520,7 +1534,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsTableTitleTest_withDataNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsTableTitle(null);
@@ -1530,20 +1544,20 @@ namespace WikiPageCreator.Export.Format.Tests
         public void CellSpanVerticallyTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.CellSpanVertically();
 
             // Assert
-            Assert.AreEqual(":::", returnstring);
+            Assert.AreEqual("    ", returnstring);
         }
 
         [TestMethod()]
         public void AsTableRow3ItemsTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] data = { "data1", "data2", "data3" };
@@ -1557,7 +1571,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsTableRow2ItemsTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string[] data = { "data1", "data2", null };
@@ -1572,7 +1586,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void AsTableRowTest_withDataNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.AsTableRow(null);
@@ -1582,13 +1596,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void BeginBoxTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.BeginBox(500, Alignment.Left);
 
             // Assert
-            Assert.AreEqual("<WRAP box 500px Left>", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
@@ -1596,7 +1610,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void BeginBoxTest_withSizeNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.BeginBox(0, Alignment.Left);
@@ -1606,26 +1620,26 @@ namespace WikiPageCreator.Export.Format.Tests
         public void EndBoxTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.EndBox();
 
             // Assert
-            Assert.AreEqual("</WRAP>", returnstring);
+            Assert.AreEqual(null, returnstring);
         }
 
         [TestMethod()]
         public void BeginDataEntryTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.BeginDataEntry("name");
 
             // Assert
-            Assert.AreEqual("---- dataentry name ----", returnstring);
+            Assert.AreEqual("---", returnstring);
         }
 
         [TestMethod()]
@@ -1633,7 +1647,7 @@ namespace WikiPageCreator.Export.Format.Tests
         public void BeginDataEntryTest_withNameNull()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act, Assert
             string returnstring = formatter.BeginDataEntry(null);
@@ -1643,13 +1657,13 @@ namespace WikiPageCreator.Export.Format.Tests
         public void EndDataEntryTest()
         {
             // Arrange
-            DokuWikiFormatter formatter = new DokuWikiFormatter();
+            MarkdownFormatter formatter = new MarkdownFormatter();
 
             // Act
             string returnstring = formatter.EndDataEntry();
 
             // Assert
-            Assert.AreEqual("----", returnstring);
+            Assert.AreEqual("---", returnstring);
         }
     }
 }

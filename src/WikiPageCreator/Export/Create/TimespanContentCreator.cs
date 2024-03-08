@@ -82,6 +82,9 @@ namespace WikiPageCreator.Export.Create
                 Logger.Debug($"Timespans is not null");
                 Logger.Debug($"no of timespans: '{Timespans.Count}'");
 
+                string[] title = { null };
+                content.Add(Formatter.AsTableTitle(title));
+
                 Logger.Debug($"Timespan: '{Timespans[0].StartDate} - {Timespans[0].EndDate}'");
 
                 CreateSectionContentHelper(content, path, $"{Timespans[0].StartDate}", $"{Timespans[0].EndDate}", Timespans[0].Details);

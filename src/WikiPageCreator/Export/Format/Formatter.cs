@@ -313,12 +313,13 @@ namespace WikiPageCreator.Export.Format
         public abstract string AsImageBox(string imagelink);
 
         /// <summary>
-        /// Aligns the given imagelink as given.
+        /// Aligns the given text as given.
         /// </summary>
-        /// <param name="imagelink">The imagelink to be aligned.</param>
+        /// <param name="text">The text to be aligned.</param>
         /// <param name="align">The alignment to be used.</param>
-        /// <returns>The Imagelink aligned as given.</returns>
-        public abstract string AlignImage(string imagelink, Alignment align);
+        /// <returns>The text aligned as given.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
+        public abstract string Align(string text, Alignment align);
 
         /// <summary>
         /// Inserts an indicator to force a new line.
@@ -386,10 +387,17 @@ namespace WikiPageCreator.Export.Format
         /// <summary>
         /// Inserts an indicator to define a table with the given size and column widths.
         /// </summary>
-        /// <param name="size">The size of the table</param>
+        /// <param name="size">The size of the table.</param>
         /// <param name="width">The width(s) of the columns.</param>
         /// <returns>Indicator to define the table.</returns>
         public abstract string DefineTable(int size, int[] width);
+
+        /// <summary>
+        /// Formats the given data as column titles.
+        /// </summary>
+        /// <param name="data">The data for the title row.</param>
+        /// <returns>The data formatted as a title row.</returns>
+        public abstract string AsTableTitle(string[] data);
 
         /// <summary>
         /// Inserts an indicator to span cells vertically.

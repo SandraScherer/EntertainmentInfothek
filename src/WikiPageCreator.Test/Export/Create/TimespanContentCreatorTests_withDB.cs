@@ -255,6 +255,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> testContent = new List<string>();
             string[] path = { targetLanguageCode, "date" };
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(path, "unknown")} - {formatter.AsInternalLink(path, "unknown")}" }));
             testContent.Add($"");
             testContent.Add($"");
@@ -293,6 +294,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> testContent = new List<string>();
             string[] path = { targetLanguageCode, "date" };
 
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
             testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(path, "unknown")}" }));
             testContent.Add($"");
             testContent.Add($"");
