@@ -325,7 +325,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.AsInternalLink(path, "pagename");
 
             // Assert
-            Assert.AreEqual("[[path1/path2/pagename]]", returnstring);
+            Assert.AreEqual("[[path1/path2/pagename|pagename]]", returnstring);
         }
 
         [TestMethod()]
@@ -1260,27 +1260,27 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        public void AlignImageTest()
+        public void AlignTest()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act
-            string returnstring = formatter.AlignImage("link", Alignment.Left);
+            string returnstring = formatter.Align("text", Alignment.Left);
 
             // Assert
-            Assert.AreEqual("link", returnstring);
+            Assert.AreEqual("text", returnstring);
         }
 
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void AlignImageTest_withImageLinkNull()
+        public void AlignTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
 
             // Act, Assert
-            string returnstring = formatter.AlignImage(null, Alignment.Left);
+            string returnstring = formatter.Align(null, Alignment.Left);
         }
 
         [TestMethod()]
