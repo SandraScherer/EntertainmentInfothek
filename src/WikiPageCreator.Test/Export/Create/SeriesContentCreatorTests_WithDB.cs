@@ -160,6 +160,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             string[] pathInfo = { targetLanguageCode, "info" };
             string[] pathDate = { targetLanguageCode, "date" };
+            string[] pathCompany = { targetLanguageCode, "company" };
             string[] pathCertification = { "certification" };
 
             // File Header
@@ -665,6 +666,45 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             // InfoBox End
             testContent.Add(formatter.EndBox());
+            testContent.Add($"");
+            testContent.Add($"");
+
+            // Company Chapter
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading2("Company Credits"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading2("Beteiligte Firmen"));
+            }
+            testContent.Add($"");
+
+            // Production Company Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Production Companies"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Produktionsfirmen"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} Series ProductionCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} Series ProductionCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} Series ProductionCompany Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} Series ProductionCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} Series ProductionCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} Series ProductionCompany Details X3" }));
+            }
             testContent.Add($"");
             testContent.Add($"");
 

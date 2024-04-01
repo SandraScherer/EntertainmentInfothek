@@ -490,48 +490,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted company chapter content of a given series.
-        /// </summary>
-        /// <returns>The formatted company chapter content of the series.</returns>
-        protected virtual List<string> CreateChapterCompany()
-        {
-            Logger.Trace($"CreateChapterCompany()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            Dictionary<string, string> title = new Dictionary<string, string>();
-            title.Add("en", "Company Credits");
-            title.Add("de", "Beteiligte Firmen");
-
-            // TODO: implement following stuff
-            //content.AddRange(CreateChapterHeading(title));
-
-            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
-
-            //if (Series.ProductionCompanies != null)
-            //{
-            //    Logger.Debug($"Series.ProductionCompanies is not null -> create");
-            //    titleSection.Add("en", "Production Company");
-            //    titleSection.Add("de", "Produktionsfirmen");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Series.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            //if (Series.Distributors != null)
-            //{
-            //    Logger.Debug($"Series.Distributors is not null -> create");
-            //    titleSection.Add("en", "Distributors");
-            //    titleSection.Add("de", "Vertrieb");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Series.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            // TODO: add more company sections
-
-            Logger.Trace($"CreateChapterCompany(): chapter companies for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted award chapter content of a given series.
         /// </summary>
         /// <returns>The formatted award chapter content of the series.</returns>
