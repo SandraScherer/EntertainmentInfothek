@@ -87,9 +87,17 @@ namespace WikiPageCreator.Export.Create
 
                 Logger.Debug($"Company: '{Companies[0].Company.Name}'");
 
-                if (!String.IsNullOrEmpty(Companies[0].Company.NameAddOn))
+                if ((!String.IsNullOrEmpty(Companies[0].Company.NameAddOn)) && (!String.IsNullOrEmpty(Companies[0].Role)))
+                {
+                    CreateSectionContentHelper(content, path, $"{Companies[0].Company.Name} {Companies[0].Company.NameAddOn}", $"({Companies[0].Role}) {Companies[0].Details}");
+                }
+                else if (!String.IsNullOrEmpty(Companies[0].Company.NameAddOn))
                 {
                     CreateSectionContentHelper(content, path, $"{Companies[0].Company.Name} {Companies[0].Company.NameAddOn}", Companies[0].Details);
+                }
+                else if (!String.IsNullOrEmpty(Companies[0].Role))
+                {
+                    CreateSectionContentHelper(content, path, $"{Companies[0].Company.Name}", $"({Companies[0].Role}) {Companies[0].Details}");
                 }
                 else
                 {
@@ -100,9 +108,17 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Company: '{Companies[i].Company.Name}'");
 
-                    if (!String.IsNullOrEmpty(Companies[i].Company.NameAddOn))
+                    if ((!String.IsNullOrEmpty(Companies[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Companies[i].Role)))
+                    {
+                        CreateSectionContentHelper(content, path, $"{Companies[i].Company.Name} {Companies[i].Company.NameAddOn}", $"({Companies[i].Role}) {Companies[i].Details}");
+                    }
+                    else if (!String.IsNullOrEmpty(Companies[i].Company.NameAddOn))
                     {
                         CreateSectionContentHelper(content, path, $"{Companies[i].Company.Name} {Companies[i].Company.NameAddOn}", Companies[i].Details);
+                    }
+                    else if (!String.IsNullOrEmpty(Companies[i].Role))
+                    {
+                        CreateSectionContentHelper(content, path, $"{Companies[i].Company.Name}", $"({Companies[i].Role}) {Companies[i].Details}");
                     }
                     else
                     {

@@ -653,15 +653,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             if (targetLanguageCode.Equals("en"))
             {
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} Movie ProductionCompany Details X1" }));
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} Movie ProductionCompany Details X2" }));
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} Movie ProductionCompany Details X3" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Movie ProductionCompany Role X1) Movie ProductionCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Movie ProductionCompany Role X2) Movie ProductionCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Movie ProductionCompany Role X3) Movie ProductionCompany Details X3" }));
             }
             else
             {
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} Movie ProductionCompany Details X1" }));
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} Movie ProductionCompany Details X2" }));
-                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} Movie ProductionCompany Details X3" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Movie ProductionCompany Role X1) Movie ProductionCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Movie ProductionCompany Role X2) Movie ProductionCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Movie ProductionCompany Role X3) Movie ProductionCompany Details X3" }));
             }
             testContent.Add($"");
             testContent.Add($"");

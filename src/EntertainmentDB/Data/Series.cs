@@ -387,11 +387,11 @@ namespace EntertainmentDB.Data
             */
 
             // Company data
-            ProductionCompanies = CompanyItem.RetrieveList(Reader, "Movie", ID, "ProductionCompany");
+            ProductionCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "ProductionCompany");
             noOfDataRecords += ProductionCompanies.Count;
             if (ProductionCompanies.Count == 0)
             {
-                Logger.Debug($"Movie.ProductionCompanies.Count == 0 -> null");
+                Logger.Debug($"Series.ProductionCompanies.Count == 0 -> null");
                 ProductionCompanies = null;
             }
 
