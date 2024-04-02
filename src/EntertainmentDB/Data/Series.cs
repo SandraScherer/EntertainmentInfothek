@@ -384,11 +384,18 @@ namespace EntertainmentDB.Data
 
             Thanks = PersonItem.RetrieveList(Reader, "Series", ID, "Thanks");
             noOfDataRecords += Thanks.Count;
+            */
 
             // Company data
             ProductionCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "ProductionCompany");
             noOfDataRecords += ProductionCompanies.Count;
+            if (ProductionCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.ProductionCompanies.Count == 0 -> null");
+                ProductionCompanies = null;
+            }
 
+            /*
             Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
             noOfDataRecords += Distributors.Count;
 
@@ -398,6 +405,7 @@ namespace EntertainmentDB.Data
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
             */
+
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
             noOfDataRecords += FilmingLocations.Count;
@@ -422,6 +430,7 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.ProductionDates.Count == 0 -> null");
                 ProductionDates = null;
             }
+
             /*
             // Image data
             Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
@@ -446,7 +455,7 @@ namespace EntertainmentDB.Data
 
             Weblinks = WeblinkItem.RetrieveList(Reader, "Series", ID, "Weblink");
             noOfDataRecords += Weblinks.Count;
-        */
+            */
             return noOfDataRecords;
         }
 

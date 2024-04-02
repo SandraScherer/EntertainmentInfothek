@@ -339,48 +339,6 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted company chapter content of a given movie.
-        /// </summary>
-        /// <returns>The formatted company chapter content of the movie.</returns>
-        protected virtual List<string> CreateChapterCompany()
-        {
-            Logger.Trace($"CreateChapterCompany()");
-            Logger.Debug($"Movie is '{Movie.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            Dictionary<string, string> title = new Dictionary<string, string>();
-            title.Add("en", "Company Credits");
-            title.Add("de", "Beteiligte Firmen");
-
-            // TODO: implement following stuff
-            //content.AddRange(CreateChapterHeading(title));
-
-            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
-
-            //if (Movie.ProductionCompanies != null)
-            //{
-            //    Logger.Debug($"Movie.ProductionCompanies is not null -> create");
-            //    titleSection.Add("en", "Production Company");
-            //    titleSection.Add("de", "Produktionsfirmen");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Movie.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            //if (Movie.Distributors != null)
-            //{
-            //    Logger.Debug($"Movie.Distributors is not null -> create");
-            //    titleSection.Add("en", "Distributors");
-            //    titleSection.Add("de", "Vertrieb");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Movie.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            // TODO: add more company sections
-
-            Logger.Trace($"CreateChapterCompany(): chapter companies for Movie '{Movie.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the formatted award chapter content of a given movie.
         /// </summary>
         /// <returns>The formatted award chapter content of the movie.</returns>

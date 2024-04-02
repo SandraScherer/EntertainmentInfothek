@@ -394,13 +394,54 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the formatted company chapter content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted company chapter content of the movie and tv article.</returns>
+        protected virtual List<string> CreateChapterCompany()
+        {
+            Logger.Trace($"CreateChapterCompany()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+            Dictionary<string, string> title = new Dictionary<string, string>();
+            title.Add("en", "Company Credits");
+            title.Add("de", "Beteiligte Firmen");
+
+            // TODO: implement following stuff
+            content.AddRange(CreateChapterHeading(title));
+
+            if (MovieAndTVArticle.ProductionCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.ProductionCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Production Companies");
+                titleSection.Add("de", "Produktionsfirmen");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            //if (MovieAndTVArticle.Distributors != null)
+            //{
+            //    Logger.Debug($"MovieAndTVArticle.Distributors is not null -> create");
+            //    Dictionary<string, string> titleSection = new Dictionary<string, string>();
+            //    titleSection.Add("en", "Distributors");
+            //    titleSection.Add("de", "Vertrieb");
+            //    content.AddRange(CreateSectionHeading(titleSection));
+            //    content.AddRange(new DistributorContentCreator(MovieAndTVArticle.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
+
+            Logger.Trace($"CreateChapterCompany(): chapter companies for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
         /// Creates the formatted filming and production chapter content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted filming and production chapter content of the movie and tv article.</returns>
         protected virtual List<string> CreateChapterFilmingAndProduction()
         {
             Logger.Trace($"CreateChapterFilmingAndProduction()");
-            Logger.Debug($"Movie is '{MovieAndTVArticle.OriginalTitle}'");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
             Dictionary<string, string> title = new Dictionary<string, string>();
@@ -437,7 +478,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new ProductionDateContentCreator(MovieAndTVArticle.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
             }
 
-            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for Movie '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
