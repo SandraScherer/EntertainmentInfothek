@@ -395,12 +395,17 @@ namespace EntertainmentDB.Data
                 ProductionCompanies = null;
             }
 
+            SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
+            noOfDataRecords += SpecialEffectsCompanies.Count;
+            if (SpecialEffectsCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.SpecialEffectsCompanies.Count == 0 -> null");
+                SpecialEffectsCompanies = null;
+            }
+
             /*
             Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
             noOfDataRecords += Distributors.Count;
-
-            SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
-            noOfDataRecords += SpecialEffectsCompanies.Count;
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
