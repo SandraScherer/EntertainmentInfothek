@@ -419,6 +419,15 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(CreateSectionHeading(titleSection));
                 content.AddRange(new CompanyContentCreator(MovieAndTVArticle.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
             }
+            if (MovieAndTVArticle.SpecialEffectsCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.SpecialEffectsCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Special Effects Companies");
+                titleSection.Add("de", "Firmen für Spezialeffekte");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.SpecialEffectsCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
             //if (MovieAndTVArticle.Distributors != null)
             //{
             //    Logger.Debug($"MovieAndTVArticle.Distributors is not null -> create");
