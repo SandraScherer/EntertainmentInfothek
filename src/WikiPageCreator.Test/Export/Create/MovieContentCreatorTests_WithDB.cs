@@ -666,6 +666,34 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Special Effects Company Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Special Effects Companies"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Firmen für Spezialeffekte"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Movie SpecialEffectsCompany Role X1) Movie SpecialEffectsCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Movie SpecialEffectsCompany Role X2) Movie SpecialEffectsCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Movie SpecialEffectsCompany Role X3) Movie SpecialEffectsCompany Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Movie SpecialEffectsCompany Role X1) Movie SpecialEffectsCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Movie SpecialEffectsCompany Role X2) Movie SpecialEffectsCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Movie SpecialEffectsCompany Role X3) Movie SpecialEffectsCompany Details X3" }));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Filming and Production Chapter
             if (targetLanguageCode.Equals("en"))
             {

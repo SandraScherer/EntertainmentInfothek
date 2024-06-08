@@ -708,6 +708,34 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Special Effects Company Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Special Effects Companies"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Firmen für Spezialeffekte"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Series SpecialEffectsCompany Role X1) Series SpecialEffectsCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Series SpecialEffectsCompany Role X2) Series SpecialEffectsCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Series SpecialEffectsCompany Role X3) Series SpecialEffectsCompany Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Series SpecialEffectsCompany Role X1) Series SpecialEffectsCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Series SpecialEffectsCompany Role X2) Series SpecialEffectsCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Series SpecialEffectsCompany Role X3) Series SpecialEffectsCompany Details X3" }));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Filming and Production Chapter
             if (targetLanguageCode.Equals("en"))
             {
