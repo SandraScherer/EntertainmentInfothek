@@ -114,6 +114,11 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> SpecialEffectsCompanies { get; set; }
 
         /// <summary>
+        /// The list of other companies of the movie and tv article.
+        /// </summary>
+        public List<CompanyItem> OtherCompanies { get; set; }
+
+        /// <summary>
         /// The list of filming locations of the movie and tv article.
         /// </summary>
         public List<LocationItem> FilmingLocations { get; set; }
