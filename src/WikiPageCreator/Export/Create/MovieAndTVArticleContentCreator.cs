@@ -437,6 +437,15 @@ namespace WikiPageCreator.Export.Create
             //    content.AddRange(CreateSectionHeading(titleSection));
             //    content.AddRange(new DistributorContentCreator(MovieAndTVArticle.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
+            if (MovieAndTVArticle.OtherCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.OtherCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Additional Companies");
+                titleSection.Add("de", "Weitere Firmen");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.OtherCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
 
             Logger.Trace($"CreateChapterCompany(): chapter companies for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
