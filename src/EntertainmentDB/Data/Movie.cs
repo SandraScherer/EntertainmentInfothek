@@ -190,11 +190,6 @@ namespace EntertainmentDB.Data
         public List<PersonItem> Thanks { get; set; }
 
         /// <summary>
-        /// The list of distributors of the movie.
-        /// </summary>
-        public List<DistributorCompanyItem> Distributors { get; set; }
-
-        /// <summary>
         /// The list of posters of the movie.
         /// </summary>
         public List<ImageItem> Posters { get; set; }

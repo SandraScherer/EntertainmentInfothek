@@ -395,6 +395,14 @@ namespace EntertainmentDB.Data
                 ProductionCompanies = null;
             }
 
+            Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
+            noOfDataRecords += Distributors.Count;
+            if (Distributors.Count == 0)
+            {
+                Logger.Debug($"Series.Distributors.Count == 0 -> null");
+                Distributors = null;
+            }
+
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
             noOfDataRecords += SpecialEffectsCompanies.Count;
             if (SpecialEffectsCompanies.Count == 0)
@@ -402,11 +410,6 @@ namespace EntertainmentDB.Data
                 Logger.Debug($"Series.SpecialEffectsCompanies.Count == 0 -> null");
                 SpecialEffectsCompanies = null;
             }
-
-            /*
-            Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
-            noOfDataRecords += Distributors.Count;
-            */
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
