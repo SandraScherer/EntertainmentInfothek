@@ -406,10 +406,15 @@ namespace EntertainmentDB.Data
             /*
             Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
             noOfDataRecords += Distributors.Count;
+            */
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
-            */
+            if (OtherCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.OtherCompanies.Count == 0 -> null");
+                OtherCompanies = null;
+            }
 
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");

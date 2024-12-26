@@ -19,7 +19,6 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Reflection.PortableExecutable;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -125,6 +124,12 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "SpecialEffectsCompany", false)]
         [DataRow("Movie", "OtherCompany", true)]
         [DataRow("Movie", "OtherCompany", false)]
+        [DataRow("Series", "ProductionCompany", true)]
+        [DataRow("Series", "ProductionCompany", false)]
+        [DataRow("Series", "SpecialEffectsCompany", true)]
+        [DataRow("Series", "SpecialEffectsCompany", false)]
+        [DataRow("Series", "OtherCompany", true)]
+        [DataRow("Series", "OtherCompany", false)]
         public void RetrieveTest_withValidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -154,6 +159,12 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "SpecialEffectsCompany", false)]
         [DataRow("Movie", "OtherCompany", true)]
         [DataRow("Movie", "OtherCompany", false)]
+        [DataRow("Series", "ProductionCompany", true)]
+        [DataRow("Series", "ProductionCompany", false)]
+        [DataRow("Series", "SpecialEffectsCompany", true)]
+        [DataRow("Series", "SpecialEffectsCompany", false)]
+        [DataRow("Series", "OtherCompany", true)]
+        [DataRow("Series", "OtherCompany", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -179,6 +190,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -217,6 +231,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
         {
@@ -230,6 +247,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
         {
@@ -243,6 +263,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
         {
@@ -256,6 +279,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
         {
@@ -268,6 +294,9 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
         [DataRow("Movie", "OtherCompany")]
+        [DataRow("Series", "ProductionCompany")]
+        [DataRow("Series", "SpecialEffectsCompany")]
+        [DataRow("Series", "OtherCompany")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
         {

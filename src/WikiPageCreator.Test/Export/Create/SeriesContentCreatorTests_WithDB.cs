@@ -736,6 +736,34 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Other Company Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Additional Companies"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Weitere Firmen"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Series OtherCompany Role X1) Series OtherCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Series OtherCompany Role X2) Series OtherCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Series OtherCompany Role X3) Series OtherCompany Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} (Series OtherCompany Role X1) Series OtherCompany Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} (Series OtherCompany Role X2) Series OtherCompany Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} (Series OtherCompany Role X3) Series OtherCompany Details X3" }));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Filming and Production Chapter
             if (targetLanguageCode.Equals("en"))
             {
