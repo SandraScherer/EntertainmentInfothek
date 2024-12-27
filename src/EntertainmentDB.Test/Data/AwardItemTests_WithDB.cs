@@ -260,5 +260,53 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_x32", list[2].Persons[1].ID);
             Assert.AreEqual("_x33", list[2].Persons[2].ID);
         }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<AwardItem> list = Data.AwardItem.RetrieveList(null, baseTableName, "_xxx", "Award");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, null, "_xxx", "Award");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, null, "Award");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", "Award", null);
+        }
     }
 }

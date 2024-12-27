@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         protected ArticleContentCreator(Article article, Formatter formatter, string targetLanguageCode)
             : base(article, formatter, targetLanguageCode)
         {
-            Logger.Trace($"ArticleContentCreator()");
-
-            if (article == null)
-            {
-                Logger.Fatal($"Article not specified");
-                throw new ArgumentNullException(nameof(article));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"ArticleContentCreator(): ArticleContentCreator created");
         }
 
@@ -91,15 +73,6 @@ namespace WikiPageCreator.Export.Create
             Logger.Debug($"Article is '{Article.OriginalTitle}' from '{Article.ReleaseDate}'");
 
             return Formatter.AsFilename($"{Article.OriginalTitle} ({Article.ReleaseDate[0..4]})");
-        }
-
-        /// <summary>
-        /// Creates the page content of the entry.
-        /// </summary>
-        /// <returns>The formatted page content of the entry.</returns>
-        public override List<string> CreatePageContent()
-        {
-            return CreatePageContentInternal();
         }
 
         /// <summary>
@@ -168,9 +141,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox title content of a given article.
         /// </summary>
         /// <returns>The formatted infobox title content of the article.</returns>
-        protected virtual List<string> CreateInfoBoxTitle()
+        protected virtual List<string> CreateInfoBoxContentTitle()
         {
-            Logger.Trace($"CreateInfoBoxTitle()");
+            Logger.Trace($"CreateInfoBoxContentTitle()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -190,7 +163,7 @@ namespace WikiPageCreator.Export.Create
             }
             content.Add(Formatter.AsTableRow(data));
 
-            Logger.Trace($"CreateInfoBoxTitle(): infobox title for Article '{Article.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentTitle(): infobox content title for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -200,9 +173,9 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         /// <returns>The formatted infobox type content of the article.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxType()
+        protected virtual List<string> CreateInfoBoxContentType()
         {
-            Logger.Trace($"CreateInfoboxType()");
+            Logger.Trace($"CreateInfoBoxContentType()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -213,7 +186,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new TypeContentCreator(Article.Type, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoboxType(): infobox type for Article '{Article.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentType(): infobox content type for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -222,9 +195,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox release date content of a given article.
         /// </summary>
         /// <returns>The formatted infobox release date content of the article.</returns>
-        protected virtual List<string> CreateInfoBoxReleaseDate()
+        protected virtual List<string> CreateInfoBoxContentReleaseDate()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDate()");
+            Logger.Trace($"CreateInfoBoxContentReleaseDate()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -248,7 +221,7 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDate(): infobox release date for Article '{Article.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentReleaseDate(): infobox content release date for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -258,9 +231,9 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         /// <returns>The formatted infobox genre content of the article.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxGenre()
+        protected virtual List<string> CreateInfoBoxContentGenre()
         {
-            Logger.Trace($"CreateInfoBoxGenre()");
+            Logger.Trace($"CreateInfoBoxContentGenre()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -271,7 +244,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new GenreContentCreator(Article.Genres, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxGenre(): infobox genre for Article '{Article.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentGenre(): infobox content genre for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -280,9 +253,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox certification content of a given article.
         /// </summary>
         /// <returns>The formatted infobox certification content of the article.</returns>
-        protected virtual List<string> CreateInfoBoxCertification()
+        protected virtual List<string> CreateInfoBoxContentCertification()
         {
-            Logger.Trace($"CreateInfoBoxCertification()");
+            Logger.Trace($"CreateInfoBoxContentCertification()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -293,7 +266,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new CertificationContentCreator(Article.Certifications, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCertification(): infobox certification for Article '{Article.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentCertification(): infobox content certification for Article '{Article.OriginalTitle}' created");
 
             return content;
         }
@@ -315,7 +288,7 @@ namespace WikiPageCreator.Export.Create
             if (Article.Connection != null)
             {
                 Logger.Debug($"Article.Connection is not null -> create");
-                content.AddRange(CreateNewChapter(title));
+                content.AddRange(CreateChapterHeading(title));
                 content.AddRange(new ConnectionContentCreator(Article.Connection, Formatter, TargetLanguageCode).CreateChapterContent());
             }
 

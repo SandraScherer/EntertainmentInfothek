@@ -71,8 +71,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Laboratories);
             Assert.IsNull(entry.FilmLengths);
             Assert.IsNull(entry.NegativeFormats);
-            //Assert.IsNull(entry.CinematographicProcesses);
-            //Assert.IsNull(entry.PrintedFilmFormats);
+            Assert.IsNull(entry.CinematographicProcesses);
+            Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
             //Assert.IsNull(entry.Directors);
@@ -106,14 +106,14 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.TransportationDepartment);
             //Assert.IsNull(entry.OtherCrew);
 
-            //Assert.IsNull(entry.ProductionCompanies);
-            //Assert.IsNull(entry.Distributors);
-            //Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.OtherCompanies);
+            Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
+            Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
-            //Assert.IsNull(entry.ProductionDates);
+            Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
             //Assert.IsNull(entry.Covers);
@@ -171,8 +171,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Laboratories);
             Assert.IsNull(entry.FilmLengths);
             Assert.IsNull(entry.NegativeFormats);
-            //Assert.IsNull(entry.CinematographicProcesses);
-            //Assert.IsNull(entry.PrintedFilmFormats);
+            Assert.IsNull(entry.CinematographicProcesses);
+            Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
             //Assert.IsNull(entry.Directors);
@@ -206,14 +206,14 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.TransportationDepartment);
             //Assert.IsNull(entry.OtherCrew);
 
-            //Assert.IsNull(entry.ProductionCompanies);
-            //Assert.IsNull(entry.Distributors);
-            //Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.OtherCompanies);
+            Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
+            Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
-            //Assert.IsNull(entry.ProductionDates);
+            Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
             //Assert.IsNull(entry.Covers);
@@ -288,9 +288,9 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Cameras);
             Assert.IsNull(entry.Laboratories);
             Assert.IsNull(entry.FilmLengths);
-            //Assert.IsNull(entry.NegativeFormats);
-            //Assert.IsNull(entry.CinematographicProcesses);
-            //Assert.IsNull(entry.PrintedFilmFormats);
+            Assert.IsNull(entry.NegativeFormats);
+            Assert.IsNull(entry.CinematographicProcesses);
+            Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
             //Assert.IsNull(entry.Directors);
@@ -324,14 +324,14 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.TransportationDepartment);
             //Assert.IsNull(entry.OtherCrew);
 
-            //Assert.IsNull(entry.ProductionCompanies);
-            //Assert.IsNull(entry.Distributors);
-            //Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.OtherCompanies);
+            Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
+            Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
-            //Assert.IsNull(entry.ProductionDates);
+            Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
             //Assert.IsNull(entry.Covers);
@@ -436,15 +436,15 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.NegativeFormats[1].ID);
             Assert.AreEqual("_xx3", entry.NegativeFormats[2].ID);
 
-            //Assert.AreEqual(3, entry.CinematographicProcesses.Count);
-            //Assert.AreEqual("_xx1", entry.CinematographicProcesses[0].ID);
-            //Assert.AreEqual("_xx2", entry.CinematographicProcesses[1].ID);
-            //Assert.AreEqual("_xx3", entry.CinematographicProcesses[2].ID);
+            Assert.AreEqual(3, entry.CinematographicProcesses.Count);
+            Assert.AreEqual("_xx1", entry.CinematographicProcesses[0].ID);
+            Assert.AreEqual("_xx2", entry.CinematographicProcesses[1].ID);
+            Assert.AreEqual("_xx3", entry.CinematographicProcesses[2].ID);
 
-            //Assert.AreEqual(3, entry.PrintedFilmFormats.Count);
-            //Assert.AreEqual("_xx1", entry.PrintedFilmFormats[0].ID);
-            //Assert.AreEqual("_xx2", entry.PrintedFilmFormats[1].ID);
-            //Assert.AreEqual("_xx3", entry.PrintedFilmFormats[2].ID);
+            Assert.AreEqual(3, entry.PrintedFilmFormats.Count);
+            Assert.AreEqual("_xx1", entry.PrintedFilmFormats[0].ID);
+            Assert.AreEqual("_xx2", entry.PrintedFilmFormats[1].ID);
+            Assert.AreEqual("_xx3", entry.PrintedFilmFormats[2].ID);
 
             //Assert.AreEqual(3, entry.Creators.Count);
             //Assert.AreEqual("_xx1", entry.Creators[0].ID);
@@ -601,40 +601,40 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.OtherCrew[1].ID);
             //Assert.AreEqual("_xx3", entry.OtherCrew[2].ID);
 
-            //Assert.AreEqual(3, entry.ProductionCompanies.Count);
-            //Assert.AreEqual("_xx1", entry.ProductionCompanies[0].ID);
-            //Assert.AreEqual("_xx2", entry.ProductionCompanies[1].ID);
-            //Assert.AreEqual("_xx3", entry.ProductionCompanies[2].ID);
+            Assert.AreEqual(3, entry.ProductionCompanies.Count);
+            Assert.AreEqual("_xx1", entry.ProductionCompanies[0].ID);
+            Assert.AreEqual("_xx2", entry.ProductionCompanies[1].ID);
+            Assert.AreEqual("_xx3", entry.ProductionCompanies[2].ID);
 
-            //Assert.AreEqual(3, entry.Distributors.Count);
-            //Assert.AreEqual("_xx1", entry.Distributors[0].ID);
-            //Assert.AreEqual("_xx2", entry.Distributors[1].ID);
-            //Assert.AreEqual("_xx3", entry.Distributors[2].ID);
+            Assert.AreEqual(3, entry.SpecialEffectsCompanies.Count);
+            Assert.AreEqual("_xx1", entry.SpecialEffectsCompanies[0].ID);
+            Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
+            Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
 
-            //Assert.AreEqual(3, entry.SpecialEffectsCompanies.Count);
-            //Assert.AreEqual("_xx1", entry.SpecialEffectsCompanies[0].ID);
-            //Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
-            //Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
+            Assert.AreEqual(3, entry.Distributors.Count);
+            Assert.AreEqual("_xx1", entry.Distributors[0].ID);
+            Assert.AreEqual("_xx2", entry.Distributors[1].ID);
+            Assert.AreEqual("_xx3", entry.Distributors[2].ID);
 
-            //Assert.AreEqual(3, entry.OtherCompanies.Count);
-            //Assert.AreEqual("_xx1", entry.OtherCompanies[0].ID);
-            //Assert.AreEqual("_xx2", entry.OtherCompanies[1].ID);
-            //Assert.AreEqual("_xx3", entry.OtherCompanies[2].ID);
+            Assert.AreEqual(3, entry.OtherCompanies.Count);
+            Assert.AreEqual("_xx1", entry.OtherCompanies[0].ID);
+            Assert.AreEqual("_xx2", entry.OtherCompanies[1].ID);
+            Assert.AreEqual("_xx3", entry.OtherCompanies[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmingLocations.Count);
-            //Assert.AreEqual("_xx1", entry.FilmingLocations[0].ID);
-            //Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
-            //Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
+            Assert.AreEqual(3, entry.FilmingLocations.Count);
+            Assert.AreEqual("_xx1", entry.FilmingLocations[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmingDates.Count);
-            //Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
-            //Assert.AreEqual("_xx2", entry.FilmingDates[1].ID);
-            //Assert.AreEqual("_xx3", entry.FilmingDates[2].ID);
+            Assert.AreEqual(3, entry.FilmingDates.Count);
+            Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
+            Assert.AreEqual("_xx2", entry.FilmingDates[1].ID);
+            Assert.AreEqual("_xx3", entry.FilmingDates[2].ID);
 
-            //Assert.AreEqual(3, entry.ProductionDates.Count);
-            //Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
-            //Assert.AreEqual("_xx2", entry.ProductionDates[1].ID);
-            //Assert.AreEqual("_xx3", entry.ProductionDates[2].ID);
+            Assert.AreEqual(3, entry.ProductionDates.Count);
+            Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
+            Assert.AreEqual("_xx2", entry.ProductionDates[1].ID);
+            Assert.AreEqual("_xx3", entry.ProductionDates[2].ID);
 
             //Assert.AreEqual(3, entry.Posters.Count);
             //Assert.AreEqual("_xx1", entry.Posters[0].ID);
@@ -718,8 +718,8 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Laboratories);
             Assert.IsNull(entry.FilmLengths);
             Assert.IsNull(entry.NegativeFormats);
-            //Assert.IsNull(entry.CinematographicProcesses);
-            //Assert.IsNull(entry.PrintedFilmFormats);
+            Assert.IsNull(entry.CinematographicProcesses);
+            Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
             //Assert.IsNull(entry.Directors);
@@ -753,14 +753,14 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.TransportationDepartment);
             //Assert.IsNull(entry.OtherCrew);
 
-            //Assert.IsNull(entry.ProductionCompanies);
-            //Assert.IsNull(entry.Distributors);
-            //Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.OtherCompanies);
+            Assert.IsNull(entry.ProductionCompanies);
+            Assert.IsNull(entry.SpecialEffectsCompanies);
+            Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.OtherCompanies);
 
-            //Assert.IsNull(entry.FilmingLocations);
-            //Assert.IsNull(entry.FilmingDates);
-            //Assert.IsNull(entry.ProductionDates);
+            Assert.IsNull(entry.FilmingLocations);
+            Assert.IsNull(entry.FilmingDates);
+            Assert.IsNull(entry.ProductionDates);
 
             //Assert.IsNull(entry.Posters);
             //Assert.IsNull(entry.Covers);
@@ -787,6 +787,32 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual(1, list.Count);
 
             Assert.AreEqual("_xxx", list[0].ID);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull()
+        {
+            // Arrange, Act, Assert
+            List<Article> list = Series.RetrieveList(null, "_xxx");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withStatusNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Series.RetrieveList(reader, null);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<Article> list = Series.RetrieveList(reader, "_xxx", null);
         }
     }
 }

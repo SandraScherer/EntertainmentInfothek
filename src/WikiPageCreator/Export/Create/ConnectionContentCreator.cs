@@ -60,22 +60,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"ConnectionContentCreator()");
 
-            if (connection == null)
-            {
-                Logger.Fatal($"Connection not specified");
-                throw new ArgumentNullException(nameof(connection));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Headings = new Dictionary<string, string>
             {
                 { "en", "Connections" },
@@ -93,25 +77,7 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the type.</returns>
         public override List<string> CreateChapterContent()
         {
-            return CreateChapterContentInternal();
-        }
-
-        /// <summary>
-        /// Creates the section content of a given type.
-        /// </summary>
-        /// <returns>The formatted section content of the type.</returns>
-        public override List<string> CreateSectionContent()
-        {
-            return CreateChapterContentInternal();
-        }
-
-        /// <summary>
-        /// Creates the chapter content of a given type.
-        /// </summary>
-        /// <returns>The formatted content of the type.</returns>
-        protected override List<string> CreateChapterContentInternal()
-        {
-            Logger.Trace($"CreateChapterContentInternal()");
+            Logger.Trace($"CreateChapterContent()");
             Logger.Debug($"Connection is '{Connection.Title}'");
 
             List<string> content = new List<string>();
@@ -121,7 +87,9 @@ namespace WikiPageCreator.Export.Create
                 if (Connection.BaseConnection == null)
                 {
                     Logger.Debug($"Connection: '{Connection.ID}'");
-                    content.Add(Formatter.AsInsertPage(TargetLanguageCode + ":navigation:" + Connection.ID));
+
+                    string[] path = { TargetLanguageCode, "navigation" };
+                    content.Add(Formatter.AsInsertPage(path, Connection.ID));
                 }
                 else
                 {
@@ -130,7 +98,7 @@ namespace WikiPageCreator.Export.Create
                 }
             }
 
-            Logger.Trace($"CreateChapterContentInternal(): chapter content for Connection '{Connection.Title}' created");
+            Logger.Trace($"CreateChapterContent(): chapter content for Connection '{Connection.Title}' created");
 
             return content;
         }

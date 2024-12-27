@@ -60,22 +60,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"TypeContentCreator()");
 
-            if (type == null)
-            {
-                Logger.Fatal($"Type not specified");
-                throw new ArgumentNullException(nameof(type));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Headings = new Dictionary<string, string>
             {
                 { "en", "Type" },
@@ -93,16 +77,7 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted content of the type.</returns>
         public override List<string> CreateInfoBoxContent()
         {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
-        /// Creates the infobox content of a given type.
-        /// </summary>
-        /// <returns>The formatted content of the type.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
-        {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
             Logger.Debug($"Type is '{Type.ID}'");
 
             List<string> content = new List<string>();
@@ -125,7 +100,7 @@ namespace WikiPageCreator.Export.Create
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for Type '{Type.ID}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for Type '{Type.ID}' created");
 
             return content;
         }

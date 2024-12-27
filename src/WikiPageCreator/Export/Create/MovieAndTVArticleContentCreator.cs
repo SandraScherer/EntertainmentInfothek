@@ -58,24 +58,6 @@ namespace WikiPageCreator.Export.Create
         protected MovieAndTVArticleContentCreator(MovieAndTVArticle article, Formatter formatter, string targetLanguageCode)
             : base(article, formatter, targetLanguageCode)
         {
-            Logger.Trace($"MovieAndTVArticleContentCreator()");
-
-            if (article == null)
-            {
-                Logger.Fatal($"Article not specified");
-                throw new ArgumentNullException(nameof(article));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Logger.Trace($"MovieAndTVArticleContentCreator(): MovieAndTVArticleContentCreator created");
         }
 
@@ -85,9 +67,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox budget content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox budget content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxBudget()
+        protected virtual List<string> CreateInfoBoxContentBudget()
         {
-            Logger.Trace($"CreateInfoBoxBudget()");
+            Logger.Trace($"CreateInfoBoxContentBudget()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -101,7 +83,7 @@ namespace WikiPageCreator.Export.Create
 
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxBudget(): infobox budget for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentBudget(): infobox content budget for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -110,9 +92,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox worldwide gross content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox worldwide gross content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxWorldwideGross()
+        protected virtual List<string> CreateInfoBoxContentWorldwideGross()
         {
-            Logger.Trace($"CreateInfoBoxWorldwideGross()");
+            Logger.Trace($"CreateInfoBoxContentWorldwideGross()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -142,7 +124,7 @@ namespace WikiPageCreator.Export.Create
                 }
                 content.Add(Formatter.AsTableRow(data));
             }
-            Logger.Trace($"CreateInfoBoxWorldwideGross(): infobox worldwide gross for Series '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentWorldwideGross(): infobox content worldwide gross for Series '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -151,9 +133,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox country content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox country content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxCountry()
+        protected virtual List<string> CreateInfoBoxContentCountry()
         {
-            Logger.Trace($"CreateInfoBoxCountry()");
+            Logger.Trace($"CreateInfoBoxContentCountry()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -164,7 +146,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new CountryContentCreator(MovieAndTVArticle.Countries, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCountry(): infobox country for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentCountry(): infobox content country for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -173,7 +155,7 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox language content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox language content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxLanguage()
+        protected virtual List<string> CreateInfoBoxContentLanguage()
         {
             Logger.Trace($"CreateInfoBoxLanguage()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
@@ -186,7 +168,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new LanguageContentCreator(MovieAndTVArticle.Languages, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxLanguage(): infobox language for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentLanguage(): infobox content language for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -195,7 +177,7 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox runtime content of a given series.
         /// </summary>
         /// <returns>The formatted infobox runtime content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxRuntime()
+        protected virtual List<string> CreateInfoBoxContentRuntime()
         {
             Logger.Trace($"CreateInfoBoxRuntime()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
@@ -208,7 +190,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new RuntimeContentCreator(MovieAndTVArticle.Runtimes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxRuntime(): infobox runtime for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentRuntime(): infobox content runtime for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -217,9 +199,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox soundmix content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox soundmix content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxSoundMix()
+        protected virtual List<string> CreateInfoBoxContentSoundMix()
         {
-            Logger.Trace($"CreateInfoBoxSoundMix()");
+            Logger.Trace($"CreateInfoBoxContentSoundMix()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -230,7 +212,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new SoundMixContentCreator(MovieAndTVArticle.SoundMixes, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxSoundMix(): infobox soundmix for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentSoundMix(): infobox content soundmix for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -239,9 +221,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox color content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox color content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxColor()
+        protected virtual List<string> CreateInfoBoxContentColor()
         {
-            Logger.Trace($"CreateInfoBoxColor()");
+            Logger.Trace($"CreateInfoBoxContentColor()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -252,7 +234,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new ColorContentCreator(MovieAndTVArticle.Colors, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxColor(): infobox color for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentColor(): infobox content color for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -261,9 +243,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox aspect ratio content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox aspect ratio content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxAspectRatio()
+        protected virtual List<string> CreateInfoBoxContentAspectRatio()
         {
-            Logger.Trace($"CreateInfoBoxAspectRatio()");
+            Logger.Trace($"CreateInfoBoxContentAspectRatio()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -274,7 +256,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new AspectRatioContentCreator(MovieAndTVArticle.AspectRatios, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxAspectRatio(): infobox aspect ratio for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentAspectRatio(): infobox content aspect ratio for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -283,9 +265,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox camera content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox camera content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxCamera()
+        protected virtual List<string> CreateInfoBoxContentCamera()
         {
-            Logger.Trace($"CreateInfoBoxCamera()");
+            Logger.Trace($"CreateInfoBoxContentCamera()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -296,7 +278,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new CameraContentCreator(MovieAndTVArticle.Cameras, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxCamera(): infobox camera for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentCamera(): infobox content camera for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -305,9 +287,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox laboratory content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox laboratory content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxLaboratory()
+        protected virtual List<string> CreateInfoBoxContentLaboratory()
         {
-            Logger.Trace($"CreateInfoBoxLaboratory()");
+            Logger.Trace($"CreateInfoBoxContentLaboratory()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -318,7 +300,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new LaboratoryContentCreator(MovieAndTVArticle.Laboratories, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxLaboratory(): infobox laboratory for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentLaboratory(): infobox laboratory for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -327,9 +309,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox film length content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox film length content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxFilmLength()
+        protected virtual List<string> CreateInfoBoxContentFilmLength()
         {
-            Logger.Trace($"CreateInfoBoxFilmLength()");
+            Logger.Trace($"CreateInfoBoxContentFilmLength()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -340,7 +322,7 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new FilmLengthContentCreator(MovieAndTVArticle.FilmLengths, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxFilmLength(): infobox film length for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentFilmLength(): infobox content film length for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }
@@ -349,9 +331,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox negative format content of a given movie and tv article.
         /// </summary>
         /// <returns>The formatted infobox negative format content of the movie and tv article.</returns>
-        protected virtual List<string> CreateInfoBoxNegativeFormat()
+        protected virtual List<string> CreateInfoBoxContentNegativeFormat()
         {
-            Logger.Trace($"CreateInfoBoxNegativeFormat()");
+            Logger.Trace($"CreateInfoBoxContentNegativeFormat()");
             Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -362,7 +344,159 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(new NegativeFormatContentCreator(MovieAndTVArticle.NegativeFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             }
 
-            Logger.Trace($"CreateInfoBoxNegativeFormat(): infobox negative format for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentNegativeFormat(): infobox content negative format for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox cinematographic process content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox cinematographic process content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxContentCinematographicProcess()
+        {
+            Logger.Trace($"CreateInfoBoxContentCinematographicProcess()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.CinematographicProcesses != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.CinematicProcesses is not null -> create");
+                content.AddRange(new CinematographicProcessContentCreator(MovieAndTVArticle.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxContentCinematographicProcess(): infobox content cinematic processes for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted infobox printed film format content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted infobox printed film format content of the movie and tv article.</returns>
+        protected virtual List<string> CreateInfoBoxContentPrintedFilmFormat()
+        {
+            Logger.Trace($"CreateInfoBoxContentPrintedFilmFormat()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            if (MovieAndTVArticle.PrintedFilmFormats != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.PrintedFilmFormats is not null -> create");
+                content.AddRange(new PrintedFilmFormatContentCreator(MovieAndTVArticle.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
+            }
+
+            Logger.Trace($"CreateInfoBoxContentPrintedFilmFormat(): infobox content printed film format for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted company chapter content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted company chapter content of the movie and tv article.</returns>
+        protected virtual List<string> CreateChapterCompany()
+        {
+            Logger.Trace($"CreateChapterCompany()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+            Dictionary<string, string> title = new Dictionary<string, string>();
+            title.Add("en", "Company Credits");
+            title.Add("de", "Beteiligte Firmen");
+
+            // TODO: implement following stuff
+            content.AddRange(CreateChapterHeading(title));
+
+            if (MovieAndTVArticle.ProductionCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.ProductionCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Production Companies");
+                titleSection.Add("de", "Produktionsfirmen");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            if (MovieAndTVArticle.Distributors != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Distributors is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Distributors");
+                titleSection.Add("de", "Vertrieb");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new DistributorCompanyContentCreator(MovieAndTVArticle.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            if (MovieAndTVArticle.SpecialEffectsCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.SpecialEffectsCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Special Effects Companies");
+                titleSection.Add("de", "Firmen für Spezialeffekte");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.SpecialEffectsCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            if (MovieAndTVArticle.OtherCompanies != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.OtherCompanies is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Additional Companies");
+                titleSection.Add("de", "Weitere Firmen");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new CompanyContentCreator(MovieAndTVArticle.OtherCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+
+            Logger.Trace($"CreateChapterCompany(): chapter companies for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted filming and production chapter content of a given movie and tv article.
+        /// </summary>
+        /// <returns>The formatted filming and production chapter content of the movie and tv article.</returns>
+        protected virtual List<string> CreateChapterFilmingAndProduction()
+        {
+            Logger.Trace($"CreateChapterFilmingAndProduction()");
+            Logger.Debug($"MovieAndTVArticle is '{MovieAndTVArticle.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+            Dictionary<string, string> title = new Dictionary<string, string>();
+            title.Add("en", "Filming and Production");
+            title.Add("de", "Produktion");
+
+            content.AddRange(CreateChapterHeading(title));
+
+            if (MovieAndTVArticle.FilmingLocations != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.FilmingLocations is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Filming Locations");
+                titleSection.Add("de", "Drehorte");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new LocationContentCreator(MovieAndTVArticle.FilmingLocations, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            if (MovieAndTVArticle.FilmingDates != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.FilmingDates is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Filming Dates");
+                titleSection.Add("de", "Drehdaten");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new FilmingDateContentCreator(MovieAndTVArticle.FilmingDates, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+            if (MovieAndTVArticle.ProductionDates != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.ProductionDates is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Production Dates");
+                titleSection.Add("de", "Produktionsdaten");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new ProductionDateContentCreator(MovieAndTVArticle.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
+
+            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for MovieAndTVArticle '{MovieAndTVArticle.OriginalTitle}' created");
 
             return content;
         }

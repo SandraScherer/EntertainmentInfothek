@@ -48,7 +48,7 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// The dictionary of containing headings in the various languages.
         /// </summary>
-        protected Dictionary<string, string> Headings { get; set; }
+        public Dictionary<string, string> Headings { get; protected set; }
 
         /// <summary>
         /// The logger to log everything.
@@ -88,6 +88,12 @@ namespace WikiPageCreator.Export.Create
             Formatter = formatter;
             TargetLanguageCode = targetLanguageCode;
 
+            Headings = new Dictionary<string, string>
+            {
+                { "en", "Dummy" },
+                { "de", "Dummy" }
+            };
+
             Logger.Trace($"EntryContentCreator(): EntryContentCreator created");
         }
 
@@ -105,39 +111,22 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the page content of the entry.
+        /// Creates the complete formatted page of a given entry.
         /// </summary>
-        /// <returns>The formatted page content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public virtual List<string> CreatePageContent()
+        /// <returns>The complete formatted page of the entry.</returns>
+        public virtual List<string> CreatePage()
         {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the page content of the entry.
-        /// </summary>
-        /// <returns>The formatted page content of the entry.</returns>
-        protected virtual List<string> CreatePageContentInternal()
-        {
-            Logger.Trace($"CreatePageContentInternal()");
+            Logger.Trace($"CreatePage()");
             Logger.Debug($"Entry is '{Entry.ID}'");
 
             List<string> content = new List<string>();
 
             content.AddRange(CreatePageHeader());
             content.AddRange(CreatePageTitle());
-
-            content.AddRange(CreateInfoBoxBegin());
-            content.AddRange(CreateInfoBoxContentInternal());
-            content.AddRange(CreateInfoBoxEnd());
-
-            content.AddRange(CreateChapterContentInternal());
-
+            content.AddRange(CreatePageContent());
             content.AddRange(CreatePageFooter());
 
-            Logger.Trace($"CreatePageContentInternal(): page content for Entry '{Entry.ID}' created");
+            Logger.Trace($"CreatePage() for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -154,11 +143,22 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the formatted file title content of a given entry.
+        /// Creates the formatted page title content of a given entry.
         /// </summary>
-        /// <returns>The formatted file title of the entry.</returns>
+        /// <returns>The formatted page title of the entry.</returns>
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         protected virtual List<string> CreatePageTitle()
+        {
+            Logger.Fatal($"Operation not supported");
+            throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Creates the page content of the entry.
+        /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
+        protected virtual List<string> CreatePageContent()
         {
             Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
@@ -179,6 +179,8 @@ namespace WikiPageCreator.Export.Create
 
             int[] width = { 30, 70 };
             content.Add(Formatter.DefineTable(445, width));
+            string[] title = { null, null };
+            content.Add(Formatter.AsTableTitle(title));
 
             Logger.Trace($"CreateInfoBoxBegin(): infobox begin for Entry '{Entry.ID}' created");
 
@@ -191,17 +193,6 @@ namespace WikiPageCreator.Export.Create
         /// <returns>The formatted infobox content of the entry.</returns>
         /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
         public virtual List<string> CreateInfoBoxContent()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the infobox content of a given entry.
-        /// </summary>
-        /// <returns>The formatted infobox content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreateInfoBoxContentInternal()
         {
             Logger.Fatal($"Operation not supported");
             throw new NotSupportedException();
@@ -337,9 +328,9 @@ namespace WikiPageCreator.Export.Create
         /// <param name="title">The title that is to be used as heading.</param>
         /// <returns>The fomatted chapter heading.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateNewChapter(Dictionary<string, string> title)
+        protected virtual List<string> CreateChapterHeading(Dictionary<string, string> title)
         {
-            Logger.Trace($"CreateNewChapter()");
+            Logger.Trace($"CreateChapterHeading()");
             Logger.Debug($"Entry is '{Entry.ID}'");
 
             if (title == null)
@@ -362,7 +353,7 @@ namespace WikiPageCreator.Export.Create
             }
             content.Add($"");
 
-            Logger.Trace($"CreateNewChapter(): new chapter for Entry '{Entry.ID}' created");
+            Logger.Trace($"CreateChapterHeading(): chapter heading for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -379,25 +370,14 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the chapter content of a given entry.
-        /// </summary>
-        /// <returns>The formatted content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreateChapterContentInternal()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
         /// Creates a formatted section heading with the given title.
         /// </summary>
         /// <param name="title">The title that is to be used as heading.</param>
         /// <returns>The fomatted chapter heading.</returns>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateNewSection(Dictionary<string, string> title)
+        protected virtual List<string> CreateSectionHeading(Dictionary<string, string> title)
         {
-            Logger.Trace($"CreateNewSection()");
+            Logger.Trace($"CreateSectionHeading()");
             Logger.Debug($"Entry is '{Entry.ID}'");
 
             if (title == null)
@@ -420,7 +400,7 @@ namespace WikiPageCreator.Export.Create
             }
             content.Add($"");
 
-            Logger.Trace($"CreateNewSection(): new section for Entry '{Entry.ID}' created");
+            Logger.Trace($"CreateSectionHeading(): section heading for Entry '{Entry.ID}' created");
 
             return content;
         }
@@ -437,14 +417,154 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
-        /// Creates the section content of a given entry.
+        /// Creates the specific row of the section content.
         /// </summary>
-        /// <returns>The formatted section content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreateSectionContentInternal()
+        /// <param name="content">The list that contains the content of the section.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename">The pagename for the link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given pagename1 is null.</exception>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename, string additionalInfo)
         {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)} {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the section.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the given pagename1 is null.</exception>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename1, string pagename2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)} - {Formatter.AsInternalLink(path, pagename2)} {additionalInfo}";
+            }
+            else if (!String.IsNullOrEmpty(pagename2))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)} - {Formatter.AsInternalLink(path, pagename2)}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains the content of the section.</param>
+        /// <param name="path">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="text2">The text to be displayed for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename1, string pagename2, string text2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}, {Formatter.AsInternalLink(path, pagename2, text2)} {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}, {Formatter.AsInternalLink(path, pagename2, text2)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the third link.</param>
+        /// <param name="pagename2">The pagename for the third link.</param>
+        /// <param name="text2">The text to be displayed for the third link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string text2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2, text2)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2, text2)})";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the second link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2)})";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the second link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="path3">The path for the third link.</param>
+        /// <param name="pagename3">The pagename for the third link.</param>
+        /// <param name="text3">The text to be displayed for the third link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string[] path3, string pagename3, string text3, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)} ({Formatter.AsInternalLink(path2, pagename2)}) ({Formatter.AsInternalLink(path3, pagename3, text3)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)} ({Formatter.AsInternalLink(path2, pagename2)}) ({Formatter.AsInternalLink(path3, pagename3, text3)})";
+            }
+            content.Add(Formatter.AsTableRow(data));
         }
 
         /// <summary>
@@ -462,6 +582,35 @@ namespace WikiPageCreator.Export.Create
             content.Add($"");
 
             Logger.Trace($"CreatePageFooter(): page footer for Entry '{Entry.ID}' created");
+
+            return content;
+        }
+
+
+
+        /// <summary>
+        /// Creates the page content of the entry.
+        /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        protected virtual List<string> CreatePageContentInternal()
+        {
+            Logger.Trace($"CreatePageContentInternal()");
+            Logger.Debug($"Entry is '{Entry.ID}'");
+
+            List<string> content = new List<string>();
+
+            content.AddRange(CreatePageHeader());
+            content.AddRange(CreatePageTitle());
+
+            content.AddRange(CreateInfoBoxBegin());
+            content.AddRange(CreateInfoBoxContent());
+            content.AddRange(CreateInfoBoxEnd());
+
+            content.AddRange(CreateChapterContent());
+
+            content.AddRange(CreatePageFooter());
+
+            Logger.Trace($"CreatePageContentInternal(): page content for Entry '{Entry.ID}' created");
 
             return content;
         }

@@ -59,29 +59,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null.</exception>
         public CountryItem(DBReader reader, string id, string baseTableName, string targetTableName) : base(reader, id, baseTableName, targetTableName)
         {
-            Logger.Trace($"CountryItem()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-            if (baseTableName == null)
-            {
-                Logger.Fatal($"BaseTableName not specified");
-                throw new ArgumentNullException(nameof(baseTableName));
-            }
-            if (targetTableName == null)
-            {
-                Logger.Fatal($"TargetTableName not specified");
-                throw new ArgumentNullException(nameof(targetTableName));
-            }
-
             Logger.Trace($"CountryItem(): CountryItem with ID = '{id}' created");
         }
 

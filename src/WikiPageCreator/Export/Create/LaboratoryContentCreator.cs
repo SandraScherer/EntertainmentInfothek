@@ -54,17 +54,6 @@ namespace WikiPageCreator.Export.Create
         {
             Logger.Trace($"LaboratoryContentCreator()");
 
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
             Laboratories = laboratories;
             Headings = new Dictionary<string, string>
             {
@@ -78,21 +67,12 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given laboratory.
-        /// </summary>
-        /// <returns>The formatted content of the laboratory.</returns>
-        public override List<string> CreateInfoBoxContent()
-        {
-            return CreateInfoBoxContentInternal();
-        }
-
-        /// <summary>
         /// Creates the infobox content of a given list of laboratories.
         /// </summary>
         /// <returns>The formatted content of the list of laboratories.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        public override List<string> CreateInfoBoxContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
 
@@ -128,7 +108,7 @@ namespace WikiPageCreator.Export.Create
                     }
                 }
             }
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for List of Laboratories with Count '{Laboratories.Count}' created");
+            Logger.Trace($"CreateInfoBoxContent(): infobox content for the list of Laboratories with count '{Laboratories.Count}' created");
 
             return content;
         }

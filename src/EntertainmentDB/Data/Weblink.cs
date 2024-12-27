@@ -71,19 +71,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Weblink(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Weblink()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Weblink(): Weblink with ID = '{id}' created");
         }
 

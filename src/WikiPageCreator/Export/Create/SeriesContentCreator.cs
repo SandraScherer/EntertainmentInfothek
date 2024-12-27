@@ -58,85 +58,25 @@ namespace WikiPageCreator.Export.Create
         public SeriesContentCreator(Series series, Formatter formatter, string targetLanguageCode)
             : base(series, formatter, targetLanguageCode)
         {
-            Logger.Trace($"SeriesContentCreator()");
-
-            if (series == null)
-            {
-                Logger.Fatal($"Series not specified");
-                throw new ArgumentNullException(nameof(series));
-            }
-            if (formatter == null)
-            {
-                Logger.Fatal($"Formatter not specified");
-                throw new ArgumentNullException(nameof(formatter));
-            }
-            if (String.IsNullOrEmpty(targetLanguageCode))
-            {
-                Logger.Fatal($"TargetLanguageCode not specified");
-                throw new ArgumentNullException(nameof(targetLanguageCode));
-            }
-
-            Headings = new Dictionary<string, string>
-            {
-                { "en", "Series" },
-                { "de", "Serie" }
-            };
-
             Logger.Trace($"SeriesContentCreator(): SeriesContentCreator created");
         }
 
         // --- Methods ---
 
         /// <summary>
-        /// Creates the infobox content of a given series.
+        /// Creates the page content of the movie.
         /// </summary>
-        /// <returns>The formatted content of the series.</returns>
-        protected override List<string> CreateInfoBoxContentInternal()
+        /// <returns>The formatted page content of the movie.</returns>
+        protected override List<string> CreatePageContent()
         {
-            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Trace($"CreatePageContent()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
 
-            content.AddRange(CreateInfoBoxTitle());
-            content.AddRange(CreateInfoBoxType());
-            content.AddRange(CreateInfoBoxLogo());
-            content.AddRange(CreateInfoBoxReleaseDateFirstEpisode());
-            content.AddRange(CreateInfoBoxReleaseDateLastEpisode());
-            content.AddRange(CreateInfoBoxGenre());
-            content.AddRange(CreateInfoBoxCertification());
-            content.AddRange(CreateInfoBoxCountry());
-            content.AddRange(CreateInfoBoxLanguage());
-            content.AddRange(CreateInfoBoxNoOfSeasons());
-            content.AddRange(CreateInfoBoxNoOfEpisodes());
-            content.AddRange(CreateInfoBoxBudget());
-            content.AddRange(CreateInfoBoxWorldwideGross());
-            content.AddRange(CreateInfoBoxRuntime());
-            content.AddRange(CreateInfoBoxSoundMix());
-            content.AddRange(CreateInfoBoxColor());
-            content.AddRange(CreateInfoBoxAspectRatio());
-            content.AddRange(CreateInfoBoxCamera());
-            content.AddRange(CreateInfoBoxLaboratory());
-            content.AddRange(CreateInfoBoxFilmLength());
-            content.AddRange(CreateInfoBoxNegativeFormat());
-            content.AddRange(CreateInfoBoxCinematographicProcess());
-            content.AddRange(CreateInfoBoxPrintedFilmFormat());
-
-            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for  Series {Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the chapter content of a given series.
-        /// </summary>
-        /// <returns>The formatted content of the series.</returns>
-        protected override List<string> CreateChapterContentInternal()
-        {
-            Logger.Trace($"CreateChapterContentInternal()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
+            content.AddRange(CreateInfoBoxBegin());
+            content.AddRange(CreateInfoBoxContentInternal());
+            content.AddRange(CreateInfoBoxEnd());
 
             content.AddRange(CreateChapterPoster());
             content.AddRange(CreateChapterCover());
@@ -150,7 +90,47 @@ namespace WikiPageCreator.Export.Create
             content.AddRange(CreateChapterWeblink());
             content.AddRange(CreateChapterConnection());
 
-            Logger.Trace($"CreateChapterContentInternal(): chapter content for Series {Series.OriginalTitle}' created");
+            Logger.Trace($"CreatePageContent(): page content for Series '{Series.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the infobox content of a given series.
+        /// </summary>
+        /// <returns>The formatted content of the series.</returns>
+        protected virtual List<string> CreateInfoBoxContentInternal()
+        {
+            Logger.Trace($"CreateInfoBoxContentInternal()");
+            Logger.Debug($"Series is '{Series.OriginalTitle}'");
+
+            List<string> content = new List<string>();
+
+            content.AddRange(CreateInfoBoxContentTitle());
+            content.AddRange(CreateInfoBoxContentType());
+            content.AddRange(CreateInfoBoxContentLogo());
+            content.AddRange(CreateInfoBoxContentReleaseDateFirstEpisode());
+            content.AddRange(CreateInfoBoxContentReleaseDateLastEpisode());
+            content.AddRange(CreateInfoBoxContentGenre());
+            content.AddRange(CreateInfoBoxContentCertification());
+            content.AddRange(CreateInfoBoxContentCountry());
+            content.AddRange(CreateInfoBoxContentLanguage());
+            content.AddRange(CreateInfoBoxContentNoOfSeasons());
+            content.AddRange(CreateInfoBoxContentNoOfEpisodes());
+            content.AddRange(CreateInfoBoxContentBudget());
+            content.AddRange(CreateInfoBoxContentWorldwideGross());
+            content.AddRange(CreateInfoBoxContentRuntime());
+            content.AddRange(CreateInfoBoxContentSoundMix());
+            content.AddRange(CreateInfoBoxContentColor());
+            content.AddRange(CreateInfoBoxContentAspectRatio());
+            content.AddRange(CreateInfoBoxContentCamera());
+            content.AddRange(CreateInfoBoxContentLaboratory());
+            content.AddRange(CreateInfoBoxContentFilmLength());
+            content.AddRange(CreateInfoBoxContentNegativeFormat());
+            content.AddRange(CreateInfoBoxContentCinematographicProcess());
+            content.AddRange(CreateInfoBoxContentPrintedFilmFormat());
+
+            Logger.Trace($"CreateInfoBoxContentInternal(): infobox content for  Series {Series.OriginalTitle}' created");
 
             return content;
         }
@@ -159,10 +139,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox logo content of a given series.
         /// </summary>
         /// <returns>The formatted infobox logo content of the series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        protected virtual List<string> CreateInfoBoxLogo()
+        protected virtual List<string> CreateInfoBoxContentLogo()
         {
-            Logger.Trace($"CreateInfoBoxLogo()");
+            Logger.Trace($"CreateInfoBoxContentLogo()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -174,7 +153,7 @@ namespace WikiPageCreator.Export.Create
             //    content.AddRange(new ImageContentCreator(Series.Logo, Formatter, TargetLanguageCode).CreateInfoBoxContent());
             //}
 
-            Logger.Trace($"CreateInfoBoxLogo(): infobox logo for Series '{Series.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentLogo(): infobox content logo for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -183,9 +162,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox release date content of a given series.
         /// </summary>
         /// <returns>The formatted infobox release date content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxReleaseDateFirstEpisode()
+        protected virtual List<string> CreateInfoBoxContentReleaseDateFirstEpisode()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode()");
+            Logger.Trace($"CreateInfoBoxContentReleaseDateFirstEpisode()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -211,7 +190,7 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateFirstEpisode(): infobox release date of first episode for Series '{Series.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentReleaseDateFirstEpisode(): infobox content release date of first episode for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -220,9 +199,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox release date content of a given series.
         /// </summary>
         /// <returns>The formatted infobox release date content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxReleaseDateLastEpisode()
+        protected virtual List<string> CreateInfoBoxContentReleaseDateLastEpisode()
         {
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode()");
+            Logger.Trace($"CreateInfoBoxContentReleaseDateLastEpisode()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -248,7 +227,7 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxReleaseDateLastEpisode(): infobox release date of last episode for Series '{Series.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentReleaseDateLastEpisode(): infobox content release date of last episode for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -257,9 +236,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
         /// <returns>The formatted infobox language content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxNoOfSeasons()
+        protected virtual List<string> CreateInfoBoxContentNoOfSeasons()
         {
-            Logger.Trace($"CreateInfoBoxNoOfSeasons()");
+            Logger.Trace($"CreateInfoBoxContentNoOfSeasons()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -284,7 +263,7 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfSeasons(): infobox no of seasons for Series '{Series.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentNoOfSeasons(): infobox content no of seasons for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -293,9 +272,9 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted infobox language content of a given series.
         /// </summary>
         /// <returns>The formatted infobox language content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxNoOfEpisodes()
+        protected virtual List<string> CreateInfoBoxContentNoOfEpisodes()
         {
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes()");
+            Logger.Trace($"CreateInfoBoxContentNoOfEpisodes()");
             Logger.Debug($"Series is '{Series.OriginalTitle}'");
 
             List<string> content = new List<string>();
@@ -320,53 +299,7 @@ namespace WikiPageCreator.Export.Create
                 content.Add(Formatter.AsTableRow(data));
             }
 
-            Logger.Trace($"CreateInfoBoxNoOfEpisodes(): infobox no of episodes for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox cinematographic process content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox cinematographic process content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxCinematographicProcess()
-        {
-            Logger.Trace($"CreateInfoBoxCinematographicProcess()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.CinematographicProcesses != null)
-            //{
-            //    Logger.Debug($"Series.CinematographicProcesses is not null -> create");
-            //    content.AddRange(new CinematographicProcessContentCreator(Series.CinematographicProcesses, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxCinematographicProcess(): infobox cinematographic process for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted infobox printed film format content of a given series.
-        /// </summary>
-        /// <returns>The formatted infobox printed film format content of the series.</returns>
-        protected virtual List<string> CreateInfoBoxPrintedFilmFormat()
-        {
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-
-            // TODO: implement following stuff
-            //if (Series.PrintedFilmFormats != null)
-            //{
-            //    Logger.Debug($"Series.PrintedFilmFormats is not null -> create");
-            //    content.AddRange(new PrintedFilmFormatsContentCreator(Series.PrintedFilmFormats, Formatter, TargetLanguageCode).CreateInfoBoxContent());
-            //}
-
-            Logger.Trace($"CreateInfoBoxPrintedFilmFormat(): infobox printed film formats for Series '{Series.OriginalTitle}' created");
+            Logger.Trace($"CreateInfoBoxContentNoOfEpisodes(): infobox content no of episodes for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -389,7 +322,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Posters != null)
             //{
             //    Logger.Debug($"Series.Posters is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new ImageContentCreator(Series.Posters, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -416,7 +349,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Covers != null)
             //{
             //    Logger.Debug($"Series.Covers is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new ImageContentCreator(Series.Covers, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -443,7 +376,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Descriptions != null)
             //{
             //    Logger.Debug($"Series.Descriptions is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new TextContentCreator(Series.Descriptions, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -470,7 +403,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Reviews != null)
             //{
             //    Logger.Debug($"Series.Reviews is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new TextContentCreator(Series.Reviews, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -497,7 +430,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Images != null)
             //{
             //    Logger.Debug($"Series.Images is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new ImageContentCreator(Series.Images, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -521,16 +454,24 @@ namespace WikiPageCreator.Export.Create
             title.Add("de", "Darsteller und Mannschaft");
 
             // TODO: implement following stuff
-            //content.AddRange(CreateNewChapter(title));
+            //content.AddRange(CreateChapterHeading(title));
 
             //Dictionary<string, string> titleSection = new Dictionary<string, string>();
 
+            //if (Series.Creators != null)
+            //{
+            //    Logger.Debug($"Series.Creators is not null -> create");
+            //    titleSection.Add("en", "Creator");
+            //    titleSection.Add("de", "Erfinder");
+            //    content.AddRange(CreateSectionHeading(titleSection));
+            //    content.AddRange(new PersonContentCreator(Series.Creators, Formatter, TargetLanguageCode).CreateSectionContent());
+            //}
             //if (Series.Directors != null)
             //{
             //    Logger.Debug($"Series.Directors is not null -> create");
             //    titleSection.Add("en", "Director");
             //    titleSection.Add("de", "Regie");
-            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(CreateSectionHeading(titleSection));
             //    content.AddRange(new PersonContentCreator(Series.Directors, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
             //if (Series.Writers != null)
@@ -538,103 +479,12 @@ namespace WikiPageCreator.Export.Create
             //    Logger.Debug($"Series.Writers is not null -> create");
             //    titleSection.Add("en", "Writers");
             //    titleSection.Add("de", "Drehbuch");
-            //    content.AddRange(CreateNewSection(titleSection));
+            //    content.AddRange(CreateSectionHeading(titleSection));
             //    content.AddRange(new PersonContentCreator(Series.Writers, Formatter, TargetLanguageCode).CreateSectionContent());
             //}
             // TODO: add more cast and crew sections
 
             Logger.Trace($"CreateChapterCastAndCrew(): chapter cast and crew for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted company chapter content of a given series.
-        /// </summary>
-        /// <returns>The formatted company chapter content of the series.</returns>
-        protected virtual List<string> CreateChapterCompany()
-        {
-            Logger.Trace($"CreateChapterCompany()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            Dictionary<string, string> title = new Dictionary<string, string>();
-            title.Add("en", "Company Credits");
-            title.Add("de", "Beteiligte Firmen");
-
-            // TODO: implement following stuff
-            //content.AddRange(CreateNewChapter(title));
-
-            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
-
-            //if (Series.ProductionCompanies != null)
-            //{
-            //    Logger.Debug($"Series.ProductionCompanies is not null -> create");
-            //    titleSection.Add("en", "Production Company");
-            //    titleSection.Add("de", "Produktionsfirmen");
-            //    content.AddRange(CreateNewSection(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Series.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            //if (Series.Distributors != null)
-            //{
-            //    Logger.Debug($"Series.Distributors is not null -> create");
-            //    titleSection.Add("en", "Distributors");
-            //    titleSection.Add("de", "Vertrieb");
-            //    content.AddRange(CreateNewSection(titleSection));
-            //    content.AddRange(new CompanyContentCreator(Series.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            // TODO: add more company sections
-
-            Logger.Trace($"CreateChapterCompany(): chapter companies for Series '{Series.OriginalTitle}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted filming and production chapter content of a given series.
-        /// </summary>
-        /// <returns>The formatted filming and production chapter content of the series.</returns>
-        protected virtual List<string> CreateChapterFilmingAndProduction()
-        {
-            Logger.Trace($"CreateChapterFilmingAndProduction()");
-            Logger.Debug($"Series is '{Series.OriginalTitle}'");
-
-            List<string> content = new List<string>();
-            Dictionary<string, string> title = new Dictionary<string, string>();
-            title.Add("en", "Filming and Production");
-            title.Add("de", "Produktion");
-
-            //TODO: implement following stuff
-            //content.AddRange(CreateNewChapter(title));
-
-            //Dictionary<string, string> titleSection = new Dictionary<string, string>();
-
-            //if (Series.FilmingLocations != null)
-            //{
-            //    Logger.Debug($"Series.FilmingLocations is not null -> create");
-            //    titleSection.Add("en", "Filming Locations");
-            //    titleSection.Add("de", "Drehorte");
-            //    content.AddRange(CreateNewSection(titleSection));
-            //    content.AddRange(new LocationContentCreator(Series.FilmingLocations, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            //if (Series.FilmingDates != null)
-            //{
-            //    Logger.Debug($"Series.FilmingDates is not null -> create");
-            //    titleSection.Add("en", "Filming Dates");
-            //    titleSection.Add("de", "");
-            //    content.AddRange(CreateNewSection(titleSection));
-            //    content.AddRange(new TimeSpanContentCreator(Series.FilmingDates, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-            //if (Series.ProductionDates != null)
-            //{
-            //    Logger.Debug($"Series.ProductionDates is not null -> create");
-            //    titleSection.Add("en", "Production Dates");
-            //    titleSection.Add("de", "");
-            //    content.AddRange(CreateNewSection(titleSection));
-            //    content.AddRange(new TimeSpanContentCreator(Series.ProductionDates, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
-
-            Logger.Trace($"CreateChapterFilmingAndProduction(): chapter filming and production for Series '{Series.OriginalTitle}' created");
 
             return content;
         }
@@ -657,7 +507,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Awards != null)
             //{
             //    Logger.Debug($"Series.Awards is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new AwardContentCreator(Series.Awards, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 
@@ -684,7 +534,7 @@ namespace WikiPageCreator.Export.Create
             //if (Series.Weblinks != null)
             //{
             //    Logger.Debug($"Series.Weblinks is not null -> create");
-            //    content.AddRange(CreateNewChapter(title));
+            //    content.AddRange(CreateChapterHeading(title));
             //    content.AddRange(new WeblinkContentCreator(Series.Weblinks, Formatter, TargetLanguageCode).CreateChapterContent());
             //}
 

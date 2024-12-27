@@ -119,6 +119,10 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "FilmingDate", false)]
         [DataRow("Movie", "ProductionDate", true)]
         [DataRow("Movie", "ProductionDate", false)]
+        [DataRow("Series", "FilmingDate", true)]
+        [DataRow("Series", "FilmingDate", false)]
+        [DataRow("Series", "ProductionDate", true)]
+        [DataRow("Series", "ProductionDate", false)]
         public void RetrieveTest_withValidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -144,6 +148,10 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "FilmingDate", false)]
         [DataRow("Movie", "ProductionDate", true)]
         [DataRow("Movie", "ProductionDate", false)]
+        [DataRow("Series", "FilmingDate", true)]
+        [DataRow("Series", "FilmingDate", false)]
+        [DataRow("Series", "ProductionDate", true)]
+        [DataRow("Series", "ProductionDate", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -167,6 +175,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -198,6 +208,69 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            List<TimespanItem> list = Data.TimespanItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", ""));
+
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", ""));
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", ""));
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
+        {
+            DBReader reader = new SQLiteReader();
+            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie", "FilmingDate")]
+        [DataRow("Movie", "ProductionDate")]
+        [DataRow("Series", "FilmingDate")]
+        [DataRow("Series", "ProductionDate")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
+        {
+            DBReader reader = new SQLiteReader();
+            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null);
         }
     }
 }

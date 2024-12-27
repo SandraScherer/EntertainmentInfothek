@@ -116,6 +116,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
         public void RetrieveTest_withValidID(string baseTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -138,6 +140,8 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
+        [DataRow("Series", true)]
+        [DataRow("Series", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -159,6 +163,7 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
+        [DataRow("Series")]
         public void RetrieveListTest_withValidData(string baseTableName)
         {
             // Arrange
@@ -187,6 +192,58 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} CinematographicProcess Details X3", list[2].Details);
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} CinematographicProcess LastUpdated X3", list[2].LastUpdated);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withReaderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(null, baseTableName, "_xxx", "CinematographicProcess");
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableNameNull()
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, null, "_xxx", "CinematographicProcess");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, null, "CinematographicProcess");
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", null);
+        }
+
+        [DataTestMethod()]
+        [DataRow("Movie")]
+        [DataRow("Series")]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void RetrieveListTest_withOrderNull(string baseTableName)
+        {
+            // Arrange, Act, Assert
+            DBReader reader = new SQLiteReader();
+            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", "CinematographicProcess", null);
         }
     }
 }

@@ -57,6 +57,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(list, creator.Laboratories);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Laboratory", creator.Headings["en"]);
+            Assert.AreEqual("Labor", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -166,7 +168,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(NotSupportedException))]
-        public void CreatePageContentTest(string id, string targetLanguageCode)
+        public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -180,7 +182,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             LaboratoryContentCreator creator = new LaboratoryContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePageContent();
+            creator.CreatePage();
         }
 
         [DataTestMethod()]

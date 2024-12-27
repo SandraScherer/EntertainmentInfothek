@@ -56,6 +56,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(list, creator.FilmLengths);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Film Length", creator.Headings["en"]);
+            Assert.AreEqual("Filmlänge", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -161,7 +163,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(NotSupportedException))]
-        public void CreatePageContentTest(string id, string targetLanguageCode)
+        public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -174,7 +176,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmLengthContentCreator creator = new FilmLengthContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePageContent();
+            creator.CreatePage();
         }
 
         [DataTestMethod()]

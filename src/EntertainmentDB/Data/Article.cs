@@ -76,14 +76,6 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an article with an empty id string.
-        /// </summary>
-        /// <param name="reader">The database reader to be used to read the article information from the database.</param>
-        protected Article(DBReader reader) : this(reader, "")
-        {
-        }
-
-        /// <summary>
         /// Initializes an article with the given id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the article information from the database.</param>
@@ -91,19 +83,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         protected Article(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Article()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Article(): Article with ID = '{id}' created");
         }
     }

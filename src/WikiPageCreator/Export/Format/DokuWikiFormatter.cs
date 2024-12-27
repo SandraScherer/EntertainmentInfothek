@@ -23,7 +23,7 @@ namespace WikiPageCreator.Export.Format
     /// <summary>
     /// Provides a formatter for a DokuWiki.
     /// </summary>
-    public class DokuWikiFormatter : Formatter
+    public class DokuWikiFormatter : MarkdownFormatter
     {
         // --- Properties ---
 
@@ -90,29 +90,6 @@ namespace WikiPageCreator.Export.Format
             Logger.Debug($"AsFilename(): '{pagename}'");
 
             return pagename;
-        }
-
-        /// <summary>
-        /// Formats the given text as bold text.
-        /// </summary>
-        /// <param name="text">The text to be formatted.</param>
-        /// <returns>The text formatted as bold.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given text is null.</exception>
-        public override string AsBold(string text)
-        {
-            Logger.Trace($"AsBold()");
-
-            if (String.IsNullOrEmpty(text))
-            {
-                Logger.Fatal($"Text not specified");
-                throw new ArgumentNullException(nameof(text));
-            }
-
-            text = $"**{text}**";
-
-            Logger.Debug($"AsBold(): '{text}'");
-
-            return text;
         }
 
         /// <summary>
@@ -303,7 +280,7 @@ namespace WikiPageCreator.Export.Format
             if (String.IsNullOrEmpty(text))
             {
                 Logger.Fatal($"Text not specified");
-                return AsInternalLink(path, pagename);
+                throw new ArgumentNullException(nameof(text));
             }
 
             string formatted = "";
@@ -481,29 +458,6 @@ namespace WikiPageCreator.Export.Format
             }
 
             return AsInternalLink(link);
-        }
-
-        /// <summary>
-        /// Formats the given email adress as an email link.
-        /// </summary>
-        /// <param name="mail">the email adress for the link.</param>
-        /// <returns>The email formatted as an email link.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given email address is null.</exception>
-        public override string AsEMail(string mail)
-        {
-            Logger.Trace($"AsEMail()");
-
-            if (String.IsNullOrEmpty(mail))
-            {
-                Logger.Fatal($"Mail not specified");
-                throw new ArgumentNullException(nameof(mail));
-            }
-
-            mail = $"<{mail}>";
-
-            Logger.Debug($"AsEMail(): '{mail}'");
-
-            return mail;
         }
 
         // ---------------
@@ -1100,40 +1054,38 @@ namespace WikiPageCreator.Export.Format
         }
 
         /// <summary>
-        /// Aligns the given imagelink as given.
+        /// Aligns the given text as given.
         /// </summary>
-        /// <param name="imagelink">The imagelink to be aligned.</param>
+        /// <param name="text">The text to be aligned.</param>
         /// <param name="align">The alignment to be used.</param>
-        /// <returns>The Imagelink aligned as given.</returns>
+        /// <returns>The text aligned as given.</returns>
         /// <exception cref="ArgumentNullException">Thrown when any of the given parameters is null or '0'.</exception>
-        public override string AlignImage(string imagelink, Alignment align)
+        public override string Align(string text, Alignment align)
         {
-            Logger.Trace($"AlignImage()");
+            Logger.Trace($"Align()");
 
-            if (String.IsNullOrEmpty(imagelink))
+            if (String.IsNullOrEmpty(text))
             {
-                Logger.Fatal($"ImageLink not specified");
-                throw new ArgumentNullException(nameof(imagelink));
+                Logger.Fatal($"Text not specified");
+                throw new ArgumentNullException(nameof(text));
             }
 
             switch (align)
             {
-                case Alignment.Left:
-                    imagelink = imagelink.Insert(imagelink.Length - 2, " ");
+                case Alignment.Right:
+                    text = $"  {text}";
                     break;
                 case Alignment.Centered:
-                    imagelink = imagelink.Insert(imagelink.Length - 2, " ").Insert(2, " ");
+                    text = $"  {text}  ";
                     break;
-                case Alignment.Right:
-                    imagelink = imagelink.Insert(2, " ");
-                    break;
-                default:
+                case Alignment.Left:
+                    text = $"{text}  ";
                     break;
             }
 
-            Logger.Debug($"AlignImage(): '{imagelink}'");
+            Logger.Debug($"Align(): '{text}'");
 
-            return imagelink;
+            return text;
         }
 
         // ---------------
@@ -1169,17 +1121,6 @@ namespace WikiPageCreator.Export.Format
             Logger.Trace($"ListItemSorted()");
 
             return $"- ";
-        }
-
-        /// <summary>
-        /// Inserts an indicator for an indentation.
-        /// </summary>
-        /// <returns>Indicator for an indentation.</returns>
-        public override string ListItemIndent()
-        {
-            Logger.Trace($"ListItemIndent()");
-
-            return $"  ";
         }
 
         // ---------------
@@ -1329,6 +1270,36 @@ namespace WikiPageCreator.Export.Format
             formatted = $"{formatted}>|";
 
             Logger.Debug($"DefineTable(): '{formatted}");
+
+            return formatted;
+        }
+
+        /// <summary>
+        /// Formats the given data as column titles.
+        /// </summary>
+        /// <param name="data">The data for the title row.</param>
+        /// <returns>The data formatted as a title row.</returns>
+        public override string AsTableTitle(string[] data)
+        {
+            Logger.Trace($"AsTableTitle()");
+
+            if (data == null)
+            {
+                Logger.Fatal($"Data not specified");
+                throw new ArgumentNullException(nameof(data));
+            }
+
+            string formatted = $"^ ";
+            foreach (string item in data)
+            {
+                if (String.IsNullOrEmpty(item))
+                    formatted = String.Concat(formatted, "^ ");
+                else
+                    formatted = String.Concat(formatted, item, " ^ ");
+            }
+            formatted = formatted[0..^1];
+
+            Logger.Debug($"AsTableTitle(): '{formatted}");
 
             return formatted;
         }

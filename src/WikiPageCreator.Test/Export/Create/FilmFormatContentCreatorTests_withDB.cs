@@ -57,6 +57,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(list, creator.FilmFormats);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Dummy", creator.Headings["en"]);
+            Assert.AreEqual("Dummy", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -166,7 +168,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(NotSupportedException))]
-        public void CreatePageContentTest(string id, string targetLanguageCode)
+        public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -180,7 +182,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePageContent();
+            creator.CreatePage();
         }
 
         [DataTestMethod()]
@@ -206,13 +208,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             if (targetLanguageCode.Equals("en"))
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Film Format",
+                    new string[] { "Dummy",
                                    "FilmFormat Format X" }));
             }
             else
             {
                 testContent.Add(formatter.AsTableRow(
-                    new string[] { "Filmformat",
+                    new string[] { "Dummy",
                                    "FilmFormat Format X" }));
             }
 

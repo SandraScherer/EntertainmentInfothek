@@ -177,15 +177,24 @@ namespace WikiPageCreator
             DBReader reader = new SQLiteReader();
             Movie movie = new Movie(reader, id);
             movie.Retrieve(false);
+
             Formatter formatter = new DokuWikiFormatter();
+            Formatter formatter2 = new ObsidianFormatter();
+
             MovieContentCreator creator = new MovieContentCreator(movie, formatter, targetLanguageCode);
+            MovieContentCreator creator2 = new MovieContentCreator(movie, formatter2, targetLanguageCode);
 
             List<string> content = new List<string>();
+            List<string> content2 = new List<string>();
 
-            content.AddRange(creator.CreatePageContent());
+            content.AddRange(creator.CreatePage());
+            content2.AddRange(creator2.CreatePage());
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator.GetPageName(), content);
+
+            FileWriter writer2 = new FileWriter();
+            writer2.WriteToFile(outputFolder + "2\\" + targetLanguageCode + "\\cinema_and_television_movie\\", creator2.GetPageName(), content2);
 
             Logger.Trace($"CreateMoviePage() done");
         }
@@ -203,15 +212,24 @@ namespace WikiPageCreator
             DBReader reader = new SQLiteReader();
             Series series = new Series(reader, id);
             series.Retrieve(false);
+
             Formatter formatter = new DokuWikiFormatter();
+            Formatter formatter2 = new ObsidianFormatter();
+
             SeriesContentCreator creator = new SeriesContentCreator(series, formatter, targetLanguageCode);
+            SeriesContentCreator creator2 = new SeriesContentCreator(series, formatter2, targetLanguageCode);
 
             List<string> content = new List<string>();
+            List<string> content2 = new List<string>();
 
-            content.AddRange(creator.CreatePageContent());
+            content.AddRange(creator.CreatePage());
+            content2.AddRange(creator2.CreatePage());
 
             FileWriter writer = new FileWriter();
             writer.WriteToFile(outputFolder + "\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator.GetPageName(), content);
+
+            FileWriter writer2 = new FileWriter();
+            writer2.WriteToFile(outputFolder + "2\\" + targetLanguageCode + "\\cinema_and_television_series\\", creator2.GetPageName(), content2);
 
             Logger.Trace($"CreateSeriesPage() done");
         }

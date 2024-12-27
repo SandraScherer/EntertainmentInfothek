@@ -53,6 +53,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual(entry, creator.Connection);
             Assert.AreEqual(formatter, creator.Formatter);
             Assert.AreEqual(targetLanguageCode, creator.TargetLanguageCode);
+            Assert.AreEqual("Connections", creator.Headings["en"]);
+            Assert.AreEqual("Verbindungen", creator.Headings["de"]);
         }
 
         [DataTestMethod()]
@@ -146,7 +148,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
         [ExpectedException(typeof(NotSupportedException))]
-        public void CreatePageContentTest(string id, string targetLanguageCode)
+        public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
@@ -156,7 +158,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePageContent();
+            creator.CreatePage();
         }
 
         [DataTestMethod()]
@@ -218,6 +220,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
+        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -227,19 +230,8 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
-            List<string> testContent = new List<string>();
-
-            testContent.Add(formatter.AsInsertPage(targetLanguageCode + ":navigation:" + id));
-
             // Act
             List<string> content = creator.CreateSectionContent();
-
-            // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
-            for (int i = 0; i < testContent.Count; i++)
-            {
-                Assert.AreEqual(testContent[i], content[i]);
-            }
         }
     }
 }

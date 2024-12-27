@@ -77,19 +77,6 @@ namespace EntertainmentDB.Data
         /// <exception cref="ArgumentNullException">Thrown when the given id is null.</exception>
         public Series(DBReader reader, string id) : base(reader, id)
         {
-            Logger.Trace($"Series()");
-
-            if (reader == null)
-            {
-                Logger.Fatal($"DBReader not specified");
-                throw new ArgumentNullException(nameof(reader));
-            }
-            if (id == null)
-            {
-                Logger.Fatal($"ID not specified");
-                throw new ArgumentNullException(nameof(id));
-            }
-
             Logger.Trace($"Series(): Series with ID = '{id}' created");
         }
 
@@ -287,13 +274,23 @@ namespace EntertainmentDB.Data
                 NegativeFormats = null;
             }
 
-            /*
             CinematographicProcesses = CinematographicProcessItem.RetrieveList(Reader, "Series", ID, "CinematographicProcess");
             noOfDataRecords += CinematographicProcesses.Count;
+            if (CinematographicProcesses.Count == 0)
+            {
+                Logger.Debug($"Series.CinematographicProcesses.Count == 0 -> null");
+                CinematographicProcesses = null;
+            }
 
-            PrintedFilmFormats = PrintedFilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
+            PrintedFilmFormats = FilmFormatItem.RetrieveList(Reader, "Series", ID, "PrintedFilmFormat");
             noOfDataRecords += PrintedFilmFormats.Count;
+            if (PrintedFilmFormats.Count == 0)
+            {
+                Logger.Debug($"Series.PrintedFilmFormats.Count == 0 -> null");
+                PrintedFilmFormats = null;
+            }
 
+            /*
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, "Series", ID, "Director");
             noOfDataRecords += Directors.Count;
@@ -387,30 +384,67 @@ namespace EntertainmentDB.Data
 
             Thanks = PersonItem.RetrieveList(Reader, "Series", ID, "Thanks");
             noOfDataRecords += Thanks.Count;
+            */
 
             // Company data
             ProductionCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "ProductionCompany");
             noOfDataRecords += ProductionCompanies.Count;
+            if (ProductionCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.ProductionCompanies.Count == 0 -> null");
+                ProductionCompanies = null;
+            }
 
             Distributors = DistributorCompanyItem.RetrieveList(Reader, "Series", ID, "Distributor");
             noOfDataRecords += Distributors.Count;
+            if (Distributors.Count == 0)
+            {
+                Logger.Debug($"Series.Distributors.Count == 0 -> null");
+                Distributors = null;
+            }
 
             SpecialEffectsCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "SpecialEffectsCompany");
             noOfDataRecords += SpecialEffectsCompanies.Count;
+            if (SpecialEffectsCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.SpecialEffectsCompanies.Count == 0 -> null");
+                SpecialEffectsCompanies = null;
+            }
 
             OtherCompanies = CompanyItem.RetrieveList(Reader, "Series", ID, "OtherCompany");
             noOfDataRecords += OtherCompanies.Count;
+            if (OtherCompanies.Count == 0)
+            {
+                Logger.Debug($"Series.OtherCompanies.Count == 0 -> null");
+                OtherCompanies = null;
+            }
 
             // Production data
             FilmingLocations = LocationItem.RetrieveList(Reader, "Series", ID, "FilmingLocation");
             noOfDataRecords += FilmingLocations.Count;
+            if (FilmingLocations.Count == 0)
+            {
+                Logger.Debug($"Series.FilmingLocations.Count == 0 -> null");
+                FilmingLocations = null;
+            }
 
             FilmingDates = TimespanItem.RetrieveList(Reader, "Series", ID, "FilmingDate");
             noOfDataRecords += FilmingDates.Count;
+            if (FilmingDates.Count == 0)
+            {
+                Logger.Debug($"Series.FilmingDates.Count == 0 -> null");
+                FilmingDates = null;
+            }
 
             ProductionDates = TimespanItem.RetrieveList(Reader, "Series", ID, "ProductionDate");
             noOfDataRecords += ProductionDates.Count;
+            if (ProductionDates.Count == 0)
+            {
+                Logger.Debug($"Series.ProductionDates.Count == 0 -> null");
+                ProductionDates = null;
+            }
 
+            /*
             // Image data
             Posters = ImageItem.RetrieveList(Reader, "Series", ID, "Poster");
             noOfDataRecords += Posters.Count;
@@ -434,7 +468,7 @@ namespace EntertainmentDB.Data
 
             Weblinks = WeblinkItem.RetrieveList(Reader, "Series", ID, "Weblink");
             noOfDataRecords += Weblinks.Count;
-        */
+            */
             return noOfDataRecords;
         }
 
@@ -445,7 +479,7 @@ namespace EntertainmentDB.Data
         /// <param name="status">The status of the series.</param>
         /// <param name="order">The order in which the data records are to be sorted.</param>
         /// <returns>The list of series.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when the given status or order is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when the given reader, status or order is null.</exception>
         public static List<Article> RetrieveList(DBReader reader, string status, string order = "ID")
         {
             Logger.Trace($"Series.RetrieveList()");
