@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.ProductionCompanies);
             Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.Distributors);
             Assert.IsNull(entry.OtherCompanies);
 
             Assert.IsNull(entry.FilmingLocations);
@@ -208,7 +208,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.ProductionCompanies);
             Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.Distributors);
             Assert.IsNull(entry.OtherCompanies);
 
             Assert.IsNull(entry.FilmingLocations);
@@ -326,7 +326,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.ProductionCompanies);
             Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.Distributors);
             Assert.IsNull(entry.OtherCompanies);
 
             Assert.IsNull(entry.FilmingLocations);
@@ -611,10 +611,10 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
 
-            //Assert.AreEqual(3, entry.Distributors.Count);
-            //Assert.AreEqual("_xx1", entry.Distributors[0].ID);
-            //Assert.AreEqual("_xx2", entry.Distributors[1].ID);
-            //Assert.AreEqual("_xx3", entry.Distributors[2].ID);
+            Assert.AreEqual(3, entry.Distributors.Count);
+            Assert.AreEqual("_xx1", entry.Distributors[0].ID);
+            Assert.AreEqual("_xx2", entry.Distributors[1].ID);
+            Assert.AreEqual("_xx3", entry.Distributors[2].ID);
 
             Assert.AreEqual(3, entry.OtherCompanies.Count);
             Assert.AreEqual("_xx1", entry.OtherCompanies[0].ID);
@@ -755,7 +755,7 @@ namespace EntertainmentDB.Data.Tests
 
             Assert.IsNull(entry.ProductionCompanies);
             Assert.IsNull(entry.SpecialEffectsCompanies);
-            //Assert.IsNull(entry.Distributors);
+            Assert.IsNull(entry.Distributors);
             Assert.IsNull(entry.OtherCompanies);
 
             Assert.IsNull(entry.FilmingLocations);

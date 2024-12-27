@@ -445,8 +445,8 @@ namespace WikiPageCreator.Export.Create
         /// <param name="content">The list that contains the content of the section.</param>
         /// <param name="path">The path for the link.</param>
         /// <param name="pagename1">The pagename for the link.</param>
-        /// <param name="pagename2">The pagename for the link.</param>
-        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
         /// <exception cref="ArgumentNullException">Thrown when the given pagename1 is null.</exception>
         protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename1, string pagename2, string additionalInfo)
         {
@@ -472,21 +472,97 @@ namespace WikiPageCreator.Export.Create
         /// </summary>
         /// <param name="content">The list that contains the content of the section.</param>
         /// <param name="path">The path for the link.</param>
-        /// <param name="pagename">The pagename for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
         /// <param name="pagename2">The pagename for the second link.</param>
         /// <param name="text2">The text to be displayed for the second link.</param>
-        /// <param name="additionalInfo">Additional info to be displayed after the link.</param>
-        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename, string pagename2, string text2, string additionalInfo)
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path, string pagename1, string pagename2, string text2, string additionalInfo)
         {
             string[] data = new string[1];
 
             if (!String.IsNullOrEmpty(additionalInfo))
             {
-                data[0] = $"{Formatter.AsInternalLink(path, pagename)}, {Formatter.AsInternalLink(path, pagename2, text2)} {additionalInfo}";
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}, {Formatter.AsInternalLink(path, pagename2, text2)} {additionalInfo}";
             }
             else
             {
-                data[0] = $"{Formatter.AsInternalLink(path, pagename)}, {Formatter.AsInternalLink(path, pagename2, text2)}";
+                data[0] = $"{Formatter.AsInternalLink(path, pagename1)}, {Formatter.AsInternalLink(path, pagename2, text2)}";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the third link.</param>
+        /// <param name="pagename2">The pagename for the third link.</param>
+        /// <param name="text2">The text to be displayed for the third link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string text2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2, text2)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2, text2)})";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the second link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)}  ({Formatter.AsInternalLink(path2, pagename2)})";
+            }
+            content.Add(Formatter.AsTableRow(data));
+        }
+
+        /// <summary>
+        /// Creates the specific row of the section content.
+        /// </summary>
+        /// <param name="content">The list that contains te content of the section</param>
+        /// <param name="path1">The path for the link.</param>
+        /// <param name="pagename1">The pagename for the link.</param>
+        /// <param name="path2">The path for the second link.</param>
+        /// <param name="pagename2">The pagename for the second link.</param>
+        /// <param name="path3">The path for the third link.</param>
+        /// <param name="pagename3">The pagename for the third link.</param>
+        /// <param name="text3">The text to be displayed for the third link.</param>
+        /// <param name="additionalInfo">Additional info to be displayed after the links.</param>
+        protected void CreateSectionContentHelper(List<string> content, string[] path1, string pagename1, string[] path2, string pagename2, string[] path3, string pagename3, string text3, string additionalInfo)
+        {
+            string[] data = new string[1];
+
+            if (!String.IsNullOrEmpty(additionalInfo))
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)} ({Formatter.AsInternalLink(path2, pagename2)}) ({Formatter.AsInternalLink(path3, pagename3, text3)}) {additionalInfo}";
+            }
+            else
+            {
+                data[0] = $"{Formatter.AsInternalLink(path1, pagename1)} ({Formatter.AsInternalLink(path2, pagename2)}) ({Formatter.AsInternalLink(path3, pagename3, text3)})";
             }
             content.Add(Formatter.AsTableRow(data));
         }

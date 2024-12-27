@@ -109,6 +109,11 @@ namespace EntertainmentDB.Data
         public List<CompanyItem> ProductionCompanies { get; set; }
 
         /// <summary>
+        /// The list of distributors of the movie and tv article.
+        /// </summary>
+        public List<DistributorCompanyItem> Distributors { get; set; }
+
+        /// <summary>
         /// The list of special effects companies of the movie and tv article.
         /// </summary>
         public List<CompanyItem> SpecialEffectsCompanies { get; set; }

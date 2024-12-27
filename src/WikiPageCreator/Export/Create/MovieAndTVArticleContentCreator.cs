@@ -419,6 +419,15 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(CreateSectionHeading(titleSection));
                 content.AddRange(new CompanyContentCreator(MovieAndTVArticle.ProductionCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
             }
+            if (MovieAndTVArticle.Distributors != null)
+            {
+                Logger.Debug($"MovieAndTVArticle.Distributors is not null -> create");
+                Dictionary<string, string> titleSection = new Dictionary<string, string>();
+                titleSection.Add("en", "Distributors");
+                titleSection.Add("de", "Vertrieb");
+                content.AddRange(CreateSectionHeading(titleSection));
+                content.AddRange(new DistributorCompanyContentCreator(MovieAndTVArticle.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
+            }
             if (MovieAndTVArticle.SpecialEffectsCompanies != null)
             {
                 Logger.Debug($"MovieAndTVArticle.SpecialEffectsCompanies is not null -> create");
@@ -428,15 +437,6 @@ namespace WikiPageCreator.Export.Create
                 content.AddRange(CreateSectionHeading(titleSection));
                 content.AddRange(new CompanyContentCreator(MovieAndTVArticle.SpecialEffectsCompanies, Formatter, TargetLanguageCode).CreateSectionContent());
             }
-            //if (MovieAndTVArticle.Distributors != null)
-            //{
-            //    Logger.Debug($"MovieAndTVArticle.Distributors is not null -> create");
-            //    Dictionary<string, string> titleSection = new Dictionary<string, string>();
-            //    titleSection.Add("en", "Distributors");
-            //    titleSection.Add("de", "Vertrieb");
-            //    content.AddRange(CreateSectionHeading(titleSection));
-            //    content.AddRange(new DistributorContentCreator(MovieAndTVArticle.Distributors, Formatter, TargetLanguageCode).CreateSectionContent());
-            //}
             if (MovieAndTVArticle.OtherCompanies != null)
             {
                 Logger.Debug($"MovieAndTVArticle.OtherCompanies is not null -> create");

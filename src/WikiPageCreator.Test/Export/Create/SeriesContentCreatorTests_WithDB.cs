@@ -708,6 +708,34 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             testContent.Add($"");
             testContent.Add($"");
 
+            // Distributor Section
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsHeading3("Distributors"));
+            }
+            else
+            {
+                testContent.Add(formatter.AsHeading3("Vertrieb"));
+            }
+            testContent.Add($"");
+
+            testContent.Add(formatter.AsTableTitle(new string[] { null }));
+
+            if (targetLanguageCode.Equals("en"))
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X1")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")}) (Series Distributor Role X1) Series Distributor Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X2")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")}) (Series Distributor Role X2) Series Distributor Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X3")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country EnglishShortName X")}) (Series Distributor Role X3) Series Distributor Details X3" }));
+            }
+            else
+            {
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name X Company NameAddOn X")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X1")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")}) (Series Distributor Role X1) Series Distributor Details X1" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Y Company NameAddOn Y")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X2")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")}) (Series Distributor Role X2) Series Distributor Details X2" }));
+                testContent.Add(formatter.AsTableRow(new string[] { $"{formatter.AsInternalLink(pathCompany, "Company Name Z Company NameAddOn Z")} ({formatter.AsInternalLink(pathDate, "Series Distributor ReleaseDate X3")}) ({formatter.AsInternalLink(pathInfo, "Country OriginalFullName X", "Country GermanShortName X")}) (Series Distributor Role X3) Series Distributor Details X3" }));
+            }
+            testContent.Add($"");
+            testContent.Add($"");
+
             // Special Effects Company Section
             if (targetLanguageCode.Equals("en"))
             {
