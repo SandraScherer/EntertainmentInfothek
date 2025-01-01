@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmLengthItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            FilmLengthItem item = new FilmLengthItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            FilmLengthItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmLengthItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmLengthItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmLengthItem item = new FilmLengthItem(reader, null, "BaseTable", "TargetTable");
+            FilmLengthItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmLengthItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmLengthItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmLengthItem item = new FilmLengthItem(reader, id, null, "TargetTable");
+            FilmLengthItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmLengthItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmLengthItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmLengthItem item = new FilmLengthItem(reader, id, "BaseTable", null);
+            FilmLengthItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmLengthItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(null, baseTableName, "_xxx", "FilmLength");
+            // Arrange
+            List<FilmLengthItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmLengthItem.RetrieveList(null, baseTableName, "_xxx", "FilmLength"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, null, "_xxx", "FilmLength");
+            List<FilmLengthItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmLengthItem.RetrieveList(reader, null, "_xxx", "FilmLength"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, null, "FilmLength");
+            List<FilmLengthItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, null, "FilmLength"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<FilmLengthItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, "_xxx", "FilmLength", null);
+            List<FilmLengthItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, "_xxx", "FilmLength", null));
         }
     }
 }

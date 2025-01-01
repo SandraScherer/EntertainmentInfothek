@@ -70,20 +70,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            CinematographicProcess entry = new CinematographicProcess(null, id);
+            // Arrange
+            CinematographicProcess entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new CinematographicProcess(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CinematographicProcess entry = new CinematographicProcess(reader, null);
+            CinematographicProcess entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new CinematographicProcess(reader, null));
         }
 
         [DataTestMethod()]

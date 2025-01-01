@@ -72,20 +72,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LocationTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Location entry = new Location(null, id);
+            // Arrange
+            Location entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Location(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LocationTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Location entry = new Location(reader, null);
+            Location entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Location(reader, null));
         }
 
         [DataTestMethod()]

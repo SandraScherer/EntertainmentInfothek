@@ -75,42 +75,51 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CountryItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            CountryItem item = new CountryItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            CountryItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CountryItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CountryItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CountryItem item = new CountryItem(reader, null, "BaseTable", "TargetTable");
+            CountryItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CountryItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CountryItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CountryItem item = new CountryItem(reader, id, null, "TargetTable");
+            CountryItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CountryItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
+
         public void CountryItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CountryItem item = new CountryItem(reader, id, "BaseTable", null);
+            CountryItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CountryItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +206,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<CountryItem> list = Data.CountryItem.RetrieveList(null, baseTableName, "_xxx", "Country");
+            // Arrange
+            List<CountryItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CountryItem.RetrieveList(null, baseTableName, "_xxx", "Country"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CountryItem> list = Data.CountryItem.RetrieveList(reader, null, "_xxx", "Country");
+            List<CountryItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CountryItem.RetrieveList(reader, null, "_xxx", "Country"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CountryItem> list = Data.CountryItem.RetrieveList(reader, baseTableName, null, "Country");
+            List<CountryItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CountryItem.RetrieveList(reader, baseTableName, null, "Country"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CountryItem> list = Data.CountryItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<CountryItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CountryItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CountryItem> list = Data.CountryItem.RetrieveList(reader, baseTableName, "_xxx", "Country", null);
+            List<CountryItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CountryItem.RetrieveList(reader, baseTableName, "_xxx", "Country", null));
         }
     }
 }

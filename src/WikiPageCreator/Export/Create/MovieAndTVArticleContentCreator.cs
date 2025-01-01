@@ -407,7 +407,6 @@ namespace WikiPageCreator.Export.Create
             title.Add("en", "Company Credits");
             title.Add("de", "Beteiligte Firmen");
 
-            // TODO: implement following stuff
             content.AddRange(CreateChapterHeading(title));
 
             if (MovieAndTVArticle.ProductionCompanies != null)

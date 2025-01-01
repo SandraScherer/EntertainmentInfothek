@@ -77,42 +77,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PersonItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            PersonItem item = new PersonItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            PersonItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PersonItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            PersonItem item = new PersonItem(reader, null, "BaseTable", "TargetTable");
+            PersonItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PersonItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            PersonItem item = new PersonItem(reader, id, null, "TargetTable");
+            PersonItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PersonItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            PersonItem item = new PersonItem(reader, id, "BaseTable", null);
+            PersonItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -366,11 +374,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
-            List<PersonItem> list = Data.PersonItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", ""));
+            // Arrange
+            List<PersonItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", "")));
 
         }
 
@@ -404,12 +414,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", ""));
+            List<PersonItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
         [DataTestMethod()]
@@ -442,12 +454,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", ""));
+            List<PersonItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
         [DataTestMethod()]
@@ -480,11 +494,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<PersonItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
@@ -517,11 +534,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<PersonItem> list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null);
+            List<PersonItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null));
         }
     }
 }

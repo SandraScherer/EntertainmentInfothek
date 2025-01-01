@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void GenreContentCreatorTest_withGenresNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            GenreContentCreator creator;
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<NullReferenceException>(() => creator = new GenreContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void GenreContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -92,15 +91,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             item.Genre = entry;
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
+            GenreContentCreator creator;
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new GenreContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void GenreContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            GenreContentCreator creator;
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new GenreContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void GenreContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<GenreItem> list = new List<GenreItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            GenreContentCreator creator;
 
             // Act, Assert
-            GenreContentCreator creator = new GenreContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new GenreContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
@@ -238,7 +236,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -253,7 +250,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -263,7 +260,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -278,7 +274,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             GenreContentCreator creator = new GenreContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

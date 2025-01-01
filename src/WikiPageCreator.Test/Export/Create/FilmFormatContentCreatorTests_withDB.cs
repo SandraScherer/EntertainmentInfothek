@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void FilmFormatContentCreatorTest_withFilmFormatsNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            FilmFormatContentCreator creator;
 
             // Act, Assert
-            FilmFormatContentCreator creator = new FilmFormatContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<NullReferenceException>(() => creator = new FilmFormatContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -92,15 +91,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             item.FilmFormat = entry;
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
+            FilmFormatContentCreator creator;
 
             // Act, Assert
-            FilmFormatContentCreator creator = new FilmFormatContentCreator(list, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmFormatContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            FilmFormatContentCreator creator;
 
             // Act, Assert
-            FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmFormatContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<FilmFormatItem> list = new List<FilmFormatItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            FilmFormatContentCreator creator;
 
             // Act, Assert
-            FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmFormatContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
@@ -236,7 +234,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -251,7 +248,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -261,7 +258,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -276,7 +272,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmFormatContentCreator creator = new FilmFormatContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

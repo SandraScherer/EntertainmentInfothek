@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void LocationContentCreatorTest_withLocationsNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            LocationContentCreator creator;
 
             // Act, Assert
-            LocationContentCreator creator = new LocationContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<NullReferenceException>(() => creator = new LocationContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LocationContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -92,15 +91,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             item.Location = entry;
             List<LocationItem> list = new List<LocationItem>();
             list.Add(item);
+            LocationContentCreator creator;
 
             // Act, Assert
-            LocationContentCreator creator = new LocationContentCreator(list, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new LocationContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LocationContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<LocationItem> list = new List<LocationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            LocationContentCreator creator;
 
             // Act, Assert
-            LocationContentCreator creator = new LocationContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new LocationContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LocationContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<LocationItem> list = new List<LocationItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            LocationContentCreator creator;
 
             // Act, Assert
-            LocationContentCreator creator = new LocationContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new LocationContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             LocationContentCreator creator = new LocationContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,14 +180,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             LocationContentCreator creator = new LocationContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
@@ -204,7 +201,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             LocationContentCreator creator = new LocationContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateInfoBoxContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateInfoBoxContent());
         }
 
         [DataTestMethod()]
@@ -214,7 +211,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -229,7 +225,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             LocationContentCreator creator = new LocationContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]

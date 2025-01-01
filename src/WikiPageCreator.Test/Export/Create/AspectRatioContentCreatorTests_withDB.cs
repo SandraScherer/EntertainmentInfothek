@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void AspectRatioContentCreatorTest_withAspectRatiosNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            AspectRatioContentCreator creator;
 
             // Act, Assert
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<NullReferenceException>(() => creator = new AspectRatioContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -92,15 +91,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             item.AspectRatio = entry;
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
+            AspectRatioContentCreator creator;
 
             // Act, Assert
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(list, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new AspectRatioContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            AspectRatioContentCreator creator;
 
             // Act, Assert
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new AspectRatioContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<AspectRatioItem> list = new List<AspectRatioItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            AspectRatioContentCreator creator;
 
             // Act, Assert
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new AspectRatioContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
@@ -236,7 +234,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -251,7 +248,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -261,7 +258,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -276,7 +272,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

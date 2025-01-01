@@ -61,14 +61,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieContentCreatorTest_withMovieNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            MovieContentCreator creator;
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new MovieContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -78,45 +78,45 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Movie entry = new Movie(reader, id);
+            MovieContentCreator creator;
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(entry, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new MovieContentCreator(entry, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
+            MovieContentCreator creator;
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(entry, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new MovieContentCreator(entry, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Movie entry = new Movie(reader, id);
             Formatter formatter = new DokuWikiFormatter();
+            MovieContentCreator creator;
 
             // Act, Assert
-            MovieContentCreator creator = new MovieContentCreator(entry, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new MovieContentCreator(entry, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -860,7 +860,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateInfoBoxContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -871,7 +870,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateInfoBoxContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateInfoBoxContent());
         }
 
         [DataTestMethod()]
@@ -881,7 +880,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -892,7 +890,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -902,7 +900,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -913,7 +910,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             MovieContentCreator creator = new MovieContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

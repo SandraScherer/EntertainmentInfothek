@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ColorItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            ColorItem item = new ColorItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            ColorItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ColorItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            ColorItem item = new ColorItem(reader, null, "BaseTable", "TargetTable");
+            ColorItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ColorItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            ColorItem item = new ColorItem(reader, id, null, "TargetTable");
+            ColorItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ColorItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            ColorItem item = new ColorItem(reader, id, "BaseTable", null);
+            ColorItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<ColorItem> list = Data.ColorItem.RetrieveList(null, baseTableName, "_xxx", "Color");
+            // Arrange
+            List<ColorItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(null, baseTableName, "_xxx", "Color"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, null, "_xxx", "Color");
+            List<ColorItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, null, "_xxx", "Color"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, baseTableName, null, "Color");
+            List<ColorItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, null, "Color"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<ColorItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<ColorItem> list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", "Color", null);
+            List<ColorItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", "Color", null));
         }
     }
 }

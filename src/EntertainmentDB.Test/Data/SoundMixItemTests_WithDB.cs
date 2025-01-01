@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            SoundMixItem item = new SoundMixItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            SoundMixItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMixItem item = new SoundMixItem(reader, null, "BaseTable", "TargetTable");
+            SoundMixItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMixItem item = new SoundMixItem(reader, id, null, "TargetTable");
+            SoundMixItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            SoundMixItem item = new SoundMixItem(reader, id, "BaseTable", null);
+            SoundMixItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(null, baseTableName, "_xxx", "SoundMix");
+            // Arrange
+            List<SoundMixItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(null, baseTableName, "_xxx", "SoundMix"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, null, "_xxx", "SoundMix");
+            List<SoundMixItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, null, "_xxx", "SoundMix"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, baseTableName, null, "SoundMix");
+            List<SoundMixItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, null, "SoundMix"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<SoundMixItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<SoundMixItem> list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", "SoundMix", null);
+            List<SoundMixItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", "SoundMix", null));
         }
     }
 }

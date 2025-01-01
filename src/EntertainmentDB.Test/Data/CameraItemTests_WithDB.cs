@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CameraItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            CameraItem item = new CameraItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            CameraItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CameraItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, null, "BaseTable", "TargetTable");
+            CameraItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CameraItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, id, null, "TargetTable");
+            CameraItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CameraItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CameraItem item = new CameraItem(reader, id, "BaseTable", null);
+            CameraItem item;
+            
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<CameraItem> list = Data.CameraItem.RetrieveList(null, baseTableName, "_xxx", "Camera");
+            // Arrange
+            List<CameraItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(null, baseTableName, "_xxx", "Camera"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CameraItem> list = Data.CameraItem.RetrieveList(reader, null, "_xxx", "Camera");
+            List<CameraItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, null, "_xxx", "Camera"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CameraItem> list = Data.CameraItem.RetrieveList(reader, baseTableName, null, "Camera");
+            List<CameraItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, null, "Camera"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CameraItem> list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<CameraItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CameraItem> list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", "Camera", null);
+            List<CameraItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", "Camera", null));
         }
     }
 }

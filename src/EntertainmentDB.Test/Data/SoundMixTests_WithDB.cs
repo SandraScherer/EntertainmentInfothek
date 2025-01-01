@@ -72,20 +72,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            SoundMix entry = new SoundMix(null, id);
+            // Arrange
+            SoundMix entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new SoundMix(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SoundMixTest_withIDNull()
         {
             // Arrange, Act, Assert
             DBReader reader = new SQLiteReader();
-            SoundMix entry = new SoundMix(reader, null);
+            SoundMix entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new SoundMix(reader, null));
         }
 
         [DataTestMethod()]

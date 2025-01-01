@@ -70,20 +70,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LaboratoryTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Laboratory entry = new Laboratory(null, id);
+            // Arrange
+            Laboratory entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Laboratory(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void LaboratoryTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Laboratory entry = new Laboratory(reader, null);
+            Laboratory entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Laboratory(reader, null));
         }
 
         [DataTestMethod()]
