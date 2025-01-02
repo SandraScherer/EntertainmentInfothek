@@ -76,14 +76,14 @@ namespace WikiPageCreator.Export.Write
                     Directory.CreateDirectory(directory);
                     Logger.Debug($"Directory created");
                 }
-                catch (UnauthorizedAccessException ex)
-                {
-                    Logger.Fatal(ex, $"???");
-                    throw;
-                }
                 catch (PathTooLongException ex)
                 {
-                    Logger.Fatal(ex, $"Path '{directory}' is too long");
+                    Logger.Fatal($"Path '{directory}' is too long");
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    Logger.Fatal($"???");
                     throw;
                 }
             }
@@ -104,14 +104,14 @@ namespace WikiPageCreator.Export.Write
             {
                 writer = new StreamWriter(filename, false);
             }
-            catch (UnauthorizedAccessException ex)
-            {
-                Logger.Fatal(ex, $"???");
-                throw;
-            }
             catch (PathTooLongException ex)
             {
-                Logger.Fatal(ex, $"Path '{filename}' is too long");
+                Logger.Fatal($"Path '{filename}' is too long");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.Fatal($"???");
                 throw;
             }
 
