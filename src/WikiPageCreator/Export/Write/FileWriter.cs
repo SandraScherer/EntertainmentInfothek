@@ -78,13 +78,8 @@ namespace WikiPageCreator.Export.Write
                 }
                 catch (PathTooLongException ex)
                 {
-                    Logger.Fatal($"Path '{directory}' is too long");
-                    throw;
-                }
-                catch (Exception ex)
-                {
-                    Logger.Fatal($"???");
-                    throw;
+                    Logger.Fatal(ex, $"Path '{directory}' is too long");
+                    return;
                 }
             }
 
@@ -106,13 +101,8 @@ namespace WikiPageCreator.Export.Write
             }
             catch (PathTooLongException ex)
             {
-                Logger.Fatal($"Path '{filename}' is too long");
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Logger.Fatal($"???");
-                throw;
+                Logger.Fatal(ex, $"Path '{filename}' is too long");
+                return;
             }
 
             // write content
