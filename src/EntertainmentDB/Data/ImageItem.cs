@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes an image item with the given id string.
+        /// Initializes an image item with the given reader, id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the image item information from the database.</param>
         /// <param name="id">The id of the image item.</param>

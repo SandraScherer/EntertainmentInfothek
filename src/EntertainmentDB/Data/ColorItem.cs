@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a color item with the given id string.
+        /// Initializes a color item with the given reader, id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the color item information from the database.</param>
         /// <param name="id">The id of the color item.</param>

@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a laboratory item with the given id string.
+        /// Initializes a laboratory item with the given reader, id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the laboratory item information from the database.</param>
         /// <param name="id">The id of the laboratory item.</param>

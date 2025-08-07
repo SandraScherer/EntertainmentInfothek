@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes an aspect ratio item with the given reader and id string.
+        /// Initializes an aspect ratio item with the given reader, id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the aspect ratio item information from the database.</param>
         /// <param name="id">The id of the aspect ratio item.</param>

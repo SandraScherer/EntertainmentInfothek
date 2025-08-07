@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a text item with the given id string.
+        /// Initializes a text item with the given reader, id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the text item information from the database.</param>
         /// <param name="id">The id of the text item.</param>
