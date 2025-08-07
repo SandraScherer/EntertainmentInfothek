@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an award with an empty id string.
+        /// Initializes an award with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the award information from the database.</param>
         public Award(DBReader reader) : this(reader, "")
@@ -54,7 +54,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        ///  Initializes an award with the given id string.
+        ///  Initializes an award with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the award information from the database.</param>
         /// <param name="id">The id of the award.</param>

@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a sound mix item with an empty id string.
+        /// Initializes a sound mix item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the sound mix item information from the database.</param>
         public SoundMixItem(DBReader reader) : this(reader, "", "", "")

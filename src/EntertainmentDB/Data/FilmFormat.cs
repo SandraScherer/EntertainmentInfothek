@@ -41,7 +41,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a film format with an empty id string.
+        /// Initializes a film format with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the film format information from the database.</param>
         public FilmFormat(DBReader reader) : this(reader, "")
@@ -49,7 +49,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        ///  Initializes a film format with the given id string.
+        ///  Initializes a film format with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the film format information from the database.</param>
         /// <param name="id">The id of the aspect ratio.</param>

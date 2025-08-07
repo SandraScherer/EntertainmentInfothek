@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a certification item with an empty id string.
+        /// Initializes a certification item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the certification item information from the database.</param>
         public CertificationItem(DBReader reader) : this(reader, "", "", "")

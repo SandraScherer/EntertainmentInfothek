@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a genre with an empty id string.
+        /// Initializes a genre with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the genre information from the database.</param>
         public Genre(DBReader reader) : this(reader, "")
@@ -54,7 +54,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a genre with the given id string.
+        /// Initializes a genre with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the genre information from the database.</param>
         /// <param name="id">The id of the genre.</param>

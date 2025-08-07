@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a cinematographic process item with an empty id string.
+        /// Initializes a cinematographic process item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the cinematographic process item information from the database.</param>
         public CinematographicProcessItem(DBReader reader) : this(reader, "", "", "")

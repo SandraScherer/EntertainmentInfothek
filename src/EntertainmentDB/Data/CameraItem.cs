@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a camera item with an empty id string.
+        /// Initializes a camera item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the camera item information from the database.</param>
         public CameraItem(DBReader reader) : this(reader, "", "", "")

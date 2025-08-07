@@ -47,7 +47,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a company item with an empty id string.
+        /// Initializes a company item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the company item information from the database.</param>
         public CompanyItem(DBReader reader) : this(reader, "", "", "")

@@ -47,7 +47,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a runtime item with an empty id string.
+        /// Initializes a runtime item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the runtime item information from the database.</param>
         public RuntimeItem(DBReader reader) : this(reader, "", "", "")

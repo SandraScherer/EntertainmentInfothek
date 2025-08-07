@@ -42,7 +42,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an aspect ratio item with an empty id string.
+        /// Initializes an aspect ratio item with the given reader and empty id string and table names.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the aspect ratio item information from the database.</param>
         public AspectRatioItem(DBReader reader) : this(reader, "", "", "")
@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes an aspect ratio item with the given id string.
+        /// Initializes an aspect ratio item with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the aspect ratio item information from the database.</param>
         /// <param name="id">The id of the aspect ratio item.</param>

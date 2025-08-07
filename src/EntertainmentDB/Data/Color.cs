@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a color with an empty id string.
+        /// Initializes a color with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the color information from the database.</param>
         public Color(DBReader reader) : this(reader, "")
@@ -54,7 +54,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a color with the given id string.
+        /// Initializes a color with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the color information from the database.</param>
         /// <param name="id">The id of the color.</param>

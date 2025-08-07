@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data
         // --- Constructor ---
 
         /// <summary>
-        /// Initializes a type with an empty id string.
+        /// Initializes a type with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the type information from the database.</param>
         public Type(DBReader reader) : this(reader, "")
@@ -54,7 +54,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a type with the given id string.
+        /// Initializes a type with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the type information from the database.</param>
         /// <param name="id">The id of the type.</param>
