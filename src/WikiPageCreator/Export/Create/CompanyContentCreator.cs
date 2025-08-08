@@ -75,7 +75,7 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateSectionContent()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "company" };
+            string[] path = { TargetLanguageCode, Path.Company.ToString().ToLower() };
 
             if ((Companies != null) && (Companies.Count > 0))
             {

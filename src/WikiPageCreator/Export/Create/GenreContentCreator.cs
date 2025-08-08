@@ -75,7 +75,7 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateInfoBoxContent()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "info" };
+            string[] path = { TargetLanguageCode, Path.Info.ToString().ToLower() };
 
             if ((Genres != null) && (Genres.Count > 0))
             {

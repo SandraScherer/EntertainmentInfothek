@@ -99,7 +99,7 @@ namespace WikiPageCreator.Export.Create
 
             List<string> content = new List<string>();
             string[] data = new string[2];
-            string[] path = { TargetLanguageCode, "date" };
+            string[] path = { TargetLanguageCode, Path.Date.ToString().ToLower() };
 
             if (!String.IsNullOrEmpty(MovieAndTVArticle.WorldwideGross))
             {

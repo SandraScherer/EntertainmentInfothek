@@ -82,7 +82,7 @@ namespace WikiPageCreator.Export.Create
 
             List<string> content = new List<string>();
             string[] data = new string[2];
-            string[] path = { TargetLanguageCode, "info" };
+            string[] path = { TargetLanguageCode, Path.Info.ToString().ToLower() };
 
             if (Type != null)
             {

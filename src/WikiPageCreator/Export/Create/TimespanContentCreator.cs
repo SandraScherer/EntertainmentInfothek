@@ -75,7 +75,7 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateSectionContent()");
 
             List<string> content = new List<string>();
-            string[] path = { TargetLanguageCode, "date" };
+            string[] path = { TargetLanguageCode, Path.Date.ToString().ToLower() };
 
             if ((Timespans != null) && (Timespans.Count > 0))
             {
