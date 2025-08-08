@@ -45,16 +45,16 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new SoundMixContentCreator.
         /// </summary>
-        /// <param name="soundmixes">The list of sound mix items to be used to create content.</param>
+        /// <param name="soundMixes">The list of sound mix items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public SoundMixContentCreator(List<SoundMixItem> soundmixes, Formatter formatter, string targetLanguageCode)
-            : base(soundmixes[0].SoundMix, formatter, targetLanguageCode)
+        public SoundMixContentCreator(List<SoundMixItem> soundMixes, Formatter formatter, string targetLanguageCode)
+            : base(soundMixes[0].SoundMix, formatter, targetLanguageCode)
         {
             Logger.Trace($"SoundMixContentCreator()");
 
-            SoundMixes = soundmixes;
+            SoundMixes = soundMixes;
             Headings = new Dictionary<string, string>
             {
                 { "en", "SoundMix" },

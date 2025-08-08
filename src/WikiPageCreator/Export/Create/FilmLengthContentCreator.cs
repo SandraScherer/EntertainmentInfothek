@@ -45,16 +45,16 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new FilmLengthContentCreator.
         /// </summary>
-        /// <param name="filmlengths">The list of filmlength items to be used to create content.</param>
+        /// <param name="filmLengths">The list of filmlength items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public FilmLengthContentCreator(List<FilmLengthItem> filmlengths, Formatter formatter, string targetLanguageCode)
-            : base(filmlengths[0], formatter, targetLanguageCode)
+        public FilmLengthContentCreator(List<FilmLengthItem> filmLengths, Formatter formatter, string targetLanguageCode)
+            : base(filmLengths[0], formatter, targetLanguageCode)
         {
             Logger.Trace($"FilmLengthContentCreator()");
 
-            FilmLengths = filmlengths;
+            FilmLengths = filmLengths;
             Headings = new Dictionary<string, string>
             {
                 { "en", "Film Length" },

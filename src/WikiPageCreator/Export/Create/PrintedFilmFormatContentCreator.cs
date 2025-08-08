@@ -40,16 +40,16 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new PrintedFilmFormatContentCreator.
         /// </summary>
-        /// <param name="filmformats">The list of filmformat items to be used to create content.</param>
+        /// <param name="filmFormats">The list of filmformat items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public PrintedFilmFormatContentCreator(List<FilmFormatItem> filmformats, Formatter formatter, string targetLanguageCode)
-            : base(filmformats, formatter, targetLanguageCode)
+        public PrintedFilmFormatContentCreator(List<FilmFormatItem> filmFormats, Formatter formatter, string targetLanguageCode)
+            : base(filmFormats, formatter, targetLanguageCode)
         {
             Logger.Trace($"PrintedFilmFormatContentCreator()");
 
-            FilmFormats = filmformats;
+            FilmFormats = filmFormats;
             Headings = new Dictionary<string, string>
             {
                 { "en", "Printed Film Format" },
