@@ -70,20 +70,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            AspectRatio entry = new AspectRatio(null, id);
+            // Arrange
+            AspectRatio entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new AspectRatio(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, null);
+            AspectRatio entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new AspectRatio(reader, null));
         }
 
         [DataTestMethod()]

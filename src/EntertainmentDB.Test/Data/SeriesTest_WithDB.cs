@@ -229,20 +229,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SeriesTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Series entry = new Series(null, id);
+            // Arrange
+            Series entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Series(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void SeriesTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Series entry = new Series(reader, null);
+            Series entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Series(reader, null));
         }
 
         [TestMethod()]
@@ -790,29 +794,35 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull()
         {
-            // Arrange, Act, Assert
-            List<Article> list = Series.RetrieveList(null, "_xxx");
+            // Arrange
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Series.RetrieveList(null, "_xxx"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withStatusNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<Article> list = Series.RetrieveList(reader, null);
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Series.RetrieveList(reader, null));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<Article> list = Series.RetrieveList(reader, "_xxx", null);
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Series.RetrieveList(reader, "_xxx", null));
         }
     }
 }

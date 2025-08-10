@@ -224,20 +224,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieTest_withReaderNull(string id)
         {
             // Arrange, Act, Assert
-            Movie entry = new Movie(null, id);
+            Movie entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Movie(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void MovieTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Movie entry = new Movie(reader, null);
+            Movie entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Movie(reader, null));
         }
 
         [TestMethod()]
@@ -771,29 +775,35 @@ namespace EntertainmentDB.Data.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull()
         {
-            // Arrange, Act, Assert
-            List<Article> list = Movie.RetrieveList(null, "_xxx");
+            // Arrange
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(null, "_xxx"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withStatusNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<Article> list = Movie.RetrieveList(reader, null);
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(reader, null));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull()
         {
             // Arrange, Act, Assert
             DBReader reader = new SQLiteReader();
-            List<Article> list = Movie.RetrieveList(reader, "_xxx", null);
+            List<Article> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(reader, "_xxx", null));
         }
     }
 }

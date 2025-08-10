@@ -74,20 +74,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CertificationTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Certification entry = new Certification(null, id);
+            // Arrange
+            Certification entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Certification(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CertificationTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Certification entry = new Certification(reader, null);
+            Certification entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Certification(reader, null));
         }
 
         [DataTestMethod()]

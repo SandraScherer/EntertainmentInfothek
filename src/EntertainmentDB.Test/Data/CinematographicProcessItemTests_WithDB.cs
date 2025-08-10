@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            CinematographicProcessItem item = new CinematographicProcessItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            CinematographicProcessItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CinematographicProcessItem item = new CinematographicProcessItem(reader, null, "BaseTable", "TargetTable");
+            CinematographicProcessItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CinematographicProcessItem item = new CinematographicProcessItem(reader, id, null, "TargetTable");
+            CinematographicProcessItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            CinematographicProcessItem item = new CinematographicProcessItem(reader, id, "BaseTable", null);
+            CinematographicProcessItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(null, baseTableName, "_xxx", "CinematographicProcess");
+            // Arrange
+            List<CinematographicProcessItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(null, baseTableName, "_xxx", "CinematographicProcess"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, null, "_xxx", "CinematographicProcess");
+            List<CinematographicProcessItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, null, "_xxx", "CinematographicProcess"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, null, "CinematographicProcess");
+            List<CinematographicProcessItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, null, "CinematographicProcess"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<CinematographicProcessItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<CinematographicProcessItem> list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", "CinematographicProcess", null);
+            List<CinematographicProcessItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", "CinematographicProcess", null));
         }
     }
 }

@@ -19,6 +19,7 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -75,42 +76,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            WeblinkItem item = new WeblinkItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            WeblinkItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            WeblinkItem item = new WeblinkItem(reader, null, "BaseTable", "TargetTable");
+            WeblinkItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            WeblinkItem item = new WeblinkItem(reader, id, null, "TargetTable");
+            WeblinkItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            WeblinkItem item = new WeblinkItem(reader, id, "BaseTable", null);
+            WeblinkItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -191,50 +200,60 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(null, baseTableName, "_xxx", "Weblink");
+            // Arrange
+            List<WeblinkItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(null, baseTableName, "_xxx", "Weblink"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, null, "_xxx", "Weblink");
+            List<WeblinkItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, null, "_xxx", "Weblink"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, null, "Weblink");
+            List<WeblinkItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, null, "Weblink"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<WeblinkItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink", null);
+            List<WeblinkItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink", null));
         }
     }
 }

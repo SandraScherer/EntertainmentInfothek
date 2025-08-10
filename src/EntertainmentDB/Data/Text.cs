@@ -57,7 +57,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a text with an empty id string.
+        /// Initializes a text with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the text information from the database.</param>
         public Text(DBReader reader) : this(reader, "")
@@ -65,7 +65,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        ///  Initializes a text with the given id string.
+        ///  Initializes a text with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the text information from the database.</param>
         /// <param name="id">The id of the text.</param>

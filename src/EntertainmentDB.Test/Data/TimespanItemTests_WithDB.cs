@@ -76,42 +76,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TimespanItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            TimespanItem item = new TimespanItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            TimespanItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TimespanItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            TimespanItem item = new TimespanItem(reader, null, "BaseTable", "TargetTable");
+            TimespanItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TimespanItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            TimespanItem item = new TimespanItem(reader, id, null, "TargetTable");
+            TimespanItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TimespanItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            TimespanItem item = new TimespanItem(reader, id, "BaseTable", null);
+            TimespanItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -215,11 +223,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
         [DataRow("Series", "ProductionDate")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
-            List<TimespanItem> list = Data.TimespanItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", ""));
+            // Arrange
+            List<TimespanItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", "")));
 
         }
 
@@ -228,12 +238,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
         [DataRow("Series", "ProductionDate")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", ""));
+            List<TimespanItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
         [DataTestMethod()]
@@ -241,12 +253,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
         [DataRow("Series", "ProductionDate")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", ""));
+            List<TimespanItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
         [DataTestMethod()]
@@ -254,11 +268,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
         [DataRow("Series", "ProductionDate")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<TimespanItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
@@ -266,11 +283,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
         [DataRow("Series", "ProductionDate")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null);
+            List<TimespanItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null));
         }
     }
 }

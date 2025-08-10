@@ -88,7 +88,7 @@ namespace WikiPageCreator.Export.Create
                 {
                     Logger.Debug($"Connection: '{Connection.ID}'");
 
-                    string[] path = { TargetLanguageCode, "navigation" };
+                    string[] path = { TargetLanguageCode, Path.Navigation.ToString().ToLower() };
                     content.Add(Formatter.AsInsertPage(path, Connection.ID));
                 }
                 else

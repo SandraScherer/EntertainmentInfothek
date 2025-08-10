@@ -76,20 +76,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Weblink entry = new Weblink(null, id);
+            // Arrange
+            Weblink entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Weblink(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void WeblinkTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Type entry = new Type(reader, null);
+            Type entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Type(reader, null));
         }
 
         [DataTestMethod()]

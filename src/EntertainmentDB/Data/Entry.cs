@@ -60,7 +60,7 @@ namespace EntertainmentDB.Data
         // --- Constructor ---
 
         /// <summary>
-        /// Initializes an entry with the given reader and id string.
+        /// Initializes an entry with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the entry information from the database.</param>
         protected Entry(DBReader reader) : this(reader, "")

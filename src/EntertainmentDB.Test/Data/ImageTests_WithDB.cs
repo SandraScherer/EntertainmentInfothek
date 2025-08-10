@@ -80,20 +80,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ImageTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            Image entry = new Image(null, id);
+            // Arrange
+            Image entry;
+
+            // act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Image(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ImageTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            Image entry = new Image(reader, null);
+            Image entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new Image(reader, null));
         }
 
         [TestMethod()]

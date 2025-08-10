@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an article with the given id string.
+        /// Initializes an article with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the article information from the database.</param>
         /// <param name="id">The id of the article.</param>

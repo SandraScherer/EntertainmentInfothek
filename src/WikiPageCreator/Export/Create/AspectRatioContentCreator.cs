@@ -45,16 +45,16 @@ namespace WikiPageCreator.Export.Create
         /// <summary>
         /// Initializes a new AspectRatioContentCreator.
         /// </summary>
-        /// <param name="aspectratios">The list of aspect ratio items to be used to create content.</param>
+        /// <param name="aspectRatios">The list of aspect ratio items to be used to create content.</param>
         /// <param name="formatter">The formatter to be used to format the content.</param>
         /// <param name="targetLanguageCode">The language code for the created content.</param>
         /// <exception cref="ArgumentNullException">Thrown when one the given parameters is null.</exception>
-        public AspectRatioContentCreator(List<AspectRatioItem> aspectratios, Formatter formatter, string targetLanguageCode)
-            : base(aspectratios[0].AspectRatio, formatter, targetLanguageCode)
+        public AspectRatioContentCreator(List<AspectRatioItem> aspectRatios, Formatter formatter, string targetLanguageCode)
+            : base(aspectRatios[0].AspectRatio, formatter, targetLanguageCode)
         {
             Logger.Trace($"AspectRatioContentCreator()");
 
-            AspectRatios = aspectratios;
+            AspectRatios = aspectRatios;
             Headings = new Dictionary<string, string>
             {
                 { "en", "Aspect Ratio" },

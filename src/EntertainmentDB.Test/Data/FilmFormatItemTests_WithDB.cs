@@ -73,42 +73,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            FilmFormatItem item = new FilmFormatItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            FilmFormatItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormatItem item = new FilmFormatItem(reader, null, "BaseTable", "TargetTable");
+            FilmFormatItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormatItem item = new FilmFormatItem(reader, id, null, "TargetTable");
+            FilmFormatItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormatItem item = new FilmFormatItem(reader, id, "BaseTable", null);
+            FilmFormatItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -206,11 +214,13 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
         [DataRow("Series", "PrintedFilmFormat")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
-            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(null, baseTableName, "_xxx", targetTableName);
+            // Arrange
+            List<FilmFormatItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(null, baseTableName, "_xxx", targetTableName));
 
         }
 
@@ -219,12 +229,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
         [DataRow("Series", "PrintedFilmFormat")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, null, "_xxx", targetTableName);
+            List<FilmFormatItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, null, "_xxx", targetTableName));
         }
 
         [DataTestMethod()]
@@ -232,12 +244,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
         [DataRow("Series", "PrintedFilmFormat")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, null, targetTableName);
+            List<FilmFormatItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, null, targetTableName));
         }
 
         [DataTestMethod()]
@@ -245,11 +259,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
         [DataRow("Series", "PrintedFilmFormat")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<FilmFormatItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
@@ -257,11 +274,14 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
         [DataRow("Series", "PrintedFilmFormat")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
         {
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName, null);
+            List<FilmFormatItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName, null));
         }
     }
 }

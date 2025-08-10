@@ -72,7 +72,7 @@ namespace EntertainmentDB.DBAccess.Read
             catch (ConfigurationErrorsException ex)
             {
                 Logger.Error(ex, $"ConnectionString \"Database\" in default configuration does not exist");
-                throw;
+                return 0;
             }
             Logger.Debug($"ConnectionString to database from configuration: '{connectionString}'");
 
@@ -86,12 +86,12 @@ namespace EntertainmentDB.DBAccess.Read
             catch (SQLiteException ex)
             {
                 Logger.Error(ex, $"Opening database connection is not possible");
-                throw;
+                return 0;
             }
             catch (InvalidOperationException ex)
             {
                 Logger.Error(ex, $"Database connection is already open");
-                throw;
+                return 0;
             }
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(Query, connection);
@@ -104,7 +104,7 @@ namespace EntertainmentDB.DBAccess.Read
             catch (InvalidOperationException ex)
             {
                 Logger.Error(ex, $"Database table is invalid");
-                throw;
+                return 0;
             }
             finally
             {

@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void CinematographicProcessContentCreatorTest_withCinematographicProcessesNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
 
             // Act, Assert
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(null, formatter, targetLanguageCode);
+            CinematographicProcessContentCreator creator;
+            Assert.ThrowsException<NullReferenceException>(() => creator = new CinematographicProcessContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -94,13 +93,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             list.Add(item);
 
             // Act, Assert
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, null, targetLanguageCode);
+            CinematographicProcessContentCreator creator;
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<CinematographicProcessItem> list = new List<CinematographicProcessItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            CinematographicProcessContentCreator creator;
 
             // Act, Assert
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CinematographicProcessContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<CinematographicProcessItem> list = new List<CinematographicProcessItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            CinematographicProcessContentCreator creator;
 
             // Act, Assert
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
@@ -238,7 +236,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -253,7 +250,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -263,7 +260,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -278,7 +274,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

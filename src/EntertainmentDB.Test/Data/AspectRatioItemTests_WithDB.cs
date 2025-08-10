@@ -75,42 +75,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            AspectRatioItem item = new AspectRatioItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            AspectRatioItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatioItem item = new AspectRatioItem(reader, null, "BaseTable", "TargetTable");
+            AspectRatioItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AspectRatioItem item = new AspectRatioItem(reader, id, null, "TargetTable");
+            AspectRatioItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AspectRatioItemTest_withTargetTableNameNull(string id)
         {
             // Arrange, Act, Assert
             DBReader reader = new SQLiteReader();
-            AspectRatioItem item = new AspectRatioItem(reader, id, "BaseTable", null);
+            AspectRatioItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -197,53 +205,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(null, baseTableName, "_xxx", "AspectRatio");
+            // Arrange
+            List<AspectRatioItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(null, baseTableName, "_xxx", "AspectRatio"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio");
+            List<AspectRatioItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio");
+            List<AspectRatioItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<AspectRatioItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AspectRatioItem> list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", "AspectRatio", null);
+            List<AspectRatioItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", "AspectRatio", null));
         }
     }
 }

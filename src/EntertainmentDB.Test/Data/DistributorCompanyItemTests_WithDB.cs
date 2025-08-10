@@ -81,42 +81,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DistributorCompanyItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            DistributorCompanyItem item = new DistributorCompanyItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            DistributorCompanyItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DistributorCompanyItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            DistributorCompanyItem item = new DistributorCompanyItem(reader, null, "BaseTable", "TargetTable");
+            DistributorCompanyItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DistributorCompanyItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            DistributorCompanyItem item = new DistributorCompanyItem(reader, id, null, "TargetTable");
+            DistributorCompanyItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DistributorCompanyItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            DistributorCompanyItem item = new DistributorCompanyItem(reader, id, "BaseTable", null);
+            DistributorCompanyItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -218,53 +226,63 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(null, baseTableName, "_xxx", "Distributor");
+            // Arrange
+            List<DistributorCompanyItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(null, baseTableName, "_xxx", "Distributor"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(reader, null, "_xxx", "Distributor");
+            List<DistributorCompanyItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, null, "_xxx", "Distributor"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, null, "Distributor");
+            List<DistributorCompanyItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, null, "Distributor"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<DistributorCompanyItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<DistributorCompanyItem> list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", "Distributor", null);
+            List<DistributorCompanyItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", "Distributor", null));
         }
     }
 }

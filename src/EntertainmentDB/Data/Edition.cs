@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes an edition with an empty id string.
+        /// Initializes an edition with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the edition information from the database.</param>
         public Edition(DBReader reader) : this(reader, "")
@@ -54,7 +54,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes an edition with the given id string.
+        /// Initializes an edition with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the edition information from the database.</param>
         /// <param name="id">The id of the edition.</param>

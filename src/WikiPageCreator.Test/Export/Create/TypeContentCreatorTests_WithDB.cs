@@ -61,14 +61,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TypeContentCreatorTest_withTypeNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            TypeContentCreator creator;
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -78,45 +78,45 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TypeContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Type entry = new Type(reader, id);
+            TypeContentCreator creator;
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(entry, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TypeContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
+            TypeContentCreator creator;
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(entry, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TypeContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
             DBReader reader = new SQLiteReader();
             Type entry = new Type(reader, id);
             Formatter formatter = new DokuWikiFormatter();
+            TypeContentCreator creator;
 
             // Act, Assert
-            TypeContentCreator creator = new TypeContentCreator(entry, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -126,7 +126,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -137,7 +136,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -147,7 +146,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -158,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
@@ -210,7 +208,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -221,7 +218,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -231,7 +228,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateSectionContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -242,7 +238,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateSectionContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

@@ -156,7 +156,7 @@ namespace EntertainmentDB.Data
         // --- Constructors ---
 
         /// <summary>
-        /// Initializes a movie and tv article with an empty id string.
+        /// Initializes a movie and tv article with the given reader and an empty id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the movie and tv article information from the database.</param>
         protected MovieAndTVArticle(DBReader reader) : this(reader, "")
@@ -164,7 +164,7 @@ namespace EntertainmentDB.Data
         }
 
         /// <summary>
-        /// Initializes a movie and tv article with the given id string.
+        /// Initializes a movie and tv article with the given reader and id string.
         /// </summary>
         /// <param name="reader">The database reader to be used to read the movie and tv article information from the database.</param>
         /// <param name="id">The id of the movie and tv article.</param>

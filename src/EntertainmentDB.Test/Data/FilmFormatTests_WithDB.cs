@@ -70,20 +70,24 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            FilmFormat entry = new FilmFormat(null, id);
+            // Arrange
+            FilmFormat entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new FilmFormat(null, id));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmFormatTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            FilmFormat entry = new FilmFormat(reader, null);
+            FilmFormat entry;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => entry = new FilmFormat(reader, null));
         }
 
         [DataTestMethod()]

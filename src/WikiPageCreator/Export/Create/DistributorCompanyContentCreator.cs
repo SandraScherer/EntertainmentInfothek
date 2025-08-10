@@ -75,9 +75,9 @@ namespace WikiPageCreator.Export.Create
             Logger.Trace($"CreateSectionContent()");
 
             List<string> content = new List<string>();
-            string[] path1 = { TargetLanguageCode, "company" };
-            string[] path2 = { TargetLanguageCode, "date" };
-            string[] path3 = { TargetLanguageCode, "info" };
+            string[] pathCompany = { TargetLanguageCode, Path.Company.ToString().ToLower() };
+            string[] pathDate = { TargetLanguageCode, Path.Date.ToString().ToLower() };
+            string[] pathInfo = { TargetLanguageCode, Path.Info.ToString().ToLower() };
 
             if ((Distributors != null) && (Distributors.Count > 0))
             {
@@ -95,67 +95,67 @@ namespace WikiPageCreator.Export.Create
 
                         if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", Distributors[i].Details);
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", Distributors[i].Details);
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].Role))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].ReleaseDate))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
                         }
                         else if (null != (Distributors[i].Country))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.EnglishShortName}", $"{Distributors[i].Details}");
                         }
                         else
                         {
-                            CreateSectionContentHelper(content, path1, Distributors[i].Company.Name, Distributors[i].Details);
+                            CreateSectionContentHelper(content, pathCompany, Distributors[i].Company.Name, Distributors[i].Details);
                         }
                     }
                 }
@@ -167,67 +167,67 @@ namespace WikiPageCreator.Export.Create
 
                         if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].Role)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path2, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathDate, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (!String.IsNullOrEmpty(Distributors[i].ReleaseDate)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].Role)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if ((!String.IsNullOrEmpty(Distributors[i].ReleaseDate)) && (null != (Distributors[i].Country)))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].Company.NameAddOn))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", Distributors[i].Details);
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name} {Distributors[i].Company.NameAddOn}", Distributors[i].Details);
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].Role))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", $"({Distributors[i].Role}) {Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", $"({Distributors[i].Role}) {Distributors[i].Details}");
                         }
                         else if (!String.IsNullOrEmpty(Distributors[i].ReleaseDate))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path2, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathDate, $"{Distributors[i].ReleaseDate}", $"{Distributors[i].Details}");
                         }
                         else if (null != (Distributors[i].Country))
                         {
-                            CreateSectionContentHelper(content, path1, $"{Distributors[i].Company.Name}", path3, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
+                            CreateSectionContentHelper(content, pathCompany, $"{Distributors[i].Company.Name}", pathInfo, $"{Distributors[i].Country.OriginalFullName}", $"{Distributors[i].Country.GermanShortName}", $"{Distributors[i].Details}");
                         }
                         else
                         {
-                            CreateSectionContentHelper(content, path1, Distributors[i].Company.Name, Distributors[i].Details);
+                            CreateSectionContentHelper(content, pathCompany, Distributors[i].Company.Name, Distributors[i].Details);
                         }
                     }
                 }

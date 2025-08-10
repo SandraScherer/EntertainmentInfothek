@@ -65,14 +65,14 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NullReferenceException))]
         public void FilmingDateContentCreatorTest_withFilmingDatesNull(string targetLanguageCode)
         {
             // Arrange
             Formatter formatter = new DokuWikiFormatter();
+            FilmingDateContentCreator creator;
 
             // Act, Assert
-            FilmingDateContentCreator creator = new FilmingDateContentCreator(null, formatter, targetLanguageCode);
+            Assert.ThrowsException<NullReferenceException>(() => creator = new FilmingDateContentCreator(null, formatter, targetLanguageCode));
         }
 
         [DataTestMethod()]
@@ -82,7 +82,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmingDateContentCreatorTest_withFormatterNull(string id, string targetLanguageCode)
         {
             // Arrange
@@ -92,15 +91,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             item.EndDate = "unknown";
             List<TimespanItem> list = new List<TimespanItem>();
             list.Add(item);
+            FilmingDateContentCreator creator;
 
             // Act, Assert
-            FilmingDateContentCreator creator = new FilmingDateContentCreator(list, null, targetLanguageCode);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmingDateContentCreator(list, null, targetLanguageCode));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmingDateContentCreatorTest_withTargetLanguageCodeNull(string id)
         {
             // Arrange
@@ -111,15 +110,15 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<TimespanItem> list = new List<TimespanItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            FilmingDateContentCreator creator;
 
             // Act, Assert
-            FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, null);
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmingDateContentCreator(list, formatter, null));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void FilmingDateContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
         {
             // Arrange
@@ -130,9 +129,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<TimespanItem> list = new List<TimespanItem>();
             list.Add(item);
             Formatter formatter = new DokuWikiFormatter();
+            FilmingDateContentCreator creator;
 
             // Act, Assert
-            FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, "");
+            Assert.ThrowsException<ArgumentNullException>(() => creator = new FilmingDateContentCreator(list, formatter, ""));
         }
 
         [DataTestMethod()]
@@ -142,7 +142,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void GetPageNameTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -157,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.GetPageName();
+            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
         [DataTestMethod()]
@@ -167,7 +166,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreatePageTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -182,14 +180,13 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreatePage();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
         [DataTestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateInfoBoxContentTest_withValidID(string targetLanguageCode)
         {
             // Arrange
@@ -204,7 +201,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateInfoBoxContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateInfoBoxContent());
         }
 
         [DataTestMethod()]
@@ -214,7 +211,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(NotSupportedException))]
         public void CreateChapterContentTest(string id, string targetLanguageCode)
         {
             // Arrange
@@ -229,7 +225,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            creator.CreateChapterContent();
+            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [DataTestMethod()]
@@ -318,7 +314,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void CreateSectionContentTest_withStartDateEmpty(string id, string targetLanguageCode)
         {
             // Arrange
@@ -330,9 +325,10 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Formatter formatter = new DokuWikiFormatter();
 
             FilmingDateContentCreator creator = new FilmingDateContentCreator(list, formatter, targetLanguageCode);
+            List<string> content;
 
             // Act, Assert
-            List<string> content = creator.CreateSectionContent();
+            Assert.ThrowsException<ArgumentNullException>(() => content = creator.CreateSectionContent());
         }
     }
 }

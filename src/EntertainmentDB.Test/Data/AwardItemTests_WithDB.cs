@@ -19,6 +19,7 @@ using EntertainmentDB.DBAccess.Read;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace EntertainmentDB.Data.Tests
 {
@@ -85,42 +86,50 @@ namespace EntertainmentDB.Data.Tests
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AwardItemTest_withReaderNull(string id)
         {
-            // Arrange, Act, Assert
-            AwardItem item = new AwardItem(null, id, "BaseTable", "TargetTable");
+            // Arrange
+            AwardItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AwardItemTest_withIDNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AwardItem item = new AwardItem(reader, null, "BaseTable", "TargetTable");
+            AwardItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AwardItemTest_withBaseTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AwardItem item = new AwardItem(reader, id, null, "TargetTable");
+            AwardItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, id, null, "TargetTable"));
         }
 
         [DataTestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AwardItemTest_withTargetTableNameNull(string id)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            AwardItem item = new AwardItem(reader, id, "BaseTable", null);
+            AwardItem item;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, id, "BaseTable", null));
         }
 
         [DataTestMethod()]
@@ -263,50 +272,60 @@ namespace EntertainmentDB.Data.Tests
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
-            // Arrange, Act, Assert
-            List<AwardItem> list = Data.AwardItem.RetrieveList(null, baseTableName, "_xxx", "Award");
+            // Arrange
+            List<AwardItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(null, baseTableName, "_xxx", "Award"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableNameNull()
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, null, "_xxx", "Award");
+            List<AwardItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, null, "_xxx", "Award"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
-            // Arrange, Act, Assert
+            // Arrange
             DBReader reader = new SQLiteReader();
-            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, null, "Award");
+            List<AwardItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, baseTableName, null, "Award"));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
             // Arrange, Act, Assert
             DBReader reader = new SQLiteReader();
-            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", null);
+            List<AwardItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [DataTestMethod()]
         [DataRow("Movie")]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {
             // Arrange, Act, Assert
             DBReader reader = new SQLiteReader();
-            List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", "Award", null);
+            List<AwardItem> list;
+
+            // Act, Assert
+            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", "Award", null));
         }
     }
 }

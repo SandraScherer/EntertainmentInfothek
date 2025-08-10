@@ -49,14 +49,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsFilenameTest_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsFilename(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsFilename(null));
         }
 
         [TestMethod()]
@@ -73,14 +73,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsBoldTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsBold(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsBold(null));
         }
 
         [TestMethod()]
@@ -97,14 +97,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsItalicTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsItalic(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsItalic(null));
         }
 
         [TestMethod()]
@@ -121,14 +121,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsUnderlinedTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsUnderlined(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsUnderlined(null));
         }
 
         [TestMethod()]
@@ -145,14 +145,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsSubscriptTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsSubscript(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsSubscript(null));
         }
 
         [TestMethod()]
@@ -169,14 +169,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsSuperscriptTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsSuperscript(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsSuperscript(null));
         }
 
         [TestMethod()]
@@ -193,14 +193,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsDeletedTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsDeleted(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsDeleted(null));
         }
 
         [TestMethod()]
@@ -218,50 +218,50 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink4ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInternalLink(null, "pagename", "section", "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null, "pagename", "section", "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink4ParametersTest_withPageNameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, null, "section", "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "section", "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink4ParametersTest_withSectionNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, "pagename", null, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink4ParametersTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, "pagename", "section", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "section", null));
         }
 
         [TestMethod()]
@@ -279,39 +279,39 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = null;
+            string returnstring;
 
             // Act, Assert
-            string[] path = null;
-            string returnstring = formatter.AsInternalLink(path, "pagename", "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3ParametersTest_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, null, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3ParametersTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, "pagename", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null));
         }
 
         [TestMethod()]
@@ -329,27 +329,27 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink2ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = null;
+            string returnstring;
 
             // Act, Assert
-            string[] path = null;
-            string returnstring = formatter.AsInternalLink(path, "pagename");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink2ParametersTest_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInternalLink(path, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null));
         }
 
         [TestMethod()]
@@ -366,37 +366,37 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3Parameters2Test_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string pagename = null;
+            string returnstring;
 
             // Act, Assert
-            string pagename = null;
-            string returnstring = formatter.AsInternalLink(pagename, "section", "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "section", "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3Parameters2Test_withSectionNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInternalLink("pagename", null, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink3Parameters2Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInternalLink("pagename", "section", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", "section", null));
         }
 
         [TestMethod()]
@@ -413,26 +413,26 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink2Parameters2Test_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string pagename = null;
+            string returnstring;
 
             // Act, Assert
-            string pagename = null;
-            string returnstring = formatter.AsInternalLink(pagename, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink2Parameters2Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInternalLink("pagename", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null));
         }
 
         [TestMethod()]
@@ -449,14 +449,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInternalLink1ParameterTest_withPagenameNul()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInternalLink(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null));
         }
 
         [TestMethod()]
@@ -473,25 +473,25 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsExternalLink2ParametersTest_withLinkNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsExternalLink(null, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsExternalLink2ParametersTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsExternalLink("link", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink("link", null));
         }
 
         [TestMethod()]
@@ -508,14 +508,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsExternalLink1ParameterTest_withLinkNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsExternalLink(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null));
         }
 
         [TestMethod()]
@@ -532,14 +532,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsEMailTest_withMailNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsEMail(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsEMail(null));
         }
 
         [TestMethod()]
@@ -556,14 +556,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading1Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsHeading1(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading1(null));
         }
 
         [TestMethod()]
@@ -580,14 +580,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading2Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsHeading2(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading2(null));
         }
 
         [TestMethod()]
@@ -603,13 +603,13 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading3Test_withTextNull()
         {
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsHeading3(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading3(null));
         }
 
         [TestMethod()]
@@ -626,14 +626,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading4Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsHeading4(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading4(null));
         }
 
         [TestMethod()]
@@ -650,14 +650,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsHeading5Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsHeading5(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading5(null));
         }
 
         [TestMethod()]
@@ -675,62 +675,62 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage5ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, "filename.jpg", 50, 100, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage5ParametersTest_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null, 50, 100, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage5ParametersTest_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 0, 100, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage5ParametersTest_withHeightNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 50, 0, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage5ParametersTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, null));
         }
 
         [TestMethod()]
@@ -748,50 +748,50 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, "filename.jpg", 50, 100);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4ParametersTest_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null, 50, 100);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4ParametersTest_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 0, 100);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4ParametersTest_withHeightNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 50, 0);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0));
         }
 
         [TestMethod()]
@@ -809,50 +809,50 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters2Test_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, "filename.jpg", 50, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters2Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null, 50, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters2Test_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 0, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters2Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 50, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, null));
         }
 
         [TestMethod()]
@@ -870,38 +870,38 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, "filename.jpg", 50);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3ParametersTest_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null, 50);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3ParametersTest_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", 0);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0));
         }
 
         [TestMethod()]
@@ -919,38 +919,38 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters2Test_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, "filename.jpg", "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters2Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters2Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, "filename.jpg", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", null));
         }
 
         [TestMethod()]
@@ -968,27 +968,27 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = null;
+            string returnstring;
 
             // Act, Assert
-            string[] path = null;
-            string returnstring = formatter.AsImage(path, "filename.jpg");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2ParametersTest_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsImage(path, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null));
         }
 
         [TestMethod()]
@@ -1005,47 +1005,47 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters3Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, 50, 100, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters3Test_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0, 100, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters3Test_withHeightNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 50, 0, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage4Parameters3Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 50, 100, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 100, null));
         }
 
         [TestMethod()]
@@ -1062,36 +1062,36 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters3Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, 50, 100);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters3Test_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0, 100);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters3Test_withHeightNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 50, 0);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0));
         }
 
         [TestMethod()]
@@ -1108,36 +1108,36 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters4Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, 50, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters4Test_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage3Parameters4Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 50, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, null));
         }
 
         [TestMethod()]
@@ -1154,25 +1154,25 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2Parameters2Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null, 50);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2Parameters2Test_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", 0);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0));
         }
 
         [TestMethod()]
@@ -1189,26 +1189,26 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2Parameters3Test_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string filename = null;
+            string returnstring;
 
             // Act, Assert
-            string filename = null;
-            string returnstring = formatter.AsImage(filename, "text");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(filename, "text"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage2Parameters3Test_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage("filename.jpg", null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", null));
         }
 
         [TestMethod()]
@@ -1225,14 +1225,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImage1ParameterTest_withFilenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImage(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null));
         }
 
         [TestMethod()]
@@ -1249,14 +1249,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsImageBoxTest_withImageLinkNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsImageBox(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImageBox(null));
         }
 
         [TestMethod()]
@@ -1273,14 +1273,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AlignTest_withTextNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.Align(null, Alignment.Left);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.Align(null, Alignment.Left));
         }
 
         [TestMethod()]
@@ -1350,26 +1350,26 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInsertPage2ParametersTest_withPathNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInsertPage(null, "pagename.md");
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null, "pagename.md"));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInsertPage2ParametersTest_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string[] path = { "path1", "path2" };
+            string returnstring;
 
             // Act, Assert
-            string[] path = { "path1", "path2" };
-            string returnstring = formatter.AsInsertPage(path, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(path, null));
         }
 
         [TestMethod()]
@@ -1386,14 +1386,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsInsertPage1ParameterTest_withPagenameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsInsertPage(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null));
         }
 
         [TestMethod()]
@@ -1463,38 +1463,38 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DefineTableTest_withSizeNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            int[] width = { 10, 20, 30, 40 };
+            string returnstring;
 
             // Act, Assert
-            int[] width = { 10, 20, 30, 40 };
-            string returnstring = formatter.DefineTable(0, width);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(0, width));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DefineTableTest_withWidthNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.DefineTable(500, null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, null));
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void DefineTableTest_withWidthValueNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            int[] width = { 0, 20, 30 };
+            string returnstring;
 
             // Act, Assert
-            int[] width = { 0, 20, 30 };
-            string returnstring = formatter.DefineTable(500, width);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, width));
         }
 
         [TestMethod()]
@@ -1526,14 +1526,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsTableTitleTest_withDataNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsTableTitle(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsTableTitle(null));
         }
 
         [TestMethod()]
@@ -1578,14 +1578,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AsTableRowTest_withDataNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.AsTableRow(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsTableRow(null));
         }
 
         [TestMethod()]
@@ -1602,14 +1602,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void BeginBoxTest_withSizeNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.BeginBox(0, Alignment.Left);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.BeginBox(0, Alignment.Left));
         }
 
         [TestMethod()]
@@ -1639,14 +1639,14 @@ namespace WikiPageCreator.Export.Format.Tests
         }
 
         [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void BeginDataEntryTest_withNameNull()
         {
             // Arrange
             ObsidianFormatter formatter = new ObsidianFormatter();
+            string returnstring;
 
             // Act, Assert
-            string returnstring = formatter.BeginDataEntry(null);
+            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.BeginDataEntry(null));
         }
 
         [TestMethod()]
