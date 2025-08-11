@@ -31,7 +31,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         const string VALID_ID = "_xxx";
         const string INVALID_ID = "_aaa";
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]
@@ -57,7 +57,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.AreEqual("Typ", creator.Headings["de"]);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -71,7 +71,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(null, formatter, targetLanguageCode));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]
@@ -89,7 +89,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, null, targetLanguageCode));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TypeContentCreatorTest_withTargetLanguageCodeNull(string id)
@@ -104,7 +104,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TypeContentCreatorTest_withTargetLanguageCodeEmptyString(string id)
@@ -119,7 +119,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, ""));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]
@@ -139,7 +139,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]
@@ -159,7 +159,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -201,7 +201,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]
@@ -221,7 +221,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID, "en")]
         [DataRow(VALID_ID, "de")]
         [DataRow(VALID_ID, "zz")]

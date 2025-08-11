@@ -49,7 +49,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioItemTest_withID(string id)
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioItemTest_withReaderNull(string id)
@@ -95,7 +95,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioItemTest_withBaseTableNameNull(string id)
@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioItemTest_withTargetTableNameNull(string id)
@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         [DataRow("Series", true)]
@@ -145,7 +145,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} AspectRatio LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         [DataRow("Series", true)]
@@ -169,7 +169,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
         public void RetrieveListTest_withValidData(string baseTableName)
@@ -202,7 +202,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} AspectRatio LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
         public void RetrieveListTest_withReaderNull(string baseTableName)
@@ -225,7 +225,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
@@ -238,7 +238,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
@@ -251,7 +251,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         [DataRow("Series")]
         public void RetrieveListTest_withOrderNull(string baseTableName)

@@ -51,7 +51,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CastPersonItemTest_withID(string id)
@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CastPersonItemTest_withReaderNull(string id)
@@ -99,7 +99,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CastPersonItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CastPersonItemTest_withBaseTableNameNull(string id)
@@ -112,7 +112,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CastPersonItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CastPersonItemTest_withTargetTableNameNull(string id)
@@ -125,7 +125,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CastPersonItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         public void RetrieveTest_withValidID(string baseTableName, bool basicInfoOnly)
@@ -149,7 +149,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} Cast LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, bool basicInfoOnly)
@@ -173,7 +173,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withValidData(string baseTableName)
         {
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} Cast LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
@@ -233,7 +233,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CastPersonItem.RetrieveList(reader, null, "_xxx", "Cast"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
@@ -245,7 +245,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CastPersonItem.RetrieveList(reader, baseTableName, null, "Cast"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
@@ -257,7 +257,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CastPersonItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {

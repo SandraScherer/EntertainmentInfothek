@@ -46,7 +46,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioTest_withID(string id)
@@ -67,7 +67,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AspectRatioTest_withReaderNull(string id)
@@ -90,7 +90,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => entry = new AspectRatio(reader, null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID(bool basicInfoOnly)
@@ -112,7 +112,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("AspectRatio LastUpdated X", entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withInvalidID(bool basicInfoOnly)

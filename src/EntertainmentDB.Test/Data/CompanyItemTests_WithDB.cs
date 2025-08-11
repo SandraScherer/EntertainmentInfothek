@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CompanyItemTest_withID(string id)
@@ -74,7 +74,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CompanyItemTest_withReaderNull(string id)
@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CompanyItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CompanyItemTest_withBaseTableNameNull(string id)
@@ -110,7 +110,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CompanyItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void CompanyItemTest_withTargetTableNameNull(string id)
@@ -123,7 +123,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new CompanyItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source", true)]
         [DataRow("Image", "Source", false)]
         [DataRow("Movie", "ProductionCompany", true)]
@@ -158,7 +158,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source", true)]
         [DataRow("Image", "Source", false)]
         [DataRow("Movie", "ProductionCompany", true)]
@@ -193,7 +193,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
@@ -234,7 +234,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
@@ -252,7 +252,7 @@ namespace EntertainmentDB.Data.Tests
 
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
@@ -270,7 +270,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CompanyItem.RetrieveList(reader, null, "_xxx", targetTableName));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
@@ -288,7 +288,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CompanyItem.RetrieveList(reader, baseTableName, null, targetTableName));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]
@@ -306,7 +306,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.CompanyItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Image", "Source")]
         [DataRow("Movie", "ProductionCompany")]
         [DataRow("Movie", "SpecialEffectsCompany")]

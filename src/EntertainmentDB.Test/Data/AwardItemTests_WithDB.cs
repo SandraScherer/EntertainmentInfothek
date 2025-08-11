@@ -55,7 +55,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Persons);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AwardItemTest_withID(string id)
@@ -83,7 +83,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Persons);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AwardItemTest_withReaderNull(string id)
@@ -106,7 +106,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AwardItemTest_withBaseTableNameNull(string id)
@@ -119,7 +119,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void AwardItemTest_withTargetTableNameNull(string id)
@@ -132,7 +132,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new AwardItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveTest_withValidID_BasicInfoOnly(string baseTableName)
         {
@@ -158,7 +158,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Persons);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveTest_withValidID_AdditionalInfo(string baseTableName)
         {
@@ -187,7 +187,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_x13", item.Persons[2].ID);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, bool basicInfoOnly)
@@ -214,7 +214,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.Persons);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withValidData(string baseTableName)
         {
@@ -270,7 +270,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_x33", list[2].Persons[2].ID);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withReaderNull(string baseTableName)
         {
@@ -292,7 +292,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, null, "_xxx", "Award"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName)
         {
@@ -304,7 +304,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, baseTableName, null, "Award"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName)
         {
@@ -316,7 +316,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie")]
         public void RetrieveListTest_withOrderNull(string baseTableName)
         {

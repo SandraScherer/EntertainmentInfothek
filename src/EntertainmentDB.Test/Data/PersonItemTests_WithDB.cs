@@ -50,7 +50,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void PersonItemTest_withID(string id)
@@ -74,7 +74,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void PersonItemTest_withReaderNull(string id)
@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void PersonItemTest_withBaseTableNameNull(string id)
@@ -110,7 +110,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void PersonItemTest_withTargetTableNameNull(string id)
@@ -123,7 +123,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new PersonItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director", true)]
         [DataRow("Movie", "Director", false)]
         [DataRow("Movie", "Writer", true)]
@@ -202,7 +202,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director", true)]
         [DataRow("Movie", "Director", false)]
         [DataRow("Movie", "Writer", true)]
@@ -281,7 +281,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -344,7 +344,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -384,7 +384,7 @@ namespace EntertainmentDB.Data.Tests
 
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -424,7 +424,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -464,7 +464,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]
@@ -504,7 +504,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.PersonItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Director")]
         [DataRow("Movie", "Writer")]
         [DataRow("Movie", "Producer")]

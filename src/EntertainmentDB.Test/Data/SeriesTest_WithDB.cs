@@ -126,7 +126,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.Weblinks);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void SeriesTest_withID(string id)
@@ -226,7 +226,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.IsNull(entry.Weblinks);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void SeriesTest_withReaderNull(string id)
@@ -676,7 +676,7 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx3", entry.Weblinks[2].ID);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withInvalidID(bool basicInfoOnly)

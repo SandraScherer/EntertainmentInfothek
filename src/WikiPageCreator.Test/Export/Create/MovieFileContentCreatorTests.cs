@@ -120,7 +120,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -208,7 +208,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -243,7 +243,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -281,7 +281,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -318,7 +318,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -355,7 +355,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -410,7 +410,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -465,7 +465,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -520,7 +520,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -575,7 +575,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -611,7 +611,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -648,7 +648,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -702,7 +702,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -757,7 +757,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -812,7 +812,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -866,7 +866,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -920,7 +920,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -974,7 +974,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1028,7 +1028,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1082,7 +1082,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1136,7 +1136,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1190,7 +1190,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1246,7 +1246,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1302,7 +1302,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1381,7 +1381,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1462,7 +1462,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -1518,7 +1518,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod]
+        [TestMethod]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2107,7 +2107,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2221,7 +2221,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2329,7 +2329,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2428,7 +2428,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2489,7 +2489,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
@@ -2527,7 +2527,7 @@ namespace WikiPageCreator.Export.Create.Tests
             }
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]

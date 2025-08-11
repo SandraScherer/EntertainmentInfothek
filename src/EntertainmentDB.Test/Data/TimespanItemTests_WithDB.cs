@@ -49,7 +49,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TimespanItemTest_withID(string id)
@@ -73,7 +73,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TimespanItemTest_withReaderNull(string id)
@@ -96,7 +96,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TimespanItemTest_withBaseTableNameNull(string id)
@@ -109,7 +109,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TimespanItemTest_withTargetTableNameNull(string id)
@@ -122,7 +122,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate", true)]
         [DataRow("Movie", "FilmingDate", false)]
         [DataRow("Movie", "ProductionDate", true)]
@@ -151,7 +151,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate", true)]
         [DataRow("Movie", "FilmingDate", false)]
         [DataRow("Movie", "ProductionDate", true)]
@@ -180,7 +180,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
@@ -218,7 +218,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
@@ -233,7 +233,7 @@ namespace EntertainmentDB.Data.Tests
 
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
@@ -263,7 +263,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]
@@ -278,7 +278,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "FilmingDate")]
         [DataRow("Movie", "ProductionDate")]
         [DataRow("Series", "FilmingDate")]

@@ -49,7 +49,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TextItemTest_withID(string id)
@@ -72,7 +72,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TextItemTest_withReaderNull(string id)
@@ -95,7 +95,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TextItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TextItemTest_withBaseTableNameNull(string id)
@@ -108,7 +108,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TextItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void TextItemTest_withTargetTableNameNull(string id)
@@ -121,7 +121,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new TextItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description", true)]
         [DataRow("Movie", "Description", false)]
         [DataRow("Movie", "Review", true)]
@@ -145,7 +145,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description", true)]
         [DataRow("Movie", "Description", false)]
         [DataRow("Movie", "Review", true)]
@@ -169,7 +169,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
@@ -202,7 +202,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
@@ -215,7 +215,7 @@ namespace EntertainmentDB.Data.Tests
 
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
@@ -228,7 +228,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TextItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
@@ -241,7 +241,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TextItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
@@ -254,7 +254,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.TextItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "Description")]
         [DataRow("Movie", "Review")]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)

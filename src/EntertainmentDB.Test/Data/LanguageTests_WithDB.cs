@@ -48,7 +48,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void LanguageTest_withID(string id)
@@ -71,7 +71,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void LanguageTest_withReaderNull(string id)
@@ -94,7 +94,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => entry = new Language(reader, null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withValidID(bool basicInfoOnly)
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("Language LastUpdated X", entry.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withInvalidID(bool basicInfoOnly)

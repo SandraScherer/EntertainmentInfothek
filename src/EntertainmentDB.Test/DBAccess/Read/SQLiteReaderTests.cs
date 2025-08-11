@@ -54,7 +54,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             Assert.IsNotNull(newReader.Table);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         [DataRow("Series", true)]
@@ -73,7 +73,7 @@ namespace EntertainmentDB.DBAccess.Read.Tests
             Assert.AreEqual(1, reader.Table.Rows.Count);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", true)]
         [DataRow("Movie", false)]
         [DataRow("Series", true)]

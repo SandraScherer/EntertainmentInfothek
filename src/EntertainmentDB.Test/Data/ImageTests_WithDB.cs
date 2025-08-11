@@ -51,7 +51,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Sources);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void ImageTest_withID(string id)
@@ -77,7 +77,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.Sources);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void ImageTest_withReaderNull(string id)
@@ -153,7 +153,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xx3", entry.Sources[2].ID);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(true)]
         [DataRow(false)]
         public void RetrieveTest_withInvalidID(bool basicInfoOnly)

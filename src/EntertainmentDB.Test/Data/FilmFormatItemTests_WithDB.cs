@@ -48,7 +48,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void FilmFormatItemTest_withID(string id)
@@ -70,7 +70,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void FilmFormatItemTest_withReaderNull(string id)
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, null, "BaseTable", "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void FilmFormatItemTest_withBaseTableNameNull(string id)
@@ -106,7 +106,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, null, "TargetTable"));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow(VALID_ID)]
         [DataRow(INVALID_ID)]
         public void FilmFormatItemTest_withTargetTableNameNull(string id)
@@ -119,7 +119,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, "BaseTable", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat", true)]
         [DataRow("Movie", "NegativeFormat", false)]
         [DataRow("Movie", "PrintedFilmFormat", true)]
@@ -147,7 +147,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X1", item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat", true)]
         [DataRow("Movie", "NegativeFormat", false)]
         [DataRow("Movie", "PrintedFilmFormat", true)]
@@ -174,7 +174,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(item.LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
@@ -209,7 +209,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual($"{baseTableName} {targetTableName} LastUpdated X3", list[2].LastUpdated);
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
@@ -224,7 +224,7 @@ namespace EntertainmentDB.Data.Tests
 
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
@@ -239,7 +239,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, null, "_xxx", targetTableName));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
@@ -254,7 +254,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, null, targetTableName));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
@@ -269,7 +269,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
-        [DataTestMethod()]
+        [TestMethod()]
         [DataRow("Movie", "NegativeFormat")]
         [DataRow("Movie", "PrintedFilmFormat")]
         [DataRow("Series", "NegativeFormat")]
