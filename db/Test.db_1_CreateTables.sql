@@ -1406,3 +1406,16 @@ CREATE TABLE Series_OtherCompany (
   FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(CompanyID) REFERENCES Company(ID) ON UPDATE No action ON DELETE No action, 
   FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
+CREATE TABLE Series_Director (
+  ID          text NOT NULL, 
+  SeriesID    text, 
+  PersonID    text, 
+  Role        text, 
+  Details     text, 
+  Notes       text, 
+  StatusID    text, 
+  LastUpdated text, 
+  PRIMARY KEY (ID), 
+  FOREIGN KEY(SeriesID) REFERENCES Series(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(PersonID) REFERENCES Person(ID) ON UPDATE No action ON DELETE No action, 
+  FOREIGN KEY(StatusID) REFERENCES Status(ID) ON UPDATE No action ON DELETE No action);
