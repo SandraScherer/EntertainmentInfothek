@@ -68,7 +68,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(null, formatter, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new TypeContentCreator(null, formatter, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -86,7 +86,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, null, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new TypeContentCreator(entry, null, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -101,7 +101,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, null));
         }
 
         [TestMethod()]
@@ -116,7 +116,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, ""));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new TypeContentCreator(entry, formatter, ""));
         }
 
         [TestMethod()]
@@ -136,7 +136,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
         }
 
         [TestMethod()]
@@ -218,7 +218,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [TestMethod()]
@@ -238,7 +238,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             TypeContentCreator creator = new TypeContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

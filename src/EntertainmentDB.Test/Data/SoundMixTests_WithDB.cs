@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMix entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new SoundMix(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new SoundMix(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMix entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new SoundMix(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new SoundMix(reader, null));
         }
 
         [TestMethod()]

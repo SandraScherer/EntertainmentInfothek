@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatio entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new AspectRatio(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new AspectRatio(null, id));
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatio entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new AspectRatio(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new AspectRatio(reader, null));
         }
 
         [TestMethod()]

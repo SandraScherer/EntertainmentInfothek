@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data.Tests
             Laboratory entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Laboratory(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Laboratory(null, id));
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             Laboratory entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Laboratory(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Laboratory(reader, null));
         }
 
         [TestMethod()]

@@ -86,7 +86,7 @@ namespace EntertainmentDB.Data.Tests
             Country entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Country(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Country(null, id));
         }
 
         [TestMethod()]
@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Country entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Country(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Country(reader, null));
         }
 
         [TestMethod()]

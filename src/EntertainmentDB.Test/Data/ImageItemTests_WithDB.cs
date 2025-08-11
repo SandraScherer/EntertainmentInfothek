@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             ImageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ImageItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ImageItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             ImageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ImageItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ImageItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             ImageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ImageItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ImageItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             ImageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ImageItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ImageItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -205,7 +205,7 @@ namespace EntertainmentDB.Data.Tests
             List<ImageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(null, baseTableName, "_xxx", "Image"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(null, baseTableName, "_xxx", "Image"));
         }
 
         [TestMethod()]
@@ -216,7 +216,7 @@ namespace EntertainmentDB.Data.Tests
             List<ImageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, null, "_xxx", "Image"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, null, "_xxx", "Image"));
         }
 
         [TestMethod()]
@@ -228,7 +228,7 @@ namespace EntertainmentDB.Data.Tests
             List<ImageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, null, "Image"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, null, "Image"));
         }
 
         [TestMethod()]
@@ -240,7 +240,7 @@ namespace EntertainmentDB.Data.Tests
             List<ImageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -252,7 +252,7 @@ namespace EntertainmentDB.Data.Tests
             List<ImageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, "_xxx", "Image", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ImageItem.RetrieveList(reader, baseTableName, "_xxx", "Image", null));
         }
     }
 }

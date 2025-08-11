@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Location entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Location(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Location(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Location entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Location(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Location(reader, null));
         }
 
         [TestMethod()]

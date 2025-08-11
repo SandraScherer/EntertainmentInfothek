@@ -82,7 +82,7 @@ namespace EntertainmentDB.Data.Tests
             WeblinkItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new WeblinkItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
             WeblinkItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new WeblinkItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -106,7 +106,7 @@ namespace EntertainmentDB.Data.Tests
             WeblinkItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new WeblinkItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -119,7 +119,7 @@ namespace EntertainmentDB.Data.Tests
             WeblinkItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new WeblinkItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new WeblinkItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -206,7 +206,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(null, baseTableName, "_xxx", "Weblink"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(null, baseTableName, "_xxx", "Weblink"));
         }
 
         [TestMethod()]
@@ -217,7 +217,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, null, "_xxx", "Weblink"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, null, "_xxx", "Weblink"));
         }
 
         [TestMethod()]
@@ -229,7 +229,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, null, "Weblink"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, null, "Weblink"));
         }
 
         [TestMethod()]
@@ -241,7 +241,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -253,7 +253,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink", null));
         }
     }
 }

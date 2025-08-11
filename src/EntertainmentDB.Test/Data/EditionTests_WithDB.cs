@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Edition entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Edition(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Edition(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Edition entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Edition(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Edition(reader, null));
         }
 
         [TestMethod()]

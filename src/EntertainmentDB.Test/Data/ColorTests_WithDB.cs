@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Color entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Color(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Color(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Color entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Color(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Color(reader, null));
         }
 
         [TestMethod()]

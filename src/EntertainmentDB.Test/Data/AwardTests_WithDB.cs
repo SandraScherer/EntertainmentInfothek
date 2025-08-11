@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Award entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Award(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Award(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Award entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Award(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Award(reader, null));
         }
 
         [TestMethod()]

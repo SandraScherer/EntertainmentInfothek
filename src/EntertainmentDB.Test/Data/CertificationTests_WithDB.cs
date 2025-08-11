@@ -80,7 +80,7 @@ namespace EntertainmentDB.Data.Tests
             Certification entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Certification(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Certification(null, id));
         }
 
         [TestMethod()]
@@ -91,7 +91,7 @@ namespace EntertainmentDB.Data.Tests
             Certification entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Certification(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Certification(reader, null));
         }
 
         [TestMethod()]

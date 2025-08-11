@@ -83,7 +83,7 @@ namespace EntertainmentDB.Data.Tests
             RuntimeItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new RuntimeItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new RuntimeItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -94,7 +94,7 @@ namespace EntertainmentDB.Data.Tests
             RuntimeItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new RuntimeItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new RuntimeItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -107,7 +107,7 @@ namespace EntertainmentDB.Data.Tests
             RuntimeItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new RuntimeItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new RuntimeItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -120,7 +120,7 @@ namespace EntertainmentDB.Data.Tests
             RuntimeItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new RuntimeItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new RuntimeItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -218,7 +218,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(null, baseTableName, "_xxx", "Runtime"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(null, baseTableName, "_xxx", "Runtime"));
         }
 
         [TestMethod()]
@@ -229,7 +229,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, null, "_xxx", "Runtime"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, null, "_xxx", "Runtime"));
         }
 
         [TestMethod()]
@@ -242,7 +242,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, null, "Runtime"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, null, "Runtime"));
         }
 
         [TestMethod()]
@@ -255,7 +255,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -268,7 +268,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, "_xxx", "Runtime", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.RuntimeItem.RetrieveList(reader, baseTableName, "_xxx", "Runtime", null));
         }
     }
 }

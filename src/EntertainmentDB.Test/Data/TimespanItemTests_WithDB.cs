@@ -82,7 +82,7 @@ namespace EntertainmentDB.Data.Tests
             TimespanItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new TimespanItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -93,7 +93,7 @@ namespace EntertainmentDB.Data.Tests
             TimespanItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new TimespanItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -106,7 +106,7 @@ namespace EntertainmentDB.Data.Tests
             TimespanItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new TimespanItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -119,7 +119,7 @@ namespace EntertainmentDB.Data.Tests
             TimespanItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new TimespanItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new TimespanItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -229,7 +229,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", "")));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(null, baseTableName, "_xxx", targetTableName.Replace(" ", "")));
 
         }
 
@@ -245,7 +245,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, null, "_xxx", targetTableName.Replace(" ", "")));
         }
 
         [TestMethod()]
@@ -260,7 +260,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, null, targetTableName.Replace(" ", "")));
         }
 
         [TestMethod()]
@@ -275,7 +275,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -290,7 +290,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""), null));
         }
     }
 }

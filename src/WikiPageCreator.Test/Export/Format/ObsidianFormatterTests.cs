@@ -56,7 +56,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsFilename(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsFilename(null));
         }
 
         [TestMethod()]
@@ -80,7 +80,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsBold(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsBold(null));
         }
 
         [TestMethod()]
@@ -104,7 +104,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsItalic(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsItalic(null));
         }
 
         [TestMethod()]
@@ -128,7 +128,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsUnderlined(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsUnderlined(null));
         }
 
         [TestMethod()]
@@ -152,7 +152,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsSubscript(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsSubscript(null));
         }
 
         [TestMethod()]
@@ -176,7 +176,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsSuperscript(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsSuperscript(null));
         }
 
         [TestMethod()]
@@ -200,7 +200,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsDeleted(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsDeleted(null));
         }
 
         [TestMethod()]
@@ -225,7 +225,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null, "pagename", "section", "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null, "pagename", "section", "text"));
         }
 
         [TestMethod()]
@@ -237,7 +237,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "section", "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "section", "text"));
         }
 
         [TestMethod()]
@@ -249,7 +249,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null, "text"));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "section", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "section", null));
         }
 
         [TestMethod()]
@@ -287,7 +287,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", "text"));
         }
 
         [TestMethod()]
@@ -299,7 +299,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null, "text"));
         }
 
         [TestMethod()]
@@ -311,7 +311,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename", null));
         }
 
         [TestMethod()]
@@ -337,7 +337,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, "pagename"));
         }
 
         [TestMethod()]
@@ -349,7 +349,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(path, null));
         }
 
         [TestMethod()]
@@ -374,7 +374,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "section", "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "section", "text"));
         }
 
         [TestMethod()]
@@ -385,7 +385,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null, "text"));
         }
 
         [TestMethod()]
@@ -396,7 +396,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", "section", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", "section", null));
         }
 
         [TestMethod()]
@@ -421,7 +421,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(pagename, "text"));
         }
 
         [TestMethod()]
@@ -432,7 +432,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink("pagename", null));
         }
 
         [TestMethod()]
@@ -456,7 +456,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInternalLink(null));
         }
 
         [TestMethod()]
@@ -480,7 +480,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null, "text"));
         }
 
         [TestMethod()]
@@ -491,7 +491,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink("link", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsExternalLink("link", null));
         }
 
         [TestMethod()]
@@ -515,7 +515,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsExternalLink(null));
         }
 
         [TestMethod()]
@@ -539,7 +539,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsEMail(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsEMail(null));
         }
 
         [TestMethod()]
@@ -563,7 +563,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading1(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsHeading1(null));
         }
 
         [TestMethod()]
@@ -587,7 +587,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading2(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsHeading2(null));
         }
 
         [TestMethod()]
@@ -609,7 +609,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading3(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsHeading3(null));
         }
 
         [TestMethod()]
@@ -633,7 +633,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading4(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsHeading4(null));
         }
 
         [TestMethod()]
@@ -657,7 +657,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsHeading5(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsHeading5(null));
         }
 
         [TestMethod()]
@@ -682,7 +682,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100, "text"));
         }
 
         [TestMethod()]
@@ -694,7 +694,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100, "text"));
         }
 
         [TestMethod()]
@@ -706,7 +706,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100, "text"));
         }
 
         [TestMethod()]
@@ -718,7 +718,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0, "text"));
         }
 
         [TestMethod()]
@@ -730,7 +730,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 100, null));
         }
 
         [TestMethod()]
@@ -755,7 +755,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, 100));
         }
 
         [TestMethod()]
@@ -767,7 +767,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, 100));
         }
 
         [TestMethod()]
@@ -779,7 +779,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, 100));
         }
 
         [TestMethod()]
@@ -791,7 +791,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, 0));
         }
 
         [TestMethod()]
@@ -816,7 +816,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50, "text"));
         }
 
         [TestMethod()]
@@ -828,7 +828,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50, "text"));
         }
 
         [TestMethod()]
@@ -840,7 +840,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0, "text"));
         }
 
         [TestMethod()]
@@ -852,7 +852,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 50, null));
         }
 
         [TestMethod()]
@@ -877,7 +877,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", 50));
         }
 
         [TestMethod()]
@@ -889,7 +889,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, 50));
         }
 
         [TestMethod()]
@@ -901,7 +901,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", 0));
         }
 
         [TestMethod()]
@@ -926,7 +926,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, "filename.jpg", "text"));
         }
 
         [TestMethod()]
@@ -938,7 +938,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null, "text"));
         }
 
         [TestMethod()]
@@ -950,7 +950,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg", null));
         }
 
         [TestMethod()]
@@ -976,7 +976,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, "filename.jpg"));
         }
 
         [TestMethod()]
@@ -988,7 +988,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(path, null));
         }
 
         [TestMethod()]
@@ -1012,7 +1012,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100, "text"));
         }
 
         [TestMethod()]
@@ -1023,7 +1023,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100, "text"));
         }
 
         [TestMethod()]
@@ -1034,7 +1034,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0, "text"));
         }
 
         [TestMethod()]
@@ -1045,7 +1045,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 100, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 100, null));
         }
 
         [TestMethod()]
@@ -1069,7 +1069,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, 100));
         }
 
         [TestMethod()]
@@ -1080,7 +1080,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, 100));
         }
 
         [TestMethod()]
@@ -1091,7 +1091,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, 0));
         }
 
         [TestMethod()]
@@ -1115,7 +1115,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50, "text"));
         }
 
         [TestMethod()]
@@ -1126,7 +1126,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0, "text"));
         }
 
         [TestMethod()]
@@ -1137,7 +1137,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 50, null));
         }
 
         [TestMethod()]
@@ -1161,7 +1161,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null, 50));
         }
 
         [TestMethod()]
@@ -1172,7 +1172,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", 0));
         }
 
         [TestMethod()]
@@ -1197,7 +1197,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(filename, "text"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(filename, "text"));
         }
 
         [TestMethod()]
@@ -1208,7 +1208,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage("filename.jpg", null));
         }
 
         [TestMethod()]
@@ -1232,7 +1232,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImage(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImage(null));
         }
 
         [TestMethod()]
@@ -1256,7 +1256,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsImageBox(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsImageBox(null));
         }
 
         [TestMethod()]
@@ -1280,7 +1280,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.Align(null, Alignment.Left));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.Align(null, Alignment.Left));
         }
 
         [TestMethod()]
@@ -1357,7 +1357,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null, "pagename.md"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null, "pagename.md"));
         }
 
         [TestMethod()]
@@ -1369,7 +1369,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(path, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(path, null));
         }
 
         [TestMethod()]
@@ -1393,7 +1393,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsInsertPage(null));
         }
 
         [TestMethod()]
@@ -1471,7 +1471,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(0, width));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.DefineTable(0, width));
         }
 
         [TestMethod()]
@@ -1482,7 +1482,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, null));
         }
 
         [TestMethod()]
@@ -1494,7 +1494,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, width));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.DefineTable(500, width));
         }
 
         [TestMethod()]
@@ -1533,7 +1533,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsTableTitle(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsTableTitle(null));
         }
 
         [TestMethod()]
@@ -1585,7 +1585,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.AsTableRow(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.AsTableRow(null));
         }
 
         [TestMethod()]
@@ -1609,7 +1609,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.BeginBox(0, Alignment.Left));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.BeginBox(0, Alignment.Left));
         }
 
         [TestMethod()]
@@ -1646,7 +1646,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => returnstring = formatter.BeginDataEntry(null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => returnstring = formatter.BeginDataEntry(null));
         }
 
         [TestMethod()]

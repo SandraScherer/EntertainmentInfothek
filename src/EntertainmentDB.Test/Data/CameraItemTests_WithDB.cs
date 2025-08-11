@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             CameraItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CameraItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             CameraItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CameraItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             CameraItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CameraItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             CameraItem item;
             
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CameraItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CameraItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(null, baseTableName, "_xxx", "Camera"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(null, baseTableName, "_xxx", "Camera"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, null, "_xxx", "Camera"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, null, "_xxx", "Camera"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, null, "Camera"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, null, "Camera"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", "Camera", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", "Camera", null));
         }
     }
 }

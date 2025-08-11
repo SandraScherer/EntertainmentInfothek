@@ -230,7 +230,7 @@ namespace EntertainmentDB.Data.Tests
             Movie entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Movie(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Movie(null, id));
         }
 
         [TestMethod()]
@@ -241,7 +241,7 @@ namespace EntertainmentDB.Data.Tests
             Movie entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Movie(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Movie(reader, null));
         }
 
         [TestMethod()]
@@ -781,7 +781,7 @@ namespace EntertainmentDB.Data.Tests
             List<Article> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(null, "_xxx"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Movie.RetrieveList(null, "_xxx"));
         }
 
         [TestMethod()]
@@ -792,7 +792,7 @@ namespace EntertainmentDB.Data.Tests
             List<Article> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Movie.RetrieveList(reader, null));
         }
 
         [TestMethod()]
@@ -803,7 +803,7 @@ namespace EntertainmentDB.Data.Tests
             List<Article> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Movie.RetrieveList(reader, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Movie.RetrieveList(reader, "_xxx", null));
         }
     }
 }

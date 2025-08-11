@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             LocationItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LocationItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LocationItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             LocationItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LocationItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LocationItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             LocationItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LocationItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LocationItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             LocationItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LocationItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LocationItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<LocationItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(null, baseTableName, "_xxx", "FilmingLocation"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(null, baseTableName, "_xxx", "FilmingLocation"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<LocationItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, null, "_xxx", "FilmingLocation"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, null, "_xxx", "FilmingLocation"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<LocationItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, null, "FilmingLocation"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, null, "FilmingLocation"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<LocationItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<LocationItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, "_xxx", "FilmingLocation", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LocationItem.RetrieveList(reader, baseTableName, "_xxx", "FilmingLocation", null));
         }
     }
 }

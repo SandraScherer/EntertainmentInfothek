@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             LanguageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LanguageItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LanguageItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             LanguageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LanguageItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LanguageItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             LanguageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LanguageItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LanguageItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             LanguageItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LanguageItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LanguageItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<LanguageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(null, baseTableName, "_xxx", "Language"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(null, baseTableName, "_xxx", "Language"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<LanguageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, null, "_xxx", "Language"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, null, "_xxx", "Language"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<LanguageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, null, "Language"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, null, "Language"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<LanguageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<LanguageItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, "_xxx", "Language", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LanguageItem.RetrieveList(reader, baseTableName, "_xxx", "Language", null));
         }
     }
 }

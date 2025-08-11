@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormat entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new FilmFormat(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new FilmFormat(null, id));
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormat entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new FilmFormat(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new FilmFormat(reader, null));
         }
 
         [TestMethod()]

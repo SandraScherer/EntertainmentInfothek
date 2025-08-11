@@ -72,7 +72,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             // Act, Assert
             CinematographicProcessContentCreator creator;
-            Assert.ThrowsException<NullReferenceException>(() => creator = new CinematographicProcessContentCreator(null, formatter, targetLanguageCode));
+            Assert.ThrowsExactly<NullReferenceException>(() => creator = new CinematographicProcessContentCreator(null, formatter, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -94,7 +94,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
 
             // Act, Assert
             CinematographicProcessContentCreator creator;
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, null, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, null, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -113,7 +113,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, null));
         }
 
         [TestMethod()]
@@ -132,7 +132,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, ""));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new CinematographicProcessContentCreator(list, formatter, ""));
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
         }
 
         [TestMethod()]
@@ -180,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
         }
 
         [TestMethod()]
@@ -250,7 +250,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [TestMethod()]
@@ -274,7 +274,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateSectionContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateSectionContent());
         }
     }
 }

@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Genre entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Genre(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Genre(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Genre entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Genre(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Genre(reader, null));
         }
 
         [TestMethod()]

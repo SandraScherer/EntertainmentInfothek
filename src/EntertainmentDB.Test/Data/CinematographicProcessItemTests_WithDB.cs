@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcessItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CinematographicProcessItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcessItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcessItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcessItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new CinematographicProcessItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<CinematographicProcessItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(null, baseTableName, "_xxx", "CinematographicProcess"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(null, baseTableName, "_xxx", "CinematographicProcess"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<CinematographicProcessItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, null, "_xxx", "CinematographicProcess"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, null, "_xxx", "CinematographicProcess"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<CinematographicProcessItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, null, "CinematographicProcess"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, null, "CinematographicProcess"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<CinematographicProcessItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<CinematographicProcessItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", "CinematographicProcess", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.CinematographicProcessItem.RetrieveList(reader, baseTableName, "_xxx", "CinematographicProcess", null));
         }
     }
 }

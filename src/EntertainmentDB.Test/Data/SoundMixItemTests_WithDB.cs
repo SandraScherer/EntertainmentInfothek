@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMixItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new SoundMixItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMixItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new SoundMixItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMixItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new SoundMixItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             SoundMixItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new SoundMixItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new SoundMixItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<SoundMixItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(null, baseTableName, "_xxx", "SoundMix"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(null, baseTableName, "_xxx", "SoundMix"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<SoundMixItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, null, "_xxx", "SoundMix"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, null, "_xxx", "SoundMix"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<SoundMixItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, null, "SoundMix"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, null, "SoundMix"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<SoundMixItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<SoundMixItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", "SoundMix", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.SoundMixItem.RetrieveList(reader, baseTableName, "_xxx", "SoundMix", null));
         }
     }
 }

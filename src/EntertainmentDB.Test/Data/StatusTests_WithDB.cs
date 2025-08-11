@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Status entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Status(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Status(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Status entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Status(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Status(reader, null));
         }
 
         [TestMethod()]

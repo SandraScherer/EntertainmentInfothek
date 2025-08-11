@@ -68,7 +68,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new ConnectionContentCreator(null, formatter, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new ConnectionContentCreator(null, formatter, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -86,7 +86,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, null, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, null, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -101,7 +101,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, formatter, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, formatter, null));
         }
 
         [TestMethod()]
@@ -116,7 +116,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, formatter, ""));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new ConnectionContentCreator(entry, formatter, ""));
         }
 
         [TestMethod()]
@@ -136,7 +136,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
         }
 
         [TestMethod()]
@@ -176,7 +176,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateInfoBoxContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateInfoBoxContent());
         }
 
         [TestMethod()]
@@ -228,7 +228,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> content;
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => content = creator.CreateSectionContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => content = creator.CreateSectionContent());
         }
     }
 }

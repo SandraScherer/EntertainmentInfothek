@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Camera entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Camera(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Camera(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Camera entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Camera(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Camera(reader, null));
         }
 
         [TestMethod()]

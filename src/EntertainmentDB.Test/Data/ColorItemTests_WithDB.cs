@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             ColorItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ColorItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             ColorItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ColorItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             ColorItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ColorItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             ColorItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new ColorItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new ColorItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<ColorItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(null, baseTableName, "_xxx", "Color"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(null, baseTableName, "_xxx", "Color"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<ColorItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, null, "_xxx", "Color"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, null, "_xxx", "Color"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<ColorItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, null, "Color"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, null, "Color"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<ColorItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<ColorItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", "Color", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.ColorItem.RetrieveList(reader, baseTableName, "_xxx", "Color", null));
         }
     }
 }

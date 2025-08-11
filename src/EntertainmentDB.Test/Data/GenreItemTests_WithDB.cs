@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             GenreItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new GenreItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new GenreItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             GenreItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new GenreItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new GenreItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             GenreItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new GenreItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new GenreItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             GenreItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new GenreItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new GenreItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<GenreItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(null, baseTableName, "_xxx", "Genre"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(null, baseTableName, "_xxx", "Genre"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<GenreItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, null, "_xxx", "Genre"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, null, "_xxx", "Genre"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<GenreItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, null, "Genre"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, null, "Genre"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<GenreItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<GenreItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, "_xxx", "Genre", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.GenreItem.RetrieveList(reader, baseTableName, "_xxx", "Genre", null));
         }
     }
 }

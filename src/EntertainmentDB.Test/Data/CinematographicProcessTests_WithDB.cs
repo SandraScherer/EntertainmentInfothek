@@ -76,7 +76,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcess entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new CinematographicProcess(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new CinematographicProcess(null, id));
         }
 
         [TestMethod()]
@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             CinematographicProcess entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new CinematographicProcess(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new CinematographicProcess(reader, null));
         }
 
         [TestMethod()]

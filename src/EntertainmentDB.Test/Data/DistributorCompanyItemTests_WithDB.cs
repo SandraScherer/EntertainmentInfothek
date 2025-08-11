@@ -87,7 +87,7 @@ namespace EntertainmentDB.Data.Tests
             DistributorCompanyItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new DistributorCompanyItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -98,7 +98,7 @@ namespace EntertainmentDB.Data.Tests
             DistributorCompanyItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -111,7 +111,7 @@ namespace EntertainmentDB.Data.Tests
             DistributorCompanyItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -124,7 +124,7 @@ namespace EntertainmentDB.Data.Tests
             DistributorCompanyItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new DistributorCompanyItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -232,7 +232,7 @@ namespace EntertainmentDB.Data.Tests
             List<DistributorCompanyItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(null, baseTableName, "_xxx", "Distributor"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(null, baseTableName, "_xxx", "Distributor"));
         }
 
         [TestMethod()]
@@ -243,7 +243,7 @@ namespace EntertainmentDB.Data.Tests
             List<DistributorCompanyItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, null, "_xxx", "Distributor"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, null, "_xxx", "Distributor"));
         }
 
         [TestMethod()]
@@ -256,7 +256,7 @@ namespace EntertainmentDB.Data.Tests
             List<DistributorCompanyItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, null, "Distributor"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, null, "Distributor"));
         }
 
         [TestMethod()]
@@ -269,7 +269,7 @@ namespace EntertainmentDB.Data.Tests
             List<DistributorCompanyItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -282,7 +282,7 @@ namespace EntertainmentDB.Data.Tests
             List<DistributorCompanyItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", "Distributor", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.DistributorCompanyItem.RetrieveList(reader, baseTableName, "_xxx", "Distributor", null));
         }
     }
 }

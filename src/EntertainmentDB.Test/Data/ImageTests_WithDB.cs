@@ -86,7 +86,7 @@ namespace EntertainmentDB.Data.Tests
             Image entry;
 
             // act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Image(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Image(null, id));
         }
 
         [TestMethod()]
@@ -97,7 +97,7 @@ namespace EntertainmentDB.Data.Tests
             Image entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Image(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Image(reader, null));
         }
 
         [TestMethod()]

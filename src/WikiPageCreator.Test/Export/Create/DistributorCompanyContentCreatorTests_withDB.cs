@@ -72,7 +72,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<NullReferenceException>(() => creator = new DistributorCompanyContentCreator(null, formatter, targetLanguageCode));
+            Assert.ThrowsExactly<NullReferenceException>(() => creator = new DistributorCompanyContentCreator(null, formatter, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -94,7 +94,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, null, targetLanguageCode));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, null, targetLanguageCode));
         }
 
         [TestMethod()]
@@ -113,7 +113,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, formatter, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, formatter, null));
         }
 
         [TestMethod()]
@@ -132,7 +132,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, formatter, ""));
+            Assert.ThrowsExactly<ArgumentNullException>(() => creator = new DistributorCompanyContentCreator(list, formatter, ""));
         }
 
         [TestMethod()]
@@ -156,7 +156,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator = new DistributorCompanyContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.GetPageName());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
         }
 
         [TestMethod()]
@@ -180,7 +180,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator = new DistributorCompanyContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreatePage());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
         }
 
         [TestMethod()]
@@ -201,7 +201,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator = new DistributorCompanyContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateInfoBoxContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateInfoBoxContent());
         }
 
         [TestMethod()]
@@ -225,7 +225,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             DistributorCompanyContentCreator creator = new DistributorCompanyContentCreator(list, formatter, targetLanguageCode);
 
             // Act, Assert
-            Assert.ThrowsException<NotSupportedException>(() => creator.CreateChapterContent());
+            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreateChapterContent());
         }
 
         [TestMethod()]

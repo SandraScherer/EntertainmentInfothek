@@ -80,7 +80,7 @@ namespace EntertainmentDB.Data.Tests
             Language entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Language(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Language(null, id));
         }
 
         [TestMethod()]
@@ -91,7 +91,7 @@ namespace EntertainmentDB.Data.Tests
             Language entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Language(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Language(reader, null));
         }
 
         [TestMethod()]

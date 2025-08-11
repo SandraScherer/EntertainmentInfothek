@@ -79,7 +79,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormatItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new FilmFormatItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -90,7 +90,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormatItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new FilmFormatItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -103,7 +103,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormatItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -116,7 +116,7 @@ namespace EntertainmentDB.Data.Tests
             FilmFormatItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new FilmFormatItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -220,7 +220,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(null, baseTableName, "_xxx", targetTableName));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(null, baseTableName, "_xxx", targetTableName));
 
         }
 
@@ -236,7 +236,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, null, "_xxx", targetTableName));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, null, "_xxx", targetTableName));
         }
 
         [TestMethod()]
@@ -251,7 +251,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, null, targetTableName));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, null, targetTableName));
         }
 
         [TestMethod()]
@@ -266,7 +266,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -281,7 +281,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName, null));
         }
     }
 }

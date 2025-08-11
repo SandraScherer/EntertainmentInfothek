@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             LaboratoryItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LaboratoryItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LaboratoryItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             LaboratoryItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LaboratoryItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LaboratoryItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             LaboratoryItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LaboratoryItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LaboratoryItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             LaboratoryItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new LaboratoryItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new LaboratoryItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<LaboratoryItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(null, baseTableName, "_xxx", "Laboratory"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(null, baseTableName, "_xxx", "Laboratory"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<LaboratoryItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, null, "_xxx", "Laboratory"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, null, "_xxx", "Laboratory"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<LaboratoryItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, null, "Laboratory"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, null, "Laboratory"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<LaboratoryItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<LaboratoryItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", "Laboratory", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.LaboratoryItem.RetrieveList(reader, baseTableName, "_xxx", "Laboratory", null));
         }
     }
 }

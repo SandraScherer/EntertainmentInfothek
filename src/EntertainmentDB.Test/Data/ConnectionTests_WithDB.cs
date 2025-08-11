@@ -78,7 +78,7 @@ namespace EntertainmentDB.Data.Tests
             Connection entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Connection(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Connection(null, id));
         }
 
         [TestMethod()]
@@ -89,7 +89,7 @@ namespace EntertainmentDB.Data.Tests
             Connection entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Connection(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Connection(reader, null));
         }
 
         [TestMethod()]

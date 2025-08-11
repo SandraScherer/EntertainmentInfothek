@@ -81,7 +81,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatioItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(null, id, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new AspectRatioItem(null, id, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -92,7 +92,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatioItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, null, "BaseTable", "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new AspectRatioItem(reader, null, "BaseTable", "TargetTable"));
         }
 
         [TestMethod()]
@@ -105,7 +105,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatioItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, null, "TargetTable"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, null, "TargetTable"));
         }
 
         [TestMethod()]
@@ -118,7 +118,7 @@ namespace EntertainmentDB.Data.Tests
             AspectRatioItem item;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, "BaseTable", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => item = new AspectRatioItem(reader, id, "BaseTable", null));
         }
 
         [TestMethod()]
@@ -211,7 +211,7 @@ namespace EntertainmentDB.Data.Tests
             List<AspectRatioItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(null, baseTableName, "_xxx", "AspectRatio"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(null, baseTableName, "_xxx", "AspectRatio"));
         }
 
         [TestMethod()]
@@ -222,7 +222,7 @@ namespace EntertainmentDB.Data.Tests
             List<AspectRatioItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, null, "_xxx", "AspectRatio"));
         }
 
         [TestMethod()]
@@ -235,7 +235,7 @@ namespace EntertainmentDB.Data.Tests
             List<AspectRatioItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio"));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, null, "AspectRatio"));
         }
 
         [TestMethod()]
@@ -248,7 +248,7 @@ namespace EntertainmentDB.Data.Tests
             List<AspectRatioItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", null));
         }
 
         [TestMethod()]
@@ -261,7 +261,7 @@ namespace EntertainmentDB.Data.Tests
             List<AspectRatioItem> list;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", "AspectRatio", null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => list = Data.AspectRatioItem.RetrieveList(reader, baseTableName, "_xxx", "AspectRatio", null));
         }
     }
 }

@@ -88,7 +88,7 @@ namespace EntertainmentDB.Data.Tests
             Person entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Person(null, id));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Person(null, id));
         }
 
         [TestMethod()]
@@ -99,7 +99,7 @@ namespace EntertainmentDB.Data.Tests
             Person entry;
 
             // Act, Assert
-            Assert.ThrowsException<ArgumentNullException>(() => entry = new Person(reader, null));
+            Assert.ThrowsExactly<ArgumentNullException>(() => entry = new Person(reader, null));
         }
 
         [TestMethod()]
