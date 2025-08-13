@@ -142,12 +142,12 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Text LastUpdated X", entry.LastUpdated);
 
-            Assert.AreEqual(3, entry.Authors.Count);
+            Assert.HasCount(3, entry.Authors);
             Assert.AreEqual("_xx1", entry.Authors[0].ID);
             Assert.AreEqual("_xx2", entry.Authors[1].ID);
             Assert.AreEqual("_xx3", entry.Authors[2].ID);
 
-            Assert.AreEqual(3, entry.Sources.Count);
+            Assert.HasCount(3, entry.Sources);
             Assert.AreEqual("_xx1", entry.Sources[0].ID);
             Assert.AreEqual("_xx2", entry.Sources[1].ID);
             Assert.AreEqual("_xx3", entry.Sources[2].ID);

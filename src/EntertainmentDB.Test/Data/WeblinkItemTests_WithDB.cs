@@ -177,7 +177,7 @@ namespace EntertainmentDB.Data.Tests
             List<WeblinkItem> list = Data.WeblinkItem.RetrieveList(reader, baseTableName, "_xxx", "Weblink");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Weblink.ID);

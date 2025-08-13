@@ -210,7 +210,7 @@ namespace EntertainmentDB.Data.Tests
             List<CompanyItem> list = Data.CompanyItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName);
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Company.ID);

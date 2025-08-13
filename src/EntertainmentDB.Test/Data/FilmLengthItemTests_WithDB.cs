@@ -181,7 +181,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmLengthItem> list = Data.FilmLengthItem.RetrieveList(reader, baseTableName, "_xxx", "FilmLength");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual($"{baseTableName} FilmLength Length X1", list[0].Length);

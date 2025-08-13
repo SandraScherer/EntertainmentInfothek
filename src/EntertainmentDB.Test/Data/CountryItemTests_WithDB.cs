@@ -182,7 +182,7 @@ namespace EntertainmentDB.Data.Tests
             List<CountryItem> list = Data.CountryItem.RetrieveList(reader, baseTableName, "_xxx", "Country");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Country.ID);

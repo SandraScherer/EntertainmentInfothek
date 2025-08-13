@@ -181,7 +181,7 @@ namespace EntertainmentDB.Data.Tests
             List<CameraItem> list = Data.CameraItem.RetrieveList(reader, baseTableName, "_xxx", "Camera");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Camera.ID);

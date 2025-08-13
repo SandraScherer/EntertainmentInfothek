@@ -194,7 +194,7 @@ namespace EntertainmentDB.Data.Tests
             List<TimespanItem> list = Data.TimespanItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName.Replace(" ", ""));
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual($"{baseTableName} {targetTableName} StartDate X1", list[0].StartDate);

@@ -184,7 +184,7 @@ namespace EntertainmentDB.Data.Tests
             List<CastPersonItem> list = Data.CastPersonItem.RetrieveList(reader, baseTableName, "_xxx", "Cast");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Actor.ID);

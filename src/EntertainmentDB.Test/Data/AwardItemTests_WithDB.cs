@@ -181,7 +181,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", item.Status.ID);
             Assert.AreEqual($"{baseTableName} Award LastUpdated X1", item.LastUpdated);
 
-            Assert.AreEqual(3, item.Persons.Count);
+            Assert.HasCount(3, item.Persons);
             Assert.AreEqual("_x11", item.Persons[0].ID);
             Assert.AreEqual("_x12", item.Persons[1].ID);
             Assert.AreEqual("_x13", item.Persons[2].ID);
@@ -225,7 +225,7 @@ namespace EntertainmentDB.Data.Tests
             List<AwardItem> list = Data.AwardItem.RetrieveList(reader, baseTableName, "_xxx", "Award");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].Award.ID);
@@ -236,7 +236,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[0].Status.ID);
             Assert.AreEqual($"{baseTableName} Award LastUpdated X1", list[0].LastUpdated);
 
-            Assert.AreEqual(3, list[0].Persons.Count);
+            Assert.HasCount(3, list[0].Persons);
             Assert.AreEqual("_x11", list[0].Persons[0].ID);
             Assert.AreEqual("_x12", list[0].Persons[1].ID);
             Assert.AreEqual("_x13", list[0].Persons[2].ID);
@@ -250,7 +250,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[1].Status.ID);
             Assert.AreEqual($"{baseTableName} Award LastUpdated X2", list[1].LastUpdated);
 
-            Assert.AreEqual(3, list[1].Persons.Count);
+            Assert.HasCount(3, list[1].Persons);
             Assert.AreEqual("_x21", list[1].Persons[0].ID);
             Assert.AreEqual("_x22", list[1].Persons[1].ID);
             Assert.AreEqual("_x23", list[1].Persons[2].ID);
@@ -264,7 +264,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", list[2].Status.ID);
             Assert.AreEqual($"{baseTableName} Award LastUpdated X3", list[2].LastUpdated);
 
-            Assert.AreEqual(3, list[2].Persons.Count);
+            Assert.HasCount(3, list[2].Persons);
             Assert.AreEqual("_x31", list[2].Persons[0].ID);
             Assert.AreEqual("_x32", list[2].Persons[1].ID);
             Assert.AreEqual("_x33", list[2].Persons[2].ID);

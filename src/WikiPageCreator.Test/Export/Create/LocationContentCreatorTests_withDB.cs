@@ -266,7 +266,7 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             List<string> content = creator.CreateSectionContent();
 
             // Assert
-            Assert.AreEqual(testContent.Count, content.Count);
+            Assert.HasCount(testContent.Count, content);
             for (int i = 0; i < testContent.Count; i++)
             {
                 Assert.AreEqual(testContent[i], content[i]);

@@ -188,7 +188,7 @@ namespace EntertainmentDB.Data.Tests
             List<FilmFormatItem> list = Data.FilmFormatItem.RetrieveList(reader, baseTableName, "_xxx", targetTableName);
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual("_xxx", list[0].FilmFormat.ID);

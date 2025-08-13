@@ -185,7 +185,7 @@ namespace EntertainmentDB.Data.Tests
             List<RuntimeItem> list = Data.RuntimeItem.RetrieveList(reader, baseTableName, "_xxx", "Runtime");
 
             // Assert
-            Assert.AreEqual(3, list.Count);
+            Assert.HasCount(3, list);
 
             Assert.AreEqual("_xx1", list[0].ID);
             Assert.AreEqual(11, list[0].Runtime);

@@ -380,297 +380,297 @@ namespace EntertainmentDB.Data.Tests
             Assert.AreEqual("_xxx", entry.Status.ID);
             Assert.AreEqual("Series LastUpdated X", entry.LastUpdated);
 
-            Assert.AreEqual(3, entry.Genres.Count);
+            Assert.HasCount(3, entry.Genres);
             Assert.AreEqual("_xx1", entry.Genres[0].ID);
             Assert.AreEqual("_xx2", entry.Genres[1].ID);
             Assert.AreEqual("_xx3", entry.Genres[2].ID);
 
-            Assert.AreEqual(3, entry.Certifications.Count);
+            Assert.HasCount(3, entry.Certifications);
             Assert.AreEqual("_xx1", entry.Certifications[0].ID);
             Assert.AreEqual("_xx2", entry.Certifications[1].ID);
             Assert.AreEqual("_xx3", entry.Certifications[2].ID);
 
-            Assert.AreEqual(3, entry.Countries.Count);
+            Assert.HasCount(3, entry.Countries);
             Assert.AreEqual("_xx1", entry.Countries[0].ID);
             Assert.AreEqual("_xx2", entry.Countries[1].ID);
             Assert.AreEqual("_xx3", entry.Countries[2].ID);
 
-            Assert.AreEqual(3, entry.Languages.Count);
+            Assert.HasCount(3, entry.Languages);
             Assert.AreEqual("_xx1", entry.Languages[0].ID);
             Assert.AreEqual("_xx2", entry.Languages[1].ID);
             Assert.AreEqual("_xx3", entry.Languages[2].ID);
 
-            Assert.AreEqual(3, entry.Runtimes.Count);
+            Assert.HasCount(3, entry.Runtimes);
             Assert.AreEqual("_xx1", entry.Runtimes[0].ID);
             Assert.AreEqual("_xx2", entry.Runtimes[1].ID);
             Assert.AreEqual("_xx3", entry.Runtimes[2].ID);
 
-            Assert.AreEqual(3, entry.SoundMixes.Count);
+            Assert.HasCount(3, entry.SoundMixes);
             Assert.AreEqual("_xx1", entry.SoundMixes[0].ID);
             Assert.AreEqual("_xx2", entry.SoundMixes[1].ID);
             Assert.AreEqual("_xx3", entry.SoundMixes[2].ID);
 
-            Assert.AreEqual(3, entry.Colors.Count);
+            Assert.HasCount(3, entry.Colors);
             Assert.AreEqual("_xx1", entry.Colors[0].ID);
             Assert.AreEqual("_xx2", entry.Colors[1].ID);
             Assert.AreEqual("_xx3", entry.Colors[2].ID);
 
-            Assert.AreEqual(3, entry.AspectRatios.Count);
+            Assert.HasCount(3, entry.AspectRatios);
             Assert.AreEqual("_xx1", entry.AspectRatios[0].ID);
             Assert.AreEqual("_xx2", entry.AspectRatios[1].ID);
             Assert.AreEqual("_xx3", entry.AspectRatios[2].ID);
 
-            Assert.AreEqual(3, entry.Cameras.Count);
+            Assert.HasCount(3, entry.Cameras);
             Assert.AreEqual("_xx1", entry.Cameras[0].ID);
             Assert.AreEqual("_xx2", entry.Cameras[1].ID);
             Assert.AreEqual("_xx3", entry.Cameras[2].ID);
 
-            Assert.AreEqual(3, entry.Laboratories.Count);
+            Assert.HasCount(3, entry.Laboratories);
             Assert.AreEqual("_xx1", entry.Laboratories[0].ID);
             Assert.AreEqual("_xx2", entry.Laboratories[1].ID);
             Assert.AreEqual("_xx3", entry.Laboratories[2].ID);
 
-            Assert.AreEqual(3, entry.FilmLengths.Count);
+            Assert.HasCount(3, entry.FilmLengths);
             Assert.AreEqual("_xx1", entry.FilmLengths[0].ID);
             Assert.AreEqual("_xx2", entry.FilmLengths[1].ID);
             Assert.AreEqual("_xx3", entry.FilmLengths[2].ID);
 
-            Assert.AreEqual(3, entry.NegativeFormats.Count);
+            Assert.HasCount(3, entry.NegativeFormats);
             Assert.AreEqual("_xx1", entry.NegativeFormats[0].ID);
             Assert.AreEqual("_xx2", entry.NegativeFormats[1].ID);
             Assert.AreEqual("_xx3", entry.NegativeFormats[2].ID);
 
-            Assert.AreEqual(3, entry.CinematographicProcesses.Count);
+            Assert.HasCount(3, entry.CinematographicProcesses);
             Assert.AreEqual("_xx1", entry.CinematographicProcesses[0].ID);
             Assert.AreEqual("_xx2", entry.CinematographicProcesses[1].ID);
             Assert.AreEqual("_xx3", entry.CinematographicProcesses[2].ID);
 
-            Assert.AreEqual(3, entry.PrintedFilmFormats.Count);
+            Assert.HasCount(3, entry.PrintedFilmFormats);
             Assert.AreEqual("_xx1", entry.PrintedFilmFormats[0].ID);
             Assert.AreEqual("_xx2", entry.PrintedFilmFormats[1].ID);
             Assert.AreEqual("_xx3", entry.PrintedFilmFormats[2].ID);
 
-            //Assert.AreEqual(3, entry.Creators.Count);
+            //Assert.HasCount(3, entry.Creators);
             //Assert.AreEqual("_xx1", entry.Creators[0].ID);
             //Assert.AreEqual("_xx2", entry.Creators[1].ID);
             //Assert.AreEqual("_xx3", entry.Creators[2].ID);
 
-            //Assert.AreEqual(3, entry.Directors.Count);
+            //Assert.HasCount(3, entry.Directors);
             //Assert.AreEqual("_xx1", entry.Directors[0].ID);
             //Assert.AreEqual("_xx2", entry.Directors[1].ID);
             //Assert.AreEqual("_xx3", entry.Directors[2].ID);
 
-            //Assert.AreEqual(3, entry.Writers.Count);
+            //Assert.HasCount(3, entry.Writers);
             //Assert.AreEqual("_xx1", entry.Writers[0].ID);
             //Assert.AreEqual("_xx2", entry.Writers[1].ID);
             //Assert.AreEqual("_xx3", entry.Writers[2].ID);
 
-            //Assert.AreEqual(3, entry.Cast.Count);
+            //Assert.HasCount(3, entry.Cast);
             //Assert.AreEqual("_xx1", entry.Cast[0].ID);
             //Assert.AreEqual("_xx2", entry.Cast[1].ID);
             //Assert.AreEqual("_xx3", entry.Cast[2].ID);
 
-            //Assert.AreEqual(3, entry.Producers.Count);
+            //Assert.HasCount(3, entry.Producers);
             //Assert.AreEqual("_xx1", entry.Producers[0].ID);
             //Assert.AreEqual("_xx2", entry.Producers[1].ID);
             //Assert.AreEqual("_xx3", entry.Producers[2].ID);
 
-            //Assert.AreEqual(3, entry.Music.Count);
+            //Assert.HasCount(3, entry.Music);
             //Assert.AreEqual("_xx1", entry.Music[0].ID);
             //Assert.AreEqual("_xx2", entry.Music[1].ID);
             //Assert.AreEqual("_xx3", entry.Music[2].ID);
 
-            //Assert.AreEqual(3, entry.Cinematography.Count);
+            //Assert.HasCount(3, entry.Cinematography);
             //Assert.AreEqual("_xx1", entry.Cinematography[0].ID);
             //Assert.AreEqual("_xx2", entry.Cinematography[1].ID);
             //Assert.AreEqual("_xx3", entry.Cinematography[2].ID);
 
-            //Assert.AreEqual(3, entry.FilmEditing.Count);
+            //Assert.HasCount(3, entry.FilmEditing);
             //Assert.AreEqual("_xx1", entry.FilmEditing[0].ID);
             //Assert.AreEqual("_xx2", entry.FilmEditing[1].ID);
             //Assert.AreEqual("_xx3", entry.FilmEditing[2].ID);
 
-            //Assert.AreEqual(3, entry.Casting.Count);
+            //Assert.HasCount(3, entry.Casting);
             //Assert.AreEqual("_xx1", entry.Casting[0].ID);
             //Assert.AreEqual("_xx2", entry.Casting[1].ID);
             //Assert.AreEqual("_xx3", entry.Casting[2].ID);
 
-            //Assert.AreEqual(3, entry.ProductionDesign.Count);
+            //Assert.HasCount(3, entry.ProductionDesign);
             //Assert.AreEqual("_xx1", entry.ProductionDesign[0].ID);
             //Assert.AreEqual("_xx2", entry.ProductionDesign[1].ID);
             //Assert.AreEqual("_xx3", entry.ProductionDesign[2].ID);
 
-            //Assert.AreEqual(3, entry.ArtDirection.Count);
+            //Assert.HasCount(3, entry.ArtDirection);
             //Assert.AreEqual("_xx1", entry.ArtDirection[0].ID);
             //Assert.AreEqual("_xx2", entry.ArtDirection[1].ID);
             //Assert.AreEqual("_xx3", entry.ArtDirection[2].ID);
 
-            //Assert.AreEqual(3, entry.SetDecoration.Count);
+            //Assert.HasCount(3, entry.SetDecoration);
             //Assert.AreEqual("_xx1", entry.SetDecoration[0].ID);
             //Assert.AreEqual("_xx2", entry.SetDecoration[1].ID);
             //Assert.AreEqual("_xx3", entry.SetDecoration[2].ID);
 
-            //Assert.AreEqual(3, entry.CostumeDesign.Count);
+            //Assert.HasCount(3, entry.CostumeDesign);
             //Assert.AreEqual("_xx1", entry.CostumeDesign[0].ID);
             //Assert.AreEqual("_xx2", entry.CostumeDesign[1].ID);
             //Assert.AreEqual("_xx3", entry.CostumeDesign[2].ID);
 
-            //Assert.AreEqual(3, entry.MakeupDepartment.Count);
+            //Assert.HasCount(3, entry.MakeupDepartment);
             //Assert.AreEqual("_xx1", entry.MakeupDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.MakeupDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.MakeupDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.ProductionManagement.Count);
+            //Assert.HasCount(3, entry.ProductionManagement);
             //Assert.AreEqual("_xx1", entry.ProductionManagement[0].ID);
             //Assert.AreEqual("_xx2", entry.ProductionManagement[1].ID);
             //Assert.AreEqual("_xx3", entry.ProductionManagement[2].ID);
 
-            //Assert.AreEqual(3, entry.AssistantDirectors.Count);
+            //Assert.HasCount(3, entry.AssistantDirectors);
             //Assert.AreEqual("_xx1", entry.AssistantDirectors[0].ID);
             //Assert.AreEqual("_xx2", entry.AssistantDirectors[1].ID);
             //Assert.AreEqual("_xx3", entry.AssistantDirectors[2].ID);
 
-            //Assert.AreEqual(3, entry.ArtDepartment.Count);
+            //Assert.HasCount(3, entry.ArtDepartment);
             //Assert.AreEqual("_xx1", entry.ArtDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.ArtDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.ArtDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.SoundDepartment.Count);
+            //Assert.HasCount(3, entry.SoundDepartment);
             //Assert.AreEqual("_xx1", entry.SoundDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.SoundDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.SoundDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.SpecialEffects.Count);
+            //Assert.HasCount(3, entry.SpecialEffects);
             //Assert.AreEqual("_xx1", entry.SpecialEffects[0].ID);
             //Assert.AreEqual("_xx2", entry.SpecialEffects[1].ID);
             //Assert.AreEqual("_xx3", entry.SpecialEffects[2].ID);
 
-            //Assert.AreEqual(3, entry.VisualEffects.Count);
+            //Assert.HasCount(3, entry.VisualEffects);
             //Assert.AreEqual("_xx1", entry.VisualEffects[0].ID);
             //Assert.AreEqual("_xx2", entry.VisualEffects[1].ID);
             //Assert.AreEqual("_xx3", entry.VisualEffects[2].ID);
 
-            //Assert.AreEqual(3, entry.Stunts.Count);
+            //Assert.HasCount(3, entry.Stunts);
             //Assert.AreEqual("_xx1", entry.Stunts[0].ID);
             //Assert.AreEqual("_xx2", entry.Stunts[1].ID);
             //Assert.AreEqual("_xx3", entry.Stunts[2].ID);
 
-            //Assert.AreEqual(3, entry.ElectricalDepartment.Count);
+            //Assert.HasCount(3, entry.ElectricalDepartment);
             //Assert.AreEqual("_xx1", entry.ElectricalDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.ElectricalDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.ElectricalDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.AnimationDepartment.Count);
+            //Assert.HasCount(3, entry.AnimationDepartment);
             //Assert.AreEqual("_xx1", entry.AnimationDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.AnimationDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.AnimationDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.CastingDepartment.Count);
+            //Assert.HasCount(3, entry.CastingDepartment);
             //Assert.AreEqual("_xx1", entry.CastingDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.CastingDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.CastingDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.CostumeDepartment.Count);
+            //Assert.HasCount(3, entry.CostumeDepartment);
             //Assert.AreEqual("_xx1", entry.CostumeDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.CostumeDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.CostumeDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.EditorialDepartment.Count);
+            //Assert.HasCount(3, entry.EditorialDepartment);
             //Assert.AreEqual("_xx1", entry.EditorialDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.EditorialDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.EditorialDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.LocationManagement.Count);
+            //Assert.HasCount(3, entry.LocationManagement);
             //Assert.AreEqual("_xx1", entry.LocationManagement[0].ID);
             //Assert.AreEqual("_xx2", entry.LocationManagement[1].ID);
             //Assert.AreEqual("_xx3", entry.LocationManagement[2].ID);
 
-            //Assert.AreEqual(3, entry.MusicDepartment.Count);
+            //Assert.HasCount(3, entry.MusicDepartment);
             //Assert.AreEqual("_xx1", entry.MusicDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.MusicDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.MusicDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.ContinuityDepartment.Count);
+            //Assert.HasCount(3, entry.ContinuityDepartment);
             //Assert.AreEqual("_xx1", entry.ContinuityDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.ContinuityDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.ContinuityDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.TransportationDepartment.Count);
+            //Assert.HasCount(3, entry.TransportationDepartment);
             //Assert.AreEqual("_xx1", entry.TransportationDepartment[0].ID);
             //Assert.AreEqual("_xx2", entry.TransportationDepartment[1].ID);
             //Assert.AreEqual("_xx3", entry.TransportationDepartment[2].ID);
 
-            //Assert.AreEqual(3, entry.OtherCrew.Count);
+            //Assert.HasCount(3, entry.OtherCrew);
             //Assert.AreEqual("_xx1", entry.OtherCrew[0].ID);
             //Assert.AreEqual("_xx2", entry.OtherCrew[1].ID);
             //Assert.AreEqual("_xx3", entry.OtherCrew[2].ID);
 
-            Assert.AreEqual(3, entry.ProductionCompanies.Count);
+            Assert.HasCount(3, entry.ProductionCompanies);
             Assert.AreEqual("_xx1", entry.ProductionCompanies[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionCompanies[2].ID);
 
-            Assert.AreEqual(3, entry.SpecialEffectsCompanies.Count);
+            Assert.HasCount(3, entry.SpecialEffectsCompanies);
             Assert.AreEqual("_xx1", entry.SpecialEffectsCompanies[0].ID);
             Assert.AreEqual("_xx2", entry.SpecialEffectsCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.SpecialEffectsCompanies[2].ID);
 
-            Assert.AreEqual(3, entry.Distributors.Count);
+            Assert.HasCount(3, entry.Distributors);
             Assert.AreEqual("_xx1", entry.Distributors[0].ID);
             Assert.AreEqual("_xx2", entry.Distributors[1].ID);
             Assert.AreEqual("_xx3", entry.Distributors[2].ID);
 
-            Assert.AreEqual(3, entry.OtherCompanies.Count);
+            Assert.HasCount(3, entry.OtherCompanies);
             Assert.AreEqual("_xx1", entry.OtherCompanies[0].ID);
             Assert.AreEqual("_xx2", entry.OtherCompanies[1].ID);
             Assert.AreEqual("_xx3", entry.OtherCompanies[2].ID);
 
-            Assert.AreEqual(3, entry.FilmingLocations.Count);
+            Assert.HasCount(3, entry.FilmingLocations);
             Assert.AreEqual("_xx1", entry.FilmingLocations[0].ID);
             Assert.AreEqual("_xx2", entry.FilmingLocations[1].ID);
             Assert.AreEqual("_xx3", entry.FilmingLocations[2].ID);
 
-            Assert.AreEqual(3, entry.FilmingDates.Count);
+            Assert.HasCount(3, entry.FilmingDates);
             Assert.AreEqual("_xx1", entry.FilmingDates[0].ID);
             Assert.AreEqual("_xx2", entry.FilmingDates[1].ID);
             Assert.AreEqual("_xx3", entry.FilmingDates[2].ID);
 
-            Assert.AreEqual(3, entry.ProductionDates.Count);
+            Assert.HasCount(3, entry.ProductionDates);
             Assert.AreEqual("_xx1", entry.ProductionDates[0].ID);
             Assert.AreEqual("_xx2", entry.ProductionDates[1].ID);
             Assert.AreEqual("_xx3", entry.ProductionDates[2].ID);
 
-            //Assert.AreEqual(3, entry.Posters.Count);
+            //Assert.HasCount(3, entry.Posters);
             //Assert.AreEqual("_xx1", entry.Posters[0].ID);
             //Assert.AreEqual("_xx2", entry.Posters[1].ID);
             //Assert.AreEqual("_xx3", entry.Posters[2].ID);
 
-            //Assert.AreEqual(3, entry.Covers.Count);
+            //Assert.HasCount(3, entry.Covers);
             //Assert.AreEqual("_xx1", entry.Covers[0].ID);
             //Assert.AreEqual("_xx2", entry.Covers[1].ID);
             //Assert.AreEqual("_xx3", entry.Covers[2].ID);
 
-            //Assert.AreEqual(3, entry.Images.Count);
+            //Assert.HasCount(3, entry.Images);
             //Assert.AreEqual("_xx1", entry.Images[0].ID);
             //Assert.AreEqual("_xx2", entry.Images[1].ID);
             //Assert.AreEqual("_xx3", entry.Images[2].ID);
 
-            //Assert.AreEqual(3, entry.Descriptions.Count);
+            //Assert.HasCount(3, entry.Descriptions);
             //Assert.AreEqual("_xx1", entry.Descriptions[0].ID);
             //Assert.AreEqual("_xx2", entry.Descriptions[1].ID);
             //Assert.AreEqual("_xx3", entry.Descriptions[2].ID);
 
-            //Assert.AreEqual(3, entry.Reviews.Count);
+            //Assert.HasCount(3, entry.Reviews);
             //Assert.AreEqual("_xx1", entry.Reviews[0].ID);
             //Assert.AreEqual("_xx2", entry.Reviews[1].ID);
             //Assert.AreEqual("_xx3", entry.Reviews[2].ID);
 
-            //Assert.AreEqual(3, entry.Awards.Count);
+            //Assert.HasCount(3, entry.Awards);
             //Assert.AreEqual("_xx1", entry.Awards[0].ID);
             //Assert.AreEqual("_xx2", entry.Awards[1].ID);
             //Assert.AreEqual("_xx3", entry.Awards[2].ID);
 
-            //Assert.AreEqual(3, entry.Weblinks.Count);
+            //Assert.HasCount(3, entry.Weblinks);
             //Assert.AreEqual("_xx1", entry.Weblinks[0].ID);
             //Assert.AreEqual("_xx2", entry.Weblinks[1].ID);
             //Assert.AreEqual("_xx3", entry.Weblinks[2].ID);
@@ -788,7 +788,7 @@ namespace EntertainmentDB.Data.Tests
             List<Article> list = Series.RetrieveList(reader, "_xxx");
 
             // Assert
-            Assert.AreEqual(1, list.Count);
+            Assert.HasCount(1, list);
 
             Assert.AreEqual("_xxx", list[0].ID);
         }
