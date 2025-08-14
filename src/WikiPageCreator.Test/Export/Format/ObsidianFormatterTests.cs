@@ -1406,7 +1406,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableTOC();
 
             // Assert
-            Assert.AreEqual(null, returnstring);
+            Assert.IsNull(returnstring);
         }
 
         [TestMethod()]
@@ -1419,7 +1419,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DisableCache();
 
             // Assert
-            Assert.AreEqual(null, returnstring);
+            Assert.IsNull(returnstring);
         }
 
         [TestMethod()]
@@ -1459,7 +1459,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.DefineTable(500, width);
 
             // Assert
-            Assert.AreEqual(null, returnstring);
+            Assert.IsNull(returnstring);
         }
 
         [TestMethod()]
@@ -1598,7 +1598,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.BeginBox(500, Alignment.Left);
 
             // Assert
-            Assert.AreEqual(null, returnstring);
+            Assert.IsNull(returnstring);
         }
 
         [TestMethod()]
@@ -1622,7 +1622,7 @@ namespace WikiPageCreator.Export.Format.Tests
             string returnstring = formatter.EndBox();
 
             // Assert
-            Assert.AreEqual(null, returnstring);
+            Assert.IsNull(returnstring);
         }
 
         [TestMethod()]
