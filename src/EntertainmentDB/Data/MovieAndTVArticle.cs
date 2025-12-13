@@ -104,6 +104,11 @@ namespace EntertainmentDB.Data
         public List<FilmFormatItem> PrintedFilmFormats { get; set; }
 
         /// <summary>
+        /// The list of directors of the movie.
+        /// </summary>
+        public List<PersonItem> Directors { get; set; }
+
+        /// <summary>
         /// The list of production companies of the movie and tv article.
         /// </summary>
         public List<CompanyItem> ProductionCompanies { get; set; }

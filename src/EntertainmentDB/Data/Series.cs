@@ -290,11 +290,16 @@ namespace EntertainmentDB.Data
                 PrintedFilmFormats = null;
             }
 
-            /*
             // Cast and crew data
             Directors = PersonItem.RetrieveList(Reader, "Series", ID, "Director");
             noOfDataRecords += Directors.Count;
+            if (Directors.Count == 0)
+            {
+                Logger.Debug($"Series.Directors.Count == 0 -> null");
+                Directors = null;
+            }
 
+            /*
             Writers = PersonItem.RetrieveList(Reader, "Series", ID, "Writer");
             noOfDataRecords += Writers.Count;
 

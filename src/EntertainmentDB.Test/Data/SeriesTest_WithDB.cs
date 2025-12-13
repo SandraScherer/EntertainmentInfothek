@@ -75,7 +75,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
-            //Assert.IsNull(entry.Directors);
+            Assert.IsNull(entry.Directors);
             //Assert.IsNull(entry.Writers);
             //Assert.IsNull(entry.Cast);
             //Assert.IsNull(entry.Producers);
@@ -175,7 +175,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
-            //Assert.IsNull(entry.Directors);
+            Assert.IsNull(entry.Directors);
             //Assert.IsNull(entry.Writers);
             //Assert.IsNull(entry.Cast);
             //Assert.IsNull(entry.Producers);
@@ -297,7 +297,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
-            //Assert.IsNull(entry.Directors);
+            Assert.IsNull(entry.Directors);
             //Assert.IsNull(entry.Writers);
             //Assert.IsNull(entry.Cast);
             //Assert.IsNull(entry.Producers);
@@ -455,10 +455,10 @@ namespace EntertainmentDB.Data.Tests
             //Assert.AreEqual("_xx2", entry.Creators[1].ID);
             //Assert.AreEqual("_xx3", entry.Creators[2].ID);
 
-            //Assert.HasCount(3, entry.Directors);
-            //Assert.AreEqual("_xx1", entry.Directors[0].ID);
-            //Assert.AreEqual("_xx2", entry.Directors[1].ID);
-            //Assert.AreEqual("_xx3", entry.Directors[2].ID);
+            Assert.HasCount(3, entry.Directors);
+            Assert.AreEqual("_xx1", entry.Directors[0].ID);
+            Assert.AreEqual("_xx2", entry.Directors[1].ID);
+            Assert.AreEqual("_xx3", entry.Directors[2].ID);
 
             //Assert.HasCount(3, entry.Writers);
             //Assert.AreEqual("_xx1", entry.Writers[0].ID);
@@ -726,7 +726,7 @@ namespace EntertainmentDB.Data.Tests
             Assert.IsNull(entry.PrintedFilmFormats);
 
             //Assert.IsNull(entry.Creators);
-            //Assert.IsNull(entry.Directors);
+            Assert.IsNull(entry.Directors);
             //Assert.IsNull(entry.Writers);
             //Assert.IsNull(entry.Cast);
             //Assert.IsNull(entry.Producers);

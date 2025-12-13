@@ -182,6 +182,8 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "TransportationDepartment", false)]
         [DataRow("Movie", "OtherCrew", true)]
         [DataRow("Movie", "OtherCrew", false)]
+        [DataRow("Series", "Director", true)]
+        [DataRow("Series", "Director", false)]
         public void RetrieveTest_withValidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -261,6 +263,8 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "TransportationDepartment", false)]
         [DataRow("Movie", "OtherCrew", true)]
         [DataRow("Movie", "OtherCrew", false)]
+        [DataRow("Series", "Director", true)]
+        [DataRow("Series", "Director", false)]
         public void RetrieveTest_withInvalidID(string baseTableName, string targetTableName, bool basicInfoOnly)
         {
             // Arrange
@@ -311,6 +315,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withValidData(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -374,6 +379,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withReaderNull(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -414,6 +420,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withBaseTableNameNull(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -454,6 +461,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withBaseTableIDNull(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -494,6 +502,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withTargetTableNameNull(string baseTableName, string targetTableName)
         {
             // Arrange
@@ -534,6 +543,7 @@ namespace EntertainmentDB.Data.Tests
         [DataRow("Movie", "ContinuityDepartment")]
         [DataRow("Movie", "TransportationDepartment")]
         [DataRow("Movie", "OtherCrew")]
+        [DataRow("Series", "Director")]
         public void RetrieveListTest_withOrderNull(string baseTableName, string targetTableName)
         {
             // Arrange
