@@ -134,55 +134,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
             // Act, Assert
             Assert.ThrowsExactly<ArgumentNullException>(() => creator = new CameraContentCreator(list, formatter, ""));
         }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Camera entry = new Camera(reader, id);
-            CameraItem item = new CameraItem(reader);
-            item.Camera = entry;
-            List<CameraItem> list = new List<CameraItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Camera entry = new Camera(reader, id);
-            CameraItem item = new CameraItem(reader);
-            item.Camera = entry;
-            List<CameraItem> list = new List<CameraItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            CameraContentCreator creator = new CameraContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
         [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]

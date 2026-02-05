@@ -136,54 +136,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            CinematographicProcess entry = new CinematographicProcess(reader, id);
-            CinematographicProcessItem item = new CinematographicProcessItem(reader);
-            item.CinematographicProcess = entry;
-            List<CinematographicProcessItem> list = new List<CinematographicProcessItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            CinematographicProcess entry = new CinematographicProcess(reader, id);
-            CinematographicProcessItem item = new CinematographicProcessItem(reader);
-            item.CinematographicProcess = entry;
-            List<CinematographicProcessItem> list = new List<CinematographicProcessItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            CinematographicProcessContentCreator creator = new CinematographicProcessContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
-        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]

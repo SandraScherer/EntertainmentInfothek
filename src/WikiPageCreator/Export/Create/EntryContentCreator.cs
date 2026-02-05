@@ -100,71 +100,6 @@ namespace WikiPageCreator.Export.Create
         // --- Methods ---
 
         /// <summary>
-        /// Returns the page name of the entrys page.
-        /// </summary>
-        /// <returns>The formatted page name for the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        public virtual string GetPageName()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the complete formatted page of a given entry.
-        /// </summary>
-        /// <returns>The complete formatted page of the entry.</returns>
-        public virtual List<string> CreatePage()
-        {
-            Logger.Trace($"CreatePage()");
-            Logger.Debug($"Entry is '{Entry.ID}'");
-
-            List<string> content = new List<string>();
-
-            content.AddRange(CreatePageHeader());
-            content.AddRange(CreatePageTitle());
-            content.AddRange(CreatePageContent());
-            content.AddRange(CreatePageFooter());
-
-            Logger.Trace($"CreatePage() for Entry '{Entry.ID}' created");
-
-            return content;
-        }
-
-        /// <summary>
-        /// Creates the formatted header content of a given entry.
-        /// </summary>
-        /// <returns>The formatted header content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreatePageHeader()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the formatted page title content of a given entry.
-        /// </summary>
-        /// <returns>The formatted page title of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreatePageTitle()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Creates the page content of the entry.
-        /// </summary>
-        /// <returns>The formatted page content of the entry.</returns>
-        /// <exception cref="NotSupportedException">Thrown because the operation is not supported.</exception>
-        protected virtual List<string> CreatePageContent()
-        {
-            Logger.Fatal($"Operation not supported");
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
         /// Creates the formatted infobox begin content of a given entry
         /// </summary>
         /// <returns>The formatted infobox begin content of the entry.</returns>
@@ -565,54 +500,6 @@ namespace WikiPageCreator.Export.Create
                 data[0] = $"{Formatter.AsInternalLink(path1, pagename1)} ({Formatter.AsInternalLink(path2, pagename2)}) ({Formatter.AsInternalLink(path3, pagename3, text3)})";
             }
             content.Add(Formatter.AsTableRow(data));
-        }
-
-        /// <summary>
-        /// Creates the formatted footer content of a given entry.
-        /// </summary>
-        /// <returns>The formatted footer content of the entry.</returns>
-        protected virtual List<string> CreatePageFooter()
-        {
-            Logger.Trace($"CreatePageFooter()");
-            Logger.Debug($"Entry is '{Entry.ID}'");
-
-            List<string> content = new List<string>();
-
-            content.Add($"");
-            content.Add($"");
-
-            Logger.Trace($"CreatePageFooter(): page footer for Entry '{Entry.ID}' created");
-
-            return content;
-        }
-
-
-
-        /// <summary>
-        /// Creates the page content of the entry.
-        /// </summary>
-        /// <returns>The formatted page content of the entry.</returns>
-        protected virtual List<string> CreatePageContentInternal()
-        {
-            Logger.Trace($"CreatePageContentInternal()");
-            Logger.Debug($"Entry is '{Entry.ID}'");
-
-            List<string> content = new List<string>();
-
-            content.AddRange(CreatePageHeader());
-            content.AddRange(CreatePageTitle());
-
-            content.AddRange(CreateInfoBoxBegin());
-            content.AddRange(CreateInfoBoxContent());
-            content.AddRange(CreateInfoBoxEnd());
-
-            content.AddRange(CreateChapterContent());
-
-            content.AddRange(CreatePageFooter());
-
-            Logger.Trace($"CreatePageContentInternal(): page content for Entry '{Entry.ID}' created");
-
-            return content;
         }
     }
 }

@@ -136,54 +136,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            TimespanItem item = new TimespanItem(reader);
-            item.StartDate = "unknown";
-            item.EndDate = "unknown";
-            List<TimespanItem> list = new List<TimespanItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            TimespanItem item = new TimespanItem(reader);
-            item.StartDate = "unknown";
-            item.EndDate = "unknown";
-            List<TimespanItem> list = new List<TimespanItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ProductionDateContentCreator creator = new ProductionDateContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
-        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]

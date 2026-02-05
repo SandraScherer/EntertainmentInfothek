@@ -67,7 +67,7 @@ namespace WikiPageCreator.Export.Create
         /// Creates the page name of the article page.
         /// </summary>
         /// <returns>The formatted file name for the article.</returns>
-        public override string GetPageName()
+        public virtual string GetPageName()
         {
             Logger.Trace($"GetPageName()");
             Logger.Debug($"Article is '{Article.OriginalTitle}' from '{Article.ReleaseDate}'");
@@ -76,10 +76,31 @@ namespace WikiPageCreator.Export.Create
         }
 
         /// <summary>
+        /// Creates the complete formatted page the article.
+        /// </summary>
+        /// <returns>The complete formatted page of the article.</returns>
+        public virtual List<string> CreatePage()
+        {
+            Logger.Trace($"CreatePage()");
+            Logger.Debug($"Article is '{Article.ID}'");
+
+            List<string> content = new List<string>();
+
+            content.AddRange(CreatePageHeader());
+            content.AddRange(CreatePageTitle());
+            content.AddRange(CreatePageContent());
+            content.AddRange(CreatePageFooter());
+
+            Logger.Trace($"CreatePage() for Article '{Article.ID}' created");
+
+            return content;
+        }
+
+        /// <summary>
         /// Creates the formatted header content of a given article.
         /// </summary>
         /// <returns>The formatted haeder content of the article.</returns>
-        protected override List<string> CreatePageHeader()
+        protected virtual List<string> CreatePageHeader()
         {
             Logger.Trace($"CreatePageHeader()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
@@ -108,7 +129,7 @@ namespace WikiPageCreator.Export.Create
         /// Creates the formatted file title content of a given article.
         /// </summary>
         /// <returns>The formatted file title content of the article.</returns>
-        protected override List<string> CreatePageTitle()
+        protected virtual List<string> CreatePageTitle()
         {
             Logger.Trace($"CreatePageTitle()");
             Logger.Debug($"Article is '{Article.OriginalTitle}'");
@@ -133,6 +154,29 @@ namespace WikiPageCreator.Export.Create
             content.Add("");
 
             Logger.Trace($"CreatePageTitle(): page title for Article '{Article.OriginalTitle}' created");
+
+            return content;
+        }
+
+
+        /// <summary>
+        /// Creates the page content of the entry.
+        /// </summary>
+        /// <returns>The formatted page content of the entry.</returns>
+        protected virtual List<string> CreatePageContent()
+        {
+            Logger.Trace($"CreatePageContent()");
+            Logger.Debug($"Article is '{Article.ID}'");
+
+            List<string> content = new List<string>();
+
+            content.AddRange(CreateInfoBoxBegin());
+            content.AddRange(CreateInfoBoxContent());
+            content.AddRange(CreateInfoBoxEnd());
+
+            content.AddRange(CreateChapterContent());
+
+            Logger.Trace($"CreatePageContent(): page content for Article '{Article.ID}' created");
 
             return content;
         }
@@ -293,6 +337,25 @@ namespace WikiPageCreator.Export.Create
             }
 
             Logger.Trace($"CreateChapterConnection(): chapter connection for Article '{Article.OriginalTitle}' created");
+
+            return content;
+        }
+
+        /// <summary>
+        /// Creates the formatted footer content of a given entry.
+        /// </summary>
+        /// <returns>The formatted footer content of the entry.</returns>
+        protected virtual List<string> CreatePageFooter()
+        {
+            Logger.Trace($"CreatePageFooter()");
+            Logger.Debug($"Article is '{Article.ID}'");
+
+            List<string> content = new List<string>();
+
+            content.Add($"");
+            content.Add($"");
+
+            Logger.Trace($"CreatePageFooter(): page footer for Article '{Article.ID}' created");
 
             return content;
         }

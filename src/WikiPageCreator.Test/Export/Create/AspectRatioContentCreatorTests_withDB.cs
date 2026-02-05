@@ -136,54 +136,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, id);
-            AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = entry;
-            List<AspectRatioItem> list = new List<AspectRatioItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            AspectRatio entry = new AspectRatio(reader, id);
-            AspectRatioItem item = new AspectRatioItem(reader);
-            item.AspectRatio = entry;
-            List<AspectRatioItem> list = new List<AspectRatioItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            AspectRatioContentCreator creator = new AspectRatioContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
-        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]

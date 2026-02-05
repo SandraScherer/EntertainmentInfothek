@@ -126,46 +126,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         [DataRow(INVALID_ID, "en")]
         [DataRow(INVALID_ID, "de")]
         [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Connection entry = new Connection(reader, id);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Connection entry = new Connection(reader, id);
-            Formatter formatter = new DokuWikiFormatter();
-
-            ConnectionContentCreator creator = new ConnectionContentCreator(entry, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
         public void CreateInfoBoxContentTest(string id, string targetLanguageCode)
         {
             // Arrange

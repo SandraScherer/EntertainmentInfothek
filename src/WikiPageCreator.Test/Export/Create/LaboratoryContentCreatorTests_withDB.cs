@@ -136,54 +136,6 @@ namespace WikiPageCreator.Export.Create.IntegrationTests
         }
 
         [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void GetPageNameTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Laboratory entry = new Laboratory(reader, id);
-            LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = entry;
-            List<LaboratoryItem> list = new List<LaboratoryItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            LaboratoryContentCreator creator = new LaboratoryContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.GetPageName());
-        }
-
-        [TestMethod()]
-        [DataRow(VALID_ID, "en")]
-        [DataRow(VALID_ID, "de")]
-        [DataRow(VALID_ID, "zz")]
-        [DataRow(INVALID_ID, "en")]
-        [DataRow(INVALID_ID, "de")]
-        [DataRow(INVALID_ID, "zz")]
-        public void CreatePageTest(string id, string targetLanguageCode)
-        {
-            // Arrange
-            DBReader reader = new SQLiteReader();
-            Laboratory entry = new Laboratory(reader, id);
-            LaboratoryItem item = new LaboratoryItem(reader);
-            item.Laboratory = entry;
-            List<LaboratoryItem> list = new List<LaboratoryItem>();
-            list.Add(item);
-            Formatter formatter = new DokuWikiFormatter();
-
-            LaboratoryContentCreator creator = new LaboratoryContentCreator(list, formatter, targetLanguageCode);
-
-            // Act, Assert
-            Assert.ThrowsExactly<NotSupportedException>(() => creator.CreatePage());
-        }
-
-        [TestMethod()]
         [DataRow("en")]
         [DataRow("de")]
         [DataRow("zz")]
