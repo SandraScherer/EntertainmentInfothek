@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Certification".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Certification".</summary>
 public sealed class CertificationConfiguration : IEntityTypeConfiguration<Certification>
 {
     public void Configure(EntityTypeBuilder<Certification> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Certification");
 
         builder.HasKey(x => x.Id);
@@ -24,23 +24,24 @@ public sealed class CertificationConfiguration : IEntityTypeConfiguration<Certif
 
         // FK: Certification.CountryID -> Country.ID
         builder.HasOne(x => x.Country)
-            .WithMany()
+            .WithMany(x => x.CertificationByCountryID)
             .HasForeignKey(x => x.CountryID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Certification.ImageID -> Image.ID
         builder.HasOne(x => x.Image)
-            .WithMany()
+            .WithMany(x => x.CertificationByImageID)
             .HasForeignKey(x => x.ImageID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Certification.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.CertificationByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

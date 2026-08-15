@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Person".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Person".</summary>
 public sealed class PersonConfiguration : IEntityTypeConfiguration<Person>
 {
     public void Configure(EntityTypeBuilder<Person> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Person");
 
         builder.HasKey(x => x.Id);
@@ -31,38 +31,39 @@ public sealed class PersonConfiguration : IEntityTypeConfiguration<Person>
         builder.Property(x => x.LastUpdated).HasColumnName("LastUpdated");
 
         // FK: Person.EmployerID -> Company.ID
-        builder.HasOne(x => x.Employer)
-            .WithMany()
+        builder.HasOne(x => x.Company)
+            .WithMany(x => x.PersonByEmployerID)
             .HasForeignKey(x => x.EmployerID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Person.LocationOfBirthID -> Location.ID
-        builder.HasOne(x => x.LocationOfBirth)
-            .WithMany()
+        builder.HasOne(x => x.LocationByLocationOfBirthID)
+            .WithMany(x => x.PersonByLocationOfBirthID)
             .HasForeignKey(x => x.LocationOfBirthID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Person.LocationOfDeathID -> Location.ID
-        builder.HasOne(x => x.LocationOfDeath)
-            .WithMany()
+        builder.HasOne(x => x.LocationByLocationOfDeathID)
+            .WithMany(x => x.PersonByLocationOfDeathID)
             .HasForeignKey(x => x.LocationOfDeathID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Person.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.PersonByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Person.TypeID -> Type.ID
         builder.HasOne(x => x.Type)
-            .WithMany()
+            .WithMany(x => x.PersonByTypeID)
             .HasForeignKey(x => x.TypeID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

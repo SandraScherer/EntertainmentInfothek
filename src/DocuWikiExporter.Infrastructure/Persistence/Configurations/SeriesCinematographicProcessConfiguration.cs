@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_CinematographicProcess".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_CinematographicProcess".</summary>
 public sealed class SeriesCinematographicProcessConfiguration : IEntityTypeConfiguration<SeriesCinematographicProcess>
 {
     public void Configure(EntityTypeBuilder<SeriesCinematographicProcess> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_CinematographicProcess");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class SeriesCinematographicProcessConfiguration : IEntityTypeConfi
 
         // FK: Series_CinematographicProcess.CinematographicProcessID -> CinematographicProcess.ID
         builder.HasOne(x => x.CinematographicProcess)
-            .WithMany()
+            .WithMany(x => x.SeriesCinematographicProcessByCinematographicProcessID)
             .HasForeignKey(x => x.CinematographicProcessID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_CinematographicProcess.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesCinematographicProcessBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_CinematographicProcess.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesCinematographicProcessByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

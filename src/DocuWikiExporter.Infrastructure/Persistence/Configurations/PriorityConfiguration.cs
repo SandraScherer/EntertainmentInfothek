@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Priority".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Priority".</summary>
 public sealed class PriorityConfiguration : IEntityTypeConfiguration<Priority>
 {
     public void Configure(EntityTypeBuilder<Priority> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Priority");
 
         builder.HasKey(x => x.Id);
@@ -23,9 +23,10 @@ public sealed class PriorityConfiguration : IEntityTypeConfiguration<Priority>
 
         // FK: Priority.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.PriorityByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

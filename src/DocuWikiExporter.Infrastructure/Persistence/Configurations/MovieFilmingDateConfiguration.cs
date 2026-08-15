@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_FilmingDate".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_FilmingDate".</summary>
 public sealed class MovieFilmingDateConfiguration : IEntityTypeConfiguration<MovieFilmingDate>
 {
     public void Configure(EntityTypeBuilder<MovieFilmingDate> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_FilmingDate");
 
         builder.HasKey(x => x.Id);
@@ -24,16 +24,17 @@ public sealed class MovieFilmingDateConfiguration : IEntityTypeConfiguration<Mov
 
         // FK: Movie_FilmingDate.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MovieFilmingDateByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_FilmingDate.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MovieFilmingDateByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_SoundMix".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_SoundMix".</summary>
 public sealed class MovieSoundMixConfiguration : IEntityTypeConfiguration<MovieSoundMix>
 {
     public void Configure(EntityTypeBuilder<MovieSoundMix> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_SoundMix");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class MovieSoundMixConfiguration : IEntityTypeConfiguration<MovieS
 
         // FK: Movie_SoundMix.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MovieSoundMixByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_SoundMix.SoundMixID -> SoundMix.ID
         builder.HasOne(x => x.SoundMix)
-            .WithMany()
+            .WithMany(x => x.MovieSoundMixBySoundMixID)
             .HasForeignKey(x => x.SoundMixID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_SoundMix.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MovieSoundMixByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

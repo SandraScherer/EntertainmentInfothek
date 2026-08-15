@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_Genre".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_Genre".</summary>
 public sealed class MovieGenreConfiguration : IEntityTypeConfiguration<MovieGenre>
 {
     public void Configure(EntityTypeBuilder<MovieGenre> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_Genre");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class MovieGenreConfiguration : IEntityTypeConfiguration<MovieGenr
 
         // FK: Movie_Genre.GenreID -> Genre.ID
         builder.HasOne(x => x.Genre)
-            .WithMany()
+            .WithMany(x => x.MovieGenreByGenreID)
             .HasForeignKey(x => x.GenreID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Genre.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MovieGenreByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Genre.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MovieGenreByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

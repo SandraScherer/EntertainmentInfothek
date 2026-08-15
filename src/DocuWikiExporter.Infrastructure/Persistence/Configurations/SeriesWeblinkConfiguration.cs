@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_Weblink".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_Weblink".</summary>
 public sealed class SeriesWeblinkConfiguration : IEntityTypeConfiguration<SeriesWeblink>
 {
     public void Configure(EntityTypeBuilder<SeriesWeblink> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_Weblink");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class SeriesWeblinkConfiguration : IEntityTypeConfiguration<Series
 
         // FK: Series_Weblink.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesWeblinkBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Weblink.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesWeblinkByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Weblink.WeblinkID -> Weblink.ID
         builder.HasOne(x => x.Weblink)
-            .WithMany()
+            .WithMany(x => x.SeriesWeblinkByWeblinkID)
             .HasForeignKey(x => x.WeblinkID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

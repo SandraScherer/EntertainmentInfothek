@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Location".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Location".</summary>
 public sealed class LocationConfiguration : IEntityTypeConfiguration<Location>
 {
     public void Configure(EntityTypeBuilder<Location> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Location");
 
         builder.HasKey(x => x.Id);
@@ -23,16 +23,17 @@ public sealed class LocationConfiguration : IEntityTypeConfiguration<Location>
 
         // FK: Location.CountryID -> Country.ID
         builder.HasOne(x => x.Country)
-            .WithMany()
+            .WithMany(x => x.LocationByCountryID)
             .HasForeignKey(x => x.CountryID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Location.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.LocationByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

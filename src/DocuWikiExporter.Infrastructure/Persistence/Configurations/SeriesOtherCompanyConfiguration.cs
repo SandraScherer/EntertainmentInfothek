@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_OtherCompany".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_OtherCompany".</summary>
 public sealed class SeriesOtherCompanyConfiguration : IEntityTypeConfiguration<SeriesOtherCompany>
 {
     public void Configure(EntityTypeBuilder<SeriesOtherCompany> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_OtherCompany");
 
         builder.HasKey(x => x.Id);
@@ -23,16 +23,17 @@ public sealed class SeriesOtherCompanyConfiguration : IEntityTypeConfiguration<S
 
         // FK: Series_OtherCompany.CompanyID -> Company.ID
         builder.HasOne(x => x.Company)
-            .WithMany()
+            .WithMany(x => x.SeriesOtherCompanyByCompanyID)
             .HasForeignKey(x => x.CompanyID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_OtherCompany.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesOtherCompanyBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

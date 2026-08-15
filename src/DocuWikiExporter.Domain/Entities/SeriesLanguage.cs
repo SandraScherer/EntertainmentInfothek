@@ -1,19 +1,18 @@
 namespace DocuWikiExporter.Domain.Entities;
 
-/// <summary>EF-Core-Entity für die unveränderte SQLite-Tabelle "Series_Language".</summary>
+/// <summary>EF-Core-Entity für die bestehende SQLite-Tabelle "Series_Language".</summary>
 public class SeriesLanguage : EntityBase
 {
     /// <summary>Abbildung der SQLite-Spalte "SeriesID".</summary>
     public string? SeriesID { get; set; }
+
     /// <summary>Abbildung der SQLite-Spalte "LanguageID".</summary>
     public string? LanguageID { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "Language" (FK LanguageID).</summary>
+    /// <summary>Navigation über FK LanguageID → Language.ID.</summary>
     public Language? Language { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "Series" (FK SeriesID).</summary>
+    /// <summary>Navigation über FK SeriesID → Series.ID.</summary>
     public Series? Series { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "Status" (FK StatusID).</summary>
-    public Status? Status { get; set; }
 }

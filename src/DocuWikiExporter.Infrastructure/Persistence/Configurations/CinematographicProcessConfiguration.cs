@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "CinematographicProcess".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "CinematographicProcess".</summary>
 public sealed class CinematographicProcessConfiguration : IEntityTypeConfiguration<CinematographicProcess>
 {
     public void Configure(EntityTypeBuilder<CinematographicProcess> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("CinematographicProcess");
 
         builder.HasKey(x => x.Id);
@@ -22,9 +22,10 @@ public sealed class CinematographicProcessConfiguration : IEntityTypeConfigurati
 
         // FK: CinematographicProcess.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.CinematographicProcessByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

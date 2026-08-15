@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_Award_Person".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_Award_Person".</summary>
 public sealed class SeriesAwardPersonConfiguration : IEntityTypeConfiguration<SeriesAwardPerson>
 {
     public void Configure(EntityTypeBuilder<SeriesAwardPerson> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_Award_Person");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class SeriesAwardPersonConfiguration : IEntityTypeConfiguration<Se
 
         // FK: Series_Award_Person.PersonID -> Person.ID
         builder.HasOne(x => x.Person)
-            .WithMany()
+            .WithMany(x => x.SeriesAwardPersonByPersonID)
             .HasForeignKey(x => x.PersonID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Award_Person.Series_AwardID -> Series_Award.ID
-        builder.HasOne(x => x.Series_Award)
-            .WithMany()
+        builder.HasOne(x => x.SeriesAward)
+            .WithMany(x => x.SeriesAwardPersonBySeries_AwardID)
             .HasForeignKey(x => x.Series_AwardID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Award_Person.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesAwardPersonByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

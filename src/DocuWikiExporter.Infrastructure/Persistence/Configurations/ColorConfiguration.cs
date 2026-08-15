@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Color".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Color".</summary>
 public sealed class ColorConfiguration : IEntityTypeConfiguration<Color>
 {
     public void Configure(EntityTypeBuilder<Color> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Color");
 
         builder.HasKey(x => x.Id);
@@ -23,9 +23,10 @@ public sealed class ColorConfiguration : IEntityTypeConfiguration<Color>
 
         // FK: Color.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.ColorByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

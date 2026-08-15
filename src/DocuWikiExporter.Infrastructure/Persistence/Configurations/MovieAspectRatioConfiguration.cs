@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_AspectRatio".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_AspectRatio".</summary>
 public sealed class MovieAspectRatioConfiguration : IEntityTypeConfiguration<MovieAspectRatio>
 {
     public void Configure(EntityTypeBuilder<MovieAspectRatio> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_AspectRatio");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class MovieAspectRatioConfiguration : IEntityTypeConfiguration<Mov
 
         // FK: Movie_AspectRatio.AspectRatioID -> AspectRatio.ID
         builder.HasOne(x => x.AspectRatio)
-            .WithMany()
+            .WithMany(x => x.MovieAspectRatioByAspectRatioID)
             .HasForeignKey(x => x.AspectRatioID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_AspectRatio.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MovieAspectRatioByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_AspectRatio.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MovieAspectRatioByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

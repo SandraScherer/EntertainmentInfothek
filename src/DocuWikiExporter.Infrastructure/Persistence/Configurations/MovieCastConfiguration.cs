@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_Cast".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_Cast".</summary>
 public sealed class MovieCastConfiguration : IEntityTypeConfiguration<MovieCast>
 {
     public void Configure(EntityTypeBuilder<MovieCast> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_Cast");
 
         builder.HasKey(x => x.Id);
@@ -25,38 +25,39 @@ public sealed class MovieCastConfiguration : IEntityTypeConfiguration<MovieCast>
         builder.Property(x => x.LastUpdated).HasColumnName("LastUpdated");
 
         // FK: Movie_Cast.ActorID -> Person.ID
-        builder.HasOne(x => x.Actor)
-            .WithMany()
+        builder.HasOne(x => x.PersonByActorID)
+            .WithMany(x => x.MovieCastByActorID)
             .HasForeignKey(x => x.ActorID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Cast.CharacterID -> Person.ID
-        builder.HasOne(x => x.Character)
-            .WithMany()
+        builder.HasOne(x => x.PersonByCharacterID)
+            .WithMany(x => x.MovieCastByCharacterID)
             .HasForeignKey(x => x.CharacterID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Cast.GermanDubberID -> Person.ID
-        builder.HasOne(x => x.GermanDubber)
-            .WithMany()
+        builder.HasOne(x => x.PersonByGermanDubberID)
+            .WithMany(x => x.MovieCastByGermanDubberID)
             .HasForeignKey(x => x.GermanDubberID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Cast.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MovieCastByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_Cast.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MovieCastByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Episode_Distributor".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Episode_Distributor".</summary>
 public sealed class EpisodeDistributorConfiguration : IEntityTypeConfiguration<EpisodeDistributor>
 {
     public void Configure(EntityTypeBuilder<EpisodeDistributor> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Episode_Distributor");
 
         builder.HasKey(x => x.Id);
@@ -26,30 +26,31 @@ public sealed class EpisodeDistributorConfiguration : IEntityTypeConfiguration<E
 
         // FK: Episode_Distributor.CompanyID -> Company.ID
         builder.HasOne(x => x.Company)
-            .WithMany()
+            .WithMany(x => x.EpisodeDistributorByCompanyID)
             .HasForeignKey(x => x.CompanyID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode_Distributor.CountryID -> Country.ID
         builder.HasOne(x => x.Country)
-            .WithMany()
+            .WithMany(x => x.EpisodeDistributorByCountryID)
             .HasForeignKey(x => x.CountryID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode_Distributor.EpisodeID -> Episode.ID
         builder.HasOne(x => x.Episode)
-            .WithMany()
+            .WithMany(x => x.EpisodeDistributorByEpisodeID)
             .HasForeignKey(x => x.EpisodeID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode_Distributor.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.EpisodeDistributorByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_User".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_User".</summary>
 public sealed class SeriesUserConfiguration : IEntityTypeConfiguration<SeriesUser>
 {
     public void Configure(EntityTypeBuilder<SeriesUser> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_User");
 
         builder.HasKey(x => x.Id);
@@ -27,44 +27,45 @@ public sealed class SeriesUserConfiguration : IEntityTypeConfiguration<SeriesUse
 
         // FK: Series_User.EditionID -> Edition.ID
         builder.HasOne(x => x.Edition)
-            .WithMany()
+            .WithMany(x => x.SeriesUserByEditionID)
             .HasForeignKey(x => x.EditionID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_User.PriorityID -> Priority.ID
         builder.HasOne(x => x.Priority)
-            .WithMany()
+            .WithMany(x => x.SeriesUserByPriorityID)
             .HasForeignKey(x => x.PriorityID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_User.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesUserBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_User.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesUserByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_User.UserID -> User.ID
         builder.HasOne(x => x.User)
-            .WithMany()
+            .WithMany(x => x.SeriesUserByUserID)
             .HasForeignKey(x => x.UserID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_User.UserStatusID -> Status.ID
-        builder.HasOne(x => x.UserStatus)
-            .WithMany()
+        builder.HasOne(x => x.StatusByUserStatusID)
+            .WithMany(x => x.SeriesUserByUserStatusID)
             .HasForeignKey(x => x.UserStatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

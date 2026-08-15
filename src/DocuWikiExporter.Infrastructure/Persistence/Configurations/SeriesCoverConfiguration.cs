@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_Cover".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_Cover".</summary>
 public sealed class SeriesCoverConfiguration : IEntityTypeConfiguration<SeriesCover>
 {
     public void Configure(EntityTypeBuilder<SeriesCover> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_Cover");
 
         builder.HasKey(x => x.Id);
@@ -24,30 +24,31 @@ public sealed class SeriesCoverConfiguration : IEntityTypeConfiguration<SeriesCo
 
         // FK: Series_Cover.EditionID -> Edition.ID
         builder.HasOne(x => x.Edition)
-            .WithMany()
+            .WithMany(x => x.SeriesCoverByEditionID)
             .HasForeignKey(x => x.EditionID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Cover.ImageID -> Image.ID
         builder.HasOne(x => x.Image)
-            .WithMany()
+            .WithMany(x => x.SeriesCoverByImageID)
             .HasForeignKey(x => x.ImageID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Cover.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesCoverBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_Cover.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesCoverByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

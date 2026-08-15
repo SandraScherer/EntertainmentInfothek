@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Weblink".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Weblink".</summary>
 public sealed class WeblinkConfiguration : IEntityTypeConfiguration<Weblink>
 {
     public void Configure(EntityTypeBuilder<Weblink> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Weblink");
 
         builder.HasKey(x => x.Id);
@@ -25,16 +25,17 @@ public sealed class WeblinkConfiguration : IEntityTypeConfiguration<Weblink>
 
         // FK: Weblink.LanguageID -> Language.ID
         builder.HasOne(x => x.Language)
-            .WithMany()
+            .WithMany(x => x.WeblinkByLanguageID)
             .HasForeignKey(x => x.LanguageID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Weblink.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.WeblinkByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

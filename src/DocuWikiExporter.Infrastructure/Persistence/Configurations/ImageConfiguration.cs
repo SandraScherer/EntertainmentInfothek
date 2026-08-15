@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Image".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Image".</summary>
 public sealed class ImageConfiguration : IEntityTypeConfiguration<Image>
 {
     public void Configure(EntityTypeBuilder<Image> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Image");
 
         builder.HasKey(x => x.Id);
@@ -25,23 +25,24 @@ public sealed class ImageConfiguration : IEntityTypeConfiguration<Image>
 
         // FK: Image.CountryID -> Country.ID
         builder.HasOne(x => x.Country)
-            .WithMany()
+            .WithMany(x => x.ImageByCountryID)
             .HasForeignKey(x => x.CountryID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Image.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.ImageByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Image.TypeID -> Type.ID
         builder.HasOne(x => x.Type)
-            .WithMany()
+            .WithMany(x => x.ImageByTypeID)
             .HasForeignKey(x => x.TypeID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

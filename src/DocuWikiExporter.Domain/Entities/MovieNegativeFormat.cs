@@ -1,19 +1,18 @@
 namespace DocuWikiExporter.Domain.Entities;
 
-/// <summary>EF-Core-Entity für die unveränderte SQLite-Tabelle "Movie_NegativeFormat".</summary>
+/// <summary>EF-Core-Entity für die bestehende SQLite-Tabelle "Movie_NegativeFormat".</summary>
 public class MovieNegativeFormat : EntityBase
 {
     /// <summary>Abbildung der SQLite-Spalte "MovieID".</summary>
     public string? MovieID { get; set; }
+
     /// <summary>Abbildung der SQLite-Spalte "FilmFormatID".</summary>
     public string? FilmFormatID { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "FilmFormat" (FK FilmFormatID).</summary>
+    /// <summary>Navigation über FK FilmFormatID → FilmFormat.ID.</summary>
     public FilmFormat? FilmFormat { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "Movie" (FK MovieID).</summary>
+    /// <summary>Navigation über FK MovieID → Movie.ID.</summary>
     public Movie? Movie { get; set; }
 
-    /// <summary>Navigation zur referenzierten Tabelle "Status" (FK StatusID).</summary>
-    public Status? Status { get; set; }
 }

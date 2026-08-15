@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Movie_PrintedFilmFormat".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Movie_PrintedFilmFormat".</summary>
 public sealed class MoviePrintedFilmFormatConfiguration : IEntityTypeConfiguration<MoviePrintedFilmFormat>
 {
     public void Configure(EntityTypeBuilder<MoviePrintedFilmFormat> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Movie_PrintedFilmFormat");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class MoviePrintedFilmFormatConfiguration : IEntityTypeConfigurati
 
         // FK: Movie_PrintedFilmFormat.FilmFormatID -> FilmFormat.ID
         builder.HasOne(x => x.FilmFormat)
-            .WithMany()
+            .WithMany(x => x.MoviePrintedFilmFormatByFilmFormatID)
             .HasForeignKey(x => x.FilmFormatID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_PrintedFilmFormat.MovieID -> Movie.ID
         builder.HasOne(x => x.Movie)
-            .WithMany()
+            .WithMany(x => x.MoviePrintedFilmFormatByMovieID)
             .HasForeignKey(x => x.MovieID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Movie_PrintedFilmFormat.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.MoviePrintedFilmFormatByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

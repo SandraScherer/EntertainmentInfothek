@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Series_NegativeFormat".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Series_NegativeFormat".</summary>
 public sealed class SeriesNegativeFormatConfiguration : IEntityTypeConfiguration<SeriesNegativeFormat>
 {
     public void Configure(EntityTypeBuilder<SeriesNegativeFormat> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Series_NegativeFormat");
 
         builder.HasKey(x => x.Id);
@@ -23,23 +23,24 @@ public sealed class SeriesNegativeFormatConfiguration : IEntityTypeConfiguration
 
         // FK: Series_NegativeFormat.FilmFormatID -> FilmFormat.ID
         builder.HasOne(x => x.FilmFormat)
-            .WithMany()
+            .WithMany(x => x.SeriesNegativeFormatByFilmFormatID)
             .HasForeignKey(x => x.FilmFormatID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_NegativeFormat.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.SeriesNegativeFormatBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Series_NegativeFormat.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.SeriesNegativeFormatByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

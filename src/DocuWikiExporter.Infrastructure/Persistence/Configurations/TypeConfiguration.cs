@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Type".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Type".</summary>
 public sealed class TypeConfiguration : IEntityTypeConfiguration<Type>
 {
     public void Configure(EntityTypeBuilder<Type> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Type");
 
         builder.HasKey(x => x.Id);
@@ -23,9 +23,10 @@ public sealed class TypeConfiguration : IEntityTypeConfiguration<Type>
 
         // FK: Type.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.TypeByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

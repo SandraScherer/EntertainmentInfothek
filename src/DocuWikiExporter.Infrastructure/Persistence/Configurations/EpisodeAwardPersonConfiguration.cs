@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Episode_Award_Person".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Episode_Award_Person".</summary>
 public sealed class EpisodeAwardPersonConfiguration : IEntityTypeConfiguration<EpisodeAwardPerson>
 {
     public void Configure(EntityTypeBuilder<EpisodeAwardPerson> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Episode_Award_Person");
 
         builder.HasKey(x => x.Id);
@@ -23,24 +23,25 @@ public sealed class EpisodeAwardPersonConfiguration : IEntityTypeConfiguration<E
         builder.Property(x => x.LastUpdated).HasColumnName("LastUpdated");
 
         // FK: Episode_Award_Person.Episode_AwardID -> Episode_Award.ID
-        builder.HasOne(x => x.Episode_Award)
-            .WithMany()
+        builder.HasOne(x => x.EpisodeAward)
+            .WithMany(x => x.EpisodeAwardPersonByEpisode_AwardID)
             .HasForeignKey(x => x.Episode_AwardID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode_Award_Person.PersonID -> Person.ID
         builder.HasOne(x => x.Person)
-            .WithMany()
+            .WithMany(x => x.EpisodeAwardPersonByPersonID)
             .HasForeignKey(x => x.PersonID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode_Award_Person.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.EpisodeAwardPersonByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }

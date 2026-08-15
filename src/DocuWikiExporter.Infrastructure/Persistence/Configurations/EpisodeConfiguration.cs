@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DocuWikiExporter.Infrastructure.Persistence.Configurations;
 
-/// <summary>Fluent-API-Mapping für die bestehende Tabelle "Episode".</summary>
+/// <summary>Fluent-API-Mapping für die unveränderte SQLite-Tabelle "Episode".</summary>
 public sealed class EpisodeConfiguration : IEntityTypeConfiguration<Episode>
 {
     public void Configure(EntityTypeBuilder<Episode> builder)
     {
-        // Niemals Migrationen auf die produktive Datenbank anwenden: diese Konfiguration dient ausschließlich dem Lesen.
+        // Bestehende produktive Tabelle: EF Core darf hier keine Schemaänderungen auslösen.
         builder.ToTable("Episode");
 
         builder.HasKey(x => x.Id);
@@ -29,31 +29,32 @@ public sealed class EpisodeConfiguration : IEntityTypeConfiguration<Episode>
         builder.Property(x => x.LastUpdated).HasColumnName("LastUpdated");
 
         // FK: Episode.CastStatusID -> Status.ID
-        builder.HasOne(x => x.CastStatus)
-            .WithMany()
+        builder.HasOne(x => x.StatusByCastStatusID)
+            .WithMany(x => x.EpisodeByCastStatusID)
             .HasForeignKey(x => x.CastStatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode.CrewStatusID -> Status.ID
-        builder.HasOne(x => x.CrewStatus)
-            .WithMany()
+        builder.HasOne(x => x.StatusByCrewStatusID)
+            .WithMany(x => x.EpisodeByCrewStatusID)
             .HasForeignKey(x => x.CrewStatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode.SeriesID -> Series.ID
         builder.HasOne(x => x.Series)
-            .WithMany()
+            .WithMany(x => x.EpisodeBySeriesID)
             .HasForeignKey(x => x.SeriesID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
 
         // FK: Episode.StatusID -> Status.ID
         builder.HasOne(x => x.Status)
-            .WithMany()
+            .WithMany(x => x.EpisodeByStatusID)
             .HasForeignKey(x => x.StatusID)
             .HasPrincipalKey(x => x.Id)
             .OnDelete(DeleteBehavior.Restrict);
+
     }
 }
